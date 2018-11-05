@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>cn.platalk</groupId>
   <artifactId>MapServiceMaven</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>pom</packaging>
   <name>MapServiceMaven</name>
   <description>This is the whole project for map service</description>
@@ -17,4 +17,13 @@
       </plugin>
     </plugins>
   </build>
+  <modules>
+  	<module>BaseInterface</module>
+  	<module>DataProcess</module>
+  	<module>VectorTile</module>
+  	<module>RouteAlgorithm</module>
+  	<module>RouteService</module>
+  	<module>MapService</module>
+  	<module>Utils</module>
+  </modules>
 </project>
