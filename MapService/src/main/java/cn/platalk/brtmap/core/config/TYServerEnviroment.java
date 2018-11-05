@@ -3,7 +3,6 @@ package cn.platalk.brtmap.core.config;
 import cn.platalk.brtmap.db.map.TYDatabaseManager;
 import cn.platalk.brtmap.res.TYBrtLinuxResourceManager;
 import cn.platalk.brtmap.res.TYBrtMacResourceManager;
-import cn.platalk.brtmap.res.TYBrtWindowsResourceManager;
 import cn.platalk.brtmap.res.TYIBrtResourceManager;
 import cn.platalk.brtmap.utils.TYOSUtils;
 import cn.platalk.brtmap.utils.TYOSUtils.OSType;
@@ -25,10 +24,10 @@ public class TYServerEnviroment {
 			osType = OSType.LINUX;
 			break;
 
-		case WINDOWS:
-			resourceManager = new TYBrtWindowsResourceManager();
-			osType = OSType.WINDOWS;
-			break;
+		// case WINDOWS:
+		// resourceManager = new TYBrtWindowsResourceManager();
+		// osType = OSType.WINDOWS;
+		// break;
 
 		default:
 			break;
