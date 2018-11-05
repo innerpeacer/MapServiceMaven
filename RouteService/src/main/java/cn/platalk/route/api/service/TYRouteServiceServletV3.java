@@ -113,7 +113,7 @@ public class TYRouteServiceServletV3 extends HttpServlet {
 			return;
 		}
 
-		if (!TYMultiRouteManagerCollection.ExistRouteManager(buildingID)) {
+		if (!TYMultiRouteManagerCollectionV3.ExistRouteManager(buildingID)) {
 			initRouteManager(buildingID);
 		}
 

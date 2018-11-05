@@ -137,6 +137,7 @@ public class TYBrtParseMapDataServlet extends HttpServlet {
 					TYBuildingDBAdapter buildingDB = new TYBuildingDBAdapter();
 					buildingDB.connectDB();
 					buildingDB.createTableIfNotExist();
+					building.setRouteURL("V2");
 					buildingDB.insertOrUpdateBuilding(building);
 					buildingDB.disconnectDB();
 				}
