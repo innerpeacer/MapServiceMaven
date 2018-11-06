@@ -1,4 +1,4 @@
-package com.test;
+package cn.platalk.route.debug;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,20 +11,20 @@ import cn.platalk.brtmap.entity.base.TYIRouteLinkRecord;
 import cn.platalk.brtmap.entity.base.TYIRouteNodeRecord;
 import cn.platalk.brtmap.entity.base.TYLocalPoint;
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
-import cn.platalk.brtmap.route.core.TYServerMultiRouteManager;
-import cn.platalk.brtmap.route.core.TYServerMultiRouteResult;
-import cn.platalk.route.core.config.TYServerEnviroment;
 
-public class MultiRoute {
-	static String buildingID = "07550023";
+public class RouteTopologicalCheck {
+	// static String buildingID = "07550023";
+
+	// static String buildingID = "00220001";
+	static String buildingID = "05800001";
+
+	// static String buildingID = "00210100";
 
 	public static void main(String[] args) {
-		TYServerEnviroment.initialize();
-
 		TYBuildingDBAdapter buildingDB = new TYBuildingDBAdapter();
 		buildingDB.connectDB();
 		TYBuilding currentBuilding = buildingDB.getBuilding(buildingID);
-		System.out.println(currentBuilding);
+		// System.out.println(currentBuilding);
 		buildingDB.disconnectDB();
 
 		TYMapInfoDBAdapter mapInfoDB = new TYMapInfoDBAdapter();
@@ -33,10 +33,11 @@ public class MultiRoute {
 		List<TYIMapInfo> mapInfoList = new ArrayList<TYIMapInfo>();
 		mapInfoList.addAll(mapInfoDB.getMapInfos(buildingID));
 		mapInfoDB.disconnectDB();
-		// System.out.println(mapInfoList);
 
-		TYLocalPoint start = new TYLocalPoint(12686153.929319, 2560963.396062, -4);
-		TYLocalPoint end = new TYLocalPoint(12686399.051673, 2561075.729366, -4);
+		// TYLocalPoint start = new TYLocalPoint(12686153.929319,
+		// 2560963.396062, -4);
+		// TYLocalPoint end = new TYLocalPoint(12686399.051673, 2561075.729366,
+		// -4);
 
 		List<TYLocalPoint> stopPoints = new ArrayList<TYLocalPoint>();
 		stopPoints.add(new TYLocalPoint(12686231.591840, 2561060.474221, -4));
@@ -50,10 +51,7 @@ public class MultiRoute {
 		linkList.addAll(routeDB.getAllLinkRecords());
 		routeDB.disconnectDB();
 
-		TYServerMultiRouteManager routeManager = new TYServerMultiRouteManager(currentBuilding, mapInfoList, nodeList,
-				linkList);
-		TYServerMultiRouteResult routeResult = routeManager.requestRoute(start, end, stopPoints, true);
-		// System.out.println(routeResult.getDetailedResult());
-		System.out.println(routeResult.buildJson().toString());
+		IPCheckRouteNetworkDataset networkDataset = new IPCheckRouteNetworkDataset(nodeList, linkList);
+		networkDataset.topologicalCheck();
 	}
 }

@@ -11,7 +11,7 @@ public class TYLocalPoint {
 	private double x;
 	private double y;
 	private int floor;
-	private byte[] geometryBytes;
+	// private byte[] geometryBytes;
 
 	public TYLocalPoint(double x, double y) {
 		this.x = x;

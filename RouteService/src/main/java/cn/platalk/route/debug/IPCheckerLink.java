@@ -1,4 +1,4 @@
-package com.route.debug;
+package cn.platalk.route.debug;
 
 import com.vividsolutions.jts.geom.LineString;
 

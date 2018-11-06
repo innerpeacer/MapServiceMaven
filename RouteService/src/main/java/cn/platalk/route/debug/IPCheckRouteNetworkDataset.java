@@ -1,4 +1,4 @@
-package com.route.debug;
+package cn.platalk.route.debug;
 
 import java.util.ArrayList;
 import java.util.HashMap;
