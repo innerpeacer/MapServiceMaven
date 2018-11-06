@@ -1,5 +1,8 @@
 package cn.platalk.brtmap.entity.base;
 
+import cn.platalk.brtmap.entity.base.impl.IPXPoint3D;
+import cn.platalk.brtmap.entity.base.impl.IPXPointConverter;
+
 public class TYLocalPoint {
 	// private static final String KEY_X = "x";
 	// private static final String KEY_Y = "y";
@@ -54,8 +57,7 @@ public class TYLocalPoint {
 
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
-		buffer.append("(").append(x).append(", ").append(y).append(")")
-				.append(" in Floor: ").append(floor);
+		buffer.append("(").append(x).append(", ").append(y).append(")").append(" in Floor: ").append(floor);
 		return buffer.toString();
 	}
 
@@ -84,11 +86,7 @@ public class TYLocalPoint {
 	}
 
 	public byte[] getGeometryBytes() {
-		return geometryBytes;
-	}
-
-	public void setGeometryBytes(byte[] geometryBytes) {
-		this.geometryBytes = geometryBytes;
+		return IPXPointConverter.dataFromPoint3D(new IPXPoint3D(x, y, 0));
 	}
 
 	public double distanceWithPoint(TYLocalPoint lp) {
@@ -100,8 +98,7 @@ public class TYLocalPoint {
 		// return Double.POSITIVE_INFINITY;
 		// }
 
-		return Math.sqrt((x - lp.getX()) * (x - lp.getX()) + (y - lp.getY())
-				* (y - lp.getY()));
+		return Math.sqrt((x - lp.getX()) * (x - lp.getX()) + (y - lp.getY()) * (y - lp.getY()));
 	}
 
 	public static double distanceWithPoints(TYLocalPoint lp1, TYLocalPoint lp2) {
