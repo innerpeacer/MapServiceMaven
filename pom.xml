@@ -25,5 +25,6 @@
   	<module>RouteService</module>
   	<module>MapService</module>
   	<module>Utils</module>
+  	<module>Test</module>
   </modules>
 </project>

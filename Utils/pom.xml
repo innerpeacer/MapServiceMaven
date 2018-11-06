@@ -9,7 +9,7 @@
 
 	<name>Utils</name>
 	<artifactId>wtmap-utils</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<description>The collection of util tools for development.</description>
 	<build>
 		<plugins>
@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>wtmap-entity-base</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.3</version>
 		</dependency>
 
 		<dependency>
