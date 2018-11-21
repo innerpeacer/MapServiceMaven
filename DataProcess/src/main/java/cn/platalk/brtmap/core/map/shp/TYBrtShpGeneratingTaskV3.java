@@ -7,10 +7,10 @@ import java.util.List;
 import cn.platalk.brtmap.core.map.shp.TYBrtShpMapDataTaskV3.TYBrtMapShpTaskListenerV3;
 import cn.platalk.brtmap.core.map.shp.mapdata.TYBrtJsonMapInfoParser;
 import cn.platalk.brtmap.core.map.shp.mapdata.TYBrtJsonMapInfoParser.TYBrtMapInfoJsonParserListener;
-import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteTaskV3;
-import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteTaskV3.TYBrtRouteShpTaskListenerV3;
 import cn.platalk.brtmap.core.map.shp.mapdata.TYBrtSqliteMapDBAdapter;
 import cn.platalk.brtmap.core.map.shp.mapdata.TYBrtSqliteSymbolDBAdapter;
+import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteTaskV3;
+import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteTaskV3.TYBrtRouteShpTaskListenerV3;
 import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
 import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
@@ -70,6 +70,7 @@ public class TYBrtShpGeneratingTaskV3
 		// System.out.println("startRouteShpTask");
 		routeShpTask = new TYBrtShpRouteTaskV3(shpDataManager);
 		routeShpTask.setMapInfos(mapInfos);
+		routeShpTask.setMapData(mapDataRecords);
 		routeShpTask.addTaskListener(this);
 		routeShpTask.startProcessRouteShp();
 	}
