@@ -80,6 +80,12 @@ class TYServerRoutePartV3 {
 		// }
 		// }
 
+		if (coordArray.length == 1) {
+			Coordinate[] coordArray2 = new Coordinate[2];
+			coordArray2[0] = coordArray[0];
+			coordArray2[1] = coordArray[0];
+			coordArray = coordArray2;
+		}
 		route = factory.createLineString(coordArray);
 		length = route.getLength();
 	}
