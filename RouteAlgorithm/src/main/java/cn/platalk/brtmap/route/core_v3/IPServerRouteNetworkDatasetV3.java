@@ -683,7 +683,7 @@ class IPServerRouteNetworkDatasetV3 {
 		// System.out.println(m_allSwitchingNodeDict);
 	}
 
-	static final double costOfLengthForSwitching = 5;
+	static final double costOfLengthForSwitching = 20;
 
 	protected void processSwitchingNodesAndLinks() {
 		// System.out.println("processSwitchingNodesAndLinks");
