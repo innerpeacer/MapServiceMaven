@@ -309,18 +309,28 @@ class IPServerRouteNetworkDatasetV3 {
 			// System.out.println("Equal");
 		}
 
+		double cost = 0;
+		IPRouteDebugger.debugLog("============ Route Part ================");
 		for (int i = 0; i < path.size(); ++i) {
 			IPServerNodeV3 node = path.get(i);
+			IPRouteDebugger.debugLog("Node: " + node.getNodeID());
 			if (node != null && node.previousNode != null) {
 				for (IPServerLinkV3 link : node.previousNode.adjacencies) {
 					if (link.nextNode == node) {
 						resultList.add(IPServerRouteElementLink.fromLink(link));
+						cost += link.m_length;
+						IPRouteDebugger.debugLog("Link: " + link.m_linkID);
+						if (link.m_linkID.startsWith("V")) {
+							IPRouteDebugger.debugLog("Length: " + link.m_length);
+						}
 						break;
 					}
 				}
 			}
 			resultList.add(IPServerRouteElementNode.fromNode(node));
 		}
+		IPRouteDebugger.debugLog("Cost: " + cost);
+		IPRouteDebugger.debugLog("========================================");
 		return resultList;
 	}
 

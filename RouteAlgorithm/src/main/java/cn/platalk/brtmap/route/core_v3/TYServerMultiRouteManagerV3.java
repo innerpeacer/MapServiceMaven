@@ -38,6 +38,7 @@ public class TYServerMultiRouteManagerV3 {
 		// System.out.println("requestRoute: " + options.isSameFloorFirst());
 
 		{
+			IPRouteDebugger.debugLog("============ Enable Route Level ===============");
 			options.setEnableRouteLevel(true);
 			if (options.isSameFloorFirst()) {
 				options.setUseSameFloor(true);
@@ -53,6 +54,9 @@ public class TYServerMultiRouteManagerV3 {
 		}
 
 		if (result == null) {
+			IPRouteDebugger.debugLog("============ Enable Route Level Failed ===============");
+			IPRouteDebugger.debugLog("============ Disable Route Level =====================");
+
 			options.setEnableRouteLevel(false);
 			if (options.isSameFloorFirst()) {
 				options.setUseSameFloor(true);
