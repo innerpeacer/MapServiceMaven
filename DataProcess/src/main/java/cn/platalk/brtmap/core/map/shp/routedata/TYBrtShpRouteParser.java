@@ -27,7 +27,7 @@ public class TYBrtShpRouteParser {
 
 		ogr.RegisterAll();
 		gdal.SetConfigOption("GDAL_FILENAME_IS_UTF8", "YES");
-		gdal.SetConfigOption("SHAPE_ENCODING", "");
+		gdal.SetConfigOption("SHAPE_ENCODING", "CP936");
 		//
 		DataSource ds = ogr.Open(shpPath, 0);
 		if (ds == null) {

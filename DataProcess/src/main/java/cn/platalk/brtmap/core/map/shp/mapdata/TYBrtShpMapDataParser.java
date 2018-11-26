@@ -25,7 +25,7 @@ public class TYBrtShpMapDataParser {
 		// System.out.println(shpPath);
 		ogr.RegisterAll();
 		gdal.SetConfigOption("GDAL_FILENAME_IS_UTF8", "YES");
-		gdal.SetConfigOption("SHAPE_ENCODING", "");
+		gdal.SetConfigOption("SHAPE_ENCODING", "CP936");
 
 		DataSource ds = ogr.Open(shpPath, 0);
 		if (ds == null) {
@@ -38,8 +38,7 @@ public class TYBrtShpMapDataParser {
 
 		Layer featurelayer = ds.GetLayer(0);
 		for (int i = 0; i < featurelayer.GetFeatureCount(); ++i) {
-			TYMapDataFeatureRecord record = TYBrtShpHelper
-					.mapRecordFromFeature(featurelayer.GetFeature(i), i);
+			TYMapDataFeatureRecord record = TYBrtShpHelper.mapRecordFromFeature(featurelayer.GetFeature(i), i);
 			record.layer = layer;
 			records.add(record);
 		}
@@ -76,8 +75,7 @@ public class TYBrtShpMapDataParser {
 		}
 	}
 
-	private void notifyFinishParsingMapDataList(
-			List<TYMapDataFeatureRecord> recordList) {
+	private void notifyFinishParsingMapDataList(List<TYMapDataFeatureRecord> recordList) {
 		for (TYBrtMapShpParserListener listener : listeners) {
 			listener.didFinishParsingMapDataList(recordList);
 		}
@@ -102,8 +100,7 @@ public class TYBrtShpMapDataParser {
 	}
 
 	public interface TYBrtMapShpParserListener {
-		public void didFinishParsingMapDataList(
-				List<TYMapDataFeatureRecord> recordList);
+		public void didFinishParsingMapDataList(List<TYMapDataFeatureRecord> recordList);
 
 		public void didFailedParsingMapDataList(Throwable error);
 	}

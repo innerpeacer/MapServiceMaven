@@ -28,7 +28,7 @@ public class TYBrtShpRouteParserV3 {
 		// System.out.println("TYRoutShpParserV3.parse");
 		ogr.RegisterAll();
 		gdal.SetConfigOption("GDAL_FILENAME_IS_UTF8", "YES");
-		gdal.SetConfigOption("SHAPE_ENCODING", "");
+		gdal.SetConfigOption("SHAPE_ENCODING", "CP936");
 		//
 		DataSource ds = ogr.Open(shpPath, 0);
 		if (ds == null) {
@@ -41,8 +41,7 @@ public class TYBrtShpRouteParserV3 {
 
 		Layer featurelayer = ds.GetLayer(0);
 		for (int i = 0; i < featurelayer.GetFeatureCount(); ++i) {
-			TYBrtShpRouteRecordV3 record = TYBrtShpHelperV3
-					.routeRecordFromFeature(featurelayer.GetFeature(i), shpType);
+			TYBrtShpRouteRecordV3 record = TYBrtShpHelperV3.routeRecordFromFeature(featurelayer.GetFeature(i), shpType);
 			recordList.add(record);
 		}
 
@@ -50,8 +49,7 @@ public class TYBrtShpRouteParserV3 {
 		notifyFinishParsingRouteShpDataList(recordList, layerIndex);
 	}
 
-	private void notifyFinishParsingRouteShpDataList(
-			List<TYBrtShpRouteRecordV3> records, int layer) {
+	private void notifyFinishParsingRouteShpDataList(List<TYBrtShpRouteRecordV3> records, int layer) {
 		for (TYBrtRouteShpParserListenerV3 listener : listeners) {
 			listener.didFinishParsingRouteShpDataList(records, layer);
 		}
@@ -76,8 +74,7 @@ public class TYBrtShpRouteParserV3 {
 	}
 
 	public interface TYBrtRouteShpParserListenerV3 {
-		public void didFinishParsingRouteShpDataList(
-				List<TYBrtShpRouteRecordV3> records, int layer);
+		public void didFinishParsingRouteShpDataList(List<TYBrtShpRouteRecordV3> records, int layer);
 
 		public void didFailedParsingRouteDataList(Throwable error);
 	}
