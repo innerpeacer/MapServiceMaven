@@ -3,18 +3,16 @@ package cn.platalk.brtmap.vectortile.builder;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.vividsolutions.jts.geom.Geometry;
+
 import cn.platalk.brtmap.entity.base.TYIFillSymbolRecord;
 import cn.platalk.brtmap.entity.base.TYIIconSymbolRecord;
 import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
 
-import com.vividsolutions.jts.geom.Geometry;
-
 class TYBrtGeometryUtils {
 
-	public static Geometry geometryFromMapDataRecord(
-			TYIMapDataFeatureRecord record) {
-		Geometry result = TYBrtGeomProjection.mercatorToLngLatGeometry(record
-				.getGeometryData());
+	public static Geometry geometryFromMapDataRecord(TYIMapDataFeatureRecord record) {
+		Geometry result = TYBrtGeomProjection.mercatorToLngLatGeometry(record.getGeometryData());
 
 		Map<String, Object> userData = new HashMap<String, Object>();
 
@@ -31,13 +29,13 @@ class TYBrtGeometryUtils {
 		userData.put("layer", record.getLayer());
 		userData.put("v", TYVectorTileSettings.GetMvtVersion());
 
-		if (record.getLayer() == TYIMapDataFeatureRecord.LAYER_FLOOR
-				|| record.getLayer() == TYIMapDataFeatureRecord.LAYER_ROOM
-				|| record.getLayer() == TYIMapDataFeatureRecord.LAYER_ASSET) {
-			userData.put("extrusion", record.isExtrusion());
-			userData.put("extrusion-base", record.getExtrusionBase());
-			userData.put("extrusion-height", record.getExtrusionHeight());
-		}
+		// if (record.getLayer() == TYIMapDataFeatureRecord.LAYER_FLOOR
+		// || record.getLayer() == TYIMapDataFeatureRecord.LAYER_ROOM
+		// || record.getLayer() == TYIMapDataFeatureRecord.LAYER_ASSET) {
+		userData.put("extrusion", record.isExtrusion());
+		userData.put("extrusion-base", record.getExtrusionBase());
+		userData.put("extrusion-height", record.getExtrusionHeight());
+		// }
 
 		result.setUserData(userData);
 		return result;
@@ -69,22 +67,17 @@ class TYBrtGeometryUtils {
 	// return result;
 	// }
 
-	public static Geometry geometryFromFillRecord(
-			TYIMapDataFeatureRecord record, TYIFillSymbolRecord fillRecord) {
+	public static Geometry geometryFromFillRecord(TYIMapDataFeatureRecord record, TYIFillSymbolRecord fillRecord) {
 		Geometry result = geometryFromMapDataRecord(record);
 		@SuppressWarnings("unchecked")
-		Map<String, Object> userData = (Map<String, Object>) result
-				.getUserData();
+		Map<String, Object> userData = (Map<String, Object>) result.getUserData();
 		if (fillRecord != null) {
-			String _fillColor = String.format("#%s", fillRecord.getFillColor()
-					.substring(3, 9));
-			float _opacity = Integer.parseInt(fillRecord.getFillColor()
-					.substring(1, 3), 16) / 255.0f;
+			String _fillColor = String.format("#%s", fillRecord.getFillColor().substring(3, 9));
+			float _opacity = Integer.parseInt(fillRecord.getFillColor().substring(1, 3), 16) / 255.0f;
 			userData.put("fill-color", _fillColor);
 			userData.put("fill-opacity", _opacity);
 
-			String _outlineColor = String.format("#%s", fillRecord
-					.getOutlineColor().substring(3, 9));
+			String _outlineColor = String.format("#%s", fillRecord.getOutlineColor().substring(3, 9));
 			float _outlineWidth = (float) fillRecord.getLineWidth();
 			userData.put("outline-color", _outlineColor);
 			userData.put("outline-width", _outlineWidth);
@@ -93,12 +86,10 @@ class TYBrtGeometryUtils {
 		return result;
 	}
 
-	public static Geometry geometryFromIconRecord(
-			TYIMapDataFeatureRecord record, TYIIconSymbolRecord iconRecord) {
+	public static Geometry geometryFromIconRecord(TYIMapDataFeatureRecord record, TYIIconSymbolRecord iconRecord) {
 		Geometry result = geometryFromMapDataRecord(record);
 		@SuppressWarnings("unchecked")
-		Map<String, Object> userData = (Map<String, Object>) result
-				.getUserData();
+		Map<String, Object> userData = (Map<String, Object>) result.getUserData();
 		if (iconRecord != null) {
 			String iconName = iconRecord.getIcon();
 			userData.put("image-normal", String.format("%s_normal", iconName));
