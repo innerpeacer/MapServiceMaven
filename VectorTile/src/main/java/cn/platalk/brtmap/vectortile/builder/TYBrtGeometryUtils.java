@@ -16,7 +16,7 @@ class TYBrtGeometryUtils {
 
 		Map<String, Object> userData = new HashMap<String, Object>();
 
-		// userData.put("GEO_ID", record.geoID);
+		userData.put("GEO_ID", record.getGeoID());
 		userData.put("POI_ID", record.getPoiID());
 		userData.put("NAME", record.getName());
 		userData.put("CATEGORY_ID", record.getCategoryID());
