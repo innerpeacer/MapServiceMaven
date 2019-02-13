@@ -8,8 +8,6 @@ import cn.platalk.brtmap.core.map.base.TYIBrtShpDataManager;
 import cn.platalk.brtmap.core.map.shp.TYBrtShpMapDataTask.TYBrtMapShpTaskListener;
 import cn.platalk.brtmap.core.map.shp.mapdata.TYBrtJsonMapInfoParser;
 import cn.platalk.brtmap.core.map.shp.mapdata.TYBrtJsonMapInfoParser.TYBrtMapInfoJsonParserListener;
-import cn.platalk.brtmap.core.map.shp.mapdata.IPSqliteMapDBAdapter;
-import cn.platalk.brtmap.core.map.shp.mapdata.IPBrtSqliteSymbolDBAdapter;
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteTask;
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteTask.TYBrtRouteShpTaskListener;
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
@@ -20,6 +18,8 @@ import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
 import cn.platalk.brtmap.entity.base.impl.TYRouteLinkRecord;
 import cn.platalk.brtmap.entity.base.impl.TYRouteNodeRecord;
+import cn.platalk.sqlite.map.IPBrtSqliteSymbolDBAdapter;
+import cn.platalk.sqlite.map.IPSqliteMapDBAdapter;
 
 public class TYBrtShpGeneratingTask
 		implements TYBrtMapInfoJsonParserListener, TYBrtMapShpTaskListener, TYBrtRouteShpTaskListener {

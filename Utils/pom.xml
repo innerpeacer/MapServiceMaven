@@ -43,5 +43,10 @@
 			<version>5.1.30</version>
 		</dependency>
 
+		<dependency>
+			<groupId>cn.platalk.sqlhelper</groupId>
+			<artifactId>SqlHelper</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 </project>

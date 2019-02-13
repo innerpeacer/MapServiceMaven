@@ -7,8 +7,6 @@ import java.util.List;
 import cn.platalk.brtmap.core.map.shp.TYBrtShpMapDataTaskV3.TYBrtMapShpTaskListenerV3;
 import cn.platalk.brtmap.core.map.shp.mapdata.TYBrtJsonMapInfoParser;
 import cn.platalk.brtmap.core.map.shp.mapdata.TYBrtJsonMapInfoParser.TYBrtMapInfoJsonParserListener;
-import cn.platalk.brtmap.core.map.shp.mapdata.IPSqliteMapDBAdapter;
-import cn.platalk.brtmap.core.map.shp.mapdata.IPBrtSqliteSymbolDBAdapter;
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteTaskV3;
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteTaskV3.TYBrtRouteShpTaskListenerV3;
 import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
@@ -19,6 +17,8 @@ import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
+import cn.platalk.sqlite.map.IPBrtSqliteSymbolDBAdapter;
+import cn.platalk.sqlite.map.IPSqliteMapDBAdapter;
 
 public class TYBrtShpGeneratingTaskV3
 		implements TYBrtMapInfoJsonParserListener, TYBrtMapShpTaskListenerV3, TYBrtRouteShpTaskListenerV3 {

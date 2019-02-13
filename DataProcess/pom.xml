@@ -32,7 +32,7 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>wtmap-utils</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.json</groupId>
@@ -44,11 +44,7 @@
 			<artifactId>sqlite-jdbc</artifactId>
 			<version>3.7.2</version>
 		</dependency>
-		<dependency>
-			<groupId>cn.platalk.sqlhelper</groupId>
-			<artifactId>SqlHelper</artifactId>
-			<version>1.0.0</version>
-		</dependency>
+
 
 	</dependencies>
 </project>

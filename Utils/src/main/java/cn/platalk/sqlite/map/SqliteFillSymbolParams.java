@@ -1,4 +1,4 @@
-package cn.platalk.brtmap.core.map.shp.mapdata;
+package cn.platalk.sqlite.map;
 
 import java.util.ArrayList;
 import java.util.List;
