@@ -7,8 +7,8 @@ import java.util.List;
 import cn.platalk.brtmap.core.map.shp.TYBrtShpMapDataTaskV3.TYBrtMapShpTaskListenerV3;
 import cn.platalk.brtmap.core.map.shp.mapdata.TYBrtJsonMapInfoParser;
 import cn.platalk.brtmap.core.map.shp.mapdata.TYBrtJsonMapInfoParser.TYBrtMapInfoJsonParserListener;
-import cn.platalk.brtmap.core.map.shp.mapdata.TYBrtSqliteMapDBAdapter;
-import cn.platalk.brtmap.core.map.shp.mapdata.TYBrtSqliteSymbolDBAdapter;
+import cn.platalk.brtmap.core.map.shp.mapdata.IPSqliteMapDBAdapter;
+import cn.platalk.brtmap.core.map.shp.mapdata.IPBrtSqliteSymbolDBAdapter;
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteTaskV3;
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteTaskV3.TYBrtRouteShpTaskListenerV3;
 import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
@@ -41,10 +41,14 @@ public class TYBrtShpGeneratingTaskV3
 		shpDataManager = new TYBrtShpPathManagerV3(root, buildingID);
 
 		if (new File(shpDataManager.getMapDBPath()).exists()) {
-			TYBrtSqliteMapDBAdapter mapDB = new TYBrtSqliteMapDBAdapter(shpDataManager.getMapDBPath());
+			IPSqliteMapDBAdapter mapDB = new IPSqliteMapDBAdapter(shpDataManager.getMapDBPath());
 			mapDB.open();
 			city = mapDB.queryCities().get(0);
 			building = mapDB.queryBuildings().get(0);
+			System.out.println("TYBrtShpGeneratingTaskV3");
+			System.out.println(city);
+			System.out.println(building);
+
 			mapDB.close();
 		}
 	}
@@ -116,7 +120,7 @@ public class TYBrtShpGeneratingTaskV3
 	}
 
 	private void readSymbols() {
-		TYBrtSqliteSymbolDBAdapter symbolDB = new TYBrtSqliteSymbolDBAdapter(shpDataManager.getSymbolDBPath());
+		IPBrtSqliteSymbolDBAdapter symbolDB = new IPBrtSqliteSymbolDBAdapter(shpDataManager.getSymbolDBPath());
 		// System.out.println(shpDataManager.getSymbolDBPath());
 		symbolDB.open();
 		fillSymbols = symbolDB.getFillSymbolRecords();
