@@ -26,5 +26,6 @@
   	<module>MapService</module>
   	<module>Utils</module>
   	<module>Test</module>
+  	<module>SqlHelper</module>
   </modules>
 </project>
