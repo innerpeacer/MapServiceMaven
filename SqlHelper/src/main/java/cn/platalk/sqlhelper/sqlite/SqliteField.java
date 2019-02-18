@@ -5,9 +5,7 @@ package cn.platalk.sqlhelper.sqlite;
  */
 public class SqliteField {
 	public String fieldName;
-
 	public IPSqliteFieldType fieldType;
-
 	public boolean allowNull;
 	public Object defaultValue;
 

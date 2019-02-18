@@ -1,16 +1,16 @@
-package cn.platalk.sqlhelper.sqlite;
+package cn.platalk.sqlhelper.mysql;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SqliteTable {
+public class MysqlTable {
 	private String tableName;
-	private List<SqliteField> fields;
+	private List<MysqlField> fields;
 	private String primaryKey;
 
-	public SqliteTable(String name, List<SqliteField> fields, String primaryKey) {
+	public MysqlTable(String name, List<MysqlField> fields, String primaryKey) {
 		this.tableName = name;
-		this.fields = new ArrayList<SqliteField>(fields);
+		this.fields = new ArrayList<MysqlField>(fields);
 		this.primaryKey = primaryKey;
 	}
 
@@ -18,12 +18,12 @@ public class SqliteTable {
 		return tableName;
 	}
 
-	public List<SqliteField> getFields() {
+	public List<MysqlField> getFields() {
 		return fields;
 	}
 
-	public SqliteField getField(String name) {
-		for (SqliteField field : fields) {
+	public MysqlField getField(String name) {
+		for (MysqlField field : fields) {
 			if (field.fieldName.equals(name)) {
 				return field;
 			}

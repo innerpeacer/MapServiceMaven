@@ -34,8 +34,4 @@ public class IPSqliteMapDBAdapter {
 	public List<TYCity> queryCities() {
 		return SqliteCityParams.CityListFromRecords(db.readData(cityTable));
 	}
-
-	boolean existTable(String table) {
-		return db.existTable(table);
-	}
 }

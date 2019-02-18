@@ -74,9 +74,9 @@ public class SqliteDB {
 		}
 	}
 
-	public boolean existTable(String table) {
+	public boolean existTable(SqliteTable table) {
 		try {
-			ResultSet rs = connection.getMetaData().getTables(null, null, table, null);
+			ResultSet rs = connection.getMetaData().getTables(null, null, table.getTableName(), null);
 			if (rs.next()) {
 				return true;
 			}
@@ -86,8 +86,8 @@ public class SqliteDB {
 		return false;
 	}
 
-	public void dropTable(String table) {
-		String sql = String.format("drop table %s", table);
+	public void dropTable(SqliteTable table) {
+		String sql = String.format("drop table %s", table.getTableName());
 		try {
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate(sql);
@@ -96,8 +96,8 @@ public class SqliteDB {
 		}
 	}
 
-	public void eraseTable(String table) {
-		String sql = String.format("delete from %s", table);
+	public void eraseTable(SqliteTable table) {
+		String sql = String.format("delete from %s", table.getTableName());
 		try {
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate(sql);

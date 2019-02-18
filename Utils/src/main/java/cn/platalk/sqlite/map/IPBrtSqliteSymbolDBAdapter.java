@@ -35,8 +35,4 @@ public class IPBrtSqliteSymbolDBAdapter {
 	public List<TYIconSymbolRecord> getIconSymbolRecords() {
 		return SqliteIconSymbolParams.IconSymbolListFromRecords(db.readData(iconTable));
 	}
-
-	boolean existTable(String table) {
-		return db.existTable(table);
-	}
 }
