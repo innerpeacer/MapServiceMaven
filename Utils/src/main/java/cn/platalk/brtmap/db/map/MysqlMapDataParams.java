@@ -117,11 +117,6 @@ public class MysqlMapDataParams {
 			mapdata.setLevelMax(record.getInteger(FIELD_MAP_DATA_17_LEVEL_MAX));
 			mapdata.setLevelMin(record.getInteger(FIELD_MAP_DATA_18_LEVEL_MIN));
 			mapdata.setExtrusion(record.getBoolean(FIELD_MAP_DATA_19_EXTRUSION));
-			// Object isExtrusion =
-			// record.getValue(FIELD_MAP_DATA_19_EXTRUSION);
-			// mapdata.setExtrusion((isExtrusion != null && ((Integer)
-			// isExtrusion) != 0) ? true : false);
-
 			mapdata.setExtrusionHeight(record.getDouble(FIELD_MAP_DATA_20_EXTRUSION_HEIGHT));
 			mapdata.setExtrusionBase(record.getDouble(FIELD_MAP_DATA_21_EXTRUSION_BASE));
 			mapdataList.add(mapdata);
