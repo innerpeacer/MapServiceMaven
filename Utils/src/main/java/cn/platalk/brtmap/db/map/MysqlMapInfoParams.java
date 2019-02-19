@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
-import cn.platalk.sqlhelper.mysql.MysqlField;
-import cn.platalk.sqlhelper.mysql.MysqlFieldType;
-import cn.platalk.sqlhelper.mysql.MysqlRecord;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlField;
+import cn.platalk.sqlhelper.sql.SqlFieldType;
+import cn.platalk.sqlhelper.sql.SqlRecord;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class MysqlMapInfoParams {
 	static final String TABLE_MAPINFO = "MAPINFO";
@@ -26,46 +26,46 @@ public class MysqlMapInfoParams {
 	static final String FIELD_MAPINFO_10_XMAX = "XMAX";
 	static final String FIELD_MAPINFO_11_YMAX = "YMAX";
 
-	private static List<MysqlField> mapInfoFieldList = null;
+	private static List<SqlField> mapInfoFieldList = null;
 
-	public static MysqlTable CreateTable() {
-		return new MysqlTable(TABLE_MAPINFO, GetMapInfoFieldList(), null);
+	public static SqlTable CreateTable() {
+		return new SqlTable(TABLE_MAPINFO, GetMapInfoFieldList(), null);
 	}
 
-	public static List<MysqlField> GetMapInfoFieldList() {
+	public static List<SqlField> GetMapInfoFieldList() {
 		if (mapInfoFieldList == null) {
-			mapInfoFieldList = new ArrayList<MysqlField>();
+			mapInfoFieldList = new ArrayList<SqlField>();
 
-			mapInfoFieldList.add(new MysqlField(FIELD_MAPINFO_1_CITY_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapInfoFieldList.add(new MysqlField(FIELD_MAPINFO_2_BUILDING_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapInfoFieldList.add(new MysqlField(FIELD_MAPINFO_3_MAP_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapInfoFieldList.add(new MysqlField(FIELD_MAPINFO_4_FLOOR_NAME,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapInfoFieldList.add(new MysqlField(FIELD_MAPINFO_5_FLOOR_NUMBER,
-					new MysqlFieldType(Integer.class.getName(), "INT"), false));
-			mapInfoFieldList.add(new MysqlField(FIELD_MAPINFO_6_SIZE_X,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			mapInfoFieldList.add(new MysqlField(FIELD_MAPINFO_7_SIZE_Y,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			mapInfoFieldList.add(new SqlField(FIELD_MAPINFO_1_CITY_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapInfoFieldList.add(new SqlField(FIELD_MAPINFO_2_BUILDING_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapInfoFieldList.add(new SqlField(FIELD_MAPINFO_3_MAP_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapInfoFieldList.add(new SqlField(FIELD_MAPINFO_4_FLOOR_NAME,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapInfoFieldList.add(new SqlField(FIELD_MAPINFO_5_FLOOR_NUMBER,
+					new SqlFieldType(Integer.class.getName(), "INT"), false));
 			mapInfoFieldList.add(
-					new MysqlField(FIELD_MAPINFO_8_XMIN, new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new SqlField(FIELD_MAPINFO_6_SIZE_X, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			mapInfoFieldList.add(
-					new MysqlField(FIELD_MAPINFO_9_YMIN, new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new SqlField(FIELD_MAPINFO_7_SIZE_Y, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			mapInfoFieldList
+					.add(new SqlField(FIELD_MAPINFO_8_XMIN, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			mapInfoFieldList
+					.add(new SqlField(FIELD_MAPINFO_9_YMIN, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			mapInfoFieldList.add(
-					new MysqlField(FIELD_MAPINFO_10_XMAX, new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new SqlField(FIELD_MAPINFO_10_XMAX, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			mapInfoFieldList.add(
-					new MysqlField(FIELD_MAPINFO_11_YMAX, new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new SqlField(FIELD_MAPINFO_11_YMAX, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
 
 		}
 		return mapInfoFieldList;
 	}
 
-	public static List<TYMapInfo> MapInfoListFromRecord(List<MysqlRecord> records) {
+	public static List<TYMapInfo> MapInfoListFromRecord(List<SqlRecord> records) {
 		List<TYMapInfo> mapInfoList = new ArrayList<TYMapInfo>();
-		for (MysqlRecord record : records) {
+		for (SqlRecord record : records) {
 			TYMapInfo mapInfo = new TYMapInfo();
 			mapInfo.setCityID(record.getString(FIELD_MAPINFO_1_CITY_ID));
 			mapInfo.setBuildingID(record.getString(FIELD_MAPINFO_2_BUILDING_ID));

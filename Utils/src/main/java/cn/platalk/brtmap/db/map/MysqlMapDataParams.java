@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.sqlhelper.mysql.MysqlField;
-import cn.platalk.sqlhelper.mysql.MysqlFieldType;
-import cn.platalk.sqlhelper.mysql.MysqlRecord;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlField;
+import cn.platalk.sqlhelper.sql.SqlFieldType;
+import cn.platalk.sqlhelper.sql.SqlRecord;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class MysqlMapDataParams {
 	static final String TABLE_MAP_DATA = "MAPDATA_%s";
@@ -37,66 +37,66 @@ public class MysqlMapDataParams {
 	static final String FIELD_MAP_DATA_20_EXTRUSION_HEIGHT = "EXTRUSION_HEIGHT";
 	static final String FIELD_MAP_DATA_21_EXTRUSION_BASE = "EXTRUSION_BASE";
 
-	private static List<MysqlField> mapDataFieldList = null;
+	private static List<SqlField> mapDataFieldList = null;
 
-	public static MysqlTable CreateTable(String buildingID) {
-		return new MysqlTable(String.format(TABLE_MAP_DATA, buildingID), GetMapDataFieldList(), null);
+	public static SqlTable CreateTable(String buildingID) {
+		return new SqlTable(String.format(TABLE_MAP_DATA, buildingID), GetMapDataFieldList(), null);
 	}
 
-	public static List<MysqlField> GetMapDataFieldList() {
+	public static List<SqlField> GetMapDataFieldList() {
 		if (mapDataFieldList == null) {
-			mapDataFieldList = new ArrayList<MysqlField>();
+			mapDataFieldList = new ArrayList<SqlField>();
 
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_1_OBJECT_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_2_GEOMETRY,
-					new MysqlFieldType(byte[].class.getName(), "MediumBlob"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_3_GEO_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_4_POI_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_5_FLOOR_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_6_BUILDING_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_7_CATEGORY_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_8_NAME,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_9_SYMBOL_ID,
-					new MysqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_10_FLOOR_NUMBER,
-					new MysqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_11_FLOOR_NAME,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_12_SHAPE_LENGTH,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_13_SHAPE_AREA,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_14_LABEL_X,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_15_LABEL_Y,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_1_OBJECT_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_2_GEOMETRY,
+					new SqlFieldType(byte[].class.getName(), "MediumBlob"), false));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_3_GEO_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_4_POI_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_5_FLOOR_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_6_BUILDING_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_7_CATEGORY_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
 			mapDataFieldList.add(
-					new MysqlField(FIELD_MAP_DATA_16_LAYER, new MysqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_17_LEVEL_MAX,
-					new MysqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_18_LEVEL_MIN,
-					new MysqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_19_EXTRUSION,
-					new MysqlFieldType(Boolean.class.getName(), "INTEGER(1)"), true, 0));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_20_EXTRUSION_HEIGHT,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
-			mapDataFieldList.add(new MysqlField(FIELD_MAP_DATA_21_EXTRUSION_BASE,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
+					new SqlField(FIELD_MAP_DATA_8_NAME, new SqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+			mapDataFieldList.add(
+					new SqlField(FIELD_MAP_DATA_9_SYMBOL_ID, new SqlFieldType(Integer.class.getName(), "INT"), false));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_10_FLOOR_NUMBER,
+					new SqlFieldType(Integer.class.getName(), "INT"), false));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_11_FLOOR_NAME,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_12_SHAPE_LENGTH,
+					new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_13_SHAPE_AREA,
+					new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			mapDataFieldList.add(
+					new SqlField(FIELD_MAP_DATA_14_LABEL_X, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			mapDataFieldList.add(
+					new SqlField(FIELD_MAP_DATA_15_LABEL_Y, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			mapDataFieldList.add(
+					new SqlField(FIELD_MAP_DATA_16_LAYER, new SqlFieldType(Integer.class.getName(), "INT"), false));
+			mapDataFieldList.add(
+					new SqlField(FIELD_MAP_DATA_17_LEVEL_MAX, new SqlFieldType(Integer.class.getName(), "INT"), false));
+			mapDataFieldList.add(
+					new SqlField(FIELD_MAP_DATA_18_LEVEL_MIN, new SqlFieldType(Integer.class.getName(), "INT"), false));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_19_EXTRUSION,
+					new SqlFieldType(Boolean.class.getName(), "INTEGER(1)"), true, 0));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_20_EXTRUSION_HEIGHT,
+					new SqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
+			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_21_EXTRUSION_BASE,
+					new SqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
 
 		}
 		return mapDataFieldList;
 	}
 
-	public static List<TYMapDataFeatureRecord> MapDataListFromRecords(List<MysqlRecord> records) {
+	public static List<TYMapDataFeatureRecord> MapDataListFromRecords(List<SqlRecord> records) {
 		List<TYMapDataFeatureRecord> mapdataList = new ArrayList<TYMapDataFeatureRecord>();
-		for (MysqlRecord record : records) {
+		for (SqlRecord record : records) {
 			TYMapDataFeatureRecord mapdata = new TYMapDataFeatureRecord();
 			mapdata.setObjectID(record.getString(FIELD_MAP_DATA_1_OBJECT_ID));
 			mapdata.setGeometry(record.getBlob(FIELD_MAP_DATA_2_GEOMETRY));

@@ -8,13 +8,13 @@ import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.sqlhelper.mysql.MysqlDB;
-import cn.platalk.sqlhelper.mysql.MysqlField;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlField;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class TYMapDataDBAdapter {
 	String buildingID;
 	MysqlDB db;
-	MysqlTable mapdataTable;
+	SqlTable mapdataTable;
 
 	public TYMapDataDBAdapter(String buildingID) {
 		this.buildingID = buildingID;
@@ -137,7 +137,7 @@ public class TYMapDataDBAdapter {
 	}
 
 	public List<TYMapDataFeatureRecord> getAllMapDataRecords(int floor, int layer) {
-		Map<MysqlField, Object> clause = new HashMap<MysqlField, Object>();
+		Map<SqlField, Object> clause = new HashMap<SqlField, Object>();
 		clause.put(mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_10_FLOOR_NUMBER), floor);
 		clause.put(mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_16_LAYER), layer);
 		return MysqlMapDataParams.MapDataListFromRecords(db.readData(mapdataTable, clause));
@@ -164,7 +164,7 @@ public class TYMapDataDBAdapter {
 	// }
 
 	public boolean existMapData(String geoID, int layer) {
-		Map<MysqlField, Object> clause = new HashMap<MysqlField, Object>();
+		Map<SqlField, Object> clause = new HashMap<SqlField, Object>();
 		clause.put(mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_3_GEO_ID), geoID);
 		clause.put(mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_16_LAYER), layer);
 		return db.existRecord(mapdataTable, clause);

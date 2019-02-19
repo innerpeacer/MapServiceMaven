@@ -1,14 +1,11 @@
-package cn.platalk.sqlhelper.mysql.builder;
+package cn.platalk.sqlhelper.sql;
 
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.sqlhelper.mysql.MysqlField;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+public class SqlBuilder {
 
-public class MysqlBuilder {
-
-	public static String selectSql(MysqlTable table, Map<MysqlField, Object> clause) {
+	public static String selectSql(SqlTable table, Map<SqlField, Object> clause) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("select * from ").append(tableName);
@@ -18,7 +15,7 @@ public class MysqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String selectSql(MysqlTable table, MysqlField targetField, Object value) {
+	public static String selectSql(SqlTable table, SqlField targetField, Object value) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("select * from ").append(tableName);
@@ -28,21 +25,21 @@ public class MysqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String insertSql(MysqlTable table) {
+	public static String insertSql(SqlTable table) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("insert into ").append(tableName);
 
 		buffer.append(" (");
 		boolean needComma = false;
-		List<MysqlField> fields = table.getFields();
-		for (MysqlField entity : fields) {
+		List<SqlField> fields = table.getFields();
+		for (SqlField field : fields) {
 			if (needComma) {
 				buffer.append(", ");
 			} else {
 				needComma = true;
 			}
-			buffer.append(entity.fieldName);
+			buffer.append(field.fieldName);
 		}
 		buffer.append(")");
 
@@ -63,7 +60,7 @@ public class MysqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String updateSql(MysqlTable table, List<MysqlField> updateFields, Map<MysqlField, Object> clause) {
+	public static String updateSql(SqlTable table, List<SqlField> updateFields, Map<SqlField, Object> clause) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("update ").append(tableName).append(" set ");
@@ -84,8 +81,7 @@ public class MysqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String updateSql(MysqlTable table, List<MysqlField> updateFields, MysqlField targetField,
-			Object value) {
+	public static String updateSql(SqlTable table, List<SqlField> updateFields, SqlField targetField, Object value) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("update ").append(tableName).append(" set ");
@@ -106,7 +102,7 @@ public class MysqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String whereClause(MysqlField field, Object value) {
+	public static String whereClause(SqlField field, Object value) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(" where ");
 		buffer.append(field.fieldName).append("=");
@@ -119,12 +115,12 @@ public class MysqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String whereClause(Map<MysqlField, Object> clause) {
+	public static String whereClause(Map<SqlField, Object> clause) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(" where ");
 
 		boolean needComma = false;
-		for (MysqlField field : clause.keySet()) {
+		for (SqlField field : clause.keySet()) {
 			if (needComma) {
 				buffer.append(" and ");
 			} else {
@@ -142,7 +138,7 @@ public class MysqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String tableCreateSql(MysqlTable table) {
+	public static String mysqlTableCreateSql(SqlTable table) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("CREATE TABLE IF NOT EXISTS ").append(tableName);
@@ -150,8 +146,8 @@ public class MysqlBuilder {
 
 		boolean needComma = false;
 
-		List<MysqlField> fields = table.getFields();
-		for (MysqlField field : fields) {
+		List<SqlField> fields = table.getFields();
+		for (SqlField field : fields) {
 			if (needComma) {
 				buffer.append(", ");
 			} else {
@@ -166,4 +162,35 @@ public class MysqlBuilder {
 		buffer.append(", PRIMARY KEY (_id)," + " UNIQUE INDEX _id_UNIQUE (_id ASC));");
 		return buffer.toString();
 	}
+
+	public static String sqliteTableCreateSql(SqlTable table) {
+		StringBuffer buffer = new StringBuffer();
+		String tableName = table.getTableName();
+		buffer.append("create table if not exists ").append(tableName);
+		buffer.append("(");
+
+		boolean needComma = false;
+		String primaryKey = table.getPrimaryKey();
+		if (primaryKey != null) {
+			buffer.append(primaryKey + " integer primary key autoincrement ");
+			needComma = true;
+		}
+
+		List<SqlField> fields = table.getFields();
+		for (SqlField field : fields) {
+			if (needComma) {
+				buffer.append(", ");
+			} else {
+				needComma = true;
+			}
+			buffer.append(field.fieldName + " " + field.fieldType.type);
+			if (!field.allowNull) {
+				buffer.append(" not null ");
+			}
+		}
+
+		buffer.append(")");
+		return buffer.toString();
+	}
+
 }

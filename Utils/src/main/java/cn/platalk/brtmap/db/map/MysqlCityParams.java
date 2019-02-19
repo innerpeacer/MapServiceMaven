@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYCity;
-import cn.platalk.sqlhelper.mysql.MysqlField;
-import cn.platalk.sqlhelper.mysql.MysqlFieldType;
-import cn.platalk.sqlhelper.mysql.MysqlRecord;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlField;
+import cn.platalk.sqlhelper.sql.SqlFieldType;
+import cn.platalk.sqlhelper.sql.SqlRecord;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class MysqlCityParams {
 	static final String TABLE_CITY = "CITY";
@@ -21,35 +21,35 @@ public class MysqlCityParams {
 	static final String FIELD_CITY_5_LATITUDE = "LATITUDE";
 	static final String FIELD_CITY_6_STATUS = "STATUS";
 
-	private static List<MysqlField> cityFieldList = null;
+	private static List<SqlField> cityFieldList = null;
 
-	public static MysqlTable CreateTable() {
-		return new MysqlTable(TABLE_CITY, GetCityFieldList(), null);
+	public static SqlTable CreateTable() {
+		return new SqlTable(TABLE_CITY, GetCityFieldList(), null);
 	}
 
-	public static List<MysqlField> GetCityFieldList() {
+	public static List<SqlField> GetCityFieldList() {
 		if (cityFieldList == null) {
-			cityFieldList = new ArrayList<MysqlField>();
+			cityFieldList = new ArrayList<SqlField>();
 
+			cityFieldList
+					.add(new SqlField(FIELD_CITY_1_ID, new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
 			cityFieldList.add(
-					new MysqlField(FIELD_CITY_1_ID, new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			cityFieldList.add(new MysqlField(FIELD_CITY_2_NAME,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			cityFieldList.add(new MysqlField(FIELD_CITY_3_SNAME,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			cityFieldList.add(new MysqlField(FIELD_CITY_4_LONGITUDE,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new SqlField(FIELD_CITY_2_NAME, new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
 			cityFieldList.add(
-					new MysqlField(FIELD_CITY_5_LATITUDE, new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new SqlField(FIELD_CITY_3_SNAME, new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
 			cityFieldList.add(
-					new MysqlField(FIELD_CITY_6_STATUS, new MysqlFieldType(Integer.class.getName(), " INT "), false));
+					new SqlField(FIELD_CITY_4_LONGITUDE, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			cityFieldList.add(
+					new SqlField(FIELD_CITY_5_LATITUDE, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			cityFieldList
+					.add(new SqlField(FIELD_CITY_6_STATUS, new SqlFieldType(Integer.class.getName(), " INT "), false));
 		}
 		return cityFieldList;
 	}
 
-	public static List<TYCity> CityListFromRecords(List<MysqlRecord> records) {
+	public static List<TYCity> CityListFromRecords(List<SqlRecord> records) {
 		List<TYCity> cityList = new ArrayList<TYCity>();
-		for (MysqlRecord record : records) {
+		for (SqlRecord record : records) {
 			TYCity city = new TYCity();
 			city.setCityID(record.getString(FIELD_CITY_1_ID));
 			city.setName(record.getString(FIELD_CITY_2_NAME));

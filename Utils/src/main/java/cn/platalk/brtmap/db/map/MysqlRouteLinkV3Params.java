@@ -7,10 +7,10 @@ import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
 import cn.platalk.brtmap.entity.base.impl.TYRouteLinkRecordV3;
-import cn.platalk.sqlhelper.mysql.MysqlField;
-import cn.platalk.sqlhelper.mysql.MysqlFieldType;
-import cn.platalk.sqlhelper.mysql.MysqlRecord;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlField;
+import cn.platalk.sqlhelper.sql.SqlFieldType;
+import cn.platalk.sqlhelper.sql.SqlRecord;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class MysqlRouteLinkV3Params {
 	static final String TABLE_ROUTE_LINK = "ROUTE_LINK_%s";
@@ -32,57 +32,57 @@ public class MysqlRouteLinkV3Params {
 	static final String FIELD_ROUTE_LINK_15_ALLOW_SNAP = "ALLOW_SNAP";
 	static final String FIELD_ROUTE_LINK_16_LINK_TYPE = "LINK_TYPE";
 
-	private static List<MysqlField> routeLinkFieldList = null;
+	private static List<SqlField> routeLinkFieldList = null;
 
-	public static MysqlTable CreateTable(String buildingID) {
-		return new MysqlTable(String.format(TABLE_ROUTE_LINK, buildingID), GetRouteLinkFieldList(), null);
+	public static SqlTable CreateTable(String buildingID) {
+		return new SqlTable(String.format(TABLE_ROUTE_LINK, buildingID), GetRouteLinkFieldList(), null);
 	}
 
-	public static List<MysqlField> GetRouteLinkFieldList() {
+	public static List<SqlField> GetRouteLinkFieldList() {
 		if (routeLinkFieldList == null) {
-			routeLinkFieldList = new ArrayList<MysqlField>();
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_1_LINK_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_2_GEOMETRY,
-					new MysqlFieldType(byte[].class.getName(), "MediumBlob"), false));
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_3_LENGTH,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			routeLinkFieldList = new ArrayList<SqlField>();
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_1_LINK_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_2_GEOMETRY,
+					new SqlFieldType(byte[].class.getName(), "MediumBlob"), false));
+			routeLinkFieldList.add(
+					new SqlField(FIELD_ROUTE_LINK_3_LENGTH, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
 
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_4_HEAD_NODE,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_5_END_NODE,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_4_HEAD_NODE,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_5_END_NODE,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
 
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_6_VIRTUAL,
-					new MysqlFieldType(Boolean.class.getName(), "INTEGER"), false));
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_7_ONE_WAY,
-					new MysqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_6_VIRTUAL,
+					new SqlFieldType(Boolean.class.getName(), "INTEGER"), false));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_7_ONE_WAY,
+					new SqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
 
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_8_LINK_NAME,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_9_FLOOR,
-					new MysqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_10_LEVEL,
-					new MysqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_11_REVERSE,
-					new MysqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_12_ROOM_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_13_OPEN,
-					new MysqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_14_OPEN_TIME,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(255)"), true));
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_15_ALLOW_SNAP,
-					new MysqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
-			routeLinkFieldList.add(new MysqlField(FIELD_ROUTE_LINK_16_LINK_TYPE,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_8_LINK_NAME,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_9_FLOOR,
+					new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_10_LEVEL,
+					new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_11_REVERSE,
+					new SqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_12_ROOM_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_13_OPEN,
+					new SqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_14_OPEN_TIME,
+					new SqlFieldType(String.class.getName(), "VARCHAR(255)"), true));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_15_ALLOW_SNAP,
+					new SqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
+			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_16_LINK_TYPE,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
 		}
 		return routeLinkFieldList;
 	}
 
-	public static List<TYRouteLinkRecordV3> RouteLinkListFromRecords(List<MysqlRecord> records) {
+	public static List<TYRouteLinkRecordV3> RouteLinkListFromRecords(List<SqlRecord> records) {
 		List<TYRouteLinkRecordV3> linkList = new ArrayList<TYRouteLinkRecordV3>();
-		for (MysqlRecord record : records) {
+		for (SqlRecord record : records) {
 			TYRouteLinkRecordV3 link = new TYRouteLinkRecordV3();
 			link.setLinkID(record.getString(FIELD_ROUTE_LINK_1_LINK_ID));
 			link.setGeometryData(record.getBlob(FIELD_ROUTE_LINK_2_GEOMETRY));

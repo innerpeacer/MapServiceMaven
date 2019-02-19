@@ -8,13 +8,13 @@ import java.util.Map;
 import cn.platalk.brtmap.entity.base.impl.TYRouteLinkRecord;
 import cn.platalk.brtmap.entity.base.impl.TYRouteNodeRecord;
 import cn.platalk.sqlhelper.mysql.MysqlDB;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class TYRouteDBAdapter {
 	String buildingID;
 	MysqlDB db;
-	MysqlTable routeLinkTable;
-	MysqlTable routeNodeTable;
+	SqlTable routeLinkTable;
+	SqlTable routeNodeTable;
 
 	public TYRouteDBAdapter(String buildingID) {
 		this.buildingID = buildingID;

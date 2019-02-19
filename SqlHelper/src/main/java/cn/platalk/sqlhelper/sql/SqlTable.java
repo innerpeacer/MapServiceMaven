@@ -1,16 +1,16 @@
-package cn.platalk.sqlhelper.mysql;
+package cn.platalk.sqlhelper.sql;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MysqlTable {
+public class SqlTable {
 	private String tableName;
-	private List<MysqlField> fields;
+	private List<SqlField> fields;
 	private String primaryKey;
 
-	public MysqlTable(String name, List<MysqlField> fields, String primaryKey) {
+	public SqlTable(String name, List<SqlField> fields, String primaryKey) {
 		this.tableName = name;
-		this.fields = new ArrayList<MysqlField>(fields);
+		this.fields = new ArrayList<SqlField>(fields);
 		this.primaryKey = primaryKey;
 	}
 
@@ -18,12 +18,12 @@ public class MysqlTable {
 		return tableName;
 	}
 
-	public List<MysqlField> getFields() {
+	public List<SqlField> getFields() {
 		return fields;
 	}
 
-	public MysqlField getField(String name) {
-		for (MysqlField field : fields) {
+	public SqlField getField(String name) {
+		for (SqlField field : fields) {
 			if (field.fieldName.equals(name)) {
 				return field;
 			}

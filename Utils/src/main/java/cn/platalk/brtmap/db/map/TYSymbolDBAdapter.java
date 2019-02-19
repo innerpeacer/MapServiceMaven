@@ -6,12 +6,12 @@ import java.util.List;
 import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.sqlhelper.mysql.MysqlDB;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class TYSymbolDBAdapter {
 	MysqlDB db;
-	MysqlTable fillTable;
-	MysqlTable iconTable;
+	SqlTable fillTable;
+	SqlTable iconTable;
 
 	public TYSymbolDBAdapter() {
 		db = new MysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),

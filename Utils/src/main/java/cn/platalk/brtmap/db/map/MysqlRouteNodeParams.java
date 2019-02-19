@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYRouteNodeRecord;
-import cn.platalk.sqlhelper.mysql.MysqlField;
-import cn.platalk.sqlhelper.mysql.MysqlFieldType;
-import cn.platalk.sqlhelper.mysql.MysqlRecord;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlField;
+import cn.platalk.sqlhelper.sql.SqlFieldType;
+import cn.platalk.sqlhelper.sql.SqlRecord;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class MysqlRouteNodeParams {
 	static final String TABLE_ROUTE_NODE = "ROUTE_NODE_%s";
@@ -18,28 +18,28 @@ public class MysqlRouteNodeParams {
 	static final String FIELD_ROUTE_NODE_2_GEOMETRY = "GEOMETRY";
 	static final String FIELD_ROUTE_NODE_3_VIRTUAL = "IS_VIRTUAL";
 
-	private static List<MysqlField> routeNodeFieldList = null;
+	private static List<SqlField> routeNodeFieldList = null;
 
-	public static MysqlTable CreateTable(String buildingID) {
-		return new MysqlTable(String.format(TABLE_ROUTE_NODE, buildingID), GetRouteNodeFieldList(), null);
+	public static SqlTable CreateTable(String buildingID) {
+		return new SqlTable(String.format(TABLE_ROUTE_NODE, buildingID), GetRouteNodeFieldList(), null);
 	}
 
-	public static List<MysqlField> GetRouteNodeFieldList() {
+	public static List<SqlField> GetRouteNodeFieldList() {
 		if (routeNodeFieldList == null) {
-			routeNodeFieldList = new ArrayList<MysqlField>();
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_1_NODE_ID,
-					new MysqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_2_GEOMETRY,
-					new MysqlFieldType(byte[].class.getName(), "MediumBlob"), false));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_3_VIRTUAL,
-					new MysqlFieldType(Boolean.class.getName(), "INTEGER"), false));
+			routeNodeFieldList = new ArrayList<SqlField>();
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_1_NODE_ID,
+					new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_2_GEOMETRY,
+					new SqlFieldType(byte[].class.getName(), "MediumBlob"), false));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_3_VIRTUAL,
+					new SqlFieldType(Boolean.class.getName(), "INTEGER"), false));
 		}
 		return routeNodeFieldList;
 	}
 
-	public static List<TYRouteNodeRecord> RouteNodeListFromRecords(List<MysqlRecord> records) {
+	public static List<TYRouteNodeRecord> RouteNodeListFromRecords(List<SqlRecord> records) {
 		List<TYRouteNodeRecord> nodeList = new ArrayList<TYRouteNodeRecord>();
-		for (MysqlRecord record : records) {
+		for (SqlRecord record : records) {
 			TYRouteNodeRecord node = new TYRouteNodeRecord();
 			node.setNodeID(record.getInteger(FIELD_ROUTE_NODE_1_NODE_ID));
 			node.setGeometryData(record.getBlob(FIELD_ROUTE_NODE_2_GEOMETRY));

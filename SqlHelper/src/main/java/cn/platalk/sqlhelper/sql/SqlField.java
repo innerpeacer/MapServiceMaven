@@ -1,16 +1,16 @@
-package cn.platalk.sqlhelper.mysql;
+package cn.platalk.sqlhelper.sql;
 
-public class MysqlField {
+public class SqlField {
 	public String fieldName;
-	public MysqlFieldType fieldType;
+	public SqlFieldType fieldType;
 	public boolean allowNull;
 	public Object defaultValue;
 
-	public MysqlField(String field, MysqlFieldType type, boolean allowNull) {
+	public SqlField(String field, SqlFieldType type, boolean allowNull) {
 		this(field, type, allowNull, null);
 	}
 
-	public MysqlField(String field, MysqlFieldType type, boolean allowNull, Object defValue) {
+	public SqlField(String field, SqlFieldType type, boolean allowNull, Object defValue) {
 		this.fieldName = field;
 		this.fieldType = type;
 		this.allowNull = allowNull;

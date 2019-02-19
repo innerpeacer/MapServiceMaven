@@ -1,14 +1,11 @@
-package cn.platalk.sqlhelper.sqlite;
+package cn.platalk.sqlhelper.sql;
 
-/*
- * entity object, data corresponding to sqlite field
- */
-public class SqliteEntity {
+public class SqlEntity {
 	public String field;
 	public String clazz;
 	public Object value;
 
-	public SqliteEntity(String field, String clazz, Object value) {
+	public SqlEntity(String field, String clazz, Object value) {
 		this.field = field;
 		this.clazz = clazz;
 		this.value = value;

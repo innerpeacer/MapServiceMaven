@@ -4,20 +4,20 @@ import java.util.List;
 
 import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
+import cn.platalk.sqlhelper.sql.SqlTable;
 import cn.platalk.sqlhelper.sqlite.SqliteDB;
-import cn.platalk.sqlhelper.sqlite.SqliteTable;
 
 public class IPBrtSqliteSymbolDBAdapter {
 	SqliteDB db;
-	SqliteTable fillTable;
-	SqliteTable iconTable;
+	SqlTable fillTable;
+	SqlTable iconTable;
 
 	public IPBrtSqliteSymbolDBAdapter(String path) {
 		db = new SqliteDB(path);
-		fillTable = new SqliteTable(SqliteFillSymbolParams.TABLE_FILL_SYMBOL,
-				SqliteFillSymbolParams.GetFillSymbolFieldList(), null);
-		iconTable = new SqliteTable(SqliteIconSymbolParams.TABLE_ICON_SYMBOL,
-				SqliteIconSymbolParams.GetIconSymbolFieldList(), null);
+		fillTable = new SqlTable(IPSqliteFillSymbolParams.TABLE_FILL_SYMBOL,
+				IPSqliteFillSymbolParams.GetFillSymbolFieldList(), null);
+		iconTable = new SqlTable(IPSqliteIconSymbolParams.TABLE_ICON_SYMBOL,
+				IPSqliteIconSymbolParams.GetIconSymbolFieldList(), null);
 	}
 
 	public boolean open() {
@@ -29,10 +29,10 @@ public class IPBrtSqliteSymbolDBAdapter {
 	}
 
 	public List<TYFillSymbolRecord> getFillSymbolRecords() {
-		return SqliteFillSymbolParams.FillSymbolListFromRecords(db.readData(fillTable));
+		return IPSqliteFillSymbolParams.FillSymbolListFromRecords(db.readData(fillTable));
 	}
 
 	public List<TYIconSymbolRecord> getIconSymbolRecords() {
-		return SqliteIconSymbolParams.IconSymbolListFromRecords(db.readData(iconTable));
+		return IPSqliteIconSymbolParams.IconSymbolListFromRecords(db.readData(iconTable));
 	}
 }

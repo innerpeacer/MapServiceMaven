@@ -1,19 +1,16 @@
-package cn.platalk.sqlhelper.sqlite.helper;
+package cn.platalk.sqlhelper.sql;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
-import cn.platalk.sqlhelper.sqlite.SqliteEntity;
-import cn.platalk.sqlhelper.sqlite.SqliteField;
-
-public class IPSqliteHelper {
-	public static SqliteEntity getObject(ResultSet rs, SqliteField field) throws SQLException {
-		return new SqliteEntity(field.fieldName, field.fieldType.clazz, rs.getObject(field.fieldName));
+public class SqlHelper {
+	public static SqlEntity getObject(ResultSet rs, SqlField field) throws SQLException {
+		return new SqlEntity(field.fieldName, field.fieldType.clazz, rs.getObject(field.fieldName));
 	}
 
-	public static void setStmtObject(PreparedStatement stmt, int index, SqliteField field, Object value)
+	public static void setStmtObject(PreparedStatement stmt, int index, SqlField field, Object value)
 			throws SQLException {
 		String type = field.fieldType.clazz;
 		if (type.equals(String.class.getName())) {

@@ -5,11 +5,11 @@ import java.util.List;
 
 import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
 import cn.platalk.sqlhelper.mysql.MysqlDB;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class TYMapInfoDBAdapter {
 	MysqlDB db;
-	MysqlTable mapInfoTable;
+	SqlTable mapInfoTable;
 
 	public TYMapInfoDBAdapter() {
 		db = new MysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),

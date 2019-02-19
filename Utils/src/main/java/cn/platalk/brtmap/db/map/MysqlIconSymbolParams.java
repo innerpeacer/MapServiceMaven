@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
-import cn.platalk.sqlhelper.mysql.MysqlField;
-import cn.platalk.sqlhelper.mysql.MysqlFieldType;
-import cn.platalk.sqlhelper.mysql.MysqlRecord;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlField;
+import cn.platalk.sqlhelper.sql.SqlFieldType;
+import cn.platalk.sqlhelper.sql.SqlRecord;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class MysqlIconSymbolParams {
 	static final String TABLE_ICON_SYMBOL = "ICON_SYMBOL";
@@ -18,28 +18,28 @@ public class MysqlIconSymbolParams {
 	static final String FIELD_MAP_SYMBOL_ICON_2_ICON = "ICON";
 	static final String FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID = "BUILDING_ID";
 
-	private static List<MysqlField> iconSymbolFieldList = null;
+	private static List<SqlField> iconSymbolFieldList = null;
 
-	public static MysqlTable CreateTable() {
-		return new MysqlTable(TABLE_ICON_SYMBOL, GetIconSymbolFieldList(), null);
+	public static SqlTable CreateTable() {
+		return new SqlTable(TABLE_ICON_SYMBOL, GetIconSymbolFieldList(), null);
 	}
 
-	public static List<MysqlField> GetIconSymbolFieldList() {
+	public static List<SqlField> GetIconSymbolFieldList() {
 		if (iconSymbolFieldList == null) {
-			iconSymbolFieldList = new ArrayList<MysqlField>();
-			iconSymbolFieldList.add(new MysqlField(FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID,
-					new MysqlFieldType(Integer.class.getName(), "INT"), false));
-			iconSymbolFieldList.add(new MysqlField(FIELD_MAP_SYMBOL_ICON_2_ICON,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			iconSymbolFieldList.add(new MysqlField(FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			iconSymbolFieldList = new ArrayList<SqlField>();
+			iconSymbolFieldList.add(new SqlField(FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID,
+					new SqlFieldType(Integer.class.getName(), "INT"), false));
+			iconSymbolFieldList.add(new SqlField(FIELD_MAP_SYMBOL_ICON_2_ICON,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			iconSymbolFieldList.add(new SqlField(FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
 		}
 		return iconSymbolFieldList;
 	}
 
-	public static List<TYIconSymbolRecord> IconSymbolListFromRecords(List<MysqlRecord> records) {
+	public static List<TYIconSymbolRecord> IconSymbolListFromRecords(List<SqlRecord> records) {
 		List<TYIconSymbolRecord> iconList = new ArrayList<TYIconSymbolRecord>();
-		for (MysqlRecord record : records) {
+		for (SqlRecord record : records) {
 			TYIconSymbolRecord icon = new TYIconSymbolRecord();
 			icon.setSymbolID(record.getInteger(FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID));
 			icon.setIcon(record.getString(FIELD_MAP_SYMBOL_ICON_2_ICON));

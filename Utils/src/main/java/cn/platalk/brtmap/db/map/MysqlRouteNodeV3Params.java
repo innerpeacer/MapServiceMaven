@@ -7,10 +7,10 @@ import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
 import cn.platalk.brtmap.entity.base.impl.TYRouteNodeRecordV3;
-import cn.platalk.sqlhelper.mysql.MysqlField;
-import cn.platalk.sqlhelper.mysql.MysqlFieldType;
-import cn.platalk.sqlhelper.mysql.MysqlRecord;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlField;
+import cn.platalk.sqlhelper.sql.SqlFieldType;
+import cn.platalk.sqlhelper.sql.SqlRecord;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class MysqlRouteNodeV3Params {
 	static final String TABLE_ROUTE_NODE = "ROUTE_NODE_%s";
@@ -31,51 +31,51 @@ public class MysqlRouteNodeV3Params {
 	static final String FIELD_ROUTE_NODE_13_OPEN_TIME = "OPEN_TIME";
 	static final String FIELD_ROUTE_NODE_14_ROOM_ID = "ROOM_ID";
 
-	private static List<MysqlField> routeNodeFieldList = null;
+	private static List<SqlField> routeNodeFieldList = null;
 
-	public static MysqlTable CreateTable(String buildingID) {
-		return new MysqlTable(String.format(TABLE_ROUTE_NODE, buildingID), GetRouteNodeFieldList(), null);
+	public static SqlTable CreateTable(String buildingID) {
+		return new SqlTable(String.format(TABLE_ROUTE_NODE, buildingID), GetRouteNodeFieldList(), null);
 	}
 
-	public static List<MysqlField> GetRouteNodeFieldList() {
+	public static List<SqlField> GetRouteNodeFieldList() {
 		if (routeNodeFieldList == null) {
-			routeNodeFieldList = new ArrayList<MysqlField>();
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_1_NODE_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_2_GEOMETRY,
-					new MysqlFieldType(byte[].class.getName(), "MediumBlob"), false));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_3_VIRTUAL,
-					new MysqlFieldType(Boolean.class.getName(), "INTEGER"), false));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_4_NODE_NAME,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_5_CATEGORY_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_6_FLOOR,
-					new MysqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_7_LEVEL,
-					new MysqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_8_IS_SWITCHING,
-					new MysqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_9_SWITCHING_ID,
-					new MysqlFieldType(Integer.class.getName(), "INTEGER"), true));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_10_DIRECTION,
-					new MysqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_11_NODE_TYPE,
-					new MysqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_12_OPEN,
-					new MysqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_13_OPEN_TIME,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(255)"), true));
-			routeNodeFieldList.add(new MysqlField(FIELD_ROUTE_NODE_14_ROOM_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+			routeNodeFieldList = new ArrayList<SqlField>();
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_1_NODE_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_2_GEOMETRY,
+					new SqlFieldType(byte[].class.getName(), "MediumBlob"), false));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_3_VIRTUAL,
+					new SqlFieldType(Boolean.class.getName(), "INTEGER"), false));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_4_NODE_NAME,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_5_CATEGORY_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_6_FLOOR,
+					new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_7_LEVEL,
+					new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_8_IS_SWITCHING,
+					new SqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_9_SWITCHING_ID,
+					new SqlFieldType(Integer.class.getName(), "INTEGER"), true));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_10_DIRECTION,
+					new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_11_NODE_TYPE,
+					new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_12_OPEN,
+					new SqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_13_OPEN_TIME,
+					new SqlFieldType(String.class.getName(), "VARCHAR(255)"), true));
+			routeNodeFieldList.add(new SqlField(FIELD_ROUTE_NODE_14_ROOM_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
 
 		}
 		return routeNodeFieldList;
 	}
 
-	public static List<TYRouteNodeRecordV3> RouteNodeListFromRecords(List<MysqlRecord> records) {
+	public static List<TYRouteNodeRecordV3> RouteNodeListFromRecords(List<SqlRecord> records) {
 		List<TYRouteNodeRecordV3> nodeList = new ArrayList<TYRouteNodeRecordV3>();
-		for (MysqlRecord record : records) {
+		for (SqlRecord record : records) {
 			TYRouteNodeRecordV3 node = new TYRouteNodeRecordV3();
 			node.setNodeID(record.getString(FIELD_ROUTE_NODE_1_NODE_ID));
 			node.setGeometryData(record.getBlob(FIELD_ROUTE_NODE_2_GEOMETRY));

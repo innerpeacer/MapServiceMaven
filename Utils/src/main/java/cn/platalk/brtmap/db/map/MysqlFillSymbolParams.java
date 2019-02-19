@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.sqlhelper.mysql.MysqlField;
-import cn.platalk.sqlhelper.mysql.MysqlFieldType;
-import cn.platalk.sqlhelper.mysql.MysqlRecord;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlField;
+import cn.platalk.sqlhelper.sql.SqlFieldType;
+import cn.platalk.sqlhelper.sql.SqlRecord;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class MysqlFillSymbolParams {
 	static final String TABLE_FILL_SYMBOL = "FILL_SYMBOL";
@@ -20,32 +20,32 @@ public class MysqlFillSymbolParams {
 	static final String FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH = "LINE_WIDTH";
 	static final String FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID = "BUILDING_ID";
 
-	private static List<MysqlField> fillSymbolFieldList = null;
+	private static List<SqlField> fillSymbolFieldList = null;
 
-	public static MysqlTable CreateTable() {
-		return new MysqlTable(TABLE_FILL_SYMBOL, GetFillSymbolFieldList(), null);
+	public static SqlTable CreateTable() {
+		return new SqlTable(TABLE_FILL_SYMBOL, GetFillSymbolFieldList(), null);
 	}
 
-	public static List<MysqlField> GetFillSymbolFieldList() {
+	public static List<SqlField> GetFillSymbolFieldList() {
 		if (fillSymbolFieldList == null) {
-			fillSymbolFieldList = new ArrayList<MysqlField>();
-			fillSymbolFieldList.add(new MysqlField(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID,
-					new MysqlFieldType(Integer.class.getName(), "INT"), false));
-			fillSymbolFieldList.add(new MysqlField(FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			fillSymbolFieldList.add(new MysqlField(FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			fillSymbolFieldList.add(new MysqlField(FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			fillSymbolFieldList.add(new MysqlField(FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			fillSymbolFieldList = new ArrayList<SqlField>();
+			fillSymbolFieldList.add(new SqlField(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID,
+					new SqlFieldType(Integer.class.getName(), "INT"), false));
+			fillSymbolFieldList.add(new SqlField(FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			fillSymbolFieldList.add(new SqlField(FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			fillSymbolFieldList.add(new SqlField(FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH,
+					new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			fillSymbolFieldList.add(new SqlField(FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
 		}
 		return fillSymbolFieldList;
 	}
 
-	public static List<TYFillSymbolRecord> FillSymbolListFromRecords(List<MysqlRecord> records) {
+	public static List<TYFillSymbolRecord> FillSymbolListFromRecords(List<SqlRecord> records) {
 		List<TYFillSymbolRecord> fillList = new ArrayList<TYFillSymbolRecord>();
-		for (MysqlRecord record : records) {
+		for (SqlRecord record : records) {
 			TYFillSymbolRecord fill = new TYFillSymbolRecord();
 			fill.setSymbolID(record.getInteger(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID));
 			fill.setFillColor(record.getString(FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR));

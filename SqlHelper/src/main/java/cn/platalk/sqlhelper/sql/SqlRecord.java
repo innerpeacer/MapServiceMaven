@@ -1,18 +1,18 @@
-package cn.platalk.sqlhelper.mysql;
+package cn.platalk.sqlhelper.sql;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MysqlRecord {
-	List<MysqlEntity> entityList;
+public class SqlRecord {
+	List<SqlEntity> entityList;
 	Map<String, Object> entityMap;
 
-	public MysqlRecord(List<MysqlEntity> entities) {
-		this.entityList = new ArrayList<MysqlEntity>(entities);
+	public SqlRecord(List<SqlEntity> entities) {
+		this.entityList = new ArrayList<SqlEntity>(entities);
 		this.entityMap = new HashMap<String, Object>();
-		for (MysqlEntity entity : this.entityList) {
+		for (SqlEntity entity : this.entityList) {
 			entityMap.put(entity.field, entity.value);
 		}
 	}
@@ -46,7 +46,7 @@ public class MysqlRecord {
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("[");
-		for (MysqlEntity entity : entityList) {
+		for (SqlEntity entity : entityList) {
 			buffer.append("(").append(entity.field).append(": ").append(entity.value).append("), ");
 		}
 		buffer.append("]");

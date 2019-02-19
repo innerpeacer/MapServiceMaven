@@ -7,11 +7,11 @@ import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYCity;
 import cn.platalk.sqlhelper.mysql.MysqlDB;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class TYCityDBAdapter {
 	MysqlDB db;
-	MysqlTable cityTable;
+	SqlTable cityTable;
 
 	public TYCityDBAdapter() {
 		db = new MysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),

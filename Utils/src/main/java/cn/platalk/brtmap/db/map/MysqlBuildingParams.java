@@ -7,10 +7,10 @@ import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
 import cn.platalk.brtmap.entity.base.impl.TYMapSize;
-import cn.platalk.sqlhelper.mysql.MysqlField;
-import cn.platalk.sqlhelper.mysql.MysqlFieldType;
-import cn.platalk.sqlhelper.mysql.MysqlRecord;
-import cn.platalk.sqlhelper.mysql.MysqlTable;
+import cn.platalk.sqlhelper.sql.SqlField;
+import cn.platalk.sqlhelper.sql.SqlFieldType;
+import cn.platalk.sqlhelper.sql.SqlRecord;
+import cn.platalk.sqlhelper.sql.SqlTable;
 
 public class MysqlBuildingParams {
 	static final String TABLE_BUILDING = "BUILDING";
@@ -31,46 +31,46 @@ public class MysqlBuildingParams {
 
 	static final String FIELD_BUILDING_11_STATUS = "STATUS";
 
-	private static List<MysqlField> buildingFieldList = null;
+	private static List<SqlField> buildingFieldList = null;
 
-	public static MysqlTable CreateTable() {
-		return new MysqlTable(MysqlBuildingParams.TABLE_BUILDING, GetBuildingFieldList(), null);
+	public static SqlTable CreateTable() {
+		return new SqlTable(MysqlBuildingParams.TABLE_BUILDING, GetBuildingFieldList(), null);
 	}
 
-	public static List<MysqlField> GetBuildingFieldList() {
+	public static List<SqlField> GetBuildingFieldList() {
 		if (buildingFieldList == null) {
-			buildingFieldList = new ArrayList<MysqlField>();
+			buildingFieldList = new ArrayList<SqlField>();
 
-			buildingFieldList.add(new MysqlField(FIELD_BUILDING_1_CITY_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			buildingFieldList.add(new MysqlField(FIELD_BUILDING_2_ID,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			buildingFieldList.add(new MysqlField(FIELD_BUILDING_3_NAME,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
-			buildingFieldList.add(new MysqlField(FIELD_BUILDING_4_LONGITUDE,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(new MysqlField(FIELD_BUILDING_5_LATITUDE,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(new MysqlField(FIELD_BUILDING_6_ADDRESS,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
-			buildingFieldList.add(new MysqlField(FIELD_BUILDING_7_INIT_ANGLE,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(new MysqlField(FIELD_BUILDING_8_ROUTE_URL,
-					new MysqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
-			buildingFieldList.add(new MysqlField(FIELD_BUILDING_9_OFFSET_X,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(new MysqlField(FIELD_BUILDING_10_OFFSET_Y,
-					new MysqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(new MysqlField(FIELD_BUILDING_11_STATUS,
-					new MysqlFieldType(Integer.class.getName(), "INT"), false));
+			buildingFieldList.add(new SqlField(FIELD_BUILDING_1_CITY_ID,
+					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			buildingFieldList.add(
+					new SqlField(FIELD_BUILDING_2_ID, new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			buildingFieldList.add(new SqlField(FIELD_BUILDING_3_NAME,
+					new SqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
+			buildingFieldList.add(new SqlField(FIELD_BUILDING_4_LONGITUDE,
+					new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			buildingFieldList.add(
+					new SqlField(FIELD_BUILDING_5_LATITUDE, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			buildingFieldList.add(new SqlField(FIELD_BUILDING_6_ADDRESS,
+					new SqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
+			buildingFieldList.add(new SqlField(FIELD_BUILDING_7_INIT_ANGLE,
+					new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			buildingFieldList.add(new SqlField(FIELD_BUILDING_8_ROUTE_URL,
+					new SqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
+			buildingFieldList.add(
+					new SqlField(FIELD_BUILDING_9_OFFSET_X, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			buildingFieldList.add(new SqlField(FIELD_BUILDING_10_OFFSET_Y,
+					new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			buildingFieldList.add(
+					new SqlField(FIELD_BUILDING_11_STATUS, new SqlFieldType(Integer.class.getName(), "INT"), false));
 
 		}
 		return buildingFieldList;
 	}
 
-	public static List<TYBuilding> BuildingListFromRecords(List<MysqlRecord> records) {
+	public static List<TYBuilding> BuildingListFromRecords(List<SqlRecord> records) {
 		List<TYBuilding> buildingList = new ArrayList<TYBuilding>();
-		for (MysqlRecord record : records) {
+		for (SqlRecord record : records) {
 			TYBuilding building = new TYBuilding();
 			building.setCityID(record.getString(FIELD_BUILDING_1_CITY_ID));
 			building.setBuildingID(record.getString(FIELD_BUILDING_2_ID));
