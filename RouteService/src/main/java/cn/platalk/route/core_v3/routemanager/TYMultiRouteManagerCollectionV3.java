@@ -3,7 +3,7 @@ package cn.platalk.route.core_v3.routemanager;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.platalk.brtmap.route.core_v3.TYServerMultiRouteManagerV3;
+import cn.platalk.map.route.core_v3.TYServerMultiRouteManagerV3;
 
 public class TYMultiRouteManagerCollectionV3 {
 	public static Map<String, TYServerMultiRouteManagerV3> managerCollection = new HashMap<String, TYServerMultiRouteManagerV3>();
