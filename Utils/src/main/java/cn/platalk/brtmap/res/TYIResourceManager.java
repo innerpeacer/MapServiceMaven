@@ -1,6 +1,6 @@
 package cn.platalk.brtmap.res;
 
-public interface TYIBrtResourceManager {
+public interface TYIResourceManager {
 	public String getRawDataRootDir();
 
 	public String getVectorTileRoot();

@@ -12,7 +12,7 @@ import cn.platalk.sqlhelper.sql.IPSqlFieldType;
 import cn.platalk.sqlhelper.sql.IPSqlRecord;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
-public class MysqlBeaconRegionParams {
+public class IPMysqlBeaconRegionParams {
 	static final String TABLE_BEACON_REGION = "BEACON_REGION";
 
 	static final String FIELD_BEACON_REGION_1_CITY_ID = "CITY_ID";

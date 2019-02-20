@@ -2,10 +2,10 @@ package cn.platalk.brtmap.core.config;
 
 import java.io.File;
 
-import cn.platalk.brtmap.res.TYIBrtResourceManager;
+import cn.platalk.brtmap.res.TYIResourceManager;
 
 public class TYBrtMapEnvironment {
-	static TYIBrtResourceManager resourceManager = TYServerEnviroment.resourceManager;
+	static TYIResourceManager resourceManager = TYServerEnviroment.resourceManager;
 
 	public static String GetFontDir() {
 		return resourceManager.getFontDir();

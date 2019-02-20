@@ -1,3 +1,4 @@
+package cn.platalk.brtmap.res;
 //package cn.platalk.brtmap.res;
 //
 //import cn.platalk.brtmap.res.TYIBrtResourceManager;

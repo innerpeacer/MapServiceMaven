@@ -1,26 +1,26 @@
 package cn.platalk.brtmap.core.config;
 
 import cn.platalk.brtmap.db.map.TYDatabaseManager;
-import cn.platalk.brtmap.res.TYBrtLinuxResourceManager;
-import cn.platalk.brtmap.res.TYBrtMacResourceManager;
-import cn.platalk.brtmap.res.TYIBrtResourceManager;
+import cn.platalk.brtmap.res.TYLinuxResourceManager;
+import cn.platalk.brtmap.res.TYMacResourceManager;
+import cn.platalk.brtmap.res.TYIResourceManager;
 import cn.platalk.brtmap.utils.TYOSUtils;
 import cn.platalk.brtmap.utils.TYOSUtils.OSType;
 
 public class TYServerEnviroment {
-	public static TYIBrtResourceManager resourceManager = null;
+	public static TYIResourceManager resourceManager = null;
 	public static OSType osType = null;
 
 	public static void initialize() {
 		OSType type = TYOSUtils.GetOSType();
 		switch (type) {
 		case MAC:
-			resourceManager = new TYBrtMacResourceManager();
+			resourceManager = new TYMacResourceManager();
 			osType = OSType.MAC;
 			break;
 
 		case LINUX:
-			resourceManager = new TYBrtLinuxResourceManager();
+			resourceManager = new TYLinuxResourceManager();
 			osType = OSType.LINUX;
 			break;
 

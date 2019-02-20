@@ -1,6 +1,6 @@
 package cn.platalk.brtmap.res;
 
-public class TYBrtLinuxResourceManager implements TYIBrtResourceManager {
+public class TYLinuxResourceManager implements TYIResourceManager {
 	private static final String RAW_DATA_ROOT_LINUX = "/wt_res/WTMapProject/WTMapRawData";
 	private static final String VECTOR_TILE_ROOT_LINUX = "/usr/local/apache-tomcat-7.0.81/webapps/WTMapResource/mapdata";
 

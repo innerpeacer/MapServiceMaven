@@ -13,7 +13,7 @@ import cn.platalk.sqlhelper.sql.IPSqlFieldType;
 import cn.platalk.sqlhelper.sql.IPSqlRecord;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
-public class MysqlBeaconParams {
+public class IPMysqlBeaconParams {
 	static final String TABLE_BEACON = "BEACON_%s";
 
 	static final String FIELD_BEACON_1_GEOM = "GEOM";

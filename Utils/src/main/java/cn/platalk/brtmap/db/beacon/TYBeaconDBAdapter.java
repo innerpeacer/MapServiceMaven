@@ -22,7 +22,7 @@ public class TYBeaconDBAdapter {
 		this.buildingID = buildingID;
 		db = new IPMysqlDB(TYDatabaseManager.GetBeaconDBUrl(), TYDatabaseManager.GetUserName(),
 				TYDatabaseManager.GetPassword());
-		beaconTable = MysqlBeaconParams.CreateTable(buildingID);
+		beaconTable = IPMysqlBeaconParams.CreateTable(buildingID);
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (InstantiationException e) {
@@ -65,9 +65,9 @@ public class TYBeaconDBAdapter {
 
 	public void deleteBeacon(String uuid, int major, int minor) {
 		Map<IPSqlField, Object> clause = new HashMap<IPSqlField, Object>();
-		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_2_UUID), uuid);
-		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_3_MAJOR), major);
-		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_4_MINOR), minor);
+		clause.put(beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_2_UUID), uuid);
+		clause.put(beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_3_MAJOR), major);
+		clause.put(beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_4_MINOR), minor);
 		db.deleteRecord(beaconTable, clause);
 	}
 
@@ -99,31 +99,31 @@ public class TYBeaconDBAdapter {
 
 	int updateBeacon(TYILocatingBeacon beacon) {
 		Map<IPSqlField, Object> clause = new HashMap<IPSqlField, Object>();
-		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_2_UUID), beacon.getUUID());
-		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_3_MAJOR), beacon.getMajor());
-		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_4_MINOR), beacon.getMinor());
-		return db.updateData(beaconTable, MysqlBeaconParams.DataMapFromBeacon(beacon), clause);
+		clause.put(beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_2_UUID), beacon.getUUID());
+		clause.put(beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_3_MAJOR), beacon.getMajor());
+		clause.put(beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_4_MINOR), beacon.getMinor());
+		return db.updateData(beaconTable, IPMysqlBeaconParams.DataMapFromBeacon(beacon), clause);
 	}
 
 	int insertBeacon(TYILocatingBeacon beacon) {
-		return db.insertData(beaconTable, MysqlBeaconParams.DataMapFromBeacon(beacon));
+		return db.insertData(beaconTable, IPMysqlBeaconParams.DataMapFromBeacon(beacon));
 	}
 
 	public List<TYLocatingBeacon> getAllBeacons() {
-		return MysqlBeaconParams.BeaconListFromRecords(db.readData(beaconTable));
+		return IPMysqlBeaconParams.BeaconListFromRecords(db.readData(beaconTable));
 	}
 
 	public List<TYLocatingBeacon> getAllBeaconsOnFloor(int floor) {
-		return MysqlBeaconParams.BeaconListFromRecords(
-				db.readData(beaconTable, beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_5_FLOOR), floor));
+		return IPMysqlBeaconParams.BeaconListFromRecords(
+				db.readData(beaconTable, beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_5_FLOOR), floor));
 	}
 
 	public TYLocatingBeacon getBeacon(String uuid, int major, int minor) {
 		Map<IPSqlField, Object> clause = new HashMap<IPSqlField, Object>();
-		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_2_UUID), uuid);
-		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_3_MAJOR), major);
-		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_4_MINOR), minor);
-		List<TYLocatingBeacon> beaconList = MysqlBeaconParams.BeaconListFromRecords(db.readData(beaconTable, clause));
+		clause.put(beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_2_UUID), uuid);
+		clause.put(beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_3_MAJOR), major);
+		clause.put(beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_4_MINOR), minor);
+		List<TYLocatingBeacon> beaconList = IPMysqlBeaconParams.BeaconListFromRecords(db.readData(beaconTable, clause));
 		if (beaconList != null && beaconList.size() > 0) {
 			return beaconList.get(0);
 		}
@@ -132,9 +132,9 @@ public class TYBeaconDBAdapter {
 
 	public boolean existBeacon(String uuid, int major, int minor) {
 		Map<IPSqlField, Object> clause = new HashMap<IPSqlField, Object>();
-		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_2_UUID), uuid);
-		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_3_MAJOR), major);
-		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_4_MINOR), minor);
+		clause.put(beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_2_UUID), uuid);
+		clause.put(beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_3_MAJOR), major);
+		clause.put(beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_4_MINOR), minor);
 		return db.existRecord(beaconTable, clause);
 	}
 
