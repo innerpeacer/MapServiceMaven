@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.brtmap.api.TYParameterChecker;
 import cn.platalk.brtmap.core.config.TYBrtMapEnvironment;
-import cn.platalk.brtmap.core.map.shp.TYBrtShpGeneratingTaskV3;
-import cn.platalk.brtmap.core.map.shp.TYBrtShpGeneratingTaskV3.TYShpGeneratingTaskListenerV3;
+import cn.platalk.core.map.shp.TYShpGeneratingTaskV3;
+import cn.platalk.core.map.shp.TYShpGeneratingTaskV3.TYShpGeneratingTaskListenerV3;
 import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
 import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 import cn.platalk.map.entity.base.impl.TYBuilding;
@@ -85,12 +85,12 @@ public class TYBrtParseMapDataV3Servlet extends HttpServlet {
 			}
 		}
 
-		TYBrtShpGeneratingTaskV3 task = new TYBrtShpGeneratingTaskV3(TYBrtMapEnvironment.GetShpRootDir(buildingID),
+		TYShpGeneratingTaskV3 task = new TYShpGeneratingTaskV3(TYBrtMapEnvironment.GetShpRootDir(buildingID),
 				buildingID);
 		task.addTaskListener(new TYShpGeneratingTaskListenerV3() {
 
 			@Override
-			public void didFinishGeneratingTask(TYBrtShpGeneratingTaskV3 task) {
+			public void didFinishGeneratingTask(TYShpGeneratingTaskV3 task) {
 				if (building == null && task.getBuilding() == null) {
 					PrintWriter out;
 					try {

@@ -17,10 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.brtmap.api.TYParameterChecker;
-import cn.platalk.brtmap.core.beacon.shp.TYBrtBeaconShpDataManager;
-import cn.platalk.brtmap.core.beacon.shp.beacondata.TYBrtShpBeaconDataParser;
-import cn.platalk.brtmap.core.beacon.shp.beacondata.TYBrtShpBeaconDataParser.TYBrtShpBeaconParserListener;
 import cn.platalk.brtmap.core.config.TYBrtMapEnvironment;
+import cn.platalk.core.beacon.shp.TYBeaconShpDataManager;
+import cn.platalk.core.beacon.shp.beacondata.TYShpBeaconDataParser;
+import cn.platalk.core.beacon.shp.beacondata.TYShpBeaconDataParser.TYBrtShpBeaconParserListener;
 import cn.platalk.map.entity.base.TYILocatingBeacon;
 import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.impl.TYBeaconRegion;
@@ -78,9 +78,9 @@ public class TYBrtParseBeaconDataServlet extends HttpServlet {
 			}
 		}
 
-		TYBrtBeaconShpDataManager shpManager = new TYBrtBeaconShpDataManager(
+		TYBeaconShpDataManager shpManager = new TYBeaconShpDataManager(
 				TYBrtMapEnvironment.GetShpRootDir(buildingID));
-		TYBrtShpBeaconDataParser parser = new TYBrtShpBeaconDataParser(shpManager.getBeaconShpPath());
+		TYShpBeaconDataParser parser = new TYShpBeaconDataParser(shpManager.getBeaconShpPath());
 		parser.addParserListener(new TYBrtShpBeaconParserListener() {
 			public void didFailedParsingBeaconDataList(Throwable error) {
 				PrintWriter out;
