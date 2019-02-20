@@ -14,20 +14,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.brtmap.api.TYParameterChecker;
 import cn.platalk.brtmap.core.config.TYBrtMapEnvironment;
-import cn.platalk.brtmap.db.map.TYBuildingDBAdapter;
-import cn.platalk.brtmap.db.map.TYCityDBAdapter;
-import cn.platalk.brtmap.db.map.TYMapDataDBAdapter;
-import cn.platalk.brtmap.db.map.TYMapInfoDBAdapter;
-import cn.platalk.brtmap.db.map.TYSymbolDBAdapter;
 import cn.platalk.brtmap.entity.base.TYIFillSymbolRecord;
 import cn.platalk.brtmap.entity.base.TYIIconSymbolRecord;
 import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.brtmap.entity.base.TYIMapInfo;
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
 import cn.platalk.brtmap.entity.base.impl.TYCity;
-import cn.platalk.brtmap.utils.third.TYFileUtils;
 import cn.platalk.brtmap.vectortile.builder.TYVectorTileBuilder;
 import cn.platalk.brtmap.vectortile.builder.TYVectorTileSettings;
+import cn.platalk.mysql.map.TYBuildingDBAdapter;
+import cn.platalk.mysql.map.TYCityDBAdapter;
+import cn.platalk.mysql.map.TYMapDataDBAdapter;
+import cn.platalk.mysql.map.TYMapInfoDBAdapter;
+import cn.platalk.mysql.map.TYSymbolDBAdapter;
+import cn.platalk.utils.third.TYFileUtils;
 
 @WebServlet("/web/BuildVectorTile")
 public class TYBrtBuildVectorTileServlet extends HttpServlet {

@@ -21,16 +21,16 @@ import cn.platalk.brtmap.core.beacon.shp.TYBrtBeaconShpDataManager;
 import cn.platalk.brtmap.core.beacon.shp.beacondata.TYBrtShpBeaconDataParser;
 import cn.platalk.brtmap.core.beacon.shp.beacondata.TYBrtShpBeaconDataParser.TYBrtShpBeaconParserListener;
 import cn.platalk.brtmap.core.config.TYBrtMapEnvironment;
-import cn.platalk.brtmap.db.beacon.TYBeaconDBAdapter;
-import cn.platalk.brtmap.db.beacon.TYBeaconRegionDBAdapter;
-import cn.platalk.brtmap.db.map.TYBuildingDBAdapter;
-import cn.platalk.brtmap.db.map.TYMapInfoDBAdapter;
 import cn.platalk.brtmap.entity.base.TYILocatingBeacon;
 import cn.platalk.brtmap.entity.base.TYIMapInfo;
 import cn.platalk.brtmap.entity.base.impl.TYBeaconRegion;
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
 import cn.platalk.brtmap.entity.base.impl.TYLocatingBeacon;
-import cn.platalk.brtmap.utils.third.TYZipUtil;
+import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
+import cn.platalk.mysql.beacon.TYBeaconRegionDBAdapter;
+import cn.platalk.mysql.map.TYBuildingDBAdapter;
+import cn.platalk.mysql.map.TYMapInfoDBAdapter;
+import cn.platalk.utils.third.TYZipUtil;
 
 @WebServlet("/web/ParseBeaconData")
 public class TYBrtParseBeaconDataServlet extends HttpServlet {

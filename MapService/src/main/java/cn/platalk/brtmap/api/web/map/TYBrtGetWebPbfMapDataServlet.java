@@ -16,11 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 import cn.platalk.brtmap.api.TYParameterChecker;
 import cn.platalk.brtmap.core.pbf.TYBrtWebMapPbfDataBuilder;
 import cn.platalk.brtmap.core.web.TYBrtWebMapPbfDataPool;
-import cn.platalk.brtmap.db.map.TYMapDataDBAdapter;
-import cn.platalk.brtmap.db.map.TYSymbolDBAdapter;
 import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.mysql.map.TYMapDataDBAdapter;
+import cn.platalk.mysql.map.TYSymbolDBAdapter;
 
 @WebServlet("/web/pbf/GetMapData")
 public class TYBrtGetWebPbfMapDataServlet extends HttpServlet {

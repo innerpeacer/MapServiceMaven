@@ -1,6 +1,6 @@
 package cn.platalk.brtmap.api;
 
-import cn.platalk.brtmap.utils.TYMatchUtils;
+import cn.platalk.utils.TYMatchUtils;
 
 public class TYParameterChecker {
 

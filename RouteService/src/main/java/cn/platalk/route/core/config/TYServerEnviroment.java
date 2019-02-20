@@ -1,11 +1,11 @@
 package cn.platalk.route.core.config;
 
-import cn.platalk.brtmap.db.map.TYDatabaseManager;
-import cn.platalk.brtmap.res.TYLinuxResourceManager;
-import cn.platalk.brtmap.res.TYMacResourceManager;
-import cn.platalk.brtmap.res.TYIResourceManager;
-import cn.platalk.brtmap.utils.TYOSUtils;
-import cn.platalk.brtmap.utils.TYOSUtils.OSType;
+import cn.platalk.map.res.TYIResourceManager;
+import cn.platalk.map.res.TYLinuxResourceManager;
+import cn.platalk.map.res.TYMacResourceManager;
+import cn.platalk.mysql.map.TYDatabaseManager;
+import cn.platalk.utils.TYOSUtils;
+import cn.platalk.utils.TYOSUtils.OSType;
 
 public class TYServerEnviroment {
 	public static TYIResourceManager resourceManager = null;

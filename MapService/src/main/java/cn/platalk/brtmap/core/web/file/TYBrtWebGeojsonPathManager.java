@@ -3,7 +3,7 @@ package cn.platalk.brtmap.core.web.file;
 import java.io.File;
 
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
-import cn.platalk.brtmap.utils.third.TYFileUtils;
+import cn.platalk.utils.third.TYFileUtils;
 
 public class TYBrtWebGeojsonPathManager {
 	static String FILE_MAP_DATA_GEOJSON = "%s.geojson";

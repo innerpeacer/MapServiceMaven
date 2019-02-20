@@ -15,10 +15,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.brtmap.api.TYParameterChecker;
-import cn.platalk.brtmap.db.map.TYBuildingDBAdapter;
-import cn.platalk.brtmap.db.map.TYMapDataDBAdapter;
 import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
+import cn.platalk.mysql.map.TYBuildingDBAdapter;
+import cn.platalk.mysql.map.TYMapDataDBAdapter;
 
 @WebServlet("/web/GetLabelString")
 public class TYBrtGetLabelStringServlet extends HttpServlet {

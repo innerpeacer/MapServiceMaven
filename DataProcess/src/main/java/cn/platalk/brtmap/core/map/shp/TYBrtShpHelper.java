@@ -4,7 +4,7 @@ import org.gdal.ogr.Feature;
 
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteRecord;
 import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.brtmap.utils.TYEncryption;
+import cn.platalk.utils.TYEncryption;
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;

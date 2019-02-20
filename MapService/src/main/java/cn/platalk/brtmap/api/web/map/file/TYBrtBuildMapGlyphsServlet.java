@@ -15,12 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.brtmap.api.TYParameterChecker;
 import cn.platalk.brtmap.core.config.TYBrtMapEnvironment;
-import cn.platalk.brtmap.db.map.TYBuildingDBAdapter;
-import cn.platalk.brtmap.db.map.TYMapDataDBAdapter;
 import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
 import cn.platalk.brtmap.vectortile.fontbuilder.TYFontBuilder;
 import cn.platalk.brtmap.vectortile.fontbuilder.TYFontBuilder.TYBrtFontBuilderInterface;
+import cn.platalk.mysql.map.TYBuildingDBAdapter;
+import cn.platalk.mysql.map.TYMapDataDBAdapter;
 import cn.platalk.brtmap.vectortile.fontbuilder.TYFontSettings;
 
 @WebServlet("/web/BuildMapGlyphs")

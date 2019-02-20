@@ -15,12 +15,6 @@ import cn.platalk.brtmap.api.TYParameterChecker;
 import cn.platalk.brtmap.core.config.TYBrtMapEnvironment;
 import cn.platalk.brtmap.core.map.shp.TYBrtShpGeneratingTask;
 import cn.platalk.brtmap.core.map.shp.TYBrtShpGeneratingTask.TYShpGeneratingTaskListener;
-import cn.platalk.brtmap.db.map.TYBuildingDBAdapter;
-import cn.platalk.brtmap.db.map.TYCityDBAdapter;
-import cn.platalk.brtmap.db.map.TYMapDataDBAdapter;
-import cn.platalk.brtmap.db.map.TYMapInfoDBAdapter;
-import cn.platalk.brtmap.db.map.TYRouteDBAdapter;
-import cn.platalk.brtmap.db.map.TYSymbolDBAdapter;
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
 import cn.platalk.brtmap.entity.base.impl.TYCity;
 import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
@@ -29,7 +23,13 @@ import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
 import cn.platalk.brtmap.entity.base.impl.TYRouteLinkRecord;
 import cn.platalk.brtmap.entity.base.impl.TYRouteNodeRecord;
-import cn.platalk.brtmap.utils.third.TYZipUtil;
+import cn.platalk.mysql.map.TYBuildingDBAdapter;
+import cn.platalk.mysql.map.TYCityDBAdapter;
+import cn.platalk.mysql.map.TYMapDataDBAdapter;
+import cn.platalk.mysql.map.TYMapInfoDBAdapter;
+import cn.platalk.mysql.map.TYRouteDBAdapter;
+import cn.platalk.mysql.map.TYSymbolDBAdapter;
+import cn.platalk.utils.third.TYZipUtil;
 
 @WebServlet("/web/ParseMapData")
 public class TYBrtParseMapDataServlet extends HttpServlet {

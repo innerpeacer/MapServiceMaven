@@ -18,12 +18,12 @@ import org.json.JSONObject;
 import cn.platalk.brtmap.api.TYParameterChecker;
 import cn.platalk.brtmap.core.web.TYBrtWebMapFields;
 import cn.platalk.brtmap.core.web.TYBrtWebMapObjectBuilder;
-import cn.platalk.brtmap.db.map.TYBuildingDBAdapter;
-import cn.platalk.brtmap.db.map.TYCityDBAdapter;
-import cn.platalk.brtmap.db.map.TYMapInfoDBAdapter;
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
 import cn.platalk.brtmap.entity.base.impl.TYCity;
 import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
+import cn.platalk.mysql.map.TYBuildingDBAdapter;
+import cn.platalk.mysql.map.TYCityDBAdapter;
+import cn.platalk.mysql.map.TYMapInfoDBAdapter;
 
 @WebServlet("/web/GetCBM")
 public class TYBrtGetWebCBMServlet extends HttpServlet {

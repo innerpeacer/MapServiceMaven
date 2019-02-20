@@ -18,8 +18,8 @@ import cn.platalk.brtmap.api.TYParameterChecker;
 import cn.platalk.brtmap.core.config.TYServerEnviroment;
 import cn.platalk.brtmap.core.pbf.beacon.TYBrtWebBeacon2PbfUtils;
 import cn.platalk.brtmap.core.web.beacon.TYBrtWebBeaconPbfDataPool;
-import cn.platalk.brtmap.db.beacon.TYBeaconDBAdapter;
 import cn.platalk.brtmap.entity.base.impl.TYLocatingBeacon;
+import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
 import innerpeacer.beacon.pbf.TYBeaconPbf.TYLocatingBeaconListPbf;
 
 @WebServlet("/web/pbf/getBeacon")

@@ -2,7 +2,7 @@ package cn.platalk.brtmap.core.config;
 
 import java.io.File;
 
-import cn.platalk.brtmap.res.TYIResourceManager;
+import cn.platalk.map.res.TYIResourceManager;
 
 public class TYBrtMapEnvironment {
 	static TYIResourceManager resourceManager = TYServerEnviroment.resourceManager;

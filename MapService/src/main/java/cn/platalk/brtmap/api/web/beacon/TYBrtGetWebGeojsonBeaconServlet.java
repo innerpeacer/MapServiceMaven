@@ -17,8 +17,8 @@ import cn.platalk.brtmap.api.TYParameterChecker;
 import cn.platalk.brtmap.core.config.TYServerEnviroment;
 import cn.platalk.brtmap.core.web.beacon.TYBrtWebBeaconGeojsonDataBuilder;
 import cn.platalk.brtmap.core.web.beacon.TYBrtWebBeaconGeojsonDataPool;
-import cn.platalk.brtmap.db.beacon.TYBeaconDBAdapter;
 import cn.platalk.brtmap.entity.base.impl.TYLocatingBeacon;
+import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
 
 @WebServlet("/web/geojson/getBeacon")
 public class TYBrtGetWebGeojsonBeaconServlet extends HttpServlet {

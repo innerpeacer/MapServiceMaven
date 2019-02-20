@@ -17,17 +17,17 @@ import cn.platalk.brtmap.core.pbf.TYBrtWebMapPoiDataBuilder;
 import cn.platalk.brtmap.core.web.TYBrtWebMapFields;
 import cn.platalk.brtmap.core.web.TYBrtWebMapGeojsonDataBuilder;
 import cn.platalk.brtmap.core.web.TYBrtWebMapObjectBuilder;
-import cn.platalk.brtmap.db.map.TYCityDBAdapter;
-import cn.platalk.brtmap.db.map.TYMapDataDBAdapter;
-import cn.platalk.brtmap.db.map.TYMapInfoDBAdapter;
-import cn.platalk.brtmap.db.map.TYSymbolDBAdapter;
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
 import cn.platalk.brtmap.entity.base.impl.TYCity;
 import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
-import cn.platalk.brtmap.utils.third.TYFileUtils;
+import cn.platalk.mysql.map.TYCityDBAdapter;
+import cn.platalk.mysql.map.TYMapDataDBAdapter;
+import cn.platalk.mysql.map.TYMapInfoDBAdapter;
+import cn.platalk.mysql.map.TYSymbolDBAdapter;
+import cn.platalk.utils.third.TYFileUtils;
 
 public class TYBrtWebGeneratingMapFileTask {
 	TYBuilding targetBuilding;
