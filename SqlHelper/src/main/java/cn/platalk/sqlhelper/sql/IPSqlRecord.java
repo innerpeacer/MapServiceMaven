@@ -5,14 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SqlRecord {
-	List<SqlEntity> entityList;
+public class IPSqlRecord {
+	List<IPSqlEntity> entityList;
 	Map<String, Object> entityMap;
 
-	public SqlRecord(List<SqlEntity> entities) {
-		this.entityList = new ArrayList<SqlEntity>(entities);
+	public IPSqlRecord(List<IPSqlEntity> entities) {
+		this.entityList = new ArrayList<IPSqlEntity>(entities);
 		this.entityMap = new HashMap<String, Object>();
-		for (SqlEntity entity : this.entityList) {
+		for (IPSqlEntity entity : this.entityList) {
 			entityMap.put(entity.field, entity.value);
 		}
 	}
@@ -46,7 +46,7 @@ public class SqlRecord {
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("[");
-		for (SqlEntity entity : entityList) {
+		for (IPSqlEntity entity : entityList) {
 			buffer.append("(").append(entity.field).append(": ").append(entity.value).append("), ");
 		}
 		buffer.append("]");

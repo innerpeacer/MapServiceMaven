@@ -4,17 +4,17 @@ import java.sql.Connection;
 import java.util.List;
 
 import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
-import cn.platalk.sqlhelper.mysql.MysqlDB;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.mysql.IPMysqlDB;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYMapInfoDBAdapter {
-	MysqlDB db;
-	SqlTable mapInfoTable;
+	IPMysqlDB db;
+	IPSqlTable mapInfoTable;
 
 	public TYMapInfoDBAdapter() {
-		db = new MysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),
+		db = new IPMysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),
 				TYDatabaseManager.GetPassword());
-		mapInfoTable = MysqlMapInfoParams.CreateTable();
+		mapInfoTable = IPMysqlMapInfoParams.CreateTable();
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (InstantiationException e) {
@@ -60,11 +60,11 @@ public class TYMapInfoDBAdapter {
 	}
 
 	public void deleteMapInfoByID(String mapID) {
-		db.deleteRecord(mapInfoTable, mapInfoTable.getField(MysqlMapInfoParams.FIELD_MAPINFO_3_MAP_ID), mapID);
+		db.deleteRecord(mapInfoTable, mapInfoTable.getField(IPMysqlMapInfoParams.FIELD_MAPINFO_3_MAP_ID), mapID);
 	}
 
 	public void deleteMapInfosByBuildingID(String buildingID) {
-		db.deleteRecord(mapInfoTable, mapInfoTable.getField(MysqlMapInfoParams.FIELD_MAPINFO_2_BUILDING_ID),
+		db.deleteRecord(mapInfoTable, mapInfoTable.getField(IPMysqlMapInfoParams.FIELD_MAPINFO_2_BUILDING_ID),
 				buildingID);
 	}
 
@@ -85,26 +85,26 @@ public class TYMapInfoDBAdapter {
 	}
 
 	int insertMapInfo(TYMapInfo mapInfo) {
-		return db.insertData(mapInfoTable, MysqlMapInfoParams.DataMapFromMapInfo(mapInfo));
+		return db.insertData(mapInfoTable, IPMysqlMapInfoParams.DataMapFromMapInfo(mapInfo));
 	}
 
 	int updateMapInfo(TYMapInfo mapInfo) {
-		return db.updateData(mapInfoTable, MysqlMapInfoParams.DataMapFromMapInfo(mapInfo),
-				mapInfoTable.getField(MysqlMapInfoParams.FIELD_MAPINFO_3_MAP_ID), mapInfo.getMapID());
+		return db.updateData(mapInfoTable, IPMysqlMapInfoParams.DataMapFromMapInfo(mapInfo),
+				mapInfoTable.getField(IPMysqlMapInfoParams.FIELD_MAPINFO_3_MAP_ID), mapInfo.getMapID());
 	}
 
 	public List<TYMapInfo> getMapInfos() {
-		return MysqlMapInfoParams.MapInfoListFromRecord(db.readData(mapInfoTable));
+		return IPMysqlMapInfoParams.MapInfoListFromRecord(db.readData(mapInfoTable));
 	}
 
 	public List<TYMapInfo> getMapInfos(String buildingID) {
-		return MysqlMapInfoParams.MapInfoListFromRecord(db.readData(mapInfoTable,
-				mapInfoTable.getField(MysqlMapInfoParams.FIELD_MAPINFO_2_BUILDING_ID), buildingID));
+		return IPMysqlMapInfoParams.MapInfoListFromRecord(db.readData(mapInfoTable,
+				mapInfoTable.getField(IPMysqlMapInfoParams.FIELD_MAPINFO_2_BUILDING_ID), buildingID));
 	}
 
 	public TYMapInfo getMapInfo(String mapID) {
-		List<TYMapInfo> mapInfos = MysqlMapInfoParams.MapInfoListFromRecord(
-				db.readData(mapInfoTable, mapInfoTable.getField(MysqlMapInfoParams.FIELD_MAPINFO_3_MAP_ID), mapID));
+		List<TYMapInfo> mapInfos = IPMysqlMapInfoParams.MapInfoListFromRecord(
+				db.readData(mapInfoTable, mapInfoTable.getField(IPMysqlMapInfoParams.FIELD_MAPINFO_3_MAP_ID), mapID));
 		if (mapInfos != null && mapInfos.size() > 0) {
 			return mapInfos.get(0);
 		}
@@ -112,7 +112,7 @@ public class TYMapInfoDBAdapter {
 	}
 
 	public boolean existMapInfo(String mapID) {
-		return db.existRecord(mapInfoTable, mapInfoTable.getField(MysqlMapInfoParams.FIELD_MAPINFO_3_MAP_ID), mapID);
+		return db.existRecord(mapInfoTable, mapInfoTable.getField(IPMysqlMapInfoParams.FIELD_MAPINFO_3_MAP_ID), mapID);
 	}
 
 	boolean existTable() {

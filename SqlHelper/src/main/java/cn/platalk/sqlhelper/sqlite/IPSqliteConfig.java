@@ -2,7 +2,7 @@ package cn.platalk.sqlhelper.sqlite;
 
 class IPSqliteConfig {
 
-	static String getDriverName(JDBCVersion version) {
+	static String getDriverName(IPJdbcVersion version) {
 		switch (version) {
 		case JAVA:
 			return "org.sqlite.JDBC";
@@ -15,7 +15,7 @@ class IPSqliteConfig {
 		}
 	}
 
-	static String getDBPrefix(JDBCVersion version) {
+	static String getDBPrefix(IPJdbcVersion version) {
 		switch (version) {
 		case JAVA:
 			return "jdbc:sqlite:";

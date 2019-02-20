@@ -5,12 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
-public class SqlHelper {
-	public static SqlEntity getObject(ResultSet rs, SqlField field) throws SQLException {
-		return new SqlEntity(field.fieldName, field.fieldType.clazz, rs.getObject(field.fieldName));
+public class IPSqlHelper {
+	public static IPSqlEntity getObject(ResultSet rs, IPSqlField field) throws SQLException {
+		return new IPSqlEntity(field.fieldName, field.fieldType.clazz, rs.getObject(field.fieldName));
 	}
 
-	public static void setStmtObject(PreparedStatement stmt, int index, SqlField field, Object value)
+	public static void setStmtObject(PreparedStatement stmt, int index, IPSqlField field, Object value)
 			throws SQLException {
 		String type = field.fieldType.clazz;
 		if (type.equals(String.class.getName())) {

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.sqlhelper.sql.SqlField;
-import cn.platalk.sqlhelper.sql.SqlFieldType;
-import cn.platalk.sqlhelper.sql.SqlRecord;
+import cn.platalk.sqlhelper.sql.IPSqlField;
+import cn.platalk.sqlhelper.sql.IPSqlFieldType;
+import cn.platalk.sqlhelper.sql.IPSqlRecord;
 
 class IPSqliteFillSymbolParams {
 	static final String TABLE_FILL_SYMBOL = "FILL_SYMBOL";
@@ -16,27 +16,27 @@ class IPSqliteFillSymbolParams {
 	private static final String FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR = "OUTLINE";
 	private static final String FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH = "LINE_WIDTH";
 
-	private static List<SqlField> fillSymbolFieldList = null;
+	private static List<IPSqlField> fillSymbolFieldList = null;
 
-	public static List<SqlField> GetFillSymbolFieldList() {
+	public static List<IPSqlField> GetFillSymbolFieldList() {
 		if (fillSymbolFieldList == null) {
-			fillSymbolFieldList = new ArrayList<SqlField>();
+			fillSymbolFieldList = new ArrayList<IPSqlField>();
 
-			fillSymbolFieldList.add(new SqlField(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID,
-					SqlFieldType.FieldTypeFromClass(Integer.class.getName()), false));
-			fillSymbolFieldList.add(new SqlField(FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR,
-					SqlFieldType.FieldTypeFromClass(String.class.getName()), false));
-			fillSymbolFieldList.add(new SqlField(FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR,
-					SqlFieldType.FieldTypeFromClass(String.class.getName()), false));
-			fillSymbolFieldList.add(new SqlField(FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH,
-					SqlFieldType.FieldTypeFromClass(Double.class.getName()), false));
+			fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID,
+					IPSqlFieldType.FieldTypeFromClass(Integer.class.getName()), false));
+			fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR,
+					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), false));
+			fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR,
+					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), false));
+			fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH,
+					IPSqlFieldType.FieldTypeFromClass(Double.class.getName()), false));
 		}
 		return fillSymbolFieldList;
 	}
 
-	public static List<TYFillSymbolRecord> FillSymbolListFromRecords(List<SqlRecord> records) {
+	public static List<TYFillSymbolRecord> FillSymbolListFromRecords(List<IPSqlRecord> records) {
 		List<TYFillSymbolRecord> fillSymbolList = new ArrayList<TYFillSymbolRecord>();
-		for (SqlRecord record : records) {
+		for (IPSqlRecord record : records) {
 			TYFillSymbolRecord fillSymbol = new TYFillSymbolRecord();
 			fillSymbol.setSymbolID(record.getInteger(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID));
 			fillSymbol.setFillColor(record.getString(FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR));

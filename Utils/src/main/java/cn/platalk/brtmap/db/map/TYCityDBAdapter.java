@@ -6,17 +6,17 @@ import java.util.List;
 import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYCity;
-import cn.platalk.sqlhelper.mysql.MysqlDB;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.mysql.IPMysqlDB;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYCityDBAdapter {
-	MysqlDB db;
-	SqlTable cityTable;
+	IPMysqlDB db;
+	IPSqlTable cityTable;
 
 	public TYCityDBAdapter() {
-		db = new MysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),
+		db = new IPMysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),
 				TYDatabaseManager.GetPassword());
-		cityTable = MysqlCityParams.CreateTable();
+		cityTable = IPMysqlCityParams.CreateTable();
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (InstantiationException e) {
@@ -68,7 +68,7 @@ public class TYCityDBAdapter {
 	}
 
 	public void deleteCity(String cityID) {
-		db.deleteRecord(cityTable, cityTable.getField(MysqlCityParams.FIELD_CITY_1_ID), cityID);
+		db.deleteRecord(cityTable, cityTable.getField(IPMysqlCityParams.FIELD_CITY_1_ID), cityID);
 	}
 
 	public int insertOrUpdateCities(List<TYCity> cityList) {
@@ -83,7 +83,7 @@ public class TYCityDBAdapter {
 		List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
 
 		for (TYCity city : cityList) {
-			dataList.add(MysqlCityParams.DataMapFromCity(city));
+			dataList.add(IPMysqlCityParams.DataMapFromCity(city));
 		}
 		return db.insertDataListInBatch(cityTable, dataList);
 	}
@@ -97,21 +97,21 @@ public class TYCityDBAdapter {
 	}
 
 	int insertCity(TYCity city) {
-		return db.insertData(cityTable, MysqlCityParams.DataMapFromCity(city));
+		return db.insertData(cityTable, IPMysqlCityParams.DataMapFromCity(city));
 	}
 
 	int updateCity(TYCity city) {
-		return db.updateData(cityTable, MysqlCityParams.DataMapFromCity(city),
-				cityTable.getField(MysqlCityParams.FIELD_CITY_1_ID), city.getCityID());
+		return db.updateData(cityTable, IPMysqlCityParams.DataMapFromCity(city),
+				cityTable.getField(IPMysqlCityParams.FIELD_CITY_1_ID), city.getCityID());
 	}
 
 	public List<TYCity> getCities() {
-		return MysqlCityParams.CityListFromRecords(db.readData(cityTable));
+		return IPMysqlCityParams.CityListFromRecords(db.readData(cityTable));
 	}
 
 	public TYCity getCity(String cityID) {
-		List<TYCity> cities = MysqlCityParams.CityListFromRecords(
-				db.readData(cityTable, cityTable.getField(MysqlCityParams.FIELD_CITY_1_ID), cityID));
+		List<TYCity> cities = IPMysqlCityParams.CityListFromRecords(
+				db.readData(cityTable, cityTable.getField(IPMysqlCityParams.FIELD_CITY_1_ID), cityID));
 		if (cities != null && cities.size() > 0) {
 			return cities.get(0);
 		}
@@ -119,7 +119,7 @@ public class TYCityDBAdapter {
 	}
 
 	public boolean existCity(String cityID) {
-		return db.existRecord(cityTable, cityTable.getField(MysqlCityParams.FIELD_CITY_1_ID), cityID);
+		return db.existRecord(cityTable, cityTable.getField(IPMysqlCityParams.FIELD_CITY_1_ID), cityID);
 	}
 
 	boolean existTable() {

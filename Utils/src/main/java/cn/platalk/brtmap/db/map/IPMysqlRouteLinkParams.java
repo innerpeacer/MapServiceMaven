@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYRouteLinkRecord;
-import cn.platalk.sqlhelper.sql.SqlField;
-import cn.platalk.sqlhelper.sql.SqlFieldType;
-import cn.platalk.sqlhelper.sql.SqlRecord;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.sql.IPSqlField;
+import cn.platalk.sqlhelper.sql.IPSqlFieldType;
+import cn.platalk.sqlhelper.sql.IPSqlRecord;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
-public class MysqlRouteLinkParams {
+public class IPMysqlRouteLinkParams {
 	static final String TABLE_ROUTE_LINK = "ROUTE_LINK_%s";
 
 	static final String FIELD_ROUTE_LINK_1_LINK_ID = "LINK_ID";
@@ -22,36 +22,36 @@ public class MysqlRouteLinkParams {
 	static final String FIELD_ROUTE_LINK_6_VIRTUAL = "IS_VIRTUAL";
 	static final String FIELD_ROUTE_LINK_7_ONE_WAY = "ONE_WAY";
 
-	private static List<SqlField> routeLinkFieldList = null;
+	private static List<IPSqlField> routeLinkFieldList = null;
 
-	public static SqlTable CreateTable(String buildingID) {
-		return new SqlTable(String.format(TABLE_ROUTE_LINK, buildingID), GetRouteLinkFieldList(), null);
+	public static IPSqlTable CreateTable(String buildingID) {
+		return new IPSqlTable(String.format(TABLE_ROUTE_LINK, buildingID), GetRouteLinkFieldList(), null);
 	}
 
-	public static List<SqlField> GetRouteLinkFieldList() {
+	public static List<IPSqlField> GetRouteLinkFieldList() {
 		if (routeLinkFieldList == null) {
-			routeLinkFieldList = new ArrayList<SqlField>();
-			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_1_LINK_ID,
-					new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_2_GEOMETRY,
-					new SqlFieldType(byte[].class.getName(), "MediumBlob"), false));
+			routeLinkFieldList = new ArrayList<IPSqlField>();
+			routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_1_LINK_ID,
+					new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
+			routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_2_GEOMETRY,
+					new IPSqlFieldType(byte[].class.getName(), "MediumBlob"), false));
 			routeLinkFieldList.add(
-					new SqlField(FIELD_ROUTE_LINK_3_LENGTH, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_4_HEAD_NODE,
-					new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_5_END_NODE,
-					new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_6_VIRTUAL,
-					new SqlFieldType(Boolean.class.getName(), "INTEGER"), false));
-			routeLinkFieldList.add(new SqlField(FIELD_ROUTE_LINK_7_ONE_WAY,
-					new SqlFieldType(Boolean.class.getName(), "INTEGER"), false));
+					new IPSqlField(FIELD_ROUTE_LINK_3_LENGTH, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_4_HEAD_NODE,
+					new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
+			routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_5_END_NODE,
+					new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
+			routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_6_VIRTUAL,
+					new IPSqlFieldType(Boolean.class.getName(), "INTEGER"), false));
+			routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_7_ONE_WAY,
+					new IPSqlFieldType(Boolean.class.getName(), "INTEGER"), false));
 		}
 		return routeLinkFieldList;
 	}
 
-	public static List<TYRouteLinkRecord> RouteLinkListFromRecords(List<SqlRecord> records) {
+	public static List<TYRouteLinkRecord> RouteLinkListFromRecords(List<IPSqlRecord> records) {
 		List<TYRouteLinkRecord> linkList = new ArrayList<TYRouteLinkRecord>();
-		for (SqlRecord record : records) {
+		for (IPSqlRecord record : records) {
 			TYRouteLinkRecord link = new TYRouteLinkRecord();
 			link.setLinkID(record.getInteger(FIELD_ROUTE_LINK_1_LINK_ID));
 			link.setGeometryData(record.getBlob(FIELD_ROUTE_LINK_2_GEOMETRY));

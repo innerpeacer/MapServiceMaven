@@ -4,19 +4,19 @@ import java.util.List;
 
 import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
-import cn.platalk.sqlhelper.sql.SqlTable;
-import cn.platalk.sqlhelper.sqlite.SqliteDB;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
+import cn.platalk.sqlhelper.sqlite.IPSqliteDB;
 
-public class IPBrtSqliteSymbolDBAdapter {
-	SqliteDB db;
-	SqlTable fillTable;
-	SqlTable iconTable;
+public class IPSqliteSymbolDBAdapter {
+	IPSqliteDB db;
+	IPSqlTable fillTable;
+	IPSqlTable iconTable;
 
-	public IPBrtSqliteSymbolDBAdapter(String path) {
-		db = new SqliteDB(path);
-		fillTable = new SqlTable(IPSqliteFillSymbolParams.TABLE_FILL_SYMBOL,
+	public IPSqliteSymbolDBAdapter(String path) {
+		db = new IPSqliteDB(path);
+		fillTable = new IPSqlTable(IPSqliteFillSymbolParams.TABLE_FILL_SYMBOL,
 				IPSqliteFillSymbolParams.GetFillSymbolFieldList(), null);
-		iconTable = new SqlTable(IPSqliteIconSymbolParams.TABLE_ICON_SYMBOL,
+		iconTable = new IPSqlTable(IPSqliteIconSymbolParams.TABLE_ICON_SYMBOL,
 				IPSqliteIconSymbolParams.GetIconSymbolFieldList(), null);
 	}
 

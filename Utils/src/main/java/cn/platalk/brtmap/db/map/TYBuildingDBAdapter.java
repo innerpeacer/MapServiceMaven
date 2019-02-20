@@ -4,17 +4,17 @@ import java.sql.Connection;
 import java.util.List;
 
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
-import cn.platalk.sqlhelper.mysql.MysqlDB;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.mysql.IPMysqlDB;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYBuildingDBAdapter {
-	MysqlDB db;
-	SqlTable buildingTable;
+	IPMysqlDB db;
+	IPSqlTable buildingTable;
 
 	public TYBuildingDBAdapter() {
-		db = new MysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),
+		db = new IPMysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),
 				TYDatabaseManager.GetPassword());
-		buildingTable = MysqlBuildingParams.CreateTable();
+		buildingTable = IPMysqlBuildingParams.CreateTable();
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (InstantiationException e) {
@@ -60,7 +60,7 @@ public class TYBuildingDBAdapter {
 	}
 
 	public void deleteBuilding(String buildingID) {
-		db.deleteRecord(buildingTable, buildingTable.getField(MysqlBuildingParams.FIELD_BUILDING_2_ID), buildingID);
+		db.deleteRecord(buildingTable, buildingTable.getField(IPMysqlBuildingParams.FIELD_BUILDING_2_ID), buildingID);
 	}
 
 	public int insertOrUpdateBuildings(List<TYBuilding> buildingList) {
@@ -80,26 +80,26 @@ public class TYBuildingDBAdapter {
 	}
 
 	int insertBuilding(TYBuilding building) {
-		return db.insertData(buildingTable, MysqlBuildingParams.DataMapFromBuilding(building));
+		return db.insertData(buildingTable, IPMysqlBuildingParams.DataMapFromBuilding(building));
 	}
 
 	int updateBuilding(TYBuilding building) {
-		return db.updateData(buildingTable, MysqlBuildingParams.DataMapFromBuilding(building),
-				buildingTable.getField(MysqlBuildingParams.FIELD_BUILDING_2_ID), building.getBuildingID());
+		return db.updateData(buildingTable, IPMysqlBuildingParams.DataMapFromBuilding(building),
+				buildingTable.getField(IPMysqlBuildingParams.FIELD_BUILDING_2_ID), building.getBuildingID());
 	}
 
 	public List<TYBuilding> getBuildings() {
-		return MysqlBuildingParams.BuildingListFromRecords(db.readData(buildingTable));
+		return IPMysqlBuildingParams.BuildingListFromRecords(db.readData(buildingTable));
 	}
 
 	public List<TYBuilding> getBuildingsInCity(String cityID) {
-		return MysqlBuildingParams.BuildingListFromRecords(db.readData(buildingTable,
-				buildingTable.getField(MysqlBuildingParams.FIELD_BUILDING_1_CITY_ID), cityID));
+		return IPMysqlBuildingParams.BuildingListFromRecords(db.readData(buildingTable,
+				buildingTable.getField(IPMysqlBuildingParams.FIELD_BUILDING_1_CITY_ID), cityID));
 	}
 
 	public TYBuilding getBuilding(String buildingID) {
-		List<TYBuilding> buildings = MysqlBuildingParams.BuildingListFromRecords(db.readData(buildingTable,
-				buildingTable.getField(MysqlBuildingParams.FIELD_BUILDING_2_ID), buildingID));
+		List<TYBuilding> buildings = IPMysqlBuildingParams.BuildingListFromRecords(db.readData(buildingTable,
+				buildingTable.getField(IPMysqlBuildingParams.FIELD_BUILDING_2_ID), buildingID));
 		if (buildings != null && buildings.size() > 0) {
 			return buildings.get(0);
 		}
@@ -107,7 +107,7 @@ public class TYBuildingDBAdapter {
 	}
 
 	public boolean existBuilding(String buildingID) {
-		return db.existRecord(buildingTable, buildingTable.getField(MysqlBuildingParams.FIELD_BUILDING_2_ID),
+		return db.existRecord(buildingTable, buildingTable.getField(IPMysqlBuildingParams.FIELD_BUILDING_2_ID),
 				buildingID);
 	}
 

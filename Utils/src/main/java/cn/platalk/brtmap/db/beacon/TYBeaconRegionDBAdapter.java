@@ -6,15 +6,15 @@ import java.util.List;
 import cn.platalk.brtmap.db.map.TYDatabaseManager;
 import cn.platalk.brtmap.entity.base.TYIBeaconRegion;
 import cn.platalk.brtmap.entity.base.impl.TYBeaconRegion;
-import cn.platalk.sqlhelper.mysql.MysqlDB;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.mysql.IPMysqlDB;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYBeaconRegionDBAdapter {
-	MysqlDB db;
-	SqlTable beaconRegionTable;
+	IPMysqlDB db;
+	IPSqlTable beaconRegionTable;
 
 	public TYBeaconRegionDBAdapter() {
-		db = new MysqlDB(TYDatabaseManager.GetBeaconDBUrl(), TYDatabaseManager.GetUserName(),
+		db = new IPMysqlDB(TYDatabaseManager.GetBeaconDBUrl(), TYDatabaseManager.GetUserName(),
 				TYDatabaseManager.GetPassword());
 		beaconRegionTable = MysqlBeaconRegionParams.CreateTable();
 		try {

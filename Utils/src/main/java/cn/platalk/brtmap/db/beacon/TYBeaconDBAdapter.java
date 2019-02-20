@@ -9,18 +9,18 @@ import cn.platalk.brtmap.db.map.TYDatabaseManager;
 import cn.platalk.brtmap.entity.base.TYIBeacon;
 import cn.platalk.brtmap.entity.base.TYILocatingBeacon;
 import cn.platalk.brtmap.entity.base.impl.TYLocatingBeacon;
-import cn.platalk.sqlhelper.mysql.MysqlDB;
-import cn.platalk.sqlhelper.sql.SqlField;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.mysql.IPMysqlDB;
+import cn.platalk.sqlhelper.sql.IPSqlField;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYBeaconDBAdapter {
 	String buildingID;
-	MysqlDB db;
-	SqlTable beaconTable;
+	IPMysqlDB db;
+	IPSqlTable beaconTable;
 
 	public TYBeaconDBAdapter(String buildingID) {
 		this.buildingID = buildingID;
-		db = new MysqlDB(TYDatabaseManager.GetBeaconDBUrl(), TYDatabaseManager.GetUserName(),
+		db = new IPMysqlDB(TYDatabaseManager.GetBeaconDBUrl(), TYDatabaseManager.GetUserName(),
 				TYDatabaseManager.GetPassword());
 		beaconTable = MysqlBeaconParams.CreateTable(buildingID);
 		try {
@@ -64,7 +64,7 @@ public class TYBeaconDBAdapter {
 	}
 
 	public void deleteBeacon(String uuid, int major, int minor) {
-		Map<SqlField, Object> clause = new HashMap<SqlField, Object>();
+		Map<IPSqlField, Object> clause = new HashMap<IPSqlField, Object>();
 		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_2_UUID), uuid);
 		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_3_MAJOR), major);
 		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_4_MINOR), minor);
@@ -98,7 +98,7 @@ public class TYBeaconDBAdapter {
 	}
 
 	int updateBeacon(TYILocatingBeacon beacon) {
-		Map<SqlField, Object> clause = new HashMap<SqlField, Object>();
+		Map<IPSqlField, Object> clause = new HashMap<IPSqlField, Object>();
 		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_2_UUID), beacon.getUUID());
 		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_3_MAJOR), beacon.getMajor());
 		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_4_MINOR), beacon.getMinor());
@@ -119,7 +119,7 @@ public class TYBeaconDBAdapter {
 	}
 
 	public TYLocatingBeacon getBeacon(String uuid, int major, int minor) {
-		Map<SqlField, Object> clause = new HashMap<SqlField, Object>();
+		Map<IPSqlField, Object> clause = new HashMap<IPSqlField, Object>();
 		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_2_UUID), uuid);
 		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_3_MAJOR), major);
 		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_4_MINOR), minor);
@@ -131,7 +131,7 @@ public class TYBeaconDBAdapter {
 	}
 
 	public boolean existBeacon(String uuid, int major, int minor) {
-		Map<SqlField, Object> clause = new HashMap<SqlField, Object>();
+		Map<IPSqlField, Object> clause = new HashMap<IPSqlField, Object>();
 		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_2_UUID), uuid);
 		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_3_MAJOR), major);
 		clause.put(beaconTable.getField(MysqlBeaconParams.FIELD_BEACON_4_MINOR), minor);

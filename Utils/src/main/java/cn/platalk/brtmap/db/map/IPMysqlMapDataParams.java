@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.sqlhelper.sql.SqlField;
-import cn.platalk.sqlhelper.sql.SqlFieldType;
-import cn.platalk.sqlhelper.sql.SqlRecord;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.sql.IPSqlField;
+import cn.platalk.sqlhelper.sql.IPSqlFieldType;
+import cn.platalk.sqlhelper.sql.IPSqlRecord;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
-public class MysqlMapDataParams {
+public class IPMysqlMapDataParams {
 	static final String TABLE_MAP_DATA = "MAPDATA_%s";
 
 	static final String FIELD_MAP_DATA_1_OBJECT_ID = "OBJECT_ID";
@@ -37,66 +37,66 @@ public class MysqlMapDataParams {
 	static final String FIELD_MAP_DATA_20_EXTRUSION_HEIGHT = "EXTRUSION_HEIGHT";
 	static final String FIELD_MAP_DATA_21_EXTRUSION_BASE = "EXTRUSION_BASE";
 
-	private static List<SqlField> mapDataFieldList = null;
+	private static List<IPSqlField> mapDataFieldList = null;
 
-	public static SqlTable CreateTable(String buildingID) {
-		return new SqlTable(String.format(TABLE_MAP_DATA, buildingID), GetMapDataFieldList(), null);
+	public static IPSqlTable CreateTable(String buildingID) {
+		return new IPSqlTable(String.format(TABLE_MAP_DATA, buildingID), GetMapDataFieldList(), null);
 	}
 
-	public static List<SqlField> GetMapDataFieldList() {
+	public static List<IPSqlField> GetMapDataFieldList() {
 		if (mapDataFieldList == null) {
-			mapDataFieldList = new ArrayList<SqlField>();
+			mapDataFieldList = new ArrayList<IPSqlField>();
 
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_1_OBJECT_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_2_GEOMETRY,
-					new SqlFieldType(byte[].class.getName(), "MediumBlob"), false));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_3_GEO_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_4_POI_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_5_FLOOR_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_6_BUILDING_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_7_CATEGORY_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_1_OBJECT_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_2_GEOMETRY,
+					new IPSqlFieldType(byte[].class.getName(), "MediumBlob"), false));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_3_GEO_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_4_POI_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_5_FLOOR_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_6_BUILDING_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_7_CATEGORY_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
 			mapDataFieldList.add(
-					new SqlField(FIELD_MAP_DATA_8_NAME, new SqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+					new IPSqlField(FIELD_MAP_DATA_8_NAME, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
 			mapDataFieldList.add(
-					new SqlField(FIELD_MAP_DATA_9_SYMBOL_ID, new SqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_10_FLOOR_NUMBER,
-					new SqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_11_FLOOR_NAME,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_12_SHAPE_LENGTH,
-					new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_13_SHAPE_AREA,
-					new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new IPSqlField(FIELD_MAP_DATA_9_SYMBOL_ID, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_10_FLOOR_NUMBER,
+					new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_11_FLOOR_NAME,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_12_SHAPE_LENGTH,
+					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_13_SHAPE_AREA,
+					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			mapDataFieldList.add(
-					new SqlField(FIELD_MAP_DATA_14_LABEL_X, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new IPSqlField(FIELD_MAP_DATA_14_LABEL_X, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			mapDataFieldList.add(
-					new SqlField(FIELD_MAP_DATA_15_LABEL_Y, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new IPSqlField(FIELD_MAP_DATA_15_LABEL_Y, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			mapDataFieldList.add(
-					new SqlField(FIELD_MAP_DATA_16_LAYER, new SqlFieldType(Integer.class.getName(), "INT"), false));
+					new IPSqlField(FIELD_MAP_DATA_16_LAYER, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
 			mapDataFieldList.add(
-					new SqlField(FIELD_MAP_DATA_17_LEVEL_MAX, new SqlFieldType(Integer.class.getName(), "INT"), false));
+					new IPSqlField(FIELD_MAP_DATA_17_LEVEL_MAX, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
 			mapDataFieldList.add(
-					new SqlField(FIELD_MAP_DATA_18_LEVEL_MIN, new SqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_19_EXTRUSION,
-					new SqlFieldType(Boolean.class.getName(), "INTEGER(1)"), true, 0));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_20_EXTRUSION_HEIGHT,
-					new SqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
-			mapDataFieldList.add(new SqlField(FIELD_MAP_DATA_21_EXTRUSION_BASE,
-					new SqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
+					new IPSqlField(FIELD_MAP_DATA_18_LEVEL_MIN, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_19_EXTRUSION,
+					new IPSqlFieldType(Boolean.class.getName(), "INTEGER(1)"), true, 0));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_20_EXTRUSION_HEIGHT,
+					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
+			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_21_EXTRUSION_BASE,
+					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
 
 		}
 		return mapDataFieldList;
 	}
 
-	public static List<TYMapDataFeatureRecord> MapDataListFromRecords(List<SqlRecord> records) {
+	public static List<TYMapDataFeatureRecord> MapDataListFromRecords(List<IPSqlRecord> records) {
 		List<TYMapDataFeatureRecord> mapdataList = new ArrayList<TYMapDataFeatureRecord>();
-		for (SqlRecord record : records) {
+		for (IPSqlRecord record : records) {
 			TYMapDataFeatureRecord mapdata = new TYMapDataFeatureRecord();
 			mapdata.setObjectID(record.getString(FIELD_MAP_DATA_1_OBJECT_ID));
 			mapdata.setGeometry(record.getBlob(FIELD_MAP_DATA_2_GEOMETRY));

@@ -7,12 +7,12 @@ import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
 import cn.platalk.brtmap.entity.base.impl.TYMapSize;
-import cn.platalk.sqlhelper.sql.SqlField;
-import cn.platalk.sqlhelper.sql.SqlFieldType;
-import cn.platalk.sqlhelper.sql.SqlRecord;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.sql.IPSqlField;
+import cn.platalk.sqlhelper.sql.IPSqlFieldType;
+import cn.platalk.sqlhelper.sql.IPSqlRecord;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
-public class MysqlBuildingParams {
+public class IPMysqlBuildingParams {
 	static final String TABLE_BUILDING = "BUILDING";
 
 	static final String FIELD_BUILDING_0_PRIMARY_KEY = "_id";
@@ -31,46 +31,46 @@ public class MysqlBuildingParams {
 
 	static final String FIELD_BUILDING_11_STATUS = "STATUS";
 
-	private static List<SqlField> buildingFieldList = null;
+	private static List<IPSqlField> buildingFieldList = null;
 
-	public static SqlTable CreateTable() {
-		return new SqlTable(MysqlBuildingParams.TABLE_BUILDING, GetBuildingFieldList(), null);
+	public static IPSqlTable CreateTable() {
+		return new IPSqlTable(IPMysqlBuildingParams.TABLE_BUILDING, GetBuildingFieldList(), null);
 	}
 
-	public static List<SqlField> GetBuildingFieldList() {
+	public static List<IPSqlField> GetBuildingFieldList() {
 		if (buildingFieldList == null) {
-			buildingFieldList = new ArrayList<SqlField>();
+			buildingFieldList = new ArrayList<IPSqlField>();
 
-			buildingFieldList.add(new SqlField(FIELD_BUILDING_1_CITY_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_1_CITY_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
 			buildingFieldList.add(
-					new SqlField(FIELD_BUILDING_2_ID, new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			buildingFieldList.add(new SqlField(FIELD_BUILDING_3_NAME,
-					new SqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
-			buildingFieldList.add(new SqlField(FIELD_BUILDING_4_LONGITUDE,
-					new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new IPSqlField(FIELD_BUILDING_2_ID, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_3_NAME,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_4_LONGITUDE,
+					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			buildingFieldList.add(
-					new SqlField(FIELD_BUILDING_5_LATITUDE, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(new SqlField(FIELD_BUILDING_6_ADDRESS,
-					new SqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
-			buildingFieldList.add(new SqlField(FIELD_BUILDING_7_INIT_ANGLE,
-					new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(new SqlField(FIELD_BUILDING_8_ROUTE_URL,
-					new SqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
+					new IPSqlField(FIELD_BUILDING_5_LATITUDE, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_6_ADDRESS,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_7_INIT_ANGLE,
+					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_8_ROUTE_URL,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
 			buildingFieldList.add(
-					new SqlField(FIELD_BUILDING_9_OFFSET_X, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(new SqlField(FIELD_BUILDING_10_OFFSET_Y,
-					new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new IPSqlField(FIELD_BUILDING_9_OFFSET_X, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_10_OFFSET_Y,
+					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			buildingFieldList.add(
-					new SqlField(FIELD_BUILDING_11_STATUS, new SqlFieldType(Integer.class.getName(), "INT"), false));
+					new IPSqlField(FIELD_BUILDING_11_STATUS, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
 
 		}
 		return buildingFieldList;
 	}
 
-	public static List<TYBuilding> BuildingListFromRecords(List<SqlRecord> records) {
+	public static List<TYBuilding> BuildingListFromRecords(List<IPSqlRecord> records) {
 		List<TYBuilding> buildingList = new ArrayList<TYBuilding>();
-		for (SqlRecord record : records) {
+		for (IPSqlRecord record : records) {
 			TYBuilding building = new TYBuilding();
 			building.setCityID(record.getString(FIELD_BUILDING_1_CITY_ID));
 			building.setBuildingID(record.getString(FIELD_BUILDING_2_ID));

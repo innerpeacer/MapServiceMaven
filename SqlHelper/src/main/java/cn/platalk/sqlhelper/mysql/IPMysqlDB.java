@@ -7,18 +7,18 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.sqlhelper.sql.SqlBuilder;
-import cn.platalk.sqlhelper.sql.SqlDB;
-import cn.platalk.sqlhelper.sql.SqlField;
-import cn.platalk.sqlhelper.sql.SqlHelper;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.sql.IPSqlBuilder;
+import cn.platalk.sqlhelper.sql.IPSqlDB;
+import cn.platalk.sqlhelper.sql.IPSqlField;
+import cn.platalk.sqlhelper.sql.IPSqlHelper;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
-public class MysqlDB extends SqlDB {
+public class IPMysqlDB extends IPSqlDB {
 	private String url;
 	private String name;
 	private String password;
 
-	public MysqlDB(String url, String name, String pwd) {
+	public IPMysqlDB(String url, String name, String pwd) {
 		this.url = url;
 		this.name = name;
 		this.password = pwd;
@@ -51,21 +51,21 @@ public class MysqlDB extends SqlDB {
 		connection = null;
 	}
 
-	public int insertDataListInBatch(SqlTable table, List<Map<String, Object>> dataList) {
+	public int insertDataListInBatch(IPSqlTable table, List<Map<String, Object>> dataList) {
 		int result = 0;
-		String sql = SqlBuilder.insertSql(table);
+		String sql = IPSqlBuilder.insertSql(table);
 		PreparedStatement stmt;
 		try {
 			connection.setAutoCommit(false);
 			stmt = (PreparedStatement) connection.prepareStatement(sql);
-			List<SqlField> fields = table.getFields();
+			List<IPSqlField> fields = table.getFields();
 
 			for (int k = 0; k < dataList.size(); ++k) {
 				Map<String, Object> data = dataList.get(k);
 				for (int i = 0; i < fields.size(); ++i) {
-					SqlField field = fields.get(i);
+					IPSqlField field = fields.get(i);
 					String fieldName = field.fieldName;
-					SqlHelper.setStmtObject(stmt, i + 1, field, data.get(fieldName));
+					IPSqlHelper.setStmtObject(stmt, i + 1, field, data.get(fieldName));
 				}
 				stmt.addBatch();
 			}

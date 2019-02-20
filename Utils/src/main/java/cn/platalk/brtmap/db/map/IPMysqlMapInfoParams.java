@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
-import cn.platalk.sqlhelper.sql.SqlField;
-import cn.platalk.sqlhelper.sql.SqlFieldType;
-import cn.platalk.sqlhelper.sql.SqlRecord;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.sql.IPSqlField;
+import cn.platalk.sqlhelper.sql.IPSqlFieldType;
+import cn.platalk.sqlhelper.sql.IPSqlRecord;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
-public class MysqlMapInfoParams {
+public class IPMysqlMapInfoParams {
 	static final String TABLE_MAPINFO = "MAPINFO";
 
 	static final String FIELD_MAPINFO_1_CITY_ID = "CITY_ID";
@@ -26,46 +26,46 @@ public class MysqlMapInfoParams {
 	static final String FIELD_MAPINFO_10_XMAX = "XMAX";
 	static final String FIELD_MAPINFO_11_YMAX = "YMAX";
 
-	private static List<SqlField> mapInfoFieldList = null;
+	private static List<IPSqlField> mapInfoFieldList = null;
 
-	public static SqlTable CreateTable() {
-		return new SqlTable(TABLE_MAPINFO, GetMapInfoFieldList(), null);
+	public static IPSqlTable CreateTable() {
+		return new IPSqlTable(TABLE_MAPINFO, GetMapInfoFieldList(), null);
 	}
 
-	public static List<SqlField> GetMapInfoFieldList() {
+	public static List<IPSqlField> GetMapInfoFieldList() {
 		if (mapInfoFieldList == null) {
-			mapInfoFieldList = new ArrayList<SqlField>();
+			mapInfoFieldList = new ArrayList<IPSqlField>();
 
-			mapInfoFieldList.add(new SqlField(FIELD_MAPINFO_1_CITY_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapInfoFieldList.add(new SqlField(FIELD_MAPINFO_2_BUILDING_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapInfoFieldList.add(new SqlField(FIELD_MAPINFO_3_MAP_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapInfoFieldList.add(new SqlField(FIELD_MAPINFO_4_FLOOR_NAME,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapInfoFieldList.add(new SqlField(FIELD_MAPINFO_5_FLOOR_NUMBER,
-					new SqlFieldType(Integer.class.getName(), "INT"), false));
+			mapInfoFieldList.add(new IPSqlField(FIELD_MAPINFO_1_CITY_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapInfoFieldList.add(new IPSqlField(FIELD_MAPINFO_2_BUILDING_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapInfoFieldList.add(new IPSqlField(FIELD_MAPINFO_3_MAP_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapInfoFieldList.add(new IPSqlField(FIELD_MAPINFO_4_FLOOR_NAME,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+			mapInfoFieldList.add(new IPSqlField(FIELD_MAPINFO_5_FLOOR_NUMBER,
+					new IPSqlFieldType(Integer.class.getName(), "INT"), false));
 			mapInfoFieldList.add(
-					new SqlField(FIELD_MAPINFO_6_SIZE_X, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new IPSqlField(FIELD_MAPINFO_6_SIZE_X, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			mapInfoFieldList.add(
-					new SqlField(FIELD_MAPINFO_7_SIZE_Y, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new IPSqlField(FIELD_MAPINFO_7_SIZE_Y, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			mapInfoFieldList
-					.add(new SqlField(FIELD_MAPINFO_8_XMIN, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					.add(new IPSqlField(FIELD_MAPINFO_8_XMIN, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			mapInfoFieldList
-					.add(new SqlField(FIELD_MAPINFO_9_YMIN, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					.add(new IPSqlField(FIELD_MAPINFO_9_YMIN, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			mapInfoFieldList.add(
-					new SqlField(FIELD_MAPINFO_10_XMAX, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new IPSqlField(FIELD_MAPINFO_10_XMAX, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			mapInfoFieldList.add(
-					new SqlField(FIELD_MAPINFO_11_YMAX, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					new IPSqlField(FIELD_MAPINFO_11_YMAX, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 
 		}
 		return mapInfoFieldList;
 	}
 
-	public static List<TYMapInfo> MapInfoListFromRecord(List<SqlRecord> records) {
+	public static List<TYMapInfo> MapInfoListFromRecord(List<IPSqlRecord> records) {
 		List<TYMapInfo> mapInfoList = new ArrayList<TYMapInfo>();
-		for (SqlRecord record : records) {
+		for (IPSqlRecord record : records) {
 			TYMapInfo mapInfo = new TYMapInfo();
 			mapInfo.setCityID(record.getString(FIELD_MAPINFO_1_CITY_ID));
 			mapInfo.setBuildingID(record.getString(FIELD_MAPINFO_2_BUILDING_ID));

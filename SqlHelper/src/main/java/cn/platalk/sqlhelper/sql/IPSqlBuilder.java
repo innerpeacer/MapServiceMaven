@@ -3,9 +3,9 @@ package cn.platalk.sqlhelper.sql;
 import java.util.List;
 import java.util.Map;
 
-public class SqlBuilder {
+public class IPSqlBuilder {
 
-	public static String selectSql(SqlTable table, Map<SqlField, Object> clause) {
+	public static String selectSql(IPSqlTable table, Map<IPSqlField, Object> clause) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("select * from ").append(tableName);
@@ -15,7 +15,7 @@ public class SqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String selectSql(SqlTable table, SqlField targetField, Object value) {
+	public static String selectSql(IPSqlTable table, IPSqlField targetField, Object value) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("select * from ").append(tableName);
@@ -25,15 +25,15 @@ public class SqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String insertSql(SqlTable table) {
+	public static String insertSql(IPSqlTable table) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("insert into ").append(tableName);
 
 		buffer.append(" (");
 		boolean needComma = false;
-		List<SqlField> fields = table.getFields();
-		for (SqlField field : fields) {
+		List<IPSqlField> fields = table.getFields();
+		for (IPSqlField field : fields) {
 			if (needComma) {
 				buffer.append(", ");
 			} else {
@@ -60,7 +60,7 @@ public class SqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String updateSql(SqlTable table, List<SqlField> updateFields, Map<SqlField, Object> clause) {
+	public static String updateSql(IPSqlTable table, List<IPSqlField> updateFields, Map<IPSqlField, Object> clause) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("update ").append(tableName).append(" set ");
@@ -81,7 +81,7 @@ public class SqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String updateSql(SqlTable table, List<SqlField> updateFields, SqlField targetField, Object value) {
+	public static String updateSql(IPSqlTable table, List<IPSqlField> updateFields, IPSqlField targetField, Object value) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("update ").append(tableName).append(" set ");
@@ -102,7 +102,7 @@ public class SqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String whereClause(SqlField field, Object value) {
+	public static String whereClause(IPSqlField field, Object value) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(" where ");
 		buffer.append(field.fieldName).append("=");
@@ -115,12 +115,12 @@ public class SqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String whereClause(Map<SqlField, Object> clause) {
+	public static String whereClause(Map<IPSqlField, Object> clause) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(" where ");
 
 		boolean needComma = false;
-		for (SqlField field : clause.keySet()) {
+		for (IPSqlField field : clause.keySet()) {
 			if (needComma) {
 				buffer.append(" and ");
 			} else {
@@ -138,7 +138,7 @@ public class SqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String mysqlTableCreateSql(SqlTable table) {
+	public static String mysqlTableCreateSql(IPSqlTable table) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("CREATE TABLE IF NOT EXISTS ").append(tableName);
@@ -146,8 +146,8 @@ public class SqlBuilder {
 
 		boolean needComma = false;
 
-		List<SqlField> fields = table.getFields();
-		for (SqlField field : fields) {
+		List<IPSqlField> fields = table.getFields();
+		for (IPSqlField field : fields) {
 			if (needComma) {
 				buffer.append(", ");
 			} else {
@@ -163,7 +163,7 @@ public class SqlBuilder {
 		return buffer.toString();
 	}
 
-	public static String sqliteTableCreateSql(SqlTable table) {
+	public static String sqliteTableCreateSql(IPSqlTable table) {
 		StringBuffer buffer = new StringBuffer();
 		String tableName = table.getTableName();
 		buffer.append("create table if not exists ").append(tableName);
@@ -176,8 +176,8 @@ public class SqlBuilder {
 			needComma = true;
 		}
 
-		List<SqlField> fields = table.getFields();
-		for (SqlField field : fields) {
+		List<IPSqlField> fields = table.getFields();
+		for (IPSqlField field : fields) {
 			if (needComma) {
 				buffer.append(", ");
 			} else {

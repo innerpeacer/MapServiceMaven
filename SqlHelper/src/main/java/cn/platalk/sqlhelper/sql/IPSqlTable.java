@@ -3,14 +3,14 @@ package cn.platalk.sqlhelper.sql;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SqlTable {
+public class IPSqlTable {
 	private String tableName;
-	private List<SqlField> fields;
+	private List<IPSqlField> fields;
 	private String primaryKey;
 
-	public SqlTable(String name, List<SqlField> fields, String primaryKey) {
+	public IPSqlTable(String name, List<IPSqlField> fields, String primaryKey) {
 		this.tableName = name;
-		this.fields = new ArrayList<SqlField>(fields);
+		this.fields = new ArrayList<IPSqlField>(fields);
 		this.primaryKey = primaryKey;
 	}
 
@@ -18,12 +18,12 @@ public class SqlTable {
 		return tableName;
 	}
 
-	public List<SqlField> getFields() {
+	public List<IPSqlField> getFields() {
 		return fields;
 	}
 
-	public SqlField getField(String name) {
-		for (SqlField field : fields) {
+	public IPSqlField getField(String name) {
+		for (IPSqlField field : fields) {
 			if (field.fieldName.equals(name)) {
 				return field;
 			}

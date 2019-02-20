@@ -7,20 +7,20 @@ import java.util.List;
 import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.sqlhelper.mysql.MysqlDB;
-import cn.platalk.sqlhelper.sql.SqlField;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.mysql.IPMysqlDB;
+import cn.platalk.sqlhelper.sql.IPSqlField;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYMapDataDBAdapter {
 	String buildingID;
-	MysqlDB db;
-	SqlTable mapdataTable;
+	IPMysqlDB db;
+	IPSqlTable mapdataTable;
 
 	public TYMapDataDBAdapter(String buildingID) {
 		this.buildingID = buildingID;
-		db = new MysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),
+		db = new IPMysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),
 				TYDatabaseManager.GetPassword());
-		mapdataTable = MysqlMapDataParams.CreateTable(buildingID);
+		mapdataTable = IPMysqlMapDataParams.CreateTable(buildingID);
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (InstantiationException e) {
@@ -74,17 +74,17 @@ public class TYMapDataDBAdapter {
 	}
 
 	public void deleteMapDataByGeoID(String geoID) {
-		db.deleteRecord(mapdataTable, mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_3_GEO_ID), geoID);
+		db.deleteRecord(mapdataTable, mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_3_GEO_ID), geoID);
 	}
 
 	public void deleteMapDataByPoiID(String poiID) {
-		db.deleteRecord(mapdataTable, mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_4_POI_ID), poiID);
+		db.deleteRecord(mapdataTable, mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_4_POI_ID), poiID);
 	}
 
 	public int insertMapDataRecordsInBatch(List<TYMapDataFeatureRecord> recordList) {
 		List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
 		for (TYMapDataFeatureRecord record : recordList) {
-			dataList.add(MysqlMapDataParams.DataMapFromMapDataFeatureRecord(record));
+			dataList.add(IPMysqlMapDataParams.DataMapFromMapDataFeatureRecord(record));
 		}
 		return db.insertDataListInBatch(mapdataTable, dataList);
 	}
@@ -114,38 +114,38 @@ public class TYMapDataDBAdapter {
 	}
 
 	int insertMapDataRecord(TYMapDataFeatureRecord record) {
-		return db.insertData(mapdataTable, MysqlMapDataParams.DataMapFromMapDataFeatureRecord(record));
+		return db.insertData(mapdataTable, IPMysqlMapDataParams.DataMapFromMapDataFeatureRecord(record));
 	}
 
 	int updateMapDataRecord(TYMapDataFeatureRecord record) {
-		return db.updateData(mapdataTable, MysqlMapDataParams.DataMapFromMapDataFeatureRecord(record),
-				mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_3_GEO_ID), record.getGeoID());
+		return db.updateData(mapdataTable, IPMysqlMapDataParams.DataMapFromMapDataFeatureRecord(record),
+				mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_3_GEO_ID), record.getGeoID());
 	}
 
 	public List<TYMapDataFeatureRecord> getAllMapDataRecords() {
-		return MysqlMapDataParams.MapDataListFromRecords(db.readData(mapdataTable));
+		return IPMysqlMapDataParams.MapDataListFromRecords(db.readData(mapdataTable));
 	}
 
 	public List<TYMapDataFeatureRecord> getAllMapDataRecords(int floor) {
-		return MysqlMapDataParams.MapDataListFromRecords(db.readData(mapdataTable,
-				mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_10_FLOOR_NUMBER), floor));
+		return IPMysqlMapDataParams.MapDataListFromRecords(db.readData(mapdataTable,
+				mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_10_FLOOR_NUMBER), floor));
 	}
 
 	public List<TYMapDataFeatureRecord> getAllMapDataRecords(String mapID) {
-		return MysqlMapDataParams.MapDataListFromRecords(
-				db.readData(mapdataTable, mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_5_FLOOR_ID), mapID));
+		return IPMysqlMapDataParams.MapDataListFromRecords(
+				db.readData(mapdataTable, mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_5_FLOOR_ID), mapID));
 	}
 
 	public List<TYMapDataFeatureRecord> getAllMapDataRecords(int floor, int layer) {
-		Map<SqlField, Object> clause = new HashMap<SqlField, Object>();
-		clause.put(mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_10_FLOOR_NUMBER), floor);
-		clause.put(mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_16_LAYER), layer);
-		return MysqlMapDataParams.MapDataListFromRecords(db.readData(mapdataTable, clause));
+		Map<IPSqlField, Object> clause = new HashMap<IPSqlField, Object>();
+		clause.put(mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_10_FLOOR_NUMBER), floor);
+		clause.put(mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_16_LAYER), layer);
+		return IPMysqlMapDataParams.MapDataListFromRecords(db.readData(mapdataTable, clause));
 	}
 
 	public TYMapDataFeatureRecord getMapDataRecord(String geoID) {
-		List<TYMapDataFeatureRecord> records = MysqlMapDataParams.MapDataListFromRecords(
-				db.readData(mapdataTable, mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_3_GEO_ID), geoID));
+		List<TYMapDataFeatureRecord> records = IPMysqlMapDataParams.MapDataListFromRecords(
+				db.readData(mapdataTable, mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_3_GEO_ID), geoID));
 		if (records != null && records.size() > 0) {
 			return records.get(0);
 		}
@@ -164,9 +164,9 @@ public class TYMapDataDBAdapter {
 	// }
 
 	public boolean existMapData(String geoID, int layer) {
-		Map<SqlField, Object> clause = new HashMap<SqlField, Object>();
-		clause.put(mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_3_GEO_ID), geoID);
-		clause.put(mapdataTable.getField(MysqlMapDataParams.FIELD_MAP_DATA_16_LAYER), layer);
+		Map<IPSqlField, Object> clause = new HashMap<IPSqlField, Object>();
+		clause.put(mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_3_GEO_ID), geoID);
+		clause.put(mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_16_LAYER), layer);
 		return db.existRecord(mapdataTable, clause);
 	}
 

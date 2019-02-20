@@ -5,17 +5,17 @@ import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import cn.platalk.sqlhelper.sql.SqlDB;
+import cn.platalk.sqlhelper.sql.IPSqlDB;
 
-public class SqliteDB extends SqlDB {
+public class IPSqliteDB extends IPSqlDB {
 	private String dbPath;
-	private JDBCVersion jdbcVersion = JDBCVersion.JAVA;
+	private IPJdbcVersion jdbcVersion = IPJdbcVersion.JAVA;
 
-	public SqliteDB(String path) {
-		this(path, JDBCVersion.JAVA);
+	public IPSqliteDB(String path) {
+		this(path, IPJdbcVersion.JAVA);
 	}
 
-	public SqliteDB(String path, JDBCVersion versionn) {
+	public IPSqliteDB(String path, IPJdbcVersion versionn) {
 		jdbcVersion = versionn;
 		try {
 			Class.forName(IPSqliteConfig.getDriverName(jdbcVersion));

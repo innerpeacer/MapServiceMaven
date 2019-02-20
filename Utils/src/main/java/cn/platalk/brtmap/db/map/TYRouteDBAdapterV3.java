@@ -7,21 +7,21 @@ import java.util.Map;
 
 import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
 import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
-import cn.platalk.sqlhelper.mysql.MysqlDB;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.mysql.IPMysqlDB;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYRouteDBAdapterV3 {
 	String buildingID;
-	MysqlDB db;
-	SqlTable routeLinkTable;
-	SqlTable routeNodeTable;
+	IPMysqlDB db;
+	IPSqlTable routeLinkTable;
+	IPSqlTable routeNodeTable;
 
 	public TYRouteDBAdapterV3(String buildingID) {
 		this.buildingID = buildingID;
-		db = new MysqlDB(TYDatabaseManager.GetRouteDBUrl(), TYDatabaseManager.GetUserName(),
+		db = new IPMysqlDB(TYDatabaseManager.GetRouteDBUrl(), TYDatabaseManager.GetUserName(),
 				TYDatabaseManager.GetPassword());
-		routeLinkTable = MysqlRouteLinkV3Params.CreateTable(buildingID);
-		routeNodeTable = MysqlRouteNodeV3Params.CreateTable(buildingID);
+		routeLinkTable = IPMysqlRouteLinkV3Params.CreateTable(buildingID);
+		routeNodeTable = IPMysqlRouteNodeV3Params.CreateTable(buildingID);
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (InstantiationException e) {
@@ -100,7 +100,7 @@ public class TYRouteDBAdapterV3 {
 	public int insertRouteLinkRecordsInBatch(List<TYIRouteLinkRecordV3> recordList) {
 		List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
 		for (TYIRouteLinkRecordV3 record : recordList) {
-			dataList.add(MysqlRouteLinkV3Params.DataMapFromRouteLinkRecord(record));
+			dataList.add(IPMysqlRouteLinkV3Params.DataMapFromRouteLinkRecord(record));
 		}
 		return db.insertDataListInBatch(routeLinkTable, dataList);
 	}
@@ -108,28 +108,28 @@ public class TYRouteDBAdapterV3 {
 	public int insertRouteNodeRecordsInBatch(List<TYIRouteNodeRecordV3> recordList) {
 		List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
 		for (TYIRouteNodeRecordV3 record : recordList) {
-			dataList.add(MysqlRouteNodeV3Params.DataMapFromRouteNodeRecord(record));
+			dataList.add(IPMysqlRouteNodeV3Params.DataMapFromRouteNodeRecord(record));
 		}
 		return db.insertDataListInBatch(routeNodeTable, dataList);
 	}
 
 	int insertLinkRecord(TYIRouteLinkRecordV3 record) {
-		return db.insertData(routeLinkTable, MysqlRouteLinkV3Params.DataMapFromRouteLinkRecord(record));
+		return db.insertData(routeLinkTable, IPMysqlRouteLinkV3Params.DataMapFromRouteLinkRecord(record));
 	}
 
 	int insertNodeRecord(TYIRouteNodeRecordV3 record) {
-		return db.insertData(routeNodeTable, MysqlRouteNodeV3Params.DataMapFromRouteNodeRecord(record));
+		return db.insertData(routeNodeTable, IPMysqlRouteNodeV3Params.DataMapFromRouteNodeRecord(record));
 	}
 
 	public List<TYIRouteLinkRecordV3> getAllLinkRecords() {
 		List<TYIRouteLinkRecordV3> result = new ArrayList<TYIRouteLinkRecordV3>();
-		result.addAll(MysqlRouteLinkV3Params.RouteLinkListFromRecords(db.readData(routeLinkTable)));
+		result.addAll(IPMysqlRouteLinkV3Params.RouteLinkListFromRecords(db.readData(routeLinkTable)));
 		return result;
 	}
 
 	public List<TYIRouteNodeRecordV3> getAllNodeRecords() {
 		List<TYIRouteNodeRecordV3> result = new ArrayList<TYIRouteNodeRecordV3>();
-		result.addAll(MysqlRouteNodeV3Params.RouteNodeListFromRecords(db.readData(routeNodeTable)));
+		result.addAll(IPMysqlRouteNodeV3Params.RouteNodeListFromRecords(db.readData(routeNodeTable)));
 		return result;
 	}
 }

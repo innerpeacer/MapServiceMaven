@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public abstract class SqlDB {
+public abstract class IPSqlDB {
 	protected Connection connection;
 
-	public boolean existTable(SqlTable table) {
+	public boolean existTable(IPSqlTable table) {
 		try {
 			ResultSet rs = connection.getMetaData().getTables(null, null, table.getTableName(), null);
 			if (rs.next()) {
@@ -24,16 +24,16 @@ public abstract class SqlDB {
 		return false;
 	}
 
-	public void createTable(SqlTable table) {
+	public void createTable(IPSqlTable table) {
 		try {
 			Statement stmt = connection.createStatement();
-			stmt.executeUpdate(SqlBuilder.mysqlTableCreateSql(table));
+			stmt.executeUpdate(IPSqlBuilder.mysqlTableCreateSql(table));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void dropTable(SqlTable table) {
+	public void dropTable(IPSqlTable table) {
 		String sql = String.format("drop table %s", table.getTableName());
 		try {
 			Statement stmt = connection.createStatement();
@@ -43,7 +43,7 @@ public abstract class SqlDB {
 		}
 	}
 
-	public void eraseTable(SqlTable table) {
+	public void eraseTable(IPSqlTable table) {
 		String sql = String.format("delete from %s", table.getTableName());
 		try {
 			Statement stmt = connection.createStatement();
@@ -53,11 +53,11 @@ public abstract class SqlDB {
 		}
 	}
 
-	public void deleteRecord(SqlTable table, Map<SqlField, Object> clause) {
+	public void deleteRecord(IPSqlTable table, Map<IPSqlField, Object> clause) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("delete from ").append(table.getTableName());
 		if (clause != null && clause.size() > 0) {
-			buffer.append(SqlBuilder.whereClause(clause));
+			buffer.append(IPSqlBuilder.whereClause(clause));
 		}
 		String sql = buffer.toString();
 		try {
@@ -68,11 +68,11 @@ public abstract class SqlDB {
 		}
 	}
 
-	public void deleteRecord(SqlTable table, SqlField field, Object value) {
+	public void deleteRecord(IPSqlTable table, IPSqlField field, Object value) {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("delete from ").append(table.getTableName());
 		if (field != null) {
-			buffer.append(SqlBuilder.whereClause(field, value));
+			buffer.append(IPSqlBuilder.whereClause(field, value));
 		}
 		String sql = buffer.toString();
 		try {
@@ -83,12 +83,12 @@ public abstract class SqlDB {
 		}
 	}
 
-	public boolean existRecord(SqlTable table, Map<SqlField, Object> clause) {
+	public boolean existRecord(IPSqlTable table, Map<IPSqlField, Object> clause) {
 		int result = 0;
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("select count(*) from ").append(table.getTableName());
 		if (clause != null && clause.size() > 0) {
-			buffer.append(SqlBuilder.whereClause(clause));
+			buffer.append(IPSqlBuilder.whereClause(clause));
 		}
 		String sql = buffer.toString();
 		ResultSet rs = null;
@@ -105,12 +105,12 @@ public abstract class SqlDB {
 		return (result != 0);
 	}
 
-	public boolean existRecord(SqlTable table, SqlField field, Object value) {
+	public boolean existRecord(IPSqlTable table, IPSqlField field, Object value) {
 		int result = 0;
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("select count(*) from ").append(table.getTableName());
 		if (field != null) {
-			buffer.append(SqlBuilder.whereClause(field, value));
+			buffer.append(IPSqlBuilder.whereClause(field, value));
 		}
 		String sql = buffer.toString();
 		ResultSet rs = null;
@@ -127,18 +127,18 @@ public abstract class SqlDB {
 		return (result != 0);
 	}
 
-	public int insertData(SqlTable table, Map<String, Object> data) {
+	public int insertData(IPSqlTable table, Map<String, Object> data) {
 		int result = 0;
-		String sql = SqlBuilder.insertSql(table);
+		String sql = IPSqlBuilder.insertSql(table);
 		// System.out.println(sql);
 		PreparedStatement stmt;
 		try {
 			stmt = (PreparedStatement) connection.prepareStatement(sql);
-			List<SqlField> fields = table.getFields();
+			List<IPSqlField> fields = table.getFields();
 			for (int i = 0; i < fields.size(); ++i) {
-				SqlField field = fields.get(i);
+				IPSqlField field = fields.get(i);
 				String fieldName = field.fieldName;
-				SqlHelper.setStmtObject(stmt, i + 1, field, data.get(fieldName));
+				IPSqlHelper.setStmtObject(stmt, i + 1, field, data.get(fieldName));
 			}
 			result = stmt.executeUpdate();
 			stmt.close();
@@ -148,22 +148,22 @@ public abstract class SqlDB {
 		return result;
 	}
 
-	public int updateData(SqlTable table, Map<String, Object> data, Map<SqlField, Object> clause) {
+	public int updateData(IPSqlTable table, Map<String, Object> data, Map<IPSqlField, Object> clause) {
 		int result = 0;
-		List<SqlField> updateFields = new ArrayList<SqlField>();
+		List<IPSqlField> updateFields = new ArrayList<IPSqlField>();
 		for (String fieldName : data.keySet()) {
 			updateFields.add(table.getField(fieldName));
 		}
 
-		String sql = SqlBuilder.updateSql(table, updateFields, clause);
+		String sql = IPSqlBuilder.updateSql(table, updateFields, clause);
 		// System.out.println(sql);
 		PreparedStatement stmt;
 		try {
 			stmt = (PreparedStatement) connection.prepareStatement(sql);
 			for (int i = 0; i < updateFields.size(); ++i) {
-				SqlField field = updateFields.get(i);
+				IPSqlField field = updateFields.get(i);
 				String fieldName = field.fieldName;
-				SqlHelper.setStmtObject(stmt, i + 1, field, data.get(fieldName));
+				IPSqlHelper.setStmtObject(stmt, i + 1, field, data.get(fieldName));
 			}
 			result = stmt.executeUpdate();
 			stmt.close();
@@ -173,22 +173,22 @@ public abstract class SqlDB {
 		return result;
 	}
 
-	public int updateData(SqlTable table, Map<String, Object> data, SqlField targetField, Object value) {
+	public int updateData(IPSqlTable table, Map<String, Object> data, IPSqlField targetField, Object value) {
 		int result = 0;
-		List<SqlField> updateFields = new ArrayList<SqlField>();
+		List<IPSqlField> updateFields = new ArrayList<IPSqlField>();
 		for (String fieldName : data.keySet()) {
 			updateFields.add(table.getField(fieldName));
 		}
 
-		String sql = SqlBuilder.updateSql(table, updateFields, targetField, value);
+		String sql = IPSqlBuilder.updateSql(table, updateFields, targetField, value);
 		// System.out.println(sql);
 		PreparedStatement stmt;
 		try {
 			stmt = (PreparedStatement) connection.prepareStatement(sql);
 			for (int i = 0; i < updateFields.size(); ++i) {
-				SqlField field = updateFields.get(i);
+				IPSqlField field = updateFields.get(i);
 				String fieldName = field.fieldName;
-				SqlHelper.setStmtObject(stmt, i + 1, field, data.get(fieldName));
+				IPSqlHelper.setStmtObject(stmt, i + 1, field, data.get(fieldName));
 			}
 			result = stmt.executeUpdate();
 			stmt.close();
@@ -198,9 +198,9 @@ public abstract class SqlDB {
 		return result;
 	}
 
-	public List<SqlRecord> readData(SqlTable table, Map<SqlField, Object> clause) {
-		List<SqlRecord> records = new ArrayList<SqlRecord>();
-		String sql = SqlBuilder.selectSql(table, clause);
+	public List<IPSqlRecord> readData(IPSqlTable table, Map<IPSqlField, Object> clause) {
+		List<IPSqlRecord> records = new ArrayList<IPSqlRecord>();
+		String sql = IPSqlBuilder.selectSql(table, clause);
 		// System.out.println(sql);
 		ResultSet rs = null;
 		try {
@@ -208,13 +208,13 @@ public abstract class SqlDB {
 			rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {
-				List<SqlEntity> entities = new ArrayList<SqlEntity>();
-				List<SqlField> fields = table.getFields();
-				for (SqlField f : fields) {
-					SqlEntity entity = SqlHelper.getObject(rs, f);
+				List<IPSqlEntity> entities = new ArrayList<IPSqlEntity>();
+				List<IPSqlField> fields = table.getFields();
+				for (IPSqlField f : fields) {
+					IPSqlEntity entity = IPSqlHelper.getObject(rs, f);
 					entities.add(entity);
 				}
-				SqlRecord record = new SqlRecord(entities);
+				IPSqlRecord record = new IPSqlRecord(entities);
 				records.add(record);
 			}
 		} catch (SQLException e) {
@@ -223,9 +223,9 @@ public abstract class SqlDB {
 		return records;
 	}
 
-	public List<SqlRecord> readData(SqlTable table, SqlField targetField, Object value) {
-		List<SqlRecord> records = new ArrayList<SqlRecord>();
-		String sql = SqlBuilder.selectSql(table, targetField, value);
+	public List<IPSqlRecord> readData(IPSqlTable table, IPSqlField targetField, Object value) {
+		List<IPSqlRecord> records = new ArrayList<IPSqlRecord>();
+		String sql = IPSqlBuilder.selectSql(table, targetField, value);
 		// System.out.println(sql);
 		ResultSet rs = null;
 		try {
@@ -233,13 +233,13 @@ public abstract class SqlDB {
 			rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {
-				List<SqlEntity> entities = new ArrayList<SqlEntity>();
-				List<SqlField> fields = table.getFields();
-				for (SqlField f : fields) {
-					SqlEntity entity = SqlHelper.getObject(rs, f);
+				List<IPSqlEntity> entities = new ArrayList<IPSqlEntity>();
+				List<IPSqlField> fields = table.getFields();
+				for (IPSqlField f : fields) {
+					IPSqlEntity entity = IPSqlHelper.getObject(rs, f);
 					entities.add(entity);
 				}
-				SqlRecord record = new SqlRecord(entities);
+				IPSqlRecord record = new IPSqlRecord(entities);
 				records.add(record);
 			}
 		} catch (SQLException e) {
@@ -248,8 +248,8 @@ public abstract class SqlDB {
 		return records;
 	}
 
-	public List<SqlRecord> readData(SqlTable table) {
-		List<SqlRecord> records = new ArrayList<SqlRecord>();
+	public List<IPSqlRecord> readData(IPSqlTable table) {
+		List<IPSqlRecord> records = new ArrayList<IPSqlRecord>();
 		String sql = String.format("select * from %s", table.getTableName());
 		ResultSet rs = null;
 		try {
@@ -257,13 +257,13 @@ public abstract class SqlDB {
 			rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {
-				List<SqlEntity> entities = new ArrayList<SqlEntity>();
-				List<SqlField> fields = table.getFields();
-				for (SqlField f : fields) {
-					SqlEntity entity = SqlHelper.getObject(rs, f);
+				List<IPSqlEntity> entities = new ArrayList<IPSqlEntity>();
+				List<IPSqlField> fields = table.getFields();
+				for (IPSqlField f : fields) {
+					IPSqlEntity entity = IPSqlHelper.getObject(rs, f);
 					entities.add(entity);
 				}
-				SqlRecord record = new SqlRecord(entities);
+				IPSqlRecord record = new IPSqlRecord(entities);
 				records.add(record);
 			}
 		} catch (SQLException e) {

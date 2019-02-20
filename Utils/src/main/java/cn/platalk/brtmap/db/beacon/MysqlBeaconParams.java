@@ -8,10 +8,10 @@ import java.util.Map;
 import cn.platalk.brtmap.entity.base.TYILocatingBeacon;
 import cn.platalk.brtmap.entity.base.TYLocalPoint;
 import cn.platalk.brtmap.entity.base.impl.TYLocatingBeacon;
-import cn.platalk.sqlhelper.sql.SqlField;
-import cn.platalk.sqlhelper.sql.SqlFieldType;
-import cn.platalk.sqlhelper.sql.SqlRecord;
-import cn.platalk.sqlhelper.sql.SqlTable;
+import cn.platalk.sqlhelper.sql.IPSqlField;
+import cn.platalk.sqlhelper.sql.IPSqlFieldType;
+import cn.platalk.sqlhelper.sql.IPSqlRecord;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class MysqlBeaconParams {
 	static final String TABLE_BEACON = "BEACON_%s";
@@ -30,46 +30,46 @@ public class MysqlBeaconParams {
 	static final String FIELD_BEACON_11_BUILDING_ID = "BUILDING_ID";
 	static final String FIELD_BEACON_12_CITY_ID = "CITY_ID";
 
-	private static List<SqlField> beaconFieldList = null;
+	private static List<IPSqlField> beaconFieldList = null;
 
-	public static SqlTable CreateTable(String buildingID) {
-		return new SqlTable(String.format(TABLE_BEACON, buildingID), GetBeaconFieldList(), null);
+	public static IPSqlTable CreateTable(String buildingID) {
+		return new IPSqlTable(String.format(TABLE_BEACON, buildingID), GetBeaconFieldList(), null);
 	}
 
-	public static List<SqlField> GetBeaconFieldList() {
+	public static List<IPSqlField> GetBeaconFieldList() {
 		if (beaconFieldList == null) {
-			beaconFieldList = new ArrayList<SqlField>();
+			beaconFieldList = new ArrayList<IPSqlField>();
 			beaconFieldList
-					.add(new SqlField(FIELD_BEACON_1_GEOM, new SqlFieldType(byte[].class.getName(), "BLOB"), false));
+					.add(new IPSqlField(FIELD_BEACON_1_GEOM, new IPSqlFieldType(byte[].class.getName(), "BLOB"), false));
 			beaconFieldList.add(
-					new SqlField(FIELD_BEACON_2_UUID, new SqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+					new IPSqlField(FIELD_BEACON_2_UUID, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
 			beaconFieldList.add(
-					new SqlField(FIELD_BEACON_3_MAJOR, new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
+					new IPSqlField(FIELD_BEACON_3_MAJOR, new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
 			beaconFieldList.add(
-					new SqlField(FIELD_BEACON_4_MINOR, new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
+					new IPSqlField(FIELD_BEACON_4_MINOR, new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
 			beaconFieldList.add(
-					new SqlField(FIELD_BEACON_5_FLOOR, new SqlFieldType(Integer.class.getName(), "INTEGER"), false));
+					new IPSqlField(FIELD_BEACON_5_FLOOR, new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
 			beaconFieldList
-					.add(new SqlField(FIELD_BEACON_6_X, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
+					.add(new IPSqlField(FIELD_BEACON_6_X, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 			beaconFieldList
-					.add(new SqlField(FIELD_BEACON_7_Y, new SqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			beaconFieldList.add(new SqlField(FIELD_BEACON_8_ROOM_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+					.add(new IPSqlField(FIELD_BEACON_7_Y, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+			beaconFieldList.add(new IPSqlField(FIELD_BEACON_8_ROOM_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
 			beaconFieldList.add(
-					new SqlField(FIELD_BEACON_9_TAG, new SqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
-			beaconFieldList.add(new SqlField(FIELD_BEACON_10_MAP_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
-			beaconFieldList.add(new SqlField(FIELD_BEACON_11_BUILDING_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
-			beaconFieldList.add(new SqlField(FIELD_BEACON_12_CITY_ID,
-					new SqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+					new IPSqlField(FIELD_BEACON_9_TAG, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+			beaconFieldList.add(new IPSqlField(FIELD_BEACON_10_MAP_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+			beaconFieldList.add(new IPSqlField(FIELD_BEACON_11_BUILDING_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+			beaconFieldList.add(new IPSqlField(FIELD_BEACON_12_CITY_ID,
+					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
 		}
 		return beaconFieldList;
 	}
 
-	public static List<TYLocatingBeacon> BeaconListFromRecords(List<SqlRecord> records) {
+	public static List<TYLocatingBeacon> BeaconListFromRecords(List<IPSqlRecord> records) {
 		List<TYLocatingBeacon> beaconList = new ArrayList<TYLocatingBeacon>();
-		for (SqlRecord record : records) {
+		for (IPSqlRecord record : records) {
 			TYLocatingBeacon lb = new TYLocatingBeacon(record.getString(FIELD_BEACON_2_UUID),
 					record.getInteger(FIELD_BEACON_3_MAJOR), record.getInteger(FIELD_BEACON_4_MINOR),
 					record.getString(FIELD_BEACON_9_TAG), record.getString(FIELD_BEACON_8_ROOM_ID));

@@ -4,18 +4,18 @@ import java.util.List;
 
 import cn.platalk.brtmap.entity.base.impl.TYBuilding;
 import cn.platalk.brtmap.entity.base.impl.TYCity;
-import cn.platalk.sqlhelper.sql.SqlTable;
-import cn.platalk.sqlhelper.sqlite.SqliteDB;
+import cn.platalk.sqlhelper.sql.IPSqlTable;
+import cn.platalk.sqlhelper.sqlite.IPSqliteDB;
 
 public class IPSqliteMapDBAdapter {
-	SqliteDB db;
-	SqlTable cityTable;
-	SqlTable buildingTable;
+	IPSqliteDB db;
+	IPSqlTable cityTable;
+	IPSqlTable buildingTable;
 
 	public IPSqliteMapDBAdapter(String path) {
-		db = new SqliteDB(path);
-		cityTable = new SqlTable(IPSqliteCityParams.TABLE_CITY, IPSqliteCityParams.GetCityFieldList(), null);
-		buildingTable = new SqlTable(IPSqliteBuildingParams.TABLE_BUILDING, IPSqliteBuildingParams.GetBuildingFieldList(),
+		db = new IPSqliteDB(path);
+		cityTable = new IPSqlTable(IPSqliteCityParams.TABLE_CITY, IPSqliteCityParams.GetCityFieldList(), null);
+		buildingTable = new IPSqlTable(IPSqliteBuildingParams.TABLE_BUILDING, IPSqliteBuildingParams.GetBuildingFieldList(),
 				null);
 	}
 

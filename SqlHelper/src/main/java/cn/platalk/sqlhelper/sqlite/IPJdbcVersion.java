@@ -1,5 +1,5 @@
 package cn.platalk.sqlhelper.sqlite;
 
-public enum JDBCVersion {
+public enum IPJdbcVersion {
 	JAVA, ANDROID,
 }

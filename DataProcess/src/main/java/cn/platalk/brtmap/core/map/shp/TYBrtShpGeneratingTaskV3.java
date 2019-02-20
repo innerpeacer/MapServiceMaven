@@ -17,7 +17,7 @@ import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
-import cn.platalk.sqlite.map.IPBrtSqliteSymbolDBAdapter;
+import cn.platalk.sqlite.map.IPSqliteSymbolDBAdapter;
 import cn.platalk.sqlite.map.IPSqliteMapDBAdapter;
 
 public class TYBrtShpGeneratingTaskV3
@@ -120,7 +120,7 @@ public class TYBrtShpGeneratingTaskV3
 	}
 
 	private void readSymbols() {
-		IPBrtSqliteSymbolDBAdapter symbolDB = new IPBrtSqliteSymbolDBAdapter(shpDataManager.getSymbolDBPath());
+		IPSqliteSymbolDBAdapter symbolDB = new IPSqliteSymbolDBAdapter(shpDataManager.getSymbolDBPath());
 		// System.out.println(shpDataManager.getSymbolDBPath());
 		symbolDB.open();
 		fillSymbols = symbolDB.getFillSymbolRecords();

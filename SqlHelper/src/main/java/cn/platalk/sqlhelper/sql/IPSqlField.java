@@ -1,16 +1,16 @@
 package cn.platalk.sqlhelper.sql;
 
-public class SqlField {
+public class IPSqlField {
 	public String fieldName;
-	public SqlFieldType fieldType;
+	public IPSqlFieldType fieldType;
 	public boolean allowNull;
 	public Object defaultValue;
 
-	public SqlField(String field, SqlFieldType type, boolean allowNull) {
+	public IPSqlField(String field, IPSqlFieldType type, boolean allowNull) {
 		this(field, type, allowNull, null);
 	}
 
-	public SqlField(String field, SqlFieldType type, boolean allowNull, Object defValue) {
+	public IPSqlField(String field, IPSqlFieldType type, boolean allowNull, Object defValue) {
 		this.fieldName = field;
 		this.fieldType = type;
 		this.allowNull = allowNull;
