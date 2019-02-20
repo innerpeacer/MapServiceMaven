@@ -14,7 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.core.config.TYServerEnviroment;
+import cn.platalk.map.core.config.TYServerEnvironment;
 import cn.platalk.map.core.web.TYWebMapGeojsonDataBuilder;
 import cn.platalk.map.core.web.TYWebMapGeojsonDataPool;
 import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
@@ -30,7 +30,7 @@ public class TYGetWebGeojsonMapDataServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		TYServerEnviroment.initialize();
+		TYServerEnvironment.initialize();
 
 		System.out.println("request geojson");
 		String buildingID = request.getParameter("buildingID");
@@ -59,7 +59,7 @@ public class TYGetWebGeojsonMapDataServlet extends HttpServlet {
 		}
 
 		JSONObject mapDataObject = null;
-		if (TYServerEnviroment.isWindows() || TYServerEnviroment.isLinux()) {
+		if (TYServerEnvironment.isWindows() || TYServerEnvironment.isLinux()) {
 			if (TYWebMapGeojsonDataPool.existWebMapData(mapID)) {
 				mapDataObject = TYWebMapGeojsonDataPool.getWebMapData(mapID);
 			} else {

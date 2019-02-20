@@ -14,7 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.core.config.TYServerEnviroment;
+import cn.platalk.map.core.config.TYServerEnvironment;
 import cn.platalk.map.core.web.beacon.TYWebBeaconGeojsonDataBuilder;
 import cn.platalk.map.core.web.beacon.TYWebBeaconGeojsonDataPool;
 import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
@@ -51,7 +51,7 @@ public class TYGetWebGeojsonBeaconServlet extends HttpServlet {
 		}
 
 		JSONObject beaconDataObject = null;
-		if (TYServerEnviroment.isWindows() || TYServerEnviroment.isLinux()) {
+		if (TYServerEnvironment.isWindows() || TYServerEnvironment.isLinux()) {
 			if (TYWebBeaconGeojsonDataPool.existWebBeaconData(buildingID)) {
 				beaconDataObject = TYWebBeaconGeojsonDataPool.getWebBeaconData(buildingID);
 			} else {

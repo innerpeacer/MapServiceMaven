@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.platalk.route.core.config.TYServerEnviroment;
+import cn.platalk.route.core.config.TYServerEnvironment;
 
 @WebServlet(urlPatterns = "/initEnv", loadOnStartup = 1)
 public class TYInitServlet extends HttpServlet {
@@ -19,11 +19,11 @@ public class TYInitServlet extends HttpServlet {
 		response.setContentType("text/html");
 
 		StringBuffer buffer = new StringBuffer();
-		if (TYServerEnviroment.resourceManager == null) {
+		if (TYServerEnvironment.resourceManager == null) {
 			buffer.append("init failed!");
 		} else {
 			buffer.append("init success!").append("\n");
-			buffer.append("DB Host: ").append(TYServerEnviroment.resourceManager.getDBHost()).append("\n");
+			buffer.append("DB Host: ").append(TYServerEnvironment.resourceManager.getDBHost()).append("\n");
 		}
 
 		PrintWriter out = response.getWriter();
@@ -39,7 +39,7 @@ public class TYInitServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		super.init();
-		TYServerEnviroment.initialize();
+		TYServerEnvironment.initialize();
 	}
 
 }

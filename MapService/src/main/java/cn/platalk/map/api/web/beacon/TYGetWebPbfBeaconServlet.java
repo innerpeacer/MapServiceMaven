@@ -15,7 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.core.config.TYServerEnviroment;
+import cn.platalk.map.core.config.TYServerEnvironment;
 import cn.platalk.map.core.pbf.beacon.TYWebBeacon2PbfUtils;
 import cn.platalk.map.core.web.beacon.TYWebBeaconPbfDataPool;
 import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
@@ -54,7 +54,7 @@ public class TYGetWebPbfBeaconServlet extends HttpServlet {
 		}
 
 		TYLocatingBeaconListPbf beaconListPbf = null;
-		if (TYServerEnviroment.isWindows() || TYServerEnviroment.isLinux()) {
+		if (TYServerEnvironment.isWindows() || TYServerEnvironment.isLinux()) {
 			if (TYWebBeaconPbfDataPool.existBeaconData(buildingID)) {
 				beaconListPbf = TYWebBeaconPbfDataPool.getBeaconData(buildingID);
 			} else {

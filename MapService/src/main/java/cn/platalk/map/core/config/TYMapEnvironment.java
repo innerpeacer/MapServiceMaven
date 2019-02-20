@@ -5,7 +5,7 @@ import java.io.File;
 import cn.platalk.map.res.TYIResourceManager;
 
 public class TYMapEnvironment {
-	static TYIResourceManager resourceManager = TYServerEnviroment.resourceManager;
+	static TYIResourceManager resourceManager = TYServerEnvironment.resourceManager;
 
 	public static String GetFontDir() {
 		return resourceManager.getFontDir();

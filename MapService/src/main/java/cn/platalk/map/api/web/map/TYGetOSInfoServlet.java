@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.platalk.map.core.config.TYServerEnviroment;
+import cn.platalk.map.core.config.TYServerEnvironment;
 
 @WebServlet("/GetOSInfo")
 public class TYGetOSInfoServlet extends HttpServlet {
@@ -24,8 +24,8 @@ public class TYGetOSInfoServlet extends HttpServlet {
 
 		Properties sysProperty = System.getProperties(); // 系统属性
 
-		out.println("是否远程Window系统：" + TYServerEnviroment.isWindows());
-		out.println("是否Linux系统：" + TYServerEnviroment.isLinux());
+		out.println("是否远程Window系统：" + TYServerEnvironment.isWindows());
+		out.println("是否Linux系统：" + TYServerEnvironment.isLinux());
 		out.println("Java的运行环境版本：" + sysProperty.getProperty("java.version"));
 		out.println("Java的安装路径：" + sysProperty.getProperty("java.home"));
 
