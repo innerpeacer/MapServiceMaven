@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlTable;

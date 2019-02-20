@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.brtmap.entity.base.TYIBuilding;
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecord;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecord;
-import cn.platalk.brtmap.entity.base.TYLocalPoint;
-
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.Point;
+
+import cn.platalk.map.entity.base.TYIBuilding;
+import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.TYIRouteLinkRecord;
+import cn.platalk.map.entity.base.TYIRouteNodeRecord;
+import cn.platalk.map.entity.base.TYLocalPoint;
 
 public class TYServerMultiRouteManager {
 	static final String TAG = TYServerRouteManager.class.getSimpleName();
@@ -29,14 +29,12 @@ public class TYServerMultiRouteManager {
 
 	// private TYIBuilding currentBuilding;
 
-	public TYServerMultiRouteManager(TYIBuilding building,
-			List<TYIMapInfo> mapInfoArray, List<TYIRouteNodeRecord> nodes,
-			List<TYIRouteLinkRecord> links) {
+	public TYServerMultiRouteManager(TYIBuilding building, List<TYIMapInfo> mapInfoArray,
+			List<TYIRouteNodeRecord> nodes, List<TYIRouteLinkRecord> links) {
 		// currentBuilding = building;
 		allMapInfoArray.addAll(mapInfoArray);
 		TYIMapInfo info = allMapInfoArray.get(0);
-		routePointConverter = new IPServerRoutePointConverter(
-				info.getMapExtent(), building.getOffset());
+		routePointConverter = new IPServerRoutePointConverter(info.getMapExtent(), building.getOffset());
 
 		networkDataset = new IPServerRouteNetworkDataset(nodes, links);
 	}
@@ -53,9 +51,8 @@ public class TYServerMultiRouteManager {
 	// return processPolyline(resultRoute);
 	// }
 
-	public synchronized TYServerMultiRouteResult requestRoute(
-			TYLocalPoint start, TYLocalPoint end, List<TYLocalPoint> stops,
-			boolean rearrangeStops) {
+	public synchronized TYServerMultiRouteResult requestRoute(TYLocalPoint start, TYLocalPoint end,
+			List<TYLocalPoint> stops, boolean rearrangeStops) {
 		// System.out.println("Request Mutli Route: " + stops.size() +
 		// " stops");
 		startPoint = routePointConverter.getRoutePointFromLocalPoint(start);
@@ -80,18 +77,15 @@ public class TYServerMultiRouteManager {
 			// System.out.println("Compute Multiple");
 			List<Point> stopPoints = new ArrayList<Point>();
 			for (int i = 0; i < stops.size(); ++i) {
-				Point sp = routePointConverter
-						.getRoutePointFromLocalPoint(stops.get(i));
+				Point sp = routePointConverter.getRoutePointFromLocalPoint(stops.get(i));
 				stopPoints.add(sp);
 			}
 
 			params = new IPMrParams(startPoint, endPoint, stopPoints);
-			IPMrCalculator calculator = new IPMrCalculator(params,
-					networkDataset);
+			IPMrCalculator calculator = new IPMrCalculator(params, networkDataset);
 			calculator.prepare();
 			line = calculator.calculate(rearrangeStops);
-			Map<String, List<Object>> detailedRoute = calculator
-					.getDetailedRoute();
+			Map<String, List<Object>> detailedRoute = calculator.getDetailedRoute();
 			List<Object> lines = detailedRoute.get("lines");
 			List<Object> indices = detailedRoute.get("indices");
 			List<Integer> indiceArray = new ArrayList<Integer>();
@@ -138,8 +132,7 @@ public class TYServerMultiRouteManager {
 		int num = routeLine.getNumPoints();
 		for (int i = 0; i < num; i++) {
 			Coordinate c = routeLine.getCoordinateN(i);
-			TYLocalPoint lp = routePointConverter
-					.getLocalPointFromRouteCoordinate(c);
+			TYLocalPoint lp = routePointConverter.getLocalPointFromRouteCoordinate(c);
 			boolean isValid = routePointConverter.checkPointValidity(lp);
 			if (isValid) {
 				if (lp.getFloor() != currentFloor) {
@@ -171,8 +164,7 @@ public class TYServerMultiRouteManager {
 			}
 
 			LineString line = factory.createLineString(coordinateList);
-			TYIMapInfo info = IPMapInfoHelper.searchMapInfoFromArray(
-					allMapInfoArray, floor);
+			TYIMapInfo info = IPMapInfoHelper.searchMapInfoFromArray(allMapInfoArray, floor);
 			TYServerRoutePart rp = new TYServerRoutePart(line, info);
 			routePartArray.add(rp);
 		}

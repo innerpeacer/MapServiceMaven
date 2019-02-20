@@ -2,7 +2,7 @@ package cn.platalk.brtmap.core.pbf.beacon;
 
 import java.util.List;
 
-import cn.platalk.brtmap.entity.base.impl.TYLocatingBeacon;
+import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 import innerpeacer.beacon.pbf.TYBeaconPbf.TYLocatingBeaconListPbf;
 import innerpeacer.beacon.pbf.TYBeaconPbf.TYLocatingBeaconPbf;
 

@@ -2,7 +2,7 @@ package cn.platalk.brtmap.core.web.file;
 
 import java.io.File;
 
-import cn.platalk.brtmap.entity.base.impl.TYBuilding;
+import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.utils.third.TYFileUtils;
 
 public class TYBrtWebGeojsonPathManager {

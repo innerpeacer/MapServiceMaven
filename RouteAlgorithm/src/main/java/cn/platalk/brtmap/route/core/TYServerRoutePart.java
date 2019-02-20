@@ -4,12 +4,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
-
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.Point;
+
+import cn.platalk.map.entity.base.TYIMapInfo;
 
 class TYServerRoutePart {
 	LineString route = null;

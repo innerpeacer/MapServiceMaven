@@ -3,8 +3,8 @@ package cn.platalk.sqlite.map;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.platalk.brtmap.entity.base.impl.TYBuilding;
-import cn.platalk.brtmap.entity.base.impl.TYMapSize;
+import cn.platalk.map.entity.base.impl.TYBuilding;
+import cn.platalk.map.entity.base.impl.TYMapSize;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlFieldType;
 import cn.platalk.sqlhelper.sql.IPSqlRecord;

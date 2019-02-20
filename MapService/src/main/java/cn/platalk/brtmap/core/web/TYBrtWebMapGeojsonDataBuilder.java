@@ -10,9 +10,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.brtmap.core.web.util.TYBrtGeojsonBuilder;
-import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
-import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
+import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYBrtWebMapGeojsonDataBuilder {
 	public static final String KEY_BOX_WEB_MAP_DATA_FLOOR = "floor";

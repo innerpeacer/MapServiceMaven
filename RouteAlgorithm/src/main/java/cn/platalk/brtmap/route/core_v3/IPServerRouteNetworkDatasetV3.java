@@ -19,11 +19,11 @@ import com.vividsolutions.jts.linearref.LocationIndexedLine;
 import com.vividsolutions.jts.operation.distance.DistanceOp;
 import com.vividsolutions.jts.operation.linemerge.LineMerger;
 
-import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
-import cn.platalk.brtmap.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
+import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
+import cn.platalk.map.entity.base.TYLocalPoint;
 
 class IPServerRouteNetworkDatasetV3 {
 	static GeometryFactory factory = new GeometryFactory();

@@ -5,9 +5,9 @@ import java.util.Map;
 
 import com.vividsolutions.jts.geom.Geometry;
 
-import cn.platalk.brtmap.entity.base.TYIFillSymbolRecord;
-import cn.platalk.brtmap.entity.base.TYIIconSymbolRecord;
-import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
+import cn.platalk.map.entity.base.TYIFillSymbolRecord;
+import cn.platalk.map.entity.base.TYIIconSymbolRecord;
+import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 
 class TYBrtGeometryUtils {
 

@@ -7,7 +7,7 @@ import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
 
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
+import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 
 public class IPServerNodeV3 implements Comparable<IPServerNodeV3> {
 	public static final double LARGE_DISTANCE = Double.POSITIVE_INFINITY;

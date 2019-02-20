@@ -14,7 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.brtmap.core.map.base.TYIBrtShpDataManager;
-import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
+import cn.platalk.map.entity.base.impl.TYMapInfo;
 
 public class TYBrtJsonMapInfoParser {
 	List<TYMapInfo> mapInfos;

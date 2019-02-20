@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.brtmap.entity.base.TYIFillSymbolRecord;
-import cn.platalk.brtmap.entity.base.TYIIconSymbolRecord;
-import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
-
 import com.vividsolutions.jts.geom.Geometry;
+
+import cn.platalk.map.entity.base.TYIFillSymbolRecord;
+import cn.platalk.map.entity.base.TYIIconSymbolRecord;
+import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
+import cn.platalk.map.entity.base.TYIMapInfo;
 
 class TYBrtGeometrySet {
 	String buildingID;
@@ -34,10 +34,8 @@ class TYBrtGeometrySet {
 		this.buildingID = buildingID;
 	}
 
-	public void addData(List<TYIMapInfo> mapInfos,
-			List<TYIMapDataFeatureRecord> mapDataRecords,
-			List<TYIFillSymbolRecord> fillSymbols,
-			List<TYIIconSymbolRecord> iconSymbols) {
+	public void addData(List<TYIMapInfo> mapInfos, List<TYIMapDataFeatureRecord> mapDataRecords,
+			List<TYIFillSymbolRecord> fillSymbols, List<TYIIconSymbolRecord> iconSymbols) {
 		mapInfoList.addAll(mapInfos);
 		allRecords.addAll(mapDataRecords);
 		fillSymbolList.addAll(fillSymbols);
@@ -87,8 +85,7 @@ class TYBrtGeometrySet {
 
 		if (floorRecords.size() != 0) {
 			for (TYIMapDataFeatureRecord record : floorRecords) {
-				Geometry g = TYBrtGeometryUtils.geometryFromFillRecord(record,
-						fillSymbolMap.get(record.getSymbolID()));
+				Geometry g = TYBrtGeometryUtils.geometryFromFillRecord(record, fillSymbolMap.get(record.getSymbolID()));
 				floorList.add(g);
 				fillList.add(g);
 			}
@@ -96,8 +93,7 @@ class TYBrtGeometrySet {
 
 		if (roomRecords.size() != 0) {
 			for (TYIMapDataFeatureRecord record : roomRecords) {
-				Geometry g = TYBrtGeometryUtils.geometryFromFillRecord(record,
-						fillSymbolMap.get(record.getSymbolID()));
+				Geometry g = TYBrtGeometryUtils.geometryFromFillRecord(record, fillSymbolMap.get(record.getSymbolID()));
 				roomList.add(g);
 				fillList.add(g);
 
@@ -106,8 +102,7 @@ class TYBrtGeometrySet {
 
 		if (assetRecords.size() != 0) {
 			for (TYIMapDataFeatureRecord record : assetRecords) {
-				Geometry g = TYBrtGeometryUtils.geometryFromFillRecord(record,
-						fillSymbolMap.get(record.getSymbolID()));
+				Geometry g = TYBrtGeometryUtils.geometryFromFillRecord(record, fillSymbolMap.get(record.getSymbolID()));
 				assetList.add(g);
 				fillList.add(g);
 			}
@@ -115,16 +110,14 @@ class TYBrtGeometrySet {
 
 		if (facilityRecords.size() != 0) {
 			for (TYIMapDataFeatureRecord record : facilityRecords) {
-				Geometry g = TYBrtGeometryUtils.geometryFromIconRecord(record,
-						iconSymbolMap.get(record.getSymbolID()));
+				Geometry g = TYBrtGeometryUtils.geometryFromIconRecord(record, iconSymbolMap.get(record.getSymbolID()));
 				facilityList.add(g);
 			}
 		}
 
 		if (labelRecords.size() != 0) {
 			for (TYIMapDataFeatureRecord record : labelRecords) {
-				Geometry g = TYBrtGeometryUtils
-						.geometryFromMapDataRecord(record);
+				Geometry g = TYBrtGeometryUtils.geometryFromMapDataRecord(record);
 				labelList.add(g);
 			}
 		}

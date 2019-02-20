@@ -7,12 +7,12 @@ import java.util.Map;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 
-import cn.platalk.brtmap.entity.base.TYIBuilding;
-import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
-import cn.platalk.brtmap.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.TYIBuilding;
+import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
+import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
+import cn.platalk.map.entity.base.TYLocalPoint;
 
 public class TYServerMultiRouteManagerV3 {
 	static final String TAG = TYServerMultiRouteManagerV3.class.getSimpleName();

@@ -11,8 +11,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
+import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 
 public class TYBrtWebRouteGeojsonDataBuilderV3 {
 	public static JSONObject emptyGeojson;

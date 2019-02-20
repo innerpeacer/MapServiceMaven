@@ -3,7 +3,7 @@ package cn.platalk.brtmap.route.core_v3;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.platalk.brtmap.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.TYLocalPoint;
 
 class IPMrParamsV3 {
 	private TYLocalPoint startPoint;

@@ -1,12 +1,12 @@
 package cn.platalk.brtmap.route.core;
 
-import cn.platalk.brtmap.entity.base.TYIMapExtent;
-import cn.platalk.brtmap.entity.base.TYIMapSize;
-import cn.platalk.brtmap.entity.base.TYLocalPoint;
-
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
+
+import cn.platalk.map.entity.base.TYIMapExtent;
+import cn.platalk.map.entity.base.TYIMapSize;
+import cn.platalk.map.entity.base.TYLocalPoint;
 
 class IPServerRoutePointConverter {
 
@@ -37,8 +37,7 @@ class IPServerRoutePointConverter {
 	// return new TYLocalPoint(originX, originY, floor);
 	// }
 
-	public TYLocalPoint getLocalPointFromRouteCoordinate(
-			Coordinate routeCoordinate) {
+	public TYLocalPoint getLocalPointFromRouteCoordinate(Coordinate routeCoordinate) {
 		double xOffset = routeCoordinate.x - baseExtent.getXmin();
 
 		double grid = xOffset / baseOffset.getX();
@@ -52,10 +51,8 @@ class IPServerRoutePointConverter {
 	}
 
 	public boolean checkPointValidity(TYLocalPoint point) {
-		if (point.getX() >= baseExtent.getXmin()
-				&& point.getX() <= baseExtent.getXmax()
-				&& point.getY() >= baseExtent.getYmin()
-				&& point.getY() <= baseExtent.getYmax()) {
+		if (point.getX() >= baseExtent.getXmin() && point.getX() <= baseExtent.getXmax()
+				&& point.getY() >= baseExtent.getYmin() && point.getY() <= baseExtent.getYmax()) {
 			return true;
 		} else {
 			return false;

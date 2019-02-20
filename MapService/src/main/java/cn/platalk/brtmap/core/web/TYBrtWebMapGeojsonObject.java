@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import com.vividsolutions.jts.geom.Geometry;
 
 import cn.platalk.brtmap.core.web.util.TYBrtGeojsonBuilder;
-import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 class TYBrtWebMapGeojsonObject {
 

@@ -1,8 +1,8 @@
 package cn.platalk.brtmap.core.pbf;
 
+import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import innerpeacer.mapdata.pbf.TYMapDataPbf;
 import innerpeacer.mapdata.pbf.TYMapDataPbf.TYIndoorFeaturePbf;
-import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYBrtWebMapPbfObject {
 

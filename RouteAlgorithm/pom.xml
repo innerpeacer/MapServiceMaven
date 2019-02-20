@@ -14,8 +14,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>brtmap-entity-base</artifactId>
-			<version>1.0.2</version>
+			<artifactId>wtmap-entity-base</artifactId>
+			<version>1.0.3</version>
 		</dependency>
 
 		<dependency>

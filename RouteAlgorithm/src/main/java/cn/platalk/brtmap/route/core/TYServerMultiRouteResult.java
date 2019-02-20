@@ -6,7 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cn.platalk.brtmap.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.TYLocalPoint;
 
 public class TYServerMultiRouteResult {
 	private TYLocalPoint startPoint;
@@ -18,8 +18,7 @@ public class TYServerMultiRouteResult {
 	private List<Integer> indices;
 	private List<TYLocalPoint> rearrangedPoints;
 
-	public TYServerMultiRouteResult(TYServerRouteResult crs,
-			List<TYServerRouteResult> details) {
+	public TYServerMultiRouteResult(TYServerRouteResult crs, List<TYServerRouteResult> details) {
 		this.completeResult = crs;
 		this.detailedResult = details;
 	}
@@ -81,16 +80,14 @@ public class TYServerMultiRouteResult {
 
 		try {
 			long now = System.currentTimeMillis() / 1000;
-			result.put("code", now * (long) startPoint.getX()
-					+ (long) startPoint.getY());
+			result.put("code", now * (long) startPoint.getX() + (long) startPoint.getY());
 			result.put("start", IPJsonBuilder.buildLocalPoint(startPoint));
 			result.put("end", IPJsonBuilder.buildLocalPoint(endPoint));
 
 			JSONArray stopPointArray = new JSONArray();
 			if (stopPoints != null && stopPoints.size() != 0) {
 				for (int i = 0; i < stopPoints.size(); ++i) {
-					stopPointArray.put(IPJsonBuilder.buildLocalPoint(stopPoints
-							.get(i)));
+					stopPointArray.put(IPJsonBuilder.buildLocalPoint(stopPoints.get(i)));
 				}
 			}
 
@@ -107,17 +104,14 @@ public class TYServerMultiRouteResult {
 			JSONArray rearrangedPointArray = new JSONArray();
 			if (rearrangedPoints != null && rearrangedPoints.size() != 0) {
 				for (int i = 0; i < rearrangedPoints.size(); ++i) {
-					rearrangedPointArray.put(IPJsonBuilder
-							.buildLocalPoint(rearrangedPoints.get(i)));
+					rearrangedPointArray.put(IPJsonBuilder.buildLocalPoint(rearrangedPoints.get(i)));
 				}
 			}
 			result.put("rearrangedStop", rearrangedPointArray);
 
 			JSONObject completeResultJson = completeResult.buildJson();
-			completeResultJson.put("start",
-					IPJsonBuilder.buildLocalPoint(startPoint));
-			completeResultJson.put("end",
-					IPJsonBuilder.buildLocalPoint(endPoint));
+			completeResultJson.put("start", IPJsonBuilder.buildLocalPoint(startPoint));
+			completeResultJson.put("end", IPJsonBuilder.buildLocalPoint(endPoint));
 
 			result.put("completeRoute", completeResultJson);
 
@@ -126,19 +120,15 @@ public class TYServerMultiRouteResult {
 				TYServerRouteResult detail = detailedResult.get(i);
 				JSONObject detailResultJson = detail.buildJson();
 				if (i == 0) {
-					detailResultJson.put("start",
-							IPJsonBuilder.buildLocalPoint(startPoint));
+					detailResultJson.put("start", IPJsonBuilder.buildLocalPoint(startPoint));
 				} else {
-					detailResultJson.put("start", IPJsonBuilder
-							.buildLocalPoint(rearrangedPoints.get(i - 1)));
+					detailResultJson.put("start", IPJsonBuilder.buildLocalPoint(rearrangedPoints.get(i - 1)));
 				}
 
 				if (i == detailedResult.size() - 1) {
-					detailResultJson.put("end",
-							IPJsonBuilder.buildLocalPoint(endPoint));
+					detailResultJson.put("end", IPJsonBuilder.buildLocalPoint(endPoint));
 				} else {
-					detailResultJson.put("end", IPJsonBuilder
-							.buildLocalPoint(rearrangedPoints.get(i)));
+					detailResultJson.put("end", IPJsonBuilder.buildLocalPoint(rearrangedPoints.get(i)));
 				}
 				detailResultArray.put(detailResultJson);
 			}

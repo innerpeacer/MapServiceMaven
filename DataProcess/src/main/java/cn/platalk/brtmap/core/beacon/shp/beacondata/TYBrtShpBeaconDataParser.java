@@ -9,8 +9,8 @@ import org.gdal.ogr.Layer;
 import org.gdal.ogr.ogr;
 
 import cn.platalk.brtmap.core.beacon.shp.TYBrtBeaconShpHelper;
-import cn.platalk.brtmap.entity.base.TYILocatingBeacon;
-import cn.platalk.brtmap.entity.base.impl.TYLocatingBeacon;
+import cn.platalk.map.entity.base.TYILocatingBeacon;
+import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 
 public class TYBrtShpBeaconDataParser {
 	String shpPath;

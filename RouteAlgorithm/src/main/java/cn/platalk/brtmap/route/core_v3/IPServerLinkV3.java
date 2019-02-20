@@ -4,7 +4,7 @@ import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
 
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
 
 public class IPServerLinkV3 {
 	static final String TAG = IPServerLinkV3.class.getSimpleName();

@@ -6,7 +6,7 @@ import java.util.List;
 
 import cn.platalk.brtmap.core.map.base.TYIBrtShpDataManager;
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteParserV3.TYBrtRouteShpParserListenerV3;
-import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
+import cn.platalk.map.entity.base.impl.TYMapInfo;
 
 public class TYBrtShpRouteDataGroupV3 implements TYBrtRouteShpParserListenerV3 {
 	private static final String[] ROUTE_LAYERS = { "LINK", "NODE" };

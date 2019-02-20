@@ -15,8 +15,8 @@ import org.json.JSONObject;
 
 import cn.platalk.brtmap.api.TYParameterChecker;
 import cn.platalk.brtmap.core_v3.web.route.TYBrtWebRouteGeojsonDataBuilderV3;
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
+import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 import cn.platalk.mysql.map.TYRouteDBAdapterV3;
 
 @WebServlet("/web/geojson/GetRouteDataV3")

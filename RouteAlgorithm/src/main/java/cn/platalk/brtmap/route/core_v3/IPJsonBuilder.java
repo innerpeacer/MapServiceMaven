@@ -3,7 +3,7 @@ package cn.platalk.brtmap.route.core_v3;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cn.platalk.brtmap.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.TYLocalPoint;
 
 class IPJsonBuilder {
 

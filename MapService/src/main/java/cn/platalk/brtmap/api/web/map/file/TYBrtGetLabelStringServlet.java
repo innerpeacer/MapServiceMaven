@@ -15,8 +15,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.brtmap.api.TYParameterChecker;
-import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.brtmap.entity.base.impl.TYBuilding;
+import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.mysql.map.TYBuildingDBAdapter;
 import cn.platalk.mysql.map.TYMapDataDBAdapter;
 

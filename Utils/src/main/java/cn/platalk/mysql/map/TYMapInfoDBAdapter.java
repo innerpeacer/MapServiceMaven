@@ -3,7 +3,7 @@ package cn.platalk.mysql.map;
 import java.sql.Connection;
 import java.util.List;
 
-import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
+import cn.platalk.map.entity.base.impl.TYMapInfo;
 import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 

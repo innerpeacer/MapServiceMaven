@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
+import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 
 class TYBrtExtractLabelString {
 

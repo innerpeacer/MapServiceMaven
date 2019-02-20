@@ -1,7 +1,7 @@
 package cn.platalk.brtmap.vectortile.builder;
 
-import cn.platalk.brtmap.entity.base.TYIMapExtent;
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.TYIMapExtent;
+import cn.platalk.map.entity.base.TYIMapInfo;
 
 class TYBrtBoundingBox {
 	public double north;
@@ -45,21 +45,17 @@ class TYBrtBoundingBox {
 	// return bb;
 	// }
 
-	public static TYBrtBoundingBox boundingBoxForMapInfo(TYIMapInfo info,
-			Double expanding) {
+	public static TYBrtBoundingBox boundingBoxForMapInfo(TYIMapInfo info, Double expanding) {
 		TYIMapExtent extent = info.getMapExtent();
-		double[] xy1 = TYBrtCoordTool.mercatorToLngLat(extent.getXmin(),
-				extent.getYmin());
-		double[] xy2 = TYBrtCoordTool.mercatorToLngLat(extent.getXmax(),
-				extent.getYmax());
+		double[] xy1 = TYBrtCoordTool.mercatorToLngLat(extent.getXmin(), extent.getYmin());
+		double[] xy2 = TYBrtCoordTool.mercatorToLngLat(extent.getXmax(), extent.getYmax());
 		// double[] xy1 =
 		// TYBrtCoordProjection2.mercatorToLngLat(extent.getXmin(),
 		// extent.getYmin());
 		// double[] xy2 =
 		// TYBrtCoordProjection2.mercatorToLngLat(extent.getXmax(),
 		// extent.getYmax());
-		TYBrtBoundingBox bb = new TYBrtBoundingBox(xy1[0], xy2[0], xy1[1],
-				xy2[1]);
+		TYBrtBoundingBox bb = new TYBrtBoundingBox(xy1[0], xy2[0], xy1[1], xy2[1]);
 		if (expanding != null && expanding > 0) {
 			bb.expandByPercentage(expanding);
 		}
@@ -70,13 +66,10 @@ class TYBrtBoundingBox {
 		// int zoom = 0;
 		TYBrtTileCoord result = null;
 		for (int z = 0; z <= 22; ++z) {
-			TYBrtTileCoord upLeftTile = TYBrtTileCoord.getTileCoord(west,
-					north, z);
-			TYBrtTileCoord bottomRightTile = TYBrtTileCoord.getTileCoord(east,
-					south, z);
+			TYBrtTileCoord upLeftTile = TYBrtTileCoord.getTileCoord(west, north, z);
+			TYBrtTileCoord bottomRightTile = TYBrtTileCoord.getTileCoord(east, south, z);
 
-			if (upLeftTile.x == bottomRightTile.x
-					&& upLeftTile.y == bottomRightTile.y) {
+			if (upLeftTile.x == bottomRightTile.x && upLeftTile.y == bottomRightTile.y) {
 				// zoom = z;
 				result = upLeftTile;
 			} else {
@@ -90,16 +83,13 @@ class TYBrtBoundingBox {
 	}
 
 	public int[] getTileRange(int zoom) {
-		TYBrtTileCoord upLeftTile = TYBrtTileCoord.getTileCoord(west, north,
-				zoom);
-		TYBrtTileCoord bottomRightTile = TYBrtTileCoord.getTileCoord(east,
-				south, zoom);
+		TYBrtTileCoord upLeftTile = TYBrtTileCoord.getTileCoord(west, north, zoom);
+		TYBrtTileCoord bottomRightTile = TYBrtTileCoord.getTileCoord(east, south, zoom);
 		// System.out.println("=================================");
 		// System.out.println(upLeftTile.toString());
 		// System.out.println(bottomRightTile.toString());
 
-		return new int[] { upLeftTile.x, bottomRightTile.x, upLeftTile.y,
-				bottomRightTile.y };
+		return new int[] { upLeftTile.x, bottomRightTile.x, upLeftTile.y, bottomRightTile.y };
 	}
 
 	@Override

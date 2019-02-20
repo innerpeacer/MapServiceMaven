@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecord;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecord;
-import cn.platalk.brtmap.entity.base.TYLocalPoint;
-import cn.platalk.brtmap.entity.base.impl.TYBuilding;
 import cn.platalk.brtmap.route.core.TYServerRouteManager;
 import cn.platalk.brtmap.route.core.TYServerRouteResult;
+import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.TYIRouteLinkRecord;
+import cn.platalk.map.entity.base.TYIRouteNodeRecord;
+import cn.platalk.map.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.mysql.map.TYBuildingDBAdapter;
 import cn.platalk.mysql.map.TYMapInfoDBAdapter;
 import cn.platalk.mysql.map.TYRouteDBAdapter;
@@ -52,7 +52,6 @@ public class TYRouteServiceServlet extends HttpServlet {
 			linkList.addAll(routeDB.getAllLinkRecords());
 			routeDB.disconnectDB();
 
-			
 			TYServerRouteManager routeManager = new TYServerRouteManager(currentBuilding, mapInfoList, nodeList,
 					linkList);
 

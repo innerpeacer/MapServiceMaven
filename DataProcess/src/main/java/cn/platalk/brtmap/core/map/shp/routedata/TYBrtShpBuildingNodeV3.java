@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.vividsolutions.jts.geom.Point;
 
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
+import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 
 public class TYBrtShpBuildingNodeV3 {
 	String nodeID;

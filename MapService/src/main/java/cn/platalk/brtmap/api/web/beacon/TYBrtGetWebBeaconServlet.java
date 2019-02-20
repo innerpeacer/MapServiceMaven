@@ -15,7 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.brtmap.api.TYParameterChecker;
-import cn.platalk.brtmap.entity.base.impl.TYLocatingBeacon;
+import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
 
 @WebServlet("/web/getBeacon")

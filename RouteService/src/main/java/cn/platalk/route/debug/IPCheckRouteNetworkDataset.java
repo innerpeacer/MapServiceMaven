@@ -13,8 +13,8 @@ import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
 
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecord;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecord;
+import cn.platalk.map.entity.base.TYIRouteLinkRecord;
+import cn.platalk.map.entity.base.TYIRouteNodeRecord;
 
 public class IPCheckRouteNetworkDataset {
 

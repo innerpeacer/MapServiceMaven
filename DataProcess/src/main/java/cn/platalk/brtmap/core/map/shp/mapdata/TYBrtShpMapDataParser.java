@@ -9,7 +9,7 @@ import org.gdal.ogr.Layer;
 import org.gdal.ogr.ogr;
 
 import cn.platalk.brtmap.core.map.shp.TYBrtShpHelper;
-import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYBrtShpMapDataParser {
 	String shpPath;

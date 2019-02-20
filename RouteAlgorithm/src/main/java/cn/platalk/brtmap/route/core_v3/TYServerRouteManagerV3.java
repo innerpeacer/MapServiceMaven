@@ -5,12 +5,12 @@ import java.util.List;
 
 import com.vividsolutions.jts.geom.GeometryFactory;
 
-import cn.platalk.brtmap.entity.base.TYIBuilding;
-import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
-import cn.platalk.brtmap.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.TYIBuilding;
+import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
+import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
+import cn.platalk.map.entity.base.TYLocalPoint;
 
 public class TYServerRouteManagerV3 {
 	static final String TAG = TYServerRouteManagerV3.class.getSimpleName();

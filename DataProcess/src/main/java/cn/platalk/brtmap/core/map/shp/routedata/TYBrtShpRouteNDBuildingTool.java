@@ -3,10 +3,10 @@ package cn.platalk.brtmap.core.map.shp.routedata;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.platalk.brtmap.entity.base.impl.TYRouteLinkRecord;
-import cn.platalk.brtmap.entity.base.impl.TYRouteNodeRecord;
-
 import com.vividsolutions.jts.geom.Point;
+
+import cn.platalk.map.entity.base.impl.TYRouteLinkRecord;
+import cn.platalk.map.entity.base.impl.TYRouteNodeRecord;
 
 public class TYBrtShpRouteNDBuildingTool {
 

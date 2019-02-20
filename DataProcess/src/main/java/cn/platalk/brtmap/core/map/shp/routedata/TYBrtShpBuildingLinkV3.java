@@ -2,7 +2,7 @@ package cn.platalk.brtmap.core.map.shp.routedata;
 
 import com.vividsolutions.jts.geom.LineString;
 
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
 
 public class TYBrtShpBuildingLinkV3 {
 	String linkID;

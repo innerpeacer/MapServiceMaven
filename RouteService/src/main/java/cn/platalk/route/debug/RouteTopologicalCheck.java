@@ -3,11 +3,11 @@ package cn.platalk.route.debug;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecord;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecord;
-import cn.platalk.brtmap.entity.base.TYLocalPoint;
-import cn.platalk.brtmap.entity.base.impl.TYBuilding;
+import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.TYIRouteLinkRecord;
+import cn.platalk.map.entity.base.TYIRouteNodeRecord;
+import cn.platalk.map.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.mysql.map.TYBuildingDBAdapter;
 import cn.platalk.mysql.map.TYMapInfoDBAdapter;
 import cn.platalk.mysql.map.TYRouteDBAdapter;

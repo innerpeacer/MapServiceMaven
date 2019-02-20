@@ -7,9 +7,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cn.platalk.brtmap.entity.base.TYIBuilding;
-import cn.platalk.brtmap.entity.base.TYICity;
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.TYIBuilding;
+import cn.platalk.map.entity.base.TYICity;
+import cn.platalk.map.entity.base.TYIMapInfo;
 
 class TYBrtCBMBuilder {
 	static String FILE_CBM_JSON = "%s.json";
@@ -20,8 +20,7 @@ class TYBrtCBMBuilder {
 		return new File(cbmDir, fileName).toString();
 	}
 
-	public static void generateCBMJson(TYICity city, TYIBuilding building,
-			List<TYIMapInfo> mapInfoList) {
+	public static void generateCBMJson(TYICity city, TYIBuilding building, List<TYIMapInfo> mapInfoList) {
 
 		JSONArray cityJsonArray = new JSONArray();
 		JSONObject cityObject;
@@ -35,8 +34,7 @@ class TYBrtCBMBuilder {
 		JSONArray buildingJsonArray = new JSONArray();
 		JSONObject buildingObject;
 		try {
-			buildingObject = TYBrtCBMObjectBuilder
-					.generateBuildingJson(building);
+			buildingObject = TYBrtCBMObjectBuilder.generateBuildingJson(building);
 			buildingJsonArray.put(buildingObject);
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -46,8 +44,7 @@ class TYBrtCBMBuilder {
 		try {
 			for (int i = 0; i < mapInfoList.size(); ++i) {
 				TYIMapInfo mapInfo = mapInfoList.get(i);
-				JSONObject mapInfoObject = TYBrtCBMObjectBuilder
-						.generateMapInfoJson(mapInfo);
+				JSONObject mapInfoObject = TYBrtCBMObjectBuilder.generateMapInfoJson(mapInfo);
 				mapInfoJsonArray.put(mapInfoObject);
 			}
 		} catch (JSONException e) {

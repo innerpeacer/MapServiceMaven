@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
+import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 
 public class TYFontBuilder {
 
@@ -16,14 +16,12 @@ public class TYFontBuilder {
 		this.buildingID = buildingID;
 	}
 
-	public void buildFont(String fontName, String fontType,
-			List<TYIMapDataFeatureRecord> records) {
+	public void buildFont(String fontName, String fontType, List<TYIMapDataFeatureRecord> records) {
 		buildFontmin(fontName, fontType, records);
 		buildGlyphs(fontName, fontType);
 	}
 
-	void buildFontmin(String fontName, String fontType,
-			List<TYIMapDataFeatureRecord> records) {
+	void buildFontmin(String fontName, String fontType, List<TYIMapDataFeatureRecord> records) {
 		// System.out.println("Build Fontmin");
 		notifyProcess("Build Fontmin\n");
 		TYBrtFontParams params = new TYBrtFontParams(fontName, fontType, buildingID);
@@ -54,15 +52,13 @@ public class TYFontBuilder {
 		try {
 			Process ps = Runtime.getRuntime().exec(script);
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(
-					ps.getInputStream()));
+			BufferedReader br = new BufferedReader(new InputStreamReader(ps.getInputStream()));
 			String line = null;
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);
 			}
 
-			BufferedReader brError = new BufferedReader(new InputStreamReader(
-					ps.getErrorStream(), "gb2312"));
+			BufferedReader brError = new BufferedReader(new InputStreamReader(ps.getErrorStream(), "gb2312"));
 			String errline = null;
 			while ((errline = brError.readLine()) != null) {
 				System.out.println(errline);
@@ -87,8 +83,7 @@ public class TYFontBuilder {
 		// System.out.println(params.getFontminPath());
 
 		fontFile.renameTo(new File(params.getFontminPath()));
-		notifyProcess("Finish Fontmin: "
-				+ new File(params.getFontminPath()).toString() + "\n");
+		notifyProcess("Finish Fontmin: " + new File(params.getFontminPath()).toString() + "\n");
 	}
 
 	void buildGlyphs(String fontName, String fontType) {
@@ -103,21 +98,18 @@ public class TYFontBuilder {
 			glyphDir.mkdirs();
 		}
 
-		String script = TYBrtGlyphsParams.GetGlyphsScript(params
-				.getFontminFileName());
+		String script = TYBrtGlyphsParams.GetGlyphsScript(params.getFontminFileName());
 		notifyProcess("script: " + script + "\n");
 		try {
 			Process ps = Runtime.getRuntime().exec(script);
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(
-					ps.getInputStream()));
+			BufferedReader br = new BufferedReader(new InputStreamReader(ps.getInputStream()));
 			String line = null;
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);
 			}
 
-			BufferedReader brError = new BufferedReader(new InputStreamReader(
-					ps.getErrorStream(), "gb2312"));
+			BufferedReader brError = new BufferedReader(new InputStreamReader(ps.getErrorStream(), "gb2312"));
 			String errline = null;
 			while ((errline = brError.readLine()) != null) {
 				System.out.println(errline);

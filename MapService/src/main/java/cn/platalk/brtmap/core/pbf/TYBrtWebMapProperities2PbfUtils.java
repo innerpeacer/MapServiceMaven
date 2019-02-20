@@ -1,10 +1,10 @@
 package cn.platalk.brtmap.core.pbf;
 
+import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
+import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import innerpeacer.mapdata.pbf.TYPropertyPbf;
 import innerpeacer.mapdata.pbf.TYPropertyPbf.TYIndoorFeaturePropertisPbf;
-import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
-import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYBrtWebMapProperities2PbfUtils {
 

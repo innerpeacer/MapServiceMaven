@@ -3,8 +3,8 @@ package cn.platalk.mysql.map;
 import java.sql.Connection;
 import java.util.List;
 
-import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
+import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 

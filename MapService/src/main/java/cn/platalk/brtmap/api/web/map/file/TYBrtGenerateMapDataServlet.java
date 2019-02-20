@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.brtmap.api.TYParameterChecker;
 import cn.platalk.brtmap.core.web.file.TYBrtWebGeneratingMapFileTask;
-import cn.platalk.brtmap.entity.base.impl.TYBuilding;
+import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.mysql.map.TYBuildingDBAdapter;
 
 @WebServlet("/web/GenerateMapData")

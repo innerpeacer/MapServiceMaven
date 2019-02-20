@@ -6,8 +6,8 @@ import innerpeacer.mapdata.pbf.TYSymbolPbf.TYRenderingSymbolsPbf;
 
 import java.util.List;
 
-import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
+import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
 
 public class TYBrtWebMapSymbol2PbfUtils {
 

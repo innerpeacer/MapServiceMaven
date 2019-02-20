@@ -48,7 +48,6 @@ public class TYServerRouteResultV3 {
 
 	@Override
 	public String toString() {
-		return String.format("[%d Parts, %d Floors]", allRoutePartArray.size(),
-				allFloorRoutePartDict.size());
+		return String.format("[%d Parts, %d Floors]", allRoutePartArray.size(), allFloorRoutePartDict.size());
 	}
 }

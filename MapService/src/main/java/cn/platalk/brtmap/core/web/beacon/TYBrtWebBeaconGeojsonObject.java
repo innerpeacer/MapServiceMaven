@@ -11,7 +11,7 @@ import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 
 import cn.platalk.brtmap.core.web.util.TYBrtGeojsonBuilder;
-import cn.platalk.brtmap.entity.base.impl.TYLocatingBeacon;
+import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 
 public class TYBrtWebBeaconGeojsonObject {
 

@@ -6,8 +6,8 @@ import java.util.List;
 import cn.platalk.brtmap.core.map.base.TYIBrtShpDataManager;
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteDataGroup.TYBrtShpRouteDataGroupListener;
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteNDBuildingTool.TYBrtRouteNDBuildingListener;
-import cn.platalk.brtmap.entity.base.impl.TYRouteLinkRecord;
-import cn.platalk.brtmap.entity.base.impl.TYRouteNodeRecord;
+import cn.platalk.map.entity.base.impl.TYRouteLinkRecord;
+import cn.platalk.map.entity.base.impl.TYRouteNodeRecord;
 
 public class TYBrtShpRouteTask implements TYBrtShpRouteDataGroupListener, TYBrtRouteNDBuildingListener {
 

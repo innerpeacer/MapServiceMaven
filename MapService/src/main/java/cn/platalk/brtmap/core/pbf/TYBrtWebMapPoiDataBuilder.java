@@ -6,7 +6,7 @@ import innerpeacer.mapdata.pbf.TYPoiPbf.PoiPbf;
 
 import java.util.List;
 
-import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYBrtWebMapPoiDataBuilder {
 

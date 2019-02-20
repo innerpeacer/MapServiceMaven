@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.TYIMapInfo;
 
 class IPMrCalculatorV3 {
 	static final double LARGE_DISTANCE = 1000000000;

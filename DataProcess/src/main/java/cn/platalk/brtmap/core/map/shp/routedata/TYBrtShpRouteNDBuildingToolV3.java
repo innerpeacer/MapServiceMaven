@@ -9,10 +9,10 @@ import java.util.Set;
 
 import com.vividsolutions.jts.geom.Point;
 
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
-import cn.platalk.brtmap.entity.base.impl.TYRouteLinkRecordV3;
-import cn.platalk.brtmap.entity.base.impl.TYRouteNodeRecordV3;
+import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
+import cn.platalk.map.entity.base.impl.TYRouteLinkRecordV3;
+import cn.platalk.map.entity.base.impl.TYRouteNodeRecordV3;
 
 public class TYBrtShpRouteNDBuildingToolV3 {
 	TYBrtShpRouteDataGroupV3 shpDataGroup;

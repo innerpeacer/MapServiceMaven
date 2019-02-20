@@ -3,16 +3,16 @@ package cn.platalk.brtmap.route.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.platalk.brtmap.entity.base.TYIBuilding;
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecord;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecord;
-import cn.platalk.brtmap.entity.base.TYLocalPoint;
-
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.Point;
+
+import cn.platalk.map.entity.base.TYIBuilding;
+import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.TYIRouteLinkRecord;
+import cn.platalk.map.entity.base.TYIRouteNodeRecord;
+import cn.platalk.map.entity.base.TYLocalPoint;
 
 public class TYServerRouteManager {
 	static final String TAG = TYServerRouteManager.class.getSimpleName();
@@ -27,25 +27,21 @@ public class TYServerRouteManager {
 
 	// private TYIBuilding currentBuilding;
 
-	public TYServerRouteManager(TYIBuilding building,
-			List<TYIMapInfo> mapInfoArray, List<TYIRouteNodeRecord> nodes,
+	public TYServerRouteManager(TYIBuilding building, List<TYIMapInfo> mapInfoArray, List<TYIRouteNodeRecord> nodes,
 			List<TYIRouteLinkRecord> links) {
 		// currentBuilding = building;
 		allMapInfoArray.addAll(mapInfoArray);
 		TYIMapInfo info = allMapInfoArray.get(0);
-		routePointConverter = new IPServerRoutePointConverter(
-				info.getMapExtent(), building.getOffset());
+		routePointConverter = new IPServerRoutePointConverter(info.getMapExtent(), building.getOffset());
 
 		networkDataset = new IPServerRouteNetworkDataset(nodes, links);
 	}
 
-	public synchronized TYServerRouteResult requestRoute(TYLocalPoint start,
-			TYLocalPoint end) {
+	public synchronized TYServerRouteResult requestRoute(TYLocalPoint start, TYLocalPoint end) {
 		startPoint = routePointConverter.getRoutePointFromLocalPoint(start);
 		endPoint = routePointConverter.getRoutePointFromLocalPoint(end);
 
-		LineString resultRoute = networkDataset.getShorestPath(startPoint,
-				endPoint);
+		LineString resultRoute = networkDataset.getShorestPath(startPoint, endPoint);
 		return processPolyline(resultRoute);
 	}
 
@@ -63,8 +59,7 @@ public class TYServerRouteManager {
 		int num = routeLine.getNumPoints();
 		for (int i = 0; i < num; i++) {
 			Coordinate c = routeLine.getCoordinateN(i);
-			TYLocalPoint lp = routePointConverter
-					.getLocalPointFromRouteCoordinate(c);
+			TYLocalPoint lp = routePointConverter.getLocalPointFromRouteCoordinate(c);
 			boolean isValid = routePointConverter.checkPointValidity(lp);
 			if (isValid) {
 				if (lp.getFloor() != currentFloor) {
@@ -96,8 +91,7 @@ public class TYServerRouteManager {
 			}
 
 			LineString line = factory.createLineString(coordinateList);
-			TYIMapInfo info = IPMapInfoHelper.searchMapInfoFromArray(
-					allMapInfoArray, floor);
+			TYIMapInfo info = IPMapInfoHelper.searchMapInfoFromArray(allMapInfoArray, floor);
 			TYServerRoutePart rp = new TYServerRoutePart(line, info);
 			routePartArray.add(rp);
 		}

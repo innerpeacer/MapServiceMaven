@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.vividsolutions.jts.geom.GeometryFactory;
 
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
-import cn.platalk.brtmap.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.TYLocalPoint;
 
 public class IPServerRouteResultObjectV3 {
 

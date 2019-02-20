@@ -17,9 +17,9 @@ import cn.platalk.brtmap.api.TYParameterChecker;
 import cn.platalk.brtmap.core.config.TYServerEnviroment;
 import cn.platalk.brtmap.core.web.TYBrtWebMapGeojsonDataBuilder;
 import cn.platalk.brtmap.core.web.TYBrtWebMapGeojsonDataPool;
-import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
-import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
+import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.mysql.map.TYMapDataDBAdapter;
 import cn.platalk.mysql.map.TYSymbolDBAdapter;
 

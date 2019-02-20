@@ -8,11 +8,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cn.platalk.brtmap.entity.base.impl.TYBuilding;
-import cn.platalk.brtmap.entity.base.impl.TYCity;
-import cn.platalk.brtmap.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.brtmap.entity.base.impl.TYIconSymbolRecord;
-import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
+import cn.platalk.map.entity.base.impl.TYBuilding;
+import cn.platalk.map.entity.base.impl.TYCity;
+import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
+import cn.platalk.map.entity.base.impl.TYMapInfo;
 
 public class TYBrtWebMapObjectBuilder {
 

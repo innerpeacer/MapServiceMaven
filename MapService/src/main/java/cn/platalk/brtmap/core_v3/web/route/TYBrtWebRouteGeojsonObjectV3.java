@@ -17,8 +17,8 @@ import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
 
 import cn.platalk.brtmap.core.utils.TYBrtCoordProjection;
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
+import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 
 public class TYBrtWebRouteGeojsonObjectV3 {
 	public static final String VALUE_GEOMETRY_TYPE_POINT = "Point";

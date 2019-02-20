@@ -8,14 +8,14 @@ import java.util.List;
 
 import com.vividsolutions.jts.geom.Envelope;
 
-import cn.platalk.brtmap.entity.base.TYIBuilding;
-import cn.platalk.brtmap.entity.base.TYICity;
-import cn.platalk.brtmap.entity.base.TYIFillSymbolRecord;
-import cn.platalk.brtmap.entity.base.TYIIconSymbolRecord;
-import cn.platalk.brtmap.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.brtmap.entity.base.TYIMapInfo;
-import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
 import cn.platalk.brtmap.vectortile.pbf.VectorTile;
+import cn.platalk.map.entity.base.TYIBuilding;
+import cn.platalk.map.entity.base.TYICity;
+import cn.platalk.map.entity.base.TYIFillSymbolRecord;
+import cn.platalk.map.entity.base.TYIIconSymbolRecord;
+import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
+import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.impl.TYMapInfo;
 
 public class TYVectorTileBuilder {
 

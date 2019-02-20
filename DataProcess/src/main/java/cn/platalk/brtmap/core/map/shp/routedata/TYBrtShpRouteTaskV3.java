@@ -12,10 +12,10 @@ import com.vividsolutions.jts.io.WKBReader;
 import cn.platalk.brtmap.core.map.base.TYIBrtShpDataManager;
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteDataGroupV3.TYBrtShpRouteDataGroupListenerV3;
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteNDBuildingToolV3.TYBrtRouteNDBuildingListenerV3;
-import cn.platalk.brtmap.entity.base.TYIRouteLinkRecordV3;
-import cn.platalk.brtmap.entity.base.TYIRouteNodeRecordV3;
-import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.brtmap.entity.base.impl.TYMapInfo;
+import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
+import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.TYMapInfo;
 
 public class TYBrtShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrtRouteNDBuildingListenerV3 {
 	static WKBReader wkb = new WKBReader();

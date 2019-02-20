@@ -3,7 +3,7 @@ package cn.platalk.brtmap.core.map.shp;
 import org.gdal.ogr.Feature;
 
 import cn.platalk.brtmap.core.map.shp.routedata.TYBrtShpRouteRecord;
-import cn.platalk.brtmap.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.utils.TYEncryption;
 
 import com.vividsolutions.jts.geom.Geometry;
