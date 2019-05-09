@@ -1,7 +1,5 @@
 package cn.platalk.map.res;
 
-import cn.platalk.map.res.TYIResourceManager;
-
 public class TYMacResourceManager implements TYIResourceManager {
 	private static final String RAW_DATA_ROOT_LOCAL = "/Users/innerpeacer/WTMapProject/WTMapRawData";
 	private static final String VECTOR_TILE_ROOT_LOCAL = "/Users/innerpeacer/Dev/apache-tomcat-7.0.59/webapps/WTMapResource/mapdata";

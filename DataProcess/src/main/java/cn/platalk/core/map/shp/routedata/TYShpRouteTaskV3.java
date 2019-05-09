@@ -97,7 +97,8 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 			List<TYMapDataFeatureRecord> recordList) {
 		Map<String, Geometry> geometryMap = new HashMap<String, Geometry>();
 		for (TYMapDataFeatureRecord record : recordList) {
-			if (record.layer == 2 && !record.categoryID.equals("000800")) {
+			// if (record.layer == 2 && !record.categoryID.equals("000800")) {
+			if (record.layer == 2 && !record.categoryID.equals("000600") && !record.categoryID.equals("000700")) {
 				geometryMap.put(record.poiID, record.getGeometryData().buffer(0.1));
 			}
 		}

@@ -2,19 +2,18 @@ package cn.platalk.core.map.shp;
 
 import org.gdal.ogr.Feature;
 
-import cn.platalk.core.map.shp.routedata.TYShpRouteRecord;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.utils.TYEncryption;
-
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
 
+import cn.platalk.core.map.shp.routedata.TYShpRouteRecord;
+import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.utils.TYEncryption;
+
 public class TYShpHelper {
 
-	public static TYShpRouteRecord routeRecordFromFeature(Feature feature,
-			int fid) {
+	public static TYShpRouteRecord routeRecordFromFeature(Feature feature, int fid) {
 		TYShpRouteRecord record = new TYShpRouteRecord();
 		record.geometryID = fid;
 		record.geometryData = feature.GetGeometryRef().ExportToWkb();
@@ -31,8 +30,7 @@ public class TYShpHelper {
 		return record;
 	}
 
-	public static TYMapDataFeatureRecord mapRecordFromFeature(Feature feature,
-			int fid) {
+	public static TYMapDataFeatureRecord mapRecordFromFeature(Feature feature, int fid) {
 		TYMapDataFeatureRecord record = new TYMapDataFeatureRecord();
 		record.objectID = fid + "";
 
@@ -44,8 +42,7 @@ public class TYShpHelper {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		record.geometry = TYEncryption.encryptBytes(feature.GetGeometryRef()
-				.ExportToWkb());
+		record.geometry = TYEncryption.encryptBytes(feature.GetGeometryRef().ExportToWkb());
 
 		record.geoID = feature.GetFieldAsString("GEO_ID");
 		record.poiID = feature.GetFieldAsString("POI_ID");

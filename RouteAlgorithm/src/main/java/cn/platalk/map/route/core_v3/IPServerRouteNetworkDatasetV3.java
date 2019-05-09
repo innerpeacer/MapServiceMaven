@@ -72,7 +72,10 @@ class IPServerRouteNetworkDatasetV3 {
 		allMapInfoArray.addAll(mapInfos);
 		// allMapDataArray.addAll(mapdata);
 		for (TYIMapDataFeatureRecord record : mapdata) {
-			if (record.getLayer() == 2 && !record.getCategoryID().equals("000800")) {
+			// if (record.getLayer() == 2 &&
+			// !record.getCategoryID().equals("000800")) {
+			if (record.getLayer() == 2 && !record.getCategoryID().equals("000600")
+					&& !record.getCategoryID().equals("000700")) {
 				allMapDataArray.add(record);
 			}
 		}
@@ -165,6 +168,8 @@ class IPServerRouteNetworkDatasetV3 {
 		IPServerNodeV3 endNode = processTempNodeForEnd(endPoint);
 		targetStartRoomID = startNode.m_roomID;
 		targetEndRoomID = endNode.m_roomID;
+		System.out.println("targetStartRoomID: " + targetStartRoomID);
+		System.out.println("targetEndRoomID: " + targetEndRoomID);
 		computePaths(startNode);
 		List<IPServerRouteElement> elements = getShorestPathToNodeV3(startNode, endNode);
 
