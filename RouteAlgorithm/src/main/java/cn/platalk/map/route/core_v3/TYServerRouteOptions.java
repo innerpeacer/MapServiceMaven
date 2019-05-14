@@ -10,7 +10,8 @@ public class TYServerRouteOptions {
 	private boolean useSameFloor = false;
 	private boolean sameFloorFirst = true;
 
-	private boolean enableRouteLevel = true;
+	// private boolean enableRouteLevel = true;
+	private IPRouteLevel routeLevel = IPRouteLevel.Zero;
 
 	public TYServerRouteOptions() {
 
@@ -56,11 +57,19 @@ public class TYServerRouteOptions {
 		return useSameFloor;
 	}
 
-	public void setEnableRouteLevel(boolean enableRouteLevel) {
-		this.enableRouteLevel = enableRouteLevel;
+	// public void setEnableRouteLevel(boolean enableRouteLevel) {
+	// this.enableRouteLevel = enableRouteLevel;
+	// }
+	//
+	// public boolean isEnableRouteLevel() {
+	// return enableRouteLevel;
+	// }
+
+	public void setRouteLevel(IPRouteLevel level) {
+		this.routeLevel = level;
 	}
 
-	public boolean isEnableRouteLevel() {
-		return enableRouteLevel;
+	public IPRouteLevel getRouteLevel() {
+		return this.routeLevel;
 	}
 }

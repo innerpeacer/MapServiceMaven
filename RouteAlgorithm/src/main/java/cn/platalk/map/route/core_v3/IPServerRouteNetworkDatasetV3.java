@@ -65,7 +65,8 @@ class IPServerRouteNetworkDatasetV3 {
 	private List<String> ignoredNodeList = new ArrayList<String>();
 	private boolean useSameFloor = false;
 	private Calendar requestTime;
-	private boolean enableRouteLevel = false;
+	// private boolean enableRouteLevel = false;
+	private IPRouteLevel targetRouteLevel;
 
 	public IPServerRouteNetworkDatasetV3(List<TYIMapInfo> mapInfos, List<TYIRouteNodeRecordV3> nodes,
 			List<TYIRouteLinkRecordV3> links, List<TYIMapDataFeatureRecord> mapdata) {
@@ -149,12 +150,14 @@ class IPServerRouteNetworkDatasetV3 {
 			ignoredNodeList.clear();
 			ignoredNodeList.addAll(options.getIgnoredNodeCategoryList());
 			useSameFloor = options.isUseSameFloor();
-			enableRouteLevel = options.isEnableRouteLevel();
+			// enableRouteLevel = options.isEnableRouteLevel();
+			targetRouteLevel = options.getRouteLevel();
 		} else {
 			m_usedLinkType = 0;
 			ignoredNodeList.clear();
 			useSameFloor = false;
-			enableRouteLevel = false;
+			// enableRouteLevel = false;
+			targetRouteLevel = IPRouteLevel.Zero;
 		}
 		// System.out.println("useSameFloor: " + useSameFloor);
 
@@ -238,17 +241,14 @@ class IPServerRouteNetworkDatasetV3 {
 				}
 
 				// 考虑路段等级
-				if (enableRouteLevel) {
-					if (e.m_level > 0) {
-						boolean inStartOrEndRoom = false;
-						if (e.m_roomID != null) {
-							inStartOrEndRoom = e.m_roomID.equals(targetStartRoomID)
-									|| e.m_roomID.equals(targetEndRoomID);
-						}
+				if (e.m_level > targetRouteLevel.getLevel()) {
+					boolean inStartOrEndRoom = false;
+					if (e.m_roomID != null) {
+						inStartOrEndRoom = e.m_roomID.equals(targetStartRoomID) || e.m_roomID.equals(targetEndRoomID);
+					}
 
-						if (!inStartOrEndRoom) {
-							continue;
-						}
+					if (!inStartOrEndRoom) {
+						continue;
 					}
 				}
 

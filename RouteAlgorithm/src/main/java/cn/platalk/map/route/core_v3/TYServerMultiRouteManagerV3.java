@@ -35,11 +35,12 @@ public class TYServerMultiRouteManagerV3 {
 	public synchronized TYServerMultiRouteResultV3 requestRoute(TYLocalPoint startPoint, TYLocalPoint endPoint,
 			List<TYLocalPoint> stopPoints, TYServerRouteOptions options) {
 		TYServerMultiRouteResultV3 result = null;
-		// System.out.println("requestRoute: " + options.isSameFloorFirst());
+		System.out.println("requestRoute: " + options.isSameFloorFirst());
 
 		{
-			IPRouteDebugger.debugLog("============ Enable Route Level ===============");
-			options.setEnableRouteLevel(true);
+			IPRouteDebugger.debugLog("============ Route Level 0===============");
+			// options.setEnableRouteLevel(true);
+			options.setRouteLevel(IPRouteLevel.Zero);
 			if (options.isSameFloorFirst()) {
 				options.setUseSameFloor(true);
 				result = requestRoute1(startPoint, endPoint, stopPoints, options);
@@ -54,10 +55,49 @@ public class TYServerMultiRouteManagerV3 {
 		}
 
 		if (result == null) {
-			IPRouteDebugger.debugLog("============ Enable Route Level Failed ===============");
-			IPRouteDebugger.debugLog("============ Disable Route Level =====================");
+			IPRouteDebugger.debugLog("============ Route Level 0 Failed ===============");
+			IPRouteDebugger.debugLog("============ Route Level 1 =====================");
 
-			options.setEnableRouteLevel(false);
+			// options.setEnableRouteLevel(false);
+			options.setRouteLevel(IPRouteLevel.One);
+			if (options.isSameFloorFirst()) {
+				options.setUseSameFloor(true);
+				result = requestRoute1(startPoint, endPoint, stopPoints, options);
+				if (result == null) {
+					options.setUseSameFloor(false);
+					result = requestRoute1(startPoint, endPoint, stopPoints, options);
+				}
+			} else {
+				options.setUseSameFloor(false);
+				result = requestRoute1(startPoint, endPoint, stopPoints, options);
+			}
+		}
+
+		if (result == null) {
+			IPRouteDebugger.debugLog("============ Route Level 1 Failed ===============");
+			IPRouteDebugger.debugLog("============ Route Level 2 =====================");
+
+			// options.setEnableRouteLevel(false);
+			options.setRouteLevel(IPRouteLevel.Two);
+			if (options.isSameFloorFirst()) {
+				options.setUseSameFloor(true);
+				result = requestRoute1(startPoint, endPoint, stopPoints, options);
+				if (result == null) {
+					options.setUseSameFloor(false);
+					result = requestRoute1(startPoint, endPoint, stopPoints, options);
+				}
+			} else {
+				options.setUseSameFloor(false);
+				result = requestRoute1(startPoint, endPoint, stopPoints, options);
+			}
+		}
+
+		if (result == null) {
+			IPRouteDebugger.debugLog("============ Route Level 2 Failed ===============");
+			IPRouteDebugger.debugLog("============ Route Level 3 =====================");
+
+			// options.setEnableRouteLevel(false);
+			options.setRouteLevel(IPRouteLevel.Three);
 			if (options.isSameFloorFirst()) {
 				options.setUseSameFloor(true);
 				result = requestRoute1(startPoint, endPoint, stopPoints, options);
