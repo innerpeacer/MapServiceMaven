@@ -21,29 +21,27 @@ public class IPMysqlCityParams {
 	static final String FIELD_CITY_5_LATITUDE = "LATITUDE";
 	static final String FIELD_CITY_6_STATUS = "STATUS";
 
-	private static List<IPSqlField> cityFieldList = null;
+	private static List<IPSqlField> cityFieldList = new ArrayList<IPSqlField>();
+	static {
+		cityFieldList
+				.add(new IPSqlField(FIELD_CITY_1_ID, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		cityFieldList.add(
+				new IPSqlField(FIELD_CITY_2_NAME, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		cityFieldList.add(
+				new IPSqlField(FIELD_CITY_3_SNAME, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		cityFieldList.add(
+				new IPSqlField(FIELD_CITY_4_LONGITUDE, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		cityFieldList.add(
+				new IPSqlField(FIELD_CITY_5_LATITUDE, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		cityFieldList
+				.add(new IPSqlField(FIELD_CITY_6_STATUS, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+	}
 
 	public static IPSqlTable CreateTable() {
 		return new IPSqlTable(TABLE_CITY, GetCityFieldList(), null);
 	}
 
 	public static List<IPSqlField> GetCityFieldList() {
-		if (cityFieldList == null) {
-			cityFieldList = new ArrayList<IPSqlField>();
-
-			cityFieldList
-					.add(new IPSqlField(FIELD_CITY_1_ID, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			cityFieldList.add(
-					new IPSqlField(FIELD_CITY_2_NAME, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			cityFieldList.add(
-					new IPSqlField(FIELD_CITY_3_SNAME, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			cityFieldList.add(
-					new IPSqlField(FIELD_CITY_4_LONGITUDE, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			cityFieldList.add(
-					new IPSqlField(FIELD_CITY_5_LATITUDE, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			cityFieldList
-					.add(new IPSqlField(FIELD_CITY_6_STATUS, new IPSqlFieldType(Integer.class.getName(), " INT "), false));
-		}
 		return cityFieldList;
 	}
 

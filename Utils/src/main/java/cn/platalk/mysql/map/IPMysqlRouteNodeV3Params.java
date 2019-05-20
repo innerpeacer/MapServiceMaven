@@ -31,45 +31,43 @@ public class IPMysqlRouteNodeV3Params {
 	static final String FIELD_ROUTE_NODE_13_OPEN_TIME = "OPEN_TIME";
 	static final String FIELD_ROUTE_NODE_14_ROOM_ID = "ROOM_ID";
 
-	private static List<IPSqlField> routeNodeFieldList = null;
+	private static List<IPSqlField> routeNodeFieldList = new ArrayList<IPSqlField>();
+	static {
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_1_NODE_ID,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_2_GEOMETRY,
+				new IPSqlFieldType(byte[].class.getName(), "MediumBlob"), false));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_3_VIRTUAL,
+				new IPSqlFieldType(Boolean.class.getName(), "INTEGER"), false));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_4_NODE_NAME,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_5_CATEGORY_ID,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_6_FLOOR,
+				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_7_LEVEL,
+				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_8_IS_SWITCHING,
+				new IPSqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_9_SWITCHING_ID,
+				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), true));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_10_DIRECTION,
+				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_11_NODE_TYPE,
+				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_12_OPEN,
+				new IPSqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_13_OPEN_TIME,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), true));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_14_ROOM_ID,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+	}
 
 	public static IPSqlTable CreateTable(String buildingID) {
 		return new IPSqlTable(String.format(TABLE_ROUTE_NODE, buildingID), GetRouteNodeFieldList(), null);
 	}
 
-	public static List<IPSqlField> GetRouteNodeFieldList() {
-		if (routeNodeFieldList == null) {
-			routeNodeFieldList = new ArrayList<IPSqlField>();
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_1_NODE_ID,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_2_GEOMETRY,
-					new IPSqlFieldType(byte[].class.getName(), "MediumBlob"), false));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_3_VIRTUAL,
-					new IPSqlFieldType(Boolean.class.getName(), "INTEGER"), false));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_4_NODE_NAME,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_5_CATEGORY_ID,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_6_FLOOR,
-					new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_7_LEVEL,
-					new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_8_IS_SWITCHING,
-					new IPSqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_9_SWITCHING_ID,
-					new IPSqlFieldType(Integer.class.getName(), "INTEGER"), true));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_10_DIRECTION,
-					new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_11_NODE_TYPE,
-					new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_12_OPEN,
-					new IPSqlFieldType(Boolean.class.getName(), "INTEGER(1)"), false));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_13_OPEN_TIME,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), true));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_14_ROOM_ID,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
-
-		}
+	public synchronized static List<IPSqlField> GetRouteNodeFieldList() {
 		return routeNodeFieldList;
 	}
 

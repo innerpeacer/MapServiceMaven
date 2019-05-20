@@ -18,22 +18,21 @@ public class IPMysqlRouteNodeParams {
 	static final String FIELD_ROUTE_NODE_2_GEOMETRY = "GEOMETRY";
 	static final String FIELD_ROUTE_NODE_3_VIRTUAL = "IS_VIRTUAL";
 
-	private static List<IPSqlField> routeNodeFieldList = null;
+	private static List<IPSqlField> routeNodeFieldList = new ArrayList<IPSqlField>();
+	static {
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_1_NODE_ID,
+				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_2_GEOMETRY,
+				new IPSqlFieldType(byte[].class.getName(), "MediumBlob"), false));
+		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_3_VIRTUAL,
+				new IPSqlFieldType(Boolean.class.getName(), "INTEGER"), false));
+	}
 
 	public static IPSqlTable CreateTable(String buildingID) {
 		return new IPSqlTable(String.format(TABLE_ROUTE_NODE, buildingID), GetRouteNodeFieldList(), null);
 	}
 
 	public static List<IPSqlField> GetRouteNodeFieldList() {
-		if (routeNodeFieldList == null) {
-			routeNodeFieldList = new ArrayList<IPSqlField>();
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_1_NODE_ID,
-					new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_2_GEOMETRY,
-					new IPSqlFieldType(byte[].class.getName(), "MediumBlob"), false));
-			routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_3_VIRTUAL,
-					new IPSqlFieldType(Boolean.class.getName(), "INTEGER"), false));
-		}
 		return routeNodeFieldList;
 	}
 

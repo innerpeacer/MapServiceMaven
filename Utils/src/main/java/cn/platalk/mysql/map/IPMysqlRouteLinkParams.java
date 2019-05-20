@@ -22,30 +22,29 @@ public class IPMysqlRouteLinkParams {
 	static final String FIELD_ROUTE_LINK_6_VIRTUAL = "IS_VIRTUAL";
 	static final String FIELD_ROUTE_LINK_7_ONE_WAY = "ONE_WAY";
 
-	private static List<IPSqlField> routeLinkFieldList = null;
+	private static List<IPSqlField> routeLinkFieldList = new ArrayList<IPSqlField>();
+	static {
+		routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_1_LINK_ID,
+				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
+		routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_2_GEOMETRY,
+				new IPSqlFieldType(byte[].class.getName(), "MediumBlob"), false));
+		routeLinkFieldList.add(
+				new IPSqlField(FIELD_ROUTE_LINK_3_LENGTH, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_4_HEAD_NODE,
+				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
+		routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_5_END_NODE,
+				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
+		routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_6_VIRTUAL,
+				new IPSqlFieldType(Boolean.class.getName(), "INTEGER"), false));
+		routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_7_ONE_WAY,
+				new IPSqlFieldType(Boolean.class.getName(), "INTEGER"), false));
+	}
 
 	public static IPSqlTable CreateTable(String buildingID) {
 		return new IPSqlTable(String.format(TABLE_ROUTE_LINK, buildingID), GetRouteLinkFieldList(), null);
 	}
 
 	public static List<IPSqlField> GetRouteLinkFieldList() {
-		if (routeLinkFieldList == null) {
-			routeLinkFieldList = new ArrayList<IPSqlField>();
-			routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_1_LINK_ID,
-					new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_2_GEOMETRY,
-					new IPSqlFieldType(byte[].class.getName(), "MediumBlob"), false));
-			routeLinkFieldList.add(
-					new IPSqlField(FIELD_ROUTE_LINK_3_LENGTH, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_4_HEAD_NODE,
-					new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_5_END_NODE,
-					new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
-			routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_6_VIRTUAL,
-					new IPSqlFieldType(Boolean.class.getName(), "INTEGER"), false));
-			routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_7_ONE_WAY,
-					new IPSqlFieldType(Boolean.class.getName(), "INTEGER"), false));
-		}
 		return routeLinkFieldList;
 	}
 

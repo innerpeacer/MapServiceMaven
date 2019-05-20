@@ -37,60 +37,57 @@ public class IPMysqlMapDataParams {
 	static final String FIELD_MAP_DATA_20_EXTRUSION_HEIGHT = "EXTRUSION_HEIGHT";
 	static final String FIELD_MAP_DATA_21_EXTRUSION_BASE = "EXTRUSION_BASE";
 
-	private static List<IPSqlField> mapDataFieldList = null;
+	private static List<IPSqlField> mapDataFieldList = new ArrayList<IPSqlField>();
+	static {
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_1_OBJECT_ID,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_2_GEOMETRY,
+				new IPSqlFieldType(byte[].class.getName(), "MediumBlob"), false));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_3_GEO_ID,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_4_POI_ID,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_5_FLOOR_ID,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_6_BUILDING_ID,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_7_CATEGORY_ID,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		mapDataFieldList.add(
+				new IPSqlField(FIELD_MAP_DATA_8_NAME, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+		mapDataFieldList.add(
+				new IPSqlField(FIELD_MAP_DATA_9_SYMBOL_ID, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_10_FLOOR_NUMBER,
+				new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_11_FLOOR_NAME,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_12_SHAPE_LENGTH,
+				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_13_SHAPE_AREA,
+				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		mapDataFieldList.add(
+				new IPSqlField(FIELD_MAP_DATA_14_LABEL_X, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		mapDataFieldList.add(
+				new IPSqlField(FIELD_MAP_DATA_15_LABEL_Y, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		mapDataFieldList.add(
+				new IPSqlField(FIELD_MAP_DATA_16_LAYER, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+		mapDataFieldList.add(
+				new IPSqlField(FIELD_MAP_DATA_17_LEVEL_MAX, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+		mapDataFieldList.add(
+				new IPSqlField(FIELD_MAP_DATA_18_LEVEL_MIN, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_19_EXTRUSION,
+				new IPSqlFieldType(Boolean.class.getName(), "INTEGER(1)"), true, 0));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_20_EXTRUSION_HEIGHT,
+				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_21_EXTRUSION_BASE,
+				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
+	}
 
 	public static IPSqlTable CreateTable(String buildingID) {
 		return new IPSqlTable(String.format(TABLE_MAP_DATA, buildingID), GetMapDataFieldList(), null);
 	}
 
-	public static List<IPSqlField> GetMapDataFieldList() {
-		if (mapDataFieldList == null) {
-			mapDataFieldList = new ArrayList<IPSqlField>();
-
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_1_OBJECT_ID,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_2_GEOMETRY,
-					new IPSqlFieldType(byte[].class.getName(), "MediumBlob"), false));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_3_GEO_ID,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_4_POI_ID,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_5_FLOOR_ID,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_6_BUILDING_ID,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_7_CATEGORY_ID,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(
-					new IPSqlField(FIELD_MAP_DATA_8_NAME, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
-			mapDataFieldList.add(
-					new IPSqlField(FIELD_MAP_DATA_9_SYMBOL_ID, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_10_FLOOR_NUMBER,
-					new IPSqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_11_FLOOR_NAME,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_12_SHAPE_LENGTH,
-					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_13_SHAPE_AREA,
-					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			mapDataFieldList.add(
-					new IPSqlField(FIELD_MAP_DATA_14_LABEL_X, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			mapDataFieldList.add(
-					new IPSqlField(FIELD_MAP_DATA_15_LABEL_Y, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			mapDataFieldList.add(
-					new IPSqlField(FIELD_MAP_DATA_16_LAYER, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(
-					new IPSqlField(FIELD_MAP_DATA_17_LEVEL_MAX, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(
-					new IPSqlField(FIELD_MAP_DATA_18_LEVEL_MIN, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_19_EXTRUSION,
-					new IPSqlFieldType(Boolean.class.getName(), "INTEGER(1)"), true, 0));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_20_EXTRUSION_HEIGHT,
-					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
-			mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_21_EXTRUSION_BASE,
-					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
-
-		}
+	public synchronized static List<IPSqlField> GetMapDataFieldList() {
 		return mapDataFieldList;
 	}
 

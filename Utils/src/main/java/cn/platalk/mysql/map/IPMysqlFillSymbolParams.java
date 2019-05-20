@@ -20,26 +20,25 @@ public class IPMysqlFillSymbolParams {
 	static final String FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH = "LINE_WIDTH";
 	static final String FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID = "BUILDING_ID";
 
-	private static List<IPSqlField> fillSymbolFieldList = null;
+	private static List<IPSqlField> fillSymbolFieldList = new ArrayList<IPSqlField>();
+	static {
+		fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID,
+				new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+		fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH,
+				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+	}
 
 	public static IPSqlTable CreateTable() {
 		return new IPSqlTable(TABLE_FILL_SYMBOL, GetFillSymbolFieldList(), null);
 	}
 
 	public static List<IPSqlField> GetFillSymbolFieldList() {
-		if (fillSymbolFieldList == null) {
-			fillSymbolFieldList = new ArrayList<IPSqlField>();
-			fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID,
-					new IPSqlFieldType(Integer.class.getName(), "INT"), false));
-			fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH,
-					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-		}
 		return fillSymbolFieldList;
 	}
 

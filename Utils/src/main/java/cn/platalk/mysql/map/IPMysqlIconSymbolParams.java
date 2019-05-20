@@ -18,22 +18,21 @@ public class IPMysqlIconSymbolParams {
 	static final String FIELD_MAP_SYMBOL_ICON_2_ICON = "ICON";
 	static final String FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID = "BUILDING_ID";
 
-	private static List<IPSqlField> iconSymbolFieldList = null;
+	private static List<IPSqlField> iconSymbolFieldList = new ArrayList<IPSqlField>();
+	static {
+		iconSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID,
+				new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+		iconSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_2_ICON,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		iconSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+	}
 
 	public static IPSqlTable CreateTable() {
 		return new IPSqlTable(TABLE_ICON_SYMBOL, GetIconSymbolFieldList(), null);
 	}
 
 	public static List<IPSqlField> GetIconSymbolFieldList() {
-		if (iconSymbolFieldList == null) {
-			iconSymbolFieldList = new ArrayList<IPSqlField>();
-			iconSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID,
-					new IPSqlFieldType(Integer.class.getName(), "INT"), false));
-			iconSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_2_ICON,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			iconSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-		}
 		return iconSymbolFieldList;
 	}
 

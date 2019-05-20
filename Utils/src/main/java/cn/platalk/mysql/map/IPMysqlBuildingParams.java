@@ -31,40 +31,37 @@ public class IPMysqlBuildingParams {
 
 	static final String FIELD_BUILDING_11_STATUS = "STATUS";
 
-	private static List<IPSqlField> buildingFieldList = null;
+	private static List<IPSqlField> buildingFieldList = new ArrayList<IPSqlField>();
+	static {
+		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_1_CITY_ID,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		buildingFieldList.add(
+				new IPSqlField(FIELD_BUILDING_2_ID, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_3_NAME,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
+		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_4_LONGITUDE,
+				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		buildingFieldList.add(
+				new IPSqlField(FIELD_BUILDING_5_LATITUDE, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_6_ADDRESS,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
+		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_7_INIT_ANGLE,
+				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_8_ROUTE_URL,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
+		buildingFieldList.add(
+				new IPSqlField(FIELD_BUILDING_9_OFFSET_X, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_10_OFFSET_Y,
+				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		buildingFieldList.add(
+				new IPSqlField(FIELD_BUILDING_11_STATUS, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+	}
 
 	public static IPSqlTable CreateTable() {
 		return new IPSqlTable(IPMysqlBuildingParams.TABLE_BUILDING, GetBuildingFieldList(), null);
 	}
 
-	public static List<IPSqlField> GetBuildingFieldList() {
-		if (buildingFieldList == null) {
-			buildingFieldList = new ArrayList<IPSqlField>();
-
-			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_1_CITY_ID,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			buildingFieldList.add(
-					new IPSqlField(FIELD_BUILDING_2_ID, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
-			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_3_NAME,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
-			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_4_LONGITUDE,
-					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(
-					new IPSqlField(FIELD_BUILDING_5_LATITUDE, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_6_ADDRESS,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
-			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_7_INIT_ANGLE,
-					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_8_ROUTE_URL,
-					new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), false));
-			buildingFieldList.add(
-					new IPSqlField(FIELD_BUILDING_9_OFFSET_X, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_10_OFFSET_Y,
-					new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
-			buildingFieldList.add(
-					new IPSqlField(FIELD_BUILDING_11_STATUS, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
-
-		}
+	public synchronized static List<IPSqlField> GetBuildingFieldList() {
 		return buildingFieldList;
 	}
 
