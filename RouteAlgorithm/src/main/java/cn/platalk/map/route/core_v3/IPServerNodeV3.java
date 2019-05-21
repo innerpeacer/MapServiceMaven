@@ -14,6 +14,7 @@ public class IPServerNodeV3 implements Comparable<IPServerNodeV3> {
 
 	public double minDistance;
 	public IPServerNodeV3 previousNode;
+	public double cumulativeAngle = 0;
 
 	public List<IPServerLinkV3> adjacencies = new ArrayList<IPServerLinkV3>();
 

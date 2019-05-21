@@ -278,7 +278,24 @@ class IPServerRouteNetworkDatasetV3 {
 
 					v.minDistance = distanceThroughU;
 					v.previousNode = u;
+					if (u.previousNode != null) {
+						Double angleBetweenNodes = AngleForNodes(u.previousNode, u, v);
+						double angle = angleBetweenNodes != null ? angleBetweenNodes : 0;
+						v.cumulativeAngle = u.cumulativeAngle + angle;
+					}
 					nodeQueue.add(v);
+				} else if (distanceThroughU == v.minDistance && u.previousNode != null) {
+					Double angleBetweenNodes = AngleForNodes(u.previousNode, u, v);
+					double angle = angleBetweenNodes != null ? angleBetweenNodes : 0;
+					double vCumulativeAngle = v.cumulativeAngle;
+					double uCumulativeAngle = u.cumulativeAngle + angle;
+					if (vCumulativeAngle >= uCumulativeAngle) {
+						nodeQueue.remove(v);
+						v.minDistance = distanceThroughU;
+						v.previousNode = u;
+						v.cumulativeAngle = uCumulativeAngle;
+						nodeQueue.add(v);
+					}
 				}
 			}
 		}
@@ -337,6 +354,39 @@ class IPServerRouteNetworkDatasetV3 {
 		IPRouteDebugger.debugLog("Cost: " + cost);
 		IPRouteDebugger.debugLog("========================================");
 		return resultList;
+	}
+
+	private Double AngleForNodes(IPServerNodeV3 prevNode, IPServerNodeV3 node, IPServerNodeV3 nextNode) {
+		IPServerLinkV3 prevLink = null;
+		IPServerLinkV3 nextLink = null;
+		for (IPServerLinkV3 link : prevNode.adjacencies) {
+			if (link.getLine() == null) {
+				continue;
+			}
+			if (link.nextNode == node) {
+				prevLink = link;
+				break;
+			}
+		}
+
+		for (IPServerLinkV3 link : node.adjacencies) {
+			if (link.getLine() == null) {
+				continue;
+			}
+			if (link.nextNode == nextNode) {
+				nextLink = link;
+				break;
+			}
+		}
+
+		if (prevLink != null && nextLink != null) {
+			int prePointN = prevLink.getLine().getNumPoints();
+			Point prePoint = prevLink.getLine().getPointN(prePointN - 2);
+			Point point = node.getPos();
+			Point nextPoint = nextLink.getLine().getPointN(1);
+			return IPAngleUtils.AngleForPoints(prePoint, point, nextPoint);
+		}
+		return null;
 	}
 
 	protected List<Object> findNodeOnRouteNetwork(TYLocalPoint lp) {
