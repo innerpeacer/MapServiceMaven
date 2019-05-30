@@ -18,6 +18,7 @@ public class TYBuilding implements TYIBuilding {
 	static final String FIELD_BUILDING_10_OFFSET_Y = "OFFSET_Y";
 
 	static final String FIELD_BUILDING_11_STATUS = "STATUS";
+	static final String FIELD_BUILDING_12_INIT_FLOOR_INDEX = "INIT_FLOOR_INDEX";
 
 	private String cityID;
 	private String buildingID;
@@ -28,6 +29,8 @@ public class TYBuilding implements TYIBuilding {
 	private double latitude;
 
 	private double initAngle;
+	private int initFloorIndex;
+
 	private String routeURL;
 	private TYMapSize offset;
 
@@ -113,6 +116,10 @@ public class TYBuilding implements TYIBuilding {
 		this.initAngle = initAngle;
 	}
 
+	public void setInitFloorIndex(int initFloorIndex) {
+		this.initFloorIndex = initFloorIndex;
+	}
+
 	public void setRouteURL(String routeURL) {
 		this.routeURL = routeURL;
 	}
@@ -151,6 +158,10 @@ public class TYBuilding implements TYIBuilding {
 
 	public double getInitAngle() {
 		return initAngle;
+	}
+
+	public int getInitFloorIndex() {
+		return initFloorIndex;
 	}
 
 	public String getRouteURL() {

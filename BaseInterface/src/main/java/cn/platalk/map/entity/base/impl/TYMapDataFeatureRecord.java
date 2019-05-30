@@ -32,6 +32,8 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 	static final String FIELD_MAP_DATA_16_LAYER = "LAYER";
 	static final String FIELD_MAP_DATA_17_LEVEL_MAX = "LEVEL_MAX";
 	static final String FIELD_MAP_DATA_18_LEVEL_MIN = "LEVEL_MIN";
+	static final String FIELD_MAP_DATA_19_NAME = "NAME_EN";
+	static final String FIELD_MAP_DATA_20_NAME = "NAME_OTHER";
 
 	public String objectID;
 	public byte[] geometry;
@@ -41,6 +43,8 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 	public String buildingID;
 	public String categoryID;
 	public String name;
+	public String name_en;
+	public String name_other;
 	public int symbolID;
 	public int floorNumber;
 	public String floorName;
@@ -125,6 +129,22 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getNameEn() {
+		return name_en;
+	}
+
+	public void setNameEn(String nameEn) {
+		this.name_en = nameEn;
+	}
+
+	public String getNameOther() {
+		return name_other;
+	}
+
+	public void setNameOther(String nameOther) {
+		this.name_other = nameOther;
 	}
 
 	public int getSymbolID() {

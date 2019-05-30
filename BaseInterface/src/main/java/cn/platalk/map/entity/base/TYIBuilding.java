@@ -15,6 +15,8 @@ public interface TYIBuilding {
 
 	public double getInitAngle();
 
+	public int getInitFloorIndex();
+
 	public String getRouteURL();
 
 	public TYIMapSize getOffset();
