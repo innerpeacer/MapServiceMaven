@@ -29,6 +29,7 @@ class TYCBMObjectBuilder {
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_LATITUDE, building.getLatitude());
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_ADDRESS, building.getAddress());
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_INIT_ANGLE, building.getInitAngle());
+		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_INIT_FLOOR, building.getInitFloorIndex());
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_ROUTE_URL, building.getRouteURL());
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_OFFSET_X, building.getOffset().getX());
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_OFFSET_Y, building.getOffset().getY());
