@@ -6,7 +6,7 @@ import java.util.Set;
 
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 
-class TYExtractLabelString {
+public class TYExtractLabelString {
 
 	public static String GetLabelString(List<TYIMapDataFeatureRecord> records) {
 		Set<Character> charSet = new HashSet<Character>();
@@ -16,9 +16,21 @@ class TYExtractLabelString {
 		}
 
 		for (TYIMapDataFeatureRecord record : records) {
-			String name = record.getName();
-			for (int i = 0; i < name.length(); ++i) {
-				charSet.add(name.charAt(i));
+			String nameString = "";
+			if (record.getName() != null) {
+				nameString += record.getName();
+			}
+
+			if (record.getNameEn() != null) {
+				nameString += record.getNameEn();
+			}
+
+			if (record.getNameOther() != null) {
+				nameString += record.getNameOther();
+			}
+
+			for (int i = 0; i < nameString.length(); ++i) {
+				charSet.add(nameString.charAt(i));
 			}
 		}
 
