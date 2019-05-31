@@ -36,6 +36,8 @@ public class IPMysqlMapDataParams {
 	static final String FIELD_MAP_DATA_19_EXTRUSION = "EXTRUSION";
 	static final String FIELD_MAP_DATA_20_EXTRUSION_HEIGHT = "EXTRUSION_HEIGHT";
 	static final String FIELD_MAP_DATA_21_EXTRUSION_BASE = "EXTRUSION_BASE";
+	static final String FIELD_MAP_DATA_22_NAME_EN = "NAME_EN";
+	static final String FIELD_MAP_DATA_23_NAME_OTHER = "NAME_OTHER";
 
 	private static List<IPSqlField> mapDataFieldList = new ArrayList<IPSqlField>();
 	static {
@@ -81,6 +83,10 @@ public class IPMysqlMapDataParams {
 				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
 		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_21_EXTRUSION_BASE,
 				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_22_NAME_EN,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_23_NAME_OTHER,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
 	}
 
 	public static IPSqlTable CreateTable(String buildingID) {
@@ -116,6 +122,8 @@ public class IPMysqlMapDataParams {
 			mapdata.setExtrusion(record.getBoolean(FIELD_MAP_DATA_19_EXTRUSION));
 			mapdata.setExtrusionHeight(record.getDouble(FIELD_MAP_DATA_20_EXTRUSION_HEIGHT));
 			mapdata.setExtrusionBase(record.getDouble(FIELD_MAP_DATA_21_EXTRUSION_BASE));
+			mapdata.setNameEn(record.getString(FIELD_MAP_DATA_22_NAME_EN));
+			mapdata.setNameOther(record.getString(FIELD_MAP_DATA_23_NAME_OTHER));
 			mapdataList.add(mapdata);
 		}
 		return mapdataList;
@@ -144,6 +152,8 @@ public class IPMysqlMapDataParams {
 		data.put(FIELD_MAP_DATA_19_EXTRUSION, record.isExtrusion());
 		data.put(FIELD_MAP_DATA_20_EXTRUSION_HEIGHT, record.getExtrusionHeight());
 		data.put(FIELD_MAP_DATA_21_EXTRUSION_BASE, record.getExtrusionBase());
+		data.put(FIELD_MAP_DATA_22_NAME_EN, record.getNameEn());
+		data.put(FIELD_MAP_DATA_23_NAME_OTHER, record.getNameOther());
 		return data;
 	}
 
