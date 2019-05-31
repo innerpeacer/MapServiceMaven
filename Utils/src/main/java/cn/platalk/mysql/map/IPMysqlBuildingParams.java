@@ -30,6 +30,7 @@ public class IPMysqlBuildingParams {
 	static final String FIELD_BUILDING_10_OFFSET_Y = "OFFSET_Y";
 
 	static final String FIELD_BUILDING_11_STATUS = "STATUS";
+	static final String FIELD_BUILDING_12_INIT_FLOOR_INDEX = "INIT_FLOOR_INDEX";
 
 	private static List<IPSqlField> buildingFieldList = new ArrayList<IPSqlField>();
 	static {
@@ -55,6 +56,8 @@ public class IPMysqlBuildingParams {
 				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 		buildingFieldList.add(
 				new IPSqlField(FIELD_BUILDING_11_STATUS, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_12_INIT_FLOOR_INDEX,
+				new IPSqlFieldType(Integer.class.getName(), "INT"), true, 0));
 	}
 
 	public static IPSqlTable CreateTable() {
@@ -80,6 +83,7 @@ public class IPMysqlBuildingParams {
 			building.setOffset(new TYMapSize(record.getDouble(FIELD_BUILDING_9_OFFSET_X),
 					record.getDouble(FIELD_BUILDING_10_OFFSET_Y)));
 			building.setStatus(record.getInteger(FIELD_BUILDING_11_STATUS));
+			building.setInitFloorIndex(record.getInteger(FIELD_BUILDING_12_INIT_FLOOR_INDEX));
 			buildingList.add(building);
 		}
 		return buildingList;
@@ -98,6 +102,7 @@ public class IPMysqlBuildingParams {
 		data.put(FIELD_BUILDING_9_OFFSET_X, building.getOffset().getX());
 		data.put(FIELD_BUILDING_10_OFFSET_Y, building.getOffset().getY());
 		data.put(FIELD_BUILDING_11_STATUS, building.getStatus());
+		data.put(FIELD_BUILDING_12_INIT_FLOOR_INDEX, building.getInitFloorIndex());
 		return data;
 	}
 }
