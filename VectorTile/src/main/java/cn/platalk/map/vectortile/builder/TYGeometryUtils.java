@@ -19,6 +19,8 @@ class TYGeometryUtils {
 		userData.put("GEO_ID", record.getGeoID());
 		userData.put("POI_ID", record.getPoiID());
 		userData.put("NAME", record.getName());
+		userData.put("NAME_EN", record.getNameEn());
+		userData.put("NAME_OTHER", record.getNameOther());
 		userData.put("CATEGORY_ID", record.getCategoryID());
 		// userData.put("COLOR", record.symbolID);
 		// userData.put("LEVEL_MIN", record.levelMin);
