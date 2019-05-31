@@ -27,12 +27,12 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>wtmap-entity-base</artifactId>
-			<version>1.0.3</version>
+			<version>1.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>wtmap-utils</artifactId>
-			<version>1.0.2</version>
+			<version>1.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.json</groupId>
@@ -44,7 +44,5 @@
 			<artifactId>sqlite-jdbc</artifactId>
 			<version>3.7.2</version>
 		</dependency>
-
-
 	</dependencies>
 </project>

@@ -50,6 +50,15 @@ public class TYShpHelper {
 		record.buildingID = feature.GetFieldAsString("BUILDING_I");
 		record.categoryID = feature.GetFieldAsString("CATEGORY_I");
 		record.name = feature.GetFieldAsString("NAME");
+
+		if (feature.GetFieldIndex("NAME_EN") != -1) {
+			record.name_en = feature.GetFieldAsString("NAME_EN");
+		}
+
+		if (feature.GetFieldIndex("NAME_OTHER") != -1) {
+			record.name_other = feature.GetFieldAsString("NAME_OTHER");
+		}
+
 		record.symbolID = feature.GetFieldAsInteger("COLOR");
 		record.floorNumber = feature.GetFieldAsInteger("FLOOR_INDE");
 		record.floorName = feature.GetFieldAsString("FLOOR_NAME");
