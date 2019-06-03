@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import cn.platalk.map.api.TYParameterChecker;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.impl.TYBuilding;
+import cn.platalk.map.vectortile.fontbuilder.TYExtractLabelString;
 import cn.platalk.mysql.map.TYBuildingDBAdapter;
 import cn.platalk.mysql.map.TYMapDataDBAdapter;
 
@@ -24,8 +25,8 @@ import cn.platalk.mysql.map.TYMapDataDBAdapter;
 public class TYGetLabelStringServlet extends HttpServlet {
 	private static final long serialVersionUID = 7540952724296868847L;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String buildingID = request.getParameter("buildingID");
 		response.setContentType("text/json;charset=UTF-8");
 
@@ -57,7 +58,7 @@ public class TYGetLabelStringServlet extends HttpServlet {
 		mapDB.disconnectDB();
 
 		System.out.println(allRecords.size() + " records");
-		String labelString = ExtractLabelString.GetLabelString(allRecords);
+		String labelString = TYExtractLabelString.GetLabelString(allRecords);
 
 		JSONObject jsonObject = new JSONObject();
 		try {
@@ -73,8 +74,8 @@ public class TYGetLabelStringServlet extends HttpServlet {
 		out.close();
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 }
