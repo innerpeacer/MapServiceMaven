@@ -23,7 +23,7 @@ public class TYFontBuilder {
 
 	void buildFontmin(String fontName, String fontType, List<TYIMapDataFeatureRecord> records) {
 		// System.out.println("Build Fontmin");
-		notifyProcess("Build Fontmin\n");
+		notifyProcess("========== Build Fontmin ========== \n");
 		TYFontParams params = new TYFontParams(fontName, fontType, buildingID);
 
 		// TYMapDataDBAdapter mapDB = new TYMapDataDBAdapter(buildingID);
@@ -34,7 +34,7 @@ public class TYFontBuilder {
 		// records.addAll(mapDB.getAllMapDataRecords());
 		// mapDB.disconnectDB();
 
-		notifyProcess(records.size() + " records\n");
+		notifyProcess(records.size() + " map records\n");
 
 		String labelString = TYExtractLabelString.GetLabelString(records);
 
@@ -48,6 +48,10 @@ public class TYFontBuilder {
 
 		String script = params.getFontScript(labelString);
 		notifyProcess("script: " + script + "\n");
+		notifyProcess("\tScript Path:" + TYFontSettings.fontminScriptPath + "\n");
+		notifyProcess("\tUse Font:" + params.getOriginalFontPath() + "\n");
+		notifyProcess("\tTempt Font:" + params.getIntermediateFontPath() + "\n");
+
 		// System.out.println(script);
 		try {
 			Process ps = Runtime.getRuntime().exec(script);
@@ -66,9 +70,9 @@ public class TYFontBuilder {
 
 			int c = ps.waitFor();
 			if (c == 0) {
-				notifyProcess("Success Fontmin: " + c + "\n");
+				notifyProcess("Fontmin Script Success: " + c + "\n");
 			} else {
-				notifyFailed("Failed Fontmin: " + c + "\n");
+				notifyFailed("Fontmin Script Failed: " + c + "\n");
 			}
 			// System.out.println("Result: " + c);
 
@@ -77,18 +81,17 @@ public class TYFontBuilder {
 		}
 
 		File fontFile = new File(params.getIntermediateFontPath());
-
-		// System.out.println();
-		// System.out.println(fontFile.toString());
-		// System.out.println(params.getFontminPath());
+		notifyProcess("Rename Fontmin: " + fontFile.toString() + " -> " + params.getFontminPath() + "\n");
 
 		fontFile.renameTo(new File(params.getFontminPath()));
+		notifyProcess("Output Font:" + params.getFontminPath() + "\n");
 		notifyProcess("Finish Fontmin: " + new File(params.getFontminPath()).toString() + "\n");
+		notifyProcess("========== Finish Fontmin ========== \n\n");
 	}
 
 	void buildGlyphs(String fontName, String fontType) {
 		// System.out.println("Build Glyphs");
-		notifyProcess("Build Glyphs\n");
+		notifyProcess("========== Build Glyphs ==========\n");
 
 		TYFontParams params = new TYFontParams(fontName, fontType, buildingID);
 		// System.out.println(params.getGlyphFolder());
@@ -100,6 +103,10 @@ public class TYFontBuilder {
 
 		String script = TYGlyphsParams.GetGlyphsScript(params.getFontminFileName());
 		notifyProcess("script: " + script + "\n");
+		notifyProcess("\tScript Path: " + TYFontSettings.glyphsScriptPath + "\n");
+		notifyProcess("\tInput Directory: " + TYFontSettings.tempFontFileDir + "\n");
+		notifyProcess("\tOutput Directory: " + TYFontSettings.outputGlyphsDir + "\n");
+		notifyProcess("\tFontName: " + params.getFontminFileName() + "\n");
 		try {
 			Process ps = Runtime.getRuntime().exec(script);
 
@@ -122,7 +129,7 @@ public class TYFontBuilder {
 				notifyFailed("Failed Glyphs: " + c + "\n");
 			}
 			// System.out.println("Result: " + c);
-			notifyProcess("Finish Fontmin\n");
+			notifyProcess("Finish Glyphs\n");
 
 			if (c == 0) {
 				notifyFinish();
@@ -131,6 +138,7 @@ public class TYFontBuilder {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		notifyProcess("========== Finish Glyphs ==========\n");
 	}
 
 	private List<TYBrtFontBuilderInterface> listeners = new ArrayList<TYFontBuilder.TYBrtFontBuilderInterface>();

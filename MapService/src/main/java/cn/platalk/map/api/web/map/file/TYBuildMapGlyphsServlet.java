@@ -18,8 +18,8 @@ import cn.platalk.map.core.config.TYMapEnvironment;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.vectortile.fontbuilder.TYFontBuilder;
-import cn.platalk.map.vectortile.fontbuilder.TYFontSettings;
 import cn.platalk.map.vectortile.fontbuilder.TYFontBuilder.TYBrtFontBuilderInterface;
+import cn.platalk.map.vectortile.fontbuilder.TYFontSettings;
 import cn.platalk.mysql.map.TYBuildingDBAdapter;
 import cn.platalk.mysql.map.TYMapDataDBAdapter;
 
@@ -27,8 +27,8 @@ import cn.platalk.mysql.map.TYMapDataDBAdapter;
 public class TYBuildMapGlyphsServlet extends HttpServlet {
 	private static final long serialVersionUID = 7540952724296868847L;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String buildingID = request.getParameter("buildingID");
 		String fontName = request.getParameter("fontName");
 		String fontType = request.getParameter("fontType");
@@ -78,7 +78,7 @@ public class TYBuildMapGlyphsServlet extends HttpServlet {
 		TYFontSettings.setFontDirs(TYMapEnvironment.GetFontDir(), // 源字体文件夹路径
 				TYMapEnvironment.GetFontminDir(), // 设置一个中间数据文件夹路径
 				TYMapEnvironment.GetGlyphsDir()); // 输出文件夹路径,
-														// 设置为最终数据目录下的glyphs
+													// 设置为最终数据目录下的glyphs
 		TYFontBuilder builder = new TYFontBuilder(buildingID);
 		builder.addListener(new TYBrtFontBuilderInterface() {
 
@@ -103,12 +103,14 @@ public class TYBuildMapGlyphsServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("Status: " + status.get("status"));
 		out.println();
+		out.println("-----------------------------------------------");
 		out.println(result.toString());
+		out.println("-----------------------------------------------");
 		out.close();
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 }
