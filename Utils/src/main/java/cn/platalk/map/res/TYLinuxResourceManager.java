@@ -10,7 +10,9 @@ public class TYLinuxResourceManager implements TYIResourceManager {
 	private static String FONTMIN_DIR_LINUX = "/wt_res/WTMapProject/Fontmin";
 	private static String GLYPHS_DIR_LINUX = "/usr/local/apache-tomcat-7.0.81/webapps/WTMapResource/glyphs";
 	private static String FONTMIN_SCRIPT_PATH_LINUX = "/wt_res/WTMapProject/NodeJS/WTFontTool/script/node-fontmin.js";
-	private static String GLYPHS_SCRIPT_PATH_LINUX = "/wt_res/WTMapProject/NodeJS/WTFontTool/script/node-glyphs.js";
+	// private static String GLYPHS_SCRIPT_PATH_LINUX =
+	// "/wt_res/WTMapProject/NodeJS/WTFontTool/script/node-glyphs.js";
+	private static String GLYPHS_SCRIPT_PATH_LINUX = "/wt_res/WTMapProject/NodeJS/WTFontTool/script/node-glyphs-ranged.js";
 
 	private static String DB_HOST_NAME = "localhost:3306";
 	private static String DB_USER_NAME = "root";
