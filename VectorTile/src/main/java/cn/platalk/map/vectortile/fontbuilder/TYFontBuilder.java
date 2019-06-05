@@ -101,42 +101,109 @@ public class TYFontBuilder {
 			glyphDir.mkdirs();
 		}
 
-		String script = TYGlyphsParams.GetGlyphsScript(params.getFontminFileName());
-		notifyProcess("script: " + script + "\n");
-		notifyProcess("\tScript Path: " + TYFontSettings.glyphsScriptPath + "\n");
-		notifyProcess("\tInput Directory: " + TYFontSettings.tempFontFileDir + "\n");
-		notifyProcess("\tOutput Directory: " + TYFontSettings.outputGlyphsDir + "\n");
-		notifyProcess("\tFontName: " + params.getFontminFileName() + "\n");
-		try {
-			Process ps = Runtime.getRuntime().exec(script);
+		// String script =
+		// TYGlyphsParams.GetGlyphsScript(params.getFontminFileName());
+		{
+			notifyProcess("*************** Process Fontmin [1-256] ***************\n");
+			String script = TYGlyphsParams.GetGlyphsScript(params.getFontminFileName(), TYFontSettings.tempFontFileDir,
+					TYFontSettings.outputGlyphsDir, 1, 256);
+			notifyProcess("script: " + script + "\n");
+			notifyProcess("\tScript Path: " + TYFontSettings.glyphsScriptPath + "\n");
+			notifyProcess("\tInput Directory: " + TYFontSettings.tempFontFileDir + "\n");
+			notifyProcess("\tOutput Directory: " + TYFontSettings.outputGlyphsDir + "\n");
+			notifyProcess("\tFontName: " + params.getFontminFileName() + "\n");
+			notifyProcess("\tRange: [1, 256]\n");
+			try {
+				Process ps = Runtime.getRuntime().exec(script);
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(ps.getInputStream()));
-			String line = null;
-			while ((line = br.readLine()) != null) {
-				System.out.println(line);
+				BufferedReader br = new BufferedReader(new InputStreamReader(ps.getInputStream()));
+				String line = null;
+				while ((line = br.readLine()) != null) {
+					System.out.println(line);
+				}
+
+				BufferedReader brError = new BufferedReader(new InputStreamReader(ps.getErrorStream(), "gb2312"));
+				String errline = null;
+				while ((errline = brError.readLine()) != null) {
+					System.out.println(errline);
+				}
+
+				int c = ps.waitFor();
+				if (c == 0) {
+					notifyProcess("Success Glyphs: " + c + "\n");
+				} else {
+					notifyFailed("Failed Glyphs: " + c + "\n");
+				}
+				// System.out.println("Result: " + c);
+				notifyProcess("Finish Glyphs\n");
+
+				if (c == 0) {
+					// notifyFinish();
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
+			notifyProcess("*************** Finish Fontmin [1-256] ***************\n\n");
+		}
 
-			BufferedReader brError = new BufferedReader(new InputStreamReader(ps.getErrorStream(), "gb2312"));
-			String errline = null;
-			while ((errline = brError.readLine()) != null) {
-				System.out.println(errline);
+		{
+			notifyProcess("############### Process Origin [0-1] #################\n");
+			String script = TYGlyphsParams.GetGlyphsScript(params.getFontFileName(), TYFontSettings.inputFontFileDir,
+					TYFontSettings.tempFontFileDir, 0, 1);
+			notifyProcess("script: " + script + "\n");
+			notifyProcess("\tScript Path: " + TYFontSettings.glyphsScriptPath + "\n");
+			notifyProcess("\tInput Directory: " + TYFontSettings.inputFontFileDir + "\n");
+			notifyProcess("\tOutput Directory: " + TYFontSettings.tempFontFileDir + "\n");
+			notifyProcess("\tFontName: " + params.getFontFileName() + "\n");
+			notifyProcess("\tRange: [0, 1]\n");
+			try {
+				Process ps = Runtime.getRuntime().exec(script);
+
+				BufferedReader br = new BufferedReader(new InputStreamReader(ps.getInputStream()));
+				String line = null;
+				while ((line = br.readLine()) != null) {
+					System.out.println(line);
+				}
+
+				BufferedReader brError = new BufferedReader(new InputStreamReader(ps.getErrorStream(), "gb2312"));
+				String errline = null;
+				while ((errline = brError.readLine()) != null) {
+					System.out.println(errline);
+				}
+
+				int c = ps.waitFor();
+				if (c == 0) {
+					notifyProcess("Success Glyphs: " + c + "\n");
+				} else {
+					notifyFailed("Failed Glyphs: " + c + "\n");
+				}
+				// System.out.println("Result: " + c);
+				notifyProcess("Finish Glyphs\n");
+
+				if (c == 0) {
+					notifyFinish();
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
+			notifyProcess("############### Finish Fontmin [0-1] #################\n\n");
+		}
 
-			int c = ps.waitFor();
-			if (c == 0) {
-				notifyProcess("Success Glyphs: " + c + "\n");
-			} else {
-				notifyFailed("Failed Glyphs: " + c + "\n");
-			}
-			// System.out.println("Result: " + c);
-			notifyProcess("Finish Glyphs\n");
+		{
+			File originAsciiGlyphDir = new File(TYFontSettings.tempFontFileDir, params.getFontName());
+			File originAsciiGlyph = new File(originAsciiGlyphDir.toString(), "0-255.pbf");
 
-			if (c == 0) {
-				notifyFinish();
-			}
+			File outputAsciiGlyphDir = new File(TYFontSettings.outputGlyphsDir, params.getFontminName());
+			File outputAsciiGlyph = new File(outputAsciiGlyphDir.toString(), "0-255.pbf");
 
-		} catch (Exception e) {
-			e.printStackTrace();
+			notifyProcess("originAsciiGlyph: " + originAsciiGlyph.toString() + "\n");
+			notifyProcess("outputAsciiGlyph: " + outputAsciiGlyph.toString() + "\n");
+			notifyProcess(
+					"Rename Ascii File: " + originAsciiGlyph.toString() + " -> " + outputAsciiGlyph.toString() + "\n");
+
+			originAsciiGlyph.renameTo(outputAsciiGlyph);
 		}
 		notifyProcess("========== Finish Glyphs ==========\n");
 	}

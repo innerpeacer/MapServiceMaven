@@ -5,6 +5,7 @@ import java.io.File;
 class TYFontParams {
 
 	private String fontName;
+	private String fontminName;
 	private String fontType;
 	private String fontFileName;
 	private String fontminFileName;
@@ -14,10 +15,9 @@ class TYFontParams {
 		this.fontName = fontName;
 		this.fontType = type;
 		this.buildingID = buildingID;
-
+		this.fontminName = String.format("%s-%s", fontName, buildingID);
 		this.fontFileName = String.format("%s.%s", fontName, fontType);
-		this.fontminFileName = String.format("%s-%s.%s", fontName, buildingID,
-				fontType);
+		this.fontminFileName = String.format("%s-%s.%s", fontName, buildingID, fontType);
 	}
 
 	public String getFontScript(String str) {
@@ -25,9 +25,8 @@ class TYFontParams {
 		// TYBrtMapEnvironment.GetFontScriptPath(),
 		// this.getOriginalFontPath(),
 		// TYBrtMapEnvironment.GetFontminDir(), str);
-		return String.format("%s %s %s %s %s", TYFontSettings.nodePath,
-				TYFontSettings.fontminScriptPath, this.getOriginalFontPath(),
-				TYFontSettings.tempFontFileDir, str);
+		return String.format("%s %s %s %s %s", TYFontSettings.nodePath, TYFontSettings.fontminScriptPath,
+				this.getOriginalFontPath(), TYFontSettings.tempFontFileDir, str);
 	}
 
 	public String getBuildingID() {
@@ -36,6 +35,10 @@ class TYFontParams {
 
 	public String getFontName() {
 		return fontName;
+	}
+
+	public String getFontminName() {
+		return fontminName;
 	}
 
 	public String getFontFileName() {
@@ -67,22 +70,18 @@ class TYFontParams {
 	// }
 
 	public String getOriginalFontPath() {
-		return new File(TYFontSettings.inputFontFileDir, fontFileName)
-				.toString();
+		return new File(TYFontSettings.inputFontFileDir, fontFileName).toString();
 	}
 
 	public String getIntermediateFontPath() {
-		return new File(TYFontSettings.tempFontFileDir, fontFileName)
-				.toString();
+		return new File(TYFontSettings.tempFontFileDir, fontFileName).toString();
 	}
 
 	public String getFontminPath() {
-		return new File(TYFontSettings.tempFontFileDir, fontminFileName)
-				.toString();
+		return new File(TYFontSettings.tempFontFileDir, fontminFileName).toString();
 	}
 
 	public String getGlyphFolder() {
-		return new File(TYFontSettings.outputGlyphsDir, String.format("%s-%s",
-				fontName, buildingID)).toString();
+		return new File(TYFontSettings.outputGlyphsDir, String.format("%s-%s", fontName, buildingID)).toString();
 	}
 }
