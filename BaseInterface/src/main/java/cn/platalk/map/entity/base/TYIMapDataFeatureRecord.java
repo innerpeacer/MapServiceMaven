@@ -48,9 +48,11 @@ public interface TYIMapDataFeatureRecord {
 
 	public int getLayer();
 
-	public int getLevelMax();
+	public double getLevelMax();
 
-	public int getLevelMin();
+	public double getLevelMin();
+
+	public boolean isVisible();
 
 	public boolean isExtrusion();
 

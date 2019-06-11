@@ -53,8 +53,9 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 	public double labelX;
 	public double labelY;
 	public int layer;
-	public int levelMax;
-	public int levelMin;
+	public double levelMax;
+	public double levelMin;
+	public boolean visible = true;
 
 	public boolean extrusion = false;
 	public double extrusionHeight = 0;
@@ -211,20 +212,28 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.layer = layer;
 	}
 
-	public int getLevelMax() {
+	public double getLevelMax() {
 		return levelMax;
 	}
 
-	public void setLevelMax(int levelMax) {
+	public void setLevelMax(double levelMax) {
 		this.levelMax = levelMax;
 	}
 
-	public int getLevelMin() {
+	public double getLevelMin() {
 		return levelMin;
 	}
 
-	public void setLevelMin(int levelMin) {
+	public void setLevelMin(double levelMin) {
 		this.levelMin = levelMin;
+	}
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean isVisible) {
+		this.visible = isVisible;
 	}
 
 	public boolean isExtrusion() {
