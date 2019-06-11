@@ -17,8 +17,8 @@ import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
-import cn.platalk.sqlite.map.IPSqliteSymbolDBAdapter;
 import cn.platalk.sqlite.map.IPSqliteMapDBAdapter;
+import cn.platalk.sqlite.map.IPSqliteSymbolDBAdapter;
 
 public class TYShpGeneratingTaskV3
 		implements TYBrtMapInfoJsonParserListener, TYBrtMapShpTaskListenerV3, TYBrtRouteShpTaskListenerV3 {
@@ -100,6 +100,21 @@ public class TYShpGeneratingTaskV3
 		// System.out.prisntln("didFinishParsingMapInfo");
 		mapInfos = new ArrayList<TYMapInfo>();
 		mapInfos.addAll(infos);
+
+		double xmin = Double.MAX_VALUE;
+		double ymin = Double.MAX_VALUE;
+		double xmax = Double.MIN_VALUE;
+		double ymax = Double.MIN_VALUE;
+		for (TYMapInfo info : infos) {
+			xmin = Math.min(xmin, info.getMapExtent().getXmin());
+			ymin = Math.min(ymin, info.getMapExtent().getYmin());
+			xmax = Math.max(xmax, info.getMapExtent().getXmax());
+			ymax = Math.max(ymax, info.getMapExtent().getYmax());
+		}
+		building.setXmin(xmin);
+		building.setYmin(ymin);
+		building.setXmax(xmax);
+		building.setYmax(ymax);
 
 		readSymbols();
 		startMapShpTask();
