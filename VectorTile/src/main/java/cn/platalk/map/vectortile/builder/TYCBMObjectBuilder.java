@@ -33,6 +33,10 @@ class TYCBMObjectBuilder {
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_ROUTE_URL, building.getRouteURL());
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_OFFSET_X, building.getOffset().getX());
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_OFFSET_Y, building.getOffset().getY());
+		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_XMIN, building.getBuildingExtent().getXmin());
+		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_XMAX, building.getBuildingExtent().getXmax());
+		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_YMIN, building.getBuildingExtent().getYmin());
+		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_YMAX, building.getBuildingExtent().getYmax());
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_STATUS, building.getStatus());
 		return buildingObject;
 	}

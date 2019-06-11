@@ -14,6 +14,10 @@ class TYCBMFields {
 	static final String KEY_WEB_BUILDING_ROUTE_URL = "routeURL";
 	static final String KEY_WEB_BUILDING_OFFSET_X = "offsetX";
 	static final String KEY_WEB_BUILDING_OFFSET_Y = "offsetY";
+	static final String KEY_WEB_BUILDING_XMIN = "xmin";
+	static final String KEY_WEB_BUILDING_XMAX = "xmax";
+	static final String KEY_WEB_BUILDING_YMIN = "ymin";
+	static final String KEY_WEB_BUILDING_YMAX = "ymax";
 	static final String KEY_WEB_BUILDING_STATUS = "status";
 
 	public static final String KEY_WEB_CITIES = "Cities";
