@@ -21,5 +21,7 @@ public interface TYIBuilding {
 
 	public TYIMapSize getOffset();
 
+	public TYIMapExtent getBuildingExtent();
+
 	public int getStatus();
 }

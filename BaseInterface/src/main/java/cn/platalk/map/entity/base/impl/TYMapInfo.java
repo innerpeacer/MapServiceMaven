@@ -1,22 +1,21 @@
 package cn.platalk.map.entity.base.impl;
 
-import cn.platalk.map.entity.base.TYIMapExtent;
 import cn.platalk.map.entity.base.TYIMapInfo;
 
 public class TYMapInfo implements TYIMapInfo {
 	static final String TAG = TYMapInfo.class.getSimpleName();
 
-	static final String FIELD_MAPINFO_1_CITY_ID = "CITY_ID";
-	static final String FIELD_MAPINFO_2_BUILDING_ID = "BUILDING_ID";
-	static final String FIELD_MAPINFO_3_MAP_ID = "MAP_ID";
-	static final String FIELD_MAPINFO_4_FLOOR_NAME = "FLOOR_NAME";
-	static final String FIELD_MAPINFO_5_FLOOR_NUMBER = "FLOOR_NUMBER";
-	static final String FIELD_MAPINFO_6_SIZE_X = "SIZE_X";
-	static final String FIELD_MAPINFO_7_SIZE_Y = "SIZE_Y";
-	static final String FIELD_MAPINFO_8_XMIN = "XMIN";
-	static final String FIELD_MAPINFO_9_YMIN = "YMIN";
-	static final String FIELD_MAPINFO_10_XMAX = "XMAX";
-	static final String FIELD_MAPINFO_11_YMAX = "YMAX";
+	// static final String FIELD_MAPINFO_1_CITY_ID = "CITY_ID";
+	// static final String FIELD_MAPINFO_2_BUILDING_ID = "BUILDING_ID";
+	// static final String FIELD_MAPINFO_3_MAP_ID = "MAP_ID";
+	// static final String FIELD_MAPINFO_4_FLOOR_NAME = "FLOOR_NAME";
+	// static final String FIELD_MAPINFO_5_FLOOR_NUMBER = "FLOOR_NUMBER";
+	// static final String FIELD_MAPINFO_6_SIZE_X = "SIZE_X";
+	// static final String FIELD_MAPINFO_7_SIZE_Y = "SIZE_Y";
+	// static final String FIELD_MAPINFO_8_XMIN = "XMIN";
+	// static final String FIELD_MAPINFO_9_YMIN = "YMIN";
+	// static final String FIELD_MAPINFO_10_XMAX = "XMAX";
+	// static final String FIELD_MAPINFO_11_YMAX = "YMAX";
 
 	String cityID;
 	String buildingID;
@@ -85,8 +84,8 @@ public class TYMapInfo implements TYIMapInfo {
 		return new TYMapSize(size_x, size_y);
 	}
 
-	public MapExtent getMapExtent() {
-		return new MapExtent(xmin, ymin, xmax, ymax);
+	public TYMapExtent getMapExtent() {
+		return new TYMapExtent(xmin, ymin, xmax, ymax);
 	}
 
 	public String getFloorName() {
@@ -154,35 +153,4 @@ public class TYMapInfo implements TYIMapInfo {
 		String str = "MapID: %s, Floor:%d ,Size:(%.2f, %.2f) Extent: (%.4f, %.4f, %.4f, %.4f)";
 		return String.format(str, mapID, floorNumber, size_x, size_y, xmin, ymin, xmax, ymax);
 	}
-
-	public class MapExtent implements TYIMapExtent {
-		double xmin;
-		double ymin;
-		double xmax;
-		double ymax;
-
-		public MapExtent(double xmin, double ymin, double xmax, double ymax) {
-			this.xmin = xmin;
-			this.ymin = ymin;
-			this.xmax = xmax;
-			this.ymax = ymax;
-		}
-
-		public double getXmin() {
-			return xmin;
-		}
-
-		public double getYmin() {
-			return ymin;
-		}
-
-		public double getXmax() {
-			return xmax;
-		}
-
-		public double getYmax() {
-			return ymax;
-		}
-	}
-
 }

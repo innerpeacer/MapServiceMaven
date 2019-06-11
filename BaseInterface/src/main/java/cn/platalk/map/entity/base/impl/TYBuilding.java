@@ -1,24 +1,26 @@
 package cn.platalk.map.entity.base.impl;
 
 import cn.platalk.map.entity.base.TYIBuilding;
+import cn.platalk.map.entity.base.TYIMapExtent;
 
 public class TYBuilding implements TYIBuilding {
 
-	static final String FIELD_BUILDING_1_CITY_ID = "CITY_ID";
-	static final String FIELD_BUILDING_2_ID = "BUILDING_ID";
-
-	static final String FIELD_BUILDING_3_NAME = "NAME";
-	static final String FIELD_BUILDING_4_LONGITUDE = "LONGITUDE";
-	static final String FIELD_BUILDING_5_LATITUDE = "LATITUDE";
-
-	static final String FIELD_BUILDING_6_ADDRESS = "ADDRESS";
-	static final String FIELD_BUILDING_7_INIT_ANGLE = "INIT_ANGLE";
-	static final String FIELD_BUILDING_8_ROUTE_URL = "ROUTE_URL";
-	static final String FIELD_BUILDING_9_OFFSET_X = "OFFSET_X";
-	static final String FIELD_BUILDING_10_OFFSET_Y = "OFFSET_Y";
-
-	static final String FIELD_BUILDING_11_STATUS = "STATUS";
-	static final String FIELD_BUILDING_12_INIT_FLOOR_INDEX = "INIT_FLOOR_INDEX";
+	// static final String FIELD_BUILDING_1_CITY_ID = "CITY_ID";
+	// static final String FIELD_BUILDING_2_ID = "BUILDING_ID";
+	//
+	// static final String FIELD_BUILDING_3_NAME = "NAME";
+	// static final String FIELD_BUILDING_4_LONGITUDE = "LONGITUDE";
+	// static final String FIELD_BUILDING_5_LATITUDE = "LATITUDE";
+	//
+	// static final String FIELD_BUILDING_6_ADDRESS = "ADDRESS";
+	// static final String FIELD_BUILDING_7_INIT_ANGLE = "INIT_ANGLE";
+	// static final String FIELD_BUILDING_8_ROUTE_URL = "ROUTE_URL";
+	// static final String FIELD_BUILDING_9_OFFSET_X = "OFFSET_X";
+	// static final String FIELD_BUILDING_10_OFFSET_Y = "OFFSET_Y";
+	//
+	// static final String FIELD_BUILDING_11_STATUS = "STATUS";
+	// static final String FIELD_BUILDING_12_INIT_FLOOR_INDEX =
+	// "INIT_FLOOR_INDEX";
 
 	private String cityID;
 	private String buildingID;
@@ -33,6 +35,10 @@ public class TYBuilding implements TYIBuilding {
 
 	private String routeURL;
 	private TYMapSize offset;
+	private double xmin;
+	private double xmax;
+	private double ymin;
+	private double ymax;
 
 	private int status;
 
@@ -172,8 +178,28 @@ public class TYBuilding implements TYIBuilding {
 		return offset;
 	}
 
+	public TYIMapExtent getBuildingExtent() {
+		return new TYMapExtent(xmin, ymin, xmax, ymax);
+	}
+
 	public int getStatus() {
 		return status;
+	}
+
+	public void setXmin(double xmin) {
+		this.xmin = xmin;
+	}
+
+	public void setXmax(double xmax) {
+		this.xmax = xmax;
+	}
+
+	public void setYmin(double ymin) {
+		this.ymin = ymin;
+	}
+
+	public void setYmax(double ymax) {
+		this.ymax = ymax;
 	}
 
 	@Override
