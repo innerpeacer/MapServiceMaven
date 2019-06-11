@@ -32,6 +32,11 @@ public class IPMysqlBuildingParams {
 	static final String FIELD_BUILDING_11_STATUS = "STATUS";
 	static final String FIELD_BUILDING_12_INIT_FLOOR_INDEX = "INIT_FLOOR_INDEX";
 
+	static final String FIELD_BUILDING_13_XMIN = "XMIN";
+	static final String FIELD_BUILDING_14_YMIN = "YMIN";
+	static final String FIELD_BUILDING_15_XMAX = "XMAX";
+	static final String FIELD_BUILDING_16_YMAX = "YMAX";
+
 	private static List<IPSqlField> buildingFieldList = new ArrayList<IPSqlField>();
 	static {
 		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_1_CITY_ID,
@@ -58,6 +63,15 @@ public class IPMysqlBuildingParams {
 				new IPSqlField(FIELD_BUILDING_11_STATUS, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
 		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_12_INIT_FLOOR_INDEX,
 				new IPSqlFieldType(Integer.class.getName(), "INT"), true, 0));
+
+		buildingFieldList.add(
+				new IPSqlField(FIELD_BUILDING_13_XMIN, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		buildingFieldList.add(
+				new IPSqlField(FIELD_BUILDING_14_YMIN, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		buildingFieldList.add(
+				new IPSqlField(FIELD_BUILDING_15_XMAX, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		buildingFieldList.add(
+				new IPSqlField(FIELD_BUILDING_16_YMAX, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 	}
 
 	public static IPSqlTable CreateTable() {
@@ -84,6 +98,10 @@ public class IPMysqlBuildingParams {
 					record.getDouble(FIELD_BUILDING_10_OFFSET_Y)));
 			building.setStatus(record.getInteger(FIELD_BUILDING_11_STATUS));
 			building.setInitFloorIndex(record.getInteger(FIELD_BUILDING_12_INIT_FLOOR_INDEX));
+			building.setXmin(record.getDouble(FIELD_BUILDING_13_XMIN));
+			building.setYmin(record.getDouble(FIELD_BUILDING_14_YMIN));
+			building.setXmax(record.getDouble(FIELD_BUILDING_15_XMAX));
+			building.setYmax(record.getDouble(FIELD_BUILDING_16_YMAX));
 			buildingList.add(building);
 		}
 		return buildingList;
@@ -103,6 +121,10 @@ public class IPMysqlBuildingParams {
 		data.put(FIELD_BUILDING_10_OFFSET_Y, building.getOffset().getY());
 		data.put(FIELD_BUILDING_11_STATUS, building.getStatus());
 		data.put(FIELD_BUILDING_12_INIT_FLOOR_INDEX, building.getInitFloorIndex());
+		data.put(FIELD_BUILDING_13_XMIN, building.getBuildingExtent().getXmin());
+		data.put(FIELD_BUILDING_14_YMIN, building.getBuildingExtent().getYmin());
+		data.put(FIELD_BUILDING_15_XMAX, building.getBuildingExtent().getXmax());
+		data.put(FIELD_BUILDING_16_YMAX, building.getBuildingExtent().getYmax());
 		return data;
 	}
 }
