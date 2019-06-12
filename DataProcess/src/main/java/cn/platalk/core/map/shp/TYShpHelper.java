@@ -78,13 +78,22 @@ public class TYShpHelper {
 			record.labelY = point.getY();
 		}
 
-		record.levelMax = feature.GetFieldAsDouble("LEVEL_MAX");
-		record.levelMin = feature.GetFieldAsDouble("LEVEL_MIN");
+		if (feature.GetFieldIndex("LEVEL_MAX") != -1) {
+			record.levelMax = feature.GetFieldAsDouble("LEVEL_MAX");
+		} else {
+			record.levelMax = 0;
+		}
+
+		if (feature.GetFieldIndex("LEVEL_MIN") != -1) {
+			record.levelMin = feature.GetFieldAsDouble("LEVEL_MIN");
+		} else {
+			record.levelMin = 0;
+		}
 
 		if (feature.GetFieldIndex("VISIBLE") != -1) {
 			record.visible = (feature.GetFieldAsInteger("VISIBLE") != 0);
 		} else {
-			record.visible = false;
+			record.visible = true;
 		}
 
 		if (feature.GetFieldIndex("EXTRU") != -1) {
