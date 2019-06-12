@@ -78,8 +78,14 @@ public class TYShpHelper {
 			record.labelY = point.getY();
 		}
 
-		record.levelMax = feature.GetFieldAsInteger("LEVEL_MAX");
-		record.levelMin = feature.GetFieldAsInteger("LEVEL_MIN");
+		record.levelMax = feature.GetFieldAsDouble("LEVEL_MAX");
+		record.levelMin = feature.GetFieldAsDouble("LEVEL_MIN");
+
+		if (feature.GetFieldIndex("VISIBLE") != -1) {
+			record.visible = (feature.GetFieldAsInteger("VISIBLE") != 0);
+		} else {
+			record.visible = false;
+		}
 
 		if (feature.GetFieldIndex("EXTRU") != -1) {
 			record.extrusion = (feature.GetFieldAsInteger("EXTRU") != 0);
