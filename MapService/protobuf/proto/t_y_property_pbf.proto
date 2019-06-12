@@ -9,8 +9,8 @@ optional string name = 3;
 optional string categoryID = 4;
 optional uint32 symbolID = 5; 
 
-optional uint32 levelMin = 6; 
-optional uint32 levelMax = 7; 
+optional double levelMin = 6; 
+optional double levelMax = 7; 
 optional double labelX = 8; 
 optional double labelY = 9;
 optional int32 floor = 10;
