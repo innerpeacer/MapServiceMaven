@@ -39,6 +39,8 @@ public class IPMysqlMapDataParams {
 	static final String FIELD_MAP_DATA_22_NAME_EN = "NAME_EN";
 	static final String FIELD_MAP_DATA_23_NAME_OTHER = "NAME_OTHER";
 
+	static final String FIELD_MAP_DATA_24_VISIBLE = "VISIBLE";
+
 	private static List<IPSqlField> mapDataFieldList = new ArrayList<IPSqlField>();
 	static {
 		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_1_OBJECT_ID,
@@ -73,10 +75,10 @@ public class IPMysqlMapDataParams {
 				new IPSqlField(FIELD_MAP_DATA_15_LABEL_Y, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 		mapDataFieldList.add(
 				new IPSqlField(FIELD_MAP_DATA_16_LAYER, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
-		mapDataFieldList.add(
-				new IPSqlField(FIELD_MAP_DATA_17_LEVEL_MAX, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
-		mapDataFieldList.add(
-				new IPSqlField(FIELD_MAP_DATA_18_LEVEL_MIN, new IPSqlFieldType(Integer.class.getName(), "INT"), false));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_17_LEVEL_MAX,
+				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), true));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_18_LEVEL_MIN,
+				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), true));
 		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_19_EXTRUSION,
 				new IPSqlFieldType(Boolean.class.getName(), "INTEGER(1)"), true, 0));
 		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_20_EXTRUSION_HEIGHT,
@@ -87,6 +89,8 @@ public class IPMysqlMapDataParams {
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
 		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_23_NAME_OTHER,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_24_VISIBLE,
+				new IPSqlFieldType(Boolean.class.getName(), "INTEGER(1)"), true, 1));
 	}
 
 	public static IPSqlTable CreateTable(String buildingID) {
@@ -117,13 +121,14 @@ public class IPMysqlMapDataParams {
 			mapdata.setLabelX(record.getDouble(FIELD_MAP_DATA_14_LABEL_X));
 			mapdata.setLabelY(record.getDouble(FIELD_MAP_DATA_15_LABEL_Y));
 			mapdata.setLayer(record.getInteger(FIELD_MAP_DATA_16_LAYER));
-			mapdata.setLevelMax(record.getInteger(FIELD_MAP_DATA_17_LEVEL_MAX));
-			mapdata.setLevelMin(record.getInteger(FIELD_MAP_DATA_18_LEVEL_MIN));
+			mapdata.setLevelMax(record.getDouble(FIELD_MAP_DATA_17_LEVEL_MAX));
+			mapdata.setLevelMin(record.getDouble(FIELD_MAP_DATA_18_LEVEL_MIN));
 			mapdata.setExtrusion(record.getBoolean(FIELD_MAP_DATA_19_EXTRUSION));
 			mapdata.setExtrusionHeight(record.getDouble(FIELD_MAP_DATA_20_EXTRUSION_HEIGHT));
 			mapdata.setExtrusionBase(record.getDouble(FIELD_MAP_DATA_21_EXTRUSION_BASE));
 			mapdata.setNameEn(record.getString(FIELD_MAP_DATA_22_NAME_EN));
 			mapdata.setNameOther(record.getString(FIELD_MAP_DATA_23_NAME_OTHER));
+			mapdata.setVisible(record.getBoolean(FIELD_MAP_DATA_24_VISIBLE));
 			mapdataList.add(mapdata);
 		}
 		return mapdataList;
@@ -154,6 +159,7 @@ public class IPMysqlMapDataParams {
 		data.put(FIELD_MAP_DATA_21_EXTRUSION_BASE, record.getExtrusionBase());
 		data.put(FIELD_MAP_DATA_22_NAME_EN, record.getNameEn());
 		data.put(FIELD_MAP_DATA_23_NAME_OTHER, record.getNameOther());
+		data.put(FIELD_MAP_DATA_24_VISIBLE, record.isVisible());
 		return data;
 	}
 
