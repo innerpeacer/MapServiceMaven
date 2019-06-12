@@ -7,7 +7,7 @@
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>MapService</artifactId>
-	<version>1.0.2.2</version>
+	<version>${MapService-version}</version>
 	<packaging>war</packaging>
 	<name>MapService</name>
 	<properties>
@@ -18,12 +18,12 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>wtmap-vector-tile</artifactId>
-			<version>1.0.2.2</version>
+			<version>${wtmap-vector-tile-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>wtmap-data-process</artifactId>
-			<version>1.1.0.1</version>
+			<version>${wtmap-data-process-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax</groupId>

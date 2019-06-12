@@ -9,7 +9,7 @@
 
 	<name>Utils</name>
 	<artifactId>wtmap-utils</artifactId>
-	<version>1.1.2</version>
+	<version>${wtmap-utils-version}</version>
 	<description>The collection of util tools for development.</description>
 	<build>
 		<plugins>
@@ -28,13 +28,13 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>wtmap-entity-base</artifactId>
-			<version>1.1.2</version>
+			<version>${wtmap-entity-base-version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>cn.platalk.sqlhelper</groupId>
 			<artifactId>SqlHelper</artifactId>
-			<version>1.0.0</version>
+			<version>${SqlHelper-version}</version>
 		</dependency>
 
 		<dependency>

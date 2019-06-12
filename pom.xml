@@ -1,31 +1,43 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>cn.platalk</groupId>
-  <artifactId>MapServiceMaven</artifactId>
-  <version>1.0.0</version>
-  <packaging>pom</packaging>
-  <name>MapServiceMaven</name>
-  <description>This is the whole project for map service</description>
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <modules>
-  	<module>BaseInterface</module>
-  	<module>DataProcess</module>
-  	<module>VectorTile</module>
-  	<module>RouteAlgorithm</module>
-  	<module>RouteService</module>
-  	<module>MapService</module>
-  	<module>Utils</module>
-  	<module>Test</module>
-  	<module>SqlHelper</module>
-  </modules>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>cn.platalk</groupId>
+	<artifactId>MapServiceMaven</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>MapServiceMaven</name>
+	<description>This is the whole project for map service</description>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<properties>
+		<SqlHelper-version>1.0.0</SqlHelper-version>
+		<wtmap-entity-base-version>1.1.2</wtmap-entity-base-version>
+		<wtmap-utils-version>1.1.2</wtmap-utils-version>
+		<wtmap-data-process-version>1.1.0.2</wtmap-data-process-version>
+		<wtmap-vector-tile-version>1.0.2.2</wtmap-vector-tile-version>
+		<wtmap-route-version>3.0.1</wtmap-route-version>
+		<MapService-version>1.0.2.2</MapService-version>
+		<RouteService-version>3.0.1</RouteService-version>
+	</properties>
+	<modules>
+		<module>BaseInterface</module>
+		<module>DataProcess</module>
+		<module>VectorTile</module>
+		<module>RouteAlgorithm</module>
+		<module>RouteService</module>
+		<module>MapService</module>
+		<module>Utils</module>
+		<module>Test</module>
+		<module>SqlHelper</module>
+	</modules>
 </project>

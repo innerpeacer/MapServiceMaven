@@ -9,7 +9,7 @@
 
 	<name>BaseInterface</name>
 	<artifactId>wtmap-entity-base</artifactId>
-	<version>1.1.2</version>
+	<version>${wtmap-entity-base-version}</version>
 	<description>This contains the basic interfaces and default implementations</description>
 	<build>
 		<plugins>

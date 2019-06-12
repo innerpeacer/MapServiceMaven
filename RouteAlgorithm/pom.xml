@@ -7,7 +7,7 @@
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>wtmap-route</artifactId>
-	<version>3.0.1</version>
+	<version>${wtmap-route-version}</version>
 	<packaging>jar</packaging>
 	<name>Route Algorithm</name>
 	<description>SDK for calcaulating route</description>
@@ -15,7 +15,7 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>wtmap-utils</artifactId>
-			<version>1.1.1</version>
+			<version>${wtmap-utils-version}</version>
 		</dependency>
 	</dependencies>
 

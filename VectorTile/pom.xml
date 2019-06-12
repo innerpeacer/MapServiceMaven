@@ -7,7 +7,7 @@
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>wtmap-vector-tile</artifactId>
-	<version>1.0.2.2</version>
+	<version>${wtmap-vector-tile-version}</version>
 	<name>VectorTile</name>
 	<description>This contain the process of generate vector tile for map</description>
 	<build>
@@ -27,10 +27,10 @@
 			<artifactId>protobuf-java</artifactId>
 			<version>3.5.1</version>
 		</dependency>
-			<dependency>
+		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>wtmap-utils</artifactId>
-			<version>1.1.1</version>
+			<version>${wtmap-utils-version}</version>
 		</dependency>
 	</dependencies>
 </project>

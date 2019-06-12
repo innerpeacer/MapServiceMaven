@@ -9,6 +9,7 @@
 	<groupId>cn.platalk.sqlhelper</groupId>
 	<artifactId>SqlHelper</artifactId>
 	<name>SqlHelper</name>
+	<version>${SqlHelper-version}</version>
 	<description>Sql helper module</description>
 	<build>
 		<plugins>
