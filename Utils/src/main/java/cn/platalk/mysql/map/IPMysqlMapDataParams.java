@@ -86,9 +86,9 @@ public class IPMysqlMapDataParams {
 		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_21_EXTRUSION_BASE,
 				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), true, 0));
 		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_22_NAME_EN,
-				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(200)"), true));
 		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_23_NAME_OTHER,
-				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(200)"), true));
 		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_24_VISIBLE,
 				new IPSqlFieldType(Boolean.class.getName(), "INTEGER(1)"), true, 1));
 	}
