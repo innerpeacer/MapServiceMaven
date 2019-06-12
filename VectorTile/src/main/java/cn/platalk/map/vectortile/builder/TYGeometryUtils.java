@@ -39,6 +39,10 @@ class TYGeometryUtils {
 		userData.put("extrusion-height", record.getExtrusionHeight());
 		// }
 
+		userData.put("levelMax", record.getLevelMax());
+		userData.put("levelMin", record.getLevelMin());
+		userData.put("visible", record.isVisible());
+
 		result.setUserData(userData);
 		return result;
 	}
