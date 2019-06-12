@@ -7,7 +7,7 @@
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>wtmap-data-process</artifactId>
-	<version>1.1.0.1</version>
+	<version>1.1.0.2</version>
 	<name>DataProcess</name>
 	<description>read shp file and convert data to records for db</description>
 
