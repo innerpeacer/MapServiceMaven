@@ -10,7 +10,7 @@ class TYCBMFields {
 	static final String KEY_WEB_BUILDING_LATITUDE = "latitude";
 	static final String KEY_WEB_BUILDING_ADDRESS = "address";
 	static final String KEY_WEB_BUILDING_INIT_ANGLE = "initAngle";
-	static final String KEY_WEB_BUILDING_INIT_FLOOR = "initFloor";
+	static final String KEY_WEB_BUILDING_INIT_FLOOR = "initFloorIndex";
 	static final String KEY_WEB_BUILDING_ROUTE_URL = "routeURL";
 	static final String KEY_WEB_BUILDING_OFFSET_X = "offsetX";
 	static final String KEY_WEB_BUILDING_OFFSET_Y = "offsetY";
