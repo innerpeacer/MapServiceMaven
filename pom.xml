@@ -24,7 +24,7 @@
 		<wtmap-entity-base-version>1.1.2</wtmap-entity-base-version>
 		<wtmap-utils-version>1.1.2.1</wtmap-utils-version>
 		<wtmap-data-process-version>1.1.0.3</wtmap-data-process-version>
-		<wtmap-vector-tile-version>1.0.2.3</wtmap-vector-tile-version>
+		<wtmap-vector-tile-version>1.0.2.4</wtmap-vector-tile-version>
 		<wtmap-route-version>3.0.1</wtmap-route-version>
 		<MapService-version>1.0.2.2</MapService-version>
 		<RouteService-version>3.0.1</RouteService-version>
