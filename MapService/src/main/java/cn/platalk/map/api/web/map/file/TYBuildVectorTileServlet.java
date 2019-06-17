@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,8 +36,8 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 7540952724296868847L;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String buildingID = request.getParameter("buildingID");
 		response.setContentType("text/json;charset=UTF-8");
 
@@ -58,13 +60,11 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 			return;
 		}
 
-		TYVectorTileSettings.SetTileRoot(TYMapEnvironment
-				.GetVectorTileRoot());
+		TYVectorTileSettings.SetTileRoot(TYMapEnvironment.GetVectorTileRoot());
 		TYVectorTileSettings.SetDefaultMaxZoom(21);
 		// TYVectorTileSettings.setDefaultMinZoom(15);
 
-		File tileDir = new File(TYMapEnvironment.GetVectorTileRoot(),
-				buildingID);
+		File tileDir = new File(TYMapEnvironment.GetVectorTileRoot(), buildingID);
 		TYFileUtils.deleteFile(tileDir.toString());
 
 		TYVectorTileBuilder builder = new TYVectorTileBuilder(buildingID);
@@ -94,8 +94,10 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 		mapDataRecords.addAll(mapDB.getAllMapDataRecords());
 		mapDB.disconnectDB();
 
-		builder.addData(city, building, mapInfos, mapDataRecords, fillSymbols,
-				iconSymbols);
+		fillSymbols = filterFillRecords(mapDataRecords, fillSymbols);
+		iconSymbols = filterIconRecords(mapDataRecords, iconSymbols);
+
+		builder.addData(city, building, mapInfos, mapDataRecords, fillSymbols, iconSymbols);
 		try {
 			builder.buildTile();
 			PrintWriter out = response.getWriter();
@@ -104,15 +106,54 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			PrintWriter out = response.getWriter();
-			out.println("Failed Building Vector Tile for BuildingID: "
-					+ buildingID);
+			out.println("Failed Building Vector Tile for BuildingID: " + buildingID);
 			out.println(e.getMessage());
 			out.close();
 		}
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	private List<TYIFillSymbolRecord> filterFillRecords(List<TYIMapDataFeatureRecord> mapRecords,
+			List<TYIFillSymbolRecord> fillRecords) {
+		List<TYIFillSymbolRecord> resultList = new ArrayList<TYIFillSymbolRecord>();
+
+		Set<Integer> tempSet = new HashSet<Integer>();
+		for (TYIMapDataFeatureRecord mapRecord : mapRecords) {
+			if (mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_FLOOR
+					|| mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_ROOM
+					|| mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_ASSET) {
+				tempSet.add(mapRecord.getSymbolID());
+			}
+		}
+
+		for (TYIFillSymbolRecord fillRecord : fillRecords) {
+			if (tempSet.contains(fillRecord.getSymbolID())) {
+				resultList.add(fillRecord);
+			}
+		}
+		return resultList;
+	}
+
+	private List<TYIIconSymbolRecord> filterIconRecords(List<TYIMapDataFeatureRecord> mapRecords,
+			List<TYIIconSymbolRecord> iconRecords) {
+		List<TYIIconSymbolRecord> resultList = new ArrayList<TYIIconSymbolRecord>();
+
+		Set<Integer> tempSet = new HashSet<Integer>();
+		for (TYIMapDataFeatureRecord mapRecord : mapRecords) {
+			if (mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_FACILITY) {
+				tempSet.add(mapRecord.getSymbolID());
+			}
+		}
+
+		for (TYIIconSymbolRecord iconRecord : iconRecords) {
+			if (tempSet.contains(iconRecord.getSymbolID())) {
+				resultList.add(iconRecord);
+			}
+		}
+		return resultList;
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 }
