@@ -23,6 +23,8 @@ public class TYVectorTileBuilder {
 	TYICity city;
 	TYIBuilding building;
 	List<TYIMapInfo> mapInfos;
+	List<TYIFillSymbolRecord> fillSymbols;
+	List<TYIIconSymbolRecord> iconSymbols;
 	TYGeometrySet geometrySet;
 	TYIMvtEncoder mvtEncoder;
 	private int tileCount;
@@ -42,6 +44,12 @@ public class TYVectorTileBuilder {
 		this.building = building;
 		this.mapInfos = new ArrayList<TYIMapInfo>();
 		this.mapInfos.addAll(mapInfoList);
+
+		this.fillSymbols = new ArrayList<TYIFillSymbolRecord>();
+		this.fillSymbols.addAll(fillSymbolList);
+		this.iconSymbols = new ArrayList<TYIIconSymbolRecord>();
+		this.iconSymbols.addAll(iconSymbolList);
+
 		geometrySet.addData(mapInfoList, mapDataRecords, fillSymbolList, iconSymbolList);
 		geometrySet.processData();
 	}
@@ -54,7 +62,7 @@ public class TYVectorTileBuilder {
 					"Error: TileRoot Cannot be null, please set TileRoot By calling TYVectorTileSettings.SetTileRoot()");
 		}
 
-		TYCBMBuilder.generateCBMJson(city, building, mapInfos);
+		TYCBMBuilder.generateCBMJson(city, building, mapInfos, fillSymbols, iconSymbols);
 
 		TYIMapInfo mapInfo = geometrySet.getMapInfos().get(0);
 		// TYBrtBoundingBox bb = TYBrtBoundingBox.boundingBoxForMapInfo(mapInfo,

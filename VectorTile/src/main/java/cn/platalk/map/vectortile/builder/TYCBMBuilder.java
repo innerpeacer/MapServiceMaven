@@ -9,6 +9,8 @@ import org.json.JSONObject;
 
 import cn.platalk.map.entity.base.TYIBuilding;
 import cn.platalk.map.entity.base.TYICity;
+import cn.platalk.map.entity.base.TYIFillSymbolRecord;
+import cn.platalk.map.entity.base.TYIIconSymbolRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
 
 class TYCBMBuilder {
@@ -20,42 +22,45 @@ class TYCBMBuilder {
 		return new File(cbmDir, fileName).toString();
 	}
 
-	public static void generateCBMJson(TYICity city, TYIBuilding building, List<TYIMapInfo> mapInfoList) {
+	public static void generateCBMJson(TYICity city, TYIBuilding building, List<TYIMapInfo> mapInfoList,
+			List<TYIFillSymbolRecord> fillSymbols, List<TYIIconSymbolRecord> iconSymbols) {
 
 		JSONArray cityJsonArray = new JSONArray();
-		JSONObject cityObject;
-		try {
-			cityObject = TYCBMObjectBuilder.generateCityJson(city);
-			cityJsonArray.put(cityObject);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		cityJsonArray.put(TYCBMObjectBuilder.generateCityJson(city));
 
 		JSONArray buildingJsonArray = new JSONArray();
-		JSONObject buildingObject;
-		try {
-			buildingObject = TYCBMObjectBuilder.generateBuildingJson(building);
-			buildingJsonArray.put(buildingObject);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		buildingJsonArray.put(TYCBMObjectBuilder.generateBuildingJson(building));
 
 		JSONArray mapInfoJsonArray = new JSONArray();
-		try {
-			for (int i = 0; i < mapInfoList.size(); ++i) {
-				TYIMapInfo mapInfo = mapInfoList.get(i);
-				JSONObject mapInfoObject = TYCBMObjectBuilder.generateMapInfoJson(mapInfo);
-				mapInfoJsonArray.put(mapInfoObject);
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
+		for (int i = 0; i < mapInfoList.size(); ++i) {
+			mapInfoJsonArray.put(TYCBMObjectBuilder.generateMapInfoJson(mapInfoList.get(i)));
 		}
+
+		JSONArray fillJsonArray = new JSONArray();
+		for (int i = 0; i < fillSymbols.size(); ++i) {
+			fillJsonArray.put(TYSymbolObjectBuilder.generateFillJson(fillSymbols.get(i)));
+		}
+
+		JSONArray iconJsonArray = new JSONArray();
+		for (int i = 0; i < iconSymbols.size(); ++i) {
+			iconJsonArray.put(TYSymbolObjectBuilder.generateIconJson(iconSymbols.get(i)));
+		}
+
+		JSONObject descriptionObject = new JSONObject();
+		descriptionObject.put("cities", 1);
+		descriptionObject.put("buildings", 1);
+		descriptionObject.put("mapInfos", mapInfoList.size());
+		descriptionObject.put("fills", fillSymbols.size());
+		descriptionObject.put("icons", iconSymbols.size());
 
 		JSONObject jsonObject = new JSONObject();
 		try {
 			jsonObject.put(TYCBMFields.KEY_WEB_CITIES, cityJsonArray);
 			jsonObject.put(TYCBMFields.KEY_WEB_BUILDINGS, buildingJsonArray);
 			jsonObject.put(TYCBMFields.KEY_WEB_MAPINFOS, mapInfoJsonArray);
+			jsonObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOLS, fillJsonArray);
+			jsonObject.put(TYSymbolFields.KEY_WEB_ICON_SYMBOLS, iconJsonArray);
+			jsonObject.put("description", descriptionObject);
 			jsonObject.put("success", true);
 		} catch (JSONException e) {
 			e.printStackTrace();

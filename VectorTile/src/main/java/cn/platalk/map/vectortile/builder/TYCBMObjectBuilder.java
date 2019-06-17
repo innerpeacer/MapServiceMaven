@@ -1,6 +1,5 @@
 package cn.platalk.map.vectortile.builder;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.map.entity.base.TYIBuilding;
@@ -9,7 +8,7 @@ import cn.platalk.map.entity.base.TYIMapInfo;
 
 class TYCBMObjectBuilder {
 
-	public static JSONObject generateCityJson(TYICity city) throws JSONException {
+	public static JSONObject generateCityJson(TYICity city) {
 		JSONObject cityObject = new JSONObject();
 		cityObject.put(TYCBMFields.KEY_WEB_CITY_ID, city.getCityID());
 		cityObject.put(TYCBMFields.KEY_WEB_CITY_NAME, city.getName());
@@ -20,7 +19,7 @@ class TYCBMObjectBuilder {
 		return cityObject;
 	}
 
-	public static JSONObject generateBuildingJson(TYIBuilding building) throws JSONException {
+	public static JSONObject generateBuildingJson(TYIBuilding building) {
 		JSONObject buildingObject = new JSONObject();
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_CITY_ID, building.getCityID());
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_ID, building.getBuildingID());
@@ -41,7 +40,7 @@ class TYCBMObjectBuilder {
 		return buildingObject;
 	}
 
-	public static JSONObject generateMapInfoJson(TYIMapInfo mapInfo) throws JSONException {
+	public static JSONObject generateMapInfoJson(TYIMapInfo mapInfo) {
 		JSONObject mapInfoObject = new JSONObject();
 		mapInfoObject.put(TYCBMFields.KEY_WEB_MAPINFO_CITYID, mapInfo.getCityID());
 		mapInfoObject.put(TYCBMFields.KEY_WEB_MAPINFO_BUILDINGID, mapInfo.getBuildingID());
