@@ -85,8 +85,7 @@ public class TYParseMapDataV3Servlet extends HttpServlet {
 			}
 		}
 
-		TYShpGeneratingTaskV3 task = new TYShpGeneratingTaskV3(TYMapEnvironment.GetShpRootDir(buildingID),
-				buildingID);
+		TYShpGeneratingTaskV3 task = new TYShpGeneratingTaskV3(TYMapEnvironment.GetShpRootDir(buildingID), buildingID);
 		task.addTaskListener(new TYShpGeneratingTaskListenerV3() {
 
 			@Override
@@ -154,6 +153,7 @@ public class TYParseMapDataV3Servlet extends HttpServlet {
 					TYSymbolDBAdapter symbolDB = new TYSymbolDBAdapter();
 					symbolDB.connectDB();
 					symbolDB.createTableIfNotExist();
+					symbolDB.deleteSymbols(buildingID);
 					symbolDB.insertFillSymbolRecords(task.getFillSymbols(), buildingID);
 					symbolDB.insertIconSymbolRecords(task.getIconSymbols(), buildingID);
 					symbolDB.disconnectDB();
