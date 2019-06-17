@@ -11,6 +11,7 @@ import cn.platalk.map.entity.base.TYIBuilding;
 import cn.platalk.map.entity.base.TYICity;
 import cn.platalk.map.entity.base.TYIFillSymbolRecord;
 import cn.platalk.map.entity.base.TYIIconSymbolRecord;
+import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
 
 class TYCBMBuilder {
@@ -23,7 +24,8 @@ class TYCBMBuilder {
 	}
 
 	public static void generateCBMJson(TYICity city, TYIBuilding building, List<TYIMapInfo> mapInfoList,
-			List<TYIFillSymbolRecord> fillSymbols, List<TYIIconSymbolRecord> iconSymbols) {
+			List<TYIMapDataFeatureRecord> mapDataRecords, List<TYIFillSymbolRecord> fillSymbols,
+			List<TYIIconSymbolRecord> iconSymbols) {
 
 		JSONArray cityJsonArray = new JSONArray();
 		cityJsonArray.put(TYCBMObjectBuilder.generateCityJson(city));
@@ -60,6 +62,7 @@ class TYCBMBuilder {
 			jsonObject.put(TYCBMFields.KEY_WEB_MAPINFOS, mapInfoJsonArray);
 			jsonObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOLS, fillJsonArray);
 			jsonObject.put(TYSymbolFields.KEY_WEB_ICON_SYMBOLS, iconJsonArray);
+			jsonObject.put("Symbols", TYSymbolExtractor.extractSymbolJson(mapDataRecords, fillSymbols, iconSymbols));
 			jsonObject.put("description", descriptionObject);
 			jsonObject.put("success", true);
 		} catch (JSONException e) {
