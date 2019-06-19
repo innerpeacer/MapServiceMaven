@@ -19,6 +19,8 @@ public class IPMysqlFillSymbolParams {
 	static final String FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR = "OUTLINE";
 	static final String FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH = "LINE_WIDTH";
 	static final String FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID = "BUILDING_ID";
+	static final String FIELD_MAP_SYMBOL_FILL_6_LEVEL_MIN = "LEVEL_MIN";
+	static final String FIELD_MAP_SYMBOL_FILL_7_LEVEL_MAX = "LEVEL_MAX";
 
 	private static List<IPSqlField> fillSymbolFieldList = new ArrayList<IPSqlField>();
 	static {
@@ -32,6 +34,10 @@ public class IPMysqlFillSymbolParams {
 				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 		fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
+		fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_6_LEVEL_MIN,
+				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_7_LEVEL_MAX,
+				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 	}
 
 	public static IPSqlTable CreateTable() {
@@ -50,6 +56,8 @@ public class IPMysqlFillSymbolParams {
 			fill.setFillColor(record.getString(FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR));
 			fill.setOutlineColor(record.getString(FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR));
 			fill.setLineWidth(record.getDouble(FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH));
+			fill.setLevelMin(record.getDouble(FIELD_MAP_SYMBOL_FILL_6_LEVEL_MIN));
+			fill.setLevelMax(record.getDouble(FIELD_MAP_SYMBOL_FILL_7_LEVEL_MAX));
 			fillList.add(fill);
 		}
 		return fillList;
@@ -62,6 +70,8 @@ public class IPMysqlFillSymbolParams {
 		data.put(FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR, fill.getOutlineColor());
 		data.put(FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH, fill.getLineWidth());
 		data.put(FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID, buildingID);
+		data.put(FIELD_MAP_SYMBOL_FILL_6_LEVEL_MIN, fill.getLevelMin());
+		data.put(FIELD_MAP_SYMBOL_FILL_7_LEVEL_MAX, fill.getLevelMax());
 		return data;
 	}
 }
