@@ -128,25 +128,4 @@ public class TYRouteNodeRecordV3 implements TYIRouteNodeRecordV3 {
 	public String toString() {
 		return String.format("NodeID: %s, Floor: %d", nodeID, floor);
 	}
-
-	// private Geometry geometryData;
-	//
-	// public Geometry getGeometryData() {
-	// if (geometryData == null) {
-	// readGeometry();
-	// }
-	// return geometryData;
-	// }
-	//
-	// private void readGeometry() {
-	// if (nodeGeometryData != null) {
-	// try {
-	// WKBReader wkb = new WKBReader();
-	// geometryData = wkb.read(nodeGeometryData);
-	// } catch (ParseException e) {
-	// geometryData = null;
-	// e.printStackTrace();
-	// }
-	// }
-	// }
 }

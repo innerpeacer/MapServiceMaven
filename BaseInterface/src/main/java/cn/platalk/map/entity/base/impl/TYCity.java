@@ -3,14 +3,6 @@ package cn.platalk.map.entity.base.impl;
 import cn.platalk.map.entity.base.TYICity;
 
 public class TYCity implements TYICity {
-
-	static final String FIELD_CITY_1_ID = "CITY_ID";
-	static final String FIELD_CITY_2_NAME = "NAME";
-	static final String FIELD_CITY_3_SNAME = "SNAME";
-	static final String FIELD_CITY_4_LONGITUDE = "LONGITUDE";
-	static final String FIELD_CITY_5_LATITUDE = "LATITUDE";
-	static final String FIELD_CITY_6_STATUS = "STATUS";
-
 	private String cityID;
 	private String name;
 	private String sname;
@@ -33,28 +25,6 @@ public class TYCity implements TYICity {
 		}
 		return false;
 	}
-
-	// public void parseJson(JSONObject jsonObject) {
-	// if (jsonObject != null) {
-	// setCityID(jsonObject.optString(FIELD_CITY_1_ID));
-	// setName(jsonObject.optString(FIELD_CITY_2_NAME));
-	// setSname(jsonObject.optString(FIELD_CITY_3_SNAME));
-	// setLongitude(jsonObject.optDouble(FIELD_CITY_4_LONGITUDE));
-	// setLatitude(jsonObject.optDouble(FIELD_CITY_5_LATITUDE));
-	// setStatus(jsonObject.optInt(FIELD_CITY_6_STATUS));
-	// }
-	// }
-	//
-	// public JSONObject buildJson() throws JSONException {
-	// JSONObject jsonObject = new JSONObject();
-	// jsonObject.put(FIELD_CITY_1_ID, cityID);
-	// jsonObject.put(FIELD_CITY_2_NAME, name);
-	// jsonObject.put(FIELD_CITY_3_SNAME, sname);
-	// jsonObject.put(FIELD_CITY_4_LONGITUDE, longitude);
-	// jsonObject.put(FIELD_CITY_5_LATITUDE, latitude);
-	// jsonObject.put(FIELD_CITY_6_STATUS, status);
-	// return jsonObject;
-	// }
 
 	public String getCityID() {
 		return cityID;

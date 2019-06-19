@@ -14,27 +14,6 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 	public static final int LAYER_LABEL = 5;
 	public static final int LAYER_SHADE = 6;
 
-	static final String FIELD_MAP_DATA_1_OBJECT_ID = "OBJECT_ID";
-	static final String FIELD_MAP_DATA_2_GEOMETRY = "GEOMETRY";
-	static final String FIELD_MAP_DATA_3_GEO_ID = "GEO_ID";
-	static final String FIELD_MAP_DATA_4_POI_ID = "POI_ID";
-	static final String FIELD_MAP_DATA_5_FLOOR_ID = "FLOOR_ID";
-	static final String FIELD_MAP_DATA_6_BUILDING_ID = "BUILDING_ID";
-	static final String FIELD_MAP_DATA_7_CATEGORY_ID = "CATEGORY_ID";
-	static final String FIELD_MAP_DATA_8_NAME = "NAME";
-	static final String FIELD_MAP_DATA_9_SYMBOL_ID = "SYMBOL_ID";
-	static final String FIELD_MAP_DATA_10_FLOOR_NUMBER = "FLOOR_NUMBER";
-	static final String FIELD_MAP_DATA_11_FLOOR_NAME = "FLOOR_NAME";
-	static final String FIELD_MAP_DATA_12_SHAPE_LENGTH = "SHAPE_LENGTH";
-	static final String FIELD_MAP_DATA_13_SHAPE_AREA = "SHAPE_AREA";
-	static final String FIELD_MAP_DATA_14_LABEL_X = "LABEL_X";
-	static final String FIELD_MAP_DATA_15_LABEL_Y = "LABEL_Y";
-	static final String FIELD_MAP_DATA_16_LAYER = "LAYER";
-	static final String FIELD_MAP_DATA_17_LEVEL_MAX = "LEVEL_MAX";
-	static final String FIELD_MAP_DATA_18_LEVEL_MIN = "LEVEL_MIN";
-	static final String FIELD_MAP_DATA_19_NAME = "NAME_EN";
-	static final String FIELD_MAP_DATA_20_NAME = "NAME_OTHER";
-
 	public String objectID;
 	public byte[] geometry;
 	public String geoID;

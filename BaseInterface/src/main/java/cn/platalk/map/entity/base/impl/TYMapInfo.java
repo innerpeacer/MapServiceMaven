@@ -3,20 +3,6 @@ package cn.platalk.map.entity.base.impl;
 import cn.platalk.map.entity.base.TYIMapInfo;
 
 public class TYMapInfo implements TYIMapInfo {
-	static final String TAG = TYMapInfo.class.getSimpleName();
-
-	// static final String FIELD_MAPINFO_1_CITY_ID = "CITY_ID";
-	// static final String FIELD_MAPINFO_2_BUILDING_ID = "BUILDING_ID";
-	// static final String FIELD_MAPINFO_3_MAP_ID = "MAP_ID";
-	// static final String FIELD_MAPINFO_4_FLOOR_NAME = "FLOOR_NAME";
-	// static final String FIELD_MAPINFO_5_FLOOR_NUMBER = "FLOOR_NUMBER";
-	// static final String FIELD_MAPINFO_6_SIZE_X = "SIZE_X";
-	// static final String FIELD_MAPINFO_7_SIZE_Y = "SIZE_Y";
-	// static final String FIELD_MAPINFO_8_XMIN = "XMIN";
-	// static final String FIELD_MAPINFO_9_YMIN = "YMIN";
-	// static final String FIELD_MAPINFO_10_XMAX = "XMAX";
-	// static final String FIELD_MAPINFO_11_YMAX = "YMAX";
-
 	String cityID;
 	String buildingID;
 	String mapID;
@@ -35,38 +21,6 @@ public class TYMapInfo implements TYIMapInfo {
 	public TYMapInfo() {
 		super();
 	}
-
-	// public void parseJson(JSONObject jsonObject) {
-	// if (jsonObject != null) {
-	// setCityID(jsonObject.optString(FIELD_MAPINFO_1_CITY_ID));
-	// setBuildingID(jsonObject.optString(FIELD_MAPINFO_2_BUILDING_ID));
-	// setMapID(jsonObject.optString(FIELD_MAPINFO_3_MAP_ID));
-	// setFloorName(jsonObject.optString(FIELD_MAPINFO_4_FLOOR_NAME));
-	// setFloorNumber(jsonObject.optInt(FIELD_MAPINFO_5_FLOOR_NUMBER));
-	// setSize_x(jsonObject.optDouble(FIELD_MAPINFO_6_SIZE_X));
-	// setSize_y(jsonObject.optDouble(FIELD_MAPINFO_7_SIZE_Y));
-	// setXmin(jsonObject.optDouble(FIELD_MAPINFO_8_XMIN));
-	// setYmin(jsonObject.optDouble(FIELD_MAPINFO_9_YMIN));
-	// setXmax(jsonObject.optDouble(FIELD_MAPINFO_10_XMAX));
-	// setYmax(jsonObject.optDouble(FIELD_MAPINFO_11_YMAX));
-	// }
-	// }
-	//
-	// public JSONObject buildJson() throws JSONException {
-	// JSONObject jsonObject = new JSONObject();
-	// jsonObject.put(FIELD_MAPINFO_1_CITY_ID, cityID);
-	// jsonObject.put(FIELD_MAPINFO_2_BUILDING_ID, buildingID);
-	// jsonObject.put(FIELD_MAPINFO_3_MAP_ID, mapID);
-	// jsonObject.put(FIELD_MAPINFO_4_FLOOR_NAME, floorName);
-	// jsonObject.put(FIELD_MAPINFO_5_FLOOR_NUMBER, floorNumber);
-	// jsonObject.put(FIELD_MAPINFO_6_SIZE_X, size_x);
-	// jsonObject.put(FIELD_MAPINFO_7_SIZE_Y, size_y);
-	// jsonObject.put(FIELD_MAPINFO_8_XMIN, xmin);
-	// jsonObject.put(FIELD_MAPINFO_9_YMIN, ymin);
-	// jsonObject.put(FIELD_MAPINFO_10_XMAX, xmax);
-	// jsonObject.put(FIELD_MAPINFO_11_YMAX, ymax);
-	// return jsonObject;
-	// }
 
 	public String getCityID() {
 		return cityID;

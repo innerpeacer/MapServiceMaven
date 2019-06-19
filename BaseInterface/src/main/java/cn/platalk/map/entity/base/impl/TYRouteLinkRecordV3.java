@@ -141,25 +141,4 @@ public class TYRouteLinkRecordV3 implements TYIRouteLinkRecordV3 {
 	public void setLinkType(String linkType) {
 		this.linkType = linkType;
 	}
-	// private Geometry geometryData;
-	//
-	// public Geometry getGeometryData() {
-	// if (geometryData == null) {
-	// readGeometry();
-	// }
-	// return geometryData;
-	// }
-	//
-	// private void readGeometry() {
-	// if (linkGeometryData != null) {
-	// try {
-	// WKBReader wkb = new WKBReader();
-	// geometryData = wkb.read(linkGeometryData);
-	// } catch (ParseException e) {
-	// geometryData = null;
-	// e.printStackTrace();
-	// }
-	// }
-	// }
-
 }

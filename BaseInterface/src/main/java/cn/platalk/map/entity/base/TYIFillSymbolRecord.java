@@ -8,4 +8,8 @@ public interface TYIFillSymbolRecord {
 	public String getOutlineColor();
 
 	public double getLineWidth();
+
+	public double getLevelMin();
+
+	public double getLevelMax();
 }

@@ -3,18 +3,12 @@ package cn.platalk.map.entity.base.impl;
 import cn.platalk.map.entity.base.TYIFillSymbolRecord;
 
 public class TYFillSymbolRecord implements TYIFillSymbolRecord {
-
-	// static final String FIELD_FILL_SYMBOL_0_PRIMARY_KEY = "_id";
-	// static final String FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID = "SYMBOL_ID";
-	// static final String FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR = "FILL";
-	// static final String FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR = "OUTLINE";
-	// static final String FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH = "LINE_WIDTH";
-	// static final String FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID = "BUILDING_ID";
-
 	public int symbolID;
 	public String fillColor;
 	public String outlineColor;
 	public double lineWidth;
+	public double levelMin;
+	public double levelMax;
 
 	public TYFillSymbolRecord() {
 
@@ -36,6 +30,14 @@ public class TYFillSymbolRecord implements TYIFillSymbolRecord {
 		this.lineWidth = lineWidth;
 	}
 
+	public void setLevelMin(double levelMin) {
+		this.levelMin = levelMin;
+	}
+
+	public void setLevelMax(double levelMax) {
+		this.levelMax = levelMax;
+	}
+
 	public int getSymbolID() {
 		return symbolID;
 	}
@@ -50,6 +52,14 @@ public class TYFillSymbolRecord implements TYIFillSymbolRecord {
 
 	public double getLineWidth() {
 		return lineWidth;
+	}
+
+	public double getLevelMin() {
+		return levelMin;
+	}
+
+	public double getLevelMax() {
+		return levelMax;
 	}
 
 	@Override
