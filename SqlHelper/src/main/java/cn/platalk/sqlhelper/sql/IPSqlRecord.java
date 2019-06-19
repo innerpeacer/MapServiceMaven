@@ -25,12 +25,36 @@ public class IPSqlRecord {
 		return (String) entityMap.get(fieldName);
 	}
 
+	public String getString(String fieldName, String defaultValue) {
+		Object obj = entityMap.get(fieldName);
+		if (obj != null) {
+			return (String) obj;
+		}
+		return defaultValue;
+	}
+
 	public Integer getInteger(String fieldName) {
 		return (Integer) entityMap.get(fieldName);
 	}
 
+	public Integer getInteger(String fieldName, Integer defaultValue) {
+		Object obj = entityMap.get(fieldName);
+		if (obj != null) {
+			return (Integer) obj;
+		}
+		return defaultValue;
+	}
+
 	public Double getDouble(String fieldName) {
 		return (Double) entityMap.get(fieldName);
+	}
+
+	public Double getDouble(String fieldName, Double defaultValue) {
+		Object obj = entityMap.get(fieldName);
+		if (obj != null) {
+			return (Double) obj;
+		}
+		return defaultValue;
 	}
 
 	public byte[] getBlob(String fieldName) {
