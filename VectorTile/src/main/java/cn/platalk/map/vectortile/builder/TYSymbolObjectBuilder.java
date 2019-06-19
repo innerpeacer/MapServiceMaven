@@ -13,6 +13,8 @@ public class TYSymbolObjectBuilder {
 		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_FILL_COLOR, symbol.getFillColor().trim());
 		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_OUTLINE_COLOR, symbol.getOutlineColor().trim());
 		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_OUTLINE_WIDTH, symbol.getLineWidth());
+		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_LEVEL_MIN, symbol.getLevelMin());
+		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_LEVEL_MAX, symbol.getLevelMax());
 		return symbolObject;
 	}
 
