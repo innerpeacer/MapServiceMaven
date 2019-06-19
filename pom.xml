@@ -26,7 +26,7 @@
 		<wtmap-data-process-version>1.1.1</wtmap-data-process-version>
 		<wtmap-vector-tile-version>1.0.5</wtmap-vector-tile-version>
 		<wtmap-route-version>3.0.1</wtmap-route-version>
-		<MapService-version>2.0.0</MapService-version>
+		<MapService-version>2.0.1</MapService-version>
 		<RouteService-version>3.0.1</RouteService-version>
 	</properties>
 	<modules>
