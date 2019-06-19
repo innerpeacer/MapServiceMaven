@@ -31,6 +31,8 @@ class TYGeometryUtils {
 		userData.put("layer", record.getLayer());
 		userData.put("v", TYVectorTileSettings.GetMvtVersion());
 
+		userData.put("symbolID", record.getSymbolID());
+
 		// if (record.getLayer() == TYIMapDataFeatureRecord.LAYER_FLOOR
 		// || record.getLayer() == TYIMapDataFeatureRecord.LAYER_ROOM
 		// || record.getLayer() == TYIMapDataFeatureRecord.LAYER_ASSET) {
@@ -39,8 +41,8 @@ class TYGeometryUtils {
 		userData.put("extrusion-height", record.getExtrusionHeight());
 		// }
 
-		userData.put("levelMax", record.getLevelMax());
-		userData.put("levelMin", record.getLevelMin());
+		// userData.put("levelMax", record.getLevelMax());
+		// userData.put("levelMin", record.getLevelMin());
 		userData.put("visible", record.isVisible());
 
 		result.setUserData(userData);
