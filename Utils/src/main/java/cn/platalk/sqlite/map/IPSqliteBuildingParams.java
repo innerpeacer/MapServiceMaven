@@ -23,6 +23,7 @@ class IPSqliteBuildingParams {
 	private static final String FIELD_BUILDING_9_OFFSET_X = "OFFSET_X";
 	private static final String FIELD_BUILDING_10_OFFSET_Y = "OFFSET_Y";
 	private static final String FIELD_BUILDING_11_STATUS = "STATUS";
+	private static final String FIELD_BUILDING_12_INIT_FLOOR_INDEX = "INIT_FLOOR_INDEX";
 
 	private static List<IPSqlField> buildingFieldList = null;
 
@@ -31,8 +32,8 @@ class IPSqliteBuildingParams {
 			buildingFieldList = new ArrayList<IPSqlField>();
 			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_1_CITY_ID,
 					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), false));
-			buildingFieldList.add(
-					new IPSqlField(FIELD_BUILDING_2_ID, IPSqlFieldType.FieldTypeFromClass(String.class.getName()), false));
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_2_ID,
+					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), false));
 			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_3_NAME,
 					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), false));
 			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_4_LONGITUDE,
@@ -50,6 +51,8 @@ class IPSqliteBuildingParams {
 			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_10_OFFSET_Y,
 					IPSqlFieldType.FieldTypeFromClass(Double.class.getName()), false));
 			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_11_STATUS,
+					IPSqlFieldType.FieldTypeFromClass(Integer.class.getName()), false));
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_12_INIT_FLOOR_INDEX,
 					IPSqlFieldType.FieldTypeFromClass(Integer.class.getName()), false));
 		}
 		return buildingFieldList;
@@ -70,6 +73,7 @@ class IPSqliteBuildingParams {
 			building.setOffset(new TYMapSize(record.getDouble(FIELD_BUILDING_9_OFFSET_X),
 					record.getDouble(FIELD_BUILDING_10_OFFSET_Y)));
 			building.setStatus(record.getInteger(FIELD_BUILDING_11_STATUS));
+			building.setInitFloorIndex(record.getInteger(FIELD_BUILDING_12_INIT_FLOOR_INDEX));
 			buildingList.add(building);
 		}
 		return buildingList;
