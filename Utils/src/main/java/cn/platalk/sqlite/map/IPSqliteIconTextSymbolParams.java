@@ -32,6 +32,7 @@ public class IPSqliteIconTextSymbolParams {
 	static final String FIELD_MAP_SYMBOL_ICON_TEXT_16_OTHER_PAINT = "OTHER_PAINT";
 	static final String FIELD_MAP_SYMBOL_ICON_TEXT_17_OTHER_LAYOUT = "OTHER_LAYOUT";
 	static final String FIELD_MAP_SYMBOL_ICON_TEXT_18_DESCRIPTION = "DESCRIPTION";
+	static final String FIELD_MAP_SYMBOL_ICON_TEXT_19_UID = "UID";
 
 	private static List<IPSqlField> iconTextSymbolFieldList = null;
 
@@ -74,6 +75,8 @@ public class IPSqliteIconTextSymbolParams {
 					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), true));
 			iconTextSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_TEXT_18_DESCRIPTION,
 					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), true));
+			iconTextSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_TEXT_19_UID,
+					IPSqlFieldType.FieldTypeFromClass(Integer.class.getName()), true));
 		}
 		return iconTextSymbolFieldList;
 	}
@@ -102,6 +105,7 @@ public class IPSqliteIconTextSymbolParams {
 			iconText.setOtherPaint(record.getString(FIELD_MAP_SYMBOL_ICON_TEXT_16_OTHER_PAINT));
 			iconText.setOtherLayout(record.getString(FIELD_MAP_SYMBOL_ICON_TEXT_17_OTHER_LAYOUT));
 			iconText.setDescription(record.getString(FIELD_MAP_SYMBOL_ICON_TEXT_18_DESCRIPTION));
+			iconText.setUID(record.getInteger(FIELD_MAP_SYMBOL_ICON_TEXT_19_UID));
 
 			iconTextList.add(iconText);
 		}

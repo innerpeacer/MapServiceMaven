@@ -17,6 +17,7 @@ class IPSqliteFillSymbolParams {
 	private static final String FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH = "LINE_WIDTH";
 	private static final String FIELD_MAP_SYMBOL_FILL_5_LEVEL_MIN = "LEVEL_MIN";
 	private static final String FIELD_MAP_SYMBOL_FILL_6_LEVEL_MAX = "LEVEL_MAX";
+	private static final String FIELD_MAP_SYMBOL_FILL_7_UID = "UID";
 
 	private static List<IPSqlField> fillSymbolFieldList = null;
 
@@ -36,6 +37,8 @@ class IPSqliteFillSymbolParams {
 					IPSqlFieldType.FieldTypeFromClass(Double.class.getName()), false));
 			fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_6_LEVEL_MAX,
 					IPSqlFieldType.FieldTypeFromClass(Double.class.getName()), false));
+			fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_7_UID,
+					IPSqlFieldType.FieldTypeFromClass(Integer.class.getName()), true));
 		}
 		return fillSymbolFieldList;
 	}
@@ -50,6 +53,7 @@ class IPSqliteFillSymbolParams {
 			fillSymbol.setLineWidth(record.getDouble(FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH));
 			fillSymbol.setLevelMin(record.getDouble(FIELD_MAP_SYMBOL_FILL_5_LEVEL_MIN, 0.0));
 			fillSymbol.setLevelMax(record.getDouble(FIELD_MAP_SYMBOL_FILL_6_LEVEL_MAX, 0.0));
+			fillSymbol.setUID(record.getInteger(FIELD_MAP_SYMBOL_FILL_7_UID));
 			fillSymbolList.add(fillSymbol);
 		}
 		return fillSymbolList;
