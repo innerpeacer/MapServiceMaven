@@ -69,8 +69,8 @@ public class TYVectorTileBuilder {
 		geometrySet.processData();
 	}
 
-	public void buildTile() throws Exception {
-		System.out.println("buildTile");
+	public void generateCBM() throws Exception {
+		System.out.println("generateCBM");
 
 		if (TYVectorTileSettings.GetTileRoot() == null) {
 			throw new Exception(
@@ -79,6 +79,15 @@ public class TYVectorTileBuilder {
 
 		TYCBMBuilder.generateCBMJson(city, building, mapInfos, mapDataRecords, fillSymbols, iconSymbols,
 				iconTextSymbols);
+	}
+
+	public void buildTile() throws Exception {
+		System.out.println("buildTile");
+
+		if (TYVectorTileSettings.GetTileRoot() == null) {
+			throw new Exception(
+					"Error: TileRoot Cannot be null, please set TileRoot By calling TYVectorTileSettings.SetTileRoot()");
+		}
 
 		TYIMapInfo mapInfo = geometrySet.getMapInfos().get(0);
 		// TYBrtBoundingBox bb = TYBrtBoundingBox.boundingBoxForMapInfo(mapInfo,
