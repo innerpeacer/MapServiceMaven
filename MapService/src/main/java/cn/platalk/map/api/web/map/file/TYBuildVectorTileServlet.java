@@ -40,6 +40,7 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String buildingID = request.getParameter("buildingID");
+		String cbmOnly = request.getParameter("cbmOnly");
 		response.setContentType("text/json;charset=UTF-8");
 
 		if (!TYParameterChecker.isValidBuildingID(buildingID)) {
@@ -102,7 +103,10 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 
 		builder.addData(city, building, mapInfos, mapDataRecords, fillSymbols, iconSymbols, iconTextSymbols);
 		try {
-			builder.buildTile();
+			builder.generateCBM();
+			if (cbmOnly == null) {
+				builder.buildTile();
+			}
 			PrintWriter out = response.getWriter();
 			out.println("Build Vector Tile for BuildingID: " + buildingID);
 			out.close();
