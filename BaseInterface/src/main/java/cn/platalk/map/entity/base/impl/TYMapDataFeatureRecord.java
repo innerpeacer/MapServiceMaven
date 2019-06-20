@@ -24,6 +24,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 	public String name;
 	public String name_en;
 	public String name_other;
+	public String icon;
 	public int symbolID;
 	public int floorNumber;
 	public String floorName;
@@ -125,6 +126,14 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 
 	public void setNameOther(String nameOther) {
 		this.name_other = nameOther;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 	public int getSymbolID() {

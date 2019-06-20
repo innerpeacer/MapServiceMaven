@@ -32,6 +32,8 @@ public interface TYIMapDataFeatureRecord {
 
 	public String getNameOther();
 
+	public String getIcon();
+
 	public int getSymbolID();
 
 	public int getFloorNumber();
