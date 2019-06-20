@@ -18,6 +18,7 @@ import cn.platalk.map.api.TYParameterChecker;
 import cn.platalk.map.core.config.TYMapEnvironment;
 import cn.platalk.map.entity.base.TYIFillSymbolRecord;
 import cn.platalk.map.entity.base.TYIIconSymbolRecord;
+import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.impl.TYBuilding;
@@ -82,10 +83,12 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 
 		List<TYIFillSymbolRecord> fillSymbols = new ArrayList<TYIFillSymbolRecord>();
 		List<TYIIconSymbolRecord> iconSymbols = new ArrayList<TYIIconSymbolRecord>();
+		List<TYIIconTextSymbolRecord> iconTextSymbols = new ArrayList<TYIIconTextSymbolRecord>();
 		TYSymbolDBAdapter symbolDB = new TYSymbolDBAdapter();
 		symbolDB.connectDB();
 		fillSymbols.addAll(symbolDB.getFillSymbolRecords(buildingID));
 		iconSymbols.addAll(symbolDB.getIconSymbolRecords(buildingID));
+		iconTextSymbols.addAll(symbolDB.getIconTextSymbolRecords(buildingID));
 		symbolDB.disconnectDB();
 
 		List<TYIMapDataFeatureRecord> mapDataRecords = new ArrayList<TYIMapDataFeatureRecord>();
@@ -97,7 +100,7 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 		fillSymbols = filterFillRecords(mapDataRecords, fillSymbols);
 		iconSymbols = filterIconRecords(mapDataRecords, iconSymbols);
 
-		builder.addData(city, building, mapInfos, mapDataRecords, fillSymbols, iconSymbols);
+		builder.addData(city, building, mapInfos, mapDataRecords, fillSymbols, iconSymbols, iconTextSymbols);
 		try {
 			builder.buildTile();
 			PrintWriter out = response.getWriter();
