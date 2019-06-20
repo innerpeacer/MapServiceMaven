@@ -9,13 +9,10 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import cn.platalk.map.entity.base.TYIFillSymbolRecord;
-import cn.platalk.map.entity.base.TYIIconSymbolRecord;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 
 public class TYSymbolExtractor {
-	public static JSONObject extractSymbolJson(List<TYIMapDataFeatureRecord> mapDataRecords,
-			List<TYIFillSymbolRecord> fillSymbols, List<TYIIconSymbolRecord> iconSymbols) {
+	public static JSONObject extractSymbolJson(List<TYIMapDataFeatureRecord> mapDataRecords) {
 		JSONObject json = new JSONObject();
 
 		Set<Integer> floorSet = new HashSet<Integer>();

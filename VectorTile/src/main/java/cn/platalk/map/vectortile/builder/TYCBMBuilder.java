@@ -11,6 +11,7 @@ import cn.platalk.map.entity.base.TYIBuilding;
 import cn.platalk.map.entity.base.TYICity;
 import cn.platalk.map.entity.base.TYIFillSymbolRecord;
 import cn.platalk.map.entity.base.TYIIconSymbolRecord;
+import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
 
@@ -25,7 +26,7 @@ class TYCBMBuilder {
 
 	public static void generateCBMJson(TYICity city, TYIBuilding building, List<TYIMapInfo> mapInfoList,
 			List<TYIMapDataFeatureRecord> mapDataRecords, List<TYIFillSymbolRecord> fillSymbols,
-			List<TYIIconSymbolRecord> iconSymbols) {
+			List<TYIIconSymbolRecord> iconSymbols, List<TYIIconTextSymbolRecord> iconTextSymbols) {
 
 		JSONArray cityJsonArray = new JSONArray();
 		cityJsonArray.put(TYCBMObjectBuilder.generateCityJson(city));
@@ -38,32 +39,42 @@ class TYCBMBuilder {
 			mapInfoJsonArray.put(TYCBMObjectBuilder.generateMapInfoJson(mapInfoList.get(i)));
 		}
 
-		JSONArray fillJsonArray = new JSONArray();
-		for (int i = 0; i < fillSymbols.size(); ++i) {
-			fillJsonArray.put(TYSymbolObjectBuilder.generateFillJson(fillSymbols.get(i)));
-		}
-
-		JSONArray iconJsonArray = new JSONArray();
-		for (int i = 0; i < iconSymbols.size(); ++i) {
-			iconJsonArray.put(TYSymbolObjectBuilder.generateIconJson(iconSymbols.get(i)));
-		}
-
-		JSONObject descriptionObject = new JSONObject();
-		descriptionObject.put("cities", 1);
-		descriptionObject.put("buildings", 1);
-		descriptionObject.put("mapInfos", mapInfoList.size());
-		descriptionObject.put("fills", fillSymbols.size());
-		descriptionObject.put("icons", iconSymbols.size());
-
 		JSONObject jsonObject = new JSONObject();
 		try {
 			jsonObject.put(TYCBMFields.KEY_WEB_CITIES, cityJsonArray);
 			jsonObject.put(TYCBMFields.KEY_WEB_BUILDINGS, buildingJsonArray);
 			jsonObject.put(TYCBMFields.KEY_WEB_MAPINFOS, mapInfoJsonArray);
-			jsonObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOLS, fillJsonArray);
-			jsonObject.put(TYSymbolFields.KEY_WEB_ICON_SYMBOLS, iconJsonArray);
-			jsonObject.put("Symbols", TYSymbolExtractor.extractSymbolJson(mapDataRecords, fillSymbols, iconSymbols));
-			jsonObject.put("description", descriptionObject);
+
+			if ("V4".equals(building.getRouteURL())) {
+				JSONArray fillJsonArray = new JSONArray();
+				for (int i = 0; i < fillSymbols.size(); ++i) {
+					fillJsonArray.put(TYSymbolObjectBuilder.generateFillJson(fillSymbols.get(i)));
+				}
+				jsonObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOLS, fillJsonArray);
+
+				// JSONArray iconJsonArray = new JSONArray();
+				// for (int i = 0; i < iconSymbols.size(); ++i) {
+				// iconJsonArray.put(TYSymbolObjectBuilder.generateIconJson(iconSymbols.get(i)));
+				// }
+				// jsonObject.put(TYSymbolFields.KEY_WEB_ICON_SYMBOLS,
+				// iconJsonArray);
+
+				JSONArray iconTextJsonArray = new JSONArray();
+				for (int i = 0; i < iconTextSymbols.size(); ++i) {
+					iconTextJsonArray.put(TYSymbolObjectBuilder.generateIconTextJson(iconTextSymbols.get(i)));
+				}
+				jsonObject.put(TYSymbolFields.KEY_WEB_ICON_TEXT_SYMBOLS, iconTextJsonArray);
+
+				jsonObject.put("Symbols", TYSymbolExtractor.extractSymbolJson(mapDataRecords));
+
+				JSONObject descriptionObject = new JSONObject();
+				descriptionObject.put("cities", 1);
+				descriptionObject.put("buildings", 1);
+				descriptionObject.put("mapInfos", mapInfoList.size());
+				descriptionObject.put("fills", fillSymbols.size());
+				descriptionObject.put("icons", iconSymbols.size());
+				jsonObject.put("description", descriptionObject);
+			}
 			jsonObject.put("success", true);
 		} catch (JSONException e) {
 			e.printStackTrace();

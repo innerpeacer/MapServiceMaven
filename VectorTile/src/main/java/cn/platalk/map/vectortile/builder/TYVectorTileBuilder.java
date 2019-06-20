@@ -12,6 +12,7 @@ import cn.platalk.map.entity.base.TYIBuilding;
 import cn.platalk.map.entity.base.TYICity;
 import cn.platalk.map.entity.base.TYIFillSymbolRecord;
 import cn.platalk.map.entity.base.TYIIconSymbolRecord;
+import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
@@ -26,6 +27,7 @@ public class TYVectorTileBuilder {
 	List<TYIMapDataFeatureRecord> mapDataRecords;
 	List<TYIFillSymbolRecord> fillSymbols;
 	List<TYIIconSymbolRecord> iconSymbols;
+	List<TYIIconTextSymbolRecord> iconTextSymbols;
 	TYGeometrySet geometrySet;
 	TYIMvtEncoder mvtEncoder;
 	private int tileCount;
@@ -40,6 +42,13 @@ public class TYVectorTileBuilder {
 	public void addData(TYICity city, TYIBuilding building, List<TYIMapInfo> mapInfoList,
 			List<TYIMapDataFeatureRecord> mapDataRecords, List<TYIFillSymbolRecord> fillSymbolList,
 			List<TYIIconSymbolRecord> iconSymbolList) {
+		addData(city, building, mapInfoList, mapDataRecords, fillSymbolList, iconSymbolList,
+				new ArrayList<TYIIconTextSymbolRecord>());
+	}
+
+	public void addData(TYICity city, TYIBuilding building, List<TYIMapInfo> mapInfoList,
+			List<TYIMapDataFeatureRecord> mapDataRecords, List<TYIFillSymbolRecord> fillSymbolList,
+			List<TYIIconSymbolRecord> iconSymbolList, List<TYIIconTextSymbolRecord> iconTextSymbolList) {
 		System.out.println(mapDataRecords.size() + " records");
 		this.city = city;
 		this.building = building;
@@ -53,6 +62,8 @@ public class TYVectorTileBuilder {
 		this.fillSymbols.addAll(fillSymbolList);
 		this.iconSymbols = new ArrayList<TYIIconSymbolRecord>();
 		this.iconSymbols.addAll(iconSymbolList);
+		this.iconTextSymbols = new ArrayList<TYIIconTextSymbolRecord>();
+		this.iconTextSymbols.addAll(iconTextSymbolList);
 
 		geometrySet.addData(mapInfoList, mapDataRecords, fillSymbolList, iconSymbolList);
 		geometrySet.processData();
@@ -66,7 +77,8 @@ public class TYVectorTileBuilder {
 					"Error: TileRoot Cannot be null, please set TileRoot By calling TYVectorTileSettings.SetTileRoot()");
 		}
 
-		TYCBMBuilder.generateCBMJson(city, building, mapInfos, mapDataRecords, fillSymbols, iconSymbols);
+		TYCBMBuilder.generateCBMJson(city, building, mapInfos, mapDataRecords, fillSymbols, iconSymbols,
+				iconTextSymbols);
 
 		TYIMapInfo mapInfo = geometrySet.getMapInfos().get(0);
 		// TYBrtBoundingBox bb = TYBrtBoundingBox.boundingBoxForMapInfo(mapInfo,
