@@ -9,6 +9,7 @@ public class TYSymbolFields {
 	static final String KEY_WEB_FILL_SYMBOL_OUTLINE_WIDTH = "outlineWidth";
 	static final String KEY_WEB_FILL_SYMBOL_LEVEL_MIN = "levelMin";
 	static final String KEY_WEB_FILL_SYMBOL_LEVEL_MAX = "levelMax";
+	static final String KEY_WEB_FILL_SYMBOL_UID = "UID";
 
 	static final String KEY_WEB_ICON_SYMBOLS = "IconSymbols";
 	static final String KEY_WEB_ICON_SYMBOL_ID = "symbolID";
@@ -34,4 +35,6 @@ public class TYSymbolFields {
 	static final String KEY_WEB_ICON_TEXT_SYMBOL_OTHER_LAYOUT = "otherLayout";
 	// static final String KEY_WEB_ICON_TEXT_SYMBOL_DESCRIPTION = "description";
 	// // Not Needed!
+	static final String KEY_WEB_ICON_TEXT_UID = "UID";
+
 }

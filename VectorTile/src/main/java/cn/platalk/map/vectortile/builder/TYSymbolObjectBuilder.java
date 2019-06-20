@@ -16,6 +16,7 @@ public class TYSymbolObjectBuilder {
 		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_OUTLINE_WIDTH, symbol.getLineWidth());
 		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_LEVEL_MIN, symbol.getLevelMin());
 		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_LEVEL_MAX, symbol.getLevelMax());
+		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_UID, symbol.getUID());
 		return symbolObject;
 	}
 
@@ -46,6 +47,7 @@ public class TYSymbolObjectBuilder {
 		symbolObject.put(TYSymbolFields.KEY_WEB_ICON_TEXT_SYMBOL_LEVEL_MAX, symbol.getLevelMax());
 		symbolObject.put(TYSymbolFields.KEY_WEB_ICON_TEXT_SYMBOL_OTHER_PAINT, symbol.getOtherPaint());
 		symbolObject.put(TYSymbolFields.KEY_WEB_ICON_TEXT_SYMBOL_OTHER_LAYOUT, symbol.getOtherLayout());
+		symbolObject.put(TYSymbolFields.KEY_WEB_ICON_TEXT_UID, symbol.getUID());
 
 		return symbolObject;
 	}

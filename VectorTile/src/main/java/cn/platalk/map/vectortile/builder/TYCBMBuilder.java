@@ -72,8 +72,8 @@ class TYCBMBuilder {
 				descriptionObject.put("buildings", 1);
 				descriptionObject.put("mapInfos", mapInfoList.size());
 				descriptionObject.put("fills", fillSymbols.size());
-				descriptionObject.put("icons", iconSymbols.size());
-				jsonObject.put("description", descriptionObject);
+				descriptionObject.put("iconTexts", iconTextSymbols.size());
+				jsonObject.put("Description", descriptionObject);
 			}
 			jsonObject.put("success", true);
 		} catch (JSONException e) {
