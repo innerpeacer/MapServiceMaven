@@ -73,7 +73,7 @@ class IPSqliteBuildingParams {
 			building.setOffset(new TYMapSize(record.getDouble(FIELD_BUILDING_9_OFFSET_X),
 					record.getDouble(FIELD_BUILDING_10_OFFSET_Y)));
 			building.setStatus(record.getInteger(FIELD_BUILDING_11_STATUS));
-			building.setInitFloorIndex(record.getInteger(FIELD_BUILDING_12_INIT_FLOOR_INDEX));
+			building.setInitFloorIndex(record.getInteger(FIELD_BUILDING_12_INIT_FLOOR_INDEX, 0));
 			buildingList.add(building);
 		}
 		return buildingList;
