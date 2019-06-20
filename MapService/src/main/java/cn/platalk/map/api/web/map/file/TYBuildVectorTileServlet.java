@@ -98,7 +98,7 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 		mapDB.disconnectDB();
 
 		fillSymbols = filterFillRecords(mapDataRecords, fillSymbols);
-		iconSymbols = filterIconRecords(mapDataRecords, iconSymbols);
+		iconTextSymbols = filterIconTextRecords(mapDataRecords, iconTextSymbols);
 
 		builder.addData(city, building, mapInfos, mapDataRecords, fillSymbols, iconSymbols, iconTextSymbols);
 		try {
@@ -136,24 +136,46 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 		return resultList;
 	}
 
-	private List<TYIIconSymbolRecord> filterIconRecords(List<TYIMapDataFeatureRecord> mapRecords,
-			List<TYIIconSymbolRecord> iconRecords) {
-		List<TYIIconSymbolRecord> resultList = new ArrayList<TYIIconSymbolRecord>();
+	private List<TYIIconTextSymbolRecord> filterIconTextRecords(List<TYIMapDataFeatureRecord> mapRecords,
+			List<TYIIconTextSymbolRecord> iconTextRecords) {
+		List<TYIIconTextSymbolRecord> resultList = new ArrayList<TYIIconTextSymbolRecord>();
 
 		Set<Integer> tempSet = new HashSet<Integer>();
 		for (TYIMapDataFeatureRecord mapRecord : mapRecords) {
-			if (mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_FACILITY) {
+			if (mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_FACILITY
+					|| mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_LABEL) {
 				tempSet.add(mapRecord.getSymbolID());
 			}
 		}
 
-		for (TYIIconSymbolRecord iconRecord : iconRecords) {
+		for (TYIIconTextSymbolRecord iconRecord : iconTextRecords) {
 			if (tempSet.contains(iconRecord.getSymbolID())) {
 				resultList.add(iconRecord);
 			}
 		}
 		return resultList;
 	}
+
+	// private List<TYIIconSymbolRecord>
+	// filterIconRecords(List<TYIMapDataFeatureRecord> mapRecords,
+	// List<TYIIconSymbolRecord> iconRecords) {
+	// List<TYIIconSymbolRecord> resultList = new
+	// ArrayList<TYIIconSymbolRecord>();
+	//
+	// Set<Integer> tempSet = new HashSet<Integer>();
+	// for (TYIMapDataFeatureRecord mapRecord : mapRecords) {
+	// if (mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_FACILITY) {
+	// tempSet.add(mapRecord.getSymbolID());
+	// }
+	// }
+	//
+	// for (TYIIconSymbolRecord iconRecord : iconRecords) {
+	// if (tempSet.contains(iconRecord.getSymbolID())) {
+	// resultList.add(iconRecord);
+	// }
+	// }
+	// return resultList;
+	// }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
