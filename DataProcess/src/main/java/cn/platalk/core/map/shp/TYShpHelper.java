@@ -59,7 +59,12 @@ public class TYShpHelper {
 			record.name_other = feature.GetFieldAsString("NAME_OTHER");
 		}
 
-		record.symbolID = feature.GetFieldAsInteger("COLOR");
+		if (feature.GetFieldIndex("SYMBOL_ID") != -1) {
+			record.symbolID = feature.GetFieldAsInteger("SYMBOL_ID");
+		} else {
+			record.symbolID = feature.GetFieldAsInteger("COLOR");
+		}
+
 		record.floorNumber = feature.GetFieldAsInteger("FLOOR_INDE");
 		record.floorName = feature.GetFieldAsString("FLOOR_NAME");
 
@@ -112,6 +117,10 @@ public class TYShpHelper {
 			record.extrusionHeight = feature.GetFieldAsDouble("EXTRU_HEIG");
 		} else {
 			record.extrusionHeight = 0;
+		}
+
+		if (feature.GetFieldIndex("ICON") != -1) {
+			record.icon = feature.GetFieldAsString("ICON");
 		}
 
 		return record;
