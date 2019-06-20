@@ -1,6 +1,8 @@
 package cn.platalk.map.entity.base;
 
 public interface TYIFillSymbolRecord {
+	public int getUID();
+
 	public int getSymbolID();
 
 	public String getFillColor();

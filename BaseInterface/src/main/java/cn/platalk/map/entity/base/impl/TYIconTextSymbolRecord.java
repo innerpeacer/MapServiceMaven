@@ -3,6 +3,7 @@ package cn.platalk.map.entity.base.impl;
 import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
 
 public class TYIconTextSymbolRecord implements TYIIconTextSymbolRecord {
+	public int UID;
 	public int symbolID;
 
 	public boolean iconVisible;
@@ -26,6 +27,10 @@ public class TYIconTextSymbolRecord implements TYIIconTextSymbolRecord {
 	public String otherLayout;
 
 	public String description;
+
+	public void setUID(int uID) {
+		UID = uID;
+	}
 
 	public void setSymbolID(int symbolID) {
 		this.symbolID = symbolID;
@@ -97,6 +102,10 @@ public class TYIconTextSymbolRecord implements TYIIconTextSymbolRecord {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public int getUID() {
+		return UID;
 	}
 
 	public int getSymbolID() {

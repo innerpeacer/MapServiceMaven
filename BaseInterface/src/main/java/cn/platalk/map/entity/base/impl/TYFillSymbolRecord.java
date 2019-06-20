@@ -3,6 +3,7 @@ package cn.platalk.map.entity.base.impl;
 import cn.platalk.map.entity.base.TYIFillSymbolRecord;
 
 public class TYFillSymbolRecord implements TYIFillSymbolRecord {
+	public int UID;
 	public int symbolID;
 	public String fillColor;
 	public String outlineColor;
@@ -12,6 +13,10 @@ public class TYFillSymbolRecord implements TYIFillSymbolRecord {
 
 	public TYFillSymbolRecord() {
 
+	}
+
+	public void setUID(int uID) {
+		UID = uID;
 	}
 
 	public void setSymbolID(int symbolID) {
@@ -36,6 +41,10 @@ public class TYFillSymbolRecord implements TYIFillSymbolRecord {
 
 	public void setLevelMax(double levelMax) {
 		this.levelMax = levelMax;
+	}
+
+	public int getUID() {
+		return UID;
 	}
 
 	public int getSymbolID() {
