@@ -36,6 +36,8 @@ public class IPMysqlIconTextSymbolParams {
 	static final String FIELD_MAP_SYMBOL_ICON_TEXT_17_OTHER_LAYOUT = "OTHER_LAYOUT";
 	static final String FIELD_MAP_SYMBOL_ICON_TEXT_18_DESCRIPTION = "DESCRIPTION";
 
+	static final String FIELD_MAP_SYMBOL_ICON_TEXT_19_UID = "UID";
+
 	private static List<IPSqlField> iconTextSymbolFieldList = new ArrayList<IPSqlField>();
 
 	static {
@@ -81,6 +83,9 @@ public class IPMysqlIconTextSymbolParams {
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(2000)"), true));
 		iconTextSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_TEXT_18_DESCRIPTION,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(2000)"), true));
+
+		iconTextSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_TEXT_19_UID,
+				new IPSqlFieldType(Integer.class.getName(), "INT"), true));
 	}
 
 	public static IPSqlTable CreateTable() {
@@ -116,6 +121,8 @@ public class IPMysqlIconTextSymbolParams {
 			iconText.setOtherLayout(record.getString(FIELD_MAP_SYMBOL_ICON_TEXT_17_OTHER_LAYOUT));
 			iconText.setDescription(record.getString(FIELD_MAP_SYMBOL_ICON_TEXT_18_DESCRIPTION));
 
+			iconText.setUID(record.getInteger(FIELD_MAP_SYMBOL_ICON_TEXT_19_UID));
+
 			iconTextList.add(iconText);
 		}
 		return iconTextList;
@@ -145,6 +152,7 @@ public class IPMysqlIconTextSymbolParams {
 		data.put(FIELD_MAP_SYMBOL_ICON_TEXT_17_OTHER_LAYOUT, iconText.otherLayout);
 
 		data.put(FIELD_MAP_SYMBOL_ICON_TEXT_18_DESCRIPTION, iconText.description);
+		data.put(FIELD_MAP_SYMBOL_ICON_TEXT_19_UID, iconText.UID);
 
 		data.put(FIELD_MAP_SYMBOL_ICON_TEXT_100_BUILDING_ID, buildingID);
 		return data;

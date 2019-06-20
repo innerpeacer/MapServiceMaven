@@ -21,6 +21,7 @@ public class IPMysqlFillSymbolParams {
 	static final String FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID = "BUILDING_ID";
 	static final String FIELD_MAP_SYMBOL_FILL_6_LEVEL_MIN = "LEVEL_MIN";
 	static final String FIELD_MAP_SYMBOL_FILL_7_LEVEL_MAX = "LEVEL_MAX";
+	static final String FIELD_MAP_SYMBOL_FILL_8_UID = "UID";
 
 	private static List<IPSqlField> fillSymbolFieldList = new ArrayList<IPSqlField>();
 	static {
@@ -38,6 +39,8 @@ public class IPMysqlFillSymbolParams {
 				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 		fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_7_LEVEL_MAX,
 				new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+		fillSymbolFieldList.add(
+				new IPSqlField(FIELD_MAP_SYMBOL_FILL_8_UID, new IPSqlFieldType(Integer.class.getName(), "INT"), true));
 	}
 
 	public static IPSqlTable CreateTable() {
@@ -58,6 +61,7 @@ public class IPMysqlFillSymbolParams {
 			fill.setLineWidth(record.getDouble(FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH));
 			fill.setLevelMin(record.getDouble(FIELD_MAP_SYMBOL_FILL_6_LEVEL_MIN));
 			fill.setLevelMax(record.getDouble(FIELD_MAP_SYMBOL_FILL_7_LEVEL_MAX));
+			fill.setUID(record.getInteger(FIELD_MAP_SYMBOL_FILL_8_UID));
 			fillList.add(fill);
 		}
 		return fillList;
@@ -72,6 +76,7 @@ public class IPMysqlFillSymbolParams {
 		data.put(FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID, buildingID);
 		data.put(FIELD_MAP_SYMBOL_FILL_6_LEVEL_MIN, fill.getLevelMin());
 		data.put(FIELD_MAP_SYMBOL_FILL_7_LEVEL_MAX, fill.getLevelMax());
+		data.put(FIELD_MAP_SYMBOL_FILL_8_UID, fill.getUID());
 		return data;
 	}
 }
