@@ -7,6 +7,15 @@ import java.sql.Types;
 
 public class IPSqlHelper {
 	public static IPSqlEntity getObject(ResultSet rs, IPSqlField field) throws SQLException {
+		Exception error = null;
+		try {
+			rs.findColumn(field.fieldName);
+		} catch (Exception e) {
+			error = e;
+		}
+		if (error != null) {
+			return new IPSqlEntity(field.fieldName, field.fieldType.clazz, null);
+		}
 		return new IPSqlEntity(field.fieldName, field.fieldType.clazz, rs.getObject(field.fieldName));
 	}
 
