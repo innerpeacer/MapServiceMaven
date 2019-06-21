@@ -9,10 +9,13 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import cn.platalk.map.entity.base.TYIFillSymbolRecord;
+import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 
 public class TYSymbolExtractor {
-	public static JSONObject extractSymbolJson(List<TYIMapDataFeatureRecord> mapDataRecords) {
+	public static JSONObject extractSymbolJson(List<TYIMapDataFeatureRecord> mapDataRecords,
+			List<TYIFillSymbolRecord> fillSymbols, List<TYIIconTextSymbolRecord> iconTextSymbols) {
 		JSONObject json = new JSONObject();
 
 		Set<Integer> floorSet = new HashSet<Integer>();
@@ -57,17 +60,17 @@ public class TYSymbolExtractor {
 			}
 		}
 
-		List<Integer> floorList = new ArrayList<Integer>(floorSet);
+		List<Integer> floorList = findUIDForFillSymbolIDSet(fillSymbols, floorSet);
 		Collections.sort(floorList);
-		List<Integer> roomList = new ArrayList<Integer>(roomSet);
+		List<Integer> roomList = findUIDForFillSymbolIDSet(fillSymbols, roomSet);
 		Collections.sort(roomList);
-		List<Integer> assetList = new ArrayList<Integer>(assetSet);
+		List<Integer> assetList = findUIDForFillSymbolIDSet(fillSymbols, assetSet);
 		Collections.sort(assetList);
-		List<Integer> facilityList = new ArrayList<Integer>(facilitySet);
+		List<Integer> facilityList = findUIDForIconTextSymbolIDSet(iconTextSymbols, facilitySet);
 		Collections.sort(facilityList);
-		List<Integer> labelList = new ArrayList<Integer>(labelSet);
+		List<Integer> labelList = findUIDForIconTextSymbolIDSet(iconTextSymbols, labelSet);
 		Collections.sort(labelList);
-		List<Integer> extrusionList = new ArrayList<Integer>(extrusionSet);
+		List<Integer> extrusionList = findUIDForFillSymbolIDSet(fillSymbols, extrusionSet);
 		Collections.sort(extrusionList);
 
 		json.put("floor", listToJsonArray(floorList));
@@ -77,6 +80,43 @@ public class TYSymbolExtractor {
 		json.put("label", listToJsonArray(labelList));
 		json.put("extrusions", listToJsonArray(extrusionList));
 		return json;
+	}
+
+	private static List<Integer> findUIDForFillSymbolIDSet(List<TYIFillSymbolRecord> fillSymbols, Set<Integer> set) {
+		List<Integer> resultList = new ArrayList<Integer>();
+		for (Integer symbolID : set) {
+			resultList.addAll(uIDForFillSymbol(fillSymbols, symbolID));
+		}
+		return resultList;
+	}
+
+	private static List<Integer> uIDForFillSymbol(List<TYIFillSymbolRecord> fillSymbols, int symbolID) {
+		List<Integer> resultList = new ArrayList<Integer>();
+		for (TYIFillSymbolRecord symbol : fillSymbols) {
+			if (symbol.getSymbolID() == symbolID) {
+				resultList.add(symbol.getUID());
+			}
+		}
+		return resultList;
+	}
+
+	private static List<Integer> findUIDForIconTextSymbolIDSet(List<TYIIconTextSymbolRecord> iconTextSymbols,
+			Set<Integer> set) {
+		List<Integer> resultList = new ArrayList<Integer>();
+		for (Integer symbolID : set) {
+			resultList.addAll(uIDForIconTextSymbol(iconTextSymbols, symbolID));
+		}
+		return resultList;
+	}
+
+	private static List<Integer> uIDForIconTextSymbol(List<TYIIconTextSymbolRecord> iconTextSymbols, int symbolID) {
+		List<Integer> resultList = new ArrayList<Integer>();
+		for (TYIIconTextSymbolRecord symbol : iconTextSymbols) {
+			if (symbol.getSymbolID() == symbolID) {
+				resultList.add(symbol.getUID());
+			}
+		}
+		return resultList;
 	}
 
 	private static JSONArray listToJsonArray(List<Integer> list) {

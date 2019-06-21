@@ -65,7 +65,8 @@ class TYCBMBuilder {
 				}
 				jsonObject.put(TYSymbolFields.KEY_WEB_ICON_TEXT_SYMBOLS, iconTextJsonArray);
 
-				jsonObject.put("Symbols", TYSymbolExtractor.extractSymbolJson(mapDataRecords));
+				jsonObject.put("Symbols",
+						TYSymbolExtractor.extractSymbolJson(mapDataRecords, fillSymbols, iconTextSymbols));
 
 				JSONObject descriptionObject = new JSONObject();
 				descriptionObject.put("cities", 1);
