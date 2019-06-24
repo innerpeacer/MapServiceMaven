@@ -78,7 +78,7 @@ public class TYSymbolExtractor {
 		json.put("asset", listToJsonArray(assetList));
 		json.put("facility", listToJsonArray(facilityList));
 		json.put("label", listToJsonArray(labelList));
-		json.put("extrusions", listToJsonArray(extrusionList));
+		json.put("extrusion", listToJsonArray(extrusionList));
 		return json;
 	}
 
