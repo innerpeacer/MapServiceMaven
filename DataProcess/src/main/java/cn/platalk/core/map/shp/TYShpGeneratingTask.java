@@ -2,7 +2,9 @@ package cn.platalk.core.map.shp;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.platalk.core.map.base.TYIShpDataManager;
 import cn.platalk.core.map.shp.TYShpMapDataTask.TYBrtMapShpTaskListener;
@@ -18,8 +20,8 @@ import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
 import cn.platalk.map.entity.base.impl.TYRouteLinkRecord;
 import cn.platalk.map.entity.base.impl.TYRouteNodeRecord;
-import cn.platalk.sqlite.map.IPSqliteSymbolDBAdapter;
 import cn.platalk.sqlite.map.IPSqliteMapDBAdapter;
+import cn.platalk.sqlite.map.IPSqliteSymbolDBAdapter;
 
 public class TYShpGeneratingTask
 		implements TYBrtMapInfoJsonParserListener, TYBrtMapShpTaskListener, TYBrtRouteShpTaskListener {
@@ -107,11 +109,38 @@ public class TYShpGeneratingTask
 		notifyFailedGeneratingShpTask(error);
 	}
 
+	private List<TYMapDataFeatureRecord> updateLabelXY(List<TYMapDataFeatureRecord> records) {
+		Map<String, TYMapDataFeatureRecord> fillMap = new HashMap<String, TYMapDataFeatureRecord>();
+		Map<String, TYMapDataFeatureRecord> symbolMap = new HashMap<String, TYMapDataFeatureRecord>();
+		for (TYMapDataFeatureRecord record : records) {
+			if (record.layer == 1 || record.layer == 2 || record.layer == 3) {
+				fillMap.put(record.poiID, record);
+			}
+			if (record.layer == 4 || record.layer == 5) {
+				symbolMap.put(record.poiID, record);
+			}
+		}
+
+		for (TYMapDataFeatureRecord record : fillMap.values()) {
+			if (symbolMap.containsKey(record.poiID)) {
+				TYMapDataFeatureRecord symbolRecord = symbolMap.get(record.poiID);
+				record.labelX = symbolRecord.labelX;
+				record.labelY = symbolRecord.labelY;
+			}
+		}
+
+		List<TYMapDataFeatureRecord> resultList = new ArrayList<TYMapDataFeatureRecord>();
+		resultList.addAll(fillMap.values());
+		resultList.addAll(symbolMap.values());
+		return resultList;
+	}
+
 	@Override
 	public void didFinishMapShpTask(List<TYMapDataFeatureRecord> records) {
 		// System.out.println("didFinishMapShpTask");
+		List<TYMapDataFeatureRecord> updatedRecords = updateLabelXY(records);
 		mapDataRecords = new ArrayList<TYMapDataFeatureRecord>();
-		mapDataRecords.addAll(records);
+		mapDataRecords.addAll(updatedRecords);
 		// System.out.println(mapDataRecords.size() + " records!");
 		startRouteShpTask();
 	}

@@ -2,7 +2,9 @@ package cn.platalk.core.map.shp;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.platalk.core.map.shp.TYShpMapDataTaskV3.TYBrtMapShpTaskListenerV3;
 import cn.platalk.core.map.shp.mapdata.TYJsonMapInfoParser;
@@ -125,11 +127,38 @@ public class TYShpGeneratingTaskV4
 		notifyFailedGeneratingShpTask(error);
 	}
 
+	private List<TYMapDataFeatureRecord> updateLabelXY(List<TYMapDataFeatureRecord> records) {
+		Map<String, TYMapDataFeatureRecord> fillMap = new HashMap<String, TYMapDataFeatureRecord>();
+		Map<String, TYMapDataFeatureRecord> symbolMap = new HashMap<String, TYMapDataFeatureRecord>();
+		for (TYMapDataFeatureRecord record : records) {
+			if (record.layer == 1 || record.layer == 2 || record.layer == 3) {
+				fillMap.put(record.poiID, record);
+			}
+			if (record.layer == 4 || record.layer == 5) {
+				symbolMap.put(record.poiID, record);
+			}
+		}
+
+		for (TYMapDataFeatureRecord record : fillMap.values()) {
+			if (symbolMap.containsKey(record.poiID)) {
+				TYMapDataFeatureRecord symbolRecord = symbolMap.get(record.poiID);
+				record.labelX = symbolRecord.labelX;
+				record.labelY = symbolRecord.labelY;
+			}
+		}
+
+		List<TYMapDataFeatureRecord> resultList = new ArrayList<TYMapDataFeatureRecord>();
+		resultList.addAll(fillMap.values());
+		resultList.addAll(symbolMap.values());
+		return resultList;
+	}
+
 	@Override
 	public void didFinishMapShpTask(List<TYMapDataFeatureRecord> records) {
 		// System.out.println("didFinishMapShpTask");
+		List<TYMapDataFeatureRecord> updatedRecords = updateLabelXY(records);
 		mapDataRecords = new ArrayList<TYMapDataFeatureRecord>();
-		mapDataRecords.addAll(records);
+		mapDataRecords.addAll(updatedRecords);
 		// System.out.println(mapDataRecords.size() + " records!");
 		startRouteShpTask();
 	}
