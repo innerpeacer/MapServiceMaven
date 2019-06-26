@@ -68,7 +68,7 @@ public class TYShpHelper {
 		record.floorNumber = feature.GetFieldAsInteger("FLOOR_INDE");
 		record.floorName = feature.GetFieldAsString("FLOOR_NAME");
 
-		if ("Polygon".equals(g.getGeometryType())) {
+		if ("Polygon".equals(g.getGeometryType()) || "MultiPolygon".equals(g.getGeometryType())) {
 			record.shapeLength = feature.GetFieldAsDouble("SHAPE_Leng");
 			record.shapeArea = feature.GetFieldAsDouble("SHAPE_Area");
 			Point centroid = g.getCentroid();
@@ -81,6 +81,8 @@ public class TYShpHelper {
 			Point point = (Point) g;
 			record.labelX = point.getX();
 			record.labelY = point.getY();
+		} else {
+			System.out.println(g.getGeometryType());
 		}
 
 		if (feature.GetFieldIndex("LEVEL_MAX") != -1) {
