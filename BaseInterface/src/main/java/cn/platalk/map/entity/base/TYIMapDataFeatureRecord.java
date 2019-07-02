@@ -61,4 +61,6 @@ public interface TYIMapDataFeatureRecord {
 	public double getExtrusionHeight();
 
 	public double getExtrusionBase();
+
+	public int getPriority();
 }

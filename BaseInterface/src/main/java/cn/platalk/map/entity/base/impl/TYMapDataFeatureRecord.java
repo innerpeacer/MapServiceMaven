@@ -41,6 +41,8 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 	public double extrusionHeight = 0;
 	public double extrusionBase = 0;
 
+	public int priority = 0;
+
 	private Geometry geometryData;
 	private String geometryType;
 
@@ -246,6 +248,14 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 
 	public void setExtrusionBase(double extrusionBase) {
 		this.extrusionBase = extrusionBase;
+	}
+
+	public int getPriority() {
+		return priority;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 
 	public Geometry getGeometryData() {
