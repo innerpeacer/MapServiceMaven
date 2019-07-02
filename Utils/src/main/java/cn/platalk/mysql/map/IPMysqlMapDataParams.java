@@ -41,6 +41,7 @@ public class IPMysqlMapDataParams {
 
 	static final String FIELD_MAP_DATA_24_VISIBLE = "VISIBLE";
 	static final String FIELD_MAP_DATA_25_ICON = "ICON";
+	static final String FIELD_MAP_DATA_26_PRIORITY = "PRIORITY";
 
 	private static List<IPSqlField> mapDataFieldList = new ArrayList<IPSqlField>();
 	static {
@@ -94,6 +95,8 @@ public class IPMysqlMapDataParams {
 				new IPSqlFieldType(Boolean.class.getName(), "INTEGER(1)"), true, 1));
 		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_25_ICON,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), true));
+		mapDataFieldList.add(
+				new IPSqlField(FIELD_MAP_DATA_26_PRIORITY, new IPSqlFieldType(Integer.class.getName(), "INT"), true));
 	}
 
 	public static IPSqlTable CreateTable(String buildingID) {
@@ -133,6 +136,7 @@ public class IPMysqlMapDataParams {
 			mapdata.setNameOther(record.getString(FIELD_MAP_DATA_23_NAME_OTHER));
 			mapdata.setVisible(record.getBoolean(FIELD_MAP_DATA_24_VISIBLE));
 			mapdata.setIcon(record.getString(FIELD_MAP_DATA_25_ICON));
+			mapdata.setPriority(record.getInteger(FIELD_MAP_DATA_26_PRIORITY));
 			mapdataList.add(mapdata);
 		}
 		return mapdataList;
@@ -165,6 +169,7 @@ public class IPMysqlMapDataParams {
 		data.put(FIELD_MAP_DATA_23_NAME_OTHER, record.getNameOther());
 		data.put(FIELD_MAP_DATA_24_VISIBLE, record.isVisible());
 		data.put(FIELD_MAP_DATA_25_ICON, record.getIcon());
+		data.put(FIELD_MAP_DATA_26_PRIORITY, record.getPriority());
 		return data;
 	}
 
