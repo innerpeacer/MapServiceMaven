@@ -1,6 +1,7 @@
 package cn.platalk.map.vectortile.builder;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,6 +59,24 @@ class TYGeometrySet {
 		return layerMap.get(layerName);
 	}
 
+	private List<TYIMapDataFeatureRecord> sortFeatures(List<TYIMapDataFeatureRecord> records) {
+		List<TYIMapDataFeatureRecord> resultList = new ArrayList<TYIMapDataFeatureRecord>();
+
+		List<TYIMapDataFeatureRecord> prioritizedList = new ArrayList<TYIMapDataFeatureRecord>();
+		List<TYIMapDataFeatureRecord> unPrioritizedList = new ArrayList<TYIMapDataFeatureRecord>();
+		for (TYIMapDataFeatureRecord record : records) {
+			if (record.getPriority() == 0) {
+				unPrioritizedList.add(record);
+			} else {
+				prioritizedList.add(record);
+			}
+		}
+		Collections.sort(prioritizedList, new TYMapDataFeatureComparator());
+		resultList.addAll(prioritizedList);
+		resultList.addAll(unPrioritizedList);
+		return resultList;
+	}
+
 	public void processData() {
 		List<TYIMapDataFeatureRecord> floorRecords = new ArrayList<TYIMapDataFeatureRecord>();
 		List<TYIMapDataFeatureRecord> roomRecords = new ArrayList<TYIMapDataFeatureRecord>();
@@ -82,6 +101,13 @@ class TYGeometrySet {
 				labelRecords.add(record);
 			}
 		}
+
+		floorRecords = sortFeatures(floorRecords);
+		roomRecords = sortFeatures(roomRecords);
+		assetRecords = sortFeatures(assetRecords);
+		facilityRecords = sortFeatures(facilityRecords);
+		labelRecords = sortFeatures(labelRecords);
+		fillRecords = sortFeatures(fillRecords);
 
 		if (floorRecords.size() != 0) {
 			for (TYIMapDataFeatureRecord record : floorRecords) {
