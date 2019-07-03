@@ -102,12 +102,8 @@ class TYGeometrySet {
 			}
 		}
 
-		floorRecords = sortFeatures(floorRecords);
-		roomRecords = sortFeatures(roomRecords);
-		assetRecords = sortFeatures(assetRecords);
 		facilityRecords = sortFeatures(facilityRecords);
 		labelRecords = sortFeatures(labelRecords);
-		fillRecords = sortFeatures(fillRecords);
 
 		if (floorRecords.size() != 0) {
 			for (TYIMapDataFeatureRecord record : floorRecords) {
