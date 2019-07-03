@@ -48,6 +48,7 @@ public class TYSymbolObjectBuilder {
 		symbolObject.put(TYSymbolFields.KEY_WEB_ICON_TEXT_SYMBOL_OTHER_PAINT, symbol.getOtherPaint());
 		symbolObject.put(TYSymbolFields.KEY_WEB_ICON_TEXT_SYMBOL_OTHER_LAYOUT, symbol.getOtherLayout());
 		symbolObject.put(TYSymbolFields.KEY_WEB_ICON_TEXT_UID, symbol.getUID());
+		symbolObject.put(TYSymbolFields.KEY_WEB_ICON_TEXT_SYMBOL_PRIORITY, symbol.getPriority());
 
 		return symbolObject;
 	}

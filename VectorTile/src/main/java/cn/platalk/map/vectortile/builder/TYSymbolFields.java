@@ -35,6 +35,8 @@ public class TYSymbolFields {
 	static final String KEY_WEB_ICON_TEXT_SYMBOL_OTHER_LAYOUT = "otherLayout";
 	// static final String KEY_WEB_ICON_TEXT_SYMBOL_DESCRIPTION = "description";
 	// // Not Needed!
+	static final String KEY_WEB_ICON_TEXT_SYMBOL_PRIORITY = "priority";
+
 	static final String KEY_WEB_ICON_TEXT_UID = "UID";
 
 }
