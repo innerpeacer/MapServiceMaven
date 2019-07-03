@@ -125,6 +125,10 @@ public class TYShpHelper {
 			record.icon = feature.GetFieldAsString("ICON");
 		}
 
+		if (feature.GetFieldIndex("PRIORITY") != -1) {
+			record.priority = feature.GetFieldAsInteger("PRIORITY");
+		}
+
 		return record;
 	}
 }
