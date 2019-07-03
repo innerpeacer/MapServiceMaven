@@ -145,6 +145,7 @@ public class TYParseMapDataV4Servlet extends HttpServlet {
 					TYMapInfoDBAdapter infoDB = new TYMapInfoDBAdapter();
 					infoDB.connectDB();
 					infoDB.createTableIfNotExist();
+					infoDB.deleteMapInfosByBuildingID(buildingID);
 					infoDB.insertOrUpdateMapInfos(task.getMapInfos());
 					infoDB.disconnectDB();
 				}
