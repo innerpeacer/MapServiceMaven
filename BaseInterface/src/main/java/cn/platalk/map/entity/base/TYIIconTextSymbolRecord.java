@@ -38,4 +38,6 @@ public interface TYIIconTextSymbolRecord {
 	public String getOtherLayout();
 
 	public String getDescription();
+
+	public int getPriority();
 }

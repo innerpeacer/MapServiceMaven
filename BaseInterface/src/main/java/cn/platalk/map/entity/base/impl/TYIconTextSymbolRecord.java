@@ -27,6 +27,7 @@ public class TYIconTextSymbolRecord implements TYIIconTextSymbolRecord {
 	public String otherLayout;
 
 	public String description;
+	public int priority;
 
 	public void setUID(int uID) {
 		UID = uID;
@@ -104,6 +105,10 @@ public class TYIconTextSymbolRecord implements TYIIconTextSymbolRecord {
 		this.description = description;
 	}
 
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+
 	public int getUID() {
 		return UID;
 	}
@@ -178,6 +183,10 @@ public class TYIconTextSymbolRecord implements TYIIconTextSymbolRecord {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public int getPriority() {
+		return priority;
 	}
 
 }
