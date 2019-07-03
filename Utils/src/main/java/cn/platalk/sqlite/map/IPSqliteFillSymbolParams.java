@@ -53,7 +53,7 @@ class IPSqliteFillSymbolParams {
 			fillSymbol.setLineWidth(record.getDouble(FIELD_MAP_SYMBOL_FILL_4_LINE_WIDTH));
 			fillSymbol.setLevelMin(record.getDouble(FIELD_MAP_SYMBOL_FILL_5_LEVEL_MIN, 0.0));
 			fillSymbol.setLevelMax(record.getDouble(FIELD_MAP_SYMBOL_FILL_6_LEVEL_MAX, 0.0));
-			fillSymbol.setUID(record.getInteger(FIELD_MAP_SYMBOL_FILL_7_UID));
+			fillSymbol.setUID(record.getInteger(FIELD_MAP_SYMBOL_FILL_7_UID, 0));
 			fillSymbolList.add(fillSymbol);
 		}
 		return fillSymbolList;
