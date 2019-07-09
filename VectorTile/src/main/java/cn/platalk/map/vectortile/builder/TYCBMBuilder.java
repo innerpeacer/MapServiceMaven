@@ -14,6 +14,7 @@ import cn.platalk.map.entity.base.TYIIconSymbolRecord;
 import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.utils.third.TYFileUtils;
 
 class TYCBMBuilder {
 	static String FILE_CBM_JSON = "%s.json";

@@ -1,5 +1,7 @@
 package cn.platalk.map.vectortile.builder;
 
+import cn.platalk.utils.coordinate.TYCoordProjection;
+
 public class TYCoordTool {
 	static final boolean USE_1 = true;
 
@@ -9,8 +11,7 @@ public class TYCoordTool {
 	static double minY = Double.MAX_VALUE;
 
 	public static void printMinMax(double x, double y, double lng, double lat) {
-		System.out.println(String.format("%.2f, %.2f => %.4f, %.4f", x, y, lng,
-				lat));
+		System.out.println(String.format("%.2f, %.2f => %.4f, %.4f", x, y, lng, lat));
 	}
 
 	public static double[] mercatorToLngLat(double mercatorX, double mercatorY) {

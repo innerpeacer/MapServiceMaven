@@ -25,7 +25,7 @@ public class WebMercator {
 
 	/**
 	 * Convert geo lat to vertical distance in meters.
-	 * 
+	 *
 	 * @param latitude
 	 *            the latitude in decimal degrees.
 	 * @return the vertical distance in meters.
@@ -38,7 +38,7 @@ public class WebMercator {
 
 	/**
 	 * Convert geo lon to horizontal distance in meters.
-	 * 
+	 *
 	 * @param longitude
 	 *            the longitude in decimal degrees.
 	 * @return the horizontal distance in meters.
@@ -49,7 +49,7 @@ public class WebMercator {
 
 	/**
 	 * Convert horizontal distance in meters to longitude in decimal degress.
-	 * 
+	 *
 	 * @param x
 	 *            the horizontal distance in meters.
 	 * @return the longitude in decimal degrees.
@@ -60,7 +60,7 @@ public class WebMercator {
 
 	/**
 	 * Convert horizontal distance in meters to longitude in decimal degress.
-	 * 
+	 *
 	 * @param x
 	 *            the horizontal distance in meters.
 	 * @param linear
@@ -79,14 +79,13 @@ public class WebMercator {
 
 	/**
 	 * Convert vertical distance in meters to latitude in decimal degress.
-	 * 
+	 *
 	 * @param y
 	 *            the vertical distance in meters.
 	 * @return the latitude in decimal degrees.
 	 */
 	public static double yToLatitude(final double y) {
-		final double rad = PI_OVER_2
-				- (2.0 * Math.atan(Math.exp(-1.0 * y / RADIUS)));
+		final double rad = PI_OVER_2 - (2.0 * Math.atan(Math.exp(-1.0 * y / RADIUS)));
 		return rad * DEGREES_PER_RADIANS;
 	}
 

@@ -1,4 +1,4 @@
-package cn.platalk.map.core.web.util;
+package cn.platalk.utils.geojson;
 
 import java.util.Map;
 
@@ -16,7 +16,7 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
-import cn.platalk.map.core.utils.TYCoordProjection;
+import cn.platalk.utils.coordinate.TYCoordProjection;
 
 public class TYGeojsonBuilder {
 	public static JSONObject emptyGeojson;
@@ -103,7 +103,7 @@ public class TYGeojsonBuilder {
 
 	private static JSONArray buildGeojsonPointFeature(Point point) throws JSONException {
 		JSONArray coordArray = new JSONArray();
-		double xy[] = TYCoordProjection.mercatorToLonLat(point.getX(), point.getY());
+		double xy[] = TYCoordProjection.mercatorToLngLat(point.getX(), point.getY());
 		coordArray.put(xy[0]);
 		coordArray.put(xy[1]);
 		return coordArray;
@@ -123,7 +123,7 @@ public class TYGeojsonBuilder {
 		int pointCount = ls.getNumPoints();
 		for (int i = 0; i < pointCount; ++i) {
 			Coordinate coord = ls.getCoordinateN(i);
-			double xy[] = TYCoordProjection.mercatorToLonLat(coord.x, coord.y);
+			double xy[] = TYCoordProjection.mercatorToLngLat(coord.x, coord.y);
 			JSONArray xyObject = new JSONArray();
 			xyObject.put(xy[0]);
 			xyObject.put(xy[1]);

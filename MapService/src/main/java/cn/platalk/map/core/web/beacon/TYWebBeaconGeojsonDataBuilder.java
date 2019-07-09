@@ -5,8 +5,8 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import cn.platalk.map.core.web.util.TYGeojsonBuilder;
 import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
+import cn.platalk.utils.geojson.TYGeojsonBuilder;
 
 public class TYWebBeaconGeojsonDataBuilder {
 

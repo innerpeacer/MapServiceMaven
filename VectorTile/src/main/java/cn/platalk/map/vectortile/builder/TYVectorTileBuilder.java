@@ -17,6 +17,7 @@ import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
 import cn.platalk.map.vectortile.pbf.VectorTile;
+import cn.platalk.utils.third.TYFileUtils;
 
 public class TYVectorTileBuilder {
 
