@@ -1,4 +1,4 @@
-package cn.platalk.map.vectortile.builder;
+package cn.platalk.map.vectortile.cbm.json;
 
 import org.json.JSONObject;
 

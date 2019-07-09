@@ -1,4 +1,4 @@
-package cn.platalk.map.vectortile.builder;
+package cn.platalk.map.vectortile.cbm.json;
 
 import java.io.File;
 import java.util.List;
@@ -14,9 +14,10 @@ import cn.platalk.map.entity.base.TYIIconSymbolRecord;
 import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.vectortile.builder.TYVectorTileSettings;
 import cn.platalk.utils.third.TYFileUtils;
 
-class TYCBMBuilder {
+public class TYCBMBuilder {
 	static String FILE_CBM_JSON = "%s.json";
 
 	private static String getCBMJsonPath(String buildingID) {
