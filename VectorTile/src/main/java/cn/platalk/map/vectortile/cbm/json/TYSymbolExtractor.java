@@ -2,8 +2,10 @@ package cn.platalk.map.vectortile.cbm.json;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.json.JSONArray;
@@ -17,6 +19,16 @@ public class TYSymbolExtractor {
 	public static JSONObject extractSymbolJson(List<TYIMapDataFeatureRecord> mapDataRecords,
 			List<TYIFillSymbolRecord> fillSymbols, List<TYIIconTextSymbolRecord> iconTextSymbols) {
 		JSONObject json = new JSONObject();
+		Map<String, List<Integer>> map = extractSymbolList(mapDataRecords, fillSymbols, iconTextSymbols);
+		for (String layer : map.keySet()) {
+			json.put(layer, listToJsonArray(map.get(layer)));
+		}
+		return json;
+	}
+
+	public static Map<String, List<Integer>> extractSymbolList(List<TYIMapDataFeatureRecord> mapDataRecords,
+			List<TYIFillSymbolRecord> fillSymbols, List<TYIIconTextSymbolRecord> iconTextSymbols) {
+		Map<String, List<Integer>> resultMap = new HashMap<String, List<Integer>>();
 
 		Set<Integer> floorSet = new HashSet<Integer>();
 		Set<Integer> roomSet = new HashSet<Integer>();
@@ -73,13 +85,13 @@ public class TYSymbolExtractor {
 		List<Integer> extrusionList = findUIDForFillSymbolIDSet(fillSymbols, extrusionSet);
 		Collections.sort(extrusionList);
 
-		json.put("floor", listToJsonArray(floorList));
-		json.put("room", listToJsonArray(roomList));
-		json.put("asset", listToJsonArray(assetList));
-		json.put("facility", listToJsonArray(facilityList));
-		json.put("label", listToJsonArray(labelList));
-		json.put("extrusion", listToJsonArray(extrusionList));
-		return json;
+		resultMap.put("floor", floorList);
+		resultMap.put("room", roomList);
+		resultMap.put("asset", assetList);
+		resultMap.put("facility", facilityList);
+		resultMap.put("label", labelList);
+		resultMap.put("extrusion", extrusionList);
+		return resultMap;
 	}
 
 	private static List<Integer> findUIDForFillSymbolIDSet(List<TYIFillSymbolRecord> fillSymbols, Set<Integer> set) {

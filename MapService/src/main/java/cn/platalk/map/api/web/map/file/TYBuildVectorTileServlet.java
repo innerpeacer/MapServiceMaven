@@ -104,6 +104,7 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 		builder.addData(city, building, mapInfos, mapDataRecords, fillSymbols, iconSymbols, iconTextSymbols);
 		try {
 			builder.generateCBM();
+			builder.generateCBMPbf();
 			if (cbmOnly == null) {
 				builder.buildTile();
 			}

@@ -17,6 +17,7 @@ import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
 import cn.platalk.map.vectortile.cbm.json.TYCBMBuilder;
+import cn.platalk.map.vectortile.cbm.pbf.TYCBMPbfBuilder;
 import cn.platalk.map.vectortile.pbf.VectorTile;
 import cn.platalk.utils.third.TYFileUtils;
 
@@ -81,6 +82,15 @@ public class TYVectorTileBuilder {
 
 		TYCBMBuilder.generateCBMJson(city, building, mapInfos, mapDataRecords, fillSymbols, iconSymbols,
 				iconTextSymbols);
+	}
+
+	public void generateCBMPbf() throws Exception {
+		System.out.println("generateCBMPbf");
+		if (TYVectorTileSettings.GetTileRoot() == null) {
+			throw new Exception(
+					"Error: TileRoot Cannot be null, please set TileRoot By calling TYVectorTileSettings.SetTileRoot()");
+		}
+		TYCBMPbfBuilder.generateCBMPbf(city, building, mapInfos, mapDataRecords, fillSymbols, iconTextSymbols);
 	}
 
 	public void buildTile() throws Exception {
