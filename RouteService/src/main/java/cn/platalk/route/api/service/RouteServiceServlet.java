@@ -52,7 +52,7 @@ public class RouteServiceServlet extends HttpServlet {
 		mapInfoList.addAll(mapInfoDB.getMapInfos(buildingID));
 		mapInfoDB.disconnectDB();
 
-		if (currentBuilding.getRouteURL().equals("V3")) {
+		if (currentBuilding.getRouteURL().equals("V3") || currentBuilding.getRouteURL().equals("V4")) {
 			if (currentBuilding != null && mapInfoList.size() > 0) {
 				TYRouteDBAdapterV3 routeDB = new TYRouteDBAdapterV3(currentBuilding.getBuildingID());
 				routeDB.connectDB();
@@ -135,7 +135,7 @@ public class RouteServiceServlet extends HttpServlet {
 		TYBuilding currentBuilding = buildingDB.getBuilding(buildingID);
 		buildingDB.disconnectDB();
 
-		if (currentBuilding.getRouteURL().equals("V3")) {
+		if (currentBuilding.getRouteURL().equals("V3") || currentBuilding.getRouteURL().equals("V4")) {
 			if (!TYMultiRouteManagerCollectionV3.ExistRouteManager(buildingID)) {
 				initRouteManager(buildingID);
 			}
@@ -183,7 +183,7 @@ public class RouteServiceServlet extends HttpServlet {
 		// }
 
 		JSONObject jsonObject = null;
-		if (currentBuilding.getRouteURL().equals("V3")) {
+		if (currentBuilding.getRouteURL().equals("V3") || currentBuilding.getRouteURL().equals("V4")) {
 			TYServerRouteOptions options = new TYServerRouteOptions();
 			if (rearrangeStops != null) {
 				rearrange = Boolean.parseBoolean(rearrangeStops);
