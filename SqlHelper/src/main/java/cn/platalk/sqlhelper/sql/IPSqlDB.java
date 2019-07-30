@@ -33,6 +33,15 @@ public abstract class IPSqlDB {
 		}
 	}
 
+	public void createSqliteTable(IPSqlTable table) {
+		try {
+			Statement stmt = connection.createStatement();
+			stmt.executeUpdate(IPSqlBuilder.sqliteTableCreateSql(table));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void dropTable(IPSqlTable table) {
 		String sql = String.format("drop table %s", table.getTableName());
 		try {
