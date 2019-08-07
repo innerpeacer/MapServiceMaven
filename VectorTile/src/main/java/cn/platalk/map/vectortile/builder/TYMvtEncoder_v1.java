@@ -19,19 +19,26 @@ class TYMvtEncoder_v1 implements TYIMvtEncoder {
 		return version;
 	}
 
-	public VectorTile.Tile encodeBrtTile(TYGeometrySet geomSet,
-			MvtLayerParams mvtParams, Envelope tileEnvelope,
+	@Override
+	public boolean isForNative() {
+		return false;
+	}
+
+	@Override
+	public void setForNative(boolean forNative) {
+
+	}
+
+	public VectorTile.Tile encodeBrtTile(TYGeometrySet geomSet, MvtLayerParams mvtParams, Envelope tileEnvelope,
 			Envelope clipEnvelope, TYTileCoord tile) {
 		final GeometryFactory geomFactory = new GeometryFactory();
-		final VectorTile.Tile.Builder tileBuilder = VectorTile.Tile
-				.newBuilder();
+		final VectorTile.Tile.Builder tileBuilder = VectorTile.Tile.newBuilder();
 		final TYUserDataConverter brtUserData = new TYUserDataConverter();
 
 		for (int i = 0; i < TYVectorTileParams.LAYER_LIST_v1.length; ++i) {
 			String layerName = TYVectorTileParams.LAYER_LIST_v1[i];
 
-			final VectorTile.Tile.Layer.Builder layerBuilder = MvtLayerBuild
-					.newLayerBuilder(layerName, mvtParams);
+			final VectorTile.Tile.Layer.Builder layerBuilder = MvtLayerBuild.newLayerBuilder(layerName, mvtParams);
 			final MvtLayerProps layerProps = new MvtLayerProps();
 
 			List<Geometry> geomList = geomSet.getGeomList(layerName);
@@ -47,14 +54,11 @@ class TYMvtEncoder_v1 implements TYIMvtEncoder {
 				}
 			}
 
-			final MvtTileGeomResult bufferedTileGeom = TYJtsAdapter
-					.createTileGeom(filteredGeomList, tileEnvelope,
-							clipEnvelope, geomFactory,
-							TYVectorTileParams.DEFAULT_MVT_PARAMS,
-							TYVectorTileParams.ACCEPT_ALL_FILTER, tile);
-			final List<VectorTile.Tile.Feature> features = TYJtsAdapter
-					.toFeatures(bufferedTileGeom.mvtGeoms, layerProps,
-							brtUserData);
+			final MvtTileGeomResult bufferedTileGeom = TYJtsAdapter.createTileGeom(filteredGeomList, tileEnvelope,
+					clipEnvelope, geomFactory, TYVectorTileParams.DEFAULT_MVT_PARAMS,
+					TYVectorTileParams.ACCEPT_ALL_FILTER, tile);
+			final List<VectorTile.Tile.Feature> features = TYJtsAdapter.toFeatures(bufferedTileGeom.mvtGeoms,
+					layerProps, brtUserData);
 
 			layerBuilder.addAllFeatures(features);
 			MvtLayerBuild.writeProps(layerBuilder, layerProps);

@@ -19,6 +19,7 @@ import cn.platalk.map.entity.base.impl.TYMapInfo;
 import cn.platalk.map.vectortile.cbm.json.TYCBMBuilder;
 import cn.platalk.map.vectortile.cbm.pbf.TYCBMPbfBuilder;
 import cn.platalk.map.vectortile.pbf.VectorTile;
+import cn.platalk.utils.coordinate.TYCoordProjection;
 import cn.platalk.utils.third.TYFileUtils;
 
 public class TYVectorTileBuilder {
@@ -26,6 +27,7 @@ public class TYVectorTileBuilder {
 	String buildingID;
 	TYICity city;
 	TYIBuilding building;
+	Envelope buildingEnvelope;
 	List<TYIMapInfo> mapInfos;
 	List<TYIMapDataFeatureRecord> mapDataRecords;
 	List<TYIFillSymbolRecord> fillSymbols;
@@ -34,6 +36,8 @@ public class TYVectorTileBuilder {
 	TYGeometrySet geometrySet;
 	TYIMvtEncoder mvtEncoder;
 	private int tileCount;
+	private int emptyTileCount;
+	private boolean isForNative = false;
 
 	// private int tileIndex;
 
@@ -55,6 +59,16 @@ public class TYVectorTileBuilder {
 		System.out.println(mapDataRecords.size() + " records");
 		this.city = city;
 		this.building = building;
+
+		double xmin = building.getBuildingExtent().getXmin();
+		double ymin = building.getBuildingExtent().getYmin();
+		double[] sw = TYCoordProjection.mercatorToLngLat(xmin, ymin);
+
+		double xmax = building.getBuildingExtent().getXmax();
+		double ymax = building.getBuildingExtent().getYmax();
+		double[] ne = TYCoordProjection.mercatorToLngLat(xmax, ymax);
+		buildingEnvelope = new Envelope(sw[0], ne[0], sw[1], ne[1]);
+
 		this.mapInfos = new ArrayList<TYIMapInfo>();
 		this.mapInfos.addAll(mapInfoList);
 
@@ -93,8 +107,9 @@ public class TYVectorTileBuilder {
 		TYCBMPbfBuilder.generateCBMPbf(city, building, mapInfos, mapDataRecords, fillSymbols, iconTextSymbols);
 	}
 
-	public void buildTile() throws Exception {
+	public void buildTile(boolean isNative) throws Exception {
 		System.out.println("buildTile");
+		this.isForNative = isNative;
 
 		if (TYVectorTileSettings.GetTileRoot() == null) {
 			throw new Exception(
@@ -130,6 +145,7 @@ public class TYVectorTileBuilder {
 		int[] tileRange = bb.getTileRange(startZoom);
 
 		tileCount = getTileCount(tileRange, startZoom);
+		emptyTileCount = 0;
 		// tileIndex = 0;
 		System.out.println("Tile Number: " + tileCount);
 
@@ -139,6 +155,9 @@ public class TYVectorTileBuilder {
 				buildTilesForLevel(tile, mapInfo);
 			}
 		}
+
+		System.out.println("Empty Tile Number: " + emptyTileCount);
+		System.out.println("Not Empty Tile Number: " + (tileCount - emptyTileCount));
 		System.out.println("Finish!");
 	}
 
@@ -174,6 +193,8 @@ public class TYVectorTileBuilder {
 		}
 	}
 
+	boolean flag = true;
+
 	private void buildSingleTile(TYTileCoord tile, TYIMapInfo info) throws IOException {
 		// if (tile.zoom == 2) {
 		// System.out.println("buildSingleTile: " + tile + ", "
@@ -186,6 +207,11 @@ public class TYVectorTileBuilder {
 		final Envelope tileEnvelope = new Envelope(bb.west, bb.east, bb.north, bb.south);
 		final Envelope clipEnvelope = new Envelope(tileEnvelope);
 
+		// if (!buildingEnvelope.intersects(tileEnvelope)) {
+		// emptyTileCount++;
+		// return;
+		// }
+
 		double bufferWidth = tileEnvelope.getWidth() * 0.5;
 		double bufferHeight = tileEnvelope.getWidth() * 0.5;
 		clipEnvelope.expandBy(bufferWidth, bufferHeight);
@@ -194,8 +220,14 @@ public class TYVectorTileBuilder {
 		// geometrySet.roomList, DEFAULT_MVT_PARAMS, tileEnvelope,
 		// clipEnvelope);
 		mvtEncoder = getMvtEncoder();
+		mvtEncoder.setForNative(isForNative);
 		final VectorTile.Tile mvt = mvtEncoder.encodeBrtTile(geometrySet, TYVectorTileParams.DEFAULT_MVT_PARAMS,
 				tileEnvelope, clipEnvelope, tile);
+		if (mvt == null && isForNative) {
+			emptyTileCount++;
+			return;
+		}
+
 		String vectorTileRoot = TYVectorTileSettings.GetTileDir();
 		String fileName = String.format("%s/%s/%d/%d/%d.pbf", vectorTileRoot, buildingID, tile.zoom, tile.x, tile.y);
 		fileName = fileName.replace("/", File.separator);

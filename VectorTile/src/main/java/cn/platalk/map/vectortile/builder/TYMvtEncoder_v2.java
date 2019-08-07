@@ -14,9 +14,21 @@ import cn.platalk.map.vectortile.pbf.VectorTile;
 class TYMvtEncoder_v2 implements TYIMvtEncoder {
 	private static final int version = 2;
 
+	private boolean isForNative = false;
+
 	@Override
 	public int getVersion() {
 		return version;
+	}
+
+	@Override
+	public boolean isForNative() {
+		return isForNative;
+	}
+
+	@Override
+	public void setForNative(boolean forNative) {
+		this.isForNative = forNative;
 	}
 
 	public VectorTile.Tile encodeBrtTile(TYGeometrySet geomSet, MvtLayerParams mvtParams, Envelope tileEnvelope,
@@ -25,6 +37,7 @@ class TYMvtEncoder_v2 implements TYIMvtEncoder {
 		final VectorTile.Tile.Builder tileBuilder = VectorTile.Tile.newBuilder();
 		final TYUserDataConverter brtUserData = new TYUserDataConverter();
 
+		boolean isEmtpy = true;
 		for (int i = 0; i < TYVectorTileParams.LAYER_LIST_v2.length; ++i) {
 			String layerName = TYVectorTileParams.LAYER_LIST_v2[i];
 
@@ -44,6 +57,10 @@ class TYMvtEncoder_v2 implements TYIMvtEncoder {
 				}
 			}
 
+			if (filteredGeomList.size() != 0) {
+				isEmtpy = false;
+			}
+
 			final MvtTileGeomResult bufferedTileGeom = TYJtsAdapter.createTileGeom(filteredGeomList, tileEnvelope,
 					clipEnvelope, geomFactory, TYVectorTileParams.DEFAULT_MVT_PARAMS,
 					TYVectorTileParams.ACCEPT_ALL_FILTER, tile);
@@ -54,6 +71,10 @@ class TYMvtEncoder_v2 implements TYIMvtEncoder {
 			MvtLayerBuild.writeProps(layerBuilder, layerProps);
 			final VectorTile.Tile.Layer layer = layerBuilder.build();
 			tileBuilder.addLayers(layer);
+		}
+
+		if (isEmtpy && isForNative) {
+			return null;
 		}
 
 		return tileBuilder.build();

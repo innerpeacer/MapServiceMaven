@@ -8,7 +8,10 @@ interface TYIMvtEncoder {
 
 	public int getVersion();
 
-	public VectorTile.Tile encodeBrtTile(TYGeometrySet geomSet,
-			MvtLayerParams mvtParams, Envelope tileEnvelope,
+	public boolean isForNative();
+
+	public void setForNative(boolean forNative);
+
+	public VectorTile.Tile encodeBrtTile(TYGeometrySet geomSet, MvtLayerParams mvtParams, Envelope tileEnvelope,
 			Envelope clipEnvelope, TYTileCoord tile);
 }

@@ -106,7 +106,7 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 			builder.generateCBM();
 			builder.generateCBMPbf();
 			if (cbmOnly == null) {
-				builder.buildTile();
+				builder.buildTile(false);
 			}
 			PrintWriter out = response.getWriter();
 			out.println("Build Vector Tile for BuildingID: " + buildingID);
