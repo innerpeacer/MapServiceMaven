@@ -37,6 +37,9 @@ public class IPMysqlBuildingParams {
 	static final String FIELD_BUILDING_15_XMAX = "XMAX";
 	static final String FIELD_BUILDING_16_YMAX = "YMAX";
 
+	static final String FIELD_BUILDING_17_WGS84_CALIBRATION_POINT = "WGS84_CALIBRATION_POINT";
+	static final String FIELD_BUILDING_18_WT_CALIBRATION_POINT = "WT_CALIBRATION_POINT";
+
 	private static List<IPSqlField> buildingFieldList = new ArrayList<IPSqlField>();
 	static {
 		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_1_CITY_ID,
@@ -72,6 +75,11 @@ public class IPMysqlBuildingParams {
 				new IPSqlField(FIELD_BUILDING_15_XMAX, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
 		buildingFieldList.add(
 				new IPSqlField(FIELD_BUILDING_16_YMAX, new IPSqlFieldType(Double.class.getName(), "DOUBLE"), false));
+
+		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_17_WGS84_CALIBRATION_POINT,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(2000)"), true));
+		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_18_WT_CALIBRATION_POINT,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(2000)"), true));
 	}
 
 	public static IPSqlTable CreateTable() {
@@ -102,9 +110,39 @@ public class IPMysqlBuildingParams {
 			building.setYmin(record.getDouble(FIELD_BUILDING_14_YMIN));
 			building.setXmax(record.getDouble(FIELD_BUILDING_15_XMAX));
 			building.setYmax(record.getDouble(FIELD_BUILDING_16_YMAX));
+
+			if (record.getString(FIELD_BUILDING_17_WGS84_CALIBRATION_POINT) != null) {
+				building.setWgs84CalibrationPoint(
+						stringToDoubleArray(record.getString(FIELD_BUILDING_17_WGS84_CALIBRATION_POINT)));
+			}
+
+			if (record.getString(FIELD_BUILDING_18_WT_CALIBRATION_POINT) != null) {
+				building.setWtCalibrationPoint(
+						stringToDoubleArray(record.getString(FIELD_BUILDING_18_WT_CALIBRATION_POINT)));
+			}
 			buildingList.add(building);
 		}
 		return buildingList;
+	}
+
+	private static String doubleArrayToString(double[] coord) {
+		StringBuffer buffer = new StringBuffer();
+		for (int i = 0; i < 6; i++) {
+			if (i != 0) {
+				buffer.append(",");
+			}
+			buffer.append(coord[i]);
+		}
+		return buffer.toString();
+	}
+
+	private static double[] stringToDoubleArray(String str) {
+		String[] splitted = str.split(",");
+		double[] res = new double[6];
+		for (int i = 0; i < 6; i++) {
+			res[i] = Double.parseDouble(splitted[i]);
+		}
+		return res;
 	}
 
 	public static Map<String, Object> DataMapFromBuilding(TYBuilding building) {
@@ -125,6 +163,14 @@ public class IPMysqlBuildingParams {
 		data.put(FIELD_BUILDING_14_YMIN, building.getBuildingExtent().getYmin());
 		data.put(FIELD_BUILDING_15_XMAX, building.getBuildingExtent().getXmax());
 		data.put(FIELD_BUILDING_16_YMAX, building.getBuildingExtent().getYmax());
+		if (building.getWgs84CalibrationPoint() != null) {
+			data.put(FIELD_BUILDING_17_WGS84_CALIBRATION_POINT,
+					doubleArrayToString(building.getWgs84CalibrationPoint()));
+		}
+		if (building.getWtCalibrationPoint() != null) {
+			data.put(FIELD_BUILDING_18_WT_CALIBRATION_POINT, doubleArrayToString(building.getWtCalibrationPoint()));
+		}
+
 		return data;
 	}
 }

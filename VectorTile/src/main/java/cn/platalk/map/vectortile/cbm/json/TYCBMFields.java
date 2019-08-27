@@ -18,6 +18,8 @@ class TYCBMFields {
 	static final String KEY_WEB_BUILDING_XMAX = "xmax";
 	static final String KEY_WEB_BUILDING_YMIN = "ymin";
 	static final String KEY_WEB_BUILDING_YMAX = "ymax";
+	static final String KEY_WEB_BUILDING_WGS84_CALIBRATION_POINT = "wgs84CalibrationPoint";
+	static final String KEY_WEB_BUILDING_WT_CALIBRATION_POINT = "wtCalibrationPoint";
 	static final String KEY_WEB_BUILDING_STATUS = "status";
 
 	public static final String KEY_WEB_CITIES = "Cities";

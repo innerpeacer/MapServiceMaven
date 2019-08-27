@@ -24,4 +24,9 @@ public interface TYIBuilding {
 	public TYIMapExtent getBuildingExtent();
 
 	public int getStatus();
+
+	public double[] getWgs84CalibrationPoint();
+
+	public double[] getWtCalibrationPoint();
+
 }

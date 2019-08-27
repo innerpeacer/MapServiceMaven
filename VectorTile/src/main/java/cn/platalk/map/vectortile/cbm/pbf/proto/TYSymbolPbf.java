@@ -3,7 +3,7 @@
 
 package cn.platalk.map.vectortile.cbm.pbf.proto;
 
-@SuppressWarnings({ "unused", "unchecked" })
+@SuppressWarnings(value = { "unused", "unchecked" })
 public final class TYSymbolPbf {
 	private TYSymbolPbf() {
 	}

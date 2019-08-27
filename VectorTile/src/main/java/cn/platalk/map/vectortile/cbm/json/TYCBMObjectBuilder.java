@@ -36,6 +36,8 @@ class TYCBMObjectBuilder {
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_XMAX, building.getBuildingExtent().getXmax());
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_YMIN, building.getBuildingExtent().getYmin());
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_YMAX, building.getBuildingExtent().getYmax());
+		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_WGS84_CALIBRATION_POINT, building.getWgs84CalibrationPoint());
+		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_WT_CALIBRATION_POINT, building.getWtCalibrationPoint());
 		buildingObject.put(TYCBMFields.KEY_WEB_BUILDING_STATUS, building.getStatus());
 		return buildingObject;
 	}

@@ -22,6 +22,9 @@ public class TYBuilding implements TYIBuilding {
 	private double ymin;
 	private double ymax;
 
+	private double[] wgs84CalibrationPoint;
+	private double[] wtCalibrationPoint;
+
 	private int status;
 
 	public TYBuilding() {
@@ -144,6 +147,22 @@ public class TYBuilding implements TYIBuilding {
 
 	public void setYmax(double ymax) {
 		this.ymax = ymax;
+	}
+
+	public double[] getWgs84CalibrationPoint() {
+		return wgs84CalibrationPoint;
+	}
+
+	public void setWgs84CalibrationPoint(double[] wgs84CalibrationPoint) {
+		this.wgs84CalibrationPoint = wgs84CalibrationPoint;
+	}
+
+	public double[] getWtCalibrationPoint() {
+		return wtCalibrationPoint;
+	}
+
+	public void setWtCalibrationPoint(double[] wtCalibrationPoint) {
+		this.wtCalibrationPoint = wtCalibrationPoint;
 	}
 
 	@Override

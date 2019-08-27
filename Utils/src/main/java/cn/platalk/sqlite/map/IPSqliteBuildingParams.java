@@ -32,6 +32,9 @@ class IPSqliteBuildingParams {
 	static final String FIELD_BUILDING_15_XMAX = "XMAX";
 	static final String FIELD_BUILDING_16_YMAX = "YMAX";
 
+	static final String FIELD_BUILDING_17_WGS84_CALIBRATION_POINT = "WGS84_CALIBRATION_POINT";
+	static final String FIELD_BUILDING_18_WT_CALIBRATION_POINT = "WT_CALIBRATION_POINT";
+
 	private static List<IPSqlField> buildingFieldList = null;
 
 	public static List<IPSqlField> GetBuildingFieldList() {
@@ -70,8 +73,34 @@ class IPSqliteBuildingParams {
 					IPSqlFieldType.FieldTypeFromClass(Double.class.getName()), false));
 			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_16_YMAX,
 					IPSqlFieldType.FieldTypeFromClass(Double.class.getName()), false));
+
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_17_WGS84_CALIBRATION_POINT,
+					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), true));
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_18_WT_CALIBRATION_POINT,
+					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), true));
+
 		}
 		return buildingFieldList;
+	}
+
+	private static String doubleArrayToString(double[] coord) {
+		StringBuffer buffer = new StringBuffer();
+		for (int i = 0; i < 6; i++) {
+			if (i != 0) {
+				buffer.append(",");
+			}
+			buffer.append(coord[i]);
+		}
+		return buffer.toString();
+	}
+
+	private static double[] stringToDoubleArray(String str) {
+		String[] splitted = str.split(",");
+		double[] res = new double[6];
+		for (int i = 0; i < 6; i++) {
+			res[i] = Double.parseDouble(splitted[i]);
+		}
+		return res;
 	}
 
 	public static List<TYBuilding> BuildingListFromRecords(List<IPSqlRecord> records) {
@@ -94,6 +123,16 @@ class IPSqliteBuildingParams {
 			building.setYmin(record.getDouble(FIELD_BUILDING_14_YMIN, 0.0));
 			building.setXmax(record.getDouble(FIELD_BUILDING_15_XMAX, 0.0));
 			building.setYmax(record.getDouble(FIELD_BUILDING_16_YMAX, 0.0));
+
+			if (record.getString(FIELD_BUILDING_17_WGS84_CALIBRATION_POINT) != null) {
+				building.setWgs84CalibrationPoint(
+						stringToDoubleArray(record.getString(FIELD_BUILDING_17_WGS84_CALIBRATION_POINT)));
+			}
+
+			if (record.getString(FIELD_BUILDING_18_WT_CALIBRATION_POINT) != null) {
+				building.setWtCalibrationPoint(
+						stringToDoubleArray(record.getString(FIELD_BUILDING_18_WT_CALIBRATION_POINT)));
+			}
 			buildingList.add(building);
 		}
 		return buildingList;
@@ -117,6 +156,13 @@ class IPSqliteBuildingParams {
 		data.put(FIELD_BUILDING_14_YMIN, building.getBuildingExtent().getYmin());
 		data.put(FIELD_BUILDING_15_XMAX, building.getBuildingExtent().getXmax());
 		data.put(FIELD_BUILDING_16_YMAX, building.getBuildingExtent().getYmax());
+		if (building.getWgs84CalibrationPoint() != null) {
+			data.put(FIELD_BUILDING_17_WGS84_CALIBRATION_POINT,
+					doubleArrayToString(building.getWgs84CalibrationPoint()));
+		}
+		if (building.getWtCalibrationPoint() != null) {
+			data.put(FIELD_BUILDING_18_WT_CALIBRATION_POINT, doubleArrayToString(building.getWtCalibrationPoint()));
+		}
 		return data;
 	}
 }

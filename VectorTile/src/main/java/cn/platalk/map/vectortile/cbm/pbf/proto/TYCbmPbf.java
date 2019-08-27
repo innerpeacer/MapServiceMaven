@@ -3,7 +3,7 @@
 
 package cn.platalk.map.vectortile.cbm.pbf.proto;
 
-@SuppressWarnings({ "unused", "unchecked" })
+@SuppressWarnings(value = { "unused", "unchecked", "deprecation" })
 public final class TYCbmPbf {
 	private TYCbmPbf() {
 	}
@@ -201,7 +201,6 @@ public final class TYCbmPbf {
 			return this.unknownFields;
 		}
 
-		@SuppressWarnings("deprecation")
 		private CBMPbf(com.google.protobuf.CodedInputStream input,
 				com.google.protobuf.ExtensionRegistryLite extensionRegistry)
 				throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3975,6 +3974,36 @@ public final class TYCbmPbf {
 		 * <code>required uint32 initFloorIndex = 14;</code>
 		 */
 		int getInitFloorIndex();
+
+		/**
+		 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+		 */
+		java.util.List<java.lang.Double> getWgs84CalibrationPointList();
+
+		/**
+		 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+		 */
+		int getWgs84CalibrationPointCount();
+
+		/**
+		 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+		 */
+		double getWgs84CalibrationPoint(int index);
+
+		/**
+		 * <code>repeated double wtCalibrationPoint = 16;</code>
+		 */
+		java.util.List<java.lang.Double> getWtCalibrationPointList();
+
+		/**
+		 * <code>repeated double wtCalibrationPoint = 16;</code>
+		 */
+		int getWtCalibrationPointCount();
+
+		/**
+		 * <code>repeated double wtCalibrationPoint = 16;</code>
+		 */
+		double getWtCalibrationPoint(int index);
 	}
 
 	/**
@@ -4002,6 +4031,8 @@ public final class TYCbmPbf {
 			xmax_ = 0D;
 			ymax_ = 0D;
 			initFloorIndex_ = 0;
+			wgs84CalibrationPoint_ = java.util.Collections.emptyList();
+			wtCalibrationPoint_ = java.util.Collections.emptyList();
 		}
 
 		@java.lang.Override
@@ -4100,6 +4131,48 @@ public final class TYCbmPbf {
 						initFloorIndex_ = input.readUInt32();
 						break;
 					}
+					case 121: {
+						if (!((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
+							wgs84CalibrationPoint_ = new java.util.ArrayList<java.lang.Double>();
+							mutable_bitField0_ |= 0x00002000;
+						}
+						wgs84CalibrationPoint_.add(input.readDouble());
+						break;
+					}
+					case 122: {
+						int length = input.readRawVarint32();
+						int limit = input.pushLimit(length);
+						if (!((mutable_bitField0_ & 0x00002000) == 0x00002000) && input.getBytesUntilLimit() > 0) {
+							wgs84CalibrationPoint_ = new java.util.ArrayList<java.lang.Double>();
+							mutable_bitField0_ |= 0x00002000;
+						}
+						while (input.getBytesUntilLimit() > 0) {
+							wgs84CalibrationPoint_.add(input.readDouble());
+						}
+						input.popLimit(limit);
+						break;
+					}
+					case 129: {
+						if (!((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
+							wtCalibrationPoint_ = new java.util.ArrayList<java.lang.Double>();
+							mutable_bitField0_ |= 0x00004000;
+						}
+						wtCalibrationPoint_.add(input.readDouble());
+						break;
+					}
+					case 130: {
+						int length = input.readRawVarint32();
+						int limit = input.pushLimit(length);
+						if (!((mutable_bitField0_ & 0x00004000) == 0x00004000) && input.getBytesUntilLimit() > 0) {
+							wtCalibrationPoint_ = new java.util.ArrayList<java.lang.Double>();
+							mutable_bitField0_ |= 0x00004000;
+						}
+						while (input.getBytesUntilLimit() > 0) {
+							wtCalibrationPoint_.add(input.readDouble());
+						}
+						input.popLimit(limit);
+						break;
+					}
 					}
 				}
 			} catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4107,6 +4180,12 @@ public final class TYCbmPbf {
 			} catch (java.io.IOException e) {
 				throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
 			} finally {
+				if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
+					wgs84CalibrationPoint_ = java.util.Collections.unmodifiableList(wgs84CalibrationPoint_);
+				}
+				if (((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
+					wtCalibrationPoint_ = java.util.Collections.unmodifiableList(wtCalibrationPoint_);
+				}
 				this.unknownFields = unknownFields.build();
 				makeExtensionsImmutable();
 			}
@@ -4464,6 +4543,54 @@ public final class TYCbmPbf {
 			return initFloorIndex_;
 		}
 
+		public static final int WGS84CALIBRATIONPOINT_FIELD_NUMBER = 15;
+		private java.util.List<java.lang.Double> wgs84CalibrationPoint_;
+
+		/**
+		 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+		 */
+		public java.util.List<java.lang.Double> getWgs84CalibrationPointList() {
+			return wgs84CalibrationPoint_;
+		}
+
+		/**
+		 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+		 */
+		public int getWgs84CalibrationPointCount() {
+			return wgs84CalibrationPoint_.size();
+		}
+
+		/**
+		 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+		 */
+		public double getWgs84CalibrationPoint(int index) {
+			return wgs84CalibrationPoint_.get(index);
+		}
+
+		public static final int WTCALIBRATIONPOINT_FIELD_NUMBER = 16;
+		private java.util.List<java.lang.Double> wtCalibrationPoint_;
+
+		/**
+		 * <code>repeated double wtCalibrationPoint = 16;</code>
+		 */
+		public java.util.List<java.lang.Double> getWtCalibrationPointList() {
+			return wtCalibrationPoint_;
+		}
+
+		/**
+		 * <code>repeated double wtCalibrationPoint = 16;</code>
+		 */
+		public int getWtCalibrationPointCount() {
+			return wtCalibrationPoint_.size();
+		}
+
+		/**
+		 * <code>repeated double wtCalibrationPoint = 16;</code>
+		 */
+		public double getWtCalibrationPoint(int index) {
+			return wtCalibrationPoint_.get(index);
+		}
+
 		private byte memoizedIsInitialized = -1;
 
 		public final boolean isInitialized() {
@@ -4569,6 +4696,12 @@ public final class TYCbmPbf {
 			if (((bitField0_ & 0x00001000) == 0x00001000)) {
 				output.writeUInt32(14, initFloorIndex_);
 			}
+			for (int i = 0; i < wgs84CalibrationPoint_.size(); i++) {
+				output.writeDouble(15, wgs84CalibrationPoint_.get(i));
+			}
+			for (int i = 0; i < wtCalibrationPoint_.size(); i++) {
+				output.writeDouble(16, wtCalibrationPoint_.get(i));
+			}
 			unknownFields.writeTo(output);
 		}
 
@@ -4616,6 +4749,18 @@ public final class TYCbmPbf {
 			}
 			if (((bitField0_ & 0x00001000) == 0x00001000)) {
 				size += com.google.protobuf.CodedOutputStream.computeUInt32Size(14, initFloorIndex_);
+			}
+			{
+				int dataSize = 0;
+				dataSize = 8 * getWgs84CalibrationPointList().size();
+				size += dataSize;
+				size += 1 * getWgs84CalibrationPointList().size();
+			}
+			{
+				int dataSize = 0;
+				dataSize = 8 * getWtCalibrationPointList().size();
+				size += dataSize;
+				size += 2 * getWtCalibrationPointList().size();
 			}
 			size += unknownFields.getSerializedSize();
 			memoizedSize = size;
@@ -4694,6 +4839,8 @@ public final class TYCbmPbf {
 			if (hasInitFloorIndex()) {
 				result = result && (getInitFloorIndex() == other.getInitFloorIndex());
 			}
+			result = result && getWgs84CalibrationPointList().equals(other.getWgs84CalibrationPointList());
+			result = result && getWtCalibrationPointList().equals(other.getWtCalibrationPointList());
 			result = result && unknownFields.equals(other.unknownFields);
 			return result;
 		}
@@ -4763,6 +4910,14 @@ public final class TYCbmPbf {
 			if (hasInitFloorIndex()) {
 				hash = (37 * hash) + INITFLOORINDEX_FIELD_NUMBER;
 				hash = (53 * hash) + getInitFloorIndex();
+			}
+			if (getWgs84CalibrationPointCount() > 0) {
+				hash = (37 * hash) + WGS84CALIBRATIONPOINT_FIELD_NUMBER;
+				hash = (53 * hash) + getWgs84CalibrationPointList().hashCode();
+			}
+			if (getWtCalibrationPointCount() > 0) {
+				hash = (37 * hash) + WTCALIBRATIONPOINT_FIELD_NUMBER;
+				hash = (53 * hash) + getWtCalibrationPointList().hashCode();
 			}
 			hash = (29 * hash) + unknownFields.hashCode();
 			memoizedHashCode = hash;
@@ -4908,6 +5063,10 @@ public final class TYCbmPbf {
 				bitField0_ = (bitField0_ & ~0x00000800);
 				initFloorIndex_ = 0;
 				bitField0_ = (bitField0_ & ~0x00001000);
+				wgs84CalibrationPoint_ = java.util.Collections.emptyList();
+				bitField0_ = (bitField0_ & ~0x00002000);
+				wtCalibrationPoint_ = java.util.Collections.emptyList();
+				bitField0_ = (bitField0_ & ~0x00004000);
 				return this;
 			}
 
@@ -4984,6 +5143,16 @@ public final class TYCbmPbf {
 					to_bitField0_ |= 0x00001000;
 				}
 				result.initFloorIndex_ = initFloorIndex_;
+				if (((bitField0_ & 0x00002000) == 0x00002000)) {
+					wgs84CalibrationPoint_ = java.util.Collections.unmodifiableList(wgs84CalibrationPoint_);
+					bitField0_ = (bitField0_ & ~0x00002000);
+				}
+				result.wgs84CalibrationPoint_ = wgs84CalibrationPoint_;
+				if (((bitField0_ & 0x00004000) == 0x00004000)) {
+					wtCalibrationPoint_ = java.util.Collections.unmodifiableList(wtCalibrationPoint_);
+					bitField0_ = (bitField0_ & ~0x00004000);
+				}
+				result.wtCalibrationPoint_ = wtCalibrationPoint_;
 				result.bitField0_ = to_bitField0_;
 				onBuilt();
 				return result;
@@ -5074,6 +5243,26 @@ public final class TYCbmPbf {
 				}
 				if (other.hasInitFloorIndex()) {
 					setInitFloorIndex(other.getInitFloorIndex());
+				}
+				if (!other.wgs84CalibrationPoint_.isEmpty()) {
+					if (wgs84CalibrationPoint_.isEmpty()) {
+						wgs84CalibrationPoint_ = other.wgs84CalibrationPoint_;
+						bitField0_ = (bitField0_ & ~0x00002000);
+					} else {
+						ensureWgs84CalibrationPointIsMutable();
+						wgs84CalibrationPoint_.addAll(other.wgs84CalibrationPoint_);
+					}
+					onChanged();
+				}
+				if (!other.wtCalibrationPoint_.isEmpty()) {
+					if (wtCalibrationPoint_.isEmpty()) {
+						wtCalibrationPoint_ = other.wtCalibrationPoint_;
+						bitField0_ = (bitField0_ & ~0x00004000);
+					} else {
+						ensureWtCalibrationPointIsMutable();
+						wtCalibrationPoint_.addAll(other.wtCalibrationPoint_);
+					}
+					onChanged();
 				}
 				this.mergeUnknownFields(other.unknownFields);
 				onChanged();
@@ -5811,6 +6000,146 @@ public final class TYCbmPbf {
 			public Builder clearInitFloorIndex() {
 				bitField0_ = (bitField0_ & ~0x00001000);
 				initFloorIndex_ = 0;
+				onChanged();
+				return this;
+			}
+
+			private java.util.List<java.lang.Double> wgs84CalibrationPoint_ = java.util.Collections.emptyList();
+
+			private void ensureWgs84CalibrationPointIsMutable() {
+				if (!((bitField0_ & 0x00002000) == 0x00002000)) {
+					wgs84CalibrationPoint_ = new java.util.ArrayList<java.lang.Double>(wgs84CalibrationPoint_);
+					bitField0_ |= 0x00002000;
+				}
+			}
+
+			/**
+			 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+			 */
+			public java.util.List<java.lang.Double> getWgs84CalibrationPointList() {
+				return java.util.Collections.unmodifiableList(wgs84CalibrationPoint_);
+			}
+
+			/**
+			 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+			 */
+			public int getWgs84CalibrationPointCount() {
+				return wgs84CalibrationPoint_.size();
+			}
+
+			/**
+			 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+			 */
+			public double getWgs84CalibrationPoint(int index) {
+				return wgs84CalibrationPoint_.get(index);
+			}
+
+			/**
+			 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+			 */
+			public Builder setWgs84CalibrationPoint(int index, double value) {
+				ensureWgs84CalibrationPointIsMutable();
+				wgs84CalibrationPoint_.set(index, value);
+				onChanged();
+				return this;
+			}
+
+			/**
+			 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+			 */
+			public Builder addWgs84CalibrationPoint(double value) {
+				ensureWgs84CalibrationPointIsMutable();
+				wgs84CalibrationPoint_.add(value);
+				onChanged();
+				return this;
+			}
+
+			/**
+			 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+			 */
+			public Builder addAllWgs84CalibrationPoint(java.lang.Iterable<? extends java.lang.Double> values) {
+				ensureWgs84CalibrationPointIsMutable();
+				com.google.protobuf.AbstractMessageLite.Builder.addAll(values, wgs84CalibrationPoint_);
+				onChanged();
+				return this;
+			}
+
+			/**
+			 * <code>repeated double wgs84CalibrationPoint = 15;</code>
+			 */
+			public Builder clearWgs84CalibrationPoint() {
+				wgs84CalibrationPoint_ = java.util.Collections.emptyList();
+				bitField0_ = (bitField0_ & ~0x00002000);
+				onChanged();
+				return this;
+			}
+
+			private java.util.List<java.lang.Double> wtCalibrationPoint_ = java.util.Collections.emptyList();
+
+			private void ensureWtCalibrationPointIsMutable() {
+				if (!((bitField0_ & 0x00004000) == 0x00004000)) {
+					wtCalibrationPoint_ = new java.util.ArrayList<java.lang.Double>(wtCalibrationPoint_);
+					bitField0_ |= 0x00004000;
+				}
+			}
+
+			/**
+			 * <code>repeated double wtCalibrationPoint = 16;</code>
+			 */
+			public java.util.List<java.lang.Double> getWtCalibrationPointList() {
+				return java.util.Collections.unmodifiableList(wtCalibrationPoint_);
+			}
+
+			/**
+			 * <code>repeated double wtCalibrationPoint = 16;</code>
+			 */
+			public int getWtCalibrationPointCount() {
+				return wtCalibrationPoint_.size();
+			}
+
+			/**
+			 * <code>repeated double wtCalibrationPoint = 16;</code>
+			 */
+			public double getWtCalibrationPoint(int index) {
+				return wtCalibrationPoint_.get(index);
+			}
+
+			/**
+			 * <code>repeated double wtCalibrationPoint = 16;</code>
+			 */
+			public Builder setWtCalibrationPoint(int index, double value) {
+				ensureWtCalibrationPointIsMutable();
+				wtCalibrationPoint_.set(index, value);
+				onChanged();
+				return this;
+			}
+
+			/**
+			 * <code>repeated double wtCalibrationPoint = 16;</code>
+			 */
+			public Builder addWtCalibrationPoint(double value) {
+				ensureWtCalibrationPointIsMutable();
+				wtCalibrationPoint_.add(value);
+				onChanged();
+				return this;
+			}
+
+			/**
+			 * <code>repeated double wtCalibrationPoint = 16;</code>
+			 */
+			public Builder addAllWtCalibrationPoint(java.lang.Iterable<? extends java.lang.Double> values) {
+				ensureWtCalibrationPointIsMutable();
+				com.google.protobuf.AbstractMessageLite.Builder.addAll(values, wtCalibrationPoint_);
+				onChanged();
+				return this;
+			}
+
+			/**
+			 * <code>repeated double wtCalibrationPoint = 16;</code>
+			 */
+			public Builder clearWtCalibrationPoint() {
+				wtCalibrationPoint_ = java.util.Collections.emptyList();
+				bitField0_ = (bitField0_ & ~0x00004000);
 				onChanged();
 				return this;
 			}
@@ -7661,17 +7990,19 @@ public final class TYCbmPbf {
 						+ "vectortile.cbm.pbf.proto.SymbolCollectio"
 						+ "nPbf\"W\n\007CityPbf\022\n\n\002id\030\001 \002(\t\022\014\n\004name\030\002 \002("
 						+ "\t\022\r\n\005sname\030\003 \002(\t\022\021\n\tlongitude\030\004 \002(\001\022\020\n\010l"
-						+ "atitude\030\005 \002(\001\"\342\001\n\013BuildingPbf\022\n\n\002id\030\001 \002("
+						+ "atitude\030\005 \002(\001\"\235\002\n\013BuildingPbf\022\n\n\002id\030\001 \002("
 						+ "\t\022\016\n\006cityID\030\002 \002(\t\022\014\n\004name\030\003 \002(\t\022\021\n\tlongi"
 						+ "tude\030\004 \002(\001\022\020\n\010latitude\030\005 \002(\001\022\017\n\007address\030"
 						+ "\006 \002(\t\022\021\n\tinitAngle\030\007 \002(\001\022\020\n\010routeURL\030\010 \002",
 				"(\t\022\014\n\004xmin\030\n \002(\001\022\014\n\004ymin\030\013 \002(\001\022\014\n\004xmax\030\014"
 						+ " \002(\001\022\014\n\004ymax\030\r \002(\001\022\026\n\016initFloorIndex\030\016 \002"
-						+ "(\r\"\277\001\n\nMapInfoPbf\022\r\n\005mapID\030\001 \002(\t\022\016\n\006city"
-						+ "ID\030\002 \002(\t\022\022\n\nbuildingID\030\003 \002(\t\022\021\n\tfloorNam"
-						+ "e\030\004 \002(\t\022\023\n\013floorNumber\030\005 \002(\005\022\016\n\006size_x\030\006"
-						+ " \002(\001\022\016\n\006size_y\030\007 \002(\001\022\014\n\004xmin\030\010 \002(\001\022\014\n\004ym"
-						+ "in\030\t \002(\001\022\014\n\004xmax\030\n \002(\001\022\014\n\004ymax\030\013 \002(\001" };
+						+ "(\r\022\035\n\025wgs84CalibrationPoint\030\017 \003(\001\022\032\n\022wtC"
+						+ "alibrationPoint\030\020 \003(\001\"\277\001\n\nMapInfoPbf\022\r\n\005"
+						+ "mapID\030\001 \002(\t\022\016\n\006cityID\030\002 \002(\t\022\022\n\nbuildingI"
+						+ "D\030\003 \002(\t\022\021\n\tfloorName\030\004 \002(\t\022\023\n\013floorNumbe"
+						+ "r\030\005 \002(\005\022\016\n\006size_x\030\006 \002(\001\022\016\n\006size_y\030\007 \002(\001\022"
+						+ "\014\n\004xmin\030\010 \002(\001\022\014\n\004ymin\030\t \002(\001\022\014\n\004xmax\030\n \002("
+						+ "\001\022\014\n\004ymax\030\013 \002(\001" };
 		com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
 			public com.google.protobuf.ExtensionRegistry assignDescriptors(
 					com.google.protobuf.Descriptors.FileDescriptor root) {
@@ -7699,7 +8030,8 @@ public final class TYCbmPbf {
 		internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_BuildingPbf_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
 				internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_BuildingPbf_descriptor,
 				new java.lang.String[] { "Id", "CityID", "Name", "Longitude", "Latitude", "Address", "InitAngle",
-						"RouteURL", "Xmin", "Ymin", "Xmax", "Ymax", "InitFloorIndex", });
+						"RouteURL", "Xmin", "Ymin", "Xmax", "Ymax", "InitFloorIndex", "Wgs84CalibrationPoint",
+						"WtCalibrationPoint", });
 		internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_MapInfoPbf_descriptor = getDescriptor()
 				.getMessageTypes().get(3);
 		internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_MapInfoPbf_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(

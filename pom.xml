@@ -21,8 +21,8 @@
 
 	<properties>
 		<SqlHelper-version>1.0.1</SqlHelper-version>
-		<wtmap-entity-base-version>1.2.2</wtmap-entity-base-version>
-		<wtmap-utils-version>1.1.4</wtmap-utils-version>
+		<wtmap-entity-base-version>1.2.3</wtmap-entity-base-version>
+		<wtmap-utils-version>1.1.5</wtmap-utils-version>
 		<wtmap-data-process-version>1.1.1</wtmap-data-process-version>
 		<wtmap-vector-tile-version>2.0.0</wtmap-vector-tile-version>
 		<wtmap-route-version>3.0.1</wtmap-route-version>

@@ -1,5 +1,8 @@
 package cn.platalk.map.vectortile.cbm.pbf;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cn.platalk.map.entity.base.TYIBuilding;
 import cn.platalk.map.entity.base.TYICity;
 import cn.platalk.map.entity.base.TYIMapInfo;
@@ -35,6 +38,23 @@ public class TYCity2PbfUtils {
 		builder.setXmax(building.getBuildingExtent().getXmax());
 		builder.setYmax(building.getBuildingExtent().getYmax());
 		builder.setInitFloorIndex(building.getInitFloorIndex());
+		if (building.getWgs84CalibrationPoint() != null) {
+			double[] coord = building.getWgs84CalibrationPoint();
+			List<Double> doubleList = new ArrayList<Double>();
+			for (int i = 0; i < coord.length; ++i) {
+				doubleList.add(coord[i]);
+			}
+			builder.addAllWgs84CalibrationPoint(doubleList);
+		}
+
+		if (building.getWtCalibrationPoint() != null) {
+			double[] coord = building.getWtCalibrationPoint();
+			List<Double> doubleList = new ArrayList<Double>();
+			for (int i = 0; i < coord.length; ++i) {
+				doubleList.add(coord[i]);
+			}
+			builder.addAllWtCalibrationPoint(doubleList);
+		}
 		return builder.build();
 	}
 
