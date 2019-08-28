@@ -127,6 +127,8 @@ public class TYServerMultiRouteManagerV3 {
 				multiResult.setStartPoint(startPoint);
 				multiResult.setEndPoint(endPoint);
 				multiResult.setStopPoints(stopPoints);
+				multiResult.startRoomID = networkDataset.targetStartRoomID;
+				multiResult.endRoomID = networkDataset.targetEndRoomID;
 			}
 		} else {
 			params = new IPMrParamsV3(startPoint, endPoint, stopPoints);
@@ -158,6 +160,8 @@ public class TYServerMultiRouteManagerV3 {
 				multiResult.setStopPoints(stopPoints);
 				multiResult.setIndices(indiceArray);
 				multiResult.setRearrangedPoints(rearrangedPoints);
+				multiResult.startRoomID = networkDataset.targetStartRoomID;
+				multiResult.endRoomID = networkDataset.targetEndRoomID;
 			}
 		}
 		return multiResult;

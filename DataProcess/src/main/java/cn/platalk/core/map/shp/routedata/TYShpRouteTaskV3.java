@@ -96,6 +96,7 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 	private void applyMapData(List<TYIRouteLinkRecordV3> linkList, List<TYIRouteNodeRecordV3> nodeList,
 			List<TYMapDataFeatureRecord> recordList) {
 		Map<String, Geometry> geometryMap = new HashMap<String, Geometry>();
+
 		for (TYMapDataFeatureRecord record : recordList) {
 			// if (record.layer == 2 && !record.categoryID.equals("000800")) {
 			if (record.layer == 2 && !record.categoryID.equals("000600") && !record.categoryID.equals("000700")) {
@@ -130,10 +131,17 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 				// Geometry roomGeometry = record.getGeometryData();
 				Geometry roomGeometry = geometryMap.get(record.poiID);
 
+				// 000800 is public area
 				if (nodeGeometry != null && roomGeometry != null) {
 					if (roomGeometry.contains(nodeGeometry)) {
 						// node.getRoomID() = record.poiID;
-						node.setRoomID(record.poiID);
+						// node.setRoomID(record.poiID);
+						if (record.categoryID.equals("000800")) {
+							if (node.getRoomID() == null)
+								node.setRoomID(record.poiID);
+						} else {
+							node.setRoomID(record.poiID);
+						}
 					}
 				}
 			}

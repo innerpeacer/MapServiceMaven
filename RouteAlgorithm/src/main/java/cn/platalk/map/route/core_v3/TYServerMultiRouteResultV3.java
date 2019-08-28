@@ -11,6 +11,9 @@ import cn.platalk.map.entity.base.TYLocalPoint;
 public class TYServerMultiRouteResultV3 {
 	private TYLocalPoint startPoint;
 	private TYLocalPoint endPoint;
+	public String startRoomID;
+	public String endRoomID;
+
 	private List<TYLocalPoint> stopPoints;
 
 	private TYServerRouteResultV3 completeResult;
@@ -83,7 +86,8 @@ public class TYServerMultiRouteResultV3 {
 			result.put("code", now * (long) startPoint.getX() + (long) startPoint.getY());
 			result.put("start", IPJsonBuilder.buildLocalPoint(startPoint));
 			result.put("end", IPJsonBuilder.buildLocalPoint(endPoint));
-
+			result.put("startRoomID", startRoomID);
+			result.put("endRoomID", endRoomID);
 			JSONArray stopPointArray = new JSONArray();
 			if (stopPoints != null && stopPoints.size() != 0) {
 				for (int i = 0; i < stopPoints.size(); ++i) {
