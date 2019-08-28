@@ -107,6 +107,7 @@ class TYServerRoutePartV3 {
 			jsonObject.put("nodeType", node.m_nodeType);
 			jsonObject.put("open", node.m_open);
 			jsonObject.put("openTime", node.m_openTime);
+			jsonObject.put("roomID", node.m_roomID);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

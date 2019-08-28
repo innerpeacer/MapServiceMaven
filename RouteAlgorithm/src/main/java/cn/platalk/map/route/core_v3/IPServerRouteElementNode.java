@@ -17,6 +17,7 @@ public class IPServerRouteElementNode extends IPServerRouteElement {
 	public int m_nodeType;
 	public boolean m_open;
 	public String m_openTime;
+	public String m_roomID;
 
 	public static IPServerRouteElementNode fromNode(IPServerNodeV3 serverNode) {
 		IPServerRouteElementNode node = new IPServerRouteElementNode();
@@ -33,6 +34,8 @@ public class IPServerRouteElementNode extends IPServerRouteElement {
 		node.m_nodeType = serverNode.m_nodeType;
 		node.m_open = serverNode.m_open;
 		node.m_openTime = serverNode.m_openTime;
+
+		node.m_roomID = serverNode.m_roomID;
 		return node;
 	}
 
