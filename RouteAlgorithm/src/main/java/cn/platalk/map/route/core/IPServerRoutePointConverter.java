@@ -6,7 +6,7 @@ import com.vividsolutions.jts.geom.Point;
 
 import cn.platalk.map.entity.base.TYIMapExtent;
 import cn.platalk.map.entity.base.TYIMapSize;
-import cn.platalk.map.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class IPServerRoutePointConverter {
 

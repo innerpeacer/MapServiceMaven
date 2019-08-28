@@ -1,6 +1,6 @@
 package cn.platalk.map.route.core_v3;
 
-import cn.platalk.map.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class IPMrStopV3 {
 	private int stopID;

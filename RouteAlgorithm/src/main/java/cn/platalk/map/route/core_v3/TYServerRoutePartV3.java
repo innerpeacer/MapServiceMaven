@@ -15,7 +15,7 @@ import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.Point;
 
 import cn.platalk.map.entity.base.TYIMapInfo;
-import cn.platalk.map.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class TYServerRoutePartV3 {
 	List<IPServerRouteElement> elementList = new ArrayList<IPServerRouteElement>();

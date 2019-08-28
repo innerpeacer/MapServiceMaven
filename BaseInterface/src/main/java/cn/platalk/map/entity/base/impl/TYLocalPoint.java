@@ -1,12 +1,14 @@
-package cn.platalk.map.entity.base;
+package cn.platalk.map.entity.base.impl;
 
-import cn.platalk.map.entity.base.impl.IPXPoint3D;
-import cn.platalk.map.entity.base.impl.IPXPointConverter;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class TYLocalPoint {
-	// private static final String KEY_X = "x";
-	// private static final String KEY_Y = "y";
-	// private static final String KEY_FLOOR = "floor";
+import cn.platalk.map.entity.base.TYILocalPoint;
+
+public class TYLocalPoint implements TYILocalPoint {
+	private static final String KEY_X = "x";
+	private static final String KEY_Y = "y";
+	private static final String KEY_FLOOR = "floor";
 
 	private double x;
 	private double y;
@@ -43,22 +45,21 @@ public class TYLocalPoint {
 	// }
 	// }
 	//
-	// public JSONObject buildJson() {
-	// JSONObject jsonObject = new JSONObject();
-	// try {
-	// jsonObject.put(KEY_X, x);
-	// jsonObject.put(KEY_Y, y);
-	// jsonObject.put(KEY_FLOOR, floor);
-	// } catch (JSONException e) {
-	// e.printStackTrace();
-	// }
-	// return jsonObject;
-	// }
+
+	public JSONObject buildJson() {
+		JSONObject jsonObject = new JSONObject();
+		try {
+			jsonObject.put(KEY_X, x);
+			jsonObject.put(KEY_Y, y);
+			jsonObject.put(KEY_FLOOR, floor);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return jsonObject;
+	}
 
 	public String toString() {
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("(").append(x).append(", ").append(y).append(")").append(" in Floor: ").append(floor);
-		return buffer.toString();
+		return String.format("(%f, %f) in floor %d", x, y, floor);
 	}
 
 	public void setX(double x) {

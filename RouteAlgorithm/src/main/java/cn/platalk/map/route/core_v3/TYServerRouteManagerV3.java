@@ -10,7 +10,7 @@ import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
 import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
-import cn.platalk.map.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public class TYServerRouteManagerV3 {
 	static final String TAG = TYServerRouteManagerV3.class.getSimpleName();

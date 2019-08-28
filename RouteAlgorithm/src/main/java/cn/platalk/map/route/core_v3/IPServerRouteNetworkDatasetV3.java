@@ -23,7 +23,7 @@ import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
 import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
-import cn.platalk.map.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class IPServerRouteNetworkDatasetV3 {
 	static GeometryFactory factory = new GeometryFactory();

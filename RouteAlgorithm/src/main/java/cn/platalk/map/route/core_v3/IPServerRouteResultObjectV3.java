@@ -6,7 +6,7 @@ import java.util.List;
 import com.vividsolutions.jts.geom.GeometryFactory;
 
 import cn.platalk.map.entity.base.TYIMapInfo;
-import cn.platalk.map.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public class IPServerRouteResultObjectV3 {
 

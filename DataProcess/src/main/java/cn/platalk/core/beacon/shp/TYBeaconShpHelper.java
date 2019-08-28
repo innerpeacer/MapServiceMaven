@@ -6,7 +6,7 @@ import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
 
-import cn.platalk.map.entity.base.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.TYLocalPoint;
 import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 
 public class TYBeaconShpHelper {

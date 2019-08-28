@@ -1,7 +1,6 @@
 package cn.platalk.map.entity.base.impl;
 
 import cn.platalk.map.entity.base.TYILocatingBeacon;
-import cn.platalk.map.entity.base.TYLocalPoint;
 
 public class TYLocatingBeacon extends TYBeacon implements TYILocatingBeacon {
 	static final String FIELD_BEACON_1_GEOM = "GEOM";
