@@ -395,10 +395,12 @@ class IPServerRouteNetworkDatasetV3 {
 		Point point = factory.createPoint(new Coordinate(lp.getX(), lp.getY()));
 		boolean isInRoom = false;
 		String roomID = null;
+		String roomCategoryID = null;
 		for (TYIMapDataFeatureRecord record : allMapDataArray) {
 			if (record.getFloorNumber() == lp.getFloor() && record.getGeometryData().contains(point)) {
 				isInRoom = true;
 				roomID = record.getPoiID();
+				roomCategoryID = record.getCategoryID();
 				// System.out.println("In Room: " + roomID);
 				break;
 			}
@@ -438,7 +440,7 @@ class IPServerRouteNetworkDatasetV3 {
 		newTempNode.setPos(npOnUnionLine);
 		newTempNode.m_floor = lp.getFloor();
 		newTempNode.m_open = true;
-		if (isInRoom) {
+		if (isInRoom && !"000800".equals(roomCategoryID)) {
 			newTempNode.m_roomID = roomID;
 		}
 
