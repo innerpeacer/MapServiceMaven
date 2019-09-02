@@ -10,6 +10,7 @@ public class TYFillSymbolRecord implements TYIFillSymbolRecord {
 	public double lineWidth;
 	public double levelMin;
 	public double levelMax;
+	private boolean visible = true;
 
 	public TYFillSymbolRecord() {
 
@@ -69,6 +70,15 @@ public class TYFillSymbolRecord implements TYIFillSymbolRecord {
 
 	public double getLevelMax() {
 		return levelMax;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+
+	@Override
+	public boolean isVisible() {
+		return this.visible;
 	}
 
 	@Override

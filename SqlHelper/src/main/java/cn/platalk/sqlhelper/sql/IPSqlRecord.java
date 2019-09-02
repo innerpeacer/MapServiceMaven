@@ -66,6 +66,14 @@ public class IPSqlRecord {
 		return (value != null && ((Integer) value) != 0) ? true : false;
 	}
 
+	public boolean getBoolean(String fieldName, boolean defaultValue) {
+		Object value = entityMap.get(fieldName);
+		if (value != null) {
+			return (value != null && ((Integer) value) != 0) ? true : false;
+		}
+		return defaultValue;
+	}
+
 	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();

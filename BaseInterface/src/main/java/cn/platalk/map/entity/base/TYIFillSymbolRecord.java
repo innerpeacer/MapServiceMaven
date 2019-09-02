@@ -14,4 +14,7 @@ public interface TYIFillSymbolRecord {
 	public double getLevelMin();
 
 	public double getLevelMax();
+
+	public boolean isVisible();
+
 }

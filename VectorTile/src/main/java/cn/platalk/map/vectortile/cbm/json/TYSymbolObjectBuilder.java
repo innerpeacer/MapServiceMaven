@@ -17,6 +17,7 @@ public class TYSymbolObjectBuilder {
 		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_LEVEL_MIN, symbol.getLevelMin());
 		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_LEVEL_MAX, symbol.getLevelMax());
 		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_UID, symbol.getUID());
+		symbolObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOL_VISIBLE, symbol.isVisible());
 		return symbolObject;
 	}
 

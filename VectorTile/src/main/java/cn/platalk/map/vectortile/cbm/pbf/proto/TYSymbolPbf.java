@@ -98,6 +98,16 @@ public final class TYSymbolPbf {
 		 * <code>required double levelMax = 7;</code>
 		 */
 		double getLevelMax();
+
+		/**
+		 * <code>required bool visible = 8;</code>
+		 */
+		boolean hasVisible();
+
+		/**
+		 * <code>required bool visible = 8;</code>
+		 */
+		boolean getVisible();
 	}
 
 	/**
@@ -120,6 +130,7 @@ public final class TYSymbolPbf {
 			outlineWidth_ = 0D;
 			levelMin_ = 0D;
 			levelMax_ = 0D;
+			visible_ = false;
 		}
 
 		@java.lang.Override
@@ -183,6 +194,11 @@ public final class TYSymbolPbf {
 					case 57: {
 						bitField0_ |= 0x00000040;
 						levelMax_ = input.readDouble();
+						break;
+					}
+					case 64: {
+						bitField0_ |= 0x00000080;
+						visible_ = input.readBool();
 						break;
 					}
 					}
@@ -376,6 +392,23 @@ public final class TYSymbolPbf {
 			return levelMax_;
 		}
 
+		public static final int VISIBLE_FIELD_NUMBER = 8;
+		private boolean visible_;
+
+		/**
+		 * <code>required bool visible = 8;</code>
+		 */
+		public boolean hasVisible() {
+			return ((bitField0_ & 0x00000080) == 0x00000080);
+		}
+
+		/**
+		 * <code>required bool visible = 8;</code>
+		 */
+		public boolean getVisible() {
+			return visible_;
+		}
+
 		private byte memoizedIsInitialized = -1;
 
 		public final boolean isInitialized() {
@@ -413,6 +446,10 @@ public final class TYSymbolPbf {
 				memoizedIsInitialized = 0;
 				return false;
 			}
+			if (!hasVisible()) {
+				memoizedIsInitialized = 0;
+				return false;
+			}
 			memoizedIsInitialized = 1;
 			return true;
 		}
@@ -438,6 +475,9 @@ public final class TYSymbolPbf {
 			}
 			if (((bitField0_ & 0x00000040) == 0x00000040)) {
 				output.writeDouble(7, levelMax_);
+			}
+			if (((bitField0_ & 0x00000080) == 0x00000080)) {
+				output.writeBool(8, visible_);
 			}
 			unknownFields.writeTo(output);
 		}
@@ -468,6 +508,9 @@ public final class TYSymbolPbf {
 			}
 			if (((bitField0_ & 0x00000040) == 0x00000040)) {
 				size += com.google.protobuf.CodedOutputStream.computeDoubleSize(7, levelMax_);
+			}
+			if (((bitField0_ & 0x00000080) == 0x00000080)) {
+				size += com.google.protobuf.CodedOutputStream.computeBoolSize(8, visible_);
 			}
 			size += unknownFields.getSerializedSize();
 			memoizedSize = size;
@@ -518,6 +561,10 @@ public final class TYSymbolPbf {
 				result = result && (java.lang.Double.doubleToLongBits(getLevelMax()) == java.lang.Double
 						.doubleToLongBits(other.getLevelMax()));
 			}
+			result = result && (hasVisible() == other.hasVisible());
+			if (hasVisible()) {
+				result = result && (getVisible() == other.getVisible());
+			}
 			result = result && unknownFields.equals(other.unknownFields);
 			return result;
 		}
@@ -559,6 +606,10 @@ public final class TYSymbolPbf {
 				hash = (37 * hash) + LEVELMAX_FIELD_NUMBER;
 				hash = (53 * hash)
 						+ com.google.protobuf.Internal.hashLong(java.lang.Double.doubleToLongBits(getLevelMax()));
+			}
+			if (hasVisible()) {
+				hash = (37 * hash) + VISIBLE_FIELD_NUMBER;
+				hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getVisible());
 			}
 			hash = (29 * hash) + unknownFields.hashCode();
 			memoizedHashCode = hash;
@@ -693,6 +744,8 @@ public final class TYSymbolPbf {
 				bitField0_ = (bitField0_ & ~0x00000020);
 				levelMax_ = 0D;
 				bitField0_ = (bitField0_ & ~0x00000040);
+				visible_ = false;
+				bitField0_ = (bitField0_ & ~0x00000080);
 				return this;
 			}
 
@@ -745,6 +798,10 @@ public final class TYSymbolPbf {
 					to_bitField0_ |= 0x00000040;
 				}
 				result.levelMax_ = levelMax_;
+				if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+					to_bitField0_ |= 0x00000080;
+				}
+				result.visible_ = visible_;
 				result.bitField0_ = to_bitField0_;
 				onBuilt();
 				return result;
@@ -812,6 +869,9 @@ public final class TYSymbolPbf {
 				if (other.hasLevelMax()) {
 					setLevelMax(other.getLevelMax());
 				}
+				if (other.hasVisible()) {
+					setVisible(other.getVisible());
+				}
 				this.mergeUnknownFields(other.unknownFields);
 				onChanged();
 				return this;
@@ -837,6 +897,9 @@ public final class TYSymbolPbf {
 					return false;
 				}
 				if (!hasLevelMax()) {
+					return false;
+				}
+				if (!hasVisible()) {
 					return false;
 				}
 				return true;
@@ -1191,6 +1254,42 @@ public final class TYSymbolPbf {
 			public Builder clearLevelMax() {
 				bitField0_ = (bitField0_ & ~0x00000040);
 				levelMax_ = 0D;
+				onChanged();
+				return this;
+			}
+
+			private boolean visible_;
+
+			/**
+			 * <code>required bool visible = 8;</code>
+			 */
+			public boolean hasVisible() {
+				return ((bitField0_ & 0x00000080) == 0x00000080);
+			}
+
+			/**
+			 * <code>required bool visible = 8;</code>
+			 */
+			public boolean getVisible() {
+				return visible_;
+			}
+
+			/**
+			 * <code>required bool visible = 8;</code>
+			 */
+			public Builder setVisible(boolean value) {
+				bitField0_ |= 0x00000080;
+				visible_ = value;
+				onChanged();
+				return this;
+			}
+
+			/**
+			 * <code>required bool visible = 8;</code>
+			 */
+			public Builder clearVisible() {
+				bitField0_ = (bitField0_ & ~0x00000080);
+				visible_ = false;
 				onChanged();
 				return this;
 			}
@@ -5195,23 +5294,24 @@ public final class TYSymbolPbf {
 	private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
 	static {
 		java.lang.String[] descriptorData = {
-				"\n\024t_y_symbol_pbf.proto\022\'cn.platalk.map.v" + "ectortile.cbm.pbf.proto\"\221\001\n\rFillSymbolPb"
+				"\n\024t_y_symbol_pbf.proto\022\'cn.platalk.map.v" + "ectortile.cbm.pbf.proto\"\242\001\n\rFillSymbolPb"
 						+ "f\022\013\n\003UID\030\001 \002(\r\022\020\n\010symbolID\030\002 \002(\r\022\021\n\tfill"
 						+ "Color\030\003 \002(\t\022\024\n\014outlineColor\030\004 \002(\t\022\024\n\014out"
 						+ "lineWidth\030\005 \002(\001\022\020\n\010levelMin\030\006 \002(\001\022\020\n\010lev"
-						+ "elMax\030\007 \002(\001\"\200\003\n\021IconTextSymbolPbf\022\013\n\003UID"
-						+ "\030\001 \002(\r\022\020\n\010symbolID\030\002 \002(\r\022\023\n\013iconVisible\030"
-						+ "\003 \002(\010\022\020\n\010iconSize\030\004 \002(\001\022\022\n\niconRotate\030\005 "
-						+ "\002(\001\022\023\n\013iconOffsetX\030\006 \002(\001\022\023\n\013iconOffsetY\030"
-						+ "\007 \002(\001\022\023\n\013textVisible\030\n \002(\010\022\020\n\010textSize\030\013",
-				" \002(\001\022\022\n\ntextRotate\030\014 \002(\001\022\020\n\010textFont\030\r \002"
-						+ "(\t\022\021\n\ttextColor\030\016 \002(\t\022\023\n\013textOffsetX\030\017 \002"
-						+ "(\001\022\023\n\013textOffsetY\030\020 \002(\001\022\020\n\010levelMin\030\025 \002("
-						+ "\001\022\020\n\010levelMax\030\026 \002(\001\022\020\n\010priority\030\027 \002(\r\022\022\n"
-						+ "\notherPaint\030\036 \001(\t\022\023\n\013otherLayout\030\037 \001(\t\"u"
-						+ "\n\023SymbolCollectionPbf\022\r\n\005floor\030\001 \003(\r\022\014\n\004"
-						+ "room\030\002 \003(\r\022\r\n\005asset\030\003 \003(\r\022\020\n\010facility\030\004 "
-						+ "\003(\r\022\r\n\005label\030\005 \003(\r\022\021\n\textrusion\030\006 \003(\r" };
+						+ "elMax\030\007 \002(\001\022\017\n\007visible\030\010 \002(\010\"\200\003\n\021IconTex"
+						+ "tSymbolPbf\022\013\n\003UID\030\001 \002(\r\022\020\n\010symbolID\030\002 \002("
+						+ "\r\022\023\n\013iconVisible\030\003 \002(\010\022\020\n\010iconSize\030\004 \002(\001"
+						+ "\022\022\n\niconRotate\030\005 \002(\001\022\023\n\013iconOffsetX\030\006 \002("
+						+ "\001\022\023\n\013iconOffsetY\030\007 \002(\001\022\023\n\013textVisible\030\n ",
+				"\002(\010\022\020\n\010textSize\030\013 \002(\001\022\022\n\ntextRotate\030\014 \002("
+						+ "\001\022\020\n\010textFont\030\r \002(\t\022\021\n\ttextColor\030\016 \002(\t\022\023"
+						+ "\n\013textOffsetX\030\017 \002(\001\022\023\n\013textOffsetY\030\020 \002(\001"
+						+ "\022\020\n\010levelMin\030\025 \002(\001\022\020\n\010levelMax\030\026 \002(\001\022\020\n\010"
+						+ "priority\030\027 \002(\r\022\022\n\notherPaint\030\036 \001(\t\022\023\n\013ot"
+						+ "herLayout\030\037 \001(\t\"u\n\023SymbolCollectionPbf\022\r"
+						+ "\n\005floor\030\001 \003(\r\022\014\n\004room\030\002 \003(\r\022\r\n\005asset\030\003 \003"
+						+ "(\r\022\020\n\010facility\030\004 \003(\r\022\r\n\005label\030\005 \003(\r\022\021\n\te"
+						+ "xtrusion\030\006 \003(\r" };
 		com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
 			public com.google.protobuf.ExtensionRegistry assignDescriptors(
 					com.google.protobuf.Descriptors.FileDescriptor root) {
@@ -5226,7 +5326,7 @@ public final class TYSymbolPbf {
 		internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_FillSymbolPbf_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
 				internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_FillSymbolPbf_descriptor,
 				new java.lang.String[] { "UID", "SymbolID", "FillColor", "OutlineColor", "OutlineWidth", "LevelMin",
-						"LevelMax", });
+						"LevelMax", "Visible", });
 		internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_IconTextSymbolPbf_descriptor = getDescriptor()
 				.getMessageTypes().get(1);
 		internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_IconTextSymbolPbf_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(

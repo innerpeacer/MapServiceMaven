@@ -21,6 +21,7 @@ public class TYSymbol2PbfUtils {
 		builder.setOutlineWidth(fillSymbol.getLineWidth());
 		builder.setLevelMin(fillSymbol.getLevelMin());
 		builder.setLevelMax(fillSymbol.getLevelMax());
+		builder.setVisible(fillSymbol.isVisible());
 		return builder.build();
 	}
 
