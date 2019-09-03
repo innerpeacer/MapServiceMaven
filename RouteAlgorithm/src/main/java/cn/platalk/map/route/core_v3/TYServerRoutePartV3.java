@@ -107,7 +107,14 @@ class TYServerRoutePartV3 {
 			jsonObject.put("nodeType", node.m_nodeType);
 			jsonObject.put("open", node.m_open);
 			jsonObject.put("openTime", node.m_openTime);
-			jsonObject.put("roomID", node.m_roomID);
+			// jsonObject.put("roomID", node.m_roomID);
+			if (node.m_roomIDList != null && node.m_roomIDList.size() > 0) {
+				JSONArray array = new JSONArray();
+				for (int i = 0; i < node.m_roomIDList.size(); i++) {
+					array.put(node.m_roomIDList.get(i));
+				}
+				jsonObject.put("roomID", array);
+			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

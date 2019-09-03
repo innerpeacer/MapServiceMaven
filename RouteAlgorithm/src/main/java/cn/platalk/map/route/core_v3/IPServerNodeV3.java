@@ -1,6 +1,7 @@
 package cn.platalk.map.route.core_v3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.vividsolutions.jts.geom.Point;
@@ -31,7 +32,8 @@ public class IPServerNodeV3 implements Comparable<IPServerNodeV3> {
 	public int m_nodeType;
 	public boolean m_open;
 	public String m_openTime;
-	public String m_roomID;
+	// public String m_roomID;
+	public List<String> m_roomIDList = new ArrayList<String>();
 
 	public IPTimeWindows m_timeWindows = null;
 
@@ -57,7 +59,12 @@ public class IPServerNodeV3 implements Comparable<IPServerNodeV3> {
 		if (node.m_openTime != null && node.m_openTime.length() > 0) {
 			node.m_timeWindows = new IPTimeWindows(node.m_openTime);
 		}
-		node.m_roomID = nodeRecord.getRoomID();
+		// node.m_roomID = nodeRecord.getRoomID();
+		if (nodeRecord.getRoomID() != null) {
+			String[] splited = nodeRecord.getRoomID().split(",");
+			List<String> sList = Arrays.asList(splited);
+			node.m_roomIDList = sList;
+		}
 		return node;
 	}
 

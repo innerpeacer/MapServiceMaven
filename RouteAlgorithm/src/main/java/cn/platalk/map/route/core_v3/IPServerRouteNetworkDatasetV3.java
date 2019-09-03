@@ -169,8 +169,14 @@ class IPServerRouteNetworkDatasetV3 {
 
 		IPServerNodeV3 startNode = processTempNodeForStart(startPoint);
 		IPServerNodeV3 endNode = processTempNodeForEnd(endPoint);
-		targetStartRoomID = startNode.m_roomID;
-		targetEndRoomID = endNode.m_roomID;
+		// targetStartRoomID = startNode.m_roomID;
+		if (startNode.m_roomIDList != null && startNode.m_roomIDList.size() > 0) {
+			targetStartRoomID = startNode.m_roomIDList.get(0);
+		}
+		// targetEndRoomID = endNode.m_roomID;
+		if (endNode.m_roomIDList != null && endNode.m_roomIDList.size() > 0) {
+			targetEndRoomID = endNode.m_roomIDList.get(0);
+		}
 		System.out.println("targetStartRoomID: " + targetStartRoomID);
 		System.out.println("targetEndRoomID: " + targetEndRoomID);
 		computePaths(startNode);
@@ -441,7 +447,9 @@ class IPServerRouteNetworkDatasetV3 {
 		newTempNode.m_floor = lp.getFloor();
 		newTempNode.m_open = true;
 		if (isInRoom && !"000800".equals(roomCategoryID)) {
-			newTempNode.m_roomID = roomID;
+			List<String> roomIDList = new ArrayList<String>();
+			roomIDList.add(roomID);
+			newTempNode.m_roomIDList = roomIDList;
 		}
 
 		resultList.add(false);

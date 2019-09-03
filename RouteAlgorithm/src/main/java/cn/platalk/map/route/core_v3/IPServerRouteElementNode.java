@@ -1,5 +1,8 @@
 package cn.platalk.map.route.core_v3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.vividsolutions.jts.geom.Point;
 
 public class IPServerRouteElementNode extends IPServerRouteElement {
@@ -17,7 +20,8 @@ public class IPServerRouteElementNode extends IPServerRouteElement {
 	public int m_nodeType;
 	public boolean m_open;
 	public String m_openTime;
-	public String m_roomID;
+	// public String m_roomID;
+	public List<String> m_roomIDList = new ArrayList<String>();
 
 	public static IPServerRouteElementNode fromNode(IPServerNodeV3 serverNode) {
 		IPServerRouteElementNode node = new IPServerRouteElementNode();
@@ -35,7 +39,7 @@ public class IPServerRouteElementNode extends IPServerRouteElement {
 		node.m_open = serverNode.m_open;
 		node.m_openTime = serverNode.m_openTime;
 
-		node.m_roomID = serverNode.m_roomID;
+		node.m_roomIDList = serverNode.m_roomIDList;
 		return node;
 	}
 

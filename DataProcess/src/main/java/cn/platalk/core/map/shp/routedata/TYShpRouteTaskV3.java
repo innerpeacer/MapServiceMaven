@@ -93,6 +93,22 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 		return geometry;
 	}
 
+	// use join in jdk8
+	private String join(List<String> list) {
+		if (list == null || list.size() == 0) {
+			return "";
+		}
+
+		StringBuffer buffer = new StringBuffer();
+		for (int i = 0; i < list.size(); ++i) {
+			if (i != 0) {
+				buffer.append(",");
+			}
+			buffer.append(list.get(i));
+		}
+		return buffer.toString();
+	}
+
 	private void applyMapData(List<TYIRouteLinkRecordV3> linkList, List<TYIRouteNodeRecordV3> nodeList,
 			List<TYMapDataFeatureRecord> recordList) {
 		Map<String, Geometry> geometryMap = new HashMap<String, Geometry>();
@@ -100,7 +116,7 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 		for (TYMapDataFeatureRecord record : recordList) {
 			// if (record.layer == 2 && !record.categoryID.equals("000800")) {
 			if (record.layer == 2 && !record.categoryID.equals("000600") && !record.categoryID.equals("000700")) {
-				geometryMap.put(record.poiID, record.getGeometryData().buffer(0.1));
+				geometryMap.put(record.poiID, record.getGeometryData().buffer(0.01));
 			}
 		}
 
@@ -123,26 +139,24 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 		}
 
 		for (TYIRouteNodeRecordV3 node : nodeList) {
+			List<String> roomIDList = new ArrayList<String>();
 			for (TYMapDataFeatureRecord record : recordList) {
 				if (node.getFloor() != record.floorNumber || record.layer != 2)
 					continue;
 
 				Geometry nodeGeometry = getNodeRecordGeomtry(node);
-				// Geometry roomGeometry = record.getGeometryData();
 				Geometry roomGeometry = geometryMap.get(record.poiID);
+				if (nodeGeometry != null && roomGeometry != null && roomGeometry.contains(nodeGeometry)) {
+					roomIDList.add(record.poiID);
+				}
+			}
 
-				// 000800 is public area
-				if (nodeGeometry != null && roomGeometry != null) {
-					if (roomGeometry.contains(nodeGeometry)) {
-						// node.getRoomID() = record.poiID;
-						// node.setRoomID(record.poiID);
-						if (record.categoryID.equals("000800")) {
-							if (node.getRoomID() == null)
-								node.setRoomID(record.poiID);
-						} else {
-							node.setRoomID(record.poiID);
-						}
-					}
+			if (roomIDList.size() > 0) {
+				node.setRoomID(join(roomIDList));
+				if (roomIDList.size() >= 3) {
+					System.out.println("Fire a error here!");
+					System.out.println(node.getNodeID());
+					System.out.println("Size: " + roomIDList.size());
 				}
 			}
 		}
