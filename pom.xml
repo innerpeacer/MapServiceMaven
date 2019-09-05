@@ -28,6 +28,7 @@
 		<wtmap-route-version>3.0.1</wtmap-route-version>
 		<MapService-version>2.1.0</MapService-version>
 		<RouteService-version>3.0.1</RouteService-version>
+		<Lab-version>1.0.0</Lab-version>
 	</properties>
 	<modules>
 		<module>BaseInterface</module>
@@ -39,5 +40,6 @@
 		<module>Utils</module>
 		<module>Test</module>
 		<module>SqlHelper</module>
+		<module>Lab</module>
 	</modules>
 </project>

@@ -5,6 +5,7 @@ public class TYDatabaseManager {
 	private static final String ROUTE_DATABASE_URL = "jdbc:mysql://%s/ROUTE_DB?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
 	private static final String BEACON_DATABASE_URL = "jdbc:mysql://%s/BEACON_DB?characterEncoding=utf8";
 	private static final String POI_DATABASE_URL = "jdbc:mysql://%s/MAP_DB?characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
+	private static final String LAB_DATABASE_URL = "jdbc:mysql://%s/LAB_DB?characterEncoding=utf8";
 
 	private static String HOST_NAME = null;
 	private static String USER_NAME = null;
@@ -30,6 +31,10 @@ public class TYDatabaseManager {
 
 	public static String GetBeaconDBUrl() {
 		return String.format(BEACON_DATABASE_URL, HOST_NAME);
+	}
+
+	public static String GetLabDBUrl() {
+		return String.format(LAB_DATABASE_URL, HOST_NAME);
 	}
 
 	public static String GetRouteDBUrl() {
