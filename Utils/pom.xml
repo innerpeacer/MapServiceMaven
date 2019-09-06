@@ -31,12 +31,7 @@
 			<version>${wtmap-entity-base-version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>Lab</artifactId>
-			<version>${Lab-version}</version>
-		</dependency>
-		
+
 		<dependency>
 			<groupId>cn.platalk.sqlhelper</groupId>
 			<artifactId>SqlHelper</artifactId>

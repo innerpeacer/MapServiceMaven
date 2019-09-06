@@ -1,10 +1,10 @@
-package cn.platalk.lab.entity;
+package cn.platalk.lab.universaldata.entity;
 
 public class IPUniversalData {
 	String dataID;
 	String dataName;
 	byte[] dataContent;
-	UniversalDataType dataType;
+	IPUniversalDataType dataType;
 	String dataDescription;
 
 	public IPUniversalData() {
@@ -35,11 +35,11 @@ public class IPUniversalData {
 		this.dataContent = dataContent;
 	}
 
-	public UniversalDataType getDataType() {
+	public IPUniversalDataType getDataType() {
 		return dataType;
 	}
 
-	public void setDataType(UniversalDataType dataType) {
+	public void setDataType(IPUniversalDataType dataType) {
 		this.dataType = dataType;
 	}
 
@@ -51,4 +51,8 @@ public class IPUniversalData {
 		this.dataDescription = dataDescription;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("DataID: %s, Name: %s, Type: %d", dataID, dataName, dataType.getValue());
+	}
 }

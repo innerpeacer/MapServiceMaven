@@ -1,12 +1,12 @@
-package cn.platalk.sqlite.lab.universaldata;
+package cn.platalk.lab.universaldata.sqlite;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.lab.entity.IPUniversalData;
-import cn.platalk.lab.entity.UniversalDataType;
+import cn.platalk.lab.universaldata.entity.IPUniversalData;
+import cn.platalk.lab.universaldata.entity.IPUniversalDataType;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlFieldType;
 import cn.platalk.sqlhelper.sql.IPSqlRecord;
@@ -44,7 +44,7 @@ public class IPSqliteUniversalDataParams {
 			ud.setDataID(record.getString(FIELD_UNIVERSAL_DATA_1_ID));
 			ud.setDataName(record.getString(FIELD_UNIVERSAL_DATA_2_NAME));
 			ud.setDataContent(record.getBlob(FIELD_UNIVERSAL_DATA_3_CONTENT));
-			ud.setDataType(UniversalDataType.fromType(record.getInteger(FIELD_UNIVERSAL_DATA_4_TYPE)));
+			ud.setDataType(IPUniversalDataType.fromValue(record.getInteger(FIELD_UNIVERSAL_DATA_4_TYPE)));
 			ud.setDataDescription(record.getString(FIELD_UNIVERSAL_DATA_5_DESCRIPTION));
 			udList.add(ud);
 		}
@@ -56,7 +56,7 @@ public class IPSqliteUniversalDataParams {
 		data.put(FIELD_UNIVERSAL_DATA_1_ID, ud.getDataID());
 		data.put(FIELD_UNIVERSAL_DATA_2_NAME, ud.getDataName());
 		data.put(FIELD_UNIVERSAL_DATA_3_CONTENT, ud.getDataContent());
-		data.put(FIELD_UNIVERSAL_DATA_4_TYPE, ud.getDataType().getType());
+		data.put(FIELD_UNIVERSAL_DATA_4_TYPE, ud.getDataType().getValue());
 		data.put(FIELD_UNIVERSAL_DATA_5_DESCRIPTION, ud.getDataDescription());
 		return data;
 	}

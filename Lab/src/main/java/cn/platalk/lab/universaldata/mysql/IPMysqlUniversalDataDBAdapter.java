@@ -1,9 +1,9 @@
-package cn.platalk.mysql.lab.universaldata;
+package cn.platalk.lab.universaldata.mysql;
 
 import java.sql.Connection;
 import java.util.List;
 
-import cn.platalk.lab.entity.IPUniversalData;
+import cn.platalk.lab.universaldata.entity.IPUniversalData;
 import cn.platalk.mysql.map.TYDatabaseManager;
 import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;

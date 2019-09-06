@@ -1,9 +1,9 @@
-package cn.platalk.sqlite.lab.universaldata;
+package cn.platalk.lab.universaldata.sqlite;
 
 import java.util.List;
 
-import cn.platalk.lab.entity.IPUniversalData;
-import cn.platalk.mysql.lab.universaldata.IPMysqlUniversalDataParams;
+import cn.platalk.lab.universaldata.entity.IPUniversalData;
+import cn.platalk.lab.universaldata.mysql.IPMysqlUniversalDataParams;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 import cn.platalk.sqlhelper.sqlite.IPSqliteDB;
 

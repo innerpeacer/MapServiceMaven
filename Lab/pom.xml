@@ -20,4 +20,24 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>3.5.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>wtmap-entity-base</artifactId>
+			<version>${wtmap-entity-base-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>wtmap-utils</artifactId>
+			<version>${wtmap-utils-version}</version>
+		</dependency>
+	</dependencies>
 </project>
