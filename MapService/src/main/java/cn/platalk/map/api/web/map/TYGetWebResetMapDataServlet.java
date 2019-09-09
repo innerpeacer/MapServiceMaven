@@ -13,8 +13,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.core.web.TYWebMapGeojsonDataPool;
-import cn.platalk.map.core.web.TYWebMapPbfDataPool;
+import cn.platalk.map.core.caching.TYCachingPool;
+import cn.platalk.map.core.caching.TYCachingType;
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.mysql.map.TYBuildingDBAdapter;
 
@@ -22,8 +22,9 @@ import cn.platalk.mysql.map.TYBuildingDBAdapter;
 public class TYGetWebResetMapDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String buildingID = request.getParameter("buildingID");
 		String callback = request.getParameter("callback");
 		response.setContentType("text/json;charset=UTF-8");
@@ -34,8 +35,7 @@ public class TYGetWebResetMapDataServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			try {
 				jsonObject.put("success", false);
-				jsonObject.put("description", "Invalid BuildingID: "
-						+ buildingID);
+				jsonObject.put("description", "Invalid BuildingID: " + buildingID);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -43,8 +43,7 @@ public class TYGetWebResetMapDataServlet extends HttpServlet {
 			if (callback == null) {
 				out.print(jsonObject.toString());
 			} else {
-				out.print(String.format("%s(%s)", callback,
-						jsonObject.toString()));
+				out.print(String.format("%s(%s)", callback, jsonObject.toString()));
 			}
 			out.close();
 			return;
@@ -59,8 +58,7 @@ public class TYGetWebResetMapDataServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			try {
 				jsonObject.put("success", false);
-				jsonObject.put("description", "Building Not Exist: "
-						+ buildingID);
+				jsonObject.put("description", "Building Not Exist: " + buildingID);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -68,15 +66,14 @@ public class TYGetWebResetMapDataServlet extends HttpServlet {
 			if (callback == null) {
 				out.print(jsonObject.toString());
 			} else {
-				out.print(String.format("%s(%s)", callback,
-						jsonObject.toString()));
+				out.print(String.format("%s(%s)", callback, jsonObject.toString()));
 			}
 			out.close();
 			return;
 		}
 
-		TYWebMapPbfDataPool.resetWebMapDataByBuildingID(buildingID);
-		TYWebMapGeojsonDataPool.resetWebMapDataByBuildingID(buildingID);
+		TYCachingPool.resetDataByBuildingID(buildingID, TYCachingType.IndoorDataPbf);
+		TYCachingPool.resetDataByBuildingID(buildingID, TYCachingType.IndoorDataGeojson);
 
 		try {
 			jsonObject.put("success", true);
@@ -95,8 +92,9 @@ public class TYGetWebResetMapDataServlet extends HttpServlet {
 		out.close();
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 

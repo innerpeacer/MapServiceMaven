@@ -14,9 +14,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.map.api.TYParameterChecker;
+import cn.platalk.map.core.caching.TYCachingPool;
+import cn.platalk.map.core.caching.TYCachingType;
 import cn.platalk.map.core.config.TYServerEnvironment;
 import cn.platalk.map.core.web.TYWebMapGeojsonDataBuilder;
-import cn.platalk.map.core.web.TYWebMapGeojsonDataPool;
 import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
@@ -28,6 +29,7 @@ public class TYGetWebGeojsonMapDataServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -652247259445376881L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		TYServerEnvironment.initialize();
@@ -60,8 +62,8 @@ public class TYGetWebGeojsonMapDataServlet extends HttpServlet {
 
 		JSONObject mapDataObject = null;
 		if (TYServerEnvironment.isWindows() || TYServerEnvironment.isLinux()) {
-			if (TYWebMapGeojsonDataPool.existWebMapData(mapID)) {
-				mapDataObject = TYWebMapGeojsonDataPool.getWebMapData(mapID);
+			if (TYCachingPool.existDataID(mapID, TYCachingType.IndoorDataGeojson)) {
+				mapDataObject = (JSONObject) TYCachingPool.getCachingData(mapID, TYCachingType.IndoorDataGeojson);
 			} else {
 				TYMapDataDBAdapter mapdb = new TYMapDataDBAdapter(buildingID);
 				mapdb.connectDB();
@@ -75,9 +77,9 @@ public class TYGetWebGeojsonMapDataServlet extends HttpServlet {
 				symboldb.disconnectDB();
 
 				try {
-					mapDataObject = TYWebMapGeojsonDataBuilder.generateMapDataObject(mapDataRecordList,
-							fillSymbolList, iconSymbolList);
-					TYWebMapGeojsonDataPool.setWebMapData(mapID, mapDataObject);
+					mapDataObject = TYWebMapGeojsonDataBuilder.generateMapDataObject(mapDataRecordList, fillSymbolList,
+							iconSymbolList);
+					TYCachingPool.setCachingData(mapID, mapDataObject, TYCachingType.IndoorDataGeojson);
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -97,7 +99,7 @@ public class TYGetWebGeojsonMapDataServlet extends HttpServlet {
 			try {
 				mapDataObject = TYWebMapGeojsonDataBuilder.generateMapDataObject(mapDataRecordList, fillSymbolList,
 						iconSymbolList);
-				TYWebMapGeojsonDataPool.setWebMapData(mapID, mapDataObject);
+				TYCachingPool.setCachingData(mapID, mapDataObject, TYCachingType.IndoorDataGeojson);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -120,6 +122,7 @@ public class TYGetWebGeojsonMapDataServlet extends HttpServlet {
 		out.close();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

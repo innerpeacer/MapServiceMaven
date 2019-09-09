@@ -15,9 +15,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.map.api.TYParameterChecker;
+import cn.platalk.map.core.caching.TYCachingPool;
+import cn.platalk.map.core.caching.TYCachingType;
 import cn.platalk.map.core.config.TYServerEnvironment;
 import cn.platalk.map.core.pbf.beacon.TYWebBeacon2PbfUtils;
-import cn.platalk.map.core.web.beacon.TYWebBeaconPbfDataPool;
 import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
 import innerpeacer.beacon.pbf.TYBeaconPbf.TYLocatingBeaconListPbf;
@@ -27,6 +28,7 @@ public class TYGetWebPbfBeaconServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -6157282965658968156L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("request beacon pbf");
@@ -55,8 +57,11 @@ public class TYGetWebPbfBeaconServlet extends HttpServlet {
 
 		TYLocatingBeaconListPbf beaconListPbf = null;
 		if (TYServerEnvironment.isWindows() || TYServerEnvironment.isLinux()) {
-			if (TYWebBeaconPbfDataPool.existBeaconData(buildingID)) {
-				beaconListPbf = TYWebBeaconPbfDataPool.getBeaconData(buildingID);
+			// if (TYWebBeaconPbfDataPool.existBeaconData(buildingID)) {
+			// beaconListPbf = TYWebBeaconPbfDataPool.getBeaconData(buildingID);
+			if (TYCachingPool.existDataID(buildingID, TYCachingType.BeaconDataPbf)) {
+				beaconListPbf = (TYLocatingBeaconListPbf) TYCachingPool.getCachingData(buildingID,
+						TYCachingType.BeaconDataPbf);
 			} else {
 				TYBeaconDBAdapter beaconDB = new TYBeaconDBAdapter(buildingID);
 				beaconDB.connectDB();
@@ -64,7 +69,7 @@ public class TYGetWebPbfBeaconServlet extends HttpServlet {
 				beaconDB.disconnectDB();
 
 				beaconListPbf = TYWebBeacon2PbfUtils.beaconListToPbf(beaconList);
-				TYWebBeaconPbfDataPool.setBeaconData(buildingID, beaconListPbf);
+				TYCachingPool.setCachingData(buildingID, beaconListPbf, TYCachingType.BeaconDataPbf);
 			}
 		} else {
 			TYBeaconDBAdapter beaconDB = new TYBeaconDBAdapter(buildingID);
@@ -81,6 +86,7 @@ public class TYGetWebPbfBeaconServlet extends HttpServlet {
 		output.close();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
