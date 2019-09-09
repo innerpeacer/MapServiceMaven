@@ -2,7 +2,9 @@ package cn.platalk.map.entity.base;
 
 import com.vividsolutions.jts.geom.Geometry;
 
-public interface TYIMapDataFeatureRecord {
+import cn.platalk.common.TYIGeojsonFeature;
+
+public interface TYIMapDataFeatureRecord extends TYIGeojsonFeature {
 	public static final int LAYER_FLOOR = 1;
 	public static final int LAYER_ROOM = 2;
 	public static final int LAYER_ASSET = 3;

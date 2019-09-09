@@ -1,21 +1,24 @@
 package cn.platalk.map.entity.base.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONObject;
+
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.Point;
+
+import cn.platalk.foundation.TYGeojsonBuilder;
 import cn.platalk.map.entity.base.TYILocatingBeacon;
 
 public class TYLocatingBeacon extends TYBeacon implements TYILocatingBeacon {
-	static final String FIELD_BEACON_1_GEOM = "GEOM";
-	public static final String FIELD_BEACON_2_UUID = "UUID";
-	public static final String FIELD_BEACON_3_MAJOR = "MAJOR";
-	public static final String FIELD_BEACON_4_MINOR = "MINOR";
-	public static final String FIELD_BEACON_5_FLOOR = "FLOOR";
-	public static final String FIELD_BEACON_6_X = "X";
-	public static final String FIELD_BEACON_7_Y = "Y";
-	public static final String FIELD_BEACON_8_ROOM_ID = "ROOM_ID";
-	public static final String FIELD_BEACON_9_TAG = "TAG";
+	static GeometryFactory factory = new GeometryFactory();
 
-	public static final String FIELD_BEACON_10_MAP_ID = "MAP_ID";
-	public static final String FIELD_BEACON_11_BUILDING_ID = "BUILDING_ID";
-	public static final String FIELD_BEACON_12_CITY_ID = "CITY_ID";
+	static final String KEY_GEOJSON_BEACON_ATTRIBUTE_UUID = "uuid";
+	static final String KEY_GEOJSON_BEACON_ATTRIBUTE_MAJOR = "major";
+	static final String KEY_GEOJSON_BEACON_ATTRIBUTE_MINOR = "minor";
+	static final String KEY_GEOJSON_BEACON_ATTRIBUTE_FLOOR = "floor";
 
 	private TYLocalPoint location;
 	private String roomID;
@@ -33,6 +36,7 @@ public class TYLocatingBeacon extends TYBeacon implements TYILocatingBeacon {
 		this.roomID = roomID;
 	}
 
+	@Override
 	public String getRoomID() {
 		return roomID;
 	}
@@ -41,6 +45,7 @@ public class TYLocatingBeacon extends TYBeacon implements TYILocatingBeacon {
 		this.roomID = rID;
 	}
 
+	@Override
 	public TYLocalPoint getLocation() {
 		return location;
 	}
@@ -49,6 +54,7 @@ public class TYLocatingBeacon extends TYBeacon implements TYILocatingBeacon {
 		this.location = location;
 	}
 
+	@Override
 	public String getMapID() {
 		return mapID;
 	}
@@ -57,6 +63,7 @@ public class TYLocatingBeacon extends TYBeacon implements TYILocatingBeacon {
 		this.mapID = mapID;
 	}
 
+	@Override
 	public String getBuildingID() {
 		return buildingID;
 	}
@@ -65,11 +72,27 @@ public class TYLocatingBeacon extends TYBeacon implements TYILocatingBeacon {
 		this.buildingID = buildingID;
 	}
 
+	@Override
 	public String getCityID() {
 		return cityID;
 	}
 
 	public void setCityID(String cityID) {
 		this.cityID = cityID;
+	}
+
+	@Override
+	public JSONObject toGeojson() {
+		Point point = factory.createPoint(new Coordinate(location.getX(), location.getY()));
+		return TYGeojsonBuilder.buildGeometry(point, beaconPropertyMap());
+	}
+
+	Map<String, Object> beaconPropertyMap() {
+		Map<String, Object> propMap = new HashMap<String, Object>();
+		propMap.put(KEY_GEOJSON_BEACON_ATTRIBUTE_UUID, getUUID());
+		propMap.put(KEY_GEOJSON_BEACON_ATTRIBUTE_MAJOR, getMajor());
+		propMap.put(KEY_GEOJSON_BEACON_ATTRIBUTE_MINOR, getMinor());
+		propMap.put(KEY_GEOJSON_BEACON_ATTRIBUTE_FLOOR, getLocation().getFloor());
+		return propMap;
 	}
 }

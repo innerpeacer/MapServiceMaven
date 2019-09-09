@@ -135,7 +135,7 @@ public class TYWebMapGeojsonDataBuilder {
 					TYGeojsonBuilder.GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
 			JSONArray labelFeatures = new JSONArray();
 			for (TYMapDataFeatureRecord record : labelList) {
-				JSONObject feature = TYWebMapGeojsonObject.buildMapDataRecord(record);
+				JSONObject feature = record.toGeojson();
 				if (feature != null) {
 					labelFeatures.put(feature);
 				}
@@ -150,7 +150,7 @@ public class TYWebMapGeojsonDataBuilder {
 
 	private static JSONObject processFillFeatureRecord(TYMapDataFeatureRecord record, TYFillSymbolRecord fillRecord)
 			throws JSONException {
-		JSONObject featureObject = TYWebMapGeojsonObject.buildMapDataRecord(record);
+		JSONObject featureObject = record.toGeojson();
 		if (featureObject == null) {
 			return null;
 		}
@@ -171,7 +171,7 @@ public class TYWebMapGeojsonDataBuilder {
 
 	private static JSONObject processIconFeatureRecord(TYMapDataFeatureRecord record, TYIconSymbolRecord iconRecord)
 			throws JSONException {
-		JSONObject featureObject = TYWebMapGeojsonObject.buildMapDataRecord(record);
+		JSONObject featureObject = record.toGeojson();
 		if (featureObject == null) {
 			return null;
 		}

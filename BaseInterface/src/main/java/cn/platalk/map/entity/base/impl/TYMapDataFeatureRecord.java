@@ -1,18 +1,33 @@
 package cn.platalk.map.entity.base.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONObject;
+
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
 
+import cn.platalk.foundation.TYGeojsonBuilder;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 
 public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
-	public static final int LAYER_FLOOR = 1;
-	public static final int LAYER_ROOM = 2;
-	public static final int LAYER_ASSET = 3;
-	public static final int LAYER_FACILITY = 4;
-	public static final int LAYER_LABEL = 5;
-	public static final int LAYER_SHADE = 6;
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_GEO_ID = "GEO_ID";
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_POI_ID = "POI_ID";
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_NAME = "NAME";
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_CATEGORY_ID = "CATEGORY_ID";
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_SYMBOL_ID = "COLOR";
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_LEVEL_MIN = "LEVEL_MIN";
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_LEVEL_MAX = "LEVEL_MAX";
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_LABEL_X = "LABEL_X";
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_LABEL_Y = "LABEL_Y";
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_FLOOR_NUMBER = "floor";
+
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_EXTRUSION = "extrusion";
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_EXTRUSION_HEIGHT = "extrusion-height";
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_EXTRUSION_BASE = "extrusion-base";
+	static final String KEY_GEOJSON_MAP_DATA_ATTRIBUTE_EXTRUSION_OPACITY = "fill-extrusion-opacity";
 
 	public String objectID;
 	public byte[] geometry;
@@ -50,6 +65,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 
 	}
 
+	@Override
 	public String getObjectID() {
 		return objectID;
 	}
@@ -58,6 +74,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.objectID = objectID;
 	}
 
+	@Override
 	public byte[] getGeometry() {
 		return geometry;
 	}
@@ -66,6 +83,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.geometry = geometry;
 	}
 
+	@Override
 	public String getGeoID() {
 		return geoID;
 	}
@@ -74,6 +92,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.geoID = geoID;
 	}
 
+	@Override
 	public String getPoiID() {
 		return poiID;
 	}
@@ -82,6 +101,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.poiID = poiID;
 	}
 
+	@Override
 	public String getFloorID() {
 		return floorID;
 	}
@@ -90,6 +110,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.floorID = floorID;
 	}
 
+	@Override
 	public String getBuildingID() {
 		return buildingID;
 	}
@@ -98,6 +119,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.buildingID = buildingID;
 	}
 
+	@Override
 	public String getCategoryID() {
 		return categoryID;
 	}
@@ -106,6 +128,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.categoryID = categoryID;
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -114,6 +137,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.name = name;
 	}
 
+	@Override
 	public String getNameEn() {
 		return name_en;
 	}
@@ -122,6 +146,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.name_en = nameEn;
 	}
 
+	@Override
 	public String getNameOther() {
 		return name_other;
 	}
@@ -130,6 +155,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.name_other = nameOther;
 	}
 
+	@Override
 	public String getIcon() {
 		return icon;
 	}
@@ -138,6 +164,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.icon = icon;
 	}
 
+	@Override
 	public int getSymbolID() {
 		return symbolID;
 	}
@@ -146,6 +173,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.symbolID = symbolID;
 	}
 
+	@Override
 	public int getFloorNumber() {
 		return floorNumber;
 	}
@@ -154,6 +182,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.floorNumber = floorNumber;
 	}
 
+	@Override
 	public String getFloorName() {
 		return floorName;
 	}
@@ -162,6 +191,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.floorName = floorName;
 	}
 
+	@Override
 	public double getShapeLength() {
 		return shapeLength;
 	}
@@ -170,6 +200,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.shapeLength = shapeLength;
 	}
 
+	@Override
 	public double getShapeArea() {
 		return shapeArea;
 	}
@@ -178,6 +209,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.shapeArea = shapeArea;
 	}
 
+	@Override
 	public double getLabelX() {
 		return labelX;
 	}
@@ -186,6 +218,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.labelX = labelX;
 	}
 
+	@Override
 	public double getLabelY() {
 		return labelY;
 	}
@@ -194,6 +227,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.labelY = labelY;
 	}
 
+	@Override
 	public int getLayer() {
 		return layer;
 	}
@@ -202,6 +236,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.layer = layer;
 	}
 
+	@Override
 	public double getLevelMax() {
 		return levelMax;
 	}
@@ -210,6 +245,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.levelMax = levelMax;
 	}
 
+	@Override
 	public double getLevelMin() {
 		return levelMin;
 	}
@@ -218,6 +254,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.levelMin = levelMin;
 	}
 
+	@Override
 	public boolean isVisible() {
 		return visible;
 	}
@@ -226,6 +263,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.visible = isVisible;
 	}
 
+	@Override
 	public boolean isExtrusion() {
 		return extrusion;
 	}
@@ -234,6 +272,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.extrusion = extrusion;
 	}
 
+	@Override
 	public double getExtrusionHeight() {
 		return extrusionHeight;
 	}
@@ -242,6 +281,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.extrusionHeight = extrusionHeight;
 	}
 
+	@Override
 	public double getExtrusionBase() {
 		return extrusionBase;
 	}
@@ -250,6 +290,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.extrusionBase = extrusionBase;
 	}
 
+	@Override
 	public int getPriority() {
 		return priority;
 	}
@@ -258,6 +299,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 		this.priority = priority;
 	}
 
+	@Override
 	public Geometry getGeometryData() {
 		if (geometryData == null) {
 			readGeometry();
@@ -285,6 +327,42 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public JSONObject toGeojson() {
+		Geometry geometry = getGeometryData();
+		if (geometry == null) {
+			return null;
+		}
+		return TYGeojsonBuilder.buildGeometry(geometry, dataPropertyMap());
+
+	}
+
+	Map<String, Object> dataPropertyMap() {
+		Map<String, Object> propMap = new HashMap<String, Object>();
+		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_GEO_ID, geoID);
+		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_POI_ID, poiID);
+		if (name != null) {
+			propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_NAME, name);
+		} else {
+			propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_NAME, "null");
+		}
+		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_CATEGORY_ID, categoryID);
+		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_SYMBOL_ID, symbolID);
+		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_LEVEL_MIN, levelMin);
+		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_LEVEL_MAX, levelMax);
+
+		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_LABEL_X, labelX);
+		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_LABEL_Y, labelY);
+
+		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_FLOOR_NUMBER, floorNumber);
+		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_EXTRUSION, extrusion);
+		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_EXTRUSION_HEIGHT, extrusionHeight);
+		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_EXTRUSION_BASE, extrusionBase);
+		// propertiesObject.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_EXTRUSION_OPACITY,
+		// extrusionOpacity);
+		return propMap;
 	}
 
 	@Override

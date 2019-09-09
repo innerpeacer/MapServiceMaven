@@ -2,6 +2,7 @@ package cn.platalk.map.api.web.beacon;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,17 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.platalk.common.TYIGeojsonFeature;
+import cn.platalk.foundation.TYGeojsonBuilder;
 import cn.platalk.map.api.TYParameterChecker;
 import cn.platalk.map.core.config.TYServerEnvironment;
-import cn.platalk.map.core.web.beacon.TYWebBeaconGeojsonDataBuilder;
 import cn.platalk.map.core.web.beacon.TYWebBeaconGeojsonDataPool;
-import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
 
 @WebServlet("/web/geojson/getBeacon")
 public class TYGetWebGeojsonBeaconServlet extends HttpServlet {
 	private static final long serialVersionUID = -5796450412740461495L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("request beacon geojson");
@@ -57,29 +59,20 @@ public class TYGetWebGeojsonBeaconServlet extends HttpServlet {
 			} else {
 				TYBeaconDBAdapter beaconDB = new TYBeaconDBAdapter(buildingID);
 				beaconDB.connectDB();
-				List<TYLocatingBeacon> beaconList = beaconDB.getAllBeacons();
+				List<TYIGeojsonFeature> beaconFeatures = new ArrayList<TYIGeojsonFeature>(beaconDB.getAllBeacons());
 				beaconDB.disconnectDB();
-
-				try {
-					beaconDataObject = TYWebBeaconGeojsonDataBuilder.generateBeaconDataObject(beaconList);
-					TYWebBeaconGeojsonDataPool.setWebBeaconpData(buildingID, beaconDataObject);
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
+				beaconDataObject = TYGeojsonBuilder.buildFeatureCollection(beaconFeatures);
+				TYWebBeaconGeojsonDataPool.setWebBeaconpData(buildingID, beaconDataObject);
 			}
 		} else {
 			TYBeaconDBAdapter beaconDB = new TYBeaconDBAdapter(buildingID);
 			beaconDB.connectDB();
-			List<TYLocatingBeacon> beaconList = beaconDB.getAllBeacons();
+			List<TYIGeojsonFeature> beaconFeatures = new ArrayList<TYIGeojsonFeature>(beaconDB.getAllBeacons());
 			beaconDB.disconnectDB();
 
-			try {
-				beaconDataObject = TYWebBeaconGeojsonDataBuilder.generateBeaconDataObject(beaconList);
-				TYWebBeaconGeojsonDataPool.setWebBeaconpData(buildingID, beaconDataObject);
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-			System.out.println(beaconList.size() + " beacons");
+			beaconDataObject = TYGeojsonBuilder.buildFeatureCollection(beaconFeatures);
+			TYWebBeaconGeojsonDataPool.setWebBeaconpData(buildingID, beaconDataObject);
+			System.out.println(beaconFeatures.size() + " beacons");
 		}
 
 		jsonObject = beaconDataObject;
@@ -98,6 +91,7 @@ public class TYGetWebGeojsonBeaconServlet extends HttpServlet {
 		out.close();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
