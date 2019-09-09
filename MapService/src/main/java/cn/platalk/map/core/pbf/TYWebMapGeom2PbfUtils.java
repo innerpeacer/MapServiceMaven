@@ -9,7 +9,7 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
-import cn.platalk.utils.coordinate.TYCoordProjection;
+import cn.platalk.common.TYCoordProjection;
 import innerpeacer.mapdata.pbf.TYGeometryPbf;
 import innerpeacer.mapdata.pbf.TYGeometryPbf.TYFourDimensionCoord;
 import innerpeacer.mapdata.pbf.TYGeometryPbf.TYGeometryType;

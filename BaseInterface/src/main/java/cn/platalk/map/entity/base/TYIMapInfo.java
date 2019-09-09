@@ -1,8 +1,8 @@
 package cn.platalk.map.entity.base;
 
-import org.json.JSONObject;
+import cn.platalk.common.TYIJsonFeature;
 
-public interface TYIMapInfo {
+public interface TYIMapInfo extends TYIJsonFeature {
 
 	public String getCityID();
 
@@ -18,5 +18,4 @@ public interface TYIMapInfo {
 
 	public TYIMapExtent getMapExtent();
 
-	public JSONObject toJson();
 }

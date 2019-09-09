@@ -10,8 +10,8 @@ import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 
+import cn.platalk.foundation.TYGeojsonBuilder;
 import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
-import cn.platalk.utils.geojson.TYGeojsonBuilder;
 
 public class TYWebBeaconGeojsonObject {
 

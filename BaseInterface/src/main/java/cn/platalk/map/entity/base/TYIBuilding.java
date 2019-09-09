@@ -1,8 +1,8 @@
 package cn.platalk.map.entity.base;
 
-import org.json.JSONObject;
+import cn.platalk.common.TYIJsonFeature;
 
-public interface TYIBuilding {
+public interface TYIBuilding extends TYIJsonFeature {
 	public String getCityID();
 
 	public String getBuildingID();
@@ -30,7 +30,5 @@ public interface TYIBuilding {
 	public double[] getWgs84CalibrationPoint();
 
 	public double[] getWtCalibrationPoint();
-
-	public JSONObject toJson();
 
 }

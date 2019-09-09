@@ -9,10 +9,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.platalk.foundation.TYGeojsonBuilder;
 import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.utils.geojson.TYGeojsonBuilder;
 
 public class TYWebMapGeojsonDataBuilder {
 	public static final String KEY_BOX_WEB_MAP_DATA_FLOOR = "floor";

@@ -55,30 +55,37 @@ public class TYFillSymbolRecord implements TYIFillSymbolRecord {
 		this.levelMax = levelMax;
 	}
 
+	@Override
 	public int getUID() {
 		return UID;
 	}
 
+	@Override
 	public int getSymbolID() {
 		return symbolID;
 	}
 
+	@Override
 	public String getFillColor() {
 		return fillColor;
 	}
 
+	@Override
 	public String getOutlineColor() {
 		return outlineColor;
 	}
 
+	@Override
 	public double getLineWidth() {
 		return lineWidth;
 	}
 
+	@Override
 	public double getLevelMin() {
 		return levelMin;
 	}
 
+	@Override
 	public double getLevelMax() {
 		return levelMax;
 	}
@@ -92,6 +99,7 @@ public class TYFillSymbolRecord implements TYIFillSymbolRecord {
 		return this.visible;
 	}
 
+	@Override
 	public JSONObject toJson() {
 		JSONObject symbolObject = new JSONObject();
 		symbolObject.put(KEY_JSON_FILL_SYMBOL_ID, getSymbolID());

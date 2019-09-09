@@ -35,26 +35,32 @@ public class TYCity implements TYICity {
 		return false;
 	}
 
+	@Override
 	public String getCityID() {
 		return cityID;
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public String getSname() {
 		return sname;
 	}
 
+	@Override
 	public double getLongitude() {
 		return longitude;
 	}
 
+	@Override
 	public double getLatitude() {
 		return latitude;
 	}
 
+	@Override
 	public int getStatus() {
 		return status;
 	}

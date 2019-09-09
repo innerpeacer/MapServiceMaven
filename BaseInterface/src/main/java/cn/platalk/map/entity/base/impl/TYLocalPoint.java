@@ -3,9 +3,10 @@ package cn.platalk.map.entity.base.impl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.platalk.common.TYIJsonFeature;
 import cn.platalk.map.entity.base.TYILocalPoint;
 
-public class TYLocalPoint implements TYILocalPoint {
+public class TYLocalPoint implements TYILocalPoint, TYIJsonFeature {
 	private static final String KEY_X = "x";
 	private static final String KEY_Y = "y";
 	private static final String KEY_FLOOR = "floor";
@@ -58,6 +59,7 @@ public class TYLocalPoint implements TYILocalPoint {
 		return jsonObject;
 	}
 
+	@Override
 	public String toString() {
 		return String.format("(%f, %f) in floor %d", x, y, floor);
 	}
@@ -70,14 +72,17 @@ public class TYLocalPoint implements TYILocalPoint {
 		this.y = y;
 	}
 
+	@Override
 	public double getX() {
 		return x;
 	}
 
+	@Override
 	public double getY() {
 		return y;
 	}
 
+	@Override
 	public int getFloor() {
 		return floor;
 	}
@@ -86,6 +91,7 @@ public class TYLocalPoint implements TYILocalPoint {
 		this.floor = floor;
 	}
 
+	@Override
 	public JSONObject toJson() {
 		return null;
 	}

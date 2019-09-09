@@ -106,50 +106,62 @@ public class TYBuilding implements TYIBuilding {
 		this.status = status;
 	}
 
+	@Override
 	public String getCityID() {
 		return cityID;
 	}
 
+	@Override
 	public String getBuildingID() {
 		return buildingID;
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public String getAddress() {
 		return address;
 	}
 
+	@Override
 	public double getLongitude() {
 		return longitude;
 	}
 
+	@Override
 	public double getLatitude() {
 		return latitude;
 	}
 
+	@Override
 	public double getInitAngle() {
 		return initAngle;
 	}
 
+	@Override
 	public int getInitFloorIndex() {
 		return initFloorIndex;
 	}
 
+	@Override
 	public String getRouteURL() {
 		return routeURL;
 	}
 
+	@Override
 	public TYMapSize getOffset() {
 		return offset;
 	}
 
+	@Override
 	public TYIMapExtent getBuildingExtent() {
 		return new TYMapExtent(xmin, ymin, xmax, ymax);
 	}
 
+	@Override
 	public int getStatus() {
 		return status;
 	}
@@ -170,6 +182,7 @@ public class TYBuilding implements TYIBuilding {
 		this.ymax = ymax;
 	}
 
+	@Override
 	public double[] getWgs84CalibrationPoint() {
 		return wgs84CalibrationPoint;
 	}
@@ -178,6 +191,7 @@ public class TYBuilding implements TYIBuilding {
 		this.wgs84CalibrationPoint = wgs84CalibrationPoint;
 	}
 
+	@Override
 	public double[] getWtCalibrationPoint() {
 		return wtCalibrationPoint;
 	}
@@ -186,6 +200,7 @@ public class TYBuilding implements TYIBuilding {
 		this.wtCalibrationPoint = wtCalibrationPoint;
 	}
 
+	@Override
 	public JSONObject toJson() {
 		JSONObject buildingObject = new JSONObject();
 		buildingObject.put(KEY_JSON_BUILDING_CITY_ID, getCityID());

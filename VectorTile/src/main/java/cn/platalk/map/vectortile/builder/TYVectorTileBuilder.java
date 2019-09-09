@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.vividsolutions.jts.geom.Envelope;
 
+import cn.platalk.common.TYCoordProjection;
 import cn.platalk.map.entity.base.TYIBuilding;
 import cn.platalk.map.entity.base.TYICity;
 import cn.platalk.map.entity.base.TYIFillSymbolRecord;
@@ -19,7 +20,6 @@ import cn.platalk.map.entity.base.impl.TYMapInfo;
 import cn.platalk.map.vectortile.cbm.json.TYCBMBuilder;
 import cn.platalk.map.vectortile.cbm.pbf.TYCBMPbfBuilder;
 import cn.platalk.map.vectortile.pbf.VectorTile;
-import cn.platalk.utils.coordinate.TYCoordProjection;
 import cn.platalk.utils.third.TYFileUtils;
 
 public class TYVectorTileBuilder {

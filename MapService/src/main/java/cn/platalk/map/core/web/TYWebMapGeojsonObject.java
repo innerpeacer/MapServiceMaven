@@ -8,8 +8,8 @@ import org.json.JSONObject;
 
 import com.vividsolutions.jts.geom.Geometry;
 
+import cn.platalk.foundation.TYGeojsonBuilder;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.utils.geojson.TYGeojsonBuilder;
 
 class TYWebMapGeojsonObject {
 

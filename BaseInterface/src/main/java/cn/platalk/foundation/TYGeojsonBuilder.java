@@ -1,5 +1,6 @@
-package cn.platalk.utils.geojson;
+package cn.platalk.foundation;
 
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -16,7 +17,8 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
-import cn.platalk.utils.coordinate.TYCoordProjection;
+import cn.platalk.common.TYCoordProjection;
+import cn.platalk.common.TYIGeojsonFeature;
 
 public class TYGeojsonBuilder {
 	public static JSONObject emptyGeojson;
@@ -54,13 +56,28 @@ public class TYGeojsonBuilder {
 	public static final String VALUE_GEOMETRY_TYPE_POLYGON = "Polygon";
 	public static final String VALUE_GEOMETRY_TYPE_MULTIPOLYGON = "MultiPolygon";
 
-	static final String GEOJSON_VALUE_GEOMETRY_TYPE__POINT = "Point";
-	static final String GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOINT = "MultiPoint";
-	static final String GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING = "LineString";
-	static final String GEOJSON_VALUE_GEOMETRY_TYPE__MULTILINESTRING = "MultiLineString";
-	static final String GEOJSON_VALUE_GEOMETRY_TYPE__POLYGON = "Polygon";
-	static final String GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOLYGON = "MultiPolygon";
-	static final String GEOJSON_VALUE_GEOMETRY_TYPE__GEOMETRYCOLLECTION = "GeometryCollection";
+	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__POINT = "Point";
+	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOINT = "MultiPoint";
+	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING = "LineString";
+	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__MULTILINESTRING = "MultiLineString";
+	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__POLYGON = "Polygon";
+	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOLYGON = "MultiPolygon";
+	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__GEOMETRYCOLLECTION = "GeometryCollection";
+
+	public static JSONObject buildFeatureCollection(List<TYIGeojsonFeature> features) {
+		if (features == null || features.size() == 0) {
+			return emptyGeojson;
+		}
+
+		JSONObject result = new JSONObject();
+		result.put(GEOJSON_KEY_GEOJSON_TYPE, GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
+		JSONArray featureArray = new JSONArray();
+		for (TYIGeojsonFeature feature : features) {
+			featureArray.put(feature.toGeojson());
+		}
+		result.put(GEOJSON_KEY_FEATURES, featureArray);
+		return result;
+	}
 
 	public static JSONObject buildGeometry(Geometry geometry, Map<String, Object> propMap) {
 		JSONObject resultObject = new JSONObject();
@@ -101,7 +118,7 @@ public class TYGeojsonBuilder {
 		return resultObject;
 	}
 
-	private static JSONArray buildGeojsonPointFeature(Point point) throws JSONException {
+	static JSONArray buildGeojsonPointFeature(Point point) throws JSONException {
 		JSONArray coordArray = new JSONArray();
 		double xy[] = TYCoordProjection.mercatorToLngLat(point.getX(), point.getY());
 		coordArray.put(xy[0]);
@@ -109,7 +126,7 @@ public class TYGeojsonBuilder {
 		return coordArray;
 	}
 
-	private static JSONArray buildGeojsonMultiPointFeature(MultiPoint mp) throws JSONException {
+	static JSONArray buildGeojsonMultiPointFeature(MultiPoint mp) throws JSONException {
 		JSONArray coordArray = new JSONArray();
 		for (int i = 0; i < mp.getNumGeometries(); ++i) {
 			Point point = (Point) mp.getGeometryN(i);
@@ -118,7 +135,7 @@ public class TYGeojsonBuilder {
 		return coordArray;
 	}
 
-	private static JSONArray buildGeojsonLineString(LineString ls) throws JSONException {
+	static JSONArray buildGeojsonLineString(LineString ls) throws JSONException {
 		JSONArray coordArray = new JSONArray();
 		int pointCount = ls.getNumPoints();
 		for (int i = 0; i < pointCount; ++i) {
@@ -132,7 +149,7 @@ public class TYGeojsonBuilder {
 		return coordArray;
 	}
 
-	private static JSONArray buildGeojsonMultiLineString(MultiLineString mls) throws JSONException {
+	static JSONArray buildGeojsonMultiLineString(MultiLineString mls) throws JSONException {
 		JSONArray coordArray = new JSONArray();
 		for (int i = 0; i < mls.getNumGeometries(); ++i) {
 			LineString ls = (LineString) mls.getGeometryN(i);
@@ -141,7 +158,7 @@ public class TYGeojsonBuilder {
 		return coordArray;
 	}
 
-	private static JSONArray buildGeojsonPolygonFeature(Polygon polygon) throws JSONException {
+	static JSONArray buildGeojsonPolygonFeature(Polygon polygon) throws JSONException {
 		JSONArray coordArray = new JSONArray();
 		coordArray.put(buildGeojsonLineString(polygon.getExteriorRing()));
 
@@ -152,7 +169,7 @@ public class TYGeojsonBuilder {
 		return coordArray;
 	}
 
-	private static JSONArray buildGeojsonMultiPolygonFeature(MultiPolygon mp) throws JSONException {
+	static JSONArray buildGeojsonMultiPolygonFeature(MultiPolygon mp) throws JSONException {
 		JSONArray coordArray = new JSONArray();
 
 		for (int l = 0; l < mp.getNumGeometries(); ++l) {

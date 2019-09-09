@@ -1,8 +1,8 @@
 package cn.platalk.map.entity.base;
 
-import org.json.JSONObject;
+import cn.platalk.common.TYIJsonFeature;
 
-public interface TYICity {
+public interface TYICity extends TYIJsonFeature {
 	public String getCityID();
 
 	public String getName();
@@ -14,6 +14,4 @@ public interface TYICity {
 	public double getLatitude();
 
 	public int getStatus();
-
-	public JSONObject toJson();
 }

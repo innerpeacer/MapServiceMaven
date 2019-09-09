@@ -1,4 +1,4 @@
-package cn.platalk.utils.coordinate;
+package cn.platalk.common;
 
 public class TYCoordProjection {
 	private static final double CIRCUMFERENCE_OF_EARTH = 20037508.342789;

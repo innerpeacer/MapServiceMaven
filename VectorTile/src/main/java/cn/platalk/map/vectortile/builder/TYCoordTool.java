@@ -1,6 +1,6 @@
 package cn.platalk.map.vectortile.builder;
 
-import cn.platalk.utils.coordinate.TYCoordProjection;
+import cn.platalk.common.TYCoordProjection;
 
 public class TYCoordTool {
 	static final boolean USE_1 = true;

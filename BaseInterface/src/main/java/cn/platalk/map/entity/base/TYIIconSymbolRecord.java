@@ -1,12 +1,10 @@
 package cn.platalk.map.entity.base;
 
-import org.json.JSONObject;
+import cn.platalk.common.TYIJsonFeature;
 
-public interface TYIIconSymbolRecord {
+public interface TYIIconSymbolRecord extends TYIJsonFeature {
 	public int getSymbolID();
 
 	public String getIcon();
-
-	public JSONObject toJson();
 
 }

@@ -15,6 +15,7 @@ public class TYIconSymbolRecord implements TYIIconSymbolRecord {
 
 	}
 
+	@Override
 	public int getSymbolID() {
 		return symbolID;
 	}
@@ -23,6 +24,7 @@ public class TYIconSymbolRecord implements TYIIconSymbolRecord {
 		this.symbolID = symbolID;
 	}
 
+	@Override
 	public String getIcon() {
 		return icon;
 	}

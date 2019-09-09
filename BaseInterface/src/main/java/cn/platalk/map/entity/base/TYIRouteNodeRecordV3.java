@@ -1,6 +1,8 @@
 package cn.platalk.map.entity.base;
 
-public interface TYIRouteNodeRecordV3 {
+import cn.platalk.common.TYIGeojsonFeature;
+
+public interface TYIRouteNodeRecordV3 extends TYIGeojsonFeature {
 	public String getNodeID();
 
 	public void setNodeID(String nodeID);

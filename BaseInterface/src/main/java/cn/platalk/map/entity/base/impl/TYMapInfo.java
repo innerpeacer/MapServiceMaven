@@ -36,30 +36,37 @@ public class TYMapInfo implements TYIMapInfo {
 		super();
 	}
 
+	@Override
 	public String getCityID() {
 		return cityID;
 	}
 
+	@Override
 	public String getBuildingID() {
 		return buildingID;
 	}
 
+	@Override
 	public String getMapID() {
 		return mapID;
 	}
 
+	@Override
 	public TYMapSize getMapSize() {
 		return new TYMapSize(size_x, size_y);
 	}
 
+	@Override
 	public TYMapExtent getMapExtent() {
 		return new TYMapExtent(xmin, ymin, xmax, ymax);
 	}
 
+	@Override
 	public String getFloorName() {
 		return floorName;
 	}
 
+	@Override
 	public int getFloorNumber() {
 		return floorNumber;
 	}
@@ -116,6 +123,7 @@ public class TYMapInfo implements TYIMapInfo {
 		this.ymax = ymax;
 	}
 
+	@Override
 	public JSONObject toJson() {
 		JSONObject mapInfoObject = new JSONObject();
 		mapInfoObject.put(KEY_JSON_MAPINFO_CITYID, getCityID());

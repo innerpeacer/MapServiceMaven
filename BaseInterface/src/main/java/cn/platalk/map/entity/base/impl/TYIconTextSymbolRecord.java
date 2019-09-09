@@ -135,86 +135,107 @@ public class TYIconTextSymbolRecord implements TYIIconTextSymbolRecord {
 		this.priority = priority;
 	}
 
+	@Override
 	public int getUID() {
 		return UID;
 	}
 
+	@Override
 	public int getSymbolID() {
 		return symbolID;
 	}
 
+	@Override
 	public boolean isIconVisible() {
 		return iconVisible;
 	}
 
+	@Override
 	public double getIconSize() {
 		return iconSize;
 	}
 
+	@Override
 	public double getIconRotate() {
 		return iconRotate;
 	}
 
+	@Override
 	public double getIconOffsetX() {
 		return iconOffsetX;
 	}
 
+	@Override
 	public double getIconOffsetY() {
 		return iconOffsetY;
 	}
 
+	@Override
 	public boolean isTextVisible() {
 		return textVisible;
 	}
 
+	@Override
 	public double getTextSize() {
 		return textSize;
 	}
 
+	@Override
 	public String getTextFont() {
 		return textFont;
 	}
 
+	@Override
 	public String getTextColor() {
 		return textColor;
 	}
 
+	@Override
 	public double getTextRotate() {
 		return textRotate;
 	}
 
+	@Override
 	public double getTextOffsetX() {
 		return textOffsetX;
 	}
 
+	@Override
 	public double getTextOffsetY() {
 		return textOffsetY;
 	}
 
+	@Override
 	public double getLevelMin() {
 		return levelMin;
 	}
 
+	@Override
 	public double getLevelMax() {
 		return levelMax;
 	}
 
+	@Override
 	public String getOtherPaint() {
 		return otherPaint;
 	}
 
+	@Override
 	public String getOtherLayout() {
 		return otherLayout;
 	}
 
+	@Override
 	public String getDescription() {
 		return description;
 	}
 
+	@Override
 	public int getPriority() {
 		return priority;
 	}
 
+	@Override
 	public JSONObject toJson() {
 		JSONObject symbolObject = new JSONObject();
 		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_ID, getSymbolID());
