@@ -2,6 +2,7 @@ package cn.platalk.map.api.web.beacon;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,14 +15,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.platalk.common.TYIJsonFeature;
+import cn.platalk.foundation.TYJsonBuilder;
 import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
-import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
+import cn.platalk.mysql.TYMysqlDBHelper;
 
 @WebServlet("/web/getBeacon")
 public class TYGetWebBeaconServlet extends HttpServlet {
 	private static final long serialVersionUID = -5796450412740461495L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String buildingID = request.getParameter("buildingID");
@@ -47,22 +50,9 @@ public class TYGetWebBeaconServlet extends HttpServlet {
 			return;
 		}
 
-		TYBeaconDBAdapter beaconDB = new TYBeaconDBAdapter(buildingID);
-		beaconDB.connectDB();
-		List<TYLocatingBeacon> beaconList = beaconDB.getAllBeacons();
-		beaconDB.disconnectDB();
+		List<TYIJsonFeature> beaconList = new ArrayList<TYIJsonFeature>(TYMysqlDBHelper.getAllBeacons(buildingID));
+		JSONArray beaconArray = TYJsonBuilder.buildJsonArray(beaconList);
 
-		JSONArray beaconArray = new JSONArray();
-		for (TYLocatingBeacon beacon : beaconList) {
-			JSONObject beaconObject = new JSONObject();
-			beaconObject.put("x", beacon.getLocation().getX());
-			beaconObject.put("y", beacon.getLocation().getY());
-			beaconObject.put("floor", beacon.getLocation().getFloor());
-			beaconObject.put("uuid", beacon.getUUID());
-			beaconObject.put("major", beacon.getMajor());
-			beaconObject.put("minor", beacon.getMinor());
-			beaconArray.put(beaconObject);
-		}
 		jsonObject.put("beacons", beaconArray);
 		jsonObject.put("count", beaconList.size());
 
@@ -81,6 +71,7 @@ public class TYGetWebBeaconServlet extends HttpServlet {
 		out.close();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

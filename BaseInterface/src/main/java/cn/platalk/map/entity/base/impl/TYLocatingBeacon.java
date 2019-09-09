@@ -15,6 +15,13 @@ import cn.platalk.map.entity.base.TYILocatingBeacon;
 public class TYLocatingBeacon extends TYBeacon implements TYILocatingBeacon {
 	static GeometryFactory factory = new GeometryFactory();
 
+	static final String KEY_JSON_BEACON_1_UUID = "uuid";
+	static final String KEY_JSON_BEACON_2_MAJOR = "major";
+	static final String KEY_JSON_BEACON_3_MINOR = "minor";
+	static final String KEY_JSON_BEACON_4_X = "x";
+	static final String KEY_JSON_BEACON_5_Y = "y";
+	static final String KEY_JSON_BEACON_6_FLOOR = "floor";
+
 	static final String KEY_GEOJSON_BEACON_ATTRIBUTE_UUID = "uuid";
 	static final String KEY_GEOJSON_BEACON_ATTRIBUTE_MAJOR = "major";
 	static final String KEY_GEOJSON_BEACON_ATTRIBUTE_MINOR = "minor";
@@ -79,6 +86,18 @@ public class TYLocatingBeacon extends TYBeacon implements TYILocatingBeacon {
 
 	public void setCityID(String cityID) {
 		this.cityID = cityID;
+	}
+
+	@Override
+	public JSONObject toJson() {
+		JSONObject beaconObject = new JSONObject();
+		beaconObject.put(KEY_JSON_BEACON_1_UUID, getUUID());
+		beaconObject.put(KEY_JSON_BEACON_2_MAJOR, getMajor());
+		beaconObject.put(KEY_JSON_BEACON_3_MINOR, getMinor());
+		beaconObject.put(KEY_JSON_BEACON_4_X, getLocation().getX());
+		beaconObject.put(KEY_JSON_BEACON_5_Y, getLocation().getY());
+		beaconObject.put(KEY_JSON_BEACON_6_FLOOR, getLocation().getFloor());
+		return beaconObject;
 	}
 
 	@Override

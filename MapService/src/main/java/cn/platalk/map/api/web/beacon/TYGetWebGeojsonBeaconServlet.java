@@ -20,7 +20,7 @@ import cn.platalk.map.api.TYParameterChecker;
 import cn.platalk.map.core.caching.TYCachingPool;
 import cn.platalk.map.core.caching.TYCachingType;
 import cn.platalk.map.core.config.TYServerEnvironment;
-import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
+import cn.platalk.mysql.TYMysqlDBHelper;
 
 @WebServlet("/web/geojson/getBeacon")
 public class TYGetWebGeojsonBeaconServlet extends HttpServlet {
@@ -59,19 +59,14 @@ public class TYGetWebGeojsonBeaconServlet extends HttpServlet {
 				beaconDataObject = (JSONObject) TYCachingPool.getCachingData(buildingID,
 						TYCachingType.BeaconDataGeojson);
 			} else {
-				TYBeaconDBAdapter beaconDB = new TYBeaconDBAdapter(buildingID);
-				beaconDB.connectDB();
-				List<TYIGeojsonFeature> beaconFeatures = new ArrayList<TYIGeojsonFeature>(beaconDB.getAllBeacons());
-				beaconDB.disconnectDB();
+				List<TYIGeojsonFeature> beaconFeatures = new ArrayList<TYIGeojsonFeature>(
+						TYMysqlDBHelper.getAllBeacons(buildingID));
 				beaconDataObject = TYGeojsonBuilder.buildFeatureCollection(beaconFeatures);
 				TYCachingPool.setCachingData(buildingID, beaconDataObject, TYCachingType.BeaconDataGeojson);
 			}
 		} else {
-			TYBeaconDBAdapter beaconDB = new TYBeaconDBAdapter(buildingID);
-			beaconDB.connectDB();
-			List<TYIGeojsonFeature> beaconFeatures = new ArrayList<TYIGeojsonFeature>(beaconDB.getAllBeacons());
-			beaconDB.disconnectDB();
-
+			List<TYIGeojsonFeature> beaconFeatures = new ArrayList<TYIGeojsonFeature>(
+					TYMysqlDBHelper.getAllBeacons(buildingID));
 			beaconDataObject = TYGeojsonBuilder.buildFeatureCollection(beaconFeatures);
 			TYCachingPool.setCachingData(buildingID, beaconDataObject, TYCachingType.BeaconDataGeojson);
 			System.out.println(beaconFeatures.size() + " beacons");

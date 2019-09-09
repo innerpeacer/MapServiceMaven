@@ -27,11 +27,7 @@ import cn.platalk.map.route.core.TYServerMultiRouteResult;
 import cn.platalk.map.route.core_v3.TYServerMultiRouteManagerV3;
 import cn.platalk.map.route.core_v3.TYServerMultiRouteResultV3;
 import cn.platalk.map.route.core_v3.TYServerRouteOptions;
-import cn.platalk.mysql.map.TYBuildingDBAdapter;
-import cn.platalk.mysql.map.TYMapDataDBAdapter;
-import cn.platalk.mysql.map.TYMapInfoDBAdapter;
-import cn.platalk.mysql.map.TYRouteDBAdapter;
-import cn.platalk.mysql.map.TYRouteDBAdapterV3;
+import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.route.api.TYApiResponse;
 import cn.platalk.route.core.routemanager.TYMultiRouteManagerCollection;
 import cn.platalk.route.core_v3.routemanager.TYMultiRouteManagerCollectionV3;
@@ -41,32 +37,17 @@ public class RouteServiceServlet extends HttpServlet {
 	private static final long serialVersionUID = -5426270768806441823L;
 
 	protected void initRouteManager(String buildingID) {
-		TYBuildingDBAdapter buildingDB = new TYBuildingDBAdapter();
-		buildingDB.connectDB();
-		TYBuilding currentBuilding = buildingDB.getBuilding(buildingID);
-		buildingDB.disconnectDB();
-
-		TYMapInfoDBAdapter mapInfoDB = new TYMapInfoDBAdapter();
-		mapInfoDB.connectDB();
-		List<TYIMapInfo> mapInfoList = new ArrayList<TYIMapInfo>();
-		mapInfoList.addAll(mapInfoDB.getMapInfos(buildingID));
-		mapInfoDB.disconnectDB();
+		TYBuilding currentBuilding = TYMysqlDBHelper.getBuilding(buildingID);
+		List<TYIMapInfo> mapInfoList = new ArrayList<TYIMapInfo>(TYMysqlDBHelper.getMapInfos(buildingID));
 
 		if (currentBuilding.getRouteURL().equals("V3") || currentBuilding.getRouteURL().equals("V4")) {
 			if (currentBuilding != null && mapInfoList.size() > 0) {
-				TYRouteDBAdapterV3 routeDB = new TYRouteDBAdapterV3(currentBuilding.getBuildingID());
-				routeDB.connectDB();
-				List<TYIRouteNodeRecordV3> nodeList = new ArrayList<TYIRouteNodeRecordV3>();
-				nodeList.addAll(routeDB.getAllNodeRecords());
-				List<TYIRouteLinkRecordV3> linkList = new ArrayList<TYIRouteLinkRecordV3>();
-				linkList.addAll(routeDB.getAllLinkRecords());
-				routeDB.disconnectDB();
-
-				TYMapDataDBAdapter mapDB = new TYMapDataDBAdapter(currentBuilding.getBuildingID());
-				mapDB.connectDB();
-				List<TYIMapDataFeatureRecord> mapRecordList = new ArrayList<TYIMapDataFeatureRecord>();
-				mapRecordList.addAll(mapDB.getAllMapDataRecords());
-				mapDB.disconnectDB();
+				List<TYIRouteNodeRecordV3> nodeList = TYMysqlDBHelper
+						.getAllRouteNodeRecordV3(currentBuilding.getBuildingID());
+				List<TYIRouteLinkRecordV3> linkList = TYMysqlDBHelper
+						.getAllRouteLinkRecordV3(currentBuilding.getBuildingID());
+				List<TYIMapDataFeatureRecord> mapRecordList = new ArrayList<TYIMapDataFeatureRecord>(
+						TYMysqlDBHelper.getMapDataRecords(buildingID));
 
 				TYServerMultiRouteManagerV3 routeManager = new TYServerMultiRouteManagerV3(currentBuilding, mapInfoList,
 						nodeList, linkList, mapRecordList);
@@ -74,13 +55,10 @@ public class RouteServiceServlet extends HttpServlet {
 			}
 		} else {
 			if (currentBuilding != null && mapInfoList.size() > 0) {
-				TYRouteDBAdapter routeDB = new TYRouteDBAdapter(currentBuilding.getBuildingID());
-				routeDB.connectDB();
-				List<TYIRouteNodeRecord> nodeList = new ArrayList<TYIRouteNodeRecord>();
-				nodeList.addAll(routeDB.getAllNodeRecords());
-				List<TYIRouteLinkRecord> linkList = new ArrayList<TYIRouteLinkRecord>();
-				linkList.addAll(routeDB.getAllLinkRecords());
-				routeDB.disconnectDB();
+				List<TYIRouteNodeRecord> nodeList = TYMysqlDBHelper
+						.getAllRouteNodeRecord(currentBuilding.getBuildingID());
+				List<TYIRouteLinkRecord> linkList = TYMysqlDBHelper
+						.getAllRouteLinkRecord(currentBuilding.getBuildingID());
 
 				TYServerMultiRouteManager routeManager = new TYServerMultiRouteManager(currentBuilding, mapInfoList,
 						nodeList, linkList);
@@ -130,10 +108,7 @@ public class RouteServiceServlet extends HttpServlet {
 			return;
 		}
 
-		TYBuildingDBAdapter buildingDB = new TYBuildingDBAdapter();
-		buildingDB.connectDB();
-		TYBuilding currentBuilding = buildingDB.getBuilding(buildingID);
-		buildingDB.disconnectDB();
+		TYBuilding currentBuilding = TYMysqlDBHelper.getBuilding(buildingID);
 
 		if (currentBuilding.getRouteURL().equals("V3") || currentBuilding.getRouteURL().equals("V4")) {
 			if (!TYMultiRouteManagerCollectionV3.ExistRouteManager(buildingID)) {

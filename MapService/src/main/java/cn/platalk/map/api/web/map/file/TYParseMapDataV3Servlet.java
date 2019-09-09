@@ -23,6 +23,7 @@ import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
+import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.mysql.map.TYBuildingDBAdapter;
 import cn.platalk.mysql.map.TYCityDBAdapter;
 import cn.platalk.mysql.map.TYMapDataDBAdapter;
@@ -35,6 +36,7 @@ import cn.platalk.utils.third.TYZipUtil;
 public class TYParseMapDataV3Servlet extends HttpServlet {
 	private static final long serialVersionUID = -5584955122349462054L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
 		final String buildingID = request.getParameter("buildingID");
@@ -50,19 +52,7 @@ public class TYParseMapDataV3Servlet extends HttpServlet {
 			return;
 		}
 
-		TYBuildingDBAdapter db = new TYBuildingDBAdapter();
-		db.connectDB();
-		db.createTableIfNotExist();
-		final TYBuilding building = db.getBuilding(buildingID);
-		db.disconnectDB();
-
-		// if (building == null) {
-		// PrintWriter out = response.getWriter();
-		// System.out.println("BuildingID: " + buildingID + " not Exist!");
-		// out.println("BuildingID: " + buildingID + " not Exist!");
-		// out.close();
-		// return;
-		// }
+		final TYBuilding building = TYMysqlDBHelper.getBuilding(buildingID);
 
 		// 解压数据
 		{
@@ -247,6 +237,7 @@ public class TYParseMapDataV3Servlet extends HttpServlet {
 		task.startTask();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

@@ -21,9 +21,7 @@ import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.entity.base.impl.TYLocalPoint;
 import cn.platalk.map.route.core.TYServerRouteManager;
 import cn.platalk.map.route.core.TYServerRouteResult;
-import cn.platalk.mysql.map.TYBuildingDBAdapter;
-import cn.platalk.mysql.map.TYMapInfoDBAdapter;
-import cn.platalk.mysql.map.TYRouteDBAdapter;
+import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.route.api.TYApiResponse;
 import cn.platalk.route.core.routemanager.TYRouteManagerCollection;
 
@@ -32,29 +30,15 @@ public class TYRouteServiceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void initRouteManager(String buildingID) {
-		TYBuildingDBAdapter buildingDB = new TYBuildingDBAdapter();
-		buildingDB.connectDB();
-		TYBuilding currentBuilding = buildingDB.getBuilding(buildingID);
-		buildingDB.disconnectDB();
-
-		TYMapInfoDBAdapter mapInfoDB = new TYMapInfoDBAdapter();
-		mapInfoDB.connectDB();
-		List<TYIMapInfo> mapInfoList = new ArrayList<TYIMapInfo>();
-		mapInfoList.addAll(mapInfoDB.getMapInfos(buildingID));
-		mapInfoDB.disconnectDB();
+		TYBuilding currentBuilding = TYMysqlDBHelper.getBuilding(buildingID);
+		List<TYIMapInfo> mapInfoList = new ArrayList<TYIMapInfo>(TYMysqlDBHelper.getMapInfos(buildingID));
 
 		if (currentBuilding != null && mapInfoList.size() > 0) {
-			TYRouteDBAdapter routeDB = new TYRouteDBAdapter(currentBuilding.getBuildingID());
-			routeDB.connectDB();
-			List<TYIRouteNodeRecord> nodeList = new ArrayList<TYIRouteNodeRecord>();
-			nodeList.addAll(routeDB.getAllNodeRecords());
-			List<TYIRouteLinkRecord> linkList = new ArrayList<TYIRouteLinkRecord>();
-			linkList.addAll(routeDB.getAllLinkRecords());
-			routeDB.disconnectDB();
+			List<TYIRouteNodeRecord> nodeList = TYMysqlDBHelper.getAllRouteNodeRecord(currentBuilding.getBuildingID());
+			List<TYIRouteLinkRecord> linkList = TYMysqlDBHelper.getAllRouteLinkRecord(currentBuilding.getBuildingID());
 
 			TYServerRouteManager routeManager = new TYServerRouteManager(currentBuilding, mapInfoList, nodeList,
 					linkList);
-
 			TYRouteManagerCollection.AddRouteManager(currentBuilding.getBuildingID(), routeManager);
 		}
 	}
@@ -63,6 +47,7 @@ public class TYRouteServiceServlet extends HttpServlet {
 		return TYRouteManagerCollection.GetRouteManager(buildingID);
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/json;charset=UTF-8");
@@ -129,6 +114,7 @@ public class TYRouteServiceServlet extends HttpServlet {
 		out.close();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

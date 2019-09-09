@@ -21,8 +21,7 @@ import cn.platalk.map.core.web.TYWebMapGeojsonDataBuilder;
 import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.mysql.map.TYMapDataDBAdapter;
-import cn.platalk.mysql.map.TYSymbolDBAdapter;
+import cn.platalk.mysql.TYMysqlDBHelper;
 
 @WebServlet("/web/geojson/GetMapData")
 public class TYGetWebGeojsonMapDataServlet extends HttpServlet {
@@ -65,16 +64,9 @@ public class TYGetWebGeojsonMapDataServlet extends HttpServlet {
 			if (TYCachingPool.existDataID(mapID, TYCachingType.IndoorDataGeojson)) {
 				mapDataObject = (JSONObject) TYCachingPool.getCachingData(mapID, TYCachingType.IndoorDataGeojson);
 			} else {
-				TYMapDataDBAdapter mapdb = new TYMapDataDBAdapter(buildingID);
-				mapdb.connectDB();
-				List<TYMapDataFeatureRecord> mapDataRecordList = mapdb.getAllMapDataRecords(mapID);
-				mapdb.disconnectDB();
-
-				TYSymbolDBAdapter symboldb = new TYSymbolDBAdapter();
-				symboldb.connectDB();
-				List<TYFillSymbolRecord> fillSymbolList = symboldb.getFillSymbolRecords(buildingID);
-				List<TYIconSymbolRecord> iconSymbolList = symboldb.getIconSymbolRecords(buildingID);
-				symboldb.disconnectDB();
+				List<TYMapDataFeatureRecord> mapDataRecordList = TYMysqlDBHelper.getMapDataRecords(buildingID, mapID);
+				List<TYFillSymbolRecord> fillSymbolList = TYMysqlDBHelper.getFillSymbolRecords(buildingID);
+				List<TYIconSymbolRecord> iconSymbolList = TYMysqlDBHelper.getIconSymbolRecords(buildingID);
 
 				try {
 					mapDataObject = TYWebMapGeojsonDataBuilder.generateMapDataObject(mapDataRecordList, fillSymbolList,
@@ -85,16 +77,9 @@ public class TYGetWebGeojsonMapDataServlet extends HttpServlet {
 				}
 			}
 		} else {
-			TYMapDataDBAdapter mapdb = new TYMapDataDBAdapter(buildingID);
-			mapdb.connectDB();
-			List<TYMapDataFeatureRecord> mapDataRecordList = mapdb.getAllMapDataRecords(mapID);
-			mapdb.disconnectDB();
-
-			TYSymbolDBAdapter symboldb = new TYSymbolDBAdapter();
-			symboldb.connectDB();
-			List<TYFillSymbolRecord> fillSymbolList = symboldb.getFillSymbolRecords(buildingID);
-			List<TYIconSymbolRecord> iconSymbolList = symboldb.getIconSymbolRecords(buildingID);
-			symboldb.disconnectDB();
+			List<TYMapDataFeatureRecord> mapDataRecordList = TYMysqlDBHelper.getMapDataRecords(buildingID, mapID);
+			List<TYFillSymbolRecord> fillSymbolList = TYMysqlDBHelper.getFillSymbolRecords(buildingID);
+			List<TYIconSymbolRecord> iconSymbolList = TYMysqlDBHelper.getIconSymbolRecords(buildingID);
 
 			try {
 				mapDataObject = TYWebMapGeojsonDataBuilder.generateMapDataObject(mapDataRecordList, fillSymbolList,

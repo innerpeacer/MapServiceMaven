@@ -19,8 +19,7 @@ import cn.platalk.map.core.caching.TYCachingType;
 import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.mysql.map.TYMapDataDBAdapter;
-import cn.platalk.mysql.map.TYSymbolDBAdapter;
+import cn.platalk.mysql.TYMysqlDBHelper;
 
 @WebServlet("/web/pbf/GetMapData")
 public class TYGetWebPbfMapDataServlet extends HttpServlet {
@@ -45,17 +44,9 @@ public class TYGetWebPbfMapDataServlet extends HttpServlet {
 		if (TYCachingPool.existDataID(mapID, TYCachingType.IndoorDataPbf)) {
 			dataPbf = (TYIndoorDataPbf) TYCachingPool.getCachingData(mapID, TYCachingType.IndoorDataPbf);
 		} else {
-			TYMapDataDBAdapter mapdb = new TYMapDataDBAdapter(buildingID);
-			mapdb.connectDB();
-			List<TYMapDataFeatureRecord> mapDataRecordList = mapdb.getAllMapDataRecords(mapID);
-			mapdb.disconnectDB();
-
-			TYSymbolDBAdapter symboldb = new TYSymbolDBAdapter();
-			symboldb.connectDB();
-			List<TYFillSymbolRecord> fillSymbolList = symboldb.getFillSymbolRecords(buildingID);
-			List<TYIconSymbolRecord> iconSymbolList = symboldb.getIconSymbolRecords(buildingID);
-			symboldb.disconnectDB();
-
+			List<TYMapDataFeatureRecord> mapDataRecordList = TYMysqlDBHelper.getMapDataRecords(buildingID, mapID);
+			List<TYFillSymbolRecord> fillSymbolList = TYMysqlDBHelper.getFillSymbolRecords(buildingID);
+			List<TYIconSymbolRecord> iconSymbolList = TYMysqlDBHelper.getIconSymbolRecords(buildingID);
 			dataPbf = TYIndoorDataPbfBuilder.generateMapDataObject(mapID, mapDataRecordList, fillSymbolList,
 					iconSymbolList);
 			TYCachingPool.setCachingData(mapID, dataPbf, TYCachingType.IndoorDataPbf);

@@ -21,7 +21,7 @@ import cn.platalk.map.core.caching.TYCachingPool;
 import cn.platalk.map.core.caching.TYCachingType;
 import cn.platalk.map.core.config.TYServerEnvironment;
 import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
-import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
+import cn.platalk.mysql.TYMysqlDBHelper;
 
 @WebServlet("/web/pbf/getBeacon")
 public class TYGetWebPbfBeaconServlet extends HttpServlet {
@@ -63,20 +63,12 @@ public class TYGetWebPbfBeaconServlet extends HttpServlet {
 				beaconListPbf = (TYLocatingBeaconListPbf) TYCachingPool.getCachingData(buildingID,
 						TYCachingType.BeaconDataPbf);
 			} else {
-				TYBeaconDBAdapter beaconDB = new TYBeaconDBAdapter(buildingID);
-				beaconDB.connectDB();
-				List<TYLocatingBeacon> beaconList = beaconDB.getAllBeacons();
-				beaconDB.disconnectDB();
-
+				List<TYLocatingBeacon> beaconList = TYMysqlDBHelper.getAllBeacons(buildingID);
 				beaconListPbf = TYBeaconPbfBuilder.beaconListToPbf(beaconList);
 				TYCachingPool.setCachingData(buildingID, beaconListPbf, TYCachingType.BeaconDataPbf);
 			}
 		} else {
-			TYBeaconDBAdapter beaconDB = new TYBeaconDBAdapter(buildingID);
-			beaconDB.connectDB();
-			List<TYLocatingBeacon> beaconList = beaconDB.getAllBeacons();
-			beaconDB.disconnectDB();
-
+			List<TYLocatingBeacon> beaconList = TYMysqlDBHelper.getAllBeacons(buildingID);
 			beaconListPbf = TYBeaconPbfBuilder.beaconListToPbf(beaconList);
 			System.out.println(beaconList.size() + " beacons");
 		}

@@ -26,16 +26,16 @@ import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.impl.TYBeaconRegion;
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
+import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
 import cn.platalk.mysql.beacon.TYBeaconRegionDBAdapter;
-import cn.platalk.mysql.map.TYBuildingDBAdapter;
-import cn.platalk.mysql.map.TYMapInfoDBAdapter;
 import cn.platalk.utils.third.TYZipUtil;
 
 @WebServlet("/web/ParseBeaconData")
 public class TYParseBeaconDataServlet extends HttpServlet {
 	private static final long serialVersionUID = -2518472730406384232L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
 		final String buildingID = request.getParameter("buildingID");
@@ -51,11 +51,7 @@ public class TYParseBeaconDataServlet extends HttpServlet {
 			return;
 		}
 
-		TYBuildingDBAdapter db = new TYBuildingDBAdapter();
-		db.connectDB();
-		db.createTableIfNotExist();
-		final TYBuilding building = db.getBuilding(buildingID);
-		db.disconnectDB();
+		final TYBuilding building = TYMysqlDBHelper.getBuilding(buildingID);
 
 		// 解压数据
 		{
@@ -78,10 +74,10 @@ public class TYParseBeaconDataServlet extends HttpServlet {
 			}
 		}
 
-		TYBeaconShpDataManager shpManager = new TYBeaconShpDataManager(
-				TYMapEnvironment.GetShpRootDir(buildingID));
+		TYBeaconShpDataManager shpManager = new TYBeaconShpDataManager(TYMapEnvironment.GetShpRootDir(buildingID));
 		TYShpBeaconDataParser parser = new TYShpBeaconDataParser(shpManager.getBeaconShpPath());
 		parser.addParserListener(new TYBrtShpBeaconParserListener() {
+			@Override
 			public void didFailedParsingBeaconDataList(Throwable error) {
 				PrintWriter out;
 				try {
@@ -94,13 +90,9 @@ public class TYParseBeaconDataServlet extends HttpServlet {
 				}
 			}
 
+			@Override
 			public void didFinishParsingBeaconDataList(List<TYILocatingBeacon> beaconList) {
-				TYMapInfoDBAdapter infoDB = new TYMapInfoDBAdapter();
-				infoDB.connectDB();
-				infoDB.createTableIfNotExist();
-				List<TYIMapInfo> mapInfoList = new ArrayList<TYIMapInfo>();
-				mapInfoList.addAll(infoDB.getMapInfos(buildingID));
-				infoDB.disconnectDB();
+				List<TYIMapInfo> mapInfoList = new ArrayList<TYIMapInfo>(TYMysqlDBHelper.getMapInfos(buildingID));
 
 				Map<Integer, TYIMapInfo> infoMap = new HashMap<Integer, TYIMapInfo>();
 				for (TYIMapInfo info : mapInfoList) {
@@ -157,9 +149,9 @@ public class TYParseBeaconDataServlet extends HttpServlet {
 			}
 		});
 		parser.parse();
-
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

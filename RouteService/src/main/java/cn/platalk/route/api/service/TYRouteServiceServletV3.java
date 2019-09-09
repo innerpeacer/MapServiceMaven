@@ -24,10 +24,7 @@ import cn.platalk.map.route.core.TYServerMultiRouteManager;
 import cn.platalk.map.route.core_v3.TYServerMultiRouteManagerV3;
 import cn.platalk.map.route.core_v3.TYServerMultiRouteResultV3;
 import cn.platalk.map.route.core_v3.TYServerRouteOptions;
-import cn.platalk.mysql.map.TYBuildingDBAdapter;
-import cn.platalk.mysql.map.TYMapDataDBAdapter;
-import cn.platalk.mysql.map.TYMapInfoDBAdapter;
-import cn.platalk.mysql.map.TYRouteDBAdapterV3;
+import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.route.api.TYApiResponse;
 import cn.platalk.route.core.routemanager.TYMultiRouteManagerCollection;
 import cn.platalk.route.core_v3.routemanager.TYMultiRouteManagerCollectionV3;
@@ -37,31 +34,16 @@ public class TYRouteServiceServletV3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void initRouteManager(String buildingID) {
-		TYBuildingDBAdapter buildingDB = new TYBuildingDBAdapter();
-		buildingDB.connectDB();
-		TYBuilding currentBuilding = buildingDB.getBuilding(buildingID);
-		buildingDB.disconnectDB();
-
-		TYMapInfoDBAdapter mapInfoDB = new TYMapInfoDBAdapter();
-		mapInfoDB.connectDB();
-		List<TYIMapInfo> mapInfoList = new ArrayList<TYIMapInfo>();
-		mapInfoList.addAll(mapInfoDB.getMapInfos(buildingID));
-		mapInfoDB.disconnectDB();
+		TYBuilding currentBuilding = TYMysqlDBHelper.getBuilding(buildingID);
+		List<TYIMapInfo> mapInfoList = new ArrayList<TYIMapInfo>(TYMysqlDBHelper.getMapInfos(buildingID));
 
 		if (currentBuilding != null && mapInfoList.size() > 0) {
-			TYRouteDBAdapterV3 routeDB = new TYRouteDBAdapterV3(currentBuilding.getBuildingID());
-			routeDB.connectDB();
-			List<TYIRouteNodeRecordV3> nodeList = new ArrayList<TYIRouteNodeRecordV3>();
-			nodeList.addAll(routeDB.getAllNodeRecords());
-			List<TYIRouteLinkRecordV3> linkList = new ArrayList<TYIRouteLinkRecordV3>();
-			linkList.addAll(routeDB.getAllLinkRecords());
-			routeDB.disconnectDB();
-
-			TYMapDataDBAdapter mapDB = new TYMapDataDBAdapter(currentBuilding.getBuildingID());
-			mapDB.connectDB();
-			List<TYIMapDataFeatureRecord> mapRecordList = new ArrayList<TYIMapDataFeatureRecord>();
-			mapRecordList.addAll(mapDB.getAllMapDataRecords());
-			mapDB.disconnectDB();
+			List<TYIRouteNodeRecordV3> nodeList = TYMysqlDBHelper
+					.getAllRouteNodeRecordV3(currentBuilding.getBuildingID());
+			List<TYIRouteLinkRecordV3> linkList = TYMysqlDBHelper
+					.getAllRouteLinkRecordV3(currentBuilding.getBuildingID());
+			List<TYIMapDataFeatureRecord> mapRecordList = new ArrayList<TYIMapDataFeatureRecord>(
+					TYMysqlDBHelper.getMapDataRecords(buildingID));
 
 			TYServerMultiRouteManagerV3 routeManager = new TYServerMultiRouteManagerV3(currentBuilding, mapInfoList,
 					nodeList, linkList, mapRecordList);
@@ -73,6 +55,7 @@ public class TYRouteServiceServletV3 extends HttpServlet {
 		return TYMultiRouteManagerCollection.GetRouteManager(buildingID);
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/json;charset=UTF-8");
@@ -211,6 +194,7 @@ public class TYRouteServiceServletV3 extends HttpServlet {
 		out.close();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

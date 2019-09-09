@@ -25,11 +25,7 @@ import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.entity.base.impl.TYCity;
 import cn.platalk.map.vectortile.builder.TYVectorTileBuilder;
 import cn.platalk.map.vectortile.builder.TYVectorTileSettings;
-import cn.platalk.mysql.map.TYBuildingDBAdapter;
-import cn.platalk.mysql.map.TYCityDBAdapter;
-import cn.platalk.mysql.map.TYMapDataDBAdapter;
-import cn.platalk.mysql.map.TYMapInfoDBAdapter;
-import cn.platalk.mysql.map.TYSymbolDBAdapter;
+import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.utils.third.TYFileUtils;
 
 @WebServlet("/web/BuildVectorTile")
@@ -37,6 +33,7 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 7540952724296868847L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String buildingID = request.getParameter("buildingID");
@@ -49,10 +46,7 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 			out.close();
 		}
 
-		TYBuildingDBAdapter db = new TYBuildingDBAdapter();
-		db.connectDB();
-		TYBuilding building = db.getBuilding(buildingID);
-		db.disconnectDB();
+		TYBuilding building = TYMysqlDBHelper.getBuilding(buildingID);
 
 		if (building == null) {
 			PrintWriter out = response.getWriter();
@@ -71,32 +65,17 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 
 		TYVectorTileBuilder builder = new TYVectorTileBuilder(buildingID);
 
-		TYCityDBAdapter cityDB = new TYCityDBAdapter();
-		cityDB.connectDB();
-		TYCity city = cityDB.getCity(building.getCityID());
-		cityDB.disconnectDB();
+		TYCity city = TYMysqlDBHelper.getCity(building.getCityID());
+		List<TYIMapInfo> mapInfos = new ArrayList<TYIMapInfo>(TYMysqlDBHelper.getMapInfos(buildingID));
 
-		TYMapInfoDBAdapter infoDB = new TYMapInfoDBAdapter();
-		infoDB.connectDB();
-		List<TYIMapInfo> mapInfos = new ArrayList<TYIMapInfo>();
-		mapInfos.addAll(infoDB.getMapInfos(buildingID));
-		infoDB.disconnectDB();
-
-		List<TYIFillSymbolRecord> fillSymbols = new ArrayList<TYIFillSymbolRecord>();
-		List<TYIIconSymbolRecord> iconSymbols = new ArrayList<TYIIconSymbolRecord>();
-		List<TYIIconTextSymbolRecord> iconTextSymbols = new ArrayList<TYIIconTextSymbolRecord>();
-		TYSymbolDBAdapter symbolDB = new TYSymbolDBAdapter();
-		symbolDB.connectDB();
-		fillSymbols.addAll(symbolDB.getFillSymbolRecords(buildingID));
-		iconSymbols.addAll(symbolDB.getIconSymbolRecords(buildingID));
-		iconTextSymbols.addAll(symbolDB.getIconTextSymbolRecords(buildingID));
-		symbolDB.disconnectDB();
-
-		List<TYIMapDataFeatureRecord> mapDataRecords = new ArrayList<TYIMapDataFeatureRecord>();
-		TYMapDataDBAdapter mapDB = new TYMapDataDBAdapter(buildingID);
-		mapDB.connectDB();
-		mapDataRecords.addAll(mapDB.getAllMapDataRecords());
-		mapDB.disconnectDB();
+		List<TYIFillSymbolRecord> fillSymbols = new ArrayList<TYIFillSymbolRecord>(
+				TYMysqlDBHelper.getFillSymbolRecords(buildingID));
+		List<TYIIconSymbolRecord> iconSymbols = new ArrayList<TYIIconSymbolRecord>(
+				TYMysqlDBHelper.getIconSymbolRecords(buildingID));
+		List<TYIIconTextSymbolRecord> iconTextSymbols = new ArrayList<TYIIconTextSymbolRecord>(
+				TYMysqlDBHelper.getIconTextSymbolRecords(buildingID));
+		List<TYIMapDataFeatureRecord> mapDataRecords = new ArrayList<TYIMapDataFeatureRecord>(
+				TYMysqlDBHelper.getMapDataRecords(buildingID));
 
 		fillSymbols = filterFillRecords(mapDataRecords, fillSymbols);
 		iconTextSymbols = filterIconTextRecords(mapDataRecords, iconTextSymbols);
@@ -182,6 +161,7 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 	// return resultList;
 	// }
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

@@ -16,7 +16,7 @@ import cn.platalk.map.api.TYParameterChecker;
 import cn.platalk.map.core.caching.TYCachingPool;
 import cn.platalk.map.core.caching.TYCachingType;
 import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.mysql.map.TYBuildingDBAdapter;
+import cn.platalk.mysql.TYMysqlDBHelper;
 
 @WebServlet("/web/ResetMapData")
 public class TYGetWebResetMapDataServlet extends HttpServlet {
@@ -49,10 +49,7 @@ public class TYGetWebResetMapDataServlet extends HttpServlet {
 			return;
 		}
 
-		TYBuildingDBAdapter buildingDB = new TYBuildingDBAdapter();
-		buildingDB.connectDB();
-		TYBuilding building = buildingDB.getBuilding(buildingID);
-		buildingDB.disconnectDB();
+		TYBuilding building = TYMysqlDBHelper.getBuilding(buildingID);
 
 		if (building == null) {
 			PrintWriter out = response.getWriter();

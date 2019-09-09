@@ -20,13 +20,13 @@ import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.vectortile.fontbuilder.TYFontBuilder;
 import cn.platalk.map.vectortile.fontbuilder.TYFontBuilder.TYBrtFontBuilderInterface;
 import cn.platalk.map.vectortile.fontbuilder.TYFontSettings;
-import cn.platalk.mysql.map.TYBuildingDBAdapter;
-import cn.platalk.mysql.map.TYMapDataDBAdapter;
+import cn.platalk.mysql.TYMysqlDBHelper;
 
 @WebServlet("/web/BuildMapGlyphs")
 public class TYBuildMapGlyphsServlet extends HttpServlet {
 	private static final long serialVersionUID = 7540952724296868847L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String buildingID = request.getParameter("buildingID");
@@ -42,10 +42,7 @@ public class TYBuildMapGlyphsServlet extends HttpServlet {
 			return;
 		}
 
-		TYBuildingDBAdapter db = new TYBuildingDBAdapter();
-		db.connectDB();
-		TYBuilding building = db.getBuilding(buildingID);
-		db.disconnectDB();
+		TYBuilding building = TYMysqlDBHelper.getBuilding(buildingID);
 
 		if (building == null) {
 			PrintWriter out = response.getWriter();
@@ -62,11 +59,8 @@ public class TYBuildMapGlyphsServlet extends HttpServlet {
 			return;
 		}
 
-		TYMapDataDBAdapter mapDB = new TYMapDataDBAdapter(buildingID);
-		mapDB.connectDB();
-		List<TYIMapDataFeatureRecord> records = new ArrayList<TYIMapDataFeatureRecord>();
-		records.addAll(mapDB.getAllMapDataRecords());
-		mapDB.disconnectDB();
+		List<TYIMapDataFeatureRecord> records = new ArrayList<TYIMapDataFeatureRecord>(
+				TYMysqlDBHelper.getMapDataRecords(buildingID));
 
 		final StringBuffer result = new StringBuffer();
 		final Map<String, Boolean> status = new HashMap<String, Boolean>();
@@ -109,6 +103,7 @@ public class TYBuildMapGlyphsServlet extends HttpServlet {
 		out.close();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
