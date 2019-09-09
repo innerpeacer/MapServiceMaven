@@ -29,6 +29,7 @@
 		<MapService-version>2.1.0</MapService-version>
 		<RouteService-version>3.0.1</RouteService-version>
 		<Lab-version>1.0.0</Lab-version>
+		<Pbf-version>1.2.0</Pbf-version>
 	</properties>
 	<modules>
 		<module>BaseInterface</module>
@@ -41,5 +42,6 @@
 		<module>Test</module>
 		<module>SqlHelper</module>
 		<module>Lab</module>
+		<module>Pbf</module>
 	</modules>
 </project>

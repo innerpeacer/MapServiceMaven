@@ -1,0 +1,28 @@
+syntax = "proto2";
+
+import "t_y_geometry_pbf.proto";
+import "t_y_property_pbf.proto";
+import "t_y_symbol_pbf.proto";
+
+package cn.platalk.core.pbf.mapdata;
+
+message TYIndoorDataPbf {
+required string mapID = 1;
+required TYIndoorLayerPbf floorLayer = 2;
+required TYIndoorLayerPbf roomLayer = 3;
+required TYIndoorLayerPbf assetLayer =4;
+required TYIndoorLayerPbf facilityLayer = 5;
+required TYIndoorLayerPbf labelLayer = 6;
+
+required TYRenderingSymbolsPbf symbols = 16;
+}
+
+message TYIndoorLayerPbf {
+//required string type = 1;
+repeated TYIndoorFeaturePbf features = 2;
+}
+
+message TYIndoorFeaturePbf {
+required TYIndoorFeatureGeometryPbf geometry = 1;
+required TYIndoorFeaturePropertisPbf properties = 2;
+}

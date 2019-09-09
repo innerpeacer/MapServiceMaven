@@ -9,8 +9,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cn.platalk.map.core.pbf.TYWebMapPbfDataBuilder;
-import cn.platalk.map.core.pbf.TYWebMapPoiDataBuilder;
+import cn.platalk.core.pbf.mapdata.TYMapDataPbf.TYIndoorDataPbf;
+import cn.platalk.core.pbf.mapdata.wrapper.TYIndoorDataPbfBuilder;
+import cn.platalk.core.pbf.poi.TYPoiPbf;
+import cn.platalk.core.pbf.poi.wrapper.TYPoiPbfBuilder;
 import cn.platalk.map.core.web.TYWebMapFields;
 import cn.platalk.map.core.web.TYWebMapGeojsonDataBuilder;
 import cn.platalk.map.entity.base.impl.TYBuilding;
@@ -24,8 +26,6 @@ import cn.platalk.mysql.map.TYMapDataDBAdapter;
 import cn.platalk.mysql.map.TYMapInfoDBAdapter;
 import cn.platalk.mysql.map.TYSymbolDBAdapter;
 import cn.platalk.utils.third.TYFileUtils;
-import innerpeacer.mapdata.pbf.TYMapDataPbf.TYIndoorDataPbf;
-import innerpeacer.mapdata.pbf.TYPoiPbf;
 
 public class TYWebGeneratingMapFileTask {
 	TYBuilding targetBuilding;
@@ -109,7 +109,7 @@ public class TYWebGeneratingMapFileTask {
 
 		System.out.println(mapDataRecordList.size() + " pois");
 
-		TYPoiPbf.PoiCollectionPbf collectionPbf = TYWebMapPoiDataBuilder.generatePoiCollectionObject(mapDataRecordList);
+		TYPoiPbf.PoiCollectionPbf collectionPbf = TYPoiPbfBuilder.generatePoiCollectionObject(mapDataRecordList);
 		String pbfPath = TYWebPbfPathManager.getPoiPbfPath(targetBuilding.getCityID(), targetBuilding.getBuildingID());
 		TYFileUtils.makeFolders(pbfPath);
 		FileOutputStream output = null;
@@ -158,7 +158,7 @@ public class TYWebGeneratingMapFileTask {
 			List<TYFillSymbolRecord> fillSymbolList = symboldb.getFillSymbolRecords(buildingID);
 			List<TYIconSymbolRecord> iconSymbolList = symboldb.getIconSymbolRecords(buildingID);
 			symboldb.disconnectDB();
-			dataPbf = TYWebMapPbfDataBuilder.generateMapDataObject(mapID, mapDataRecordList, fillSymbolList,
+			dataPbf = TYIndoorDataPbfBuilder.generateMapDataObject(mapID, mapDataRecordList, fillSymbolList,
 					iconSymbolList);
 
 			String pbfPath = TYWebPbfPathManager.getMapDataPbfPath(cityID, buildingID, mapID);

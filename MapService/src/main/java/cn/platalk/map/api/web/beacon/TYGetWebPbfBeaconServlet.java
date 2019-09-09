@@ -14,14 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.platalk.core.pbf.beacon.TYBeaconPbf.TYLocatingBeaconListPbf;
+import cn.platalk.core.pbf.beacon.wrapper.TYBeaconPbfBuilder;
 import cn.platalk.map.api.TYParameterChecker;
 import cn.platalk.map.core.caching.TYCachingPool;
 import cn.platalk.map.core.caching.TYCachingType;
 import cn.platalk.map.core.config.TYServerEnvironment;
-import cn.platalk.map.core.pbf.beacon.TYWebBeacon2PbfUtils;
 import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
-import innerpeacer.beacon.pbf.TYBeaconPbf.TYLocatingBeaconListPbf;
 
 @WebServlet("/web/pbf/getBeacon")
 public class TYGetWebPbfBeaconServlet extends HttpServlet {
@@ -68,7 +68,7 @@ public class TYGetWebPbfBeaconServlet extends HttpServlet {
 				List<TYLocatingBeacon> beaconList = beaconDB.getAllBeacons();
 				beaconDB.disconnectDB();
 
-				beaconListPbf = TYWebBeacon2PbfUtils.beaconListToPbf(beaconList);
+				beaconListPbf = TYBeaconPbfBuilder.beaconListToPbf(beaconList);
 				TYCachingPool.setCachingData(buildingID, beaconListPbf, TYCachingType.BeaconDataPbf);
 			}
 		} else {
@@ -77,7 +77,7 @@ public class TYGetWebPbfBeaconServlet extends HttpServlet {
 			List<TYLocatingBeacon> beaconList = beaconDB.getAllBeacons();
 			beaconDB.disconnectDB();
 
-			beaconListPbf = TYWebBeacon2PbfUtils.beaconListToPbf(beaconList);
+			beaconListPbf = TYBeaconPbfBuilder.beaconListToPbf(beaconList);
 			System.out.println(beaconList.size() + " beacons");
 		}
 

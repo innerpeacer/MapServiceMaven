@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+package cn.platalk.core.pbf.poi;
+
+message PoiPbf {
+//required string geoID = 1;
+required string poiID = 2;
+//required string buildingID = 3;
+//required string floorID = 4;
+required int32 floor = 5;
+//required string floorName = 6;
+required int32 layer = 7;
+
+optional string name = 8;
+optional string categoryID = 9;
+//optional uint32 symbolID = 10;
+
+optional double labelX = 11;
+optional double labelY = 12;
+
+}
+
+message PoiCollectionPbf {
+repeated PoiPbf pois= 1;
+}

@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.platalk.core.pbf.mapdata.TYMapDataPbf.TYIndoorDataPbf;
+import cn.platalk.core.pbf.mapdata.wrapper.TYIndoorDataPbfBuilder;
 import cn.platalk.map.api.TYParameterChecker;
 import cn.platalk.map.core.caching.TYCachingPool;
 import cn.platalk.map.core.caching.TYCachingType;
-import cn.platalk.map.core.pbf.TYWebMapPbfDataBuilder;
 import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.mysql.map.TYMapDataDBAdapter;
 import cn.platalk.mysql.map.TYSymbolDBAdapter;
-import innerpeacer.mapdata.pbf.TYMapDataPbf.TYIndoorDataPbf;
 
 @WebServlet("/web/pbf/GetMapData")
 public class TYGetWebPbfMapDataServlet extends HttpServlet {
@@ -56,32 +56,10 @@ public class TYGetWebPbfMapDataServlet extends HttpServlet {
 			List<TYIconSymbolRecord> iconSymbolList = symboldb.getIconSymbolRecords(buildingID);
 			symboldb.disconnectDB();
 
-			dataPbf = TYWebMapPbfDataBuilder.generateMapDataObject(mapID, mapDataRecordList, fillSymbolList,
+			dataPbf = TYIndoorDataPbfBuilder.generateMapDataObject(mapID, mapDataRecordList, fillSymbolList,
 					iconSymbolList);
 			TYCachingPool.setCachingData(mapID, dataPbf, TYCachingType.IndoorDataPbf);
 		}
-		// if (TYWebMapPbfDataPool.existWebMapData(mapID)) {
-		// dataPbf = TYWebMapPbfDataPool.getWebMapData(mapID);
-		// } else {
-		// TYMapDataDBAdapter mapdb = new TYMapDataDBAdapter(buildingID);
-		// mapdb.connectDB();
-		// List<TYMapDataFeatureRecord> mapDataRecordList =
-		// mapdb.getAllMapDataRecords(mapID);
-		// mapdb.disconnectDB();
-		//
-		// TYSymbolDBAdapter symboldb = new TYSymbolDBAdapter();
-		// symboldb.connectDB();
-		// List<TYFillSymbolRecord> fillSymbolList =
-		// symboldb.getFillSymbolRecords(buildingID);
-		// List<TYIconSymbolRecord> iconSymbolList =
-		// symboldb.getIconSymbolRecords(buildingID);
-		// symboldb.disconnectDB();
-		//
-		// dataPbf = TYWebMapPbfDataBuilder.generateMapDataObject(mapID,
-		// mapDataRecordList, fillSymbolList,
-		// iconSymbolList);
-		// TYWebMapPbfDataPool.setWebMapData(mapID, dataPbf);
-		// }
 
 		OutputStream output = response.getOutputStream();
 		dataPbf.writeTo(output);

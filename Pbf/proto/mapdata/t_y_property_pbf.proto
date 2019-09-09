@@ -1,0 +1,30 @@
+syntax = "proto2";
+
+package cn.platalk.core.pbf.mapdata;
+
+message TYIndoorFeaturePropertisPbf {
+required string geoID = 1;
+required string poiID = 2;
+optional string name = 3;
+optional string categoryID = 4;
+optional uint32 symbolID = 5; 
+
+optional double levelMin = 6; 
+optional double levelMax = 7; 
+optional double labelX = 8; 
+optional double labelY = 9;
+optional int32 floor = 10;
+
+optional bool extrusion = 11;
+optional float extrusionHeight = 12;
+optional float extrusionBase = 13;
+//optional float extrusionFillOpacity = 13;
+
+optional string fillColor = 20;
+optional float fillOpacity = 21;
+optional string outlineColor = 22;
+optional float outlineWidth = 23;
+
+optional string imageNormal = 24;
+optional string imageHighlighted = 25;
+}
