@@ -1,5 +1,7 @@
 package cn.platalk.map.entity.base;
 
+import org.json.JSONObject;
+
 public interface TYIMapInfo {
 
 	public String getCityID();
@@ -16,4 +18,5 @@ public interface TYIMapInfo {
 
 	public TYIMapExtent getMapExtent();
 
+	public JSONObject toJson();
 }

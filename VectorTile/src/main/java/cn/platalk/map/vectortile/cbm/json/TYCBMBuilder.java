@@ -20,6 +20,13 @@ import cn.platalk.utils.third.TYFileUtils;
 public class TYCBMBuilder {
 	static String FILE_CBM_JSON = "%s.json";
 
+	static final String KEY_WEB_CITIES = "Cities";
+	static final String KEY_WEB_BUILDINGS = "Buildings";
+	static final String KEY_WEB_MAPINFOS = "MapInfo";
+	static final String KEY_WEB_FILL_SYMBOLS = "FillSymbols";
+	static final String KEY_WEB_ICON_SYMBOLS = "IconSymbols";
+	static final String KEY_WEB_ICON_TEXT_SYMBOLS = "IconTextSymbols";
+
 	private static String getCBMJsonPath(String buildingID) {
 		String fileName = String.format(FILE_CBM_JSON, buildingID);
 		String cbmDir = TYVectorTileSettings.GetCBMDir();
@@ -31,41 +38,34 @@ public class TYCBMBuilder {
 			List<TYIIconSymbolRecord> iconSymbols, List<TYIIconTextSymbolRecord> iconTextSymbols) {
 
 		JSONArray cityJsonArray = new JSONArray();
-		cityJsonArray.put(TYCBMObjectBuilder.generateCityJson(city));
+		cityJsonArray.put(city.toJson());
 
 		JSONArray buildingJsonArray = new JSONArray();
-		buildingJsonArray.put(TYCBMObjectBuilder.generateBuildingJson(building));
+		buildingJsonArray.put(building.toJson());
 
 		JSONArray mapInfoJsonArray = new JSONArray();
 		for (int i = 0; i < mapInfoList.size(); ++i) {
-			mapInfoJsonArray.put(TYCBMObjectBuilder.generateMapInfoJson(mapInfoList.get(i)));
+			mapInfoJsonArray.put(mapInfoList.get(i).toJson());
 		}
 
 		JSONObject jsonObject = new JSONObject();
 		try {
-			jsonObject.put(TYCBMFields.KEY_WEB_CITIES, cityJsonArray);
-			jsonObject.put(TYCBMFields.KEY_WEB_BUILDINGS, buildingJsonArray);
-			jsonObject.put(TYCBMFields.KEY_WEB_MAPINFOS, mapInfoJsonArray);
+			jsonObject.put(KEY_WEB_CITIES, cityJsonArray);
+			jsonObject.put(KEY_WEB_BUILDINGS, buildingJsonArray);
+			jsonObject.put(KEY_WEB_MAPINFOS, mapInfoJsonArray);
 
 			if ("V4".equals(building.getRouteURL())) {
 				JSONArray fillJsonArray = new JSONArray();
 				for (int i = 0; i < fillSymbols.size(); ++i) {
-					fillJsonArray.put(TYSymbolObjectBuilder.generateFillJson(fillSymbols.get(i)));
+					fillJsonArray.put(fillSymbols.get(i).toJson());
 				}
-				jsonObject.put(TYSymbolFields.KEY_WEB_FILL_SYMBOLS, fillJsonArray);
-
-				// JSONArray iconJsonArray = new JSONArray();
-				// for (int i = 0; i < iconSymbols.size(); ++i) {
-				// iconJsonArray.put(TYSymbolObjectBuilder.generateIconJson(iconSymbols.get(i)));
-				// }
-				// jsonObject.put(TYSymbolFields.KEY_WEB_ICON_SYMBOLS,
-				// iconJsonArray);
+				jsonObject.put(KEY_WEB_FILL_SYMBOLS, fillJsonArray);
 
 				JSONArray iconTextJsonArray = new JSONArray();
 				for (int i = 0; i < iconTextSymbols.size(); ++i) {
-					iconTextJsonArray.put(TYSymbolObjectBuilder.generateIconTextJson(iconTextSymbols.get(i)));
+					iconTextJsonArray.put(iconTextSymbols.get(i).toJson());
 				}
-				jsonObject.put(TYSymbolFields.KEY_WEB_ICON_TEXT_SYMBOLS, iconTextJsonArray);
+				jsonObject.put(KEY_WEB_ICON_TEXT_SYMBOLS, iconTextJsonArray);
 
 				jsonObject.put("Symbols",
 						TYSymbolExtractor.extractSymbolJson(mapDataRecords, fillSymbols, iconTextSymbols));

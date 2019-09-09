@@ -1,8 +1,19 @@
 package cn.platalk.map.entity.base.impl;
 
+import org.json.JSONObject;
+
 import cn.platalk.map.entity.base.TYIFillSymbolRecord;
 
 public class TYFillSymbolRecord implements TYIFillSymbolRecord {
+	static final String KEY_JSON_FILL_SYMBOL_ID = "symbolID";
+	static final String KEY_JSON_FILL_SYMBOL_FILL_COLOR = "fillColor";
+	static final String KEY_JSON_FILL_SYMBOL_OUTLINE_COLOR = "outlineColor";
+	static final String KEY_JSON_FILL_SYMBOL_OUTLINE_WIDTH = "outlineWidth";
+	static final String KEY_JSON_FILL_SYMBOL_LEVEL_MIN = "levelMin";
+	static final String KEY_JSON_FILL_SYMBOL_LEVEL_MAX = "levelMax";
+	static final String KEY_JSON_FILL_SYMBOL_UID = "UID";
+	static final String KEY_JSON_FILL_SYMBOL_VISIBLE = "visible";
+
 	public int UID;
 	public int symbolID;
 	public String fillColor;
@@ -79,6 +90,19 @@ public class TYFillSymbolRecord implements TYIFillSymbolRecord {
 	@Override
 	public boolean isVisible() {
 		return this.visible;
+	}
+
+	public JSONObject toJson() {
+		JSONObject symbolObject = new JSONObject();
+		symbolObject.put(KEY_JSON_FILL_SYMBOL_ID, getSymbolID());
+		symbolObject.put(KEY_JSON_FILL_SYMBOL_FILL_COLOR, getFillColor().trim());
+		symbolObject.put(KEY_JSON_FILL_SYMBOL_OUTLINE_COLOR, getOutlineColor().trim());
+		symbolObject.put(KEY_JSON_FILL_SYMBOL_OUTLINE_WIDTH, getLineWidth());
+		symbolObject.put(KEY_JSON_FILL_SYMBOL_LEVEL_MIN, getLevelMin());
+		symbolObject.put(KEY_JSON_FILL_SYMBOL_LEVEL_MAX, getLevelMax());
+		symbolObject.put(KEY_JSON_FILL_SYMBOL_UID, getUID());
+		symbolObject.put(KEY_JSON_FILL_SYMBOL_VISIBLE, isVisible());
+		return symbolObject;
 	}
 
 	@Override

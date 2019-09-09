@@ -1,5 +1,7 @@
 package cn.platalk.map.entity.base;
 
+import org.json.JSONObject;
+
 public interface TYIIconTextSymbolRecord {
 	public int getUID();
 
@@ -40,4 +42,7 @@ public interface TYIIconTextSymbolRecord {
 	public String getDescription();
 
 	public int getPriority();
+
+	public JSONObject toJson();
+
 }

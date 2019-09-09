@@ -17,7 +17,6 @@ import org.json.JSONObject;
 
 import cn.platalk.map.api.TYParameterChecker;
 import cn.platalk.map.core.web.TYWebMapFields;
-import cn.platalk.map.core.web.TYWebMapObjectBuilder;
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.entity.base.impl.TYCity;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
@@ -29,8 +28,8 @@ import cn.platalk.mysql.map.TYMapInfoDBAdapter;
 public class TYGetWebCBMServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String buildingID = request.getParameter("buildingID");
 		String callback = request.getParameter("callback");
 		response.setContentType("text/json;charset=UTF-8");
@@ -43,8 +42,7 @@ public class TYGetWebCBMServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			try {
 				jsonObject.put("success", false);
-				jsonObject.put("description", "Invalid BuildingID: "
-						+ buildingID);
+				jsonObject.put("description", "Invalid BuildingID: " + buildingID);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -52,8 +50,7 @@ public class TYGetWebCBMServlet extends HttpServlet {
 			if (callback == null) {
 				out.print(jsonObject.toString());
 			} else {
-				out.print(String.format("%s(%s)", callback,
-						jsonObject.toString()));
+				out.print(String.format("%s(%s)", callback, jsonObject.toString()));
 			}
 			out.close();
 			return;
@@ -68,8 +65,7 @@ public class TYGetWebCBMServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			try {
 				jsonObject.put("success", false);
-				jsonObject.put("description", "Building Not Exist: "
-						+ buildingID);
+				jsonObject.put("description", "Building Not Exist: " + buildingID);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -77,8 +73,7 @@ public class TYGetWebCBMServlet extends HttpServlet {
 			if (callback == null) {
 				out.print(jsonObject.toString());
 			} else {
-				out.print(String.format("%s(%s)", callback,
-						jsonObject.toString()));
+				out.print(String.format("%s(%s)", callback, jsonObject.toString()));
 			}
 			out.close();
 			return;
@@ -97,46 +92,23 @@ public class TYGetWebCBMServlet extends HttpServlet {
 		List<TYCity> cityList = new ArrayList<TYCity>();
 		cityList.add(city);
 		JSONArray cityJsonArray = new JSONArray();
-		JSONObject cityObject;
-		try {
-			cityObject = TYWebMapObjectBuilder.generateCityJson(city);
-			cityJsonArray.put(cityObject);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		cityJsonArray.put(city.toJson());
 
 		List<TYBuilding> buildingList = new ArrayList<TYBuilding>();
 		buildingList.add(building);
 		JSONArray buildingJsonArray = new JSONArray();
-		JSONObject buildingObject;
-		try {
-			buildingObject = TYWebMapObjectBuilder
-					.generateBuildingJson(building);
-			buildingJsonArray.put(buildingObject);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		buildingJsonArray.put(building.toJson());
 
 		JSONArray mapInfoJsonArray = new JSONArray();
-		try {
-
-			for (int i = 0; i < mapInfoList.size(); ++i) {
-				TYMapInfo mapInfo = mapInfoList.get(i);
-				JSONObject mapInfoObject = TYWebMapObjectBuilder
-						.generateMapInfoJson(mapInfo);
-				mapInfoJsonArray.put(mapInfoObject);
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
+		for (int i = 0; i < mapInfoList.size(); ++i) {
+			mapInfoJsonArray.put(mapInfoList.get(i).toJson());
 		}
 
 		// JSONObject jsonObject = new JSONObject();
 		try {
 			jsonObject.put(TYWebMapFields.KEY_WEB_CITIES, cityJsonArray);
-			jsonObject.put(TYWebMapFields.KEY_WEB_BUILDINGS,
-					buildingJsonArray);
-			jsonObject
-					.put(TYWebMapFields.KEY_WEB_MAPINFOS, mapInfoJsonArray);
+			jsonObject.put(TYWebMapFields.KEY_WEB_BUILDINGS, buildingJsonArray);
+			jsonObject.put(TYWebMapFields.KEY_WEB_MAPINFOS, mapInfoJsonArray);
 			jsonObject.put("success", true);
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -151,8 +123,8 @@ public class TYGetWebCBMServlet extends HttpServlet {
 		out.close();
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 

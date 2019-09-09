@@ -1,8 +1,5 @@
 package cn.platalk.map.core.web.file;
 
-import innerpeacer.mapdata.pbf.TYMapDataPbf.TYIndoorDataPbf;
-import innerpeacer.mapdata.pbf.TYPoiPbf;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,7 +13,6 @@ import cn.platalk.map.core.pbf.TYWebMapPbfDataBuilder;
 import cn.platalk.map.core.pbf.TYWebMapPoiDataBuilder;
 import cn.platalk.map.core.web.TYWebMapFields;
 import cn.platalk.map.core.web.TYWebMapGeojsonDataBuilder;
-import cn.platalk.map.core.web.TYWebMapObjectBuilder;
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.entity.base.impl.TYCity;
 import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
@@ -28,6 +24,8 @@ import cn.platalk.mysql.map.TYMapDataDBAdapter;
 import cn.platalk.mysql.map.TYMapInfoDBAdapter;
 import cn.platalk.mysql.map.TYSymbolDBAdapter;
 import cn.platalk.utils.third.TYFileUtils;
+import innerpeacer.mapdata.pbf.TYMapDataPbf.TYIndoorDataPbf;
+import innerpeacer.mapdata.pbf.TYPoiPbf;
 
 public class TYWebGeneratingMapFileTask {
 	TYBuilding targetBuilding;
@@ -40,8 +38,7 @@ public class TYWebGeneratingMapFileTask {
 		building.setCityID(cityID);
 		building.setBuildingID(buildingID);
 
-		TYWebGeneratingMapFileTask task = new TYWebGeneratingMapFileTask(
-				building);
+		TYWebGeneratingMapFileTask task = new TYWebGeneratingMapFileTask(building);
 		task.startTask();
 	}
 
@@ -65,35 +62,20 @@ public class TYWebGeneratingMapFileTask {
 
 		TYMapInfoDBAdapter db = new TYMapInfoDBAdapter();
 		db.connectDB();
-		List<TYMapInfo> mapInfoList = db.getMapInfos(targetBuilding
-				.getBuildingID());
+		List<TYMapInfo> mapInfoList = db.getMapInfos(targetBuilding.getBuildingID());
 		db.disconnectDB();
 
 		JSONArray cityJsonArray = new JSONArray();
-		JSONObject cityObject;
-		try {
-			cityObject = TYWebMapObjectBuilder.generateCityJson(city);
-			cityJsonArray.put(cityObject);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		cityJsonArray.put(city.toJson());
 
 		JSONArray buildingJsonArray = new JSONArray();
-		JSONObject buildingObject;
-		try {
-			buildingObject = TYWebMapObjectBuilder
-					.generateBuildingJson(targetBuilding);
-			buildingJsonArray.put(buildingObject);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		buildingJsonArray.put(targetBuilding.toJson());
 
 		JSONArray mapInfoJsonArray = new JSONArray();
 		try {
 			for (int i = 0; i < mapInfoList.size(); ++i) {
 				TYMapInfo mapInfo = mapInfoList.get(i);
-				JSONObject mapInfoObject = TYWebMapObjectBuilder
-						.generateMapInfoJson(mapInfo);
+				JSONObject mapInfoObject = mapInfo.toJson();
 				mapInfoJsonArray.put(mapInfoObject);
 			}
 		} catch (JSONException e) {
@@ -103,17 +85,14 @@ public class TYWebGeneratingMapFileTask {
 		JSONObject jsonObject = new JSONObject();
 		try {
 			jsonObject.put(TYWebMapFields.KEY_WEB_CITIES, cityJsonArray);
-			jsonObject.put(TYWebMapFields.KEY_WEB_BUILDINGS,
-					buildingJsonArray);
-			jsonObject
-					.put(TYWebMapFields.KEY_WEB_MAPINFOS, mapInfoJsonArray);
+			jsonObject.put(TYWebMapFields.KEY_WEB_BUILDINGS, buildingJsonArray);
+			jsonObject.put(TYWebMapFields.KEY_WEB_MAPINFOS, mapInfoJsonArray);
 			jsonObject.put("success", true);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 
-		String cbmJsonPath = TYWebCBMPathManager
-				.getCBMJsonPath(targetBuilding.getBuildingID());
+		String cbmJsonPath = TYWebCBMPathManager.getCBMJsonPath(targetBuilding.getBuildingID());
 		System.out.println(cbmJsonPath);
 		TYFileUtils.makeFolders(cbmJsonPath);
 		TYFileUtils.writeFile(cbmJsonPath, jsonObject.toString());
@@ -125,16 +104,13 @@ public class TYWebGeneratingMapFileTask {
 		String buildingID = targetBuilding.getBuildingID();
 		TYMapDataDBAdapter mapdb = new TYMapDataDBAdapter(buildingID);
 		mapdb.connectDB();
-		List<TYMapDataFeatureRecord> mapDataRecordList = mapdb
-				.getAllMapDataRecords();
+		List<TYMapDataFeatureRecord> mapDataRecordList = mapdb.getAllMapDataRecords();
 		mapdb.disconnectDB();
 
 		System.out.println(mapDataRecordList.size() + " pois");
 
-		TYPoiPbf.PoiCollectionPbf collectionPbf = TYWebMapPoiDataBuilder
-				.generatePoiCollectionObject(mapDataRecordList);
-		String pbfPath = TYWebPbfPathManager.getPoiPbfPath(
-				targetBuilding.getCityID(), targetBuilding.getBuildingID());
+		TYPoiPbf.PoiCollectionPbf collectionPbf = TYWebMapPoiDataBuilder.generatePoiCollectionObject(mapDataRecordList);
+		String pbfPath = TYWebPbfPathManager.getPoiPbfPath(targetBuilding.getCityID(), targetBuilding.getBuildingID());
 		TYFileUtils.makeFolders(pbfPath);
 		FileOutputStream output = null;
 		try {
@@ -162,8 +138,7 @@ public class TYWebGeneratingMapFileTask {
 		System.out.println("generateMapDataPbf");
 		TYMapInfoDBAdapter mapInfoDB = new TYMapInfoDBAdapter();
 		mapInfoDB.connectDB();
-		List<TYMapInfo> mapInfoList = mapInfoDB.getMapInfos(targetBuilding
-				.getBuildingID());
+		List<TYMapInfo> mapInfoList = mapInfoDB.getMapInfos(targetBuilding.getBuildingID());
 		mapInfoDB.disconnectDB();
 
 		for (TYMapInfo info : mapInfoList) {
@@ -175,22 +150,18 @@ public class TYWebGeneratingMapFileTask {
 
 			TYMapDataDBAdapter mapdb = new TYMapDataDBAdapter(buildingID);
 			mapdb.connectDB();
-			List<TYMapDataFeatureRecord> mapDataRecordList = mapdb
-					.getAllMapDataRecords(mapID);
+			List<TYMapDataFeatureRecord> mapDataRecordList = mapdb.getAllMapDataRecords(mapID);
 			mapdb.disconnectDB();
 
 			TYSymbolDBAdapter symboldb = new TYSymbolDBAdapter();
 			symboldb.connectDB();
-			List<TYFillSymbolRecord> fillSymbolList = symboldb
-					.getFillSymbolRecords(buildingID);
-			List<TYIconSymbolRecord> iconSymbolList = symboldb
-					.getIconSymbolRecords(buildingID);
+			List<TYFillSymbolRecord> fillSymbolList = symboldb.getFillSymbolRecords(buildingID);
+			List<TYIconSymbolRecord> iconSymbolList = symboldb.getIconSymbolRecords(buildingID);
 			symboldb.disconnectDB();
-			dataPbf = TYWebMapPbfDataBuilder.generateMapDataObject(mapID,
-					mapDataRecordList, fillSymbolList, iconSymbolList);
+			dataPbf = TYWebMapPbfDataBuilder.generateMapDataObject(mapID, mapDataRecordList, fillSymbolList,
+					iconSymbolList);
 
-			String pbfPath = TYWebPbfPathManager.getMapDataPbfPath(cityID,
-					buildingID, mapID);
+			String pbfPath = TYWebPbfPathManager.getMapDataPbfPath(cityID, buildingID, mapID);
 			TYFileUtils.makeFolders(pbfPath);
 			FileOutputStream output = null;
 			try {
@@ -218,8 +189,7 @@ public class TYWebGeneratingMapFileTask {
 		System.out.println("generateMapDataGeojson");
 		TYMapInfoDBAdapter mapInfoDB = new TYMapInfoDBAdapter();
 		mapInfoDB.connectDB();
-		List<TYMapInfo> mapInfoList = mapInfoDB.getMapInfos(targetBuilding
-				.getBuildingID());
+		List<TYMapInfo> mapInfoList = mapInfoDB.getMapInfos(targetBuilding.getBuildingID());
 		mapInfoDB.disconnectDB();
 
 		for (TYMapInfo info : mapInfoList) {
@@ -230,25 +200,20 @@ public class TYWebGeneratingMapFileTask {
 
 			TYMapDataDBAdapter mapdb = new TYMapDataDBAdapter(buildingID);
 			mapdb.connectDB();
-			List<TYMapDataFeatureRecord> mapDataRecordList = mapdb
-					.getAllMapDataRecords(mapID);
+			List<TYMapDataFeatureRecord> mapDataRecordList = mapdb.getAllMapDataRecords(mapID);
 			mapdb.disconnectDB();
 
 			TYSymbolDBAdapter symboldb = new TYSymbolDBAdapter();
 			symboldb.connectDB();
-			List<TYFillSymbolRecord> fillSymbolList = symboldb
-					.getFillSymbolRecords(buildingID);
-			List<TYIconSymbolRecord> iconSymbolList = symboldb
-					.getIconSymbolRecords(buildingID);
+			List<TYFillSymbolRecord> fillSymbolList = symboldb.getFillSymbolRecords(buildingID);
+			List<TYIconSymbolRecord> iconSymbolList = symboldb.getIconSymbolRecords(buildingID);
 			symboldb.disconnectDB();
 
 			JSONObject mapDataObject = null;
 			try {
-				mapDataObject = TYWebMapGeojsonDataBuilder
-						.generateMapDataObject(mapDataRecordList,
-								fillSymbolList, iconSymbolList);
-				String geojsonPath = TYWebGeojsonPathManager
-						.getMapDataGeojsonPath(cityID, buildingID, mapID);
+				mapDataObject = TYWebMapGeojsonDataBuilder.generateMapDataObject(mapDataRecordList, fillSymbolList,
+						iconSymbolList);
+				String geojsonPath = TYWebGeojsonPathManager.getMapDataGeojsonPath(cityID, buildingID, mapID);
 				System.out.println(geojsonPath);
 				TYFileUtils.makeFolders(geojsonPath);
 				TYFileUtils.writeFile(geojsonPath, mapDataObject.toString());

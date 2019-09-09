@@ -1,9 +1,30 @@
 package cn.platalk.map.entity.base.impl;
 
+import org.json.JSONObject;
+
 import cn.platalk.map.entity.base.TYIBuilding;
 import cn.platalk.map.entity.base.TYIMapExtent;
 
 public class TYBuilding implements TYIBuilding {
+	static final String KEY_JSON_BUILDING_CITY_ID = "cityID";
+	static final String KEY_JSON_BUILDING_ID = "id";
+	static final String KEY_JSON_BUILDING_NAME = "name";
+	static final String KEY_JSON_BUILDING_LONGITUDE = "longitude";
+	static final String KEY_JSON_BUILDING_LATITUDE = "latitude";
+	static final String KEY_JSON_BUILDING_ADDRESS = "address";
+	static final String KEY_JSON_BUILDING_INIT_ANGLE = "initAngle";
+	static final String KEY_JSON_BUILDING_INIT_FLOOR = "initFloorIndex";
+	static final String KEY_JSON_BUILDING_ROUTE_URL = "routeURL";
+	static final String KEY_JSON_BUILDING_OFFSET_X = "offsetX";
+	static final String KEY_JSON_BUILDING_OFFSET_Y = "offsetY";
+	static final String KEY_JSON_BUILDING_XMIN = "xmin";
+	static final String KEY_JSON_BUILDING_XMAX = "xmax";
+	static final String KEY_JSON_BUILDING_YMIN = "ymin";
+	static final String KEY_JSON_BUILDING_YMAX = "ymax";
+	static final String KEY_JSON_BUILDING_WGS84_CALIBRATION_POINT = "wgs84CalibrationPoint";
+	static final String KEY_JSON_BUILDING_WT_CALIBRATION_POINT = "wtCalibrationPoint";
+	static final String KEY_JSON_BUILDING_STATUS = "status";
+
 	private String cityID;
 	private String buildingID;
 	private String name;
@@ -163,6 +184,29 @@ public class TYBuilding implements TYIBuilding {
 
 	public void setWtCalibrationPoint(double[] wtCalibrationPoint) {
 		this.wtCalibrationPoint = wtCalibrationPoint;
+	}
+
+	public JSONObject toJson() {
+		JSONObject buildingObject = new JSONObject();
+		buildingObject.put(KEY_JSON_BUILDING_CITY_ID, getCityID());
+		buildingObject.put(KEY_JSON_BUILDING_ID, getBuildingID());
+		buildingObject.put(KEY_JSON_BUILDING_NAME, getName());
+		buildingObject.put(KEY_JSON_BUILDING_LONGITUDE, getLongitude());
+		buildingObject.put(KEY_JSON_BUILDING_LATITUDE, getLatitude());
+		buildingObject.put(KEY_JSON_BUILDING_ADDRESS, getAddress());
+		buildingObject.put(KEY_JSON_BUILDING_INIT_ANGLE, getInitAngle());
+		buildingObject.put(KEY_JSON_BUILDING_INIT_FLOOR, getInitFloorIndex());
+		buildingObject.put(KEY_JSON_BUILDING_ROUTE_URL, getRouteURL());
+		buildingObject.put(KEY_JSON_BUILDING_OFFSET_X, getOffset().getX());
+		buildingObject.put(KEY_JSON_BUILDING_OFFSET_Y, getOffset().getY());
+		buildingObject.put(KEY_JSON_BUILDING_XMIN, getBuildingExtent().getXmin());
+		buildingObject.put(KEY_JSON_BUILDING_XMAX, getBuildingExtent().getXmax());
+		buildingObject.put(KEY_JSON_BUILDING_YMIN, getBuildingExtent().getYmin());
+		buildingObject.put(KEY_JSON_BUILDING_YMAX, getBuildingExtent().getYmax());
+		buildingObject.put(KEY_JSON_BUILDING_WGS84_CALIBRATION_POINT, getWgs84CalibrationPoint());
+		buildingObject.put(KEY_JSON_BUILDING_WT_CALIBRATION_POINT, getWtCalibrationPoint());
+		buildingObject.put(KEY_JSON_BUILDING_STATUS, getStatus());
+		return buildingObject;
 	}
 
 	@Override

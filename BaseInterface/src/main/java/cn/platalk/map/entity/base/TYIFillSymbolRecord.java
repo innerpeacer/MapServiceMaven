@@ -1,5 +1,7 @@
 package cn.platalk.map.entity.base;
 
+import org.json.JSONObject;
+
 public interface TYIFillSymbolRecord {
 	public int getUID();
 
@@ -16,5 +18,7 @@ public interface TYIFillSymbolRecord {
 	public double getLevelMax();
 
 	public boolean isVisible();
+
+	public JSONObject toJson();
 
 }

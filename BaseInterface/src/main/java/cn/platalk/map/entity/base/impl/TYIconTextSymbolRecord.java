@@ -1,8 +1,34 @@
 package cn.platalk.map.entity.base.impl;
 
+import org.json.JSONObject;
+
 import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
 
 public class TYIconTextSymbolRecord implements TYIIconTextSymbolRecord {
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_ID = "symbolID";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_ICON_VISIBLE = "iconVisible";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_ICON_SIZE = "iconSize";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_ICON_ROTATE = "iconRotate";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_ICON_OFFSET_X = "iconOffsetX";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_ICON_OFFSET_Y = "iconOffsetY";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_TEXT_VISIBLE = "textVisible";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_TEXT_SIZE = "textSize";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_TEXT_FONT = "textFont";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_TEXT_COLOR = "textColor";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_TEXT_ROTATE = "textRotate";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_TEXT_OFFSET_X = "textOffsetX";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_TEXT_OFFSET_Y = "textOffsetY";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_LEVEL_MIN = "levelMin";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_LEVEL_MAX = "levelMax";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_OTHER_PAINT = "otherPaint";
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_OTHER_LAYOUT = "otherLayout";
+	// static final String KEY_JSON_ICON_TEXT_SYMBOL_DESCRIPTION =
+	// "description";
+	// // Not Needed!
+	static final String KEY_JSON_ICON_TEXT_SYMBOL_PRIORITY = "priority";
+
+	static final String KEY_JSON_ICON_TEXT_UID = "UID";
+
 	public int UID;
 	public int symbolID;
 
@@ -187,6 +213,32 @@ public class TYIconTextSymbolRecord implements TYIIconTextSymbolRecord {
 
 	public int getPriority() {
 		return priority;
+	}
+
+	public JSONObject toJson() {
+		JSONObject symbolObject = new JSONObject();
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_ID, getSymbolID());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_ICON_VISIBLE, isIconVisible());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_ICON_SIZE, getIconSize());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_ICON_ROTATE, getIconRotate());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_ICON_OFFSET_X, getIconOffsetX());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_ICON_OFFSET_Y, getIconOffsetY());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_TEXT_VISIBLE, isTextVisible());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_TEXT_SIZE, getTextSize());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_TEXT_FONT, getTextFont());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_TEXT_COLOR, getTextColor());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_TEXT_ROTATE, getTextRotate());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_TEXT_OFFSET_X, getTextOffsetX());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_TEXT_OFFSET_Y, getTextOffsetY());
+
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_LEVEL_MIN, getLevelMin());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_LEVEL_MAX, getLevelMax());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_OTHER_PAINT, getOtherPaint());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_OTHER_LAYOUT, getOtherLayout());
+		symbolObject.put(KEY_JSON_ICON_TEXT_UID, getUID());
+		symbolObject.put(KEY_JSON_ICON_TEXT_SYMBOL_PRIORITY, getPriority());
+
+		return symbolObject;
 	}
 
 }

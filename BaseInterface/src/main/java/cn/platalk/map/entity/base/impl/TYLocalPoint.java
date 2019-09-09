@@ -86,6 +86,10 @@ public class TYLocalPoint implements TYILocalPoint {
 		this.floor = floor;
 	}
 
+	public JSONObject toJson() {
+		return null;
+	}
+
 	public byte[] getGeometryBytes() {
 		return IPXPointConverter.dataFromPoint3D(new IPXPoint3D(x, y, 0));
 	}

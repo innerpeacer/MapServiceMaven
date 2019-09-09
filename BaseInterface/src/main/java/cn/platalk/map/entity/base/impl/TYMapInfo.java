@@ -1,8 +1,22 @@
 package cn.platalk.map.entity.base.impl;
 
+import org.json.JSONObject;
+
 import cn.platalk.map.entity.base.TYIMapInfo;
 
 public class TYMapInfo implements TYIMapInfo {
+	static final String KEY_JSON_MAPINFO_CITYID = "cityID";
+	static final String KEY_JSON_MAPINFO_BUILDINGID = "buildingID";
+	static final String KEY_JSON_MAPINFO_MAPID = "mapID";
+	static final String KEY_JSON_MAPINFO_FLOOR = "floorName";
+	static final String KEY_JSON_MAPINFO_FLOOR_INDEX = "floorIndex";
+	static final String KEY_JSON_MAPINFO_SIZEX = "size_x";
+	static final String KEY_JSON_MAPINFO_SIZEY = "size_y";
+	static final String KEY_JSON_MAPINFO_XMIN = "xmin";
+	static final String KEY_JSON_MAPINFO_XMAX = "xmax";
+	static final String KEY_JSON_MAPINFO_YMIN = "ymin";
+	static final String KEY_JSON_MAPINFO_YMAX = "ymax";
+
 	String cityID;
 	String buildingID;
 	String mapID;
@@ -100,6 +114,22 @@ public class TYMapInfo implements TYIMapInfo {
 
 	public void setYmax(double ymax) {
 		this.ymax = ymax;
+	}
+
+	public JSONObject toJson() {
+		JSONObject mapInfoObject = new JSONObject();
+		mapInfoObject.put(KEY_JSON_MAPINFO_CITYID, getCityID());
+		mapInfoObject.put(KEY_JSON_MAPINFO_BUILDINGID, getBuildingID());
+		mapInfoObject.put(KEY_JSON_MAPINFO_MAPID, getMapID());
+		mapInfoObject.put(KEY_JSON_MAPINFO_FLOOR, getFloorName());
+		mapInfoObject.put(KEY_JSON_MAPINFO_FLOOR_INDEX, getFloorNumber());
+		mapInfoObject.put(KEY_JSON_MAPINFO_SIZEX, getMapSize().getX());
+		mapInfoObject.put(KEY_JSON_MAPINFO_SIZEY, getMapSize().getY());
+		mapInfoObject.put(KEY_JSON_MAPINFO_XMIN, getMapExtent().getXmin());
+		mapInfoObject.put(KEY_JSON_MAPINFO_XMAX, getMapExtent().getXmax());
+		mapInfoObject.put(KEY_JSON_MAPINFO_YMIN, getMapExtent().getYmin());
+		mapInfoObject.put(KEY_JSON_MAPINFO_YMAX, getMapExtent().getYmax());
+		return mapInfoObject;
 	}
 
 	@Override
