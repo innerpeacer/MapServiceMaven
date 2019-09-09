@@ -72,6 +72,11 @@ public class WTMysqlBleSampleDBAdapter {
 		return WTMysqlBleSampleParams.BleSampleListFromRecords(db.readData(sampleTable));
 	}
 
+	public List<WTBleSample> getAllSample(String buildingID) {
+		return WTMysqlBleSampleParams.BleSampleListFromRecords(db.readData(sampleTable,
+				sampleTable.getField(WTMysqlBleSampleParams.FIELD_BLE_SAMPLE_2_BUILDING_ID), buildingID));
+	}
+
 	public WTBleSample getSample(String sampleID) {
 		List<WTBleSample> sampleList = WTMysqlBleSampleParams.BleSampleListFromRecords(
 				db.readData(sampleTable, sampleTable.getField(WTMysqlBleSampleParams.FIELD_BLE_SAMPLE_1_ID), sampleID));

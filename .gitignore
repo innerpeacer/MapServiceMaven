@@ -2,3 +2,6 @@
 target/
 libs/
 Test
+
+.classpath
+.project
