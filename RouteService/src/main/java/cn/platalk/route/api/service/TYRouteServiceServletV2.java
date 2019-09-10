@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.platalk.map.caching.TYCachingPool;
+import cn.platalk.map.caching.TYCachingType;
 import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.TYIRouteLinkRecord;
 import cn.platalk.map.entity.base.TYIRouteNodeRecord;
@@ -23,7 +25,6 @@ import cn.platalk.map.route.core.TYServerMultiRouteManager;
 import cn.platalk.map.route.core.TYServerMultiRouteResult;
 import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.route.api.TYApiResponse;
-import cn.platalk.route.core.routemanager.TYMultiRouteManagerCollection;
 
 @WebServlet("/route/RouteServiceV2")
 public class TYRouteServiceServletV2 extends HttpServlet {
@@ -39,12 +40,13 @@ public class TYRouteServiceServletV2 extends HttpServlet {
 
 			TYServerMultiRouteManager routeManager = new TYServerMultiRouteManager(currentBuilding, mapInfoList,
 					nodeList, linkList);
-			TYMultiRouteManagerCollection.AddRouteManager(currentBuilding.getBuildingID(), routeManager);
+			TYCachingPool.setCachingData(currentBuilding.getBuildingID(), routeManager,
+					TYCachingType.MultiRouteManager);
 		}
 	}
 
 	protected TYServerMultiRouteManager getRouteManager(String buildingID) {
-		return TYMultiRouteManagerCollection.GetRouteManager(buildingID);
+		return (TYServerMultiRouteManager) TYCachingPool.getCachingData(buildingID, TYCachingType.MultiRouteManager);
 	}
 
 	@Override
@@ -85,7 +87,7 @@ public class TYRouteServiceServletV2 extends HttpServlet {
 			return;
 		}
 
-		if (!TYMultiRouteManagerCollection.ExistRouteManager(buildingID)) {
+		if (!TYCachingPool.existDataID(buildingID, TYCachingType.MultiRouteManager)) {
 			initRouteManager(buildingID);
 		}
 
@@ -126,7 +128,8 @@ public class TYRouteServiceServletV2 extends HttpServlet {
 		// System.out.println("不重排");
 		// }
 
-		TYServerMultiRouteManager routeManager = TYMultiRouteManagerCollection.GetRouteManager(buildingID);
+		TYServerMultiRouteManager routeManager = (TYServerMultiRouteManager) TYCachingPool.getCachingData(buildingID,
+				TYCachingType.MultiRouteManager);
 		TYServerMultiRouteResult routeResult = null;
 		if (routeManager != null) {
 			routeResult = routeManager.requestRoute(startPoint, endPoint, stopPoints, rearrange);

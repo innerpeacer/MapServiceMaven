@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.platalk.map.caching.TYCachingPool;
+import cn.platalk.map.caching.TYCachingType;
 import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.TYIRouteLinkRecord;
 import cn.platalk.map.entity.base.TYIRouteNodeRecord;
@@ -23,7 +25,6 @@ import cn.platalk.map.route.core.TYServerRouteManager;
 import cn.platalk.map.route.core.TYServerRouteResult;
 import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.route.api.TYApiResponse;
-import cn.platalk.route.core.routemanager.TYRouteManagerCollection;
 
 @WebServlet("/route/RouteService")
 public class TYRouteServiceServlet extends HttpServlet {
@@ -39,12 +40,12 @@ public class TYRouteServiceServlet extends HttpServlet {
 
 			TYServerRouteManager routeManager = new TYServerRouteManager(currentBuilding, mapInfoList, nodeList,
 					linkList);
-			TYRouteManagerCollection.AddRouteManager(currentBuilding.getBuildingID(), routeManager);
+			TYCachingPool.setCachingData(currentBuilding.getBuildingID(), routeManager, TYCachingType.RouteManager);
 		}
 	}
 
 	protected TYServerRouteManager getRouteManager(String buildingID) {
-		return TYRouteManagerCollection.GetRouteManager(buildingID);
+		return (TYServerRouteManager) TYCachingPool.getCachingData(buildingID, TYCachingType.RouteManager);
 	}
 
 	@Override
@@ -66,7 +67,7 @@ public class TYRouteServiceServlet extends HttpServlet {
 			return;
 		}
 
-		if (!TYRouteManagerCollection.ExistRouteManager(buildingID)) {
+		if (!TYCachingPool.existDataID(buildingID, TYCachingType.RouteManager)) {
 			initRouteManager(buildingID);
 		}
 
@@ -82,7 +83,9 @@ public class TYRouteServiceServlet extends HttpServlet {
 		TYLocalPoint startPoint = new TYLocalPoint(startX, startY, startFloor);
 		TYLocalPoint endPoint = new TYLocalPoint(endX, endY, endFloor);
 
-		TYServerRouteManager routeManager = TYRouteManagerCollection.GetRouteManager(buildingID);
+		TYServerRouteManager routeManager = (TYServerRouteManager) TYCachingPool.getCachingData(buildingID,
+				TYCachingType.RouteManager);
+
 		TYServerRouteResult routeResult = null;
 		if (routeManager != null) {
 			routeResult = routeManager.requestRoute(startPoint, endPoint);

@@ -1,4 +1,4 @@
-package cn.platalk.map.core.caching;
+package cn.platalk.map.caching;
 
 import java.util.ArrayList;
 import java.util.HashMap;

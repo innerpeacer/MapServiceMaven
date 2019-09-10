@@ -14,8 +14,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.core.caching.TYCachingPool;
-import cn.platalk.map.core.caching.TYCachingType;
+import cn.platalk.map.caching.TYCachingPool;
+import cn.platalk.map.caching.TYCachingType;
 import cn.platalk.map.core.config.TYServerEnvironment;
 import cn.platalk.map.core.web.TYWebMapGeojsonDataBuilder;
 import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;

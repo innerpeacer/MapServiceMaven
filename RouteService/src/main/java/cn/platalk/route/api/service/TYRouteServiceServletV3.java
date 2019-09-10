@@ -14,20 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.platalk.map.caching.TYCachingPool;
+import cn.platalk.map.caching.TYCachingType;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
 import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.entity.base.impl.TYLocalPoint;
-import cn.platalk.map.route.core.TYServerMultiRouteManager;
 import cn.platalk.map.route.core_v3.TYServerMultiRouteManagerV3;
 import cn.platalk.map.route.core_v3.TYServerMultiRouteResultV3;
 import cn.platalk.map.route.core_v3.TYServerRouteOptions;
 import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.route.api.TYApiResponse;
-import cn.platalk.route.core.routemanager.TYMultiRouteManagerCollection;
-import cn.platalk.route.core_v3.routemanager.TYMultiRouteManagerCollectionV3;
 
 @WebServlet("/route/RouteServiceV3")
 public class TYRouteServiceServletV3 extends HttpServlet {
@@ -47,12 +46,9 @@ public class TYRouteServiceServletV3 extends HttpServlet {
 
 			TYServerMultiRouteManagerV3 routeManager = new TYServerMultiRouteManagerV3(currentBuilding, mapInfoList,
 					nodeList, linkList, mapRecordList);
-			TYMultiRouteManagerCollectionV3.AddRouteManager(currentBuilding.getBuildingID(), routeManager);
+			TYCachingPool.setCachingData(currentBuilding.getBuildingID(), routeManager,
+					TYCachingType.MultiRouteManagerV3);
 		}
-	}
-
-	protected TYServerMultiRouteManager getRouteManager(String buildingID) {
-		return TYMultiRouteManagerCollection.GetRouteManager(buildingID);
 	}
 
 	@Override
@@ -96,7 +92,7 @@ public class TYRouteServiceServletV3 extends HttpServlet {
 			return;
 		}
 
-		if (!TYMultiRouteManagerCollectionV3.ExistRouteManager(buildingID)) {
+		if (!TYCachingPool.existDataID(buildingID, TYCachingType.MultiRouteManagerV3)) {
 			initRouteManager(buildingID);
 		}
 
@@ -162,7 +158,8 @@ public class TYRouteServiceServletV3 extends HttpServlet {
 		}
 		options.setIgnoredNodeCategoryList(ignoredList);
 
-		TYServerMultiRouteManagerV3 routeManager = TYMultiRouteManagerCollectionV3.GetRouteManager(buildingID);
+		TYServerMultiRouteManagerV3 routeManager = (TYServerMultiRouteManagerV3) TYCachingPool
+				.getCachingData(buildingID, TYCachingType.MultiRouteManagerV3);
 		TYServerMultiRouteResultV3 routeResult = null;
 		if (routeManager != null) {
 			routeResult = routeManager.requestRoute(startPoint, endPoint, stopPoints, options);

@@ -1,8 +1,11 @@
-package cn.platalk.map.core.caching;
+package cn.platalk.map.caching;
 
 public enum TYCachingType {
 	IndoorDataPbf(1, "IndoorDataPbf"), IndoorDataGeojson(2, "IndoorDataGeojson"), BeaconDataPbf(3,
-			"BeaconDataPbf"), BeaconDataGeojson(4, "BeaconDataGeojson");
+			"BeaconDataPbf"), BeaconDataGeojson(4, "BeaconDataGeojson"),
+
+	RouteManager(10, "RouteManager"), MultiRouteManager(11, "MultiRouteManager"), RouteManagerV3(12,
+			"RouteManagerV3"), MultiRouteManagerV3(13, "MultiRouteManagerV3");
 
 	private int value;
 	private String name;
