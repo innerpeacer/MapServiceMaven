@@ -20,8 +20,10 @@ import cn.platalk.map.core.lab.blesample.WTBleSampleObjectBuilder;
 public class TYGetSampleJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = -652247259445376881L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("request sample json");
 		String sampleID = request.getParameter("sampleID");
 		response.setContentType("text/plain;charset=UTF-8");
 
@@ -54,6 +56,7 @@ public class TYGetSampleJsonServlet extends HttpServlet {
 		out.close();
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

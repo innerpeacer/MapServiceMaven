@@ -7,13 +7,13 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.core.map.shp.TYShpGeneratingTask;
 import cn.platalk.core.map.shp.TYShpGeneratingTask.TYShpGeneratingTaskListener;
 import cn.platalk.map.api.TYParameterChecker;
+import cn.platalk.map.api.web.map.TYBaseHttpServlet;
 import cn.platalk.map.core.config.TYMapEnvironment;
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.entity.base.impl.TYCity;
@@ -33,7 +33,7 @@ import cn.platalk.mysql.map.TYSymbolDBAdapter;
 import cn.platalk.utils.third.TYZipUtil;
 
 @WebServlet("/web/ParseMapData")
-public class TYParseMapDataServlet extends HttpServlet {
+public class TYParseMapDataServlet extends TYBaseHttpServlet {
 	private static final long serialVersionUID = -5584955122349462054L;
 
 	@Override
@@ -45,10 +45,7 @@ public class TYParseMapDataServlet extends HttpServlet {
 		final StringBuffer resBuffer = new StringBuffer();
 
 		if (!TYParameterChecker.isValidBuildingID(buildingID)) {
-			PrintWriter out = response.getWriter();
-			resBuffer.append("Invalid BuildingID: " + buildingID);
-			out.println(resBuffer.toString());
-			out.close();
+			respondError(request, response, errorDescriptionInvalidBuildingID(buildingID));
 			return;
 		}
 
@@ -62,8 +59,6 @@ public class TYParseMapDataServlet extends HttpServlet {
 				System.out.println("exist");
 
 				try {
-					// TYZipUtil.unzip(zipFile.getAbsolutePath(),
-					// TYBrtMapEnvironment.GetRawDataRootDir(), false);
 					TYZipUtil.unzip(zipFile.getAbsolutePath(),
 							new File(TYMapEnvironment.GetRawDataRootDir(), buildingID).toString(), false);
 				} catch (Exception e) {

@@ -5,17 +5,17 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.map.api.TYParameterChecker;
+import cn.platalk.map.api.web.map.TYBaseHttpServlet;
 import cn.platalk.map.core.web.file.TYWebGeneratingMapFileTask;
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.mysql.TYMysqlDBHelper;
 
 @WebServlet("/web/GenerateMapData")
-public class TYGenerateMapDataServlet extends HttpServlet {
+public class TYGenerateMapDataServlet extends TYBaseHttpServlet {
 	private static final long serialVersionUID = 7540952724296868847L;
 
 	@Override
@@ -25,18 +25,13 @@ public class TYGenerateMapDataServlet extends HttpServlet {
 		response.setContentType("text/json;charset=UTF-8");
 
 		if (!TYParameterChecker.isValidBuildingID(buildingID)) {
-			PrintWriter out = response.getWriter();
-			out.println("Invalid BuildingID: " + buildingID);
-			out.close();
+			respondError(request, response, errorDescriptionInvalidBuildingID(buildingID));
+			return;
 		}
 
 		TYBuilding building = TYMysqlDBHelper.getBuilding(buildingID);
-
 		if (building == null) {
-			PrintWriter out = response.getWriter();
-			System.out.println("BuildingID: " + buildingID + " not Exist!");
-			out.println("BuildingID: " + buildingID + " not Exist!");
-			out.close();
+			respondError(request, response, errorDescriptionNotExistBuildingID(buildingID));
 			return;
 		}
 

@@ -5,6 +5,7 @@ import java.util.List;
 import org.json.JSONArray;
 
 import cn.platalk.common.TYIJsonFeature;
+import cn.platalk.map.entity.base.impl.TYMapInfo;
 
 public class TYJsonBuilder {
 
@@ -23,4 +24,13 @@ public class TYJsonBuilder {
 		}
 		return jsonArray;
 	}
+
+	public static JSONArray buildMapInfoJsonArray(List<TYMapInfo> mapInfoList) {
+		JSONArray jsonArray = new JSONArray();
+		for (TYMapInfo mapInfo : mapInfoList) {
+			jsonArray.put(mapInfo.toJson());
+		}
+		return jsonArray;
+	}
+
 }

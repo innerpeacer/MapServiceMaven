@@ -12,7 +12,6 @@ import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,6 +19,7 @@ import cn.platalk.core.beacon.shp.TYBeaconShpDataManager;
 import cn.platalk.core.beacon.shp.beacondata.TYShpBeaconDataParser;
 import cn.platalk.core.beacon.shp.beacondata.TYShpBeaconDataParser.TYBrtShpBeaconParserListener;
 import cn.platalk.map.api.TYParameterChecker;
+import cn.platalk.map.api.web.map.TYBaseHttpServlet;
 import cn.platalk.map.core.config.TYMapEnvironment;
 import cn.platalk.map.entity.base.TYILocatingBeacon;
 import cn.platalk.map.entity.base.TYIMapInfo;
@@ -32,7 +32,7 @@ import cn.platalk.mysql.beacon.TYBeaconRegionDBAdapter;
 import cn.platalk.utils.third.TYZipUtil;
 
 @WebServlet("/web/ParseBeaconData")
-public class TYParseBeaconDataServlet extends HttpServlet {
+public class TYParseBeaconDataServlet extends TYBaseHttpServlet {
 	private static final long serialVersionUID = -2518472730406384232L;
 
 	@Override
@@ -44,10 +44,7 @@ public class TYParseBeaconDataServlet extends HttpServlet {
 		final StringBuffer resBuffer = new StringBuffer();
 
 		if (!TYParameterChecker.isValidBuildingID(buildingID)) {
-			PrintWriter out = response.getWriter();
-			resBuffer.append("Invalid BuildingID: " + buildingID);
-			out.println(resBuffer.toString());
-			out.close();
+			respondError(request, response, errorDescriptionInvalidBuildingID(buildingID));
 			return;
 		}
 

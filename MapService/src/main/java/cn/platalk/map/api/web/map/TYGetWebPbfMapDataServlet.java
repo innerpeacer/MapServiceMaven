@@ -2,12 +2,10 @@ package cn.platalk.map.api.web.map;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,7 +20,7 @@ import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.mysql.TYMysqlDBHelper;
 
 @WebServlet("/web/pbf/GetMapData")
-public class TYGetWebPbfMapDataServlet extends HttpServlet {
+public class TYGetWebPbfMapDataServlet extends TYBaseHttpServlet {
 
 	private static final long serialVersionUID = -652247259445376881L;
 
@@ -31,13 +29,11 @@ public class TYGetWebPbfMapDataServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String buildingID = request.getParameter("buildingID");
 		String mapID = request.getParameter("mapID");
-		// String callback = request.getParameter("callback");
 		response.setContentType("text/plain;charset=UTF-8");
 
 		if (!TYParameterChecker.isValidBuildingID(buildingID)) {
-			PrintWriter out = response.getWriter();
-			out.println("Invalid BuildingID: " + buildingID);
-			out.close();
+			respondError(request, response, errorDescriptionInvalidBuildingID(buildingID));
+			return;
 		}
 
 		TYIndoorDataPbf dataPbf = null;

@@ -10,11 +10,11 @@ import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.map.api.TYParameterChecker;
+import cn.platalk.map.api.web.map.TYBaseHttpServlet;
 import cn.platalk.map.core.config.TYMapEnvironment;
 import cn.platalk.map.entity.base.TYIFillSymbolRecord;
 import cn.platalk.map.entity.base.TYIIconSymbolRecord;
@@ -29,7 +29,7 @@ import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.utils.third.TYFileUtils;
 
 @WebServlet("/web/BuildVectorTile")
-public class TYBuildVectorTileServlet extends HttpServlet {
+public class TYBuildVectorTileServlet extends TYBaseHttpServlet {
 
 	private static final long serialVersionUID = 7540952724296868847L;
 
@@ -41,18 +41,13 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 		response.setContentType("text/json;charset=UTF-8");
 
 		if (!TYParameterChecker.isValidBuildingID(buildingID)) {
-			PrintWriter out = response.getWriter();
-			out.println("Invalid BuildingID: " + buildingID);
-			out.close();
+			respondError(request, response, errorDescriptionInvalidBuildingID(buildingID));
+			return;
 		}
 
 		TYBuilding building = TYMysqlDBHelper.getBuilding(buildingID);
-
 		if (building == null) {
-			PrintWriter out = response.getWriter();
-			System.out.println("BuildingID: " + buildingID + " not Exist!");
-			out.println("BuildingID: " + buildingID + " not Exist!");
-			out.close();
+			respondError(request, response, errorDescriptionNotExistBuildingID(buildingID));
 			return;
 		}
 
@@ -139,27 +134,6 @@ public class TYBuildVectorTileServlet extends HttpServlet {
 		}
 		return resultList;
 	}
-
-	// private List<TYIIconSymbolRecord>
-	// filterIconRecords(List<TYIMapDataFeatureRecord> mapRecords,
-	// List<TYIIconSymbolRecord> iconRecords) {
-	// List<TYIIconSymbolRecord> resultList = new
-	// ArrayList<TYIIconSymbolRecord>();
-	//
-	// Set<Integer> tempSet = new HashSet<Integer>();
-	// for (TYIMapDataFeatureRecord mapRecord : mapRecords) {
-	// if (mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_FACILITY) {
-	// tempSet.add(mapRecord.getSymbolID());
-	// }
-	// }
-	//
-	// for (TYIIconSymbolRecord iconRecord : iconRecords) {
-	// if (tempSet.contains(iconRecord.getSymbolID())) {
-	// resultList.add(iconRecord);
-	// }
-	// }
-	// return resultList;
-	// }
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
