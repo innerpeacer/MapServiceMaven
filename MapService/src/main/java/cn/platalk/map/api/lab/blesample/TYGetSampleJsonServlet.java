@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 import cn.platalk.lab.blesample.entity.WTBleSample;
 import cn.platalk.lab.blesample.mysql.WTMysqlBleSampleDBAdapter;
-import cn.platalk.map.api.web.map.TYBaseHttpServlet;
+import cn.platalk.servlet.TYBaseHttpServlet;
 
 @WebServlet("/lab/GetSampleJson")
 public class TYGetSampleJsonServlet extends TYBaseHttpServlet {

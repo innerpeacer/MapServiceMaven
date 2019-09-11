@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.core.pbf.beacon.TYBeaconPbf.TYLocatingBeaconListPbf;
 import cn.platalk.core.pbf.beacon.wrapper.TYBeaconPbfBuilder;
-import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.api.web.map.TYBaseHttpServlet;
 import cn.platalk.map.caching.TYCachingPool;
 import cn.platalk.map.caching.TYCachingType;
 import cn.platalk.map.core.config.TYServerEnvironment;
 import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 import cn.platalk.mysql.TYMysqlDBHelper;
+import cn.platalk.servlet.TYBaseHttpServlet;
+import cn.platalk.servlet.TYParameterChecker;
 
 @WebServlet("/web/pbf/getBeacon")
 public class TYGetWebPbfBeaconServlet extends TYBaseHttpServlet {

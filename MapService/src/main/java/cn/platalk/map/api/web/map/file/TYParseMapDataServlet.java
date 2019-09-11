@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.core.map.shp.TYShpGeneratingTask;
 import cn.platalk.core.map.shp.TYShpGeneratingTask.TYShpGeneratingTaskListener;
-import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.api.web.map.TYBaseHttpServlet;
 import cn.platalk.map.core.config.TYMapEnvironment;
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.entity.base.impl.TYCity;
@@ -30,6 +28,8 @@ import cn.platalk.mysql.map.TYMapDataDBAdapter;
 import cn.platalk.mysql.map.TYMapInfoDBAdapter;
 import cn.platalk.mysql.map.TYRouteDBAdapter;
 import cn.platalk.mysql.map.TYSymbolDBAdapter;
+import cn.platalk.servlet.TYBaseHttpServlet;
+import cn.platalk.servlet.TYParameterChecker;
 import cn.platalk.utils.third.TYZipUtil;
 
 @WebServlet("/web/ParseMapData")

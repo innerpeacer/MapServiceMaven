@@ -18,8 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import cn.platalk.core.beacon.shp.TYBeaconShpDataManager;
 import cn.platalk.core.beacon.shp.beacondata.TYShpBeaconDataParser;
 import cn.platalk.core.beacon.shp.beacondata.TYShpBeaconDataParser.TYBrtShpBeaconParserListener;
-import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.api.web.map.TYBaseHttpServlet;
 import cn.platalk.map.core.config.TYMapEnvironment;
 import cn.platalk.map.entity.base.TYILocatingBeacon;
 import cn.platalk.map.entity.base.TYIMapInfo;
@@ -29,6 +27,8 @@ import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
 import cn.platalk.mysql.beacon.TYBeaconRegionDBAdapter;
+import cn.platalk.servlet.TYBaseHttpServlet;
+import cn.platalk.servlet.TYParameterChecker;
 import cn.platalk.utils.third.TYZipUtil;
 
 @WebServlet("/web/ParseBeaconData")

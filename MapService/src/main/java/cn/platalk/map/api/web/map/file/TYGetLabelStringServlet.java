@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
-import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.api.web.map.TYBaseHttpServlet;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.vectortile.fontbuilder.TYExtractLabelString;
 import cn.platalk.mysql.TYMysqlDBHelper;
+import cn.platalk.servlet.TYBaseHttpServlet;
+import cn.platalk.servlet.TYParameterChecker;
 
 @WebServlet("/web/GetLabelString")
 public class TYGetLabelStringServlet extends TYBaseHttpServlet {

@@ -11,13 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.core.pbf.mapdata.TYMapDataPbf.TYIndoorDataPbf;
 import cn.platalk.core.pbf.mapdata.wrapper.TYIndoorDataPbfBuilder;
-import cn.platalk.map.api.TYParameterChecker;
 import cn.platalk.map.caching.TYCachingPool;
 import cn.platalk.map.caching.TYCachingType;
 import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.mysql.TYMysqlDBHelper;
+import cn.platalk.servlet.TYBaseHttpServlet;
+import cn.platalk.servlet.TYParameterChecker;
 
 @WebServlet("/web/pbf/GetMapData")
 public class TYGetWebPbfMapDataServlet extends TYBaseHttpServlet {

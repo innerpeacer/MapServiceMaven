@@ -9,11 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.platalk.map.api.TYParameterChecker;
 import cn.platalk.map.caching.TYCachingPool;
 import cn.platalk.map.caching.TYCachingType;
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.mysql.TYMysqlDBHelper;
+import cn.platalk.servlet.TYBaseHttpServlet;
+import cn.platalk.servlet.TYParameterChecker;
 
 @WebServlet("/web/ResetMapData")
 public class TYGetWebResetMapDataServlet extends TYBaseHttpServlet {

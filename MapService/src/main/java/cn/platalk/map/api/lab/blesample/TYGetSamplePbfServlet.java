@@ -12,7 +12,7 @@ import cn.platalk.lab.blesample.entity.WTBleSample;
 import cn.platalk.lab.blesample.mysql.WTMysqlBleSampleDBAdapter;
 import cn.platalk.lab.blesample.pbf.proto.WTBleSamplePbf.BleSamplePbf;
 import cn.platalk.lab.blesample.pbf.wrapper.WTBleSample2PbfUtils;
-import cn.platalk.map.api.web.map.TYBaseHttpServlet;
+import cn.platalk.servlet.TYBaseHttpServlet;
 
 @WebServlet("/lab/GetSamplePbf")
 public class TYGetSamplePbfServlet extends TYBaseHttpServlet {

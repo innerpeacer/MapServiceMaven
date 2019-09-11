@@ -31,7 +31,6 @@
 			<version>${wtmap-entity-base-version}</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>cn.platalk.sqlhelper</groupId>
 			<artifactId>SqlHelper</artifactId>
@@ -45,9 +44,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20180130</version>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>

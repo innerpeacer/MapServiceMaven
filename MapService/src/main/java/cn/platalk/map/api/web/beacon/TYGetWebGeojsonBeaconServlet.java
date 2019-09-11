@@ -13,12 +13,12 @@ import org.json.JSONObject;
 
 import cn.platalk.common.TYIGeojsonFeature;
 import cn.platalk.foundation.TYGeojsonBuilder;
-import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.api.web.map.TYBaseHttpServlet;
 import cn.platalk.map.caching.TYCachingPool;
 import cn.platalk.map.caching.TYCachingType;
 import cn.platalk.map.core.config.TYServerEnvironment;
 import cn.platalk.mysql.TYMysqlDBHelper;
+import cn.platalk.servlet.TYBaseHttpServlet;
+import cn.platalk.servlet.TYParameterChecker;
 
 @WebServlet("/web/geojson/getBeacon")
 public class TYGetWebGeojsonBeaconServlet extends TYBaseHttpServlet {

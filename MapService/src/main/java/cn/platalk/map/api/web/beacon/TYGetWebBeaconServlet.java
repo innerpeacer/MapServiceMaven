@@ -14,9 +14,9 @@ import org.json.JSONObject;
 
 import cn.platalk.common.TYIJsonFeature;
 import cn.platalk.foundation.TYJsonBuilder;
-import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.api.web.map.TYBaseHttpServlet;
 import cn.platalk.mysql.TYMysqlDBHelper;
+import cn.platalk.servlet.TYBaseHttpServlet;
+import cn.platalk.servlet.TYParameterChecker;
 
 @WebServlet("/web/getBeacon")
 public class TYGetWebBeaconServlet extends TYBaseHttpServlet {

@@ -13,8 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.api.web.map.TYBaseHttpServlet;
 import cn.platalk.map.core.config.TYMapEnvironment;
 import cn.platalk.map.entity.base.TYIFillSymbolRecord;
 import cn.platalk.map.entity.base.TYIIconSymbolRecord;
@@ -26,6 +24,8 @@ import cn.platalk.map.entity.base.impl.TYCity;
 import cn.platalk.map.vectortile.builder.TYVectorTileBuilder;
 import cn.platalk.map.vectortile.builder.TYVectorTileSettings;
 import cn.platalk.mysql.TYMysqlDBHelper;
+import cn.platalk.servlet.TYBaseHttpServlet;
+import cn.platalk.servlet.TYParameterChecker;
 import cn.platalk.utils.third.TYFileUtils;
 
 @WebServlet("/web/BuildVectorTile")

@@ -1,4 +1,4 @@
-package cn.platalk.map.api.web.map;
+package cn.platalk.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,8 +13,8 @@ import org.json.JSONObject;
 public class TYBaseHttpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	final String RESPONSE_JSON_KEY_STATUS = "success";
-	final String RESPONSE_JSON_KEY_DESCRIPTION = "description";
+	public final String RESPONSE_JSON_KEY_STATUS = "success";
+	public final String RESPONSE_JSON_KEY_DESCRIPTION = "description";
 
 	protected String errorDescriptionInvalidBuildingID(String buildingID) {
 		return String.format("Invalid BuildingID: %s", buildingID);
@@ -32,6 +32,23 @@ public class TYBaseHttpServlet extends HttpServlet {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(RESPONSE_JSON_KEY_STATUS, false);
 		jsonObject.put(RESPONSE_JSON_KEY_DESCRIPTION, description);
+
+		PrintWriter out = response.getWriter();
+		if (callback == null) {
+			out.print(jsonObject.toString());
+		} else {
+			out.print(String.format("%s(%s)", callback, jsonObject.toString()));
+		}
+		out.close();
+		return;
+	}
+
+	protected void respondError(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObject)
+			throws IOException {
+		String callback = request.getParameter("callback");
+		response.setContentType("text/json;charset=UTF-8");
+
+		jsonObject.put(RESPONSE_JSON_KEY_STATUS, false);
 
 		PrintWriter out = response.getWriter();
 		if (callback == null) {

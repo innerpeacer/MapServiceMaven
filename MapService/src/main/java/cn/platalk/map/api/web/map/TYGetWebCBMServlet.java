@@ -12,11 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 
 import cn.platalk.foundation.TYJsonBuilder;
-import cn.platalk.map.api.TYParameterChecker;
 import cn.platalk.map.core.web.TYWebMapFields;
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.entity.base.impl.TYCity;
 import cn.platalk.mysql.TYMysqlDBHelper;
+import cn.platalk.servlet.TYBaseHttpServlet;
+import cn.platalk.servlet.TYParameterChecker;
 
 @WebServlet("/web/GetCBM")
 public class TYGetWebCBMServlet extends TYBaseHttpServlet {

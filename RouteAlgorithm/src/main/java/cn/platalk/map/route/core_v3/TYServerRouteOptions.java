@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TYServerRouteOptions {
+	public static final boolean DEFAULT_SAME_FLOOR_FIRST = true;
+	public static final boolean DEFAULT_REARRANGE_STOPS = true;
+
 	private int linkType = 0;
 	private List<String> ignoredNodeCategoryList = new ArrayList<String>();
-	private boolean rearrangeStops = true;
+	private boolean rearrangeStops = DEFAULT_REARRANGE_STOPS;
 	private boolean useSameFloor = false;
-	private boolean sameFloorFirst = true;
+	private boolean sameFloorFirst = DEFAULT_SAME_FLOOR_FIRST;
 
 	// private boolean enableRouteLevel = true;
 	private IPRouteLevel routeLevel = IPRouteLevel.Zero;

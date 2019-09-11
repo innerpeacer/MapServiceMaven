@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
-import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.api.web.map.TYBaseHttpServlet;
 import cn.platalk.map.core_v3.web.route.TYWebRouteGeojsonDataBuilderV3;
 import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
 import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 import cn.platalk.mysql.TYMysqlDBHelper;
+import cn.platalk.servlet.TYBaseHttpServlet;
+import cn.platalk.servlet.TYParameterChecker;
 
 @WebServlet("/web/geojson/GetRouteDataV3")
 public class TYGetWebGeojsonRouteDataV3Servlet extends TYBaseHttpServlet {

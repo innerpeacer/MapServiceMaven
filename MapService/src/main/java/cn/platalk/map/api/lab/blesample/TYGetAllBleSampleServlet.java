@@ -15,8 +15,8 @@ import cn.platalk.common.TYIJsonFeature;
 import cn.platalk.foundation.TYJsonBuilder;
 import cn.platalk.lab.blesample.entity.WTBleSample;
 import cn.platalk.lab.blesample.mysql.WTMysqlBleSampleDBAdapter;
-import cn.platalk.map.api.TYParameterChecker;
-import cn.platalk.map.api.web.map.TYBaseHttpServlet;
+import cn.platalk.servlet.TYBaseHttpServlet;
+import cn.platalk.servlet.TYParameterChecker;
 
 @WebServlet("/lab/GetAllSamples")
 public class TYGetAllBleSampleServlet extends TYBaseHttpServlet {
