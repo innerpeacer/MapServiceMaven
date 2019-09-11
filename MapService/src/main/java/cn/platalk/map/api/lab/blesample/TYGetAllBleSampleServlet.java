@@ -1,6 +1,7 @@
 package cn.platalk.map.api.lab.blesample;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,12 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
+import cn.platalk.common.TYIJsonFeature;
+import cn.platalk.foundation.TYJsonBuilder;
 import cn.platalk.lab.blesample.entity.WTBleSample;
 import cn.platalk.lab.blesample.mysql.WTMysqlBleSampleDBAdapter;
 import cn.platalk.map.api.TYParameterChecker;
 import cn.platalk.map.api.web.map.TYBaseHttpServlet;
-import cn.platalk.map.core.lab.blesample.WTBleSampleFields;
-import cn.platalk.map.core.lab.blesample.WTBleSampleObjectBuilder;
 
 @WebServlet("/lab/GetAllSamples")
 public class TYGetAllBleSampleServlet extends TYBaseHttpServlet {
@@ -35,12 +36,11 @@ public class TYGetAllBleSampleServlet extends TYBaseHttpServlet {
 		WTMysqlBleSampleDBAdapter db = new WTMysqlBleSampleDBAdapter();
 		db.connectDB();
 		db.createTableIfNotExist();
-		List<WTBleSample> sampleList = db.getAllSample(buildingID);
+		List<TYIJsonFeature> sampleList = new ArrayList<TYIJsonFeature>(db.getAllSample(buildingID));
 		db.disconnectDB();
 
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(WTBleSampleFields.KEY_LAB_SAMPLE_POINTS,
-				WTBleSampleObjectBuilder.generateSamplePointList(sampleList));
+		jsonObject.put(WTBleSample.KEY_LAB_SAMPLE_POINTS, TYJsonBuilder.buildJsonArray(sampleList));
 		respondResult(request, response, jsonObject);
 	}
 
