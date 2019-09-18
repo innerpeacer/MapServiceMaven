@@ -43,6 +43,15 @@ public class WTMysqlBleSampleDBAdapter {
 		db.deleteRecord(sampleTable, sampleTable.getField(WTMysqlBleSampleParams.FIELD_BLE_SAMPLE_1_ID), sampleID);
 	}
 
+	public void deleteSampleByBuildingID(String buildingID) {
+		db.deleteRecord(sampleTable, sampleTable.getField(WTMysqlBleSampleParams.FIELD_BLE_SAMPLE_2_BUILDING_ID),
+				buildingID);
+	}
+
+	public void eraseSampleTable() {
+		db.eraseTable(sampleTable);
+	}
+
 	public int insertOrUpdateSample(WTBleSample sample) {
 		if (!existSample(sample.getSampleID())) {
 			return insertSample(sample);

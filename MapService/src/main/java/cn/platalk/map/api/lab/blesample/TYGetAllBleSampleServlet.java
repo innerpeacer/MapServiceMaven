@@ -40,7 +40,9 @@ public class TYGetAllBleSampleServlet extends TYBaseHttpServlet {
 		db.disconnectDB();
 
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put(WTBleSample.KEY_LAB_SAMPLE_POINTS, TYJsonBuilder.buildJsonArray(sampleList));
+		JSONObject dataObject = new JSONObject();
+		dataObject.put(WTBleSample.KEY_LAB_SAMPLE_POINTS, TYJsonBuilder.buildJsonArray(sampleList));
+		jsonObject.put("data", dataObject);
 		respondResult(request, response, jsonObject);
 	}
 

@@ -71,8 +71,16 @@ public class WTBleSample implements TYIJsonFeature {
 		return sampleID;
 	}
 
+	public void setSampleID(String sID) {
+		this.sampleID = sID;
+	}
+
 	public String getBuildingID() {
 		return buildingID;
+	}
+
+	public void setBuildingID(String bID) {
+		this.buildingID = bID;
 	}
 
 	public double getTimestamp() {
