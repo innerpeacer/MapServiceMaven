@@ -17,8 +17,8 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
-import cn.platalk.common.TYCoordProjection;
 import cn.platalk.common.TYIGeojsonFeature;
+import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public class TYGeojsonBuilder {
 	public static JSONObject emptyGeojson;
@@ -119,11 +119,8 @@ public class TYGeojsonBuilder {
 	}
 
 	static JSONArray buildGeojsonPointFeature(Point point) throws JSONException {
-		JSONArray coordArray = new JSONArray();
-		double xy[] = TYCoordProjection.mercatorToLngLat(point.getX(), point.getY());
-		coordArray.put(xy[0]);
-		coordArray.put(xy[1]);
-		return coordArray;
+		TYLocalPoint lp = new TYLocalPoint(point.getX(), point.getY());
+		return lp.toLngLat().toJsonArray();
 	}
 
 	static JSONArray buildGeojsonMultiPointFeature(MultiPoint mp) throws JSONException {
@@ -140,11 +137,8 @@ public class TYGeojsonBuilder {
 		int pointCount = ls.getNumPoints();
 		for (int i = 0; i < pointCount; ++i) {
 			Coordinate coord = ls.getCoordinateN(i);
-			double xy[] = TYCoordProjection.mercatorToLngLat(coord.x, coord.y);
-			JSONArray xyObject = new JSONArray();
-			xyObject.put(xy[0]);
-			xyObject.put(xy[1]);
-			coordArray.put(xyObject);
+			TYLocalPoint lp = new TYLocalPoint(coord.x, coord.y);
+			coordArray.put(lp.toLngLat().toJsonArray());
 		}
 		return coordArray;
 	}

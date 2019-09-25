@@ -14,6 +14,8 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
+import cn.platalk.map.entity.base.impl.TYLocalPoint;
+
 class TYGeomProjection {
 
 	public static Geometry mercatorToLngLatGeometry(Geometry g) {
@@ -71,8 +73,7 @@ class TYGeomProjection {
 		return createProjectedLineString(ls);
 	}
 
-	private static MultiLineString multiLineStringToMultiLineString(
-			MultiLineString mls) {
+	private static MultiLineString multiLineStringToMultiLineString(MultiLineString mls) {
 		GeometryFactory factory = new GeometryFactory();
 		LineString[] lss = new LineString[mls.getNumGeometries()];
 		for (int i = 0; i < mls.getNumGeometries(); ++i) {
@@ -110,10 +111,7 @@ class TYGeomProjection {
 		Coordinate[] coords = new Coordinate[ls.getNumPoints()];
 		for (int i = 0; i < ls.getNumPoints(); ++i) {
 			Coordinate c = ls.getCoordinateN(i);
-			double[] xy = TYCoordTool.mercatorToLngLat(c.x, c.y);
-			// double[] xy = TYBrtCoordProjection2.mercatorToLngLat(c.x, c.y);
-
-			coords[i] = new Coordinate(xy[0], xy[1]);
+			coords[i] = new TYLocalPoint(c.x, c.y).toLngLat().toCoordinate();
 		}
 		return factory.createLineString(coords);
 	}
@@ -123,19 +121,15 @@ class TYGeomProjection {
 		Coordinate[] coords = new Coordinate[ring.getNumPoints()];
 		for (int i = 0; i < ring.getNumPoints(); ++i) {
 			Coordinate c = ring.getCoordinateN(i);
-			double[] xy = TYCoordTool.mercatorToLngLat(c.x, c.y);
-			// double[] xy = TYBrtCoordProjection2.mercatorToLngLat(c.x, c.y);
-			coords[i] = new Coordinate(xy[0], xy[1]);
+			coords[i] = new TYLocalPoint(c.x, c.y).toLngLat().toCoordinate();
 		}
+
 		return factory.createLinearRing(coords);
 	}
 
 	private static Point createProjectedPoint(Point p) {
 		GeometryFactory factory = new GeometryFactory();
-		double[] xy = TYCoordTool.mercatorToLngLat(p.getX(), p.getY());
-		// double[] xy = TYBrtCoordProjection2
-		// .mercatorToLngLat(p.getX(), p.getY());
-		Coordinate c = new Coordinate(xy[0], xy[1]);
+		Coordinate c = new TYLocalPoint(p.getX(), p.getY()).toLngLat().toCoordinate();
 		return factory.createPoint(c);
 	}
 }

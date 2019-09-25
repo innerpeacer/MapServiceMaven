@@ -1,5 +1,6 @@
 package cn.platalk.map.vectortile.builder;
 
+import cn.platalk.map.entity.base.TYILngLat;
 import cn.platalk.map.entity.base.TYIMapExtent;
 import cn.platalk.map.entity.base.TYIMapInfo;
 
@@ -47,15 +48,9 @@ class TYBoundingBox {
 
 	public static TYBoundingBox boundingBoxForMapInfo(TYIMapInfo info, Double expanding) {
 		TYIMapExtent extent = info.getMapExtent();
-		double[] xy1 = TYCoordTool.mercatorToLngLat(extent.getXmin(), extent.getYmin());
-		double[] xy2 = TYCoordTool.mercatorToLngLat(extent.getXmax(), extent.getYmax());
-		// double[] xy1 =
-		// TYBrtCoordProjection2.mercatorToLngLat(extent.getXmin(),
-		// extent.getYmin());
-		// double[] xy2 =
-		// TYBrtCoordProjection2.mercatorToLngLat(extent.getXmax(),
-		// extent.getYmax());
-		TYBoundingBox bb = new TYBoundingBox(xy1[0], xy2[0], xy1[1], xy2[1]);
+		TYILngLat sw = extent.getSw();
+		TYILngLat ne = extent.getNe();
+		TYBoundingBox bb = new TYBoundingBox(sw.getLng(), ne.getLng(), sw.getLat(), ne.getLat());
 		if (expanding != null && expanding > 0) {
 			bb.expandByPercentage(expanding);
 		}

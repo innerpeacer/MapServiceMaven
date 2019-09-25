@@ -8,4 +8,8 @@ public interface TYIMapExtent {
 	public double getXmax();
 
 	public double getYmax();
+
+	public TYILngLat getSw();
+
+	public TYILngLat getNe();
 }

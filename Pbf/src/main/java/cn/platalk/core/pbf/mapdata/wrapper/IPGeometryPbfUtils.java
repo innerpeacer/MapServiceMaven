@@ -17,6 +17,8 @@ import cn.platalk.core.pbf.mapdata.TYGeometryPbf.TYIndoorFeatureGeometryPbf;
 import cn.platalk.core.pbf.mapdata.TYGeometryPbf.TYOneDimensionCoord;
 import cn.platalk.core.pbf.mapdata.TYGeometryPbf.TYThreeDimensionCoord;
 import cn.platalk.core.pbf.mapdata.TYGeometryPbf.TYTwoDimensionCoord;
+import cn.platalk.map.entity.base.impl.TYLngLat;
+import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class IPGeometryPbfUtils {
 
@@ -106,9 +108,9 @@ class IPGeometryPbfUtils {
 		TYGeometryPbf.TYOneDimensionCoord.Builder oneDimenBuilder = TYGeometryPbf.TYOneDimensionCoord.newBuilder();
 		// oneDimenBuilder.addXy(x);
 		// oneDimenBuilder.addXy(y);
-		double xy[] = TYCoordProjection.mercatorToLngLat(x, y);
-		oneDimenBuilder.addXy(xy[0]);
-		oneDimenBuilder.addXy(xy[1]);
+		TYLngLat lngLat = TYCoordProjection.mercatorToLngLat(new TYLocalPoint(x, y));
+		oneDimenBuilder.addXy(lngLat.getLng());
+		oneDimenBuilder.addXy(lngLat.getLat());
 		return oneDimenBuilder.build();
 	}
 

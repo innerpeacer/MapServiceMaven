@@ -121,7 +121,6 @@ public class TYLocalPoint implements TYILocalPoint, TYIJsonFeature {
 	}
 
 	public TYLngLat toLngLat() {
-		double lngLat[] = TYCoordProjection.mercatorToLngLat(x, y);
-		return new TYLngLat(lngLat[0], lngLat[1]);
+		return TYCoordProjection.mercatorToLngLat(this);
 	}
 }

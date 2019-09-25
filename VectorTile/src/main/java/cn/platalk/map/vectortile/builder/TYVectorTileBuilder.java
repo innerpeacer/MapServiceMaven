@@ -16,6 +16,8 @@ import cn.platalk.map.entity.base.TYIIconSymbolRecord;
 import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.impl.TYLngLat;
+import cn.platalk.map.entity.base.impl.TYLocalPoint;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
 import cn.platalk.map.vectortile.cbm.json.TYCBMBuilder;
 import cn.platalk.map.vectortile.cbm.pbf.TYCBMPbfBuilder;
@@ -62,12 +64,12 @@ public class TYVectorTileBuilder {
 
 		double xmin = building.getBuildingExtent().getXmin();
 		double ymin = building.getBuildingExtent().getYmin();
-		double[] sw = TYCoordProjection.mercatorToLngLat(xmin, ymin);
+		TYLngLat sw = TYCoordProjection.mercatorToLngLat(new TYLocalPoint(xmin, ymin));
 
 		double xmax = building.getBuildingExtent().getXmax();
 		double ymax = building.getBuildingExtent().getYmax();
-		double[] ne = TYCoordProjection.mercatorToLngLat(xmax, ymax);
-		buildingEnvelope = new Envelope(sw[0], ne[0], sw[1], ne[1]);
+		TYLngLat ne = TYCoordProjection.mercatorToLngLat(new TYLocalPoint(xmax, ymax));
+		buildingEnvelope = new Envelope(sw.getLng(), ne.getLng(), sw.getLat(), ne.getLat());
 
 		this.mapInfos = new ArrayList<TYIMapInfo>();
 		this.mapInfos.addAll(mapInfoList);

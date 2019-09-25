@@ -1,5 +1,9 @@
 package cn.platalk.map.entity.base.impl;
 
+import org.json.JSONArray;
+
+import com.vividsolutions.jts.geom.Coordinate;
+
 import cn.platalk.common.TYCoordProjection;
 import cn.platalk.map.entity.base.TYILngLat;
 
@@ -35,7 +39,17 @@ public class TYLngLat implements TYILngLat {
 	}
 
 	public TYLocalPoint toLocalPoint(int floor) {
-		double xy[] = TYCoordProjection.lngLatToMercator(lng, lat);
-		return new TYLocalPoint(xy[0], xy[1], floor);
+		return TYCoordProjection.lnglatToMercator(this, floor);
+	}
+
+	public JSONArray toJsonArray() {
+		JSONArray json = new JSONArray();
+		json.put(lng);
+		json.put(lat);
+		return json;
+	}
+
+	public Coordinate toCoordinate() {
+		return new Coordinate(lng, lat);
 	}
 }

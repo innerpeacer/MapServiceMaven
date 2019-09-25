@@ -1,5 +1,6 @@
 package cn.platalk.map.entity.base.impl;
 
+import cn.platalk.map.entity.base.TYILngLat;
 import cn.platalk.map.entity.base.TYIMapExtent;
 
 public class TYMapExtent implements TYIMapExtent {
@@ -15,19 +16,31 @@ public class TYMapExtent implements TYIMapExtent {
 		this.ymax = ymax;
 	}
 
+	@Override
 	public double getXmin() {
 		return xmin;
 	}
 
+	@Override
 	public double getYmin() {
 		return ymin;
 	}
 
+	@Override
 	public double getXmax() {
 		return xmax;
 	}
 
+	@Override
 	public double getYmax() {
 		return ymax;
+	}
+
+	public TYILngLat getSw() {
+		return new TYLocalPoint(xmin, ymin).toLngLat();
+	}
+
+	public TYILngLat getNe() {
+		return new TYLocalPoint(xmax, ymax).toLngLat();
 	}
 }
