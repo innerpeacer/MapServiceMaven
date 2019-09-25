@@ -3,6 +3,7 @@ package cn.platalk.map.entity.base.impl;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.platalk.common.TYCoordProjection;
 import cn.platalk.common.TYIJsonFeature;
 import cn.platalk.map.entity.base.TYILocalPoint;
 
@@ -117,5 +118,10 @@ public class TYLocalPoint implements TYILocalPoint, TYIJsonFeature {
 			return -1;
 		}
 		return lp1.distanceWithPoint(lp2);
+	}
+
+	public TYLngLat toLngLat() {
+		double lngLat[] = TYCoordProjection.mercatorToLngLat(x, y);
+		return new TYLngLat(lngLat[0], lngLat[1]);
 	}
 }
