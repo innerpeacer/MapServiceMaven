@@ -1,4 +1,4 @@
-package cn.platalk.utils.coordinate;
+package cn.platalk.common;
 
 public class TYCoordTransform {
 	class TransCoord2D {
