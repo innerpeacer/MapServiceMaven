@@ -1,6 +1,8 @@
 package cn.platalk.map.entity.base.impl;
 
 public class TYBeacon {
+	private static final int CONSTANT_HUNDRED_THROUSAND = 100000;
+
 	protected String UUID;
 	protected int major;
 	protected int minor;
@@ -47,6 +49,10 @@ public class TYBeacon {
 
 	public void setTag(String tag) {
 		this.tag = tag;
+	}
+
+	public Long getBeaconKey() {
+		return (long) (this.major * CONSTANT_HUNDRED_THROUSAND + this.minor);
 	}
 
 	@Override

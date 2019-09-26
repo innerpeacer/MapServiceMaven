@@ -26,7 +26,7 @@ public class WTBleSample2PbfUtils {
 
 	static BleBeaconPbf toBeaconPbf(WTBeacon beacon) {
 		BleBeaconPbf.Builder builder = BleBeaconPbf.newBuilder();
-		builder.setUuid(beacon.getUuid());
+		builder.setUuid(beacon.getUUID());
 		builder.setMajor(beacon.getMajor());
 		builder.setMinor(beacon.getMinor());
 		builder.setRssi(beacon.getRssi());

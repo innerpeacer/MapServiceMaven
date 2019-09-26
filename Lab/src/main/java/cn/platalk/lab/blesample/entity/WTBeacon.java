@@ -1,29 +1,13 @@
 package cn.platalk.lab.blesample.entity;
 
-public class WTBeacon {
-	private String uuid;
-	private int major;
-	private int minor;
+import cn.platalk.map.entity.base.impl.TYBeacon;
 
+public class WTBeacon extends TYBeacon {
 	private int rssi;
 	private double accuracy;
 
 	public WTBeacon(String uuid, int major, int minor) {
-		this.uuid = uuid;
-		this.major = major;
-		this.minor = minor;
-	}
-
-	public String getUuid() {
-		return uuid;
-	}
-
-	public int getMajor() {
-		return major;
-	}
-
-	public int getMinor() {
-		return minor;
+		super(uuid, major, minor, null);
 	}
 
 	public int getRssi() {
@@ -41,5 +25,4 @@ public class WTBeacon {
 	public void setAccuracy(double accuracy) {
 		this.accuracy = accuracy;
 	}
-
 }

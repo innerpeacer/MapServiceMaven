@@ -1,24 +1,29 @@
 package cn.platalk.lab.blesample.entity;
 
+import cn.platalk.map.entity.base.impl.TYLngLat;
+import cn.platalk.map.entity.base.impl.TYLocalPoint;
+
 public class WTGpsSignal {
-	private double lng;
-	private double lat;
+	private TYLngLat lngLat;
 	private double accuracy;
 	private double timestamp;
 
 	public WTGpsSignal(double lng, double lat, double accuracy, double timestamp) {
-		this.lng = lng;
-		this.lat = lat;
+		this.lngLat = new TYLngLat(lng, lat);
 		this.accuracy = accuracy;
 		this.timestamp = timestamp;
 	}
 
 	public double getLng() {
-		return lng;
+		return lngLat.getLng();
 	}
 
 	public double getLat() {
-		return lat;
+		return lngLat.getLat();
+	}
+
+	public TYLngLat getLngLat() {
+		return lngLat;
 	}
 
 	public double getAccuracy() {
@@ -27,6 +32,10 @@ public class WTGpsSignal {
 
 	public double getTimestamp() {
 		return timestamp;
+	}
+
+	public TYLocalPoint getLocalPoint() {
+		return lngLat.toLocalPoint();
 	}
 
 }
