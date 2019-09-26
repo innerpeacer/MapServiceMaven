@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.core.map.base.TYIShpDataManager;
+import cn.platalk.map.entity.base.impl.TYMapExtent;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
 
 public class TYJsonMapInfoParser {
@@ -55,10 +56,10 @@ public class TYJsonMapInfoParser {
 					mapInfo.setFloorNumber(mapInfoObject.optInt("floorNumber"));
 					mapInfo.setSize_x(mapInfoObject.optDouble("size_x"));
 					mapInfo.setSize_y(mapInfoObject.optDouble("size_y"));
-					mapInfo.setXmin(mapInfoObject.optDouble("xmin"));
-					mapInfo.setYmin(mapInfoObject.optDouble("ymin"));
-					mapInfo.setXmax(mapInfoObject.optDouble("xmax"));
-					mapInfo.setYmax(mapInfoObject.optDouble("ymax"));
+					TYMapExtent extent = new TYMapExtent(mapInfoObject.optDouble("xmin"),
+							mapInfoObject.optDouble("ymin"), mapInfoObject.optDouble("xmax"),
+							mapInfoObject.optDouble("ymax"));
+					mapInfo.setMapExtent(extent);
 					mapInfos.add(mapInfo);
 				}
 			}

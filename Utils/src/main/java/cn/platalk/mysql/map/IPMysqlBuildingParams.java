@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.platalk.map.entity.base.impl.TYBuilding;
+import cn.platalk.map.entity.base.impl.TYMapExtent;
 import cn.platalk.map.entity.base.impl.TYMapSize;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlFieldType;
@@ -106,10 +107,10 @@ public class IPMysqlBuildingParams {
 					record.getDouble(FIELD_BUILDING_10_OFFSET_Y)));
 			building.setStatus(record.getInteger(FIELD_BUILDING_11_STATUS));
 			building.setInitFloorIndex(record.getInteger(FIELD_BUILDING_12_INIT_FLOOR_INDEX));
-			building.setXmin(record.getDouble(FIELD_BUILDING_13_XMIN));
-			building.setYmin(record.getDouble(FIELD_BUILDING_14_YMIN));
-			building.setXmax(record.getDouble(FIELD_BUILDING_15_XMAX));
-			building.setYmax(record.getDouble(FIELD_BUILDING_16_YMAX));
+			TYMapExtent extent = new TYMapExtent(record.getDouble(FIELD_BUILDING_13_XMIN),
+					record.getDouble(FIELD_BUILDING_14_YMIN), record.getDouble(FIELD_BUILDING_15_XMAX),
+					record.getDouble(FIELD_BUILDING_16_YMAX));
+			building.setBuildingExtent(extent);
 
 			if (record.getString(FIELD_BUILDING_17_WGS84_CALIBRATION_POINT) != null) {
 				building.setWgs84CalibrationPoint(

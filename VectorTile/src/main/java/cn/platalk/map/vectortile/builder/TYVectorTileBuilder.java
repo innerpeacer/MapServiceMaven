@@ -18,6 +18,7 @@ import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.impl.TYLngLat;
 import cn.platalk.map.entity.base.impl.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.TYMapExtent;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
 import cn.platalk.map.vectortile.cbm.json.TYCBMBuilder;
 import cn.platalk.map.vectortile.cbm.pbf.TYCBMPbfBuilder;
@@ -123,15 +124,9 @@ public class TYVectorTileBuilder {
 		// 0.2);
 
 		TYMapInfo maxMapInfo = new TYMapInfo();
-		maxMapInfo.setXmax(mapInfo.getMapExtent().getXmax());
-		maxMapInfo.setXmin(mapInfo.getMapExtent().getXmin());
-		maxMapInfo.setYmax(mapInfo.getMapExtent().getYmax());
-		maxMapInfo.setYmin(mapInfo.getMapExtent().getYmin());
+		maxMapInfo.setMapExtent(TYMapExtent.copyFrom(mapInfo.getMapExtent()));
 		for (TYIMapInfo info : geometrySet.getMapInfos()) {
-			maxMapInfo.setXmax(Math.max(maxMapInfo.getMapExtent().getXmax(), info.getMapExtent().getXmax()));
-			maxMapInfo.setXmin(Math.min(maxMapInfo.getMapExtent().getXmin(), info.getMapExtent().getXmin()));
-			maxMapInfo.setYmax(Math.max(maxMapInfo.getMapExtent().getYmax(), info.getMapExtent().getYmax()));
-			maxMapInfo.setYmin(Math.min(maxMapInfo.getMapExtent().getYmin(), info.getMapExtent().getYmin()));
+			maxMapInfo.getMapExtent().extendWith(info.getMapExtent());
 		}
 		maxMapInfo.setSize_x(maxMapInfo.getMapExtent().getXmax() - maxMapInfo.getMapExtent().getXmin());
 		maxMapInfo.setSize_y(maxMapInfo.getMapExtent().getYmax() - maxMapInfo.getMapExtent().getYmin());

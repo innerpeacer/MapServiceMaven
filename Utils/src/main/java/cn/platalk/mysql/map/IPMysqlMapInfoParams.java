@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.platalk.map.entity.base.impl.TYMapExtent;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlFieldType;
@@ -71,10 +72,10 @@ public class IPMysqlMapInfoParams {
 			mapInfo.setFloorNumber(record.getInteger(FIELD_MAPINFO_5_FLOOR_NUMBER));
 			mapInfo.setSize_x(record.getDouble(FIELD_MAPINFO_6_SIZE_X));
 			mapInfo.setSize_y(record.getDouble(FIELD_MAPINFO_7_SIZE_Y));
-			mapInfo.setXmin(record.getDouble(FIELD_MAPINFO_8_XMIN));
-			mapInfo.setYmin(record.getDouble(FIELD_MAPINFO_9_YMIN));
-			mapInfo.setXmax(record.getDouble(FIELD_MAPINFO_10_XMAX));
-			mapInfo.setYmax(record.getDouble(FIELD_MAPINFO_11_YMAX));
+			TYMapExtent extent = new TYMapExtent(record.getDouble(FIELD_MAPINFO_8_XMIN),
+					record.getDouble(FIELD_MAPINFO_9_YMIN), record.getDouble(FIELD_MAPINFO_10_XMAX),
+					record.getDouble(FIELD_MAPINFO_11_YMAX));
+			mapInfo.setMapExtent(extent);
 			mapInfoList.add(mapInfo);
 		}
 		return mapInfoList;

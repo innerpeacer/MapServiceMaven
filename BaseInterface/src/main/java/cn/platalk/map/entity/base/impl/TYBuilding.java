@@ -38,10 +38,7 @@ public class TYBuilding implements TYIBuilding {
 
 	private String routeURL;
 	private TYMapSize offset;
-	private double xmin;
-	private double xmax;
-	private double ymin;
-	private double ymax;
+	private TYMapExtent buildingExtent;
 
 	private double[] wgs84CalibrationPoint;
 	private double[] wtCalibrationPoint;
@@ -158,7 +155,7 @@ public class TYBuilding implements TYIBuilding {
 
 	@Override
 	public TYIMapExtent getBuildingExtent() {
-		return new TYMapExtent(xmin, ymin, xmax, ymax);
+		return buildingExtent;
 	}
 
 	@Override
@@ -166,20 +163,8 @@ public class TYBuilding implements TYIBuilding {
 		return status;
 	}
 
-	public void setXmin(double xmin) {
-		this.xmin = xmin;
-	}
-
-	public void setXmax(double xmax) {
-		this.xmax = xmax;
-	}
-
-	public void setYmin(double ymin) {
-		this.ymin = ymin;
-	}
-
-	public void setYmax(double ymax) {
-		this.ymax = ymax;
+	public void setBuildingExtent(TYMapExtent extent) {
+		this.buildingExtent = extent;
 	}
 
 	@Override

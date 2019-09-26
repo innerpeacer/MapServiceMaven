@@ -18,6 +18,7 @@ import cn.platalk.map.entity.base.impl.TYCity;
 import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYIconTextSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.TYMapExtent;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
 import cn.platalk.sqlite.map.IPSqliteMapDBAdapter;
 import cn.platalk.sqlite.map.IPSqliteSymbolDBAdapter;
@@ -103,20 +104,12 @@ public class TYShpGeneratingTaskV4
 		mapInfos = new ArrayList<TYMapInfo>();
 		mapInfos.addAll(infos);
 
-		double xmin = Double.MAX_VALUE;
-		double ymin = Double.MAX_VALUE;
-		double xmax = Double.MIN_VALUE;
-		double ymax = Double.MIN_VALUE;
+		TYMapExtent buildingExtent = new TYMapExtent(Double.MAX_VALUE, Double.MAX_VALUE, Double.MIN_VALUE,
+				Double.MIN_VALUE);
 		for (TYMapInfo info : infos) {
-			xmin = Math.min(xmin, info.getMapExtent().getXmin());
-			ymin = Math.min(ymin, info.getMapExtent().getYmin());
-			xmax = Math.max(xmax, info.getMapExtent().getXmax());
-			ymax = Math.max(ymax, info.getMapExtent().getYmax());
+			buildingExtent.extendWith(info.getMapExtent());
 		}
-		building.setXmin(xmin);
-		building.setYmin(ymin);
-		building.setXmax(xmax);
-		building.setYmax(ymax);
+		building.setBuildingExtent(buildingExtent);
 
 		readSymbols();
 		startMapShpTask();

@@ -27,10 +27,7 @@ public class TYMapInfo implements TYIMapInfo {
 	double size_x;
 	double size_y;
 
-	double xmin;
-	double xmax;
-	double ymin;
-	double ymax;
+	TYMapExtent mapExtent;
 
 	public TYMapInfo() {
 		super();
@@ -58,7 +55,7 @@ public class TYMapInfo implements TYIMapInfo {
 
 	@Override
 	public TYMapExtent getMapExtent() {
-		return new TYMapExtent(xmin, ymin, xmax, ymax);
+		return mapExtent;
 	}
 
 	@Override
@@ -71,12 +68,16 @@ public class TYMapInfo implements TYIMapInfo {
 		return floorNumber;
 	}
 
-	public double getScaleX() {
-		return size_x / (xmax - xmin);
-	}
+	// public double getScaleX() {
+	// return size_x / (xmax - xmin);
+	// }
+	//
+	// public double getScaleY() {
+	// return size_y / (ymax - ymin);
+	// }
 
-	public double getScaleY() {
-		return size_y / (ymax - ymin);
+	public void setMapExtent(TYMapExtent extent) {
+		this.mapExtent = extent;
 	}
 
 	public void setCityID(String cityID) {
@@ -107,22 +108,6 @@ public class TYMapInfo implements TYIMapInfo {
 		this.size_y = size_y;
 	}
 
-	public void setXmin(double xmin) {
-		this.xmin = xmin;
-	}
-
-	public void setXmax(double xmax) {
-		this.xmax = xmax;
-	}
-
-	public void setYmin(double ymin) {
-		this.ymin = ymin;
-	}
-
-	public void setYmax(double ymax) {
-		this.ymax = ymax;
-	}
-
 	@Override
 	public JSONObject toJson() {
 		JSONObject mapInfoObject = new JSONObject();
@@ -143,6 +128,7 @@ public class TYMapInfo implements TYIMapInfo {
 	@Override
 	public String toString() {
 		String str = "MapID: %s, Floor:%d ,Size:(%.2f, %.2f) Extent: (%.4f, %.4f, %.4f, %.4f)";
-		return String.format(str, mapID, floorNumber, size_x, size_y, xmin, ymin, xmax, ymax);
+		return String.format(str, mapID, floorNumber, size_x, size_y, mapExtent.getXmin(), mapExtent.getYmin(),
+				mapExtent.getXmax(), mapExtent.getYmax());
 	}
 }
