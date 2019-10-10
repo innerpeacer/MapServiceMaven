@@ -1,8 +1,11 @@
 package cn.platalk.lab.analysis.blesample;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.platalk.lab.analysis.blesample.TYAnalysisEntity.EntityType;
 import cn.platalk.lab.blesample.entity.WTBleSample;
 import cn.platalk.lab.blesample.entity.WTBleSignal;
 import cn.platalk.lab.blesample.entity.WTGpsSignal;
@@ -12,39 +15,51 @@ import cn.platalk.map.entity.base.impl.TYLocalPoint;
 import cn.platalk.map.entity.base.impl.TYWtWgs84Converter;
 
 public class TYBleSampleAnalysis {
+	public static final String KEY_GPS_ERROR = "gpsError";
+	public static final String KEY_BLE_ERROR = "bleError";
 
-	public static void process(TYBuilding building, TYBleLocator locator, WTBleSample sample) {
-		System.out.println("process");
+	public static Map<String, Object> process(TYBuilding building, TYBleLocator locator, WTBleSample sample) {
+		// System.out.println("process");
+		Map<String, Object> result = new HashMap<String, Object>();
+		List<TYAnalysisEntity> gpsErrorList = new ArrayList<TYAnalysisEntity>();
+		List<TYAnalysisEntity> bleErrorList = new ArrayList<TYAnalysisEntity>();
 
 		TYWtWgs84Converter converter = new TYWtWgs84Converter(building.getWtCalibrationPoint(),
 				building.getWgs84CalibrationPoint());
 
 		TYLocalPoint samplePoint = sample.getLocation();
 
-		System.out.println("************ gps ************");
+		// System.out.println("************ gps ************");
+		// System.out.println("accuracy -> gpsError");
 		List<WTGpsSignal> gpsList = sample.getGpsList();
 		for (int i = 0; i < gpsList.size(); ++i) {
 			WTGpsSignal gps = gpsList.get(i);
 			TYLocalPoint gpsPoint = converter.converterToMercator(gps.getLngLat());
 			double gpsError = samplePoint.distanceWithPoint(gpsPoint);
-			System.out.println(String.format("%.2f --> %.2f", gps.getAccuracy(), gpsError));
+			gpsErrorList.add(new TYAnalysisEntity(EntityType.GPS, gpsError, gps.getAccuracy()));
+			// System.out.println(String.format("%.2f --> %.2f",
+			// gps.getAccuracy(), gpsError));
 		}
 
-		System.out.println("************ ble ************");
+		// System.out.println("************ ble ************");
+		// System.out.println("minAccuracy -> bleError");
 		List<WTBleSignal> bleList = sample.getBleList();
 		for (int i = 0; i < bleList.size(); ++i) {
-			if (i != 14) {
-				// continue;
-			}
 			WTBleSignal ble = bleList.get(i);
 			Map<String, Object> bleResult = locator.calculateLocations(ble.getBeacons());
+			if (bleResult == null) {
+				continue;
+			}
 			TYLocalPoint blePoint = (TYLocalPoint) bleResult.get("location");
 			double minAccuracy = (double) bleResult.get("minAccuracy");
 			double bleError = samplePoint.distanceWithPoint(blePoint);
-			System.out.println(String.format("Index %d: %.2f --> %.2f", i, minAccuracy, bleError));
-			// System.out.println(bleResult);
-
-			// break;
+			bleErrorList.add(new TYAnalysisEntity(EntityType.BLE, bleError, minAccuracy));
+			// System.out.println(String.format("%.2f --> %.2f", minAccuracy,
+			// bleError));
 		}
+
+		result.put(KEY_GPS_ERROR, gpsErrorList);
+		result.put(KEY_BLE_ERROR, bleErrorList);
+		return result;
 	}
 }

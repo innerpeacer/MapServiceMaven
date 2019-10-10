@@ -52,4 +52,10 @@ public class TYLngLat implements TYILngLat {
 	public Coordinate toCoordinate() {
 		return new Coordinate(lng, lat);
 	}
+
+	@Override
+	public String toString() {
+		return String.format("TYLngLat: (%f, %f)", lng, lat);
+	}
+
 }
