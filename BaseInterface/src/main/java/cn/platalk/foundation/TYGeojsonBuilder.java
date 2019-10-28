@@ -46,16 +46,6 @@ public class TYGeojsonBuilder {
 	public static final String GEOJSON_KEY_GEOMETRY_TYPE = "type";
 	public static final String GEOJSON_KEY_GEOMETRY_COORDINATES = "coordinates";
 
-	public static final String VALUE_GEOMETRY_TYPE_POINT = "Point";
-	public static final String VALUE_GEOMETRY_TYPE_MULTI_POINT = "MultiPoint";
-
-	public static final String VALUE_GEOMETRY_TYPE_LINEARRING = "LinearRing";
-	public static final String VALUE_GEOMETRY_TYPE_LINESTRING = "LineString";
-	public static final String VALUE_GEOMETRY_TYPE_MULTI_LINESTRING = "MultiLineString";
-
-	public static final String VALUE_GEOMETRY_TYPE_POLYGON = "Polygon";
-	public static final String VALUE_GEOMETRY_TYPE_MULTIPOLYGON = "MultiPolygon";
-
 	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__POINT = "Point";
 	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOINT = "MultiPoint";
 	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING = "LineString";
@@ -84,26 +74,26 @@ public class TYGeojsonBuilder {
 		resultObject.put(GEOJSON_KEY_FEATURE_TYPE, GEOJSON_VALUE_FEATURE_TYPE__FEATURE);
 
 		JSONObject geometryObject = new JSONObject();
-		if (geometry.getGeometryType().equals(VALUE_GEOMETRY_TYPE_POINT)) {
+		if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_POINT)) {
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__POINT);
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES, buildGeojsonPointFeature((Point) geometry));
-		} else if (geometry.getGeometryType().equals(VALUE_GEOMETRY_TYPE_MULTI_POINT)) {
+		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_POINT)) {
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOINT);
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES, buildGeojsonMultiPointFeature((MultiPoint) geometry));
-		} else if (geometry.getGeometryType().equals(VALUE_GEOMETRY_TYPE_LINESTRING)) {
+		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_LINESTRING)) {
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING);
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES, buildGeojsonLineString((LineString) geometry));
-		} else if (geometry.getGeometryType().equals(VALUE_GEOMETRY_TYPE_LINEARRING)) {
+		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_LINEARRING)) {
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING);
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES, buildGeojsonLineString((LinearRing) geometry));
-		} else if (geometry.getGeometryType().equals(VALUE_GEOMETRY_TYPE_MULTI_LINESTRING)) {
+		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_LINESTRING)) {
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__MULTILINESTRING);
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES,
 					buildGeojsonMultiLineString((MultiLineString) geometry));
-		} else if (geometry.getGeometryType().equals(VALUE_GEOMETRY_TYPE_POLYGON)) {
+		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_POLYGON)) {
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__POLYGON);
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES, buildGeojsonPolygonFeature((Polygon) geometry));
-		} else if (geometry.getGeometryType().equals(VALUE_GEOMETRY_TYPE_MULTIPOLYGON)) {
+		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTIPOLYGON)) {
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOLYGON);
 			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES,
 					buildGeojsonMultiPolygonFeature((MultiPolygon) geometry));
