@@ -1,14 +1,14 @@
-package cn.platalk.map.vectortile.cbm.pbf;
+package cn.platalk.core.pbf.cbm.wrapper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import cn.platalk.core.pbf.cbm.TYSymbolPbf.FillSymbolPbf;
+import cn.platalk.core.pbf.cbm.TYSymbolPbf.IconTextSymbolPbf;
+import cn.platalk.core.pbf.cbm.TYSymbolPbf.SymbolCollectionPbf;
 import cn.platalk.map.entity.base.TYIFillSymbolRecord;
 import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
-import cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf;
-import cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf;
-import cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf;
 
 public class TYSymbol2PbfUtils {
 

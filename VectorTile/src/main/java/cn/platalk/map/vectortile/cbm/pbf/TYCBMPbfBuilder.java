@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import cn.platalk.core.pbf.cbm.TYCbmPbf.CBMPbf;
+import cn.platalk.core.pbf.cbm.wrapper.TYCity2PbfUtils;
+import cn.platalk.core.pbf.cbm.wrapper.TYSymbol2PbfUtils;
 import cn.platalk.map.entity.base.TYIBuilding;
 import cn.platalk.map.entity.base.TYICity;
 import cn.platalk.map.entity.base.TYIFillSymbolRecord;
@@ -14,7 +17,6 @@ import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.vectortile.builder.TYVectorTileSettings;
 import cn.platalk.map.vectortile.cbm.json.TYSymbolExtractor;
-import cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf;
 
 public class TYCBMPbfBuilder {
 	static String FILE_CBM_PBF = "%s.pbf";

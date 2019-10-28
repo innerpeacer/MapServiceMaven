@@ -1,15 +1,15 @@
-package cn.platalk.map.vectortile.cbm.pbf;
+package cn.platalk.core.pbf.cbm.wrapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.core.pbf.cbm.TYCbmPbf;
+import cn.platalk.core.pbf.cbm.TYCbmPbf.BuildingPbf;
+import cn.platalk.core.pbf.cbm.TYCbmPbf.CityPbf;
+import cn.platalk.core.pbf.cbm.TYCbmPbf.MapInfoPbf;
 import cn.platalk.map.entity.base.TYIBuilding;
 import cn.platalk.map.entity.base.TYICity;
 import cn.platalk.map.entity.base.TYIMapInfo;
-import cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf;
-import cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf;
-import cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf;
-import cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf;
 
 public class TYCity2PbfUtils {
 
