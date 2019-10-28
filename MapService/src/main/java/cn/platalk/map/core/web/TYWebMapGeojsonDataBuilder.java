@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.foundation.TYGeojsonBuilder;
+import cn.platalk.foundation.TYGeojsonFields;
 import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
@@ -69,14 +70,14 @@ public class TYWebMapGeojsonDataBuilder {
 		JSONObject jsonObject = new JSONObject();
 		if (floorList.size() != 0) {
 			JSONObject floorObject = new JSONObject();
-			floorObject.put(TYGeojsonBuilder.GEOJSON_KEY_GEOJSON_TYPE,
-					TYGeojsonBuilder.GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
+			floorObject.put(TYGeojsonFields.GEOJSON_KEY_GEOJSON_TYPE,
+					TYGeojsonFields.GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
 			JSONArray floorFeatures = new JSONArray();
 			for (TYMapDataFeatureRecord record : floorList) {
 				JSONObject feature = processFillFeatureRecord(record, fillSymbolMap.get(record.symbolID));
 				floorFeatures.put(feature);
 			}
-			floorObject.put(TYGeojsonBuilder.GEOJSON_KEY_FEATURES, floorFeatures);
+			floorObject.put(TYGeojsonFields.GEOJSON_KEY_FEATURES, floorFeatures);
 			jsonObject.put(KEY_BOX_WEB_MAP_DATA_FLOOR, floorObject);
 		} else {
 			jsonObject.put(KEY_BOX_WEB_MAP_DATA_FLOOR, TYGeojsonBuilder.emptyGeojson);
@@ -84,14 +85,14 @@ public class TYWebMapGeojsonDataBuilder {
 
 		if (roomList.size() != 0) {
 			JSONObject roomObject = new JSONObject();
-			roomObject.put(TYGeojsonBuilder.GEOJSON_KEY_GEOJSON_TYPE,
-					TYGeojsonBuilder.GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
+			roomObject.put(TYGeojsonFields.GEOJSON_KEY_GEOJSON_TYPE,
+					TYGeojsonFields.GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
 			JSONArray roomFeatures = new JSONArray();
 			for (TYMapDataFeatureRecord record : roomList) {
 				JSONObject feature = processFillFeatureRecord(record, fillSymbolMap.get(record.symbolID));
 				roomFeatures.put(feature);
 			}
-			roomObject.put(TYGeojsonBuilder.GEOJSON_KEY_FEATURES, roomFeatures);
+			roomObject.put(TYGeojsonFields.GEOJSON_KEY_FEATURES, roomFeatures);
 			jsonObject.put(KEY_BOX_WEB_MAP_DATA_ROOM, roomObject);
 		} else {
 			jsonObject.put(KEY_BOX_WEB_MAP_DATA_ROOM, TYGeojsonBuilder.emptyGeojson);
@@ -99,14 +100,14 @@ public class TYWebMapGeojsonDataBuilder {
 
 		if (assetList.size() != 0) {
 			JSONObject assetObject = new JSONObject();
-			assetObject.put(TYGeojsonBuilder.GEOJSON_KEY_GEOJSON_TYPE,
-					TYGeojsonBuilder.GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
+			assetObject.put(TYGeojsonFields.GEOJSON_KEY_GEOJSON_TYPE,
+					TYGeojsonFields.GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
 			JSONArray assetFeatures = new JSONArray();
 			for (TYMapDataFeatureRecord record : assetList) {
 				JSONObject feature = processFillFeatureRecord(record, fillSymbolMap.get(record.symbolID));
 				assetFeatures.put(feature);
 			}
-			assetObject.put(TYGeojsonBuilder.GEOJSON_KEY_FEATURES, assetFeatures);
+			assetObject.put(TYGeojsonFields.GEOJSON_KEY_FEATURES, assetFeatures);
 			jsonObject.put(KEY_BOX_WEB_MAP_DATA_ASSET, assetObject);
 		} else {
 			jsonObject.put(KEY_BOX_WEB_MAP_DATA_ASSET, TYGeojsonBuilder.emptyGeojson);
@@ -114,8 +115,8 @@ public class TYWebMapGeojsonDataBuilder {
 
 		if (facilityList.size() != 0) {
 			JSONObject facilityObject = new JSONObject();
-			facilityObject.put(TYGeojsonBuilder.GEOJSON_KEY_GEOJSON_TYPE,
-					TYGeojsonBuilder.GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
+			facilityObject.put(TYGeojsonFields.GEOJSON_KEY_GEOJSON_TYPE,
+					TYGeojsonFields.GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
 			JSONArray facilityFeatures = new JSONArray();
 			for (TYMapDataFeatureRecord record : facilityList) {
 				JSONObject feature = processIconFeatureRecord(record, iconSymbolMap.get(record.symbolID));
@@ -123,7 +124,7 @@ public class TYWebMapGeojsonDataBuilder {
 					facilityFeatures.put(feature);
 				}
 			}
-			facilityObject.put(TYGeojsonBuilder.GEOJSON_KEY_FEATURES, facilityFeatures);
+			facilityObject.put(TYGeojsonFields.GEOJSON_KEY_FEATURES, facilityFeatures);
 			jsonObject.put(KEY_BOX_WEB_MAP_DATA_FACILITY, facilityObject);
 		} else {
 			jsonObject.put(KEY_BOX_WEB_MAP_DATA_FACILITY, TYGeojsonBuilder.emptyGeojson);
@@ -131,8 +132,8 @@ public class TYWebMapGeojsonDataBuilder {
 
 		if (labelList.size() != 0) {
 			JSONObject labelObject = new JSONObject();
-			labelObject.put(TYGeojsonBuilder.GEOJSON_KEY_GEOJSON_TYPE,
-					TYGeojsonBuilder.GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
+			labelObject.put(TYGeojsonFields.GEOJSON_KEY_GEOJSON_TYPE,
+					TYGeojsonFields.GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
 			JSONArray labelFeatures = new JSONArray();
 			for (TYMapDataFeatureRecord record : labelList) {
 				JSONObject feature = record.toGeojson();
@@ -140,7 +141,7 @@ public class TYWebMapGeojsonDataBuilder {
 					labelFeatures.put(feature);
 				}
 			}
-			labelObject.put(TYGeojsonBuilder.GEOJSON_KEY_FEATURES, labelFeatures);
+			labelObject.put(TYGeojsonFields.GEOJSON_KEY_FEATURES, labelFeatures);
 			jsonObject.put(KEY_BOX_WEB_MAP_DATA_LABEL, labelObject);
 		} else {
 			jsonObject.put(KEY_BOX_WEB_MAP_DATA_LABEL, TYGeojsonBuilder.emptyGeojson);

@@ -32,79 +32,70 @@ public class TYGeojsonBuilder {
 		}
 	}
 
-	public static final String GEOJSON_KEY_FEATURE_TYPE = "type";
-	public static final String GEOJSON_KEY_GEOMETRY = "geometry";
-	public static final String GEOJSON_KEY_PROPERTIES = "properties";
-
-	public static final String GEOJSON_KEY_FEATURES = "features";
-
-	public static final String GEOJSON_KEY_GEOJSON_TYPE = "type";
-	public static final String GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION = "FeatureCollection";
-
-	public static final String GEOJSON_VALUE_FEATURE_TYPE__FEATURE = "Feature";
-
-	public static final String GEOJSON_KEY_GEOMETRY_TYPE = "type";
-	public static final String GEOJSON_KEY_GEOMETRY_COORDINATES = "coordinates";
-
-	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__POINT = "Point";
-	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOINT = "MultiPoint";
-	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING = "LineString";
-	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__MULTILINESTRING = "MultiLineString";
-	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__POLYGON = "Polygon";
-	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOLYGON = "MultiPolygon";
-	public static final String GEOJSON_VALUE_GEOMETRY_TYPE__GEOMETRYCOLLECTION = "GeometryCollection";
-
 	public static JSONObject buildFeatureCollection(List<TYIGeojsonFeature> features) {
 		if (features == null || features.size() == 0) {
 			return emptyGeojson;
 		}
 
 		JSONObject result = new JSONObject();
-		result.put(GEOJSON_KEY_GEOJSON_TYPE, GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
+		result.put(TYGeojsonFields.GEOJSON_KEY_GEOJSON_TYPE,
+				TYGeojsonFields.GEOJSON_VALUE_GEOJSON_TYPE__FEATURECOLLECTION);
 		JSONArray featureArray = new JSONArray();
 		for (TYIGeojsonFeature feature : features) {
 			featureArray.put(feature.toGeojson());
 		}
-		result.put(GEOJSON_KEY_FEATURES, featureArray);
+		result.put(TYGeojsonFields.GEOJSON_KEY_FEATURES, featureArray);
 		return result;
 	}
 
 	public static JSONObject buildGeometry(Geometry geometry, Map<String, Object> propMap) {
 		JSONObject resultObject = new JSONObject();
-		resultObject.put(GEOJSON_KEY_FEATURE_TYPE, GEOJSON_VALUE_FEATURE_TYPE__FEATURE);
+		resultObject.put(TYGeojsonFields.GEOJSON_KEY_FEATURE_TYPE, TYGeojsonFields.GEOJSON_VALUE_FEATURE_TYPE__FEATURE);
 
 		JSONObject geometryObject = new JSONObject();
 		if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_POINT)) {
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__POINT);
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES, buildGeojsonPointFeature((Point) geometry));
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__POINT);
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
+					buildGeojsonPointFeature((Point) geometry));
 		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_POINT)) {
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOINT);
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES, buildGeojsonMultiPointFeature((MultiPoint) geometry));
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOINT);
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
+					buildGeojsonMultiPointFeature((MultiPoint) geometry));
 		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_LINESTRING)) {
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING);
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES, buildGeojsonLineString((LineString) geometry));
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING);
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
+					buildGeojsonLineString((LineString) geometry));
 		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_LINEARRING)) {
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING);
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES, buildGeojsonLineString((LinearRing) geometry));
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING);
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
+					buildGeojsonLineString((LinearRing) geometry));
 		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_LINESTRING)) {
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__MULTILINESTRING);
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES,
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__MULTILINESTRING);
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
 					buildGeojsonMultiLineString((MultiLineString) geometry));
 		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_POLYGON)) {
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__POLYGON);
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES, buildGeojsonPolygonFeature((Polygon) geometry));
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__POLYGON);
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
+					buildGeojsonPolygonFeature((Polygon) geometry));
 		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTIPOLYGON)) {
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_TYPE, GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOLYGON);
-			geometryObject.put(GEOJSON_KEY_GEOMETRY_COORDINATES,
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOLYGON);
+			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
 					buildGeojsonMultiPolygonFeature((MultiPolygon) geometry));
 		}
-		resultObject.put(GEOJSON_KEY_GEOMETRY, geometryObject);
+		resultObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY, geometryObject);
 
 		JSONObject propertiesObject = new JSONObject();
 		for (String key : propMap.keySet()) {
 			propertiesObject.put(key, propMap.get(key));
 		}
-		resultObject.put(GEOJSON_KEY_PROPERTIES, propertiesObject);
+		resultObject.put(TYGeojsonFields.GEOJSON_KEY_PROPERTIES, propertiesObject);
 		return resultObject;
 	}
 
