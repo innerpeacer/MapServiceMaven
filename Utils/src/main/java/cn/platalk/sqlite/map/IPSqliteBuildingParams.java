@@ -35,6 +35,7 @@ class IPSqliteBuildingParams {
 
 	static final String FIELD_BUILDING_17_WGS84_CALIBRATION_POINT = "WGS84_CALIBRATION_POINT";
 	static final String FIELD_BUILDING_18_WT_CALIBRATION_POINT = "WT_CALIBRATION_POINT";
+	static final String FIELD_BUILDING_19_DATA_VERSION = "DATA_VERSION";
 
 	private static List<IPSqlField> buildingFieldList = null;
 
@@ -80,6 +81,8 @@ class IPSqliteBuildingParams {
 			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_18_WT_CALIBRATION_POINT,
 					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), true));
 
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_19_DATA_VERSION,
+					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), true));
 		}
 		return buildingFieldList;
 	}
@@ -134,6 +137,10 @@ class IPSqliteBuildingParams {
 				building.setWtCalibrationPoint(
 						stringToDoubleArray(record.getString(FIELD_BUILDING_18_WT_CALIBRATION_POINT)));
 			}
+
+			if (record.getString(FIELD_BUILDING_19_DATA_VERSION) != null) {
+				building.setDataVersion(record.getString(FIELD_BUILDING_19_DATA_VERSION));
+			}
 			buildingList.add(building);
 		}
 		return buildingList;
@@ -164,6 +171,7 @@ class IPSqliteBuildingParams {
 		if (building.getWtCalibrationPoint() != null) {
 			data.put(FIELD_BUILDING_18_WT_CALIBRATION_POINT, doubleArrayToString(building.getWtCalibrationPoint()));
 		}
+		data.put(FIELD_BUILDING_19_DATA_VERSION, building.getDataVersion());
 		return data;
 	}
 }

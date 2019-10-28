@@ -55,6 +55,7 @@ public class TYCity2PbfUtils {
 			}
 			builder.addAllWtCalibrationPoint(doubleList);
 		}
+		builder.setDataVersion(building.getDataVersion());
 		return builder.build();
 	}
 

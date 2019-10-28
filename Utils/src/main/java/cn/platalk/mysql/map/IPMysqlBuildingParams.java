@@ -41,6 +41,8 @@ public class IPMysqlBuildingParams {
 	static final String FIELD_BUILDING_17_WGS84_CALIBRATION_POINT = "WGS84_CALIBRATION_POINT";
 	static final String FIELD_BUILDING_18_WT_CALIBRATION_POINT = "WT_CALIBRATION_POINT";
 
+	static final String FIELD_BUILDING_19_DATA_VERSION = "DATA_VERSION";
+
 	private static List<IPSqlField> buildingFieldList = new ArrayList<IPSqlField>();
 	static {
 		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_1_CITY_ID,
@@ -81,6 +83,8 @@ public class IPMysqlBuildingParams {
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(2000)"), true));
 		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_18_WT_CALIBRATION_POINT,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(2000)"), true));
+		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_19_DATA_VERSION,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), true));
 	}
 
 	public static IPSqlTable CreateTable() {
@@ -120,6 +124,10 @@ public class IPMysqlBuildingParams {
 			if (record.getString(FIELD_BUILDING_18_WT_CALIBRATION_POINT) != null) {
 				building.setWtCalibrationPoint(
 						stringToDoubleArray(record.getString(FIELD_BUILDING_18_WT_CALIBRATION_POINT)));
+			}
+
+			if (record.getString(FIELD_BUILDING_19_DATA_VERSION) != null) {
+				building.setDataVersion(record.getString(FIELD_BUILDING_19_DATA_VERSION));
 			}
 			buildingList.add(building);
 		}
@@ -171,6 +179,7 @@ public class IPMysqlBuildingParams {
 		if (building.getWtCalibrationPoint() != null) {
 			data.put(FIELD_BUILDING_18_WT_CALIBRATION_POINT, doubleArrayToString(building.getWtCalibrationPoint()));
 		}
+		data.put(FIELD_BUILDING_19_DATA_VERSION, building.getDataVersion());
 
 		return data;
 	}

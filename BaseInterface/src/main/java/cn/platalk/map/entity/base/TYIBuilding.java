@@ -25,6 +25,8 @@ public interface TYIBuilding extends TYIJsonFeature {
 
 	public TYIMapExtent getBuildingExtent();
 
+	public String getDataVersion();
+
 	public int getStatus();
 
 	public double[] getWgs84CalibrationPoint();

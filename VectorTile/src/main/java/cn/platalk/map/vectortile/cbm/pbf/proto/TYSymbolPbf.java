@@ -217,6 +217,7 @@ public final class TYSymbolPbf {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_FillSymbolPbf_descriptor;
 		}
 
+		@Override
 		protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_FillSymbolPbf_fieldAccessorTable
 					.ensureFieldAccessorsInitialized(
@@ -231,6 +232,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required uint32 UID = 1;</code>
 		 */
+		@Override
 		public boolean hasUID() {
 			return ((bitField0_ & 0x00000001) == 0x00000001);
 		}
@@ -238,6 +240,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required uint32 UID = 1;</code>
 		 */
+		@Override
 		public int getUID() {
 			return uID_;
 		}
@@ -248,6 +251,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required uint32 symbolID = 2;</code>
 		 */
+		@Override
 		public boolean hasSymbolID() {
 			return ((bitField0_ & 0x00000002) == 0x00000002);
 		}
@@ -255,6 +259,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required uint32 symbolID = 2;</code>
 		 */
+		@Override
 		public int getSymbolID() {
 			return symbolID_;
 		}
@@ -265,6 +270,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required string fillColor = 3;</code>
 		 */
+		@Override
 		public boolean hasFillColor() {
 			return ((bitField0_ & 0x00000004) == 0x00000004);
 		}
@@ -272,6 +278,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required string fillColor = 3;</code>
 		 */
+		@Override
 		public java.lang.String getFillColor() {
 			java.lang.Object ref = fillColor_;
 			if (ref instanceof java.lang.String) {
@@ -289,6 +296,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required string fillColor = 3;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getFillColorBytes() {
 			java.lang.Object ref = fillColor_;
 			if (ref instanceof java.lang.String) {
@@ -306,6 +314,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required string outlineColor = 4;</code>
 		 */
+		@Override
 		public boolean hasOutlineColor() {
 			return ((bitField0_ & 0x00000008) == 0x00000008);
 		}
@@ -313,6 +322,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required string outlineColor = 4;</code>
 		 */
+		@Override
 		public java.lang.String getOutlineColor() {
 			java.lang.Object ref = outlineColor_;
 			if (ref instanceof java.lang.String) {
@@ -330,6 +340,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required string outlineColor = 4;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getOutlineColorBytes() {
 			java.lang.Object ref = outlineColor_;
 			if (ref instanceof java.lang.String) {
@@ -347,6 +358,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double outlineWidth = 5;</code>
 		 */
+		@Override
 		public boolean hasOutlineWidth() {
 			return ((bitField0_ & 0x00000010) == 0x00000010);
 		}
@@ -354,6 +366,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double outlineWidth = 5;</code>
 		 */
+		@Override
 		public double getOutlineWidth() {
 			return outlineWidth_;
 		}
@@ -364,6 +377,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double levelMin = 6;</code>
 		 */
+		@Override
 		public boolean hasLevelMin() {
 			return ((bitField0_ & 0x00000020) == 0x00000020);
 		}
@@ -371,6 +385,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double levelMin = 6;</code>
 		 */
+		@Override
 		public double getLevelMin() {
 			return levelMin_;
 		}
@@ -381,6 +396,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double levelMax = 7;</code>
 		 */
+		@Override
 		public boolean hasLevelMax() {
 			return ((bitField0_ & 0x00000040) == 0x00000040);
 		}
@@ -388,6 +404,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double levelMax = 7;</code>
 		 */
+		@Override
 		public double getLevelMax() {
 			return levelMax_;
 		}
@@ -398,6 +415,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required bool visible = 8;</code>
 		 */
+		@Override
 		public boolean hasVisible() {
 			return ((bitField0_ & 0x00000080) == 0x00000080);
 		}
@@ -405,12 +423,14 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required bool visible = 8;</code>
 		 */
+		@Override
 		public boolean getVisible() {
 			return visible_;
 		}
 
 		private byte memoizedIsInitialized = -1;
 
+		@Override
 		public final boolean isInitialized() {
 			byte isInitialized = memoizedIsInitialized;
 			if (isInitialized == 1)
@@ -454,6 +474,7 @@ public final class TYSymbolPbf {
 			return true;
 		}
 
+		@Override
 		public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
 			if (((bitField0_ & 0x00000001) == 0x00000001)) {
 				output.writeUInt32(1, uID_);
@@ -482,6 +503,7 @@ public final class TYSymbolPbf {
 			unknownFields.writeTo(output);
 		}
 
+		@Override
 		public int getSerializedSize() {
 			int size = memoizedSize;
 			if (size != -1)
@@ -672,6 +694,7 @@ public final class TYSymbolPbf {
 			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
 		}
 
+		@Override
 		public Builder newBuilderForType() {
 			return newBuilder();
 		}
@@ -684,6 +707,7 @@ public final class TYSymbolPbf {
 			return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
 		}
 
+		@Override
 		public Builder toBuilder() {
 			return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
 		}
@@ -705,6 +729,7 @@ public final class TYSymbolPbf {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_FillSymbolPbf_descriptor;
 			}
 
+			@Override
 			protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_FillSymbolPbf_fieldAccessorTable
 						.ensureFieldAccessorsInitialized(
@@ -728,6 +753,7 @@ public final class TYSymbolPbf {
 				}
 			}
 
+			@Override
 			public Builder clear() {
 				super.clear();
 				uID_ = 0;
@@ -749,14 +775,17 @@ public final class TYSymbolPbf {
 				return this;
 			}
 
+			@Override
 			public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_FillSymbolPbf_descriptor;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf getDefaultInstanceForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf.getDefaultInstance();
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf build() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf result = buildPartial();
 				if (!result.isInitialized()) {
@@ -765,6 +794,7 @@ public final class TYSymbolPbf {
 				return result;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf buildPartial() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf result = new cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf(
 						this);
@@ -807,31 +837,38 @@ public final class TYSymbolPbf {
 				return result;
 			}
 
+			@Override
 			public Builder clone() {
-				return (Builder) super.clone();
+				return super.clone();
 			}
 
+			@Override
 			public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.setField(field, value);
+				return super.setField(field, value);
 			}
 
+			@Override
 			public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-				return (Builder) super.clearField(field);
+				return super.clearField(field);
 			}
 
+			@Override
 			public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-				return (Builder) super.clearOneof(oneof);
+				return super.clearOneof(oneof);
 			}
 
+			@Override
 			public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
 					Object value) {
-				return (Builder) super.setRepeatedField(field, index, value);
+				return super.setRepeatedField(field, index, value);
 			}
 
+			@Override
 			public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.addRepeatedField(field, value);
+				return super.addRepeatedField(field, value);
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.Message other) {
 				if (other instanceof cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf) {
 					return mergeFrom((cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf) other);
@@ -877,6 +914,7 @@ public final class TYSymbolPbf {
 				return this;
 			}
 
+			@Override
 			public final boolean isInitialized() {
 				if (!hasUID()) {
 					return false;
@@ -905,6 +943,7 @@ public final class TYSymbolPbf {
 				return true;
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf parsedMessage = null;
@@ -929,6 +968,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required uint32 UID = 1;</code>
 			 */
+			@Override
 			public boolean hasUID() {
 				return ((bitField0_ & 0x00000001) == 0x00000001);
 			}
@@ -936,6 +976,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required uint32 UID = 1;</code>
 			 */
+			@Override
 			public int getUID() {
 				return uID_;
 			}
@@ -965,6 +1006,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required uint32 symbolID = 2;</code>
 			 */
+			@Override
 			public boolean hasSymbolID() {
 				return ((bitField0_ & 0x00000002) == 0x00000002);
 			}
@@ -972,6 +1014,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required uint32 symbolID = 2;</code>
 			 */
+			@Override
 			public int getSymbolID() {
 				return symbolID_;
 			}
@@ -1001,6 +1044,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required string fillColor = 3;</code>
 			 */
+			@Override
 			public boolean hasFillColor() {
 				return ((bitField0_ & 0x00000004) == 0x00000004);
 			}
@@ -1008,6 +1052,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required string fillColor = 3;</code>
 			 */
+			@Override
 			public java.lang.String getFillColor() {
 				java.lang.Object ref = fillColor_;
 				if (!(ref instanceof java.lang.String)) {
@@ -1025,6 +1070,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required string fillColor = 3;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getFillColorBytes() {
 				java.lang.Object ref = fillColor_;
 				if (ref instanceof String) {
@@ -1078,6 +1124,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required string outlineColor = 4;</code>
 			 */
+			@Override
 			public boolean hasOutlineColor() {
 				return ((bitField0_ & 0x00000008) == 0x00000008);
 			}
@@ -1085,6 +1132,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required string outlineColor = 4;</code>
 			 */
+			@Override
 			public java.lang.String getOutlineColor() {
 				java.lang.Object ref = outlineColor_;
 				if (!(ref instanceof java.lang.String)) {
@@ -1102,6 +1150,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required string outlineColor = 4;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getOutlineColorBytes() {
 				java.lang.Object ref = outlineColor_;
 				if (ref instanceof String) {
@@ -1155,6 +1204,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double outlineWidth = 5;</code>
 			 */
+			@Override
 			public boolean hasOutlineWidth() {
 				return ((bitField0_ & 0x00000010) == 0x00000010);
 			}
@@ -1162,6 +1212,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double outlineWidth = 5;</code>
 			 */
+			@Override
 			public double getOutlineWidth() {
 				return outlineWidth_;
 			}
@@ -1191,6 +1242,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double levelMin = 6;</code>
 			 */
+			@Override
 			public boolean hasLevelMin() {
 				return ((bitField0_ & 0x00000020) == 0x00000020);
 			}
@@ -1198,6 +1250,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double levelMin = 6;</code>
 			 */
+			@Override
 			public double getLevelMin() {
 				return levelMin_;
 			}
@@ -1227,6 +1280,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double levelMax = 7;</code>
 			 */
+			@Override
 			public boolean hasLevelMax() {
 				return ((bitField0_ & 0x00000040) == 0x00000040);
 			}
@@ -1234,6 +1288,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double levelMax = 7;</code>
 			 */
+			@Override
 			public double getLevelMax() {
 				return levelMax_;
 			}
@@ -1263,6 +1318,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required bool visible = 8;</code>
 			 */
+			@Override
 			public boolean hasVisible() {
 				return ((bitField0_ & 0x00000080) == 0x00000080);
 			}
@@ -1270,6 +1326,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required bool visible = 8;</code>
 			 */
+			@Override
 			public boolean getVisible() {
 				return visible_;
 			}
@@ -1294,10 +1351,12 @@ public final class TYSymbolPbf {
 				return this;
 			}
 
+			@Override
 			public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.setUnknownFields(unknownFields);
 			}
 
+			@Override
 			public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.mergeUnknownFields(unknownFields);
 			}
@@ -1317,6 +1376,7 @@ public final class TYSymbolPbf {
 
 		@java.lang.Deprecated
 		public static final com.google.protobuf.Parser<FillSymbolPbf> PARSER = new com.google.protobuf.AbstractParser<FillSymbolPbf>() {
+			@Override
 			public FillSymbolPbf parsePartialFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry)
 					throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1333,6 +1393,7 @@ public final class TYSymbolPbf {
 			return PARSER;
 		}
 
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf getDefaultInstanceForType() {
 			return DEFAULT_INSTANCE;
 		}
@@ -1729,6 +1790,7 @@ public final class TYSymbolPbf {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_IconTextSymbolPbf_descriptor;
 		}
 
+		@Override
 		protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_IconTextSymbolPbf_fieldAccessorTable
 					.ensureFieldAccessorsInitialized(
@@ -1743,6 +1805,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required uint32 UID = 1;</code>
 		 */
+		@Override
 		public boolean hasUID() {
 			return ((bitField0_ & 0x00000001) == 0x00000001);
 		}
@@ -1750,6 +1813,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required uint32 UID = 1;</code>
 		 */
+		@Override
 		public int getUID() {
 			return uID_;
 		}
@@ -1760,6 +1824,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required uint32 symbolID = 2;</code>
 		 */
+		@Override
 		public boolean hasSymbolID() {
 			return ((bitField0_ & 0x00000002) == 0x00000002);
 		}
@@ -1767,6 +1832,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required uint32 symbolID = 2;</code>
 		 */
+		@Override
 		public int getSymbolID() {
 			return symbolID_;
 		}
@@ -1777,6 +1843,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required bool iconVisible = 3;</code>
 		 */
+		@Override
 		public boolean hasIconVisible() {
 			return ((bitField0_ & 0x00000004) == 0x00000004);
 		}
@@ -1784,6 +1851,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required bool iconVisible = 3;</code>
 		 */
+		@Override
 		public boolean getIconVisible() {
 			return iconVisible_;
 		}
@@ -1794,6 +1862,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double iconSize = 4;</code>
 		 */
+		@Override
 		public boolean hasIconSize() {
 			return ((bitField0_ & 0x00000008) == 0x00000008);
 		}
@@ -1801,6 +1870,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double iconSize = 4;</code>
 		 */
+		@Override
 		public double getIconSize() {
 			return iconSize_;
 		}
@@ -1811,6 +1881,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double iconRotate = 5;</code>
 		 */
+		@Override
 		public boolean hasIconRotate() {
 			return ((bitField0_ & 0x00000010) == 0x00000010);
 		}
@@ -1818,6 +1889,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double iconRotate = 5;</code>
 		 */
+		@Override
 		public double getIconRotate() {
 			return iconRotate_;
 		}
@@ -1828,6 +1900,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double iconOffsetX = 6;</code>
 		 */
+		@Override
 		public boolean hasIconOffsetX() {
 			return ((bitField0_ & 0x00000020) == 0x00000020);
 		}
@@ -1835,6 +1908,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double iconOffsetX = 6;</code>
 		 */
+		@Override
 		public double getIconOffsetX() {
 			return iconOffsetX_;
 		}
@@ -1845,6 +1919,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double iconOffsetY = 7;</code>
 		 */
+		@Override
 		public boolean hasIconOffsetY() {
 			return ((bitField0_ & 0x00000040) == 0x00000040);
 		}
@@ -1852,6 +1927,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double iconOffsetY = 7;</code>
 		 */
+		@Override
 		public double getIconOffsetY() {
 			return iconOffsetY_;
 		}
@@ -1862,6 +1938,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required bool textVisible = 10;</code>
 		 */
+		@Override
 		public boolean hasTextVisible() {
 			return ((bitField0_ & 0x00000080) == 0x00000080);
 		}
@@ -1869,6 +1946,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required bool textVisible = 10;</code>
 		 */
+		@Override
 		public boolean getTextVisible() {
 			return textVisible_;
 		}
@@ -1879,6 +1957,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double textSize = 11;</code>
 		 */
+		@Override
 		public boolean hasTextSize() {
 			return ((bitField0_ & 0x00000100) == 0x00000100);
 		}
@@ -1886,6 +1965,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double textSize = 11;</code>
 		 */
+		@Override
 		public double getTextSize() {
 			return textSize_;
 		}
@@ -1896,6 +1976,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double textRotate = 12;</code>
 		 */
+		@Override
 		public boolean hasTextRotate() {
 			return ((bitField0_ & 0x00000200) == 0x00000200);
 		}
@@ -1903,6 +1984,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double textRotate = 12;</code>
 		 */
+		@Override
 		public double getTextRotate() {
 			return textRotate_;
 		}
@@ -1913,6 +1995,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required string textFont = 13;</code>
 		 */
+		@Override
 		public boolean hasTextFont() {
 			return ((bitField0_ & 0x00000400) == 0x00000400);
 		}
@@ -1920,6 +2003,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required string textFont = 13;</code>
 		 */
+		@Override
 		public java.lang.String getTextFont() {
 			java.lang.Object ref = textFont_;
 			if (ref instanceof java.lang.String) {
@@ -1937,6 +2021,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required string textFont = 13;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getTextFontBytes() {
 			java.lang.Object ref = textFont_;
 			if (ref instanceof java.lang.String) {
@@ -1954,6 +2039,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required string textColor = 14;</code>
 		 */
+		@Override
 		public boolean hasTextColor() {
 			return ((bitField0_ & 0x00000800) == 0x00000800);
 		}
@@ -1961,6 +2047,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required string textColor = 14;</code>
 		 */
+		@Override
 		public java.lang.String getTextColor() {
 			java.lang.Object ref = textColor_;
 			if (ref instanceof java.lang.String) {
@@ -1978,6 +2065,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required string textColor = 14;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getTextColorBytes() {
 			java.lang.Object ref = textColor_;
 			if (ref instanceof java.lang.String) {
@@ -1995,6 +2083,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double textOffsetX = 15;</code>
 		 */
+		@Override
 		public boolean hasTextOffsetX() {
 			return ((bitField0_ & 0x00001000) == 0x00001000);
 		}
@@ -2002,6 +2091,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double textOffsetX = 15;</code>
 		 */
+		@Override
 		public double getTextOffsetX() {
 			return textOffsetX_;
 		}
@@ -2012,6 +2102,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double textOffsetY = 16;</code>
 		 */
+		@Override
 		public boolean hasTextOffsetY() {
 			return ((bitField0_ & 0x00002000) == 0x00002000);
 		}
@@ -2019,6 +2110,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double textOffsetY = 16;</code>
 		 */
+		@Override
 		public double getTextOffsetY() {
 			return textOffsetY_;
 		}
@@ -2029,6 +2121,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double levelMin = 21;</code>
 		 */
+		@Override
 		public boolean hasLevelMin() {
 			return ((bitField0_ & 0x00004000) == 0x00004000);
 		}
@@ -2036,6 +2129,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double levelMin = 21;</code>
 		 */
+		@Override
 		public double getLevelMin() {
 			return levelMin_;
 		}
@@ -2046,6 +2140,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double levelMax = 22;</code>
 		 */
+		@Override
 		public boolean hasLevelMax() {
 			return ((bitField0_ & 0x00008000) == 0x00008000);
 		}
@@ -2053,6 +2148,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required double levelMax = 22;</code>
 		 */
+		@Override
 		public double getLevelMax() {
 			return levelMax_;
 		}
@@ -2063,6 +2159,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required uint32 priority = 23;</code>
 		 */
+		@Override
 		public boolean hasPriority() {
 			return ((bitField0_ & 0x00010000) == 0x00010000);
 		}
@@ -2070,6 +2167,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>required uint32 priority = 23;</code>
 		 */
+		@Override
 		public int getPriority() {
 			return priority_;
 		}
@@ -2080,6 +2178,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>optional string otherPaint = 30;</code>
 		 */
+		@Override
 		public boolean hasOtherPaint() {
 			return ((bitField0_ & 0x00020000) == 0x00020000);
 		}
@@ -2087,6 +2186,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>optional string otherPaint = 30;</code>
 		 */
+		@Override
 		public java.lang.String getOtherPaint() {
 			java.lang.Object ref = otherPaint_;
 			if (ref instanceof java.lang.String) {
@@ -2104,6 +2204,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>optional string otherPaint = 30;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getOtherPaintBytes() {
 			java.lang.Object ref = otherPaint_;
 			if (ref instanceof java.lang.String) {
@@ -2121,6 +2222,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>optional string otherLayout = 31;</code>
 		 */
+		@Override
 		public boolean hasOtherLayout() {
 			return ((bitField0_ & 0x00040000) == 0x00040000);
 		}
@@ -2128,6 +2230,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>optional string otherLayout = 31;</code>
 		 */
+		@Override
 		public java.lang.String getOtherLayout() {
 			java.lang.Object ref = otherLayout_;
 			if (ref instanceof java.lang.String) {
@@ -2145,6 +2248,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>optional string otherLayout = 31;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getOtherLayoutBytes() {
 			java.lang.Object ref = otherLayout_;
 			if (ref instanceof java.lang.String) {
@@ -2158,6 +2262,7 @@ public final class TYSymbolPbf {
 
 		private byte memoizedIsInitialized = -1;
 
+		@Override
 		public final boolean isInitialized() {
 			byte isInitialized = memoizedIsInitialized;
 			if (isInitialized == 1)
@@ -2237,6 +2342,7 @@ public final class TYSymbolPbf {
 			return true;
 		}
 
+		@Override
 		public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
 			if (((bitField0_ & 0x00000001) == 0x00000001)) {
 				output.writeUInt32(1, uID_);
@@ -2298,6 +2404,7 @@ public final class TYSymbolPbf {
 			unknownFields.writeTo(output);
 		}
 
+		@Override
 		public int getSerializedSize() {
 			int size = memoizedSize;
 			if (size != -1)
@@ -2623,6 +2730,7 @@ public final class TYSymbolPbf {
 			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
 		}
 
+		@Override
 		public Builder newBuilderForType() {
 			return newBuilder();
 		}
@@ -2636,6 +2744,7 @@ public final class TYSymbolPbf {
 			return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
 		}
 
+		@Override
 		public Builder toBuilder() {
 			return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
 		}
@@ -2657,6 +2766,7 @@ public final class TYSymbolPbf {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_IconTextSymbolPbf_descriptor;
 			}
 
+			@Override
 			protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_IconTextSymbolPbf_fieldAccessorTable
 						.ensureFieldAccessorsInitialized(
@@ -2680,6 +2790,7 @@ public final class TYSymbolPbf {
 				}
 			}
 
+			@Override
 			public Builder clear() {
 				super.clear();
 				uID_ = 0;
@@ -2723,14 +2834,17 @@ public final class TYSymbolPbf {
 				return this;
 			}
 
+			@Override
 			public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_IconTextSymbolPbf_descriptor;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf getDefaultInstanceForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf.getDefaultInstance();
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf build() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf result = buildPartial();
 				if (!result.isInitialized()) {
@@ -2739,6 +2853,7 @@ public final class TYSymbolPbf {
 				return result;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf buildPartial() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf result = new cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf(
 						this);
@@ -2825,31 +2940,38 @@ public final class TYSymbolPbf {
 				return result;
 			}
 
+			@Override
 			public Builder clone() {
-				return (Builder) super.clone();
+				return super.clone();
 			}
 
+			@Override
 			public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.setField(field, value);
+				return super.setField(field, value);
 			}
 
+			@Override
 			public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-				return (Builder) super.clearField(field);
+				return super.clearField(field);
 			}
 
+			@Override
 			public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-				return (Builder) super.clearOneof(oneof);
+				return super.clearOneof(oneof);
 			}
 
+			@Override
 			public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
 					Object value) {
-				return (Builder) super.setRepeatedField(field, index, value);
+				return super.setRepeatedField(field, index, value);
 			}
 
+			@Override
 			public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.addRepeatedField(field, value);
+				return super.addRepeatedField(field, value);
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.Message other) {
 				if (other instanceof cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf) {
 					return mergeFrom((cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf) other);
@@ -2932,6 +3054,7 @@ public final class TYSymbolPbf {
 				return this;
 			}
 
+			@Override
 			public final boolean isInitialized() {
 				if (!hasUID()) {
 					return false;
@@ -2987,6 +3110,7 @@ public final class TYSymbolPbf {
 				return true;
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf parsedMessage = null;
@@ -3011,6 +3135,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required uint32 UID = 1;</code>
 			 */
+			@Override
 			public boolean hasUID() {
 				return ((bitField0_ & 0x00000001) == 0x00000001);
 			}
@@ -3018,6 +3143,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required uint32 UID = 1;</code>
 			 */
+			@Override
 			public int getUID() {
 				return uID_;
 			}
@@ -3047,6 +3173,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required uint32 symbolID = 2;</code>
 			 */
+			@Override
 			public boolean hasSymbolID() {
 				return ((bitField0_ & 0x00000002) == 0x00000002);
 			}
@@ -3054,6 +3181,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required uint32 symbolID = 2;</code>
 			 */
+			@Override
 			public int getSymbolID() {
 				return symbolID_;
 			}
@@ -3083,6 +3211,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required bool iconVisible = 3;</code>
 			 */
+			@Override
 			public boolean hasIconVisible() {
 				return ((bitField0_ & 0x00000004) == 0x00000004);
 			}
@@ -3090,6 +3219,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required bool iconVisible = 3;</code>
 			 */
+			@Override
 			public boolean getIconVisible() {
 				return iconVisible_;
 			}
@@ -3119,6 +3249,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double iconSize = 4;</code>
 			 */
+			@Override
 			public boolean hasIconSize() {
 				return ((bitField0_ & 0x00000008) == 0x00000008);
 			}
@@ -3126,6 +3257,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double iconSize = 4;</code>
 			 */
+			@Override
 			public double getIconSize() {
 				return iconSize_;
 			}
@@ -3155,6 +3287,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double iconRotate = 5;</code>
 			 */
+			@Override
 			public boolean hasIconRotate() {
 				return ((bitField0_ & 0x00000010) == 0x00000010);
 			}
@@ -3162,6 +3295,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double iconRotate = 5;</code>
 			 */
+			@Override
 			public double getIconRotate() {
 				return iconRotate_;
 			}
@@ -3191,6 +3325,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double iconOffsetX = 6;</code>
 			 */
+			@Override
 			public boolean hasIconOffsetX() {
 				return ((bitField0_ & 0x00000020) == 0x00000020);
 			}
@@ -3198,6 +3333,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double iconOffsetX = 6;</code>
 			 */
+			@Override
 			public double getIconOffsetX() {
 				return iconOffsetX_;
 			}
@@ -3227,6 +3363,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double iconOffsetY = 7;</code>
 			 */
+			@Override
 			public boolean hasIconOffsetY() {
 				return ((bitField0_ & 0x00000040) == 0x00000040);
 			}
@@ -3234,6 +3371,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double iconOffsetY = 7;</code>
 			 */
+			@Override
 			public double getIconOffsetY() {
 				return iconOffsetY_;
 			}
@@ -3263,6 +3401,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required bool textVisible = 10;</code>
 			 */
+			@Override
 			public boolean hasTextVisible() {
 				return ((bitField0_ & 0x00000080) == 0x00000080);
 			}
@@ -3270,6 +3409,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required bool textVisible = 10;</code>
 			 */
+			@Override
 			public boolean getTextVisible() {
 				return textVisible_;
 			}
@@ -3299,6 +3439,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double textSize = 11;</code>
 			 */
+			@Override
 			public boolean hasTextSize() {
 				return ((bitField0_ & 0x00000100) == 0x00000100);
 			}
@@ -3306,6 +3447,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double textSize = 11;</code>
 			 */
+			@Override
 			public double getTextSize() {
 				return textSize_;
 			}
@@ -3335,6 +3477,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double textRotate = 12;</code>
 			 */
+			@Override
 			public boolean hasTextRotate() {
 				return ((bitField0_ & 0x00000200) == 0x00000200);
 			}
@@ -3342,6 +3485,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double textRotate = 12;</code>
 			 */
+			@Override
 			public double getTextRotate() {
 				return textRotate_;
 			}
@@ -3371,6 +3515,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required string textFont = 13;</code>
 			 */
+			@Override
 			public boolean hasTextFont() {
 				return ((bitField0_ & 0x00000400) == 0x00000400);
 			}
@@ -3378,6 +3523,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required string textFont = 13;</code>
 			 */
+			@Override
 			public java.lang.String getTextFont() {
 				java.lang.Object ref = textFont_;
 				if (!(ref instanceof java.lang.String)) {
@@ -3395,6 +3541,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required string textFont = 13;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getTextFontBytes() {
 				java.lang.Object ref = textFont_;
 				if (ref instanceof String) {
@@ -3448,6 +3595,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required string textColor = 14;</code>
 			 */
+			@Override
 			public boolean hasTextColor() {
 				return ((bitField0_ & 0x00000800) == 0x00000800);
 			}
@@ -3455,6 +3603,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required string textColor = 14;</code>
 			 */
+			@Override
 			public java.lang.String getTextColor() {
 				java.lang.Object ref = textColor_;
 				if (!(ref instanceof java.lang.String)) {
@@ -3472,6 +3621,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required string textColor = 14;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getTextColorBytes() {
 				java.lang.Object ref = textColor_;
 				if (ref instanceof String) {
@@ -3525,6 +3675,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double textOffsetX = 15;</code>
 			 */
+			@Override
 			public boolean hasTextOffsetX() {
 				return ((bitField0_ & 0x00001000) == 0x00001000);
 			}
@@ -3532,6 +3683,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double textOffsetX = 15;</code>
 			 */
+			@Override
 			public double getTextOffsetX() {
 				return textOffsetX_;
 			}
@@ -3561,6 +3713,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double textOffsetY = 16;</code>
 			 */
+			@Override
 			public boolean hasTextOffsetY() {
 				return ((bitField0_ & 0x00002000) == 0x00002000);
 			}
@@ -3568,6 +3721,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double textOffsetY = 16;</code>
 			 */
+			@Override
 			public double getTextOffsetY() {
 				return textOffsetY_;
 			}
@@ -3597,6 +3751,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double levelMin = 21;</code>
 			 */
+			@Override
 			public boolean hasLevelMin() {
 				return ((bitField0_ & 0x00004000) == 0x00004000);
 			}
@@ -3604,6 +3759,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double levelMin = 21;</code>
 			 */
+			@Override
 			public double getLevelMin() {
 				return levelMin_;
 			}
@@ -3633,6 +3789,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double levelMax = 22;</code>
 			 */
+			@Override
 			public boolean hasLevelMax() {
 				return ((bitField0_ & 0x00008000) == 0x00008000);
 			}
@@ -3640,6 +3797,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required double levelMax = 22;</code>
 			 */
+			@Override
 			public double getLevelMax() {
 				return levelMax_;
 			}
@@ -3669,6 +3827,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required uint32 priority = 23;</code>
 			 */
+			@Override
 			public boolean hasPriority() {
 				return ((bitField0_ & 0x00010000) == 0x00010000);
 			}
@@ -3676,6 +3835,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>required uint32 priority = 23;</code>
 			 */
+			@Override
 			public int getPriority() {
 				return priority_;
 			}
@@ -3705,6 +3865,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>optional string otherPaint = 30;</code>
 			 */
+			@Override
 			public boolean hasOtherPaint() {
 				return ((bitField0_ & 0x00020000) == 0x00020000);
 			}
@@ -3712,6 +3873,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>optional string otherPaint = 30;</code>
 			 */
+			@Override
 			public java.lang.String getOtherPaint() {
 				java.lang.Object ref = otherPaint_;
 				if (!(ref instanceof java.lang.String)) {
@@ -3729,6 +3891,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>optional string otherPaint = 30;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getOtherPaintBytes() {
 				java.lang.Object ref = otherPaint_;
 				if (ref instanceof String) {
@@ -3782,6 +3945,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>optional string otherLayout = 31;</code>
 			 */
+			@Override
 			public boolean hasOtherLayout() {
 				return ((bitField0_ & 0x00040000) == 0x00040000);
 			}
@@ -3789,6 +3953,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>optional string otherLayout = 31;</code>
 			 */
+			@Override
 			public java.lang.String getOtherLayout() {
 				java.lang.Object ref = otherLayout_;
 				if (!(ref instanceof java.lang.String)) {
@@ -3806,6 +3971,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>optional string otherLayout = 31;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getOtherLayoutBytes() {
 				java.lang.Object ref = otherLayout_;
 				if (ref instanceof String) {
@@ -3854,10 +4020,12 @@ public final class TYSymbolPbf {
 				return this;
 			}
 
+			@Override
 			public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.setUnknownFields(unknownFields);
 			}
 
+			@Override
 			public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.mergeUnknownFields(unknownFields);
 			}
@@ -3877,6 +4045,7 @@ public final class TYSymbolPbf {
 
 		@java.lang.Deprecated
 		public static final com.google.protobuf.Parser<IconTextSymbolPbf> PARSER = new com.google.protobuf.AbstractParser<IconTextSymbolPbf>() {
+			@Override
 			public IconTextSymbolPbf parsePartialFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry)
 					throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3893,6 +4062,7 @@ public final class TYSymbolPbf {
 			return PARSER;
 		}
 
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf getDefaultInstanceForType() {
 			return DEFAULT_INSTANCE;
 		}
@@ -4201,6 +4371,7 @@ public final class TYSymbolPbf {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_SymbolCollectionPbf_descriptor;
 		}
 
+		@Override
 		protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_SymbolCollectionPbf_fieldAccessorTable
 					.ensureFieldAccessorsInitialized(
@@ -4214,6 +4385,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 floor = 1;</code>
 		 */
+		@Override
 		public java.util.List<java.lang.Integer> getFloorList() {
 			return floor_;
 		}
@@ -4221,6 +4393,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 floor = 1;</code>
 		 */
+		@Override
 		public int getFloorCount() {
 			return floor_.size();
 		}
@@ -4228,6 +4401,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 floor = 1;</code>
 		 */
+		@Override
 		public int getFloor(int index) {
 			return floor_.get(index);
 		}
@@ -4238,6 +4412,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 room = 2;</code>
 		 */
+		@Override
 		public java.util.List<java.lang.Integer> getRoomList() {
 			return room_;
 		}
@@ -4245,6 +4420,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 room = 2;</code>
 		 */
+		@Override
 		public int getRoomCount() {
 			return room_.size();
 		}
@@ -4252,6 +4428,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 room = 2;</code>
 		 */
+		@Override
 		public int getRoom(int index) {
 			return room_.get(index);
 		}
@@ -4262,6 +4439,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 asset = 3;</code>
 		 */
+		@Override
 		public java.util.List<java.lang.Integer> getAssetList() {
 			return asset_;
 		}
@@ -4269,6 +4447,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 asset = 3;</code>
 		 */
+		@Override
 		public int getAssetCount() {
 			return asset_.size();
 		}
@@ -4276,6 +4455,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 asset = 3;</code>
 		 */
+		@Override
 		public int getAsset(int index) {
 			return asset_.get(index);
 		}
@@ -4286,6 +4466,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 facility = 4;</code>
 		 */
+		@Override
 		public java.util.List<java.lang.Integer> getFacilityList() {
 			return facility_;
 		}
@@ -4293,6 +4474,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 facility = 4;</code>
 		 */
+		@Override
 		public int getFacilityCount() {
 			return facility_.size();
 		}
@@ -4300,6 +4482,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 facility = 4;</code>
 		 */
+		@Override
 		public int getFacility(int index) {
 			return facility_.get(index);
 		}
@@ -4310,6 +4493,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 label = 5;</code>
 		 */
+		@Override
 		public java.util.List<java.lang.Integer> getLabelList() {
 			return label_;
 		}
@@ -4317,6 +4501,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 label = 5;</code>
 		 */
+		@Override
 		public int getLabelCount() {
 			return label_.size();
 		}
@@ -4324,6 +4509,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 label = 5;</code>
 		 */
+		@Override
 		public int getLabel(int index) {
 			return label_.get(index);
 		}
@@ -4334,6 +4520,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 extrusion = 6;</code>
 		 */
+		@Override
 		public java.util.List<java.lang.Integer> getExtrusionList() {
 			return extrusion_;
 		}
@@ -4341,6 +4528,7 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 extrusion = 6;</code>
 		 */
+		@Override
 		public int getExtrusionCount() {
 			return extrusion_.size();
 		}
@@ -4348,12 +4536,14 @@ public final class TYSymbolPbf {
 		/**
 		 * <code>repeated uint32 extrusion = 6;</code>
 		 */
+		@Override
 		public int getExtrusion(int index) {
 			return extrusion_.get(index);
 		}
 
 		private byte memoizedIsInitialized = -1;
 
+		@Override
 		public final boolean isInitialized() {
 			byte isInitialized = memoizedIsInitialized;
 			if (isInitialized == 1)
@@ -4365,6 +4555,7 @@ public final class TYSymbolPbf {
 			return true;
 		}
 
+		@Override
 		public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
 			for (int i = 0; i < floor_.size(); i++) {
 				output.writeUInt32(1, floor_.get(i));
@@ -4387,6 +4578,7 @@ public final class TYSymbolPbf {
 			unknownFields.writeTo(output);
 		}
 
+		@Override
 		public int getSerializedSize() {
 			int size = memoizedSize;
 			if (size != -1)
@@ -4561,6 +4753,7 @@ public final class TYSymbolPbf {
 			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
 		}
 
+		@Override
 		public Builder newBuilderForType() {
 			return newBuilder();
 		}
@@ -4574,6 +4767,7 @@ public final class TYSymbolPbf {
 			return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
 		}
 
+		@Override
 		public Builder toBuilder() {
 			return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
 		}
@@ -4595,6 +4789,7 @@ public final class TYSymbolPbf {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_SymbolCollectionPbf_descriptor;
 			}
 
+			@Override
 			protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_SymbolCollectionPbf_fieldAccessorTable
 						.ensureFieldAccessorsInitialized(
@@ -4618,6 +4813,7 @@ public final class TYSymbolPbf {
 				}
 			}
 
+			@Override
 			public Builder clear() {
 				super.clear();
 				floor_ = java.util.Collections.emptyList();
@@ -4635,14 +4831,17 @@ public final class TYSymbolPbf {
 				return this;
 			}
 
+			@Override
 			public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_SymbolCollectionPbf_descriptor;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf getDefaultInstanceForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf.getDefaultInstance();
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf build() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf result = buildPartial();
 				if (!result.isInitialized()) {
@@ -4651,6 +4850,7 @@ public final class TYSymbolPbf {
 				return result;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf buildPartial() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf result = new cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf(
 						this);
@@ -4689,31 +4889,38 @@ public final class TYSymbolPbf {
 				return result;
 			}
 
+			@Override
 			public Builder clone() {
-				return (Builder) super.clone();
+				return super.clone();
 			}
 
+			@Override
 			public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.setField(field, value);
+				return super.setField(field, value);
 			}
 
+			@Override
 			public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-				return (Builder) super.clearField(field);
+				return super.clearField(field);
 			}
 
+			@Override
 			public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-				return (Builder) super.clearOneof(oneof);
+				return super.clearOneof(oneof);
 			}
 
+			@Override
 			public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
 					Object value) {
-				return (Builder) super.setRepeatedField(field, index, value);
+				return super.setRepeatedField(field, index, value);
 			}
 
+			@Override
 			public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.addRepeatedField(field, value);
+				return super.addRepeatedField(field, value);
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.Message other) {
 				if (other instanceof cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf) {
 					return mergeFrom((cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf) other);
@@ -4792,10 +4999,12 @@ public final class TYSymbolPbf {
 				return this;
 			}
 
+			@Override
 			public final boolean isInitialized() {
 				return true;
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf parsedMessage = null;
@@ -4827,6 +5036,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 floor = 1;</code>
 			 */
+			@Override
 			public java.util.List<java.lang.Integer> getFloorList() {
 				return java.util.Collections.unmodifiableList(floor_);
 			}
@@ -4834,6 +5044,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 floor = 1;</code>
 			 */
+			@Override
 			public int getFloorCount() {
 				return floor_.size();
 			}
@@ -4841,6 +5052,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 floor = 1;</code>
 			 */
+			@Override
 			public int getFloor(int index) {
 				return floor_.get(index);
 			}
@@ -4897,6 +5109,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 room = 2;</code>
 			 */
+			@Override
 			public java.util.List<java.lang.Integer> getRoomList() {
 				return java.util.Collections.unmodifiableList(room_);
 			}
@@ -4904,6 +5117,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 room = 2;</code>
 			 */
+			@Override
 			public int getRoomCount() {
 				return room_.size();
 			}
@@ -4911,6 +5125,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 room = 2;</code>
 			 */
+			@Override
 			public int getRoom(int index) {
 				return room_.get(index);
 			}
@@ -4967,6 +5182,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 asset = 3;</code>
 			 */
+			@Override
 			public java.util.List<java.lang.Integer> getAssetList() {
 				return java.util.Collections.unmodifiableList(asset_);
 			}
@@ -4974,6 +5190,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 asset = 3;</code>
 			 */
+			@Override
 			public int getAssetCount() {
 				return asset_.size();
 			}
@@ -4981,6 +5198,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 asset = 3;</code>
 			 */
+			@Override
 			public int getAsset(int index) {
 				return asset_.get(index);
 			}
@@ -5037,6 +5255,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 facility = 4;</code>
 			 */
+			@Override
 			public java.util.List<java.lang.Integer> getFacilityList() {
 				return java.util.Collections.unmodifiableList(facility_);
 			}
@@ -5044,6 +5263,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 facility = 4;</code>
 			 */
+			@Override
 			public int getFacilityCount() {
 				return facility_.size();
 			}
@@ -5051,6 +5271,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 facility = 4;</code>
 			 */
+			@Override
 			public int getFacility(int index) {
 				return facility_.get(index);
 			}
@@ -5107,6 +5328,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 label = 5;</code>
 			 */
+			@Override
 			public java.util.List<java.lang.Integer> getLabelList() {
 				return java.util.Collections.unmodifiableList(label_);
 			}
@@ -5114,6 +5336,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 label = 5;</code>
 			 */
+			@Override
 			public int getLabelCount() {
 				return label_.size();
 			}
@@ -5121,6 +5344,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 label = 5;</code>
 			 */
+			@Override
 			public int getLabel(int index) {
 				return label_.get(index);
 			}
@@ -5177,6 +5401,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 extrusion = 6;</code>
 			 */
+			@Override
 			public java.util.List<java.lang.Integer> getExtrusionList() {
 				return java.util.Collections.unmodifiableList(extrusion_);
 			}
@@ -5184,6 +5409,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 extrusion = 6;</code>
 			 */
+			@Override
 			public int getExtrusionCount() {
 				return extrusion_.size();
 			}
@@ -5191,6 +5417,7 @@ public final class TYSymbolPbf {
 			/**
 			 * <code>repeated uint32 extrusion = 6;</code>
 			 */
+			@Override
 			public int getExtrusion(int index) {
 				return extrusion_.get(index);
 			}
@@ -5235,10 +5462,12 @@ public final class TYSymbolPbf {
 				return this;
 			}
 
+			@Override
 			public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.setUnknownFields(unknownFields);
 			}
 
+			@Override
 			public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.mergeUnknownFields(unknownFields);
 			}
@@ -5258,6 +5487,7 @@ public final class TYSymbolPbf {
 
 		@java.lang.Deprecated
 		public static final com.google.protobuf.Parser<SymbolCollectionPbf> PARSER = new com.google.protobuf.AbstractParser<SymbolCollectionPbf>() {
+			@Override
 			public SymbolCollectionPbf parsePartialFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry)
 					throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5274,6 +5504,7 @@ public final class TYSymbolPbf {
 			return PARSER;
 		}
 
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf getDefaultInstanceForType() {
 			return DEFAULT_INSTANCE;
 		}
@@ -5313,6 +5544,7 @@ public final class TYSymbolPbf {
 						+ "(\r\022\020\n\010facility\030\004 \003(\r\022\r\n\005label\030\005 \003(\r\022\021\n\te"
 						+ "xtrusion\030\006 \003(\r" };
 		com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
+			@Override
 			public com.google.protobuf.ExtensionRegistry assignDescriptors(
 					com.google.protobuf.Descriptors.FileDescriptor root) {
 				descriptor = root;

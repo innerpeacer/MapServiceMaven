@@ -24,6 +24,7 @@ public class TYBuilding implements TYIBuilding {
 	static final String KEY_JSON_BUILDING_WGS84_CALIBRATION_POINT = "wgs84CalibrationPoint";
 	static final String KEY_JSON_BUILDING_WT_CALIBRATION_POINT = "wtCalibrationPoint";
 	static final String KEY_JSON_BUILDING_STATUS = "status";
+	static final String KEY_JSON_BUILDING_DATA_VERSION = "dataVersion";
 
 	private String cityID;
 	private String buildingID;
@@ -43,6 +44,7 @@ public class TYBuilding implements TYIBuilding {
 	private double[] wgs84CalibrationPoint;
 	private double[] wtCalibrationPoint;
 
+	private String dataVersion = "1.0";
 	private int status;
 
 	public TYBuilding() {
@@ -159,6 +161,15 @@ public class TYBuilding implements TYIBuilding {
 	}
 
 	@Override
+	public String getDataVersion() {
+		return dataVersion;
+	}
+
+	public void setDataVersion(String version) {
+		this.dataVersion = version;
+	}
+
+	@Override
 	public int getStatus() {
 		return status;
 	}
@@ -206,6 +217,7 @@ public class TYBuilding implements TYIBuilding {
 		buildingObject.put(KEY_JSON_BUILDING_WGS84_CALIBRATION_POINT, getWgs84CalibrationPoint());
 		buildingObject.put(KEY_JSON_BUILDING_WT_CALIBRATION_POINT, getWtCalibrationPoint());
 		buildingObject.put(KEY_JSON_BUILDING_STATUS, getStatus());
+		buildingObject.put(KEY_JSON_BUILDING_DATA_VERSION, getDataVersion());
 		return buildingObject;
 	}
 

@@ -322,6 +322,7 @@ public final class TYCbmPbf {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_CBMPbf_descriptor;
 		}
 
+		@Override
 		protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_CBMPbf_fieldAccessorTable
 					.ensureFieldAccessorsInitialized(cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf.class,
@@ -335,6 +336,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string buildingID = 1;</code>
 		 */
+		@Override
 		public boolean hasBuildingID() {
 			return ((bitField0_ & 0x00000001) == 0x00000001);
 		}
@@ -342,6 +344,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string buildingID = 1;</code>
 		 */
+		@Override
 		public java.lang.String getBuildingID() {
 			java.lang.Object ref = buildingID_;
 			if (ref instanceof java.lang.String) {
@@ -359,6 +362,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string buildingID = 1;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getBuildingIDBytes() {
 			java.lang.Object ref = buildingID_;
 			if (ref instanceof java.lang.String) {
@@ -376,6 +380,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.CityPbf Cities = 2;</code>
 		 */
+		@Override
 		public java.util.List<cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf> getCitiesList() {
 			return cities_;
 		}
@@ -383,6 +388,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.CityPbf Cities = 2;</code>
 		 */
+		@Override
 		public java.util.List<? extends cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbfOrBuilder> getCitiesOrBuilderList() {
 			return cities_;
 		}
@@ -390,6 +396,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.CityPbf Cities = 2;</code>
 		 */
+		@Override
 		public int getCitiesCount() {
 			return cities_.size();
 		}
@@ -397,6 +404,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.CityPbf Cities = 2;</code>
 		 */
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf getCities(int index) {
 			return cities_.get(index);
 		}
@@ -404,6 +412,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.CityPbf Cities = 2;</code>
 		 */
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbfOrBuilder getCitiesOrBuilder(int index) {
 			return cities_.get(index);
 		}
@@ -414,6 +423,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.BuildingPbf Buildings = 3;</code>
 		 */
+		@Override
 		public java.util.List<cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf> getBuildingsList() {
 			return buildings_;
 		}
@@ -421,6 +431,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.BuildingPbf Buildings = 3;</code>
 		 */
+		@Override
 		public java.util.List<? extends cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbfOrBuilder> getBuildingsOrBuilderList() {
 			return buildings_;
 		}
@@ -428,6 +439,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.BuildingPbf Buildings = 3;</code>
 		 */
+		@Override
 		public int getBuildingsCount() {
 			return buildings_.size();
 		}
@@ -435,6 +447,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.BuildingPbf Buildings = 3;</code>
 		 */
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf getBuildings(int index) {
 			return buildings_.get(index);
 		}
@@ -442,6 +455,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.BuildingPbf Buildings = 3;</code>
 		 */
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbfOrBuilder getBuildingsOrBuilder(int index) {
 			return buildings_.get(index);
 		}
@@ -452,6 +466,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.MapInfoPbf MapInfos = 4;</code>
 		 */
+		@Override
 		public java.util.List<cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf> getMapInfosList() {
 			return mapInfos_;
 		}
@@ -459,6 +474,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.MapInfoPbf MapInfos = 4;</code>
 		 */
+		@Override
 		public java.util.List<? extends cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbfOrBuilder> getMapInfosOrBuilderList() {
 			return mapInfos_;
 		}
@@ -466,6 +482,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.MapInfoPbf MapInfos = 4;</code>
 		 */
+		@Override
 		public int getMapInfosCount() {
 			return mapInfos_.size();
 		}
@@ -473,6 +490,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.MapInfoPbf MapInfos = 4;</code>
 		 */
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf getMapInfos(int index) {
 			return mapInfos_.get(index);
 		}
@@ -480,6 +498,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.MapInfoPbf MapInfos = 4;</code>
 		 */
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbfOrBuilder getMapInfosOrBuilder(int index) {
 			return mapInfos_.get(index);
 		}
@@ -490,6 +509,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.FillSymbolPbf FillSymbols = 5;</code>
 		 */
+		@Override
 		public java.util.List<cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf> getFillSymbolsList() {
 			return fillSymbols_;
 		}
@@ -497,6 +517,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.FillSymbolPbf FillSymbols = 5;</code>
 		 */
+		@Override
 		public java.util.List<? extends cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbfOrBuilder> getFillSymbolsOrBuilderList() {
 			return fillSymbols_;
 		}
@@ -504,6 +525,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.FillSymbolPbf FillSymbols = 5;</code>
 		 */
+		@Override
 		public int getFillSymbolsCount() {
 			return fillSymbols_.size();
 		}
@@ -511,6 +533,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.FillSymbolPbf FillSymbols = 5;</code>
 		 */
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf getFillSymbols(int index) {
 			return fillSymbols_.get(index);
 		}
@@ -518,6 +541,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.FillSymbolPbf FillSymbols = 5;</code>
 		 */
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbfOrBuilder getFillSymbolsOrBuilder(
 				int index) {
 			return fillSymbols_.get(index);
@@ -529,6 +553,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.IconTextSymbolPbf IconTextSymbols = 6;</code>
 		 */
+		@Override
 		public java.util.List<cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf> getIconTextSymbolsList() {
 			return iconTextSymbols_;
 		}
@@ -536,6 +561,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.IconTextSymbolPbf IconTextSymbols = 6;</code>
 		 */
+		@Override
 		public java.util.List<? extends cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbfOrBuilder> getIconTextSymbolsOrBuilderList() {
 			return iconTextSymbols_;
 		}
@@ -543,6 +569,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.IconTextSymbolPbf IconTextSymbols = 6;</code>
 		 */
+		@Override
 		public int getIconTextSymbolsCount() {
 			return iconTextSymbols_.size();
 		}
@@ -550,6 +577,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.IconTextSymbolPbf IconTextSymbols = 6;</code>
 		 */
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf getIconTextSymbols(int index) {
 			return iconTextSymbols_.get(index);
 		}
@@ -557,6 +585,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.IconTextSymbolPbf IconTextSymbols = 6;</code>
 		 */
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbfOrBuilder getIconTextSymbolsOrBuilder(
 				int index) {
 			return iconTextSymbols_.get(index);
@@ -568,6 +597,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required .cn.platalk.map.vectortile.cbm.pbf.proto.SymbolCollectionPbf Symbols = 7;</code>
 		 */
+		@Override
 		public boolean hasSymbols() {
 			return ((bitField0_ & 0x00000002) == 0x00000002);
 		}
@@ -575,6 +605,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required .cn.platalk.map.vectortile.cbm.pbf.proto.SymbolCollectionPbf Symbols = 7;</code>
 		 */
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf getSymbols() {
 			return symbols_ == null
 					? cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf.getDefaultInstance()
@@ -584,6 +615,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required .cn.platalk.map.vectortile.cbm.pbf.proto.SymbolCollectionPbf Symbols = 7;</code>
 		 */
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbfOrBuilder getSymbolsOrBuilder() {
 			return symbols_ == null
 					? cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf.getDefaultInstance()
@@ -592,6 +624,7 @@ public final class TYCbmPbf {
 
 		private byte memoizedIsInitialized = -1;
 
+		@Override
 		public final boolean isInitialized() {
 			byte isInitialized = memoizedIsInitialized;
 			if (isInitialized == 1)
@@ -641,6 +674,7 @@ public final class TYCbmPbf {
 			return true;
 		}
 
+		@Override
 		public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
 			if (((bitField0_ & 0x00000001) == 0x00000001)) {
 				com.google.protobuf.GeneratedMessageV3.writeString(output, 1, buildingID_);
@@ -666,6 +700,7 @@ public final class TYCbmPbf {
 			unknownFields.writeTo(output);
 		}
 
+		@Override
 		public int getSerializedSize() {
 			int size = memoizedSize;
 			if (size != -1)
@@ -823,6 +858,7 @@ public final class TYCbmPbf {
 			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
 		}
 
+		@Override
 		public Builder newBuilderForType() {
 			return newBuilder();
 		}
@@ -835,6 +871,7 @@ public final class TYCbmPbf {
 			return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
 		}
 
+		@Override
 		public Builder toBuilder() {
 			return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
 		}
@@ -855,6 +892,7 @@ public final class TYCbmPbf {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_CBMPbf_descriptor;
 			}
 
+			@Override
 			protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_CBMPbf_fieldAccessorTable
 						.ensureFieldAccessorsInitialized(cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf.class,
@@ -883,6 +921,7 @@ public final class TYCbmPbf {
 				}
 			}
 
+			@Override
 			public Builder clear() {
 				super.clear();
 				buildingID_ = "";
@@ -926,14 +965,17 @@ public final class TYCbmPbf {
 				return this;
 			}
 
+			@Override
 			public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_CBMPbf_descriptor;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf getDefaultInstanceForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf.getDefaultInstance();
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf build() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf result = buildPartial();
 				if (!result.isInitialized()) {
@@ -942,6 +984,7 @@ public final class TYCbmPbf {
 				return result;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf buildPartial() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf result = new cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf(
 						this);
@@ -1009,31 +1052,38 @@ public final class TYCbmPbf {
 				return result;
 			}
 
+			@Override
 			public Builder clone() {
-				return (Builder) super.clone();
+				return super.clone();
 			}
 
+			@Override
 			public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.setField(field, value);
+				return super.setField(field, value);
 			}
 
+			@Override
 			public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-				return (Builder) super.clearField(field);
+				return super.clearField(field);
 			}
 
+			@Override
 			public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-				return (Builder) super.clearOneof(oneof);
+				return super.clearOneof(oneof);
 			}
 
+			@Override
 			public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
 					Object value) {
-				return (Builder) super.setRepeatedField(field, index, value);
+				return super.setRepeatedField(field, index, value);
 			}
 
+			@Override
 			public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.addRepeatedField(field, value);
+				return super.addRepeatedField(field, value);
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.Message other) {
 				if (other instanceof cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf) {
 					return mergeFrom((cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf) other);
@@ -1184,6 +1234,7 @@ public final class TYCbmPbf {
 				return this;
 			}
 
+			@Override
 			public final boolean isInitialized() {
 				if (!hasBuildingID()) {
 					return false;
@@ -1219,6 +1270,7 @@ public final class TYCbmPbf {
 				return true;
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf parsedMessage = null;
@@ -1242,6 +1294,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string buildingID = 1;</code>
 			 */
+			@Override
 			public boolean hasBuildingID() {
 				return ((bitField0_ & 0x00000001) == 0x00000001);
 			}
@@ -1249,6 +1302,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string buildingID = 1;</code>
 			 */
+			@Override
 			public java.lang.String getBuildingID() {
 				java.lang.Object ref = buildingID_;
 				if (!(ref instanceof java.lang.String)) {
@@ -1266,6 +1320,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string buildingID = 1;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getBuildingIDBytes() {
 				java.lang.Object ref = buildingID_;
 				if (ref instanceof String) {
@@ -1330,6 +1385,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.CityPbf Cities = 2;</code>
 			 */
+			@Override
 			public java.util.List<cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf> getCitiesList() {
 				if (citiesBuilder_ == null) {
 					return java.util.Collections.unmodifiableList(cities_);
@@ -1341,6 +1397,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.CityPbf Cities = 2;</code>
 			 */
+			@Override
 			public int getCitiesCount() {
 				if (citiesBuilder_ == null) {
 					return cities_.size();
@@ -1352,6 +1409,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.CityPbf Cities = 2;</code>
 			 */
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf getCities(int index) {
 				if (citiesBuilder_ == null) {
 					return cities_.get(index);
@@ -1508,6 +1566,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.CityPbf Cities = 2;</code>
 			 */
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbfOrBuilder getCitiesOrBuilder(int index) {
 				if (citiesBuilder_ == null) {
 					return cities_.get(index);
@@ -1519,6 +1578,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.CityPbf Cities = 2;</code>
 			 */
+			@Override
 			public java.util.List<? extends cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbfOrBuilder> getCitiesOrBuilderList() {
 				if (citiesBuilder_ != null) {
 					return citiesBuilder_.getMessageOrBuilderList();
@@ -1575,6 +1635,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.BuildingPbf Buildings = 3;</code>
 			 */
+			@Override
 			public java.util.List<cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf> getBuildingsList() {
 				if (buildingsBuilder_ == null) {
 					return java.util.Collections.unmodifiableList(buildings_);
@@ -1586,6 +1647,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.BuildingPbf Buildings = 3;</code>
 			 */
+			@Override
 			public int getBuildingsCount() {
 				if (buildingsBuilder_ == null) {
 					return buildings_.size();
@@ -1597,6 +1659,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.BuildingPbf Buildings = 3;</code>
 			 */
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf getBuildings(int index) {
 				if (buildingsBuilder_ == null) {
 					return buildings_.get(index);
@@ -1754,6 +1817,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.BuildingPbf Buildings = 3;</code>
 			 */
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbfOrBuilder getBuildingsOrBuilder(
 					int index) {
 				if (buildingsBuilder_ == null) {
@@ -1766,6 +1830,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.BuildingPbf Buildings = 3;</code>
 			 */
+			@Override
 			public java.util.List<? extends cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbfOrBuilder> getBuildingsOrBuilderList() {
 				if (buildingsBuilder_ != null) {
 					return buildingsBuilder_.getMessageOrBuilderList();
@@ -1822,6 +1887,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.MapInfoPbf MapInfos = 4;</code>
 			 */
+			@Override
 			public java.util.List<cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf> getMapInfosList() {
 				if (mapInfosBuilder_ == null) {
 					return java.util.Collections.unmodifiableList(mapInfos_);
@@ -1833,6 +1899,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.MapInfoPbf MapInfos = 4;</code>
 			 */
+			@Override
 			public int getMapInfosCount() {
 				if (mapInfosBuilder_ == null) {
 					return mapInfos_.size();
@@ -1844,6 +1911,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.MapInfoPbf MapInfos = 4;</code>
 			 */
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf getMapInfos(int index) {
 				if (mapInfosBuilder_ == null) {
 					return mapInfos_.get(index);
@@ -2001,6 +2069,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.MapInfoPbf MapInfos = 4;</code>
 			 */
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbfOrBuilder getMapInfosOrBuilder(
 					int index) {
 				if (mapInfosBuilder_ == null) {
@@ -2013,6 +2082,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.MapInfoPbf MapInfos = 4;</code>
 			 */
+			@Override
 			public java.util.List<? extends cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbfOrBuilder> getMapInfosOrBuilderList() {
 				if (mapInfosBuilder_ != null) {
 					return mapInfosBuilder_.getMessageOrBuilderList();
@@ -2069,6 +2139,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.FillSymbolPbf FillSymbols = 5;</code>
 			 */
+			@Override
 			public java.util.List<cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf> getFillSymbolsList() {
 				if (fillSymbolsBuilder_ == null) {
 					return java.util.Collections.unmodifiableList(fillSymbols_);
@@ -2080,6 +2151,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.FillSymbolPbf FillSymbols = 5;</code>
 			 */
+			@Override
 			public int getFillSymbolsCount() {
 				if (fillSymbolsBuilder_ == null) {
 					return fillSymbols_.size();
@@ -2091,6 +2163,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.FillSymbolPbf FillSymbols = 5;</code>
 			 */
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbf getFillSymbols(int index) {
 				if (fillSymbolsBuilder_ == null) {
 					return fillSymbols_.get(index);
@@ -2251,6 +2324,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.FillSymbolPbf FillSymbols = 5;</code>
 			 */
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbfOrBuilder getFillSymbolsOrBuilder(
 					int index) {
 				if (fillSymbolsBuilder_ == null) {
@@ -2263,6 +2337,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.FillSymbolPbf FillSymbols = 5;</code>
 			 */
+			@Override
 			public java.util.List<? extends cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.FillSymbolPbfOrBuilder> getFillSymbolsOrBuilderList() {
 				if (fillSymbolsBuilder_ != null) {
 					return fillSymbolsBuilder_.getMessageOrBuilderList();
@@ -2320,6 +2395,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.IconTextSymbolPbf IconTextSymbols = 6;</code>
 			 */
+			@Override
 			public java.util.List<cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf> getIconTextSymbolsList() {
 				if (iconTextSymbolsBuilder_ == null) {
 					return java.util.Collections.unmodifiableList(iconTextSymbols_);
@@ -2331,6 +2407,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.IconTextSymbolPbf IconTextSymbols = 6;</code>
 			 */
+			@Override
 			public int getIconTextSymbolsCount() {
 				if (iconTextSymbolsBuilder_ == null) {
 					return iconTextSymbols_.size();
@@ -2342,6 +2419,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.IconTextSymbolPbf IconTextSymbols = 6;</code>
 			 */
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbf getIconTextSymbols(int index) {
 				if (iconTextSymbolsBuilder_ == null) {
 					return iconTextSymbols_.get(index);
@@ -2503,6 +2581,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.IconTextSymbolPbf IconTextSymbols = 6;</code>
 			 */
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbfOrBuilder getIconTextSymbolsOrBuilder(
 					int index) {
 				if (iconTextSymbolsBuilder_ == null) {
@@ -2515,6 +2594,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated .cn.platalk.map.vectortile.cbm.pbf.proto.IconTextSymbolPbf IconTextSymbols = 6;</code>
 			 */
+			@Override
 			public java.util.List<? extends cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.IconTextSymbolPbfOrBuilder> getIconTextSymbolsOrBuilderList() {
 				if (iconTextSymbolsBuilder_ != null) {
 					return iconTextSymbolsBuilder_.getMessageOrBuilderList();
@@ -2563,6 +2643,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required .cn.platalk.map.vectortile.cbm.pbf.proto.SymbolCollectionPbf Symbols = 7;</code>
 			 */
+			@Override
 			public boolean hasSymbols() {
 				return ((bitField0_ & 0x00000040) == 0x00000040);
 			}
@@ -2570,6 +2651,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required .cn.platalk.map.vectortile.cbm.pbf.proto.SymbolCollectionPbf Symbols = 7;</code>
 			 */
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf getSymbols() {
 				if (symbolsBuilder_ == null) {
 					return symbols_ == null ? cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbf
@@ -2658,6 +2740,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required .cn.platalk.map.vectortile.cbm.pbf.proto.SymbolCollectionPbf Symbols = 7;</code>
 			 */
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYSymbolPbf.SymbolCollectionPbfOrBuilder getSymbolsOrBuilder() {
 				if (symbolsBuilder_ != null) {
 					return symbolsBuilder_.getMessageOrBuilder();
@@ -2679,10 +2762,12 @@ public final class TYCbmPbf {
 				return symbolsBuilder_;
 			}
 
+			@Override
 			public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.setUnknownFields(unknownFields);
 			}
 
+			@Override
 			public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.mergeUnknownFields(unknownFields);
 			}
@@ -2702,6 +2787,7 @@ public final class TYCbmPbf {
 
 		@java.lang.Deprecated
 		public static final com.google.protobuf.Parser<CBMPbf> PARSER = new com.google.protobuf.AbstractParser<CBMPbf>() {
+			@Override
 			public CBMPbf parsePartialFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry)
 					throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2718,6 +2804,7 @@ public final class TYCbmPbf {
 			return PARSER;
 		}
 
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CBMPbf getDefaultInstanceForType() {
 			return DEFAULT_INSTANCE;
 		}
@@ -2883,6 +2970,7 @@ public final class TYCbmPbf {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_CityPbf_descriptor;
 		}
 
+		@Override
 		protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_CityPbf_fieldAccessorTable
 					.ensureFieldAccessorsInitialized(cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf.class,
@@ -2896,6 +2984,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string id = 1;</code>
 		 */
+		@Override
 		public boolean hasId() {
 			return ((bitField0_ & 0x00000001) == 0x00000001);
 		}
@@ -2903,6 +2992,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string id = 1;</code>
 		 */
+		@Override
 		public java.lang.String getId() {
 			java.lang.Object ref = id_;
 			if (ref instanceof java.lang.String) {
@@ -2920,6 +3010,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string id = 1;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getIdBytes() {
 			java.lang.Object ref = id_;
 			if (ref instanceof java.lang.String) {
@@ -2937,6 +3028,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string name = 2;</code>
 		 */
+		@Override
 		public boolean hasName() {
 			return ((bitField0_ & 0x00000002) == 0x00000002);
 		}
@@ -2944,6 +3036,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string name = 2;</code>
 		 */
+		@Override
 		public java.lang.String getName() {
 			java.lang.Object ref = name_;
 			if (ref instanceof java.lang.String) {
@@ -2961,6 +3054,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string name = 2;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getNameBytes() {
 			java.lang.Object ref = name_;
 			if (ref instanceof java.lang.String) {
@@ -2978,6 +3072,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string sname = 3;</code>
 		 */
+		@Override
 		public boolean hasSname() {
 			return ((bitField0_ & 0x00000004) == 0x00000004);
 		}
@@ -2985,6 +3080,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string sname = 3;</code>
 		 */
+		@Override
 		public java.lang.String getSname() {
 			java.lang.Object ref = sname_;
 			if (ref instanceof java.lang.String) {
@@ -3002,6 +3098,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string sname = 3;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getSnameBytes() {
 			java.lang.Object ref = sname_;
 			if (ref instanceof java.lang.String) {
@@ -3019,6 +3116,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double longitude = 4;</code>
 		 */
+		@Override
 		public boolean hasLongitude() {
 			return ((bitField0_ & 0x00000008) == 0x00000008);
 		}
@@ -3026,6 +3124,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double longitude = 4;</code>
 		 */
+		@Override
 		public double getLongitude() {
 			return longitude_;
 		}
@@ -3036,6 +3135,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double latitude = 5;</code>
 		 */
+		@Override
 		public boolean hasLatitude() {
 			return ((bitField0_ & 0x00000010) == 0x00000010);
 		}
@@ -3043,12 +3143,14 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double latitude = 5;</code>
 		 */
+		@Override
 		public double getLatitude() {
 			return latitude_;
 		}
 
 		private byte memoizedIsInitialized = -1;
 
+		@Override
 		public final boolean isInitialized() {
 			byte isInitialized = memoizedIsInitialized;
 			if (isInitialized == 1)
@@ -3080,6 +3182,7 @@ public final class TYCbmPbf {
 			return true;
 		}
 
+		@Override
 		public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
 			if (((bitField0_ & 0x00000001) == 0x00000001)) {
 				com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
@@ -3099,6 +3202,7 @@ public final class TYCbmPbf {
 			unknownFields.writeTo(output);
 		}
 
+		@Override
 		public int getSerializedSize() {
 			int size = memoizedSize;
 			if (size != -1)
@@ -3253,6 +3357,7 @@ public final class TYCbmPbf {
 			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
 		}
 
+		@Override
 		public Builder newBuilderForType() {
 			return newBuilder();
 		}
@@ -3265,6 +3370,7 @@ public final class TYCbmPbf {
 			return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
 		}
 
+		@Override
 		public Builder toBuilder() {
 			return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
 		}
@@ -3285,6 +3391,7 @@ public final class TYCbmPbf {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_CityPbf_descriptor;
 			}
 
+			@Override
 			protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_CityPbf_fieldAccessorTable
 						.ensureFieldAccessorsInitialized(cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf.class,
@@ -3307,6 +3414,7 @@ public final class TYCbmPbf {
 				}
 			}
 
+			@Override
 			public Builder clear() {
 				super.clear();
 				id_ = "";
@@ -3322,14 +3430,17 @@ public final class TYCbmPbf {
 				return this;
 			}
 
+			@Override
 			public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_CityPbf_descriptor;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf getDefaultInstanceForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf.getDefaultInstance();
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf build() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf result = buildPartial();
 				if (!result.isInitialized()) {
@@ -3338,6 +3449,7 @@ public final class TYCbmPbf {
 				return result;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf buildPartial() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf result = new cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf(
 						this);
@@ -3368,31 +3480,38 @@ public final class TYCbmPbf {
 				return result;
 			}
 
+			@Override
 			public Builder clone() {
-				return (Builder) super.clone();
+				return super.clone();
 			}
 
+			@Override
 			public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.setField(field, value);
+				return super.setField(field, value);
 			}
 
+			@Override
 			public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-				return (Builder) super.clearField(field);
+				return super.clearField(field);
 			}
 
+			@Override
 			public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-				return (Builder) super.clearOneof(oneof);
+				return super.clearOneof(oneof);
 			}
 
+			@Override
 			public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
 					Object value) {
-				return (Builder) super.setRepeatedField(field, index, value);
+				return super.setRepeatedField(field, index, value);
 			}
 
+			@Override
 			public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.addRepeatedField(field, value);
+				return super.addRepeatedField(field, value);
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.Message other) {
 				if (other instanceof cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf) {
 					return mergeFrom((cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf) other);
@@ -3431,6 +3550,7 @@ public final class TYCbmPbf {
 				return this;
 			}
 
+			@Override
 			public final boolean isInitialized() {
 				if (!hasId()) {
 					return false;
@@ -3450,6 +3570,7 @@ public final class TYCbmPbf {
 				return true;
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf parsedMessage = null;
@@ -3473,6 +3594,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string id = 1;</code>
 			 */
+			@Override
 			public boolean hasId() {
 				return ((bitField0_ & 0x00000001) == 0x00000001);
 			}
@@ -3480,6 +3602,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string id = 1;</code>
 			 */
+			@Override
 			public java.lang.String getId() {
 				java.lang.Object ref = id_;
 				if (!(ref instanceof java.lang.String)) {
@@ -3497,6 +3620,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string id = 1;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getIdBytes() {
 				java.lang.Object ref = id_;
 				if (ref instanceof String) {
@@ -3550,6 +3674,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string name = 2;</code>
 			 */
+			@Override
 			public boolean hasName() {
 				return ((bitField0_ & 0x00000002) == 0x00000002);
 			}
@@ -3557,6 +3682,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string name = 2;</code>
 			 */
+			@Override
 			public java.lang.String getName() {
 				java.lang.Object ref = name_;
 				if (!(ref instanceof java.lang.String)) {
@@ -3574,6 +3700,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string name = 2;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getNameBytes() {
 				java.lang.Object ref = name_;
 				if (ref instanceof String) {
@@ -3627,6 +3754,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string sname = 3;</code>
 			 */
+			@Override
 			public boolean hasSname() {
 				return ((bitField0_ & 0x00000004) == 0x00000004);
 			}
@@ -3634,6 +3762,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string sname = 3;</code>
 			 */
+			@Override
 			public java.lang.String getSname() {
 				java.lang.Object ref = sname_;
 				if (!(ref instanceof java.lang.String)) {
@@ -3651,6 +3780,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string sname = 3;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getSnameBytes() {
 				java.lang.Object ref = sname_;
 				if (ref instanceof String) {
@@ -3704,6 +3834,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double longitude = 4;</code>
 			 */
+			@Override
 			public boolean hasLongitude() {
 				return ((bitField0_ & 0x00000008) == 0x00000008);
 			}
@@ -3711,6 +3842,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double longitude = 4;</code>
 			 */
+			@Override
 			public double getLongitude() {
 				return longitude_;
 			}
@@ -3740,6 +3872,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double latitude = 5;</code>
 			 */
+			@Override
 			public boolean hasLatitude() {
 				return ((bitField0_ & 0x00000010) == 0x00000010);
 			}
@@ -3747,6 +3880,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double latitude = 5;</code>
 			 */
+			@Override
 			public double getLatitude() {
 				return latitude_;
 			}
@@ -3771,10 +3905,12 @@ public final class TYCbmPbf {
 				return this;
 			}
 
+			@Override
 			public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.setUnknownFields(unknownFields);
 			}
 
+			@Override
 			public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.mergeUnknownFields(unknownFields);
 			}
@@ -3794,6 +3930,7 @@ public final class TYCbmPbf {
 
 		@java.lang.Deprecated
 		public static final com.google.protobuf.Parser<CityPbf> PARSER = new com.google.protobuf.AbstractParser<CityPbf>() {
+			@Override
 			public CityPbf parsePartialFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry)
 					throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3810,6 +3947,7 @@ public final class TYCbmPbf {
 			return PARSER;
 		}
 
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.CityPbf getDefaultInstanceForType() {
 			return DEFAULT_INSTANCE;
 		}
@@ -4004,6 +4142,21 @@ public final class TYCbmPbf {
 		 * <code>repeated double wtCalibrationPoint = 16;</code>
 		 */
 		double getWtCalibrationPoint(int index);
+
+		/**
+		 * <code>optional string dataVersion = 17;</code>
+		 */
+		boolean hasDataVersion();
+
+		/**
+		 * <code>optional string dataVersion = 17;</code>
+		 */
+		java.lang.String getDataVersion();
+
+		/**
+		 * <code>optional string dataVersion = 17;</code>
+		 */
+		com.google.protobuf.ByteString getDataVersionBytes();
 	}
 
 	/**
@@ -4033,6 +4186,7 @@ public final class TYCbmPbf {
 			initFloorIndex_ = 0;
 			wgs84CalibrationPoint_ = java.util.Collections.emptyList();
 			wtCalibrationPoint_ = java.util.Collections.emptyList();
+			dataVersion_ = "";
 		}
 
 		@java.lang.Override
@@ -4173,6 +4327,12 @@ public final class TYCbmPbf {
 						input.popLimit(limit);
 						break;
 					}
+					case 138: {
+						com.google.protobuf.ByteString bs = input.readBytes();
+						bitField0_ |= 0x00002000;
+						dataVersion_ = bs;
+						break;
+					}
 					}
 				}
 			} catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4195,6 +4355,7 @@ public final class TYCbmPbf {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_BuildingPbf_descriptor;
 		}
 
+		@Override
 		protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_BuildingPbf_fieldAccessorTable
 					.ensureFieldAccessorsInitialized(cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf.class,
@@ -4208,6 +4369,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string id = 1;</code>
 		 */
+		@Override
 		public boolean hasId() {
 			return ((bitField0_ & 0x00000001) == 0x00000001);
 		}
@@ -4215,6 +4377,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string id = 1;</code>
 		 */
+		@Override
 		public java.lang.String getId() {
 			java.lang.Object ref = id_;
 			if (ref instanceof java.lang.String) {
@@ -4232,6 +4395,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string id = 1;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getIdBytes() {
 			java.lang.Object ref = id_;
 			if (ref instanceof java.lang.String) {
@@ -4249,6 +4413,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string cityID = 2;</code>
 		 */
+		@Override
 		public boolean hasCityID() {
 			return ((bitField0_ & 0x00000002) == 0x00000002);
 		}
@@ -4256,6 +4421,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string cityID = 2;</code>
 		 */
+		@Override
 		public java.lang.String getCityID() {
 			java.lang.Object ref = cityID_;
 			if (ref instanceof java.lang.String) {
@@ -4273,6 +4439,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string cityID = 2;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getCityIDBytes() {
 			java.lang.Object ref = cityID_;
 			if (ref instanceof java.lang.String) {
@@ -4290,6 +4457,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string name = 3;</code>
 		 */
+		@Override
 		public boolean hasName() {
 			return ((bitField0_ & 0x00000004) == 0x00000004);
 		}
@@ -4297,6 +4465,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string name = 3;</code>
 		 */
+		@Override
 		public java.lang.String getName() {
 			java.lang.Object ref = name_;
 			if (ref instanceof java.lang.String) {
@@ -4314,6 +4483,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string name = 3;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getNameBytes() {
 			java.lang.Object ref = name_;
 			if (ref instanceof java.lang.String) {
@@ -4331,6 +4501,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double longitude = 4;</code>
 		 */
+		@Override
 		public boolean hasLongitude() {
 			return ((bitField0_ & 0x00000008) == 0x00000008);
 		}
@@ -4338,6 +4509,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double longitude = 4;</code>
 		 */
+		@Override
 		public double getLongitude() {
 			return longitude_;
 		}
@@ -4348,6 +4520,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double latitude = 5;</code>
 		 */
+		@Override
 		public boolean hasLatitude() {
 			return ((bitField0_ & 0x00000010) == 0x00000010);
 		}
@@ -4355,6 +4528,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double latitude = 5;</code>
 		 */
+		@Override
 		public double getLatitude() {
 			return latitude_;
 		}
@@ -4365,6 +4539,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string address = 6;</code>
 		 */
+		@Override
 		public boolean hasAddress() {
 			return ((bitField0_ & 0x00000020) == 0x00000020);
 		}
@@ -4372,6 +4547,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string address = 6;</code>
 		 */
+		@Override
 		public java.lang.String getAddress() {
 			java.lang.Object ref = address_;
 			if (ref instanceof java.lang.String) {
@@ -4389,6 +4565,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string address = 6;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getAddressBytes() {
 			java.lang.Object ref = address_;
 			if (ref instanceof java.lang.String) {
@@ -4406,6 +4583,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double initAngle = 7;</code>
 		 */
+		@Override
 		public boolean hasInitAngle() {
 			return ((bitField0_ & 0x00000040) == 0x00000040);
 		}
@@ -4413,6 +4591,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double initAngle = 7;</code>
 		 */
+		@Override
 		public double getInitAngle() {
 			return initAngle_;
 		}
@@ -4423,6 +4602,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string routeURL = 8;</code>
 		 */
+		@Override
 		public boolean hasRouteURL() {
 			return ((bitField0_ & 0x00000080) == 0x00000080);
 		}
@@ -4430,6 +4610,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string routeURL = 8;</code>
 		 */
+		@Override
 		public java.lang.String getRouteURL() {
 			java.lang.Object ref = routeURL_;
 			if (ref instanceof java.lang.String) {
@@ -4447,6 +4628,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string routeURL = 8;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getRouteURLBytes() {
 			java.lang.Object ref = routeURL_;
 			if (ref instanceof java.lang.String) {
@@ -4464,6 +4646,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double xmin = 10;</code>
 		 */
+		@Override
 		public boolean hasXmin() {
 			return ((bitField0_ & 0x00000100) == 0x00000100);
 		}
@@ -4471,6 +4654,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double xmin = 10;</code>
 		 */
+		@Override
 		public double getXmin() {
 			return xmin_;
 		}
@@ -4481,6 +4665,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double ymin = 11;</code>
 		 */
+		@Override
 		public boolean hasYmin() {
 			return ((bitField0_ & 0x00000200) == 0x00000200);
 		}
@@ -4488,6 +4673,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double ymin = 11;</code>
 		 */
+		@Override
 		public double getYmin() {
 			return ymin_;
 		}
@@ -4498,6 +4684,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double xmax = 12;</code>
 		 */
+		@Override
 		public boolean hasXmax() {
 			return ((bitField0_ & 0x00000400) == 0x00000400);
 		}
@@ -4505,6 +4692,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double xmax = 12;</code>
 		 */
+		@Override
 		public double getXmax() {
 			return xmax_;
 		}
@@ -4515,6 +4703,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double ymax = 13;</code>
 		 */
+		@Override
 		public boolean hasYmax() {
 			return ((bitField0_ & 0x00000800) == 0x00000800);
 		}
@@ -4522,6 +4711,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double ymax = 13;</code>
 		 */
+		@Override
 		public double getYmax() {
 			return ymax_;
 		}
@@ -4532,6 +4722,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required uint32 initFloorIndex = 14;</code>
 		 */
+		@Override
 		public boolean hasInitFloorIndex() {
 			return ((bitField0_ & 0x00001000) == 0x00001000);
 		}
@@ -4539,6 +4730,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required uint32 initFloorIndex = 14;</code>
 		 */
+		@Override
 		public int getInitFloorIndex() {
 			return initFloorIndex_;
 		}
@@ -4549,6 +4741,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated double wgs84CalibrationPoint = 15;</code>
 		 */
+		@Override
 		public java.util.List<java.lang.Double> getWgs84CalibrationPointList() {
 			return wgs84CalibrationPoint_;
 		}
@@ -4556,6 +4749,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated double wgs84CalibrationPoint = 15;</code>
 		 */
+		@Override
 		public int getWgs84CalibrationPointCount() {
 			return wgs84CalibrationPoint_.size();
 		}
@@ -4563,6 +4757,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated double wgs84CalibrationPoint = 15;</code>
 		 */
+		@Override
 		public double getWgs84CalibrationPoint(int index) {
 			return wgs84CalibrationPoint_.get(index);
 		}
@@ -4573,6 +4768,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated double wtCalibrationPoint = 16;</code>
 		 */
+		@Override
 		public java.util.List<java.lang.Double> getWtCalibrationPointList() {
 			return wtCalibrationPoint_;
 		}
@@ -4580,6 +4776,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated double wtCalibrationPoint = 16;</code>
 		 */
+		@Override
 		public int getWtCalibrationPointCount() {
 			return wtCalibrationPoint_.size();
 		}
@@ -4587,12 +4784,58 @@ public final class TYCbmPbf {
 		/**
 		 * <code>repeated double wtCalibrationPoint = 16;</code>
 		 */
+		@Override
 		public double getWtCalibrationPoint(int index) {
 			return wtCalibrationPoint_.get(index);
 		}
 
+		public static final int DATAVERSION_FIELD_NUMBER = 17;
+		private volatile java.lang.Object dataVersion_;
+
+		/**
+		 * <code>optional string dataVersion = 17;</code>
+		 */
+		@Override
+		public boolean hasDataVersion() {
+			return ((bitField0_ & 0x00002000) == 0x00002000);
+		}
+
+		/**
+		 * <code>optional string dataVersion = 17;</code>
+		 */
+		@Override
+		public java.lang.String getDataVersion() {
+			java.lang.Object ref = dataVersion_;
+			if (ref instanceof java.lang.String) {
+				return (java.lang.String) ref;
+			} else {
+				com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+				java.lang.String s = bs.toStringUtf8();
+				if (bs.isValidUtf8()) {
+					dataVersion_ = s;
+				}
+				return s;
+			}
+		}
+
+		/**
+		 * <code>optional string dataVersion = 17;</code>
+		 */
+		@Override
+		public com.google.protobuf.ByteString getDataVersionBytes() {
+			java.lang.Object ref = dataVersion_;
+			if (ref instanceof java.lang.String) {
+				com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+				dataVersion_ = b;
+				return b;
+			} else {
+				return (com.google.protobuf.ByteString) ref;
+			}
+		}
+
 		private byte memoizedIsInitialized = -1;
 
+		@Override
 		public final boolean isInitialized() {
 			byte isInitialized = memoizedIsInitialized;
 			if (isInitialized == 1)
@@ -4656,6 +4899,7 @@ public final class TYCbmPbf {
 			return true;
 		}
 
+		@Override
 		public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
 			if (((bitField0_ & 0x00000001) == 0x00000001)) {
 				com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
@@ -4702,9 +4946,13 @@ public final class TYCbmPbf {
 			for (int i = 0; i < wtCalibrationPoint_.size(); i++) {
 				output.writeDouble(16, wtCalibrationPoint_.get(i));
 			}
+			if (((bitField0_ & 0x00002000) == 0x00002000)) {
+				com.google.protobuf.GeneratedMessageV3.writeString(output, 17, dataVersion_);
+			}
 			unknownFields.writeTo(output);
 		}
 
+		@Override
 		public int getSerializedSize() {
 			int size = memoizedSize;
 			if (size != -1)
@@ -4761,6 +5009,9 @@ public final class TYCbmPbf {
 				dataSize = 8 * getWtCalibrationPointList().size();
 				size += dataSize;
 				size += 2 * getWtCalibrationPointList().size();
+			}
+			if (((bitField0_ & 0x00002000) == 0x00002000)) {
+				size += com.google.protobuf.GeneratedMessageV3.computeStringSize(17, dataVersion_);
 			}
 			size += unknownFields.getSerializedSize();
 			memoizedSize = size;
@@ -4841,6 +5092,10 @@ public final class TYCbmPbf {
 			}
 			result = result && getWgs84CalibrationPointList().equals(other.getWgs84CalibrationPointList());
 			result = result && getWtCalibrationPointList().equals(other.getWtCalibrationPointList());
+			result = result && (hasDataVersion() == other.hasDataVersion());
+			if (hasDataVersion()) {
+				result = result && getDataVersion().equals(other.getDataVersion());
+			}
 			result = result && unknownFields.equals(other.unknownFields);
 			return result;
 		}
@@ -4919,6 +5174,10 @@ public final class TYCbmPbf {
 				hash = (37 * hash) + WTCALIBRATIONPOINT_FIELD_NUMBER;
 				hash = (53 * hash) + getWtCalibrationPointList().hashCode();
 			}
+			if (hasDataVersion()) {
+				hash = (37 * hash) + DATAVERSION_FIELD_NUMBER;
+				hash = (53 * hash) + getDataVersion().hashCode();
+			}
 			hash = (29 * hash) + unknownFields.hashCode();
 			memoizedHashCode = hash;
 			return hash;
@@ -4979,6 +5238,7 @@ public final class TYCbmPbf {
 			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
 		}
 
+		@Override
 		public Builder newBuilderForType() {
 			return newBuilder();
 		}
@@ -4991,6 +5251,7 @@ public final class TYCbmPbf {
 			return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
 		}
 
+		@Override
 		public Builder toBuilder() {
 			return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
 		}
@@ -5012,6 +5273,7 @@ public final class TYCbmPbf {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_BuildingPbf_descriptor;
 			}
 
+			@Override
 			protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_BuildingPbf_fieldAccessorTable
 						.ensureFieldAccessorsInitialized(
@@ -5035,6 +5297,7 @@ public final class TYCbmPbf {
 				}
 			}
 
+			@Override
 			public Builder clear() {
 				super.clear();
 				id_ = "";
@@ -5067,17 +5330,22 @@ public final class TYCbmPbf {
 				bitField0_ = (bitField0_ & ~0x00002000);
 				wtCalibrationPoint_ = java.util.Collections.emptyList();
 				bitField0_ = (bitField0_ & ~0x00004000);
+				dataVersion_ = "";
+				bitField0_ = (bitField0_ & ~0x00008000);
 				return this;
 			}
 
+			@Override
 			public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_BuildingPbf_descriptor;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf getDefaultInstanceForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf.getDefaultInstance();
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf build() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf result = buildPartial();
 				if (!result.isInitialized()) {
@@ -5086,6 +5354,7 @@ public final class TYCbmPbf {
 				return result;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf buildPartial() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf result = new cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf(
 						this);
@@ -5153,36 +5422,47 @@ public final class TYCbmPbf {
 					bitField0_ = (bitField0_ & ~0x00004000);
 				}
 				result.wtCalibrationPoint_ = wtCalibrationPoint_;
+				if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+					to_bitField0_ |= 0x00002000;
+				}
+				result.dataVersion_ = dataVersion_;
 				result.bitField0_ = to_bitField0_;
 				onBuilt();
 				return result;
 			}
 
+			@Override
 			public Builder clone() {
-				return (Builder) super.clone();
+				return super.clone();
 			}
 
+			@Override
 			public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.setField(field, value);
+				return super.setField(field, value);
 			}
 
+			@Override
 			public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-				return (Builder) super.clearField(field);
+				return super.clearField(field);
 			}
 
+			@Override
 			public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-				return (Builder) super.clearOneof(oneof);
+				return super.clearOneof(oneof);
 			}
 
+			@Override
 			public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
 					Object value) {
-				return (Builder) super.setRepeatedField(field, index, value);
+				return super.setRepeatedField(field, index, value);
 			}
 
+			@Override
 			public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.addRepeatedField(field, value);
+				return super.addRepeatedField(field, value);
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.Message other) {
 				if (other instanceof cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf) {
 					return mergeFrom((cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf) other);
@@ -5264,11 +5544,17 @@ public final class TYCbmPbf {
 					}
 					onChanged();
 				}
+				if (other.hasDataVersion()) {
+					bitField0_ |= 0x00008000;
+					dataVersion_ = other.dataVersion_;
+					onChanged();
+				}
 				this.mergeUnknownFields(other.unknownFields);
 				onChanged();
 				return this;
 			}
 
+			@Override
 			public final boolean isInitialized() {
 				if (!hasId()) {
 					return false;
@@ -5312,6 +5598,7 @@ public final class TYCbmPbf {
 				return true;
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf parsedMessage = null;
@@ -5336,6 +5623,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string id = 1;</code>
 			 */
+			@Override
 			public boolean hasId() {
 				return ((bitField0_ & 0x00000001) == 0x00000001);
 			}
@@ -5343,6 +5631,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string id = 1;</code>
 			 */
+			@Override
 			public java.lang.String getId() {
 				java.lang.Object ref = id_;
 				if (!(ref instanceof java.lang.String)) {
@@ -5360,6 +5649,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string id = 1;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getIdBytes() {
 				java.lang.Object ref = id_;
 				if (ref instanceof String) {
@@ -5413,6 +5703,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string cityID = 2;</code>
 			 */
+			@Override
 			public boolean hasCityID() {
 				return ((bitField0_ & 0x00000002) == 0x00000002);
 			}
@@ -5420,6 +5711,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string cityID = 2;</code>
 			 */
+			@Override
 			public java.lang.String getCityID() {
 				java.lang.Object ref = cityID_;
 				if (!(ref instanceof java.lang.String)) {
@@ -5437,6 +5729,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string cityID = 2;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getCityIDBytes() {
 				java.lang.Object ref = cityID_;
 				if (ref instanceof String) {
@@ -5490,6 +5783,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string name = 3;</code>
 			 */
+			@Override
 			public boolean hasName() {
 				return ((bitField0_ & 0x00000004) == 0x00000004);
 			}
@@ -5497,6 +5791,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string name = 3;</code>
 			 */
+			@Override
 			public java.lang.String getName() {
 				java.lang.Object ref = name_;
 				if (!(ref instanceof java.lang.String)) {
@@ -5514,6 +5809,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string name = 3;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getNameBytes() {
 				java.lang.Object ref = name_;
 				if (ref instanceof String) {
@@ -5567,6 +5863,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double longitude = 4;</code>
 			 */
+			@Override
 			public boolean hasLongitude() {
 				return ((bitField0_ & 0x00000008) == 0x00000008);
 			}
@@ -5574,6 +5871,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double longitude = 4;</code>
 			 */
+			@Override
 			public double getLongitude() {
 				return longitude_;
 			}
@@ -5603,6 +5901,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double latitude = 5;</code>
 			 */
+			@Override
 			public boolean hasLatitude() {
 				return ((bitField0_ & 0x00000010) == 0x00000010);
 			}
@@ -5610,6 +5909,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double latitude = 5;</code>
 			 */
+			@Override
 			public double getLatitude() {
 				return latitude_;
 			}
@@ -5639,6 +5939,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string address = 6;</code>
 			 */
+			@Override
 			public boolean hasAddress() {
 				return ((bitField0_ & 0x00000020) == 0x00000020);
 			}
@@ -5646,6 +5947,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string address = 6;</code>
 			 */
+			@Override
 			public java.lang.String getAddress() {
 				java.lang.Object ref = address_;
 				if (!(ref instanceof java.lang.String)) {
@@ -5663,6 +5965,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string address = 6;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getAddressBytes() {
 				java.lang.Object ref = address_;
 				if (ref instanceof String) {
@@ -5716,6 +6019,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double initAngle = 7;</code>
 			 */
+			@Override
 			public boolean hasInitAngle() {
 				return ((bitField0_ & 0x00000040) == 0x00000040);
 			}
@@ -5723,6 +6027,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double initAngle = 7;</code>
 			 */
+			@Override
 			public double getInitAngle() {
 				return initAngle_;
 			}
@@ -5752,6 +6057,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string routeURL = 8;</code>
 			 */
+			@Override
 			public boolean hasRouteURL() {
 				return ((bitField0_ & 0x00000080) == 0x00000080);
 			}
@@ -5759,6 +6065,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string routeURL = 8;</code>
 			 */
+			@Override
 			public java.lang.String getRouteURL() {
 				java.lang.Object ref = routeURL_;
 				if (!(ref instanceof java.lang.String)) {
@@ -5776,6 +6083,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string routeURL = 8;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getRouteURLBytes() {
 				java.lang.Object ref = routeURL_;
 				if (ref instanceof String) {
@@ -5829,6 +6137,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double xmin = 10;</code>
 			 */
+			@Override
 			public boolean hasXmin() {
 				return ((bitField0_ & 0x00000100) == 0x00000100);
 			}
@@ -5836,6 +6145,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double xmin = 10;</code>
 			 */
+			@Override
 			public double getXmin() {
 				return xmin_;
 			}
@@ -5865,6 +6175,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double ymin = 11;</code>
 			 */
+			@Override
 			public boolean hasYmin() {
 				return ((bitField0_ & 0x00000200) == 0x00000200);
 			}
@@ -5872,6 +6183,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double ymin = 11;</code>
 			 */
+			@Override
 			public double getYmin() {
 				return ymin_;
 			}
@@ -5901,6 +6213,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double xmax = 12;</code>
 			 */
+			@Override
 			public boolean hasXmax() {
 				return ((bitField0_ & 0x00000400) == 0x00000400);
 			}
@@ -5908,6 +6221,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double xmax = 12;</code>
 			 */
+			@Override
 			public double getXmax() {
 				return xmax_;
 			}
@@ -5937,6 +6251,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double ymax = 13;</code>
 			 */
+			@Override
 			public boolean hasYmax() {
 				return ((bitField0_ & 0x00000800) == 0x00000800);
 			}
@@ -5944,6 +6259,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double ymax = 13;</code>
 			 */
+			@Override
 			public double getYmax() {
 				return ymax_;
 			}
@@ -5973,6 +6289,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required uint32 initFloorIndex = 14;</code>
 			 */
+			@Override
 			public boolean hasInitFloorIndex() {
 				return ((bitField0_ & 0x00001000) == 0x00001000);
 			}
@@ -5980,6 +6297,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required uint32 initFloorIndex = 14;</code>
 			 */
+			@Override
 			public int getInitFloorIndex() {
 				return initFloorIndex_;
 			}
@@ -6016,6 +6334,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated double wgs84CalibrationPoint = 15;</code>
 			 */
+			@Override
 			public java.util.List<java.lang.Double> getWgs84CalibrationPointList() {
 				return java.util.Collections.unmodifiableList(wgs84CalibrationPoint_);
 			}
@@ -6023,6 +6342,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated double wgs84CalibrationPoint = 15;</code>
 			 */
+			@Override
 			public int getWgs84CalibrationPointCount() {
 				return wgs84CalibrationPoint_.size();
 			}
@@ -6030,6 +6350,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated double wgs84CalibrationPoint = 15;</code>
 			 */
+			@Override
 			public double getWgs84CalibrationPoint(int index) {
 				return wgs84CalibrationPoint_.get(index);
 			}
@@ -6086,6 +6407,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated double wtCalibrationPoint = 16;</code>
 			 */
+			@Override
 			public java.util.List<java.lang.Double> getWtCalibrationPointList() {
 				return java.util.Collections.unmodifiableList(wtCalibrationPoint_);
 			}
@@ -6093,6 +6415,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated double wtCalibrationPoint = 16;</code>
 			 */
+			@Override
 			public int getWtCalibrationPointCount() {
 				return wtCalibrationPoint_.size();
 			}
@@ -6100,6 +6423,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>repeated double wtCalibrationPoint = 16;</code>
 			 */
+			@Override
 			public double getWtCalibrationPoint(int index) {
 				return wtCalibrationPoint_.get(index);
 			}
@@ -6144,10 +6468,92 @@ public final class TYCbmPbf {
 				return this;
 			}
 
+			private java.lang.Object dataVersion_ = "";
+
+			/**
+			 * <code>optional string dataVersion = 17;</code>
+			 */
+			@Override
+			public boolean hasDataVersion() {
+				return ((bitField0_ & 0x00008000) == 0x00008000);
+			}
+
+			/**
+			 * <code>optional string dataVersion = 17;</code>
+			 */
+			@Override
+			public java.lang.String getDataVersion() {
+				java.lang.Object ref = dataVersion_;
+				if (!(ref instanceof java.lang.String)) {
+					com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+					java.lang.String s = bs.toStringUtf8();
+					if (bs.isValidUtf8()) {
+						dataVersion_ = s;
+					}
+					return s;
+				} else {
+					return (java.lang.String) ref;
+				}
+			}
+
+			/**
+			 * <code>optional string dataVersion = 17;</code>
+			 */
+			@Override
+			public com.google.protobuf.ByteString getDataVersionBytes() {
+				java.lang.Object ref = dataVersion_;
+				if (ref instanceof String) {
+					com.google.protobuf.ByteString b = com.google.protobuf.ByteString
+							.copyFromUtf8((java.lang.String) ref);
+					dataVersion_ = b;
+					return b;
+				} else {
+					return (com.google.protobuf.ByteString) ref;
+				}
+			}
+
+			/**
+			 * <code>optional string dataVersion = 17;</code>
+			 */
+			public Builder setDataVersion(java.lang.String value) {
+				if (value == null) {
+					throw new NullPointerException();
+				}
+				bitField0_ |= 0x00008000;
+				dataVersion_ = value;
+				onChanged();
+				return this;
+			}
+
+			/**
+			 * <code>optional string dataVersion = 17;</code>
+			 */
+			public Builder clearDataVersion() {
+				bitField0_ = (bitField0_ & ~0x00008000);
+				dataVersion_ = getDefaultInstance().getDataVersion();
+				onChanged();
+				return this;
+			}
+
+			/**
+			 * <code>optional string dataVersion = 17;</code>
+			 */
+			public Builder setDataVersionBytes(com.google.protobuf.ByteString value) {
+				if (value == null) {
+					throw new NullPointerException();
+				}
+				bitField0_ |= 0x00008000;
+				dataVersion_ = value;
+				onChanged();
+				return this;
+			}
+
+			@Override
 			public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.setUnknownFields(unknownFields);
 			}
 
+			@Override
 			public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.mergeUnknownFields(unknownFields);
 			}
@@ -6167,6 +6573,7 @@ public final class TYCbmPbf {
 
 		@java.lang.Deprecated
 		public static final com.google.protobuf.Parser<BuildingPbf> PARSER = new com.google.protobuf.AbstractParser<BuildingPbf>() {
+			@Override
 			public BuildingPbf parsePartialFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry)
 					throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6183,6 +6590,7 @@ public final class TYCbmPbf {
 			return PARSER;
 		}
 
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.BuildingPbf getDefaultInstanceForType() {
 			return DEFAULT_INSTANCE;
 		}
@@ -6450,6 +6858,7 @@ public final class TYCbmPbf {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_MapInfoPbf_descriptor;
 		}
 
+		@Override
 		protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 			return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_MapInfoPbf_fieldAccessorTable
 					.ensureFieldAccessorsInitialized(cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf.class,
@@ -6463,6 +6872,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string mapID = 1;</code>
 		 */
+		@Override
 		public boolean hasMapID() {
 			return ((bitField0_ & 0x00000001) == 0x00000001);
 		}
@@ -6470,6 +6880,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string mapID = 1;</code>
 		 */
+		@Override
 		public java.lang.String getMapID() {
 			java.lang.Object ref = mapID_;
 			if (ref instanceof java.lang.String) {
@@ -6487,6 +6898,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string mapID = 1;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getMapIDBytes() {
 			java.lang.Object ref = mapID_;
 			if (ref instanceof java.lang.String) {
@@ -6504,6 +6916,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string cityID = 2;</code>
 		 */
+		@Override
 		public boolean hasCityID() {
 			return ((bitField0_ & 0x00000002) == 0x00000002);
 		}
@@ -6511,6 +6924,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string cityID = 2;</code>
 		 */
+		@Override
 		public java.lang.String getCityID() {
 			java.lang.Object ref = cityID_;
 			if (ref instanceof java.lang.String) {
@@ -6528,6 +6942,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string cityID = 2;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getCityIDBytes() {
 			java.lang.Object ref = cityID_;
 			if (ref instanceof java.lang.String) {
@@ -6545,6 +6960,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string buildingID = 3;</code>
 		 */
+		@Override
 		public boolean hasBuildingID() {
 			return ((bitField0_ & 0x00000004) == 0x00000004);
 		}
@@ -6552,6 +6968,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string buildingID = 3;</code>
 		 */
+		@Override
 		public java.lang.String getBuildingID() {
 			java.lang.Object ref = buildingID_;
 			if (ref instanceof java.lang.String) {
@@ -6569,6 +6986,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string buildingID = 3;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getBuildingIDBytes() {
 			java.lang.Object ref = buildingID_;
 			if (ref instanceof java.lang.String) {
@@ -6586,6 +7004,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string floorName = 4;</code>
 		 */
+		@Override
 		public boolean hasFloorName() {
 			return ((bitField0_ & 0x00000008) == 0x00000008);
 		}
@@ -6593,6 +7012,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string floorName = 4;</code>
 		 */
+		@Override
 		public java.lang.String getFloorName() {
 			java.lang.Object ref = floorName_;
 			if (ref instanceof java.lang.String) {
@@ -6610,6 +7030,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required string floorName = 4;</code>
 		 */
+		@Override
 		public com.google.protobuf.ByteString getFloorNameBytes() {
 			java.lang.Object ref = floorName_;
 			if (ref instanceof java.lang.String) {
@@ -6627,6 +7048,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required int32 floorNumber = 5;</code>
 		 */
+		@Override
 		public boolean hasFloorNumber() {
 			return ((bitField0_ & 0x00000010) == 0x00000010);
 		}
@@ -6634,6 +7056,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required int32 floorNumber = 5;</code>
 		 */
+		@Override
 		public int getFloorNumber() {
 			return floorNumber_;
 		}
@@ -6644,6 +7067,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double size_x = 6;</code>
 		 */
+		@Override
 		public boolean hasSizeX() {
 			return ((bitField0_ & 0x00000020) == 0x00000020);
 		}
@@ -6651,6 +7075,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double size_x = 6;</code>
 		 */
+		@Override
 		public double getSizeX() {
 			return sizeX_;
 		}
@@ -6661,6 +7086,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double size_y = 7;</code>
 		 */
+		@Override
 		public boolean hasSizeY() {
 			return ((bitField0_ & 0x00000040) == 0x00000040);
 		}
@@ -6668,6 +7094,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double size_y = 7;</code>
 		 */
+		@Override
 		public double getSizeY() {
 			return sizeY_;
 		}
@@ -6678,6 +7105,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double xmin = 8;</code>
 		 */
+		@Override
 		public boolean hasXmin() {
 			return ((bitField0_ & 0x00000080) == 0x00000080);
 		}
@@ -6685,6 +7113,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double xmin = 8;</code>
 		 */
+		@Override
 		public double getXmin() {
 			return xmin_;
 		}
@@ -6695,6 +7124,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double ymin = 9;</code>
 		 */
+		@Override
 		public boolean hasYmin() {
 			return ((bitField0_ & 0x00000100) == 0x00000100);
 		}
@@ -6702,6 +7132,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double ymin = 9;</code>
 		 */
+		@Override
 		public double getYmin() {
 			return ymin_;
 		}
@@ -6712,6 +7143,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double xmax = 10;</code>
 		 */
+		@Override
 		public boolean hasXmax() {
 			return ((bitField0_ & 0x00000200) == 0x00000200);
 		}
@@ -6719,6 +7151,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double xmax = 10;</code>
 		 */
+		@Override
 		public double getXmax() {
 			return xmax_;
 		}
@@ -6729,6 +7162,7 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double ymax = 11;</code>
 		 */
+		@Override
 		public boolean hasYmax() {
 			return ((bitField0_ & 0x00000400) == 0x00000400);
 		}
@@ -6736,12 +7170,14 @@ public final class TYCbmPbf {
 		/**
 		 * <code>required double ymax = 11;</code>
 		 */
+		@Override
 		public double getYmax() {
 			return ymax_;
 		}
 
 		private byte memoizedIsInitialized = -1;
 
+		@Override
 		public final boolean isInitialized() {
 			byte isInitialized = memoizedIsInitialized;
 			if (isInitialized == 1)
@@ -6797,6 +7233,7 @@ public final class TYCbmPbf {
 			return true;
 		}
 
+		@Override
 		public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
 			if (((bitField0_ & 0x00000001) == 0x00000001)) {
 				com.google.protobuf.GeneratedMessageV3.writeString(output, 1, mapID_);
@@ -6834,6 +7271,7 @@ public final class TYCbmPbf {
 			unknownFields.writeTo(output);
 		}
 
+		@Override
 		public int getSerializedSize() {
 			int size = memoizedSize;
 			if (size != -1)
@@ -7062,6 +7500,7 @@ public final class TYCbmPbf {
 			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
 		}
 
+		@Override
 		public Builder newBuilderForType() {
 			return newBuilder();
 		}
@@ -7074,6 +7513,7 @@ public final class TYCbmPbf {
 			return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
 		}
 
+		@Override
 		public Builder toBuilder() {
 			return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
 		}
@@ -7095,6 +7535,7 @@ public final class TYCbmPbf {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_MapInfoPbf_descriptor;
 			}
 
+			@Override
 			protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_MapInfoPbf_fieldAccessorTable
 						.ensureFieldAccessorsInitialized(
@@ -7118,6 +7559,7 @@ public final class TYCbmPbf {
 				}
 			}
 
+			@Override
 			public Builder clear() {
 				super.clear();
 				mapID_ = "";
@@ -7145,14 +7587,17 @@ public final class TYCbmPbf {
 				return this;
 			}
 
+			@Override
 			public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_MapInfoPbf_descriptor;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf getDefaultInstanceForType() {
 				return cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf.getDefaultInstance();
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf build() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf result = buildPartial();
 				if (!result.isInitialized()) {
@@ -7161,6 +7606,7 @@ public final class TYCbmPbf {
 				return result;
 			}
 
+			@Override
 			public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf buildPartial() {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf result = new cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf(
 						this);
@@ -7215,31 +7661,38 @@ public final class TYCbmPbf {
 				return result;
 			}
 
+			@Override
 			public Builder clone() {
-				return (Builder) super.clone();
+				return super.clone();
 			}
 
+			@Override
 			public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.setField(field, value);
+				return super.setField(field, value);
 			}
 
+			@Override
 			public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-				return (Builder) super.clearField(field);
+				return super.clearField(field);
 			}
 
+			@Override
 			public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-				return (Builder) super.clearOneof(oneof);
+				return super.clearOneof(oneof);
 			}
 
+			@Override
 			public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
 					Object value) {
-				return (Builder) super.setRepeatedField(field, index, value);
+				return super.setRepeatedField(field, index, value);
 			}
 
+			@Override
 			public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return (Builder) super.addRepeatedField(field, value);
+				return super.addRepeatedField(field, value);
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.Message other) {
 				if (other instanceof cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf) {
 					return mergeFrom((cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf) other);
@@ -7298,6 +7751,7 @@ public final class TYCbmPbf {
 				return this;
 			}
 
+			@Override
 			public final boolean isInitialized() {
 				if (!hasMapID()) {
 					return false;
@@ -7335,6 +7789,7 @@ public final class TYCbmPbf {
 				return true;
 			}
 
+			@Override
 			public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
 				cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf parsedMessage = null;
@@ -7359,6 +7814,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string mapID = 1;</code>
 			 */
+			@Override
 			public boolean hasMapID() {
 				return ((bitField0_ & 0x00000001) == 0x00000001);
 			}
@@ -7366,6 +7822,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string mapID = 1;</code>
 			 */
+			@Override
 			public java.lang.String getMapID() {
 				java.lang.Object ref = mapID_;
 				if (!(ref instanceof java.lang.String)) {
@@ -7383,6 +7840,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string mapID = 1;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getMapIDBytes() {
 				java.lang.Object ref = mapID_;
 				if (ref instanceof String) {
@@ -7436,6 +7894,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string cityID = 2;</code>
 			 */
+			@Override
 			public boolean hasCityID() {
 				return ((bitField0_ & 0x00000002) == 0x00000002);
 			}
@@ -7443,6 +7902,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string cityID = 2;</code>
 			 */
+			@Override
 			public java.lang.String getCityID() {
 				java.lang.Object ref = cityID_;
 				if (!(ref instanceof java.lang.String)) {
@@ -7460,6 +7920,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string cityID = 2;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getCityIDBytes() {
 				java.lang.Object ref = cityID_;
 				if (ref instanceof String) {
@@ -7513,6 +7974,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string buildingID = 3;</code>
 			 */
+			@Override
 			public boolean hasBuildingID() {
 				return ((bitField0_ & 0x00000004) == 0x00000004);
 			}
@@ -7520,6 +7982,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string buildingID = 3;</code>
 			 */
+			@Override
 			public java.lang.String getBuildingID() {
 				java.lang.Object ref = buildingID_;
 				if (!(ref instanceof java.lang.String)) {
@@ -7537,6 +8000,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string buildingID = 3;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getBuildingIDBytes() {
 				java.lang.Object ref = buildingID_;
 				if (ref instanceof String) {
@@ -7590,6 +8054,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string floorName = 4;</code>
 			 */
+			@Override
 			public boolean hasFloorName() {
 				return ((bitField0_ & 0x00000008) == 0x00000008);
 			}
@@ -7597,6 +8062,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string floorName = 4;</code>
 			 */
+			@Override
 			public java.lang.String getFloorName() {
 				java.lang.Object ref = floorName_;
 				if (!(ref instanceof java.lang.String)) {
@@ -7614,6 +8080,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required string floorName = 4;</code>
 			 */
+			@Override
 			public com.google.protobuf.ByteString getFloorNameBytes() {
 				java.lang.Object ref = floorName_;
 				if (ref instanceof String) {
@@ -7667,6 +8134,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required int32 floorNumber = 5;</code>
 			 */
+			@Override
 			public boolean hasFloorNumber() {
 				return ((bitField0_ & 0x00000010) == 0x00000010);
 			}
@@ -7674,6 +8142,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required int32 floorNumber = 5;</code>
 			 */
+			@Override
 			public int getFloorNumber() {
 				return floorNumber_;
 			}
@@ -7703,6 +8172,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double size_x = 6;</code>
 			 */
+			@Override
 			public boolean hasSizeX() {
 				return ((bitField0_ & 0x00000020) == 0x00000020);
 			}
@@ -7710,6 +8180,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double size_x = 6;</code>
 			 */
+			@Override
 			public double getSizeX() {
 				return sizeX_;
 			}
@@ -7739,6 +8210,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double size_y = 7;</code>
 			 */
+			@Override
 			public boolean hasSizeY() {
 				return ((bitField0_ & 0x00000040) == 0x00000040);
 			}
@@ -7746,6 +8218,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double size_y = 7;</code>
 			 */
+			@Override
 			public double getSizeY() {
 				return sizeY_;
 			}
@@ -7775,6 +8248,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double xmin = 8;</code>
 			 */
+			@Override
 			public boolean hasXmin() {
 				return ((bitField0_ & 0x00000080) == 0x00000080);
 			}
@@ -7782,6 +8256,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double xmin = 8;</code>
 			 */
+			@Override
 			public double getXmin() {
 				return xmin_;
 			}
@@ -7811,6 +8286,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double ymin = 9;</code>
 			 */
+			@Override
 			public boolean hasYmin() {
 				return ((bitField0_ & 0x00000100) == 0x00000100);
 			}
@@ -7818,6 +8294,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double ymin = 9;</code>
 			 */
+			@Override
 			public double getYmin() {
 				return ymin_;
 			}
@@ -7847,6 +8324,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double xmax = 10;</code>
 			 */
+			@Override
 			public boolean hasXmax() {
 				return ((bitField0_ & 0x00000200) == 0x00000200);
 			}
@@ -7854,6 +8332,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double xmax = 10;</code>
 			 */
+			@Override
 			public double getXmax() {
 				return xmax_;
 			}
@@ -7883,6 +8362,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double ymax = 11;</code>
 			 */
+			@Override
 			public boolean hasYmax() {
 				return ((bitField0_ & 0x00000400) == 0x00000400);
 			}
@@ -7890,6 +8370,7 @@ public final class TYCbmPbf {
 			/**
 			 * <code>required double ymax = 11;</code>
 			 */
+			@Override
 			public double getYmax() {
 				return ymax_;
 			}
@@ -7914,10 +8395,12 @@ public final class TYCbmPbf {
 				return this;
 			}
 
+			@Override
 			public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.setUnknownFields(unknownFields);
 			}
 
+			@Override
 			public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
 				return super.mergeUnknownFields(unknownFields);
 			}
@@ -7937,6 +8420,7 @@ public final class TYCbmPbf {
 
 		@java.lang.Deprecated
 		public static final com.google.protobuf.Parser<MapInfoPbf> PARSER = new com.google.protobuf.AbstractParser<MapInfoPbf>() {
+			@Override
 			public MapInfoPbf parsePartialFrom(com.google.protobuf.CodedInputStream input,
 					com.google.protobuf.ExtensionRegistryLite extensionRegistry)
 					throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7953,6 +8437,7 @@ public final class TYCbmPbf {
 			return PARSER;
 		}
 
+		@Override
 		public cn.platalk.map.vectortile.cbm.pbf.proto.TYCbmPbf.MapInfoPbf getDefaultInstanceForType() {
 			return DEFAULT_INSTANCE;
 		}
@@ -7990,20 +8475,21 @@ public final class TYCbmPbf {
 						+ "vectortile.cbm.pbf.proto.SymbolCollectio"
 						+ "nPbf\"W\n\007CityPbf\022\n\n\002id\030\001 \002(\t\022\014\n\004name\030\002 \002("
 						+ "\t\022\r\n\005sname\030\003 \002(\t\022\021\n\tlongitude\030\004 \002(\001\022\020\n\010l"
-						+ "atitude\030\005 \002(\001\"\235\002\n\013BuildingPbf\022\n\n\002id\030\001 \002("
+						+ "atitude\030\005 \002(\001\"\262\002\n\013BuildingPbf\022\n\n\002id\030\001 \002("
 						+ "\t\022\016\n\006cityID\030\002 \002(\t\022\014\n\004name\030\003 \002(\t\022\021\n\tlongi"
 						+ "tude\030\004 \002(\001\022\020\n\010latitude\030\005 \002(\001\022\017\n\007address\030"
 						+ "\006 \002(\t\022\021\n\tinitAngle\030\007 \002(\001\022\020\n\010routeURL\030\010 \002",
 				"(\t\022\014\n\004xmin\030\n \002(\001\022\014\n\004ymin\030\013 \002(\001\022\014\n\004xmax\030\014"
 						+ " \002(\001\022\014\n\004ymax\030\r \002(\001\022\026\n\016initFloorIndex\030\016 \002"
 						+ "(\r\022\035\n\025wgs84CalibrationPoint\030\017 \003(\001\022\032\n\022wtC"
-						+ "alibrationPoint\030\020 \003(\001\"\277\001\n\nMapInfoPbf\022\r\n\005"
-						+ "mapID\030\001 \002(\t\022\016\n\006cityID\030\002 \002(\t\022\022\n\nbuildingI"
-						+ "D\030\003 \002(\t\022\021\n\tfloorName\030\004 \002(\t\022\023\n\013floorNumbe"
-						+ "r\030\005 \002(\005\022\016\n\006size_x\030\006 \002(\001\022\016\n\006size_y\030\007 \002(\001\022"
-						+ "\014\n\004xmin\030\010 \002(\001\022\014\n\004ymin\030\t \002(\001\022\014\n\004xmax\030\n \002("
-						+ "\001\022\014\n\004ymax\030\013 \002(\001" };
+						+ "alibrationPoint\030\020 \003(\001\022\023\n\013dataVersion\030\021 \001"
+						+ "(\t\"\277\001\n\nMapInfoPbf\022\r\n\005mapID\030\001 \002(\t\022\016\n\006city"
+						+ "ID\030\002 \002(\t\022\022\n\nbuildingID\030\003 \002(\t\022\021\n\tfloorNam"
+						+ "e\030\004 \002(\t\022\023\n\013floorNumber\030\005 \002(\005\022\016\n\006size_x\030\006"
+						+ " \002(\001\022\016\n\006size_y\030\007 \002(\001\022\014\n\004xmin\030\010 \002(\001\022\014\n\004ym"
+						+ "in\030\t \002(\001\022\014\n\004xmax\030\n \002(\001\022\014\n\004ymax\030\013 \002(\001" };
 		com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
+			@Override
 			public com.google.protobuf.ExtensionRegistry assignDescriptors(
 					com.google.protobuf.Descriptors.FileDescriptor root) {
 				descriptor = root;
@@ -8031,7 +8517,7 @@ public final class TYCbmPbf {
 				internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_BuildingPbf_descriptor,
 				new java.lang.String[] { "Id", "CityID", "Name", "Longitude", "Latitude", "Address", "InitAngle",
 						"RouteURL", "Xmin", "Ymin", "Xmax", "Ymax", "InitFloorIndex", "Wgs84CalibrationPoint",
-						"WtCalibrationPoint", });
+						"WtCalibrationPoint", "DataVersion", });
 		internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_MapInfoPbf_descriptor = getDescriptor()
 				.getMessageTypes().get(3);
 		internal_static_cn_platalk_map_vectortile_cbm_pbf_proto_MapInfoPbf_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
