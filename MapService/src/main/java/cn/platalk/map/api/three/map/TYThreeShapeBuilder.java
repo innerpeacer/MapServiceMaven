@@ -37,9 +37,21 @@ public class TYThreeShapeBuilder {
 		emptyShape.put(SHAPE_KEY_PROPERTIES, new JSONObject());
 	}
 
-	public static JSONObject buildShape(TYBuilding building, TYMapDataFeatureRecord record) {
+	private double centerX;
+	private double centerY;
+
+	public TYThreeShapeBuilder(TYBuilding building) {
+		centerX = building.getCenterX();
+		centerY = building.getCenterY();
+		if (centerX == 0 && centerY == 0) {
+			centerX = (building.getBuildingExtent().getXmin() + building.getBuildingExtent().getXmax()) * 0.5;
+			centerY = (building.getBuildingExtent().getYmin() + building.getBuildingExtent().getYmax()) * 0.5;
+		}
+	}
+
+	public JSONObject buildShape(TYMapDataFeatureRecord record) {
 		JSONObject json = new JSONObject();
-		json.put(SHAPE_KEY_GEOMETRY, buildGeomtery(building, record.getGeometryData()));
+		json.put(SHAPE_KEY_GEOMETRY, buildGeomtery(record.getGeometryData()));
 
 		Map<String, Object> propMap = new HashMap<String, Object>();
 		propMap.put("floor", record.getFloorNumber());
@@ -53,7 +65,7 @@ public class TYThreeShapeBuilder {
 		return json;
 	}
 
-	static JSONObject buildPropertyMap(Map<String, Object> propMap) {
+	JSONObject buildPropertyMap(Map<String, Object> propMap) {
 		JSONObject propertiesObject = new JSONObject();
 		for (String key : propMap.keySet()) {
 			propertiesObject.put(key, propMap.get(key));
@@ -61,7 +73,7 @@ public class TYThreeShapeBuilder {
 		return propertiesObject;
 	}
 
-	static JSONObject buildGeomtery(TYBuilding building, Geometry geometry) {
+	JSONObject buildGeomtery(Geometry geometry) {
 		JSONObject geometryObject = new JSONObject();
 		if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_POINT)) {
 		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_POINT)) {
@@ -69,42 +81,42 @@ public class TYThreeShapeBuilder {
 		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_LINEARRING)) {
 		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_LINESTRING)) {
 		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_POLYGON)) {
-			geometryObject.put(SHAPE_KEY_COORDINATES, buildPolygonShape(building, (Polygon) geometry));
+			geometryObject.put(SHAPE_KEY_COORDINATES, buildPolygonShape((Polygon) geometry));
 			geometryObject.put(SHAPE_KEY_GEOMETRY_TYPE, "Polygon");
 		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTIPOLYGON)) {
-			geometryObject.put(SHAPE_KEY_COORDINATES, buildMultiPolygonShape(building, (MultiPolygon) geometry));
+			geometryObject.put(SHAPE_KEY_COORDINATES, buildMultiPolygonShape((MultiPolygon) geometry));
 			geometryObject.put(SHAPE_KEY_GEOMETRY_TYPE, "MultiPolygon");
 		}
 		return geometryObject;
 	}
 
-	static JSONObject coordinateToJson(TYBuilding building, Coordinate c) {
+	JSONObject coordinateToJson(Coordinate c) {
 		JSONObject json = new JSONObject();
-		json.put(SHAPE_KEY_COORDINATE_X, c.x - building.getBuildingExtent().getXmin());
-		json.put(SHAPE_KEY_COORDINATE_Y, c.y - building.getBuildingExtent().getYmin());
+		json.put(SHAPE_KEY_COORDINATE_X, c.x - centerX);
+		json.put(SHAPE_KEY_COORDINATE_Y, c.y - centerY);
 		return json;
 	}
 
-	static JSONArray buildLineStringShape(TYBuilding building, LineString line) {
+	JSONArray buildLineStringShape(LineString line) {
 		JSONArray coordArray = new JSONArray();
 		int pointCount = line.getNumPoints();
 		for (int i = 0; i < pointCount; ++i) {
-			coordArray.put(coordinateToJson(building, line.getCoordinateN(i)));
+			coordArray.put(coordinateToJson(line.getCoordinateN(i)));
 		}
 		return coordArray;
 	}
 
-	static JSONObject buildPolygonShape(TYBuilding building, Polygon polygon) {
+	JSONObject buildPolygonShape(Polygon polygon) {
 		JSONObject jsonObject = new JSONObject();
 		{
-			JSONArray exteriorArray = buildLineStringShape(building, polygon.getExteriorRing());
+			JSONArray exteriorArray = buildLineStringShape(polygon.getExteriorRing());
 			jsonObject.put(SHAPE_KEY_POLYGON_RING, exteriorArray);
 		}
 
 		if (polygon.getNumInteriorRing() > 0) {
 			JSONArray holesArray = new JSONArray();
 			for (int k = 0; k < polygon.getNumInteriorRing(); ++k) {
-				JSONArray interiorArray = buildLineStringShape(building, polygon.getInteriorRingN(k));
+				JSONArray interiorArray = buildLineStringShape(polygon.getInteriorRingN(k));
 				holesArray.put(interiorArray);
 			}
 			jsonObject.put(SHAPE_KEY_POLYGON_HOLES, holesArray);
@@ -112,12 +124,12 @@ public class TYThreeShapeBuilder {
 		return jsonObject;
 	}
 
-	static JSONArray buildMultiPolygonShape(TYBuilding building, MultiPolygon mp) {
+	JSONArray buildMultiPolygonShape(MultiPolygon mp) {
 		JSONArray coordArray = new JSONArray();
 
 		for (int l = 0; l < mp.getNumGeometries(); ++l) {
 			Polygon polygon = (Polygon) mp.getGeometryN(l);
-			JSONObject polygonObject = buildPolygonShape(building, polygon);
+			JSONObject polygonObject = buildPolygonShape(polygon);
 			coordArray.put(polygonObject);
 		}
 		return coordArray;

@@ -41,7 +41,8 @@ public class TYGetThreeMapDataServlet extends TYBaseHttpServlet {
 		JSONObject threeMapDataObject = null;
 
 		List<TYMapDataFeatureRecord> mapDataRecordList = TYMysqlDBHelper.getMapDataRecords(buildingID);
-		threeMapDataObject = TYThreeMapDataBuilder.generateThreeMapDataObject(building, mapDataRecordList);
+		TYThreeMapDataBuilder builder = new TYThreeMapDataBuilder(building);
+		threeMapDataObject = builder.generateThreeMapDataObject(mapDataRecordList);
 		System.out.println(mapDataRecordList.size() + " records");
 
 		respondResult(request, response, threeMapDataObject);
