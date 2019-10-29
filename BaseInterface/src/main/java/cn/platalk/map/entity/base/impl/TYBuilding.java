@@ -25,6 +25,8 @@ public class TYBuilding implements TYIBuilding {
 	static final String KEY_JSON_BUILDING_WT_CALIBRATION_POINT = "wtCalibrationPoint";
 	static final String KEY_JSON_BUILDING_STATUS = "status";
 	static final String KEY_JSON_BUILDING_DATA_VERSION = "dataVersion";
+	static final String KEY_JSON_BUILDING_CENTER_X = "centerX";
+	static final String KEY_JSON_BUILDING_CENTER_Y = "centerY";
 
 	private String cityID;
 	private String buildingID;
@@ -46,6 +48,9 @@ public class TYBuilding implements TYIBuilding {
 
 	private String dataVersion = "1.0";
 	private int status;
+
+	private double centerX;
+	private double centerY;
 
 	public TYBuilding() {
 		super();
@@ -197,6 +202,24 @@ public class TYBuilding implements TYIBuilding {
 	}
 
 	@Override
+	public double getCenterX() {
+		return centerX;
+	}
+
+	public void setCenterX(double centerX) {
+		this.centerX = centerX;
+	}
+
+	@Override
+	public double getCenterY() {
+		return centerY;
+	}
+
+	public void setCenterY(double centerY) {
+		this.centerY = centerY;
+	}
+
+	@Override
 	public JSONObject toJson() {
 		JSONObject buildingObject = new JSONObject();
 		buildingObject.put(KEY_JSON_BUILDING_CITY_ID, getCityID());
@@ -218,6 +241,8 @@ public class TYBuilding implements TYIBuilding {
 		buildingObject.put(KEY_JSON_BUILDING_WT_CALIBRATION_POINT, getWtCalibrationPoint());
 		buildingObject.put(KEY_JSON_BUILDING_STATUS, getStatus());
 		buildingObject.put(KEY_JSON_BUILDING_DATA_VERSION, getDataVersion());
+		buildingObject.put(KEY_JSON_BUILDING_CENTER_X, getCenterX());
+		buildingObject.put(KEY_JSON_BUILDING_CENTER_Y, getCenterY());
 		return buildingObject;
 	}
 

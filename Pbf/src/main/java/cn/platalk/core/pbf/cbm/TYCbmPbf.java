@@ -4118,6 +4118,26 @@ public final class TYCbmPbf {
 		 * <code>optional string dataVersion = 17;</code>
 		 */
 		com.google.protobuf.ByteString getDataVersionBytes();
+
+		/**
+		 * <code>optional double centerX = 18;</code>
+		 */
+		boolean hasCenterX();
+
+		/**
+		 * <code>optional double centerX = 18;</code>
+		 */
+		double getCenterX();
+
+		/**
+		 * <code>optional double centerY = 19;</code>
+		 */
+		boolean hasCenterY();
+
+		/**
+		 * <code>optional double centerY = 19;</code>
+		 */
+		double getCenterY();
 	}
 
 	/**
@@ -4148,6 +4168,8 @@ public final class TYCbmPbf {
 			wgs84CalibrationPoint_ = java.util.Collections.emptyList();
 			wtCalibrationPoint_ = java.util.Collections.emptyList();
 			dataVersion_ = "";
+			centerX_ = 0D;
+			centerY_ = 0D;
 		}
 
 		@java.lang.Override
@@ -4292,6 +4314,16 @@ public final class TYCbmPbf {
 						com.google.protobuf.ByteString bs = input.readBytes();
 						bitField0_ |= 0x00002000;
 						dataVersion_ = bs;
+						break;
+					}
+					case 145: {
+						bitField0_ |= 0x00004000;
+						centerX_ = input.readDouble();
+						break;
+					}
+					case 153: {
+						bitField0_ |= 0x00008000;
+						centerY_ = input.readDouble();
 						break;
 					}
 					}
@@ -4794,6 +4826,44 @@ public final class TYCbmPbf {
 			}
 		}
 
+		public static final int CENTERX_FIELD_NUMBER = 18;
+		private double centerX_;
+
+		/**
+		 * <code>optional double centerX = 18;</code>
+		 */
+		@Override
+		public boolean hasCenterX() {
+			return ((bitField0_ & 0x00004000) == 0x00004000);
+		}
+
+		/**
+		 * <code>optional double centerX = 18;</code>
+		 */
+		@Override
+		public double getCenterX() {
+			return centerX_;
+		}
+
+		public static final int CENTERY_FIELD_NUMBER = 19;
+		private double centerY_;
+
+		/**
+		 * <code>optional double centerY = 19;</code>
+		 */
+		@Override
+		public boolean hasCenterY() {
+			return ((bitField0_ & 0x00008000) == 0x00008000);
+		}
+
+		/**
+		 * <code>optional double centerY = 19;</code>
+		 */
+		@Override
+		public double getCenterY() {
+			return centerY_;
+		}
+
 		private byte memoizedIsInitialized = -1;
 
 		@Override
@@ -4910,6 +4980,12 @@ public final class TYCbmPbf {
 			if (((bitField0_ & 0x00002000) == 0x00002000)) {
 				com.google.protobuf.GeneratedMessageV3.writeString(output, 17, dataVersion_);
 			}
+			if (((bitField0_ & 0x00004000) == 0x00004000)) {
+				output.writeDouble(18, centerX_);
+			}
+			if (((bitField0_ & 0x00008000) == 0x00008000)) {
+				output.writeDouble(19, centerY_);
+			}
 			unknownFields.writeTo(output);
 		}
 
@@ -4973,6 +5049,12 @@ public final class TYCbmPbf {
 			}
 			if (((bitField0_ & 0x00002000) == 0x00002000)) {
 				size += com.google.protobuf.GeneratedMessageV3.computeStringSize(17, dataVersion_);
+			}
+			if (((bitField0_ & 0x00004000) == 0x00004000)) {
+				size += com.google.protobuf.CodedOutputStream.computeDoubleSize(18, centerX_);
+			}
+			if (((bitField0_ & 0x00008000) == 0x00008000)) {
+				size += com.google.protobuf.CodedOutputStream.computeDoubleSize(19, centerY_);
 			}
 			size += unknownFields.getSerializedSize();
 			memoizedSize = size;
@@ -5057,6 +5139,16 @@ public final class TYCbmPbf {
 			if (hasDataVersion()) {
 				result = result && getDataVersion().equals(other.getDataVersion());
 			}
+			result = result && (hasCenterX() == other.hasCenterX());
+			if (hasCenterX()) {
+				result = result && (java.lang.Double.doubleToLongBits(getCenterX()) == java.lang.Double
+						.doubleToLongBits(other.getCenterX()));
+			}
+			result = result && (hasCenterY() == other.hasCenterY());
+			if (hasCenterY()) {
+				result = result && (java.lang.Double.doubleToLongBits(getCenterY()) == java.lang.Double
+						.doubleToLongBits(other.getCenterY()));
+			}
 			result = result && unknownFields.equals(other.unknownFields);
 			return result;
 		}
@@ -5138,6 +5230,16 @@ public final class TYCbmPbf {
 			if (hasDataVersion()) {
 				hash = (37 * hash) + DATAVERSION_FIELD_NUMBER;
 				hash = (53 * hash) + getDataVersion().hashCode();
+			}
+			if (hasCenterX()) {
+				hash = (37 * hash) + CENTERX_FIELD_NUMBER;
+				hash = (53 * hash)
+						+ com.google.protobuf.Internal.hashLong(java.lang.Double.doubleToLongBits(getCenterX()));
+			}
+			if (hasCenterY()) {
+				hash = (37 * hash) + CENTERY_FIELD_NUMBER;
+				hash = (53 * hash)
+						+ com.google.protobuf.Internal.hashLong(java.lang.Double.doubleToLongBits(getCenterY()));
 			}
 			hash = (29 * hash) + unknownFields.hashCode();
 			memoizedHashCode = hash;
@@ -5289,6 +5391,10 @@ public final class TYCbmPbf {
 				bitField0_ = (bitField0_ & ~0x00004000);
 				dataVersion_ = "";
 				bitField0_ = (bitField0_ & ~0x00008000);
+				centerX_ = 0D;
+				bitField0_ = (bitField0_ & ~0x00010000);
+				centerY_ = 0D;
+				bitField0_ = (bitField0_ & ~0x00020000);
 				return this;
 			}
 
@@ -5383,6 +5489,14 @@ public final class TYCbmPbf {
 					to_bitField0_ |= 0x00002000;
 				}
 				result.dataVersion_ = dataVersion_;
+				if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
+					to_bitField0_ |= 0x00004000;
+				}
+				result.centerX_ = centerX_;
+				if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
+					to_bitField0_ |= 0x00008000;
+				}
+				result.centerY_ = centerY_;
 				result.bitField0_ = to_bitField0_;
 				onBuilt();
 				return result;
@@ -5505,6 +5619,12 @@ public final class TYCbmPbf {
 					bitField0_ |= 0x00008000;
 					dataVersion_ = other.dataVersion_;
 					onChanged();
+				}
+				if (other.hasCenterX()) {
+					setCenterX(other.getCenterX());
+				}
+				if (other.hasCenterY()) {
+					setCenterY(other.getCenterY());
 				}
 				this.mergeUnknownFields(other.unknownFields);
 				onChanged();
@@ -6500,6 +6620,82 @@ public final class TYCbmPbf {
 				}
 				bitField0_ |= 0x00008000;
 				dataVersion_ = value;
+				onChanged();
+				return this;
+			}
+
+			private double centerX_;
+
+			/**
+			 * <code>optional double centerX = 18;</code>
+			 */
+			@Override
+			public boolean hasCenterX() {
+				return ((bitField0_ & 0x00010000) == 0x00010000);
+			}
+
+			/**
+			 * <code>optional double centerX = 18;</code>
+			 */
+			@Override
+			public double getCenterX() {
+				return centerX_;
+			}
+
+			/**
+			 * <code>optional double centerX = 18;</code>
+			 */
+			public Builder setCenterX(double value) {
+				bitField0_ |= 0x00010000;
+				centerX_ = value;
+				onChanged();
+				return this;
+			}
+
+			/**
+			 * <code>optional double centerX = 18;</code>
+			 */
+			public Builder clearCenterX() {
+				bitField0_ = (bitField0_ & ~0x00010000);
+				centerX_ = 0D;
+				onChanged();
+				return this;
+			}
+
+			private double centerY_;
+
+			/**
+			 * <code>optional double centerY = 19;</code>
+			 */
+			@Override
+			public boolean hasCenterY() {
+				return ((bitField0_ & 0x00020000) == 0x00020000);
+			}
+
+			/**
+			 * <code>optional double centerY = 19;</code>
+			 */
+			@Override
+			public double getCenterY() {
+				return centerY_;
+			}
+
+			/**
+			 * <code>optional double centerY = 19;</code>
+			 */
+			public Builder setCenterY(double value) {
+				bitField0_ |= 0x00020000;
+				centerY_ = value;
+				onChanged();
+				return this;
+			}
+
+			/**
+			 * <code>optional double centerY = 19;</code>
+			 */
+			public Builder clearCenterY() {
+				bitField0_ = (bitField0_ & ~0x00020000);
+				centerY_ = 0D;
 				onChanged();
 				return this;
 			}
@@ -8424,7 +8620,7 @@ public final class TYCbmPbf {
 				"\030\007 \002(\0132,.cn.platalk.core.pbf.cbm.SymbolC"
 						+ "ollectionPbf\"W\n\007CityPbf\022\n\n\002id\030\001 \002(\t\022\014\n\004n"
 						+ "ame\030\002 \002(\t\022\r\n\005sname\030\003 \002(\t\022\021\n\tlongitude\030\004 "
-						+ "\002(\001\022\020\n\010latitude\030\005 \002(\001\"\262\002\n\013BuildingPbf\022\n\n"
+						+ "\002(\001\022\020\n\010latitude\030\005 \002(\001\"\324\002\n\013BuildingPbf\022\n\n"
 						+ "\002id\030\001 \002(\t\022\016\n\006cityID\030\002 \002(\t\022\014\n\004name\030\003 \002(\t\022"
 						+ "\021\n\tlongitude\030\004 \002(\001\022\020\n\010latitude\030\005 \002(\001\022\017\n\007"
 						+ "address\030\006 \002(\t\022\021\n\tinitAngle\030\007 \002(\001\022\020\n\010rout"
@@ -8432,12 +8628,12 @@ public final class TYCbmPbf {
 						+ "\n\004xmax\030\014 \002(\001\022\014\n\004ymax\030\r \002(\001\022\026\n\016initFloorI"
 						+ "ndex\030\016 \002(\r\022\035\n\025wgs84CalibrationPoint\030\017 \003(",
 				"\001\022\032\n\022wtCalibrationPoint\030\020 \003(\001\022\023\n\013dataVer"
-						+ "sion\030\021 \001(\t\"\277\001\n\nMapInfoPbf\022\r\n\005mapID\030\001 \002(\t"
-						+ "\022\016\n\006cityID\030\002 \002(\t\022\022\n\nbuildingID\030\003 \002(\t\022\021\n\t"
-						+ "floorName\030\004 \002(\t\022\023\n\013floorNumber\030\005 \002(\005\022\016\n\006"
-						+ "size_x\030\006 \002(\001\022\016\n\006size_y\030\007 \002(\001\022\014\n\004xmin\030\010 \002"
-						+ "(\001\022\014\n\004ymin\030\t \002(\001\022\014\n\004xmax\030\n \002(\001\022\014\n\004ymax\030\013"
-						+ " \002(\001" };
+						+ "sion\030\021 \001(\t\022\017\n\007centerX\030\022 \001(\001\022\017\n\007centerY\030\023"
+						+ " \001(\001\"\277\001\n\nMapInfoPbf\022\r\n\005mapID\030\001 \002(\t\022\016\n\006ci"
+						+ "tyID\030\002 \002(\t\022\022\n\nbuildingID\030\003 \002(\t\022\021\n\tfloorN"
+						+ "ame\030\004 \002(\t\022\023\n\013floorNumber\030\005 \002(\005\022\016\n\006size_x"
+						+ "\030\006 \002(\001\022\016\n\006size_y\030\007 \002(\001\022\014\n\004xmin\030\010 \002(\001\022\014\n\004"
+						+ "ymin\030\t \002(\001\022\014\n\004xmax\030\n \002(\001\022\014\n\004ymax\030\013 \002(\001" };
 		com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
 			@Override
 			public com.google.protobuf.ExtensionRegistry assignDescriptors(
@@ -8463,7 +8659,7 @@ public final class TYCbmPbf {
 				internal_static_cn_platalk_core_pbf_cbm_BuildingPbf_descriptor,
 				new java.lang.String[] { "Id", "CityID", "Name", "Longitude", "Latitude", "Address", "InitAngle",
 						"RouteURL", "Xmin", "Ymin", "Xmax", "Ymax", "InitFloorIndex", "Wgs84CalibrationPoint",
-						"WtCalibrationPoint", "DataVersion", });
+						"WtCalibrationPoint", "DataVersion", "CenterX", "CenterY", });
 		internal_static_cn_platalk_core_pbf_cbm_MapInfoPbf_descriptor = getDescriptor().getMessageTypes().get(3);
 		internal_static_cn_platalk_core_pbf_cbm_MapInfoPbf_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
 				internal_static_cn_platalk_core_pbf_cbm_MapInfoPbf_descriptor,

@@ -37,6 +37,8 @@ class IPSqliteBuildingParams {
 	static final String FIELD_BUILDING_18_WT_CALIBRATION_POINT = "WT_CALIBRATION_POINT";
 	static final String FIELD_BUILDING_19_DATA_VERSION = "DATA_VERSION";
 
+	static final String FIELD_BUILDING_20_CENTER = "CENTER";
+
 	private static List<IPSqlField> buildingFieldList = null;
 
 	public static List<IPSqlField> GetBuildingFieldList() {
@@ -82,6 +84,8 @@ class IPSqliteBuildingParams {
 					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), true));
 
 			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_19_DATA_VERSION,
+					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), true));
+			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_20_CENTER,
 					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), true));
 		}
 		return buildingFieldList;
@@ -141,6 +145,13 @@ class IPSqliteBuildingParams {
 			if (record.getString(FIELD_BUILDING_19_DATA_VERSION) != null) {
 				building.setDataVersion(record.getString(FIELD_BUILDING_19_DATA_VERSION));
 			}
+
+			if (record.getString(FIELD_BUILDING_20_CENTER) != null) {
+				String center = record.getString(FIELD_BUILDING_20_CENTER);
+				String xy[] = center.split(",");
+				building.setCenterX(Double.parseDouble(xy[0]));
+				building.setCenterY(Double.parseDouble(xy[1]));
+			}
 			buildingList.add(building);
 		}
 		return buildingList;
@@ -172,6 +183,8 @@ class IPSqliteBuildingParams {
 			data.put(FIELD_BUILDING_18_WT_CALIBRATION_POINT, doubleArrayToString(building.getWtCalibrationPoint()));
 		}
 		data.put(FIELD_BUILDING_19_DATA_VERSION, building.getDataVersion());
+		data.put(FIELD_BUILDING_20_CENTER, String.format("%f,%f", building.getCenterX(), building.getCenterY()));
+
 		return data;
 	}
 }

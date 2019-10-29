@@ -33,4 +33,8 @@ public interface TYIBuilding extends TYIJsonFeature {
 
 	public double[] getWtCalibrationPoint();
 
+	public double getCenterX();
+
+	public double getCenterY();
+
 }

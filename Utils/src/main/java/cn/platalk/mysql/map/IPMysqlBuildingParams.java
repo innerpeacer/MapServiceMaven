@@ -43,6 +43,8 @@ public class IPMysqlBuildingParams {
 
 	static final String FIELD_BUILDING_19_DATA_VERSION = "DATA_VERSION";
 
+	static final String FIELD_BUILDING_20_CENTER = "CENTER";
+
 	private static List<IPSqlField> buildingFieldList = new ArrayList<IPSqlField>();
 	static {
 		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_1_CITY_ID,
@@ -84,6 +86,8 @@ public class IPMysqlBuildingParams {
 		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_18_WT_CALIBRATION_POINT,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(2000)"), true));
 		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_19_DATA_VERSION,
+				new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), true));
+		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_20_CENTER,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(255)"), true));
 	}
 
@@ -128,6 +132,13 @@ public class IPMysqlBuildingParams {
 
 			if (record.getString(FIELD_BUILDING_19_DATA_VERSION) != null) {
 				building.setDataVersion(record.getString(FIELD_BUILDING_19_DATA_VERSION));
+			}
+
+			if (record.getString(FIELD_BUILDING_20_CENTER) != null) {
+				String center = record.getString(FIELD_BUILDING_20_CENTER);
+				String xy[] = center.split(",");
+				building.setCenterX(Double.parseDouble(xy[0]));
+				building.setCenterY(Double.parseDouble(xy[1]));
 			}
 			buildingList.add(building);
 		}
@@ -180,6 +191,7 @@ public class IPMysqlBuildingParams {
 			data.put(FIELD_BUILDING_18_WT_CALIBRATION_POINT, doubleArrayToString(building.getWtCalibrationPoint()));
 		}
 		data.put(FIELD_BUILDING_19_DATA_VERSION, building.getDataVersion());
+		data.put(FIELD_BUILDING_20_CENTER, String.format("%f,%f", building.getCenterX(), building.getCenterY()));
 
 		return data;
 	}
