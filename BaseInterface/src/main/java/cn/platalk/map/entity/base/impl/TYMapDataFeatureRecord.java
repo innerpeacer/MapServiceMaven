@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
+import com.vividsolutions.jts.io.WKBWriter;
 
 import cn.platalk.foundation.TYGeojsonBuilder;
 import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
@@ -297,6 +298,17 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 
 	public void setPriority(int priority) {
 		this.priority = priority;
+	}
+
+	public void setGeometryData(Geometry g) {
+		geometryData = g;
+		geometryType = geometryData.getGeometryType();
+
+		if (geometryData != null) {
+			WKBWriter wkw = new WKBWriter();
+			byte[] bytes = wkw.write(geometryData);
+			geometry = IPEncryption.encryptBytes(bytes);
+		}
 	}
 
 	@Override
