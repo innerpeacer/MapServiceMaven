@@ -1,6 +1,7 @@
 package cn.platalk.map.api.three.map;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
+
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.simplify.TopologyPreservingSimplifier;
 
 import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
@@ -42,9 +46,16 @@ public class TYGetThreeMapDataV2Servlet extends TYBaseHttpServlet {
 
 		List<TYMapDataFeatureRecord> mapDataRecordList = TYMysqlDBHelper.getMapDataRecords(buildingID);
 		List<TYMapDataFeatureRecord> optimizedList = TYThreeFeatureOptimizer.optimize(mapDataRecordList);
+		List<TYMapDataFeatureRecord> simplifiedList = new ArrayList<TYMapDataFeatureRecord>();
+		for (TYMapDataFeatureRecord record : optimizedList) {
+			Geometry g = record.getGeometryData();
+			Geometry sg = TopologyPreservingSimplifier.simplify(g, 0);
+			record.setGeometryData(sg);
+			simplifiedList.add(record);
+		}
 		TYThreeMapDataBuilder builder = new TYThreeMapDataBuilder(building);
-		threeMapDataObject = builder.generateThreeMapDataObject(optimizedList);
-		System.out.println(optimizedList.size() + " records");
+		threeMapDataObject = builder.generateThreeMapDataObject(simplifiedList);
+		System.out.println(simplifiedList.size() + " records");
 
 		respondResult(request, response, threeMapDataObject);
 	}
