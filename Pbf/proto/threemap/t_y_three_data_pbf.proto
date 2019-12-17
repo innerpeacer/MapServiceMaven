@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+import "t_y_three_geometry_pbf.proto";
+import "t_y_three_property_pbf.proto";
+
+package cn.platalk.core.pbf.threedata;
+
+message ThreeDataPbf {
+required string buildingID = 1;
+required ThreeLayerPbf floor = 2;
+required ThreeLayerPbf room = 3;
+required ThreeLayerPbf asset = 4;
+}
+
+message ThreeLayerPbf {
+repeated ThreeFeaturePbf features = 2;
+}
+
+message ThreeFeaturePbf {
+required ThreeFeatureGeometryPbf geometry = 1;
+required ThreeFeaturePropertiesPbf properties = 2;
+}

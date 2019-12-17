@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package cn.platalk.core.pbf.threedata;
+
+message ThreeFeaturePropertiesPbf {
+required int32 floor = 1;
+required uint32 layer = 2;
+required uint32 symbolID = 3;
+required string poiID = 4;
+required double base = 5;
+required double height = 6;
+}
