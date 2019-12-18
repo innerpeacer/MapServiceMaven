@@ -8,7 +8,6 @@ import com.vividsolutions.jts.geom.Polygon;
 
 import cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeCoordPbf;
 import cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf;
-import cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeGeometryType;
 import cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeLineStringPbf;
 import cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeMultiPolygonPbf;
 import cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreePolygonPbf;
@@ -94,14 +93,14 @@ public class IPThreeGeometryPbfUtils {
 
 	ThreeFeatureGeometryPbf polygonToPbf(Polygon p) {
 		ThreeFeatureGeometryPbf.Builder geometryBuilder = ThreeFeatureGeometryPbf.newBuilder();
-		geometryBuilder.setType(ThreeGeometryType.Polygon);
+		geometryBuilder.setType(p.getGeometryType());
 		geometryBuilder.setPolygon(polygonFromPolygon(p));
 		return geometryBuilder.build();
 	}
 
 	ThreeFeatureGeometryPbf multiPolygonToPbf(MultiPolygon mp) {
 		ThreeFeatureGeometryPbf.Builder geometryBuilder = ThreeFeatureGeometryPbf.newBuilder();
-		geometryBuilder.setType(ThreeGeometryType.MultiPolygon);
+		geometryBuilder.setType(mp.getGeometryType());
 		geometryBuilder.setMultiPolygon(multiPolygonFromMultiPolygon(mp));
 		return geometryBuilder.build();
 	}
