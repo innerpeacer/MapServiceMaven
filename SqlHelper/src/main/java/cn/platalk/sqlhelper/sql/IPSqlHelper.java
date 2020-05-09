@@ -62,6 +62,14 @@ public class IPSqlHelper {
 			}
 		}
 
+		if (type.equals(Long.class.getName())) {
+			if (value != null) {
+				stmt.setLong(index, (Long) value);
+			} else if (field.allowNull) {
+				stmt.setNull(index, Types.BIGINT);
+			}
+		}
+
 		if (type.equals(byte[].class.getName())) {
 			if (value != null) {
 				stmt.setBytes(index, (byte[]) value);

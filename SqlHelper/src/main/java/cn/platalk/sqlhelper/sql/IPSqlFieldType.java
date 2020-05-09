@@ -20,7 +20,7 @@ public class IPSqlFieldType {
 		SqliteFieldTypeMap.put(Float.class.getName(), new IPSqlFieldType(Float.class.getName(), "real"));
 		SqliteFieldTypeMap.put(Boolean.class.getName(), new IPSqlFieldType(Boolean.class.getName(), "integer"));
 		SqliteFieldTypeMap.put(Integer.class.getName(), new IPSqlFieldType(Integer.class.getName(), "integer"));
-		SqliteFieldTypeMap.put(Long.class.getName(), new IPSqlFieldType(Long.class.getName(), "integer"));
+		SqliteFieldTypeMap.put(Long.class.getName(), new IPSqlFieldType(Long.class.getName(), "BIGINT"));
 		SqliteFieldTypeMap.put(byte[].class.getName(), new IPSqlFieldType(byte[].class.getName(), "blob"));
 	}
 
