@@ -9,14 +9,14 @@ import cn.platalk.sqlhelper.sql.IPSqlDB;
 
 public class IPSqliteDB extends IPSqlDB {
 	private String dbPath;
-	private IPJdbcVersion jdbcVersion = IPJdbcVersion.JAVA;
+	private final IPJdbcVersion jdbcVersion;
 
 	public IPSqliteDB(String path) {
 		this(path, IPJdbcVersion.JAVA);
 	}
 
-	public IPSqliteDB(String path, IPJdbcVersion versionn) {
-		jdbcVersion = versionn;
+	public IPSqliteDB(String path, IPJdbcVersion version) {
+		jdbcVersion = version;
 		try {
 			Class.forName(IPSqliteConfig.getDriverName(jdbcVersion));
 			this.dbPath = path;

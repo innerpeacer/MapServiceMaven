@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IPSqlTable {
-	private String tableName;
-	private List<IPSqlField> fields;
-	private String primaryKey;
+	private final String tableName;
+	private final List<IPSqlField> fields;
+	private final String primaryKey;
 
 	public IPSqlTable(String name, List<IPSqlField> fields, String primaryKey) {
 		this.tableName = name;
-		this.fields = new ArrayList<IPSqlField>(fields);
+		this.fields = new ArrayList<>(fields);
 		this.primaryKey = primaryKey;
 	}
 

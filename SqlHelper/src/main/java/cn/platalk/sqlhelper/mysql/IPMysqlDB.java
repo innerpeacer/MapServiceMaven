@@ -14,9 +14,9 @@ import cn.platalk.sqlhelper.sql.IPSqlHelper;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class IPMysqlDB extends IPSqlDB {
-	private String url;
-	private String name;
-	private String password;
+	private final String url;
+	private final String name;
+	private final String password;
 
 	public IPMysqlDB(String url, String name, String pwd) {
 		this.url = url;
@@ -24,11 +24,7 @@ public class IPMysqlDB extends IPSqlDB {
 		this.password = pwd;
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
@@ -57,11 +53,10 @@ public class IPMysqlDB extends IPSqlDB {
 		PreparedStatement stmt;
 		try {
 			connection.setAutoCommit(false);
-			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt = connection.prepareStatement(sql);
 			List<IPSqlField> fields = table.getFields();
 
-			for (int k = 0; k < dataList.size(); ++k) {
-				Map<String, Object> data = dataList.get(k);
+			for (Map<String, Object> data : dataList) {
 				for (int i = 0; i < fields.size(); ++i) {
 					IPSqlField field = fields.get(i);
 					String fieldName = field.fieldName;
@@ -69,7 +64,7 @@ public class IPMysqlDB extends IPSqlDB {
 				}
 				stmt.addBatch();
 			}
-			int rows[] = stmt.executeBatch();
+			int[] rows = stmt.executeBatch();
 			result = rows.length;
 			connection.commit();
 			stmt.close();

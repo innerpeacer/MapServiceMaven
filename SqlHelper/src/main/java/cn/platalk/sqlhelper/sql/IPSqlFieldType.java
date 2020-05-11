@@ -12,7 +12,7 @@ public class IPSqlFieldType {
 		this.type = t;
 	}
 
-	private static final Map<String, IPSqlFieldType> SqliteFieldTypeMap = new HashMap<String, IPSqlFieldType>();
+	private static final Map<String, IPSqlFieldType> SqliteFieldTypeMap = new HashMap<>();
 
 	static {
 		SqliteFieldTypeMap.put(String.class.getName(), new IPSqlFieldType(String.class.getName(), "text"));

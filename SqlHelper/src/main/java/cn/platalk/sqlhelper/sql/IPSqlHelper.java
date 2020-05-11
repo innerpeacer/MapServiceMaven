@@ -32,6 +32,7 @@ public class IPSqlHelper {
 
 		if (type.equals(Double.class.getName())) {
 			if (value != null) {
+				assert value instanceof Double;
 				stmt.setDouble(index, (Double) value);
 			} else if (field.allowNull) {
 				stmt.setNull(index, Types.DOUBLE);
@@ -40,6 +41,7 @@ public class IPSqlHelper {
 
 		if (type.equals(Float.class.getName())) {
 			if (value != null) {
+				assert value instanceof Float;
 				stmt.setFloat(index, (Float) value);
 			} else if (field.allowNull) {
 				stmt.setNull(index, Types.FLOAT);
@@ -48,6 +50,7 @@ public class IPSqlHelper {
 
 		if (type.equals(Boolean.class.getName())) {
 			if (value != null) {
+				assert value instanceof Boolean;
 				stmt.setBoolean(index, (Boolean) value);
 			} else if (field.allowNull) {
 				stmt.setNull(index, Types.BOOLEAN);
@@ -56,6 +59,7 @@ public class IPSqlHelper {
 
 		if (type.equals(Integer.class.getName())) {
 			if (value != null) {
+				assert value instanceof Integer;
 				stmt.setInt(index, (Integer) value);
 			} else if (field.allowNull) {
 				stmt.setNull(index, Types.INTEGER);
@@ -64,6 +68,7 @@ public class IPSqlHelper {
 
 		if (type.equals(Long.class.getName())) {
 			if (value != null) {
+				assert value instanceof Long;
 				stmt.setLong(index, (Long) value);
 			} else if (field.allowNull) {
 				stmt.setNull(index, Types.BIGINT);
@@ -72,6 +77,7 @@ public class IPSqlHelper {
 
 		if (type.equals(byte[].class.getName())) {
 			if (value != null) {
+				assert value instanceof byte[];
 				stmt.setBytes(index, (byte[]) value);
 			} else if (field.allowNull) {
 				stmt.setNull(index, Types.BLOB);

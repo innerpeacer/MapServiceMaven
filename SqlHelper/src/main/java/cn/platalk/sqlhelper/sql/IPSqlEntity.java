@@ -1,9 +1,9 @@
 package cn.platalk.sqlhelper.sql;
 
 public class IPSqlEntity {
-	public String field;
-	public String clazz;
-	public Object value;
+	public final String field;
+	public final String clazz;
+	public final Object value;
 
 	public IPSqlEntity(String field, String clazz, Object value) {
 		this.field = field;

@@ -1,17 +1,19 @@
 package cn.platalk.sqlhelper.sql;
 
+import com.sun.org.apache.bcel.internal.generic.LOR;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class IPSqlRecord {
-	List<IPSqlEntity> entityList;
-	Map<String, Object> entityMap;
+	final List<IPSqlEntity> entityList;
+	final Map<String, Object> entityMap;
 
 	public IPSqlRecord(List<IPSqlEntity> entities) {
-		this.entityList = new ArrayList<IPSqlEntity>(entities);
-		this.entityMap = new HashMap<String, Object>();
+		this.entityList = new ArrayList<>(entities);
+		this.entityMap = new HashMap<>();
 		for (IPSqlEntity entity : this.entityList) {
 			entityMap.put(entity.field, entity.value);
 		}
@@ -45,6 +47,18 @@ public class IPSqlRecord {
 		return defaultValue;
 	}
 
+	public Long getLong(String fieldName) {
+		return (Long) entityMap.get(fieldName);
+	}
+
+	public Long getLong(String fieldName, Long defaultValue) {
+        Object obj = entityMap.get(fieldName);
+        if (obj != null) {
+            return (Long) obj;
+        }
+        return defaultValue;
+    }
+
 	public Double getDouble(String fieldName) {
 		return (Double) entityMap.get(fieldName);
 	}
@@ -63,25 +77,25 @@ public class IPSqlRecord {
 
 	public boolean getBoolean(String fieldName) {
 		Object value = entityMap.get(fieldName);
-		return (value != null && ((Integer) value) != 0) ? true : false;
+		return value != null && ((Integer) value) != 0;
 	}
 
 	public boolean getBoolean(String fieldName, boolean defaultValue) {
 		Object value = entityMap.get(fieldName);
 		if (value != null) {
-			return (value != null && ((Integer) value) != 0) ? true : false;
+			return (Integer) value != 0;
 		}
 		return defaultValue;
 	}
 
 	@Override
 	public String toString() {
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("[");
+		StringBuilder builder = new StringBuilder();
+		builder.append("[");
 		for (IPSqlEntity entity : entityList) {
-			buffer.append("(").append(entity.field).append(": ").append(entity.value).append("), ");
+			builder.append("(").append(entity.field).append(": ").append(entity.value).append("), ");
 		}
-		buffer.append("]");
-		return buffer.toString();
+		builder.append("]");
+		return builder.toString();
 	}
 }

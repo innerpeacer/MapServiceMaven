@@ -34,106 +34,51 @@ public abstract class IPSqlDB {
 	}
 
 	public void createSqliteTable(IPSqlTable table) {
-		try {
-			Statement stmt = connection.createStatement();
-			stmt.executeUpdate(IPSqlBuilder.sqliteTableCreateSql(table));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	    existSql(IPSqlBuilder.sqliteTableCreateSql(table));
 	}
 
 	public void dropTable(IPSqlTable table) {
-		String sql = String.format("drop table %s", table.getTableName());
-		try {
-			Statement stmt = connection.createStatement();
-			stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		executeSql(String.format("drop table %s", table.getTableName()));
 	}
 
 	public void eraseTable(IPSqlTable table) {
-		String sql = String.format("delete from %s", table.getTableName());
-		try {
-			Statement stmt = connection.createStatement();
-			stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+        executeSql(String.format("delete from %s", table.getTableName()));
 	}
 
 	public void deleteRecord(IPSqlTable table, Map<IPSqlField, Object> clause) {
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("delete from ").append(table.getTableName());
+		StringBuilder builder = new StringBuilder();
+		builder.append("delete from ").append(table.getTableName());
 		if (clause != null && clause.size() > 0) {
-			buffer.append(IPSqlBuilder.whereClause(clause));
+			builder.append(IPSqlBuilder.whereClause(clause));
 		}
-		String sql = buffer.toString();
-		try {
-			Statement stmt = connection.createStatement();
-			stmt.execute(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		executeSql(builder.toString());
 	}
 
 	public void deleteRecord(IPSqlTable table, IPSqlField field, Object value) {
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("delete from ").append(table.getTableName());
+		StringBuilder builder = new StringBuilder();
+		builder.append("delete from ").append(table.getTableName());
 		if (field != null) {
-			buffer.append(IPSqlBuilder.whereClause(field, value));
+			builder.append(IPSqlBuilder.whereClause(field, value));
 		}
-		String sql = buffer.toString();
-		try {
-			Statement stmt = connection.createStatement();
-			stmt.execute(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		executeSql(builder.toString());
 	}
 
 	public boolean existRecord(IPSqlTable table, Map<IPSqlField, Object> clause) {
-		int result = 0;
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("select count(*) from ").append(table.getTableName());
+		StringBuilder builder = new StringBuilder();
+		builder.append("select count(*) from ").append(table.getTableName());
 		if (clause != null && clause.size() > 0) {
-			buffer.append(IPSqlBuilder.whereClause(clause));
+			builder.append(IPSqlBuilder.whereClause(clause));
 		}
-		String sql = buffer.toString();
-		ResultSet rs = null;
-		try {
-			Statement stmt = connection.createStatement();
-			rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-				result = rs.getInt(1);
-			}
-
-		} catch (Exception e) {
-		}
-		return (result != 0);
+		return existSql(builder.toString());
 	}
 
 	public boolean existRecord(IPSqlTable table, IPSqlField field, Object value) {
-		int result = 0;
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("select count(*) from ").append(table.getTableName());
+		StringBuilder builder = new StringBuilder();
+		builder.append("select count(*) from ").append(table.getTableName());
 		if (field != null) {
-			buffer.append(IPSqlBuilder.whereClause(field, value));
+			builder.append(IPSqlBuilder.whereClause(field, value));
 		}
-		String sql = buffer.toString();
-		ResultSet rs = null;
-		try {
-			Statement stmt = connection.createStatement();
-			rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-				result = rs.getInt(1);
-			}
-
-		} catch (Exception e) {
-		}
-		return (result != 0);
+		return existSql(builder.toString());
 	}
 
 	public int insertData(IPSqlTable table, Map<String, Object> data) {
@@ -142,7 +87,7 @@ public abstract class IPSqlDB {
 		// System.out.println(sql);
 		PreparedStatement stmt;
 		try {
-			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt = connection.prepareStatement(sql);
 			List<IPSqlField> fields = table.getFields();
 			for (int i = 0; i < fields.size(); ++i) {
 				IPSqlField field = fields.get(i);
@@ -158,42 +103,75 @@ public abstract class IPSqlDB {
 	}
 
 	public int updateData(IPSqlTable table, Map<String, Object> data, Map<IPSqlField, Object> clause) {
-		int result = 0;
-		List<IPSqlField> updateFields = new ArrayList<IPSqlField>();
+		List<IPSqlField> updateFields = new ArrayList<>();
 		for (String fieldName : data.keySet()) {
 			updateFields.add(table.getField(fieldName));
 		}
 
 		String sql = IPSqlBuilder.updateSql(table, updateFields, clause);
-		// System.out.println(sql);
-		PreparedStatement stmt;
-		try {
-			stmt = (PreparedStatement) connection.prepareStatement(sql);
-			for (int i = 0; i < updateFields.size(); ++i) {
-				IPSqlField field = updateFields.get(i);
-				String fieldName = field.fieldName;
-				IPSqlHelper.setStmtObject(stmt, i + 1, field, data.get(fieldName));
-			}
-			result = stmt.executeUpdate();
-			stmt.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return result;
+		return updateSql(updateFields, data, sql);
 	}
 
 	public int updateData(IPSqlTable table, Map<String, Object> data, IPSqlField targetField, Object value) {
-		int result = 0;
-		List<IPSqlField> updateFields = new ArrayList<IPSqlField>();
+		List<IPSqlField> updateFields = new ArrayList<>();
 		for (String fieldName : data.keySet()) {
 			updateFields.add(table.getField(fieldName));
 		}
 
 		String sql = IPSqlBuilder.updateSql(table, updateFields, targetField, value);
-		// System.out.println(sql);
+		return updateSql(updateFields, data, sql);
+	}
+
+	public List<IPSqlRecord> readData(IPSqlTable table, Map<IPSqlField, Object> clause, List<IPSqlOrder> orderList ,IPSqlLimit limit) {
+		String sql = IPSqlBuilder.selectSql(table, clause) +
+				IPSqlBuilder.orderByClause(orderList) +
+				IPSqlBuilder.limitClause(limit);
+		return readSql(table, sql);
+	}
+
+	public List<IPSqlRecord> readData(IPSqlTable table, Map<IPSqlField, Object> clause) {
+		String sql = IPSqlBuilder.selectSql(table, clause);
+		return readSql(table, sql);
+	}
+
+	public List<IPSqlRecord> readData(IPSqlTable table, IPSqlField targetField, Object value) {
+		String sql = IPSqlBuilder.selectSql(table, targetField, value);
+		return readSql(table, sql);
+	}
+
+	public List<IPSqlRecord> readData(IPSqlTable table) {
+		String sql = String.format("select * from %s", table.getTableName());
+		return readSql(table, sql);
+	}
+
+    private List<IPSqlRecord> readSql(IPSqlTable table, String sql) {
+		List<IPSqlRecord> records = new ArrayList<>();
+        ResultSet rs;
+        try {
+            Statement stmt = connection.createStatement();
+            rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                List<IPSqlEntity> entities = new ArrayList<>();
+                List<IPSqlField> fields = table.getFields();
+                for (IPSqlField f : fields) {
+                    IPSqlEntity entity = IPSqlHelper.getObject(rs, f);
+                    entities.add(entity);
+                }
+                IPSqlRecord record = new IPSqlRecord(entities);
+                records.add(record);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return records;
+    }
+
+	private int updateSql(List<IPSqlField> updateFields, Map<String, Object> data, String sql) {
+		int result = 0;
 		PreparedStatement stmt;
 		try {
-			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt = connection.prepareStatement(sql);
 			for (int i = 0; i < updateFields.size(); ++i) {
 				IPSqlField field = updateFields.get(i);
 				String fieldName = field.fieldName;
@@ -207,77 +185,29 @@ public abstract class IPSqlDB {
 		return result;
 	}
 
-	public List<IPSqlRecord> readData(IPSqlTable table, Map<IPSqlField, Object> clause) {
-		List<IPSqlRecord> records = new ArrayList<IPSqlRecord>();
-		String sql = IPSqlBuilder.selectSql(table, clause);
-		// System.out.println(sql);
-		ResultSet rs = null;
-		try {
-			Statement stmt = connection.createStatement();
-			rs = stmt.executeQuery(sql);
+    private boolean existSql(String sql) {
+        int result = 0;
+        ResultSet rs;
+        try {
+            Statement stmt = connection.createStatement();
+            rs = stmt.executeQuery(sql);
 
-			while (rs.next()) {
-				List<IPSqlEntity> entities = new ArrayList<IPSqlEntity>();
-				List<IPSqlField> fields = table.getFields();
-				for (IPSqlField f : fields) {
-					IPSqlEntity entity = IPSqlHelper.getObject(rs, f);
-					entities.add(entity);
-				}
-				IPSqlRecord record = new IPSqlRecord(entities);
-				records.add(record);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return records;
-	}
+            while (rs.next()) {
+                result = rs.getInt(1);
+            }
 
-	public List<IPSqlRecord> readData(IPSqlTable table, IPSqlField targetField, Object value) {
-		List<IPSqlRecord> records = new ArrayList<IPSqlRecord>();
-		String sql = IPSqlBuilder.selectSql(table, targetField, value);
-		// System.out.println(sql);
-		ResultSet rs = null;
-		try {
-			Statement stmt = connection.createStatement();
-			rs = stmt.executeQuery(sql);
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+        return (result != 0);
+    }
 
-			while (rs.next()) {
-				List<IPSqlEntity> entities = new ArrayList<IPSqlEntity>();
-				List<IPSqlField> fields = table.getFields();
-				for (IPSqlField f : fields) {
-					IPSqlEntity entity = IPSqlHelper.getObject(rs, f);
-					entities.add(entity);
-				}
-				IPSqlRecord record = new IPSqlRecord(entities);
-				records.add(record);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return records;
-	}
-
-	public List<IPSqlRecord> readData(IPSqlTable table) {
-		List<IPSqlRecord> records = new ArrayList<IPSqlRecord>();
-		String sql = String.format("select * from %s", table.getTableName());
-		ResultSet rs = null;
-		try {
-			Statement stmt = connection.createStatement();
-			rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-				List<IPSqlEntity> entities = new ArrayList<IPSqlEntity>();
-				List<IPSqlField> fields = table.getFields();
-				for (IPSqlField f : fields) {
-					IPSqlEntity entity = IPSqlHelper.getObject(rs, f);
-					entities.add(entity);
-				}
-				IPSqlRecord record = new IPSqlRecord(entities);
-				records.add(record);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return records;
-	}
+    private void executeSql(String sql) {
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

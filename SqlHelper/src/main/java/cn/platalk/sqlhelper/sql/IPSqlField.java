@@ -1,10 +1,10 @@
 package cn.platalk.sqlhelper.sql;
 
 public class IPSqlField {
-	public String fieldName;
-	public IPSqlFieldType fieldType;
-	public boolean allowNull;
-	public Object defaultValue;
+	public final String fieldName;
+	public final IPSqlFieldType fieldType;
+	public final boolean allowNull;
+	public final Object defaultValue;
 
 	public IPSqlField(String field, IPSqlFieldType type, boolean allowNull) {
 		this(field, type, allowNull, null);
