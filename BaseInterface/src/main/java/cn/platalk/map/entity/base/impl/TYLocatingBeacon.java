@@ -13,7 +13,7 @@ import cn.platalk.foundation.TYGeojsonBuilder;
 import cn.platalk.map.entity.base.TYILocatingBeacon;
 
 public class TYLocatingBeacon extends TYBeacon implements TYILocatingBeacon {
-	static GeometryFactory factory = new GeometryFactory();
+	static final GeometryFactory factory = new GeometryFactory();
 
 	static final String KEY_JSON_BEACON_1_UUID = "uuid";
 	static final String KEY_JSON_BEACON_2_MAJOR = "major";
@@ -107,7 +107,7 @@ public class TYLocatingBeacon extends TYBeacon implements TYILocatingBeacon {
 	}
 
 	Map<String, Object> beaconPropertyMap() {
-		Map<String, Object> propMap = new HashMap<String, Object>();
+		Map<String, Object> propMap = new HashMap<>();
 		propMap.put(KEY_GEOJSON_BEACON_ATTRIBUTE_UUID, getUUID());
 		propMap.put(KEY_GEOJSON_BEACON_ATTRIBUTE_MAJOR, getMajor());
 		propMap.put(KEY_GEOJSON_BEACON_ATTRIBUTE_MINOR, getMinor());

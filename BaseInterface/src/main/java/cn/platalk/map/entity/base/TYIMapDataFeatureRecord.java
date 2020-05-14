@@ -5,64 +5,64 @@ import com.vividsolutions.jts.geom.Geometry;
 import cn.platalk.common.TYIGeojsonFeature;
 
 public interface TYIMapDataFeatureRecord extends TYIGeojsonFeature {
-	public static final int LAYER_FLOOR = 1;
-	public static final int LAYER_ROOM = 2;
-	public static final int LAYER_ASSET = 3;
-	public static final int LAYER_FACILITY = 4;
-	public static final int LAYER_LABEL = 5;
-	public static final int LAYER_SHADE = 6;
+	int LAYER_FLOOR = 1;
+	int LAYER_ROOM = 2;
+	int LAYER_ASSET = 3;
+	int LAYER_FACILITY = 4;
+	int LAYER_LABEL = 5;
+	int LAYER_SHADE = 6;
 
-	public Geometry getGeometryData();
+	Geometry getGeometryData();
 
-	public String getObjectID();
+	String getObjectID();
 
-	public byte[] getGeometry();
+	byte[] getGeometry();
 
-	public String getGeoID();
+	String getGeoID();
 
-	public String getPoiID();
+	String getPoiID();
 
-	public String getFloorID();
+	String getFloorID();
 
-	public String getBuildingID();
+	String getBuildingID();
 
-	public String getCategoryID();
+	String getCategoryID();
 
-	public String getName();
+	String getName();
 
-	public String getNameEn();
+	String getNameEn();
 
-	public String getNameOther();
+	String getNameOther();
 
-	public String getIcon();
+	String getIcon();
 
-	public int getSymbolID();
+	int getSymbolID();
 
-	public int getFloorNumber();
+	int getFloorNumber();
 
-	public String getFloorName();
+	String getFloorName();
 
-	public double getShapeLength();
+	double getShapeLength();
 
-	public double getShapeArea();
+	double getShapeArea();
 
-	public double getLabelX();
+	double getLabelX();
 
-	public double getLabelY();
+	double getLabelY();
 
-	public int getLayer();
+	int getLayer();
 
-	public double getLevelMax();
+	double getLevelMax();
 
-	public double getLevelMin();
+	double getLevelMin();
 
-	public boolean isVisible();
+	boolean isVisible();
 
-	public boolean isExtrusion();
+	boolean isExtrusion();
 
-	public double getExtrusionHeight();
+	double getExtrusionHeight();
 
-	public double getExtrusionBase();
+	double getExtrusionBase();
 
-	public int getPriority();
+	int getPriority();
 }

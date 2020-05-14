@@ -1,9 +1,9 @@
 package cn.platalk.map.entity.base;
 
 public interface TYILocalPoint {
-	public double getX();
+	double getX();
 
-	public double getY();
+	double getY();
 
-	public int getFloor();
+	int getFloor();
 }

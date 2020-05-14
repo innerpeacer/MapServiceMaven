@@ -13,7 +13,7 @@ import cn.platalk.foundation.TYGeojsonBuilder;
 import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
 
 public class TYRouteLinkRecordV3 implements TYIRouteLinkRecordV3 {
-	static WKBReader reader = new WKBReader();
+	static final WKBReader reader = new WKBReader();
 
 	static final String KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_LINK_ID = "linkID";
 	static final String KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_HEAD_NODE = "headNode";
@@ -26,7 +26,7 @@ public class TYRouteLinkRecordV3 implements TYIRouteLinkRecordV3 {
 	static final String KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_ROOM_ID = "roomID";
 	static final String KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_OPEN = "open";
 	static final String KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_OPEN_TIME = "openTime";
-	static final String KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_ALLOWSNAP = "allowSnap";
+	static final String KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_ALLOW_SNAP = "allowSnap";
 	static final String KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_LINK_TYPE = "linkType";
 
 	private String linkID;
@@ -214,7 +214,7 @@ public class TYRouteLinkRecordV3 implements TYIRouteLinkRecordV3 {
 	}
 
 	Map<String, Object> linkPropertyMap() {
-		Map<String, Object> propMap = new HashMap<String, Object>();
+		Map<String, Object> propMap = new HashMap<>();
 		propMap.put(KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_LINK_ID, getLinkID());
 		propMap.put(KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_HEAD_NODE, getHeadNode());
 		propMap.put(KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_END_NODE, getEndNode());
@@ -236,7 +236,7 @@ public class TYRouteLinkRecordV3 implements TYIRouteLinkRecordV3 {
 		propMap.put(KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_OPEN, isOpen());
 
 		propMap.put(KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_OPEN_TIME, getOpenTime());
-		propMap.put(KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_ALLOWSNAP, isAllowSnap());
+		propMap.put(KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_ALLOW_SNAP, isAllowSnap());
 		propMap.put(KEY_GEOJSON_ROUTE_LINK_DATA_ATTRIBUTE_LINK_TYPE, getLinkType());
 		return propMap;
 	}

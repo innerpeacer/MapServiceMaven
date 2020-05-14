@@ -3,64 +3,64 @@ package cn.platalk.map.entity.base;
 import cn.platalk.common.TYIGeojsonFeature;
 
 public interface TYIRouteLinkRecordV3 extends TYIGeojsonFeature {
-	public String getLinkID();
+	String getLinkID();
 
-	public void setLinkID(String linkID);
+	void setLinkID(String linkID);
 
-	public byte[] getGeometryData();
+	byte[] getGeometryData();
 
-	public void setGeometryData(byte[] linkGeometryData);
+	void setGeometryData(byte[] linkGeometryData);
 
-	public double getLength();
+	double getLength();
 
-	public void setLength(double length);
+	void setLength(double length);
 
-	public String getHeadNode();
+	String getHeadNode();
 
-	public void setHeadNode(String headNode);
+	void setHeadNode(String headNode);
 
-	public String getEndNode();
+	String getEndNode();
 
-	public void setEndNode(String endNode);
+	void setEndNode(String endNode);
 
-	public boolean isOneWay();
+	boolean isOneWay();
 
-	public void setOneWay(boolean isOneWay);
+	void setOneWay(boolean isOneWay);
 
-	public String getLinkName();
+	String getLinkName();
 
-	public void setLinkName(String linkName);
+	void setLinkName(String linkName);
 
-	public int getFloor();
+	int getFloor();
 
-	public void setFloor(int floor);
+	void setFloor(int floor);
 
-	public int getLevel();
+	int getLevel();
 
-	public void setLevel(int level);
+	void setLevel(int level);
 
-	public boolean isReverse();
+	boolean isReverse();
 
-	public void setReverse(boolean reverse);
+	void setReverse(boolean reverse);
 
-	public String getRoomID();
+	String getRoomID();
 
-	public void setRoomID(String rid);
+	void setRoomID(String rid);
 
-	public boolean isOpen();
+	boolean isOpen();
 
-	public void setOpen(boolean open);
+	void setOpen(boolean open);
 
-	public String getOpenTime();
+	String getOpenTime();
 
-	public void setOpenTime(String openTime);
+	void setOpenTime(String openTime);
 
-	public boolean isAllowSnap();
+	boolean isAllowSnap();
 
-	public void setAllowSnap(boolean allowSnap);
+	void setAllowSnap(boolean allowSnap);
 
-	public String getLinkType();
+	String getLinkType();
 
-	public void setLinkType(String linkType);
+	void setLinkType(String linkType);
 
 }

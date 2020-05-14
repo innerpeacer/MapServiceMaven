@@ -352,7 +352,7 @@ public class TYMapDataFeatureRecord implements TYIMapDataFeatureRecord {
 	}
 
 	Map<String, Object> dataPropertyMap() {
-		Map<String, Object> propMap = new HashMap<String, Object>();
+		Map<String, Object> propMap = new HashMap<>();
 		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_GEO_ID, geoID);
 		propMap.put(KEY_GEOJSON_MAP_DATA_ATTRIBUTE_POI_ID, poiID);
 		if (name != null) {

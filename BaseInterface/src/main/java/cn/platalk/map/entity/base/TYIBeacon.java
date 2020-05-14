@@ -1,12 +1,12 @@
 package cn.platalk.map.entity.base;
 
 public interface TYIBeacon {
-	public String getUUID();
+	String getUUID();
 
-	public int getMajor();
+	int getMajor();
 
-	public int getMinor();
+	int getMinor();
 
-	public String getTag();
+	String getTag();
 
 }

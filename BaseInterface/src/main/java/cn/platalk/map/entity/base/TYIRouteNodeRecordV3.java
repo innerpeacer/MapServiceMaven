@@ -3,55 +3,55 @@ package cn.platalk.map.entity.base;
 import cn.platalk.common.TYIGeojsonFeature;
 
 public interface TYIRouteNodeRecordV3 extends TYIGeojsonFeature {
-	public String getNodeID();
+	String getNodeID();
 
-	public void setNodeID(String nodeID);
+	void setNodeID(String nodeID);
 
-	public byte[] getGeometryData();
+	byte[] getGeometryData();
 
-	public void setGeometryData(byte[] nodeGeometryData);
+	void setGeometryData(byte[] nodeGeometryData);
 
-	public String getNodeName();
+	String getNodeName();
 
-	public void setNodeName(String nodeName);
+	void setNodeName(String nodeName);
 
-	public String getCategoryID();
+	String getCategoryID();
 
-	public void setCategoryID(String categoryID);
+	void setCategoryID(String categoryID);
 
-	public int getFloor();
+	int getFloor();
 
-	public void setFloor(int floor);
+	void setFloor(int floor);
 
-	public int getLevel();
+	int getLevel();
 
-	public void setLevel(int level);
+	void setLevel(int level);
 
-	public boolean isSwitching();
+	boolean isSwitching();
 
-	public void setSwitching(boolean isSwitching);
+	void setSwitching(boolean isSwitching);
 
-	public int getSwitchingID();
+	int getSwitchingID();
 
-	public void setSwitchingID(int switchingID);
+	void setSwitchingID(int switchingID);
 
-	public int getDirection();
+	int getDirection();
 
-	public void setDirection(int direction);
+	void setDirection(int direction);
 
-	public int getNodeType();
+	int getNodeType();
 
-	public void setNodeType(int nodeType);
+	void setNodeType(int nodeType);
 
-	public boolean isOpen();
+	boolean isOpen();
 
-	public void setOpen(boolean open);
+	void setOpen(boolean open);
 
-	public String getOpenTime();
+	String getOpenTime();
 
-	public void setOpenTime(String openTime);
+	void setOpenTime(String openTime);
 
-	public String getRoomID();
+	String getRoomID();
 
-	public void setRoomID(String roomID);
+	void setRoomID(String roomID);
 }

@@ -1,7 +1,7 @@
 package cn.platalk.map.entity.base;
 
 public interface TYILngLat {
-	public double getLng();
+	double getLng();
 
-	public double getLat();
+	double getLat();
 }

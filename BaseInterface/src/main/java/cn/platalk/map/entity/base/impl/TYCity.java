@@ -27,10 +27,8 @@ public class TYCity implements TYICity {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj != null && obj instanceof TYCity) {
-			if (this.cityID.equals(((TYCity) obj).getCityID())) {
-				return true;
-			}
+		if (obj instanceof TYCity) {
+            return this.cityID.equals(((TYCity) obj).getCityID());
 		}
 		return false;
 	}

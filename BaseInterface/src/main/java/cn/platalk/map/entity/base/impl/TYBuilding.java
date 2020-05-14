@@ -58,10 +58,8 @@ public class TYBuilding implements TYIBuilding {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj != null && obj instanceof TYBuilding) {
-			if (this.buildingID.equals(((TYBuilding) obj).getBuildingID())) {
-				return true;
-			}
+		if (obj instanceof TYBuilding) {
+			return this.buildingID.equals(((TYBuilding) obj).getBuildingID());
 		}
 		return false;
 	}

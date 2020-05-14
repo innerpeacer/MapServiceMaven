@@ -3,38 +3,38 @@ package cn.platalk.map.entity.base;
 import cn.platalk.common.TYIJsonFeature;
 
 public interface TYIBuilding extends TYIJsonFeature {
-	public String getCityID();
+	String getCityID();
 
-	public String getBuildingID();
+	String getBuildingID();
 
-	public String getName();
+	String getName();
 
-	public String getAddress();
+	String getAddress();
 
-	public double getLongitude();
+	double getLongitude();
 
-	public double getLatitude();
+	double getLatitude();
 
-	public double getInitAngle();
+	double getInitAngle();
 
-	public int getInitFloorIndex();
+	int getInitFloorIndex();
 
-	public String getRouteURL();
+	String getRouteURL();
 
-	public TYIMapSize getOffset();
+	TYIMapSize getOffset();
 
-	public TYIMapExtent getBuildingExtent();
+	TYIMapExtent getBuildingExtent();
 
-	public String getDataVersion();
+	String getDataVersion();
 
-	public int getStatus();
+	int getStatus();
 
-	public double[] getWgs84CalibrationPoint();
+	double[] getWgs84CalibrationPoint();
 
-	public double[] getWtCalibrationPoint();
+	double[] getWtCalibrationPoint();
 
-	public double getCenterX();
+	double getCenterX();
 
-	public double getCenterY();
+	double getCenterY();
 
 }

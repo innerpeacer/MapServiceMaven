@@ -4,18 +4,18 @@ import cn.platalk.common.TYIJsonFeature;
 
 public interface TYIMapInfo extends TYIJsonFeature {
 
-	public String getCityID();
+	String getCityID();
 
-	public String getBuildingID();
+	String getBuildingID();
 
-	public String getMapID();
+	String getMapID();
 
-	public String getFloorName();
+	String getFloorName();
 
-	public int getFloorNumber();
+	int getFloorNumber();
 
-	public TYIMapSize getMapSize();
+	TYIMapSize getMapSize();
 
-	public TYIMapExtent getMapExtent();
+	TYIMapExtent getMapExtent();
 
 }

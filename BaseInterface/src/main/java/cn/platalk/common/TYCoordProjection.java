@@ -9,17 +9,17 @@ public class TYCoordProjection {
 	private static final double RAD_TO_DEG = 180.0 / Math.PI;
 
 	public static TYLocalPoint lnglatToMercator(TYLngLat lngLat) {
-		double xy[] = lngLatToMercator(lngLat.getLng(), lngLat.getLat());
+		double[] xy = lngLatToMercator(lngLat.getLng(), lngLat.getLat());
 		return new TYLocalPoint(xy[0], xy[1]);
 	}
 
 	public static TYLocalPoint lnglatToMercator(TYLngLat lngLat, int floor) {
-		double xy[] = lngLatToMercator(lngLat.getLng(), lngLat.getLat());
+		double[] xy = lngLatToMercator(lngLat.getLng(), lngLat.getLat());
 		return new TYLocalPoint(xy[0], xy[1], floor);
 	}
 
 	public static TYLngLat mercatorToLngLat(TYLocalPoint localPoint) {
-		double lngLat[] = mercatorToLngLat(localPoint.getX(), localPoint.getY());
+		double[] lngLat = mercatorToLngLat(localPoint.getX(), localPoint.getY());
 		return new TYLngLat(lngLat[0], lngLat[1]);
 	}
 

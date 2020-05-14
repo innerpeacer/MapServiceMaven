@@ -1,17 +1,17 @@
 package cn.platalk.map.entity.base;
 
 public interface TYIRouteLinkRecord {
-	public int getLinkID();
+	int getLinkID();
 
-	public byte[] getGeometryData();
+	byte[] getGeometryData();
 
-	public double getLength();
+	double getLength();
 
-	public int getHeadNode();
+	int getHeadNode();
 
-	public int getEndNode();
+	int getEndNode();
 
-	public boolean isVirtual();
+	boolean isVirtual();
 
-	public boolean isOneWay();
+	boolean isOneWay();
 }

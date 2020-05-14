@@ -1,15 +1,15 @@
 package cn.platalk.map.entity.base;
 
 public interface TYIMapExtent {
-	public double getXmin();
+	double getXmin();
 
-	public double getYmin();
+	double getYmin();
 
-	public double getXmax();
+	double getXmax();
 
-	public double getYmax();
+	double getYmax();
 
-	public TYILngLat getSw();
+	TYILngLat getSw();
 
-	public TYILngLat getNe();
+	TYILngLat getNe();
 }

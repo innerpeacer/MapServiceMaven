@@ -33,10 +33,7 @@ public class TYLocalPoint implements TYILocalPoint, TYIJsonFeature {
 		if (p == null)
 			return false;
 
-		if (this.x == p.x && this.y == p.y && this.floor == p.floor) {
-			return true;
-		}
-		return false;
+		return this.x == p.x && this.y == p.y && this.floor == p.floor;
 	}
 
 	// public void parseJson(JSONObject jsonObject) {

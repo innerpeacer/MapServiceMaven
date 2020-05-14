@@ -21,7 +21,7 @@ import cn.platalk.common.TYIGeojsonFeature;
 import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public class TYGeojsonBuilder {
-	public static JSONObject emptyGeojson;
+	public static final JSONObject emptyGeojson;
 	static {
 		emptyGeojson = new JSONObject();
 		try {
@@ -53,41 +53,49 @@ public class TYGeojsonBuilder {
 		resultObject.put(TYGeojsonFields.GEOJSON_KEY_FEATURE_TYPE, TYGeojsonFields.GEOJSON_VALUE_FEATURE_TYPE__FEATURE);
 
 		JSONObject geometryObject = new JSONObject();
-		if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_POINT)) {
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
-					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__POINT);
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
-					buildGeojsonPointFeature((Point) geometry));
-		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_POINT)) {
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
-					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOINT);
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
-					buildGeojsonMultiPointFeature((MultiPoint) geometry));
-		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_LINESTRING)) {
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
-					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING);
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
-					buildGeojsonLineString((LineString) geometry));
-		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_LINEARRING)) {
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
-					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING);
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
-					buildGeojsonLineString((LinearRing) geometry));
-		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_LINESTRING)) {
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
-					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__MULTILINESTRING);
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
-					buildGeojsonMultiLineString((MultiLineString) geometry));
-		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_POLYGON)) {
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
-					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__POLYGON);
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
-					buildGeojsonPolygonFeature((Polygon) geometry));
-		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTIPOLYGON)) {
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
-					TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOLYGON);
-			geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
-					buildGeojsonMultiPolygonFeature((MultiPolygon) geometry));
+		switch (geometry.getGeometryType()) {
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_POINT:
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+						TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__POINT);
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
+						buildGeojsonPointFeature((Point) geometry));
+				break;
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_POINT:
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+						TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOINT);
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
+						buildGeojsonMultiPointFeature((MultiPoint) geometry));
+				break;
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_LINESTRING:
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+						TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING);
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
+						buildGeojsonLineString((LineString) geometry));
+				break;
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_LINEARRING:
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+						TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__LINESTRING);
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
+						buildGeojsonLineString((LinearRing) geometry));
+				break;
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_LINESTRING:
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+						TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__MULTILINESTRING);
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
+						buildGeojsonMultiLineString((MultiLineString) geometry));
+				break;
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_POLYGON:
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+						TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__POLYGON);
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
+						buildGeojsonPolygonFeature((Polygon) geometry));
+				break;
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_MULTIPOLYGON:
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_TYPE,
+						TYGeojsonFields.GEOJSON_VALUE_GEOMETRY_TYPE__MULTIPOLYGON);
+				geometryObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY_COORDINATES,
+						buildGeojsonMultiPolygonFeature((MultiPolygon) geometry));
+				break;
 		}
 		resultObject.put(TYGeojsonFields.GEOJSON_KEY_GEOMETRY, geometryObject);
 

@@ -1,7 +1,7 @@
 package cn.platalk.map.entity.base;
 
 public interface TYIMapSize {
-	public double getX();
+	double getX();
 
-	public double getY();
+	double getY();
 }

@@ -13,7 +13,7 @@ import cn.platalk.foundation.TYGeojsonBuilder;
 import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 
 public class TYRouteNodeRecordV3 implements TYIRouteNodeRecordV3 {
-	static WKBReader reader = new WKBReader();
+	static final WKBReader reader = new WKBReader();
 
 	static final String KEY_GEOJSON_ROUTE_NODE_DATA_ATTRIBUTE_NODE_ID = "nodeID";
 	static final String KEY_GEOJSON_ROUTE_NODE_DATA_ATTRIBUTE_NODE_NAME = "nodeName";
@@ -191,7 +191,7 @@ public class TYRouteNodeRecordV3 implements TYIRouteNodeRecordV3 {
 	}
 
 	Map<String, Object> nodePropertyMap() {
-		Map<String, Object> propMap = new HashMap<String, Object>();
+		Map<String, Object> propMap = new HashMap<>();
 		propMap.put(KEY_GEOJSON_ROUTE_NODE_DATA_ATTRIBUTE_NODE_ID, getNodeID());
 		if (getNodeName() != null) {
 			propMap.put(KEY_GEOJSON_ROUTE_NODE_DATA_ATTRIBUTE_NODE_NAME, getNodeName());

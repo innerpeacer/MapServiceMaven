@@ -3,15 +3,15 @@ package cn.platalk.map.entity.base;
 import cn.platalk.common.TYIJsonFeature;
 
 public interface TYICity extends TYIJsonFeature {
-	public String getCityID();
+	String getCityID();
 
-	public String getName();
+	String getName();
 
-	public String getSname();
+	String getSname();
 
-	public double getLongitude();
+	double getLongitude();
 
-	public double getLatitude();
+	double getLatitude();
 
-	public int getStatus();
+	int getStatus();
 }

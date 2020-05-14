@@ -5,13 +5,13 @@ import cn.platalk.common.TYIJsonFeature;
 import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public interface TYILocatingBeacon extends TYIBeacon, TYIGeojsonFeature, TYIJsonFeature {
-	public String getRoomID();
+	String getRoomID();
 
-	public TYLocalPoint getLocation();
+	TYLocalPoint getLocation();
 
-	public String getMapID();
+	String getMapID();
 
-	public String getBuildingID();
+	String getBuildingID();
 
-	public String getCityID();
+	String getCityID();
 }

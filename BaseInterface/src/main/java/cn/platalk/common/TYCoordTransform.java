@@ -1,7 +1,7 @@
 package cn.platalk.common;
 
 public class TYCoordTransform {
-	class TransCoord2D {
+	static class TransCoord2D {
 		public double x;
 		public double y;
 
@@ -48,17 +48,17 @@ public class TYCoordTransform {
 	}
 
 	public double[] getTransformedCoordinate(double[] coordArray) {
-		TransCoord2D orignalCoord = new TransCoord2D(coordArray[0], coordArray[1]);
-		TransCoord2D delatCoord = new TransCoord2D(orignalCoord.x - o1.x, orignalCoord.y - o1.y);
+		TransCoord2D originalCoord = new TransCoord2D(coordArray[0], coordArray[1]);
+		TransCoord2D deltaCoord = new TransCoord2D(originalCoord.x - o1.x, originalCoord.y - o1.y);
 
-		double lamda = (delatCoord.x * oDelta_13.y - delatCoord.y * oDelta_13.x)
+		double lambda = (deltaCoord.x * oDelta_13.y - deltaCoord.y * oDelta_13.x)
 				/ (oDelta_12.x * oDelta_13.y - oDelta_12.y * oDelta_13.x);
-		double miu = (delatCoord.x * oDelta_12.y - delatCoord.y * oDelta_12.x)
+		double miu = (deltaCoord.x * oDelta_12.y - deltaCoord.y * oDelta_12.x)
 				/ (oDelta_13.x * oDelta_12.y - oDelta_13.y * oDelta_12.x);
 
 		TransCoord2D targetCoord = new TransCoord2D(0, 0);
-		targetCoord.x = t1.x + lamda * tDelta_12.x + miu * tDelta_13.x;
-		targetCoord.y = t1.y + lamda * tDelta_12.y + miu * tDelta_13.y;
+		targetCoord.x = t1.x + lambda * tDelta_12.x + miu * tDelta_13.x;
+		targetCoord.y = t1.y + lambda * tDelta_12.y + miu * tDelta_13.y;
 		return new double[] { targetCoord.x, targetCoord.y };
 	}
 }

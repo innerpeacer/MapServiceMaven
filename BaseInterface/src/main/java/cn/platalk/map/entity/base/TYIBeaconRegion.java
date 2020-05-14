@@ -1,13 +1,13 @@
 package cn.platalk.map.entity.base;
 
 public interface TYIBeaconRegion {
-	public String getCityID();
+	String getCityID();
 
-	public String getBuildingID();
+	String getBuildingID();
 
-	public String getBuildingName();
+	String getBuildingName();
 
-	public String getUuid();
+	String getUuid();
 
-	public Integer getMajor();
+	Integer getMajor();
 }

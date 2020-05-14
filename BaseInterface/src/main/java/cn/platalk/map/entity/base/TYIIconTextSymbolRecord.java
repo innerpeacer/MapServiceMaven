@@ -3,43 +3,43 @@ package cn.platalk.map.entity.base;
 import cn.platalk.common.TYIJsonFeature;
 
 public interface TYIIconTextSymbolRecord extends TYIJsonFeature {
-	public int getUID();
+	int getUID();
 
-	public int getSymbolID();
+	int getSymbolID();
 
-	public boolean isIconVisible();
+	boolean isIconVisible();
 
-	public double getIconSize();
+	double getIconSize();
 
-	public double getIconRotate();
+	double getIconRotate();
 
-	public double getIconOffsetX();
+	double getIconOffsetX();
 
-	public double getIconOffsetY();
+	double getIconOffsetY();
 
-	public boolean isTextVisible();
+	boolean isTextVisible();
 
-	public double getTextSize();
+	double getTextSize();
 
-	public String getTextFont();
+	String getTextFont();
 
-	public String getTextColor();
+	String getTextColor();
 
-	public double getTextRotate();
+	double getTextRotate();
 
-	public double getTextOffsetX();
+	double getTextOffsetX();
 
-	public double getTextOffsetY();
+	double getTextOffsetY();
 
-	public double getLevelMin();
+	double getLevelMin();
 
-	public double getLevelMax();
+	double getLevelMax();
 
-	public String getOtherPaint();
+	String getOtherPaint();
 
-	public String getOtherLayout();
+	String getOtherLayout();
 
-	public String getDescription();
+	String getDescription();
 
-	public int getPriority();
+	int getPriority();
 }

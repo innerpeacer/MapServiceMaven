@@ -2,9 +2,9 @@ package cn.platalk.map.entity.base.impl;
 
 public class IPXPoint3D {
 
-	double x;
-	double y;
-	double z;
+	final double x;
+	final double y;
+	final double z;
 
 	public IPXPoint3D(double x, double y, double z) {
 		this.x = x;

@@ -3,20 +3,20 @@ package cn.platalk.map.entity.base;
 import cn.platalk.common.TYIJsonFeature;
 
 public interface TYIFillSymbolRecord extends TYIJsonFeature {
-	public int getUID();
+	int getUID();
 
-	public int getSymbolID();
+	int getSymbolID();
 
-	public String getFillColor();
+	String getFillColor();
 
-	public String getOutlineColor();
+	String getOutlineColor();
 
-	public double getLineWidth();
+	double getLineWidth();
 
-	public double getLevelMin();
+	double getLevelMin();
 
-	public double getLevelMax();
+	double getLevelMax();
 
-	public boolean isVisible();
+	boolean isVisible();
 
 }
