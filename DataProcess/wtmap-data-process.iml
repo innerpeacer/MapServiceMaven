@@ -25,6 +25,9 @@
           <root url="jar://$MODULE_DIR$/libs/gdal/gdal.jar!/" />
         </CLASSES>
         <JAVADOC />
+        <NATIVE>
+          <root url="file://$MODULE_DIR$/libs/gdal" />
+        </NATIVE>
         <SOURCES />
       </library>
     </orderEntry>

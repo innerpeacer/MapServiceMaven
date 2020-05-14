@@ -149,8 +149,10 @@ class IPSqliteBuildingParams {
 			if (record.getString(FIELD_BUILDING_20_CENTER) != null) {
 				String center = record.getString(FIELD_BUILDING_20_CENTER);
 				String xy[] = center.split(",");
-				building.setCenterX(Double.parseDouble(xy[0]));
-				building.setCenterY(Double.parseDouble(xy[1]));
+				if (xy.length == 2) {
+					building.setCenterX(Double.parseDouble(xy[0]));
+					building.setCenterY(Double.parseDouble(xy[1]));
+				}
 			}
 			buildingList.add(building);
 		}
