@@ -36,6 +36,7 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.30" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10" level="project" />
     <orderEntry type="module" module-name="wtmap-data-process" />
+    <orderEntry type="library" name="Maven: org.gdal:gdal:2.4.0" level="project" />
     <orderEntry type="module" module-name="Lab" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.5.1" level="project" />
     <orderEntry type="module" module-name="Pbf" />
