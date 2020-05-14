@@ -9,4 +9,5 @@ public interface TYIBeacon {
 
 	String getTag();
 
+    Long getBeaconKey();
 }
