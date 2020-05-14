@@ -58,5 +58,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>WT${project.artifactId}</finalName>
 	</build>
 </project>
