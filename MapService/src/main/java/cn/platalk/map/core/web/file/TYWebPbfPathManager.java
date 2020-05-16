@@ -6,8 +6,8 @@ import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.utils.third.TYFileUtils;
 
 public class TYWebPbfPathManager {
-	static String FILE_MAP_DATA_PBF = "%s.pbf";
-	static String FILE_POI_PBF = "%s_POI.pbf";
+	static final String FILE_MAP_DATA_PBF = "%s.pbf";
+	static final String FILE_POI_PBF = "%s_POI.pbf";
 
 	private static String rootDir = TYWebFilePathManager.BRT_MAPDATA_PBF_ROOT;
 

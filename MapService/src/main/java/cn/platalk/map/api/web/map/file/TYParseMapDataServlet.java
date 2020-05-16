@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +37,7 @@ public class TYParseMapDataServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, final HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		final String buildingID = request.getParameter("buildingID");
 		response.setContentType("text/json;charset=UTF-8");
 
@@ -79,7 +78,7 @@ public class TYParseMapDataServlet extends TYBaseHttpServlet {
 					PrintWriter out;
 					try {
 						out = response.getWriter();
-						resBuffer.append("没有任何建筑信息: " + buildingID + "\n");
+						resBuffer.append("没有任何建筑信息: ").append(buildingID).append("\n");
 						out.println(resBuffer.toString());
 						out.close();
 					} catch (IOException e) {
@@ -173,40 +172,40 @@ public class TYParseMapDataServlet extends TYBaseHttpServlet {
 					int STEP = 500;
 					int linkBatch = linkRecords.size() / STEP + 1;
 					System.out.println(linkBatch + " link batches");
-					resBuffer.append(linkBatch + " link batches").append("\n");
+					resBuffer.append(linkBatch).append(" link batches").append("\n");
 					for (int i = 0; i < linkBatch; ++i) {
 						System.out.println("[ " + i * STEP + ", " + Math.min((i + 1) * STEP, linkRecords.size()) + "]");
-						resBuffer.append("[ " + i * STEP + ", " + Math.min((i + 1) * STEP, linkRecords.size()) + "]")
+						resBuffer.append("[ ").append(i * STEP).append(", ").append(Math.min((i + 1) * STEP, linkRecords.size())).append("]")
 								.append("\n");
 						int res = routeDB.insertRouteLinkRecordsInBatch(
 								linkRecords.subList(i * STEP, Math.min((i + 1) * STEP, linkRecords.size())));
-						resBuffer.append("Insert " + res).append("\n");
+						resBuffer.append("Insert ").append(res).append("\n");
 					}
 
 					int nodeBatch = nodeRecords.size() / STEP + 1;
 					System.out.println(nodeBatch + " batches");
-					resBuffer.append(nodeBatch + " nodes batches").append("\n");
+					resBuffer.append(nodeBatch).append(" nodes batches").append("\n");
 
 					for (int i = 0; i < nodeBatch; ++i) {
 						System.out.println("[ " + i * STEP + ", " + Math.min((i + 1) * STEP, nodeRecords.size()) + "]");
-						resBuffer.append("[ " + i * STEP + ", " + Math.min((i + 1) * STEP, nodeRecords.size()) + "]")
+						resBuffer.append("[ ").append(i * STEP).append(", ").append(Math.min((i + 1) * STEP, nodeRecords.size())).append("]")
 								.append("\n");
 						int res = routeDB.insertRouteNodeRecordsInBatch(
 								nodeRecords.subList(i * STEP, Math.min((i + 1) * STEP, nodeRecords.size())));
-						resBuffer.append("Insert " + res).append("\n");
+						resBuffer.append("Insert ").append(res).append("\n");
 					}
 					routeDB.disconnectDB();
 				}
 				PrintWriter out;
 				try {
 					out = response.getWriter();
-					resBuffer.append("Success Parsing Data for BuildingID: " + buildingID).append("\n");
-					resBuffer.append(mapInfos.size() + " MapInfos").append("\n");
-					resBuffer.append(iconSymbolRecords.size() + " icons").append("\n");
-					resBuffer.append(fillSymbolRecords.size() + " fills").append("\n");
-					resBuffer.append(mapDataRecords.size() + " map records").append("\n");
-					resBuffer.append(nodeRecords.size() + " nodes").append("\n");
-					resBuffer.append(linkRecords.size() + " links").append("\n");
+					resBuffer.append("Success Parsing Data for BuildingID: ").append(buildingID).append("\n");
+					resBuffer.append(mapInfos.size()).append(" MapInfos").append("\n");
+					resBuffer.append(iconSymbolRecords.size()).append(" icons").append("\n");
+					resBuffer.append(fillSymbolRecords.size()).append(" fills").append("\n");
+					resBuffer.append(mapDataRecords.size()).append(" map records").append("\n");
+					resBuffer.append(nodeRecords.size()).append(" nodes").append("\n");
+					resBuffer.append(linkRecords.size()).append(" links").append("\n");
 					out.println(resBuffer.toString());
 					out.close();
 				} catch (IOException e) {
@@ -220,7 +219,7 @@ public class TYParseMapDataServlet extends TYBaseHttpServlet {
 				PrintWriter out;
 				try {
 					out = response.getWriter();
-					resBuffer.append("Parse Data Failed For BuildingID: " + buildingID).append("\n");
+					resBuffer.append("Parse Data Failed For BuildingID: ").append(buildingID).append("\n");
 					resBuffer.append(error.toString()).append("\n");
 					out.close();
 				} catch (IOException e) {
@@ -234,7 +233,7 @@ public class TYParseMapDataServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(request, response);
 	}
 }

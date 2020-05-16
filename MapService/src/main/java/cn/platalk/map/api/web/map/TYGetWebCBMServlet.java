@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +24,7 @@ public class TYGetWebCBMServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		String buildingID = request.getParameter("buildingID");
 
 		if (!TYParameterChecker.isValidBuildingID(buildingID)) {
@@ -44,7 +43,7 @@ public class TYGetWebCBMServlet extends TYBaseHttpServlet {
 		JSONArray buildingJsonArray = TYJsonBuilder.buildJsonArray(building);
 		JSONArray mapInfoJsonArray = TYJsonBuilder.buildMapInfoJsonArray(TYMysqlDBHelper.getMapInfos(buildingID));
 
-		Map<String, Object> result = new HashMap<String, Object>();
+		Map<String, Object> result = new HashMap<>();
 		result.put(TYWebMapFields.KEY_WEB_CITIES, cityJsonArray);
 		result.put(TYWebMapFields.KEY_WEB_BUILDINGS, buildingJsonArray);
 		result.put(TYWebMapFields.KEY_WEB_MAPINFOS, mapInfoJsonArray);
@@ -52,9 +51,8 @@ public class TYGetWebCBMServlet extends TYBaseHttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doPost(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		doGet(request, response);
 	}
 
 }

@@ -6,7 +6,7 @@ import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.utils.third.TYFileUtils;
 
 public class TYWebGeojsonPathManager {
-	static String FILE_MAP_DATA_GEOJSON = "%s.geojson";
+	static final String FILE_MAP_DATA_GEOJSON = "%s.geojson";
 
 	private static String rootDir = TYWebFilePathManager.BRT_MAPDATA_GEOJSON_ROOT;
 

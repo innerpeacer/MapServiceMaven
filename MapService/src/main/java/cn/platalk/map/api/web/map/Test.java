@@ -3,7 +3,6 @@ package cn.platalk.map.api.web.map;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,7 @@ public class Test extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		response.setContentType("text/json;charset=UTF-8");
 		// response.setIntHeader("refresh", 1);
 		final PrintWriter out = response.getWriter();
@@ -62,7 +61,7 @@ public class Test extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(req, resp);
 	}
 }

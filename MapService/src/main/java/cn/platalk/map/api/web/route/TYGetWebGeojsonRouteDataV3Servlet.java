@@ -3,7 +3,6 @@ package cn.platalk.map.api.web.route;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +23,7 @@ public class TYGetWebGeojsonRouteDataV3Servlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		System.out.println("request route geojson");
 		String buildingID = request.getParameter("buildingID");
 
@@ -43,7 +42,7 @@ public class TYGetWebGeojsonRouteDataV3Servlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(request, response);
 	}
 }

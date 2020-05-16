@@ -30,7 +30,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="wtmap-vector-tile" />
     <orderEntry type="module" module-name="wtmap-utils" />
-    <orderEntry type="module" module-name="SqlHelper" />
     <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.23.1" level="project" />
     <orderEntry type="library" name="Maven: org.sqldroid:sqldroid:1.0.3" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.30" level="project" />

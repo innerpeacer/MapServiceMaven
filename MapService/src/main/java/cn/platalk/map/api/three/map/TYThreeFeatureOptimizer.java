@@ -10,9 +10,9 @@ import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 public class TYThreeFeatureOptimizer {
 
 	public static List<TYMapDataFeatureRecord> optimize(List<TYMapDataFeatureRecord> mapdataList) {
-		Map<String, TYThreeMergeSet> mergeMap = new HashMap<String, TYThreeMergeSet>();
+		Map<String, TYThreeMergeSet> mergeMap = new HashMap<>();
 
-		List<TYMapDataFeatureRecord> resultList = new ArrayList<TYMapDataFeatureRecord>();
+		List<TYMapDataFeatureRecord> resultList = new ArrayList<>();
 		for (TYMapDataFeatureRecord record : mapdataList) {
 			if (record.layer == 4 || record.layer == 5) {
 				resultList.add(record);

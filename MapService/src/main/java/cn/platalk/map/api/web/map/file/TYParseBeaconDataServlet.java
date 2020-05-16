@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,7 +36,7 @@ public class TYParseBeaconDataServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, final HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		final String buildingID = request.getParameter("buildingID");
 		response.setContentType("text/json;charset=UTF-8");
 
@@ -79,7 +78,7 @@ public class TYParseBeaconDataServlet extends TYBaseHttpServlet {
 				PrintWriter out;
 				try {
 					out = response.getWriter();
-					resBuffer.append("Parse Beaconn Data Failed For BuildingID: " + buildingID).append("\n");
+					resBuffer.append("Parse Beacon Data Failed For BuildingID: ").append(buildingID).append("\n");
 					resBuffer.append(error.toString()).append("\n");
 					out.close();
 				} catch (IOException e) {
@@ -91,13 +90,13 @@ public class TYParseBeaconDataServlet extends TYBaseHttpServlet {
 			public void didFinishParsingBeaconDataList(List<TYILocatingBeacon> beaconList) {
 				List<TYIMapInfo> mapInfoList = new ArrayList<TYIMapInfo>(TYMysqlDBHelper.getMapInfos(buildingID));
 
-				Map<Integer, TYIMapInfo> infoMap = new HashMap<Integer, TYIMapInfo>();
+				Map<Integer, TYIMapInfo> infoMap = new HashMap<>();
 				for (TYIMapInfo info : mapInfoList) {
 					infoMap.put(info.getFloorNumber(), info);
 				}
 
 				String uuid = null;
-				Set<Integer> majorSet = new HashSet<Integer>();
+				Set<Integer> majorSet = new HashSet<>();
 				Integer anyMajor = null;
 				for (TYILocatingBeacon beacon : beaconList) {
 					uuid = beacon.getUUID();
@@ -136,9 +135,9 @@ public class TYParseBeaconDataServlet extends TYBaseHttpServlet {
 				PrintWriter out;
 				try {
 					out = response.getWriter();
-					resBuffer.append("Success Parsing Beacon Data for BuildingID: " + buildingID).append("\n");
-					resBuffer.append(beaconList.size() + " beacons").append("\n");
-					resBuffer.append("BeaconRegion: " + region.toString()).append("\n");
+					resBuffer.append("Success Parsing Beacon Data for BuildingID: ").append(buildingID).append("\n");
+					resBuffer.append(beaconList.size()).append(" beacons").append("\n");
+					resBuffer.append("BeaconRegion: ").append(region.toString()).append("\n");
 					out.println(resBuffer.toString());
 					out.close();
 				} catch (IOException e) {
@@ -151,7 +150,7 @@ public class TYParseBeaconDataServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(request, response);
 	}
 }

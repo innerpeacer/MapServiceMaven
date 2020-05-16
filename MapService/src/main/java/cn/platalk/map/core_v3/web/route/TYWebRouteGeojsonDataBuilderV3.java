@@ -22,7 +22,7 @@ public class TYWebRouteGeojsonDataBuilderV3 {
 	public static JSONObject generateRouteDataObject(List<TYIRouteLinkRecordV3> links, List<TYIRouteNodeRecordV3> nodes)
 			throws JSONException {
 		JSONObject jsonObject = new JSONObject();
-		Set<Integer> floorSet = new HashSet<Integer>();
+		Set<Integer> floorSet = new HashSet<>();
 		for (TYIRouteLinkRecordV3 r : links) {
 			floorSet.add(r.getFloor());
 		}
@@ -30,8 +30,8 @@ public class TYWebRouteGeojsonDataBuilderV3 {
 			floorSet.add(r.getFloor());
 		}
 
-		Map<Integer, List<TYIRouteLinkRecordV3>> linkListMap = new HashMap<Integer, List<TYIRouteLinkRecordV3>>();
-		Map<Integer, List<TYIRouteNodeRecordV3>> nodeListMap = new HashMap<Integer, List<TYIRouteNodeRecordV3>>();
+		Map<Integer, List<TYIRouteLinkRecordV3>> linkListMap = new HashMap<>();
+		Map<Integer, List<TYIRouteNodeRecordV3>> nodeListMap = new HashMap<>();
 
 		for (int floor : floorSet) {
 			linkListMap.put(floor, new ArrayList<TYIRouteLinkRecordV3>());

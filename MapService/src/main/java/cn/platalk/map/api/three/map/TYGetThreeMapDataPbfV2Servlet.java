@@ -5,7 +5,6 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +27,7 @@ public class TYGetThreeMapDataPbfV2Servlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		System.out.println("request three mapdata");
 		String buildingID = request.getParameter("buildingID");
 
@@ -45,7 +44,7 @@ public class TYGetThreeMapDataPbfV2Servlet extends TYBaseHttpServlet {
 
 		List<TYMapDataFeatureRecord> mapDataRecordList = TYMysqlDBHelper.getMapDataRecords(buildingID);
 		List<TYMapDataFeatureRecord> optimizedList = TYThreeFeatureOptimizer.optimize(mapDataRecordList);
-		List<TYMapDataFeatureRecord> simplifiedList = new ArrayList<TYMapDataFeatureRecord>();
+		List<TYMapDataFeatureRecord> simplifiedList = new ArrayList<>();
 		for (TYMapDataFeatureRecord record : optimizedList) {
 			Geometry g = record.getGeometryData();
 			Geometry sg = TopologyPreservingSimplifier.simplify(g, 0);
@@ -63,7 +62,7 @@ public class TYGetThreeMapDataPbfV2Servlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(request, response);
 	}
 }

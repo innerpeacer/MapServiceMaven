@@ -1,6 +1,5 @@
 package cn.platalk.map.core.web.file;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -28,9 +27,9 @@ import cn.platalk.mysql.map.TYSymbolDBAdapter;
 import cn.platalk.utils.third.TYFileUtils;
 
 public class TYWebGeneratingMapFileTask {
-	TYBuilding targetBuilding;
+	final TYBuilding targetBuilding;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		String cityID = "0755";
 		String buildingID = "07550023";
 
@@ -73,8 +72,7 @@ public class TYWebGeneratingMapFileTask {
 
 		JSONArray mapInfoJsonArray = new JSONArray();
 		try {
-			for (int i = 0; i < mapInfoList.size(); ++i) {
-				TYMapInfo mapInfo = mapInfoList.get(i);
+			for (TYMapInfo mapInfo : mapInfoList) {
 				JSONObject mapInfoObject = mapInfo.toJson();
 				mapInfoJsonArray.put(mapInfoObject);
 			}
@@ -102,12 +100,12 @@ public class TYWebGeneratingMapFileTask {
 		System.out.println("generatePoiPbf");
 
 		String buildingID = targetBuilding.getBuildingID();
-		TYMapDataDBAdapter mapdb = new TYMapDataDBAdapter(buildingID);
-		mapdb.connectDB();
-		List<TYMapDataFeatureRecord> mapDataRecordList = mapdb.getAllMapDataRecords();
-		mapdb.disconnectDB();
+		TYMapDataDBAdapter mapDB = new TYMapDataDBAdapter(buildingID);
+		mapDB.connectDB();
+		List<TYMapDataFeatureRecord> mapDataRecordList = mapDB.getAllMapDataRecords();
+		mapDB.disconnectDB();
 
-		System.out.println(mapDataRecordList.size() + " pois");
+		System.out.println(mapDataRecordList.size() + " poi");
 
 		TYPoiPbf.PoiCollectionPbf collectionPbf = TYPoiPbfBuilder.generatePoiCollectionObject(mapDataRecordList);
 		String pbfPath = TYWebPbfPathManager.getPoiPbfPath(targetBuilding.getCityID(), targetBuilding.getBuildingID());
@@ -117,8 +115,6 @@ public class TYWebGeneratingMapFileTask {
 			output = new FileOutputStream(pbfPath);
 			collectionPbf.writeTo(output);
 
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -146,18 +142,18 @@ public class TYWebGeneratingMapFileTask {
 			String cityID = targetBuilding.getCityID();
 			String buildingID = targetBuilding.getBuildingID();
 			String mapID = info.getMapID();
-			TYIndoorDataPbf dataPbf = null;
+			TYIndoorDataPbf dataPbf;
 
-			TYMapDataDBAdapter mapdb = new TYMapDataDBAdapter(buildingID);
-			mapdb.connectDB();
-			List<TYMapDataFeatureRecord> mapDataRecordList = mapdb.getAllMapDataRecords(mapID);
-			mapdb.disconnectDB();
+			TYMapDataDBAdapter mapDB = new TYMapDataDBAdapter(buildingID);
+			mapDB.connectDB();
+			List<TYMapDataFeatureRecord> mapDataRecordList = mapDB.getAllMapDataRecords(mapID);
+			mapDB.disconnectDB();
 
-			TYSymbolDBAdapter symboldb = new TYSymbolDBAdapter();
-			symboldb.connectDB();
-			List<TYFillSymbolRecord> fillSymbolList = symboldb.getFillSymbolRecords(buildingID);
-			List<TYIconSymbolRecord> iconSymbolList = symboldb.getIconSymbolRecords(buildingID);
-			symboldb.disconnectDB();
+			TYSymbolDBAdapter symbolDB = new TYSymbolDBAdapter();
+			symbolDB.connectDB();
+			List<TYFillSymbolRecord> fillSymbolList = symbolDB.getFillSymbolRecords(buildingID);
+			List<TYIconSymbolRecord> iconSymbolList = symbolDB.getIconSymbolRecords(buildingID);
+			symbolDB.disconnectDB();
 			dataPbf = TYIndoorDataPbfBuilder.generateMapDataObject(mapID, mapDataRecordList, fillSymbolList,
 					iconSymbolList);
 
@@ -168,8 +164,6 @@ public class TYWebGeneratingMapFileTask {
 				output = new FileOutputStream(pbfPath);
 				dataPbf.writeTo(output);
 
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			} finally {
@@ -198,18 +192,18 @@ public class TYWebGeneratingMapFileTask {
 			String buildingID = targetBuilding.getBuildingID();
 			String mapID = info.getMapID();
 
-			TYMapDataDBAdapter mapdb = new TYMapDataDBAdapter(buildingID);
-			mapdb.connectDB();
-			List<TYMapDataFeatureRecord> mapDataRecordList = mapdb.getAllMapDataRecords(mapID);
-			mapdb.disconnectDB();
+			TYMapDataDBAdapter mapDB = new TYMapDataDBAdapter(buildingID);
+			mapDB.connectDB();
+			List<TYMapDataFeatureRecord> mapDataRecordList = mapDB.getAllMapDataRecords(mapID);
+			mapDB.disconnectDB();
 
-			TYSymbolDBAdapter symboldb = new TYSymbolDBAdapter();
-			symboldb.connectDB();
-			List<TYFillSymbolRecord> fillSymbolList = symboldb.getFillSymbolRecords(buildingID);
-			List<TYIconSymbolRecord> iconSymbolList = symboldb.getIconSymbolRecords(buildingID);
-			symboldb.disconnectDB();
+			TYSymbolDBAdapter symbolDB = new TYSymbolDBAdapter();
+			symbolDB.connectDB();
+			List<TYFillSymbolRecord> fillSymbolList = symbolDB.getFillSymbolRecords(buildingID);
+			List<TYIconSymbolRecord> iconSymbolList = symbolDB.getIconSymbolRecords(buildingID);
+			symbolDB.disconnectDB();
 
-			JSONObject mapDataObject = null;
+			JSONObject mapDataObject;
 			try {
 				mapDataObject = TYWebMapGeojsonDataBuilder.generateMapDataObject(mapDataRecordList, fillSymbolList,
 						iconSymbolList);

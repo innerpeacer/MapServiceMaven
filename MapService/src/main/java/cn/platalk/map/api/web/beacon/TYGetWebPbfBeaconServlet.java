@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +25,7 @@ public class TYGetWebPbfBeaconServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		System.out.println("request beacon pbf");
 		String buildingID = request.getParameter("buildingID");
 		response.setContentType("text/plain;charset=UTF-8");
@@ -36,7 +35,7 @@ public class TYGetWebPbfBeaconServlet extends TYBaseHttpServlet {
 			return;
 		}
 
-		TYLocatingBeaconListPbf beaconListPbf = null;
+		TYLocatingBeaconListPbf beaconListPbf;
 		if (TYServerEnvironment.isWindows() || TYServerEnvironment.isLinux()) {
 			if (TYCachingPool.existDataID(buildingID, TYCachingType.BeaconDataPbf)) {
 				beaconListPbf = (TYLocatingBeaconListPbf) TYCachingPool.getCachingData(buildingID,
@@ -59,7 +58,7 @@ public class TYGetWebPbfBeaconServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(request, response);
 	}
 }

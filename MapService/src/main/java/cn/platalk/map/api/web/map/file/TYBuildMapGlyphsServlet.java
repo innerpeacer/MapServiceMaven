@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +27,7 @@ public class TYBuildMapGlyphsServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		String buildingID = request.getParameter("buildingID");
 		String fontName = request.getParameter("fontName");
 		String fontType = request.getParameter("fontType");
@@ -56,7 +55,7 @@ public class TYBuildMapGlyphsServlet extends TYBaseHttpServlet {
 				TYMysqlDBHelper.getMapDataRecords(buildingID));
 
 		final StringBuffer result = new StringBuffer();
-		final Map<String, Boolean> status = new HashMap<String, Boolean>();
+		final Map<String, Boolean> status = new HashMap<>();
 
 		TYFontSettings.setScriptPath(TYMapEnvironment.GetNodePath(), // node路径，最好用全称，用which
 																		// node的路径就行
@@ -98,7 +97,7 @@ public class TYBuildMapGlyphsServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(request, response);
 	}
 }

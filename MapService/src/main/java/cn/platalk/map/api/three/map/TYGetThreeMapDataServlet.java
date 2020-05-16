@@ -3,7 +3,6 @@ package cn.platalk.map.api.three.map;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +22,7 @@ public class TYGetThreeMapDataServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		System.out.println("request three mapdata");
 		String buildingID = request.getParameter("buildingID");
 
@@ -38,7 +37,7 @@ public class TYGetThreeMapDataServlet extends TYBaseHttpServlet {
 			return;
 		}
 
-		JSONObject threeMapDataObject = null;
+		JSONObject threeMapDataObject;
 
 		List<TYMapDataFeatureRecord> mapDataRecordList = TYMysqlDBHelper.getMapDataRecords(buildingID);
 		TYThreeMapDataBuilder builder = new TYThreeMapDataBuilder(building);
@@ -50,7 +49,7 @@ public class TYGetThreeMapDataServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(request, response);
 	}
 }

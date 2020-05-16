@@ -17,7 +17,7 @@ import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYThreeShapeBuilder {
-	public static JSONObject emptyShape;
+	public static final JSONObject emptyShape;
 
 	public static final String SHAPE_KEY_GEOMETRY = "geometry";
 	public static final String SHAPE_KEY_GEOMETRY_TYPE = "type";
@@ -51,9 +51,9 @@ public class TYThreeShapeBuilder {
 
 	public JSONObject buildShape(TYMapDataFeatureRecord record) {
 		JSONObject json = new JSONObject();
-		json.put(SHAPE_KEY_GEOMETRY, buildGeomtery(record.getGeometryData()));
+		json.put(SHAPE_KEY_GEOMETRY, buildGeometry(record.getGeometryData()));
 
-		Map<String, Object> propMap = new HashMap<String, Object>();
+		Map<String, Object> propMap = new HashMap<>();
 		propMap.put("floor", record.getFloorNumber());
 		propMap.put("layer", record.getLayer());
 		propMap.put("base", record.getExtrusionBase());
@@ -73,19 +73,23 @@ public class TYThreeShapeBuilder {
 		return propertiesObject;
 	}
 
-	JSONObject buildGeomtery(Geometry geometry) {
+	JSONObject buildGeometry(Geometry geometry) {
 		JSONObject geometryObject = new JSONObject();
-		if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_POINT)) {
-		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_POINT)) {
-		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_LINESTRING)) {
-		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_LINEARRING)) {
-		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_LINESTRING)) {
-		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_POLYGON)) {
-			geometryObject.put(SHAPE_KEY_COORDINATES, buildPolygonShape((Polygon) geometry));
-			geometryObject.put(SHAPE_KEY_GEOMETRY_TYPE, "Polygon");
-		} else if (geometry.getGeometryType().equals(TYGdalFields.VALUE_GEOMETRY_TYPE_MULTIPOLYGON)) {
-			geometryObject.put(SHAPE_KEY_COORDINATES, buildMultiPolygonShape((MultiPolygon) geometry));
-			geometryObject.put(SHAPE_KEY_GEOMETRY_TYPE, "MultiPolygon");
+		switch (geometry.getGeometryType()) {
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_POINT:
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_LINESTRING:
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_LINEARRING:
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_LINESTRING:
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_MULTI_POINT:
+				break;
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_POLYGON:
+				geometryObject.put(SHAPE_KEY_COORDINATES, buildPolygonShape((Polygon) geometry));
+				geometryObject.put(SHAPE_KEY_GEOMETRY_TYPE, "Polygon");
+				break;
+			case TYGdalFields.VALUE_GEOMETRY_TYPE_MULTIPOLYGON:
+				geometryObject.put(SHAPE_KEY_COORDINATES, buildMultiPolygonShape((MultiPolygon) geometry));
+				geometryObject.put(SHAPE_KEY_GEOMETRY_TYPE, "MultiPolygon");
+				break;
 		}
 		return geometryObject;
 	}

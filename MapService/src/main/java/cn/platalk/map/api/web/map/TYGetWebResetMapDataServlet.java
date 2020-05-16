@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +21,7 @@ public class TYGetWebResetMapDataServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		String buildingID = request.getParameter("buildingID");
 
 		if (!TYParameterChecker.isValidBuildingID(buildingID)) {
@@ -39,15 +38,14 @@ public class TYGetWebResetMapDataServlet extends TYBaseHttpServlet {
 		TYCachingPool.resetDataByBuildingID(buildingID, TYCachingType.IndoorDataPbf);
 		TYCachingPool.resetDataByBuildingID(buildingID, TYCachingType.IndoorDataGeojson);
 
-		Map<String, Object> result = new HashMap<String, Object>();
+		Map<String, Object> result = new HashMap<>();
 		result.put(RESPONSE_JSON_KEY_DESCRIPTION, "Reset " + buildingID);
 		respondResult(request, response, result);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doPost(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		doGet(request, response);
 	}
 
 }

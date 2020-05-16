@@ -5,7 +5,7 @@ import java.io.File;
 import cn.platalk.map.res.TYIResourceManager;
 
 public class TYMapEnvironment {
-	static TYIResourceManager resourceManager = TYServerEnvironment.resourceManager;
+	static final TYIResourceManager resourceManager = TYServerEnvironment.resourceManager;
 
 	public static String GetFontDir() {
 		return resourceManager.getFontDir();
@@ -55,7 +55,7 @@ public class TYMapEnvironment {
 	// "/Users/innerpeacer/BrtMapProject/BrtMapRawData";
 
 	// private static final String RAW_DATA_ROOT_REMOTE = "D:/BrtMapRawData";
-	public static String BRT_RESOURCE_ROOT = "/Users/innerpeacer/Dev/apache-tomcat-7.0.59/webapps/BrtMapResource";
+	public static final String BRT_RESOURCE_ROOT = "/Users/innerpeacer/Dev/apache-tomcat-7.0.59/webapps/BrtMapResource";
 
 	public static String GetVectorTileRoot() {
 		return resourceManager.getVectorTileRoot();

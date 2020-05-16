@@ -10,7 +10,7 @@ import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYThreeMapDataBuilder {
-	private TYThreeShapeBuilder shapeBuilder;
+	private final TYThreeShapeBuilder shapeBuilder;
 
 	public static final String KEY_THREE_MAP_DATA_FLOOR = "floor";
 	public static final String KEY_THREE_MAP_DATA_ROOM = "room";
@@ -23,9 +23,9 @@ public class TYThreeMapDataBuilder {
 	}
 
 	public JSONObject generateThreeMapDataObject(List<TYMapDataFeatureRecord> dataList) {
-		List<TYMapDataFeatureRecord> floorList = new ArrayList<TYMapDataFeatureRecord>();
-		List<TYMapDataFeatureRecord> roomList = new ArrayList<TYMapDataFeatureRecord>();
-		List<TYMapDataFeatureRecord> assetList = new ArrayList<TYMapDataFeatureRecord>();
+		List<TYMapDataFeatureRecord> floorList = new ArrayList<>();
+		List<TYMapDataFeatureRecord> roomList = new ArrayList<>();
+		List<TYMapDataFeatureRecord> assetList = new ArrayList<>();
 		// List<TYMapDataFeatureRecord> facilityList = new
 		// ArrayList<TYMapDataFeatureRecord>();
 		// List<TYMapDataFeatureRecord> labelList = new
@@ -39,11 +39,12 @@ public class TYThreeMapDataBuilder {
 				roomList.add(record);
 			} else if (record.layer == TYMapDataFeatureRecord.LAYER_ASSET) {
 				assetList.add(record);
-			} else if (record.layer == TYMapDataFeatureRecord.LAYER_FACILITY) {
-				// facilityList.add(record);
-			} else if (record.layer == TYMapDataFeatureRecord.LAYER_LABEL) {
-				// labelList.add(record);
 			}
+//			else if (record.layer == TYMapDataFeatureRecord.LAYER_FACILITY) {
+//				 facilityList.add(record);
+//			} else if (record.layer == TYMapDataFeatureRecord.LAYER_LABEL) {
+//				 labelList.add(record);
+//			}
 		}
 
 		JSONObject jsonObject = new JSONObject();

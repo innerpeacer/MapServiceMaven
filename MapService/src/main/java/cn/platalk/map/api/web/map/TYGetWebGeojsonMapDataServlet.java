@@ -3,7 +3,6 @@ package cn.platalk.map.api.web.map;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +27,7 @@ public class TYGetWebGeojsonMapDataServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		System.out.println("request mapdata geojson");
 		String buildingID = request.getParameter("buildingID");
 		String mapID = request.getParameter("mapID");
@@ -38,7 +37,7 @@ public class TYGetWebGeojsonMapDataServlet extends TYBaseHttpServlet {
 			return;
 		}
 
-		JSONObject mapDataObject = null;
+		JSONObject mapDataObject;
 		if (TYServerEnvironment.isWindows() || TYServerEnvironment.isLinux()) {
 			if (TYCachingPool.existDataID(mapID, TYCachingType.IndoorDataGeojson)) {
 				mapDataObject = (JSONObject) TYCachingPool.getCachingData(mapID, TYCachingType.IndoorDataGeojson);
@@ -67,7 +66,7 @@ public class TYGetWebGeojsonMapDataServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(request, response);
 	}
 }

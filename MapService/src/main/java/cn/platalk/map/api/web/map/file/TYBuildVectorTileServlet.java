@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +34,7 @@ public class TYBuildVectorTileServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		String buildingID = request.getParameter("buildingID");
 		String cbmOnly = request.getParameter("cbmOnly");
 		response.setContentType("text/json;charset=UTF-8");
@@ -96,9 +95,9 @@ public class TYBuildVectorTileServlet extends TYBaseHttpServlet {
 
 	private List<TYIFillSymbolRecord> filterFillRecords(List<TYIMapDataFeatureRecord> mapRecords,
 			List<TYIFillSymbolRecord> fillRecords) {
-		List<TYIFillSymbolRecord> resultList = new ArrayList<TYIFillSymbolRecord>();
+		List<TYIFillSymbolRecord> resultList = new ArrayList<>();
 
-		Set<Integer> tempSet = new HashSet<Integer>();
+		Set<Integer> tempSet = new HashSet<>();
 		for (TYIMapDataFeatureRecord mapRecord : mapRecords) {
 			if (mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_FLOOR
 					|| mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_ROOM
@@ -117,9 +116,9 @@ public class TYBuildVectorTileServlet extends TYBaseHttpServlet {
 
 	private List<TYIIconTextSymbolRecord> filterIconTextRecords(List<TYIMapDataFeatureRecord> mapRecords,
 			List<TYIIconTextSymbolRecord> iconTextRecords) {
-		List<TYIIconTextSymbolRecord> resultList = new ArrayList<TYIIconTextSymbolRecord>();
+		List<TYIIconTextSymbolRecord> resultList = new ArrayList<>();
 
-		Set<Integer> tempSet = new HashSet<Integer>();
+		Set<Integer> tempSet = new HashSet<>();
 		for (TYIMapDataFeatureRecord mapRecord : mapRecords) {
 			if (mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_FACILITY
 					|| mapRecord.getLayer() == TYIMapDataFeatureRecord.LAYER_LABEL) {
@@ -137,7 +136,7 @@ public class TYBuildVectorTileServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(request, response);
 	}
 }

@@ -17,11 +17,11 @@ public class TYWebMapObjectBuilder {
 			throws JSONException {
 		JSONObject symbolObject = new JSONObject();
 
-		Map<Integer, TYFillSymbolRecord> fillDict = new HashMap<Integer, TYFillSymbolRecord>();
+		Map<Integer, TYFillSymbolRecord> fillDict = new HashMap<>();
 		for (TYFillSymbolRecord record : fillList) {
 			fillDict.put(record.symbolID, record);
 		}
-		Map<Integer, TYIconSymbolRecord> iconDict = new HashMap<Integer, TYIconSymbolRecord>();
+		Map<Integer, TYIconSymbolRecord> iconDict = new HashMap<>();
 		for (TYIconSymbolRecord record : iconList) {
 			iconDict.put(record.symbolID, record);
 		}

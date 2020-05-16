@@ -8,16 +8,16 @@ import com.vividsolutions.jts.geom.Geometry;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYThreeMergeSet {
-	public int floor;
-	public int layer;
-	public int symbolID;
-	public double extrusionHeight;
+	public final int floor;
+	public final int layer;
+	public final int symbolID;
+	public final double extrusionHeight;
 
 	public TYMapDataFeatureRecord templateRecord;
 
-	private String key = "";
+	private final String key;
 
-	public List<Geometry> geometryList = new ArrayList<Geometry>();
+	public final List<Geometry> geometryList = new ArrayList<>();
 
 	public TYThreeMergeSet(int floor, int layer, int symbolID, double height) {
 		this.floor = floor;

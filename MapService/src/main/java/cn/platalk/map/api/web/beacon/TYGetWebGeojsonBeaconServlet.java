@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +25,7 @@ public class TYGetWebGeojsonBeaconServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		System.out.println("request beacon geojson");
 		String buildingID = request.getParameter("buildingID");
 
@@ -35,7 +34,7 @@ public class TYGetWebGeojsonBeaconServlet extends TYBaseHttpServlet {
 			return;
 		}
 
-		JSONObject beaconDataObject = null;
+		JSONObject beaconDataObject;
 		if (TYServerEnvironment.isWindows() || TYServerEnvironment.isLinux()) {
 			if (TYCachingPool.existDataID(buildingID, TYCachingType.BeaconDataGeojson)) {
 				beaconDataObject = (JSONObject) TYCachingPool.getCachingData(buildingID,
@@ -59,7 +58,7 @@ public class TYGetWebGeojsonBeaconServlet extends TYBaseHttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(request, response);
 	}
 }

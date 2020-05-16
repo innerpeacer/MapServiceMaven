@@ -25,21 +25,21 @@ public class TYWebMapGeojsonDataBuilder {
 
 	public static JSONObject generateMapDataObject(List<TYMapDataFeatureRecord> dataList,
 			List<TYFillSymbolRecord> fillSymbolList, List<TYIconSymbolRecord> iconSymbolList) throws JSONException {
-		Map<Integer, TYFillSymbolRecord> fillSymbolMap = new HashMap<Integer, TYFillSymbolRecord>();
+		Map<Integer, TYFillSymbolRecord> fillSymbolMap = new HashMap<>();
 		for (TYFillSymbolRecord symbol : fillSymbolList) {
 			fillSymbolMap.put(symbol.symbolID, symbol);
 		}
 
-		Map<Integer, TYIconSymbolRecord> iconSymbolMap = new HashMap<Integer, TYIconSymbolRecord>();
+		Map<Integer, TYIconSymbolRecord> iconSymbolMap = new HashMap<>();
 		for (TYIconSymbolRecord symbol : iconSymbolList) {
 			iconSymbolMap.put(symbol.symbolID, symbol);
 		}
 
-		List<TYMapDataFeatureRecord> floorList = new ArrayList<TYMapDataFeatureRecord>();
-		List<TYMapDataFeatureRecord> roomList = new ArrayList<TYMapDataFeatureRecord>();
-		List<TYMapDataFeatureRecord> assetList = new ArrayList<TYMapDataFeatureRecord>();
-		List<TYMapDataFeatureRecord> facilityList = new ArrayList<TYMapDataFeatureRecord>();
-		List<TYMapDataFeatureRecord> labelList = new ArrayList<TYMapDataFeatureRecord>();
+		List<TYMapDataFeatureRecord> floorList = new ArrayList<>();
+		List<TYMapDataFeatureRecord> roomList = new ArrayList<>();
+		List<TYMapDataFeatureRecord> assetList = new ArrayList<>();
+		List<TYMapDataFeatureRecord> facilityList = new ArrayList<>();
+		List<TYMapDataFeatureRecord> labelList = new ArrayList<>();
 		// List<TYMapDataFeatureRecord> extrusionList = new
 		// ArrayList<TYMapDataFeatureRecord>();
 

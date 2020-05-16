@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +25,7 @@ public class TYUploadHandleServlet extends HttpServlet {
 	private static final long serialVersionUID = -5378881543564352448L;
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		response.setContentType("text/json;charset=UTF-8");
 		PrintWriter outWriter = response.getWriter();
 
@@ -84,13 +83,12 @@ public class TYUploadHandleServlet extends HttpServlet {
 
 					InputStream in = item.getInputStream();
 					String saveFilename = filename;
-					String realSavePath = savePath;
 
 					FileOutputStream out = new FileOutputStream(String.format(
-							"%s%s%s", realSavePath, File.separator,
+							"%s%s%s", savePath, File.separator,
 							saveFilename));
-					byte buffer[] = new byte[1024];
-					int len = 0;
+					byte[] buffer = new byte[1024];
+					int len;
 					while ((len = in.read(buffer)) > 0) {
 						out.write(buffer, 0, len);
 					}
@@ -121,7 +119,7 @@ public class TYUploadHandleServlet extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(request, response);
 	}
 }
