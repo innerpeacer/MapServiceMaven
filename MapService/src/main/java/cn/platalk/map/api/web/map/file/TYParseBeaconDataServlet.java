@@ -104,6 +104,7 @@ public class TYParseBeaconDataServlet extends TYBaseHttpServlet {
 					anyMajor = beacon.getMajor();
 					majorSet.add(beacon.getMajor());
 					TYIMapInfo info = infoMap.get(beacon.getLocation().getFloor());
+					if (info == null) continue;
 					TYLocatingBeacon b = (TYLocatingBeacon) beacon;
 					b.setBuildingID(info.getBuildingID());
 					b.setMapID(info.getMapID());
