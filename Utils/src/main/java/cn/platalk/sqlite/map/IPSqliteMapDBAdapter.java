@@ -75,7 +75,7 @@ public class IPSqliteMapDBAdapter {
 	public TYCity getCity(String cityID) {
 		List<TYCity> cities = IPSqliteCityParams.CityListFromRecords(
 				db.readData(cityTable, cityTable.getField(IPSqliteCityParams.FIELD_CITY_1_ID), cityID));
-		if (cities != null && cities.size() > 0) {
+		if (cities.size() > 0) {
 			return cities.get(0);
 		}
 		return null;
@@ -142,7 +142,7 @@ public class IPSqliteMapDBAdapter {
 	public TYBuilding getBuilding(String buildingID) {
 		List<TYBuilding> buildings = IPSqliteBuildingParams.BuildingListFromRecords(db.readData(buildingTable,
 				buildingTable.getField(IPSqliteBuildingParams.FIELD_BUILDING_2_ID), buildingID));
-		if (buildings != null && buildings.size() > 0) {
+		if (buildings.size() > 0) {
 			return buildings.get(0);
 		}
 		return null;

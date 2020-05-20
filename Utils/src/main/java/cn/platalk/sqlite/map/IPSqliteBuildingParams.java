@@ -43,7 +43,7 @@ class IPSqliteBuildingParams {
 
 	public static List<IPSqlField> GetBuildingFieldList() {
 		if (buildingFieldList == null) {
-			buildingFieldList = new ArrayList<IPSqlField>();
+			buildingFieldList = new ArrayList<>();
 			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_1_CITY_ID,
 					IPSqlFieldType.FieldTypeFromClass(String.class.getName()), false));
 			buildingFieldList.add(new IPSqlField(FIELD_BUILDING_2_ID,
@@ -92,14 +92,14 @@ class IPSqliteBuildingParams {
 	}
 
 	private static String doubleArrayToString(double[] coord) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < 6; i++) {
 			if (i != 0) {
-				buffer.append(",");
+				builder.append(",");
 			}
-			buffer.append(coord[i]);
+			builder.append(coord[i]);
 		}
-		return buffer.toString();
+		return builder.toString();
 	}
 
 	private static double[] stringToDoubleArray(String str) {
@@ -112,7 +112,7 @@ class IPSqliteBuildingParams {
 	}
 
 	public static List<TYBuilding> BuildingListFromRecords(List<IPSqlRecord> records) {
-		List<TYBuilding> buildingList = new ArrayList<TYBuilding>();
+		List<TYBuilding> buildingList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYBuilding building = new TYBuilding();
 			building.setCityID(record.getString(FIELD_BUILDING_1_CITY_ID));
@@ -160,7 +160,7 @@ class IPSqliteBuildingParams {
 	}
 
 	public static Map<String, Object> DataMapFromBuilding(TYBuilding building) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_BUILDING_1_CITY_ID, building.getCityID());
 		data.put(FIELD_BUILDING_2_ID, building.getBuildingID());
 		data.put(FIELD_BUILDING_3_NAME, building.getName());

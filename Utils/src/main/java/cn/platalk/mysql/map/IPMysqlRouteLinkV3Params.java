@@ -32,7 +32,7 @@ public class IPMysqlRouteLinkV3Params {
 	static final String FIELD_ROUTE_LINK_15_ALLOW_SNAP = "ALLOW_SNAP";
 	static final String FIELD_ROUTE_LINK_16_LINK_TYPE = "LINK_TYPE";
 
-	private static final List<IPSqlField> routeLinkFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> routeLinkFieldList = new ArrayList<>();
 	static {
 		routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_1_LINK_ID,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
@@ -80,7 +80,7 @@ public class IPMysqlRouteLinkV3Params {
 	}
 
 	public static List<TYRouteLinkRecordV3> RouteLinkListFromRecords(List<IPSqlRecord> records) {
-		List<TYRouteLinkRecordV3> linkList = new ArrayList<TYRouteLinkRecordV3>();
+		List<TYRouteLinkRecordV3> linkList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYRouteLinkRecordV3 link = new TYRouteLinkRecordV3();
 			link.setLinkID(record.getString(FIELD_ROUTE_LINK_1_LINK_ID));
@@ -104,7 +104,7 @@ public class IPMysqlRouteLinkV3Params {
 	}
 
 	public static Map<String, Object> DataMapFromRouteLinkRecord(TYIRouteLinkRecordV3 record) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_ROUTE_LINK_1_LINK_ID, record.getLinkID());
 		data.put(FIELD_ROUTE_LINK_2_GEOMETRY, record.getGeometryData());
 		data.put(FIELD_ROUTE_LINK_3_LENGTH, record.getLength());

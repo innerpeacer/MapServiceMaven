@@ -23,11 +23,7 @@ public class TYRouteDBAdapter {
 		routeNodeTable = IPMysqlRouteNodeParams.CreateTable(buildingID);
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 	}
@@ -86,7 +82,7 @@ public class TYRouteDBAdapter {
 	}
 
 	public int insertRouteLinkRecordsInBatch(List<TYRouteLinkRecord> recordList) {
-		List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> dataList = new ArrayList<>();
 		for (TYRouteLinkRecord record : recordList) {
 			dataList.add(IPMysqlRouteLinkParams.DataMapFromRouteLinkRecord(record));
 		}
@@ -94,7 +90,7 @@ public class TYRouteDBAdapter {
 	}
 
 	public int insertRouteNodeRecordsInBatch(List<TYRouteNodeRecord> recordList) {
-		List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> dataList = new ArrayList<>();
 		for (TYRouteNodeRecord record : recordList) {
 			dataList.add(IPMysqlRouteNodeParams.DataMapFromRouteNodeRecord(record));
 		}

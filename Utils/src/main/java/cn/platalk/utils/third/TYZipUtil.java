@@ -50,10 +50,10 @@ public class TYZipUtil {
 			zos.closeEntry();
 		} else {
 			File[] childFileList = file.listFiles();
-			for (int n = 0; n < childFileList.length; n++) {
-				childFileList[n].getAbsolutePath().indexOf(
+			for (File value : childFileList) {
+				value.getAbsolutePath().indexOf(
 						file.getAbsolutePath());
-				zip(srcRootDir, childFileList[n], zos);
+				zip(srcRootDir, value, zos);
 			}
 		}
 	}
@@ -65,12 +65,12 @@ public class TYZipUtil {
 			System.out.println("Parameter is null");
 			throw new Exception("Parameter is null");
 		}
-		CheckedOutputStream cos = null;
+		CheckedOutputStream cos;
 		ZipOutputStream zos = null;
 		try {
 			File srcFile = new File(srcPath);
 
-			if (srcFile.isDirectory() && zipPath.indexOf(srcPath) != -1) {
+			if (srcFile.isDirectory() && zipPath.contains(srcPath)) {
 				throw new Exception(
 						"zipPath must not be the child directory of srcPath.");
 			}
@@ -101,8 +101,6 @@ public class TYZipUtil {
 			}
 			zip(srcRootDir, srcFile, zos);
 			zos.flush();
-		} catch (Exception e) {
-			throw e;
 		} finally {
 			try {
 				if (zos != null) {
@@ -129,13 +127,13 @@ public class TYZipUtil {
 			unzipFileDir.mkdirs();
 		}
 
-		ZipEntry entry = null;
-		String entryFilePath = null, entryDirPath = null;
-		File entryFile = null, entryDir = null;
-		int index = 0, count = 0, bufferSize = 1024;
+		ZipEntry entry;
+		String entryFilePath, entryDirPath;
+		File entryFile, entryDir;
+		int index, count, bufferSize = 1024;
 		byte[] buffer = new byte[bufferSize];
-		BufferedInputStream bis = null;
-		BufferedOutputStream bos = null;
+		BufferedInputStream bis;
+		BufferedOutputStream bos;
 		ZipFile zip = new ZipFile(zipFile);
 		Enumeration<ZipEntry> entries = (Enumeration<ZipEntry>) zip.entries();
 		while (entries.hasMoreElements()) {

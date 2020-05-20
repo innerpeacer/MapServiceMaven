@@ -1,10 +1,12 @@
 package cn.platalk.utils.third;
 
+import java.util.Objects;
+
 public class TYObjectUtils {
 
 	public static boolean isEquals(Object actual, Object expected) {
 		return actual == expected
-				|| (actual == null ? expected == null : actual.equals(expected));
+				|| (Objects.equals(actual, expected));
 	}
 
 	public static Long[] transformLongArray(long[] source) {

@@ -39,7 +39,7 @@ public class IPMysqlIconTextSymbolParams {
 	static final String FIELD_MAP_SYMBOL_ICON_TEXT_19_UID = "UID";
 	static final String FIELD_MAP_SYMBOL_ICON_TEXT_20_PRIORITY = "PRIORITY";
 
-	private static final List<IPSqlField> iconTextSymbolFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> iconTextSymbolFieldList = new ArrayList<>();
 
 	static {
 		iconTextSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_TEXT_100_BUILDING_ID,
@@ -100,7 +100,7 @@ public class IPMysqlIconTextSymbolParams {
 	}
 
 	public static List<TYIconTextSymbolRecord> IconTextSymbolListFromRecords(List<IPSqlRecord> records) {
-		List<TYIconTextSymbolRecord> iconTextList = new ArrayList<TYIconTextSymbolRecord>();
+		List<TYIconTextSymbolRecord> iconTextList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYIconTextSymbolRecord iconText = new TYIconTextSymbolRecord();
 			iconText.setSymbolID(record.getInteger(FIELD_MAP_SYMBOL_ICON_TEXT_1_SYMBOL_ID));
@@ -133,7 +133,7 @@ public class IPMysqlIconTextSymbolParams {
 	}
 
 	public static Map<String, Object> DataMapFromIconTextSymbol(TYIconTextSymbolRecord iconText, String buildingID) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_MAP_SYMBOL_ICON_TEXT_1_SYMBOL_ID, iconText.symbolID);
 		data.put(FIELD_MAP_SYMBOL_ICON_TEXT_2_ICON_VISIBLE, iconText.iconVisible);
 		data.put(FIELD_MAP_SYMBOL_ICON_TEXT_3_ICON_SIZE, iconText.iconSize);

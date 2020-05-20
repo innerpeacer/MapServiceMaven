@@ -24,7 +24,7 @@ class IPSqliteCityParams {
 
 	public static List<IPSqlField> GetCityFieldList() {
 		if (cityFieldList == null) {
-			cityFieldList = new ArrayList<IPSqlField>();
+			cityFieldList = new ArrayList<>();
 
 			cityFieldList.add(
 					new IPSqlField(FIELD_CITY_1_ID, IPSqlFieldType.FieldTypeFromClass(String.class.getName()), false));
@@ -43,7 +43,7 @@ class IPSqliteCityParams {
 	}
 
 	public static List<TYCity> CityListFromRecords(List<IPSqlRecord> records) {
-		List<TYCity> cityList = new ArrayList<TYCity>();
+		List<TYCity> cityList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYCity city = new TYCity();
 			city.setCityID(record.getString(FIELD_CITY_1_ID));
@@ -58,7 +58,7 @@ class IPSqliteCityParams {
 	}
 
 	public static Map<String, Object> DataMapFromCity(TYCity city) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_CITY_1_ID, city.getCityID());
 		data.put(FIELD_CITY_2_NAME, city.getName());
 		data.put(FIELD_CITY_3_SNAME, city.getSname());

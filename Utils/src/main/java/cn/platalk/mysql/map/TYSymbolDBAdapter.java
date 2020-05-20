@@ -22,14 +22,10 @@ public class TYSymbolDBAdapter {
 		iconTextTable = IPMysqlIconTextSymbolParams.CreateTable();
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-	}
+    }
 
 	public void connectDB() {
 		db.connectDB();

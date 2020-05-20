@@ -38,7 +38,7 @@ public class IPMysqlBeaconParams {
 
 	public static List<IPSqlField> GetBeaconFieldList() {
 		if (beaconFieldList == null) {
-			beaconFieldList = new ArrayList<IPSqlField>();
+			beaconFieldList = new ArrayList<>();
 			beaconFieldList
 					.add(new IPSqlField(FIELD_BEACON_1_GEOM, new IPSqlFieldType(byte[].class.getName(), "BLOB"), false));
 			beaconFieldList.add(
@@ -68,7 +68,7 @@ public class IPMysqlBeaconParams {
 	}
 
 	public static List<TYLocatingBeacon> BeaconListFromRecords(List<IPSqlRecord> records) {
-		List<TYLocatingBeacon> beaconList = new ArrayList<TYLocatingBeacon>();
+		List<TYLocatingBeacon> beaconList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYLocatingBeacon lb = new TYLocatingBeacon(record.getString(FIELD_BEACON_2_UUID),
 					record.getInteger(FIELD_BEACON_3_MAJOR), record.getInteger(FIELD_BEACON_4_MINOR),
@@ -84,7 +84,7 @@ public class IPMysqlBeaconParams {
 	}
 
 	public static Map<String, Object> DataMapFromBeacon(TYILocatingBeacon beacon) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_BEACON_1_GEOM, beacon.getLocation().getGeometryBytes());
 		data.put(FIELD_BEACON_2_UUID, beacon.getUUID());
 		data.put(FIELD_BEACON_3_MAJOR, beacon.getMajor());

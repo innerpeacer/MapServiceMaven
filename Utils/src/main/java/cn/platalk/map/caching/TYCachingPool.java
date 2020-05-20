@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class TYCachingPool {
-	private static final Map<String, Object> _sharedCachingPool = new HashMap<String, Object>();
+	private static final Map<String, Object> _sharedCachingPool = new HashMap<>();
 
 	private static String getKey(String dataID, TYCachingType type) {
 		return String.format("%s-%s", type.getName(), dataID);
@@ -21,7 +21,7 @@ public class TYCachingPool {
 	}
 
 	public static void resetDataByBuildingID(String buildingID, TYCachingType type) {
-		List<String> toRemove = new ArrayList<String>();
+		List<String> toRemove = new ArrayList<>();
 		String checkingKey = getKey(buildingID, type);
 		for (String key : _sharedCachingPool.keySet()) {
 			if (key.contains(checkingKey)) {

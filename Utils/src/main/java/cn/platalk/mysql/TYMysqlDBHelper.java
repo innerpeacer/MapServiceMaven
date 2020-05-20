@@ -96,8 +96,7 @@ public class TYMysqlDBHelper {
 	public static List<TYIRouteLinkRecordV3> getAllRouteLinkRecordV3(String buildingID) {
 		TYRouteDBAdapterV3 routeDB = new TYRouteDBAdapterV3(buildingID);
 		routeDB.connectDB();
-		List<TYIRouteLinkRecordV3> linkList = new ArrayList<TYIRouteLinkRecordV3>();
-		linkList.addAll(routeDB.getAllLinkRecords());
+		List<TYIRouteLinkRecordV3> linkList = new ArrayList<>(routeDB.getAllLinkRecords());
 		routeDB.disconnectDB();
 		return linkList;
 	}
@@ -105,7 +104,7 @@ public class TYMysqlDBHelper {
 	public static List<TYIRouteNodeRecordV3> getAllRouteNodeRecordV3(String buildingID) {
 		TYRouteDBAdapterV3 routeDB = new TYRouteDBAdapterV3(buildingID);
 		routeDB.connectDB();
-		List<TYIRouteNodeRecordV3> nodeList = new ArrayList<TYIRouteNodeRecordV3>();
+		List<TYIRouteNodeRecordV3> nodeList = new ArrayList<>();
 		nodeList.addAll(routeDB.getAllNodeRecords());
 		routeDB.disconnectDB();
 		return nodeList;
@@ -114,7 +113,7 @@ public class TYMysqlDBHelper {
 	public static List<TYIRouteLinkRecord> getAllRouteLinkRecord(String buildingID) {
 		TYRouteDBAdapter routeDB = new TYRouteDBAdapter(buildingID);
 		routeDB.connectDB();
-		List<TYIRouteLinkRecord> linkList = new ArrayList<TYIRouteLinkRecord>();
+		List<TYIRouteLinkRecord> linkList = new ArrayList<>();
 		linkList.addAll(routeDB.getAllLinkRecords());
 		routeDB.disconnectDB();
 		return linkList;
@@ -123,7 +122,7 @@ public class TYMysqlDBHelper {
 	public static List<TYIRouteNodeRecord> getAllRouteNodeRecord(String buildingID) {
 		TYRouteDBAdapter routeDB = new TYRouteDBAdapter(buildingID);
 		routeDB.connectDB();
-		List<TYIRouteNodeRecord> nodeList = new ArrayList<TYIRouteNodeRecord>();
+		List<TYIRouteNodeRecord> nodeList = new ArrayList<>();
 		nodeList.addAll(routeDB.getAllNodeRecords());
 		routeDB.disconnectDB();
 		return nodeList;

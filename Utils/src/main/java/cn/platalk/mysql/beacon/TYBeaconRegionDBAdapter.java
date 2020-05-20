@@ -19,14 +19,10 @@ public class TYBeaconRegionDBAdapter {
 		beaconRegionTable = IPMysqlBeaconRegionParams.CreateTable();
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-	}
+    }
 
 	public Connection connectDB() {
 		return db.connectDB();
@@ -102,7 +98,7 @@ public class TYBeaconRegionDBAdapter {
 		List<TYBeaconRegion> regionList = IPMysqlBeaconRegionParams.BeaconRegionListFromRecords(db.readData(
 				beaconRegionTable,
 				beaconRegionTable.getField(IPMysqlBeaconRegionParams.FIELD_BEACON_REGION_2_BUILDING_ID), buildingID));
-		if (regionList != null && regionList.size() > 0) {
+		if (regionList.size() > 0) {
 			return regionList.get(0);
 		}
 		return null;

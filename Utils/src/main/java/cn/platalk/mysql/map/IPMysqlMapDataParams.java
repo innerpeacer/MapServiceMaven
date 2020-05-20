@@ -43,7 +43,7 @@ public class IPMysqlMapDataParams {
 	static final String FIELD_MAP_DATA_25_ICON = "ICON";
 	static final String FIELD_MAP_DATA_26_PRIORITY = "PRIORITY";
 
-	private static final List<IPSqlField> mapDataFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> mapDataFieldList = new ArrayList<>();
 	static {
 		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_1_OBJECT_ID,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
@@ -108,7 +108,7 @@ public class IPMysqlMapDataParams {
 	}
 
 	public static List<TYMapDataFeatureRecord> MapDataListFromRecords(List<IPSqlRecord> records) {
-		List<TYMapDataFeatureRecord> mapdataList = new ArrayList<TYMapDataFeatureRecord>();
+		List<TYMapDataFeatureRecord> mapdataList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYMapDataFeatureRecord mapdata = new TYMapDataFeatureRecord();
 			mapdata.setObjectID(record.getString(FIELD_MAP_DATA_1_OBJECT_ID));
@@ -143,7 +143,7 @@ public class IPMysqlMapDataParams {
 	}
 
 	public static Map<String, Object> DataMapFromMapDataFeatureRecord(TYMapDataFeatureRecord record) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_MAP_DATA_1_OBJECT_ID, record.getObjectID());
 		data.put(FIELD_MAP_DATA_2_GEOMETRY, record.getGeometry());
 		data.put(FIELD_MAP_DATA_3_GEO_ID, record.getGeoID());

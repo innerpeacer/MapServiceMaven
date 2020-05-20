@@ -22,7 +22,7 @@ public class IPMysqlRouteLinkParams {
 	static final String FIELD_ROUTE_LINK_6_VIRTUAL = "IS_VIRTUAL";
 	static final String FIELD_ROUTE_LINK_7_ONE_WAY = "ONE_WAY";
 
-	private static final List<IPSqlField> routeLinkFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> routeLinkFieldList = new ArrayList<>();
 	static {
 		routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_1_LINK_ID,
 				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
@@ -49,7 +49,7 @@ public class IPMysqlRouteLinkParams {
 	}
 
 	public static List<TYRouteLinkRecord> RouteLinkListFromRecords(List<IPSqlRecord> records) {
-		List<TYRouteLinkRecord> linkList = new ArrayList<TYRouteLinkRecord>();
+		List<TYRouteLinkRecord> linkList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYRouteLinkRecord link = new TYRouteLinkRecord();
 			link.setLinkID(record.getInteger(FIELD_ROUTE_LINK_1_LINK_ID));
@@ -65,7 +65,7 @@ public class IPMysqlRouteLinkParams {
 	}
 
 	public static Map<String, Object> DataMapFromRouteLinkRecord(TYRouteLinkRecord record) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_ROUTE_LINK_1_LINK_ID, record.getLinkID());
 		data.put(FIELD_ROUTE_LINK_2_GEOMETRY, record.getGeometryData());
 		data.put(FIELD_ROUTE_LINK_3_LENGTH, record.getLength());

@@ -11,6 +11,6 @@ public class TYSystemUtils {
 	public static int getDefaultThreadPoolSize(int max) {
 		int availableProcessors = 2 * Runtime.getRuntime()
 				.availableProcessors() + 1;
-		return availableProcessors > max ? max : availableProcessors;
+		return Math.min(availableProcessors, max);
 	}
 }

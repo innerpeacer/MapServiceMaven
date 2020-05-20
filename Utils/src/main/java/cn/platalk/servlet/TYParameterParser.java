@@ -1,6 +1,7 @@
 package cn.platalk.servlet;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +43,7 @@ public class TYParameterParser {
     }
 
     public static Long getLong(HttpServletRequest request, String key) {
-        return getLong(request, key);
+        return getLong(request, key, null);
     }
 
     public static String getString(HttpServletRequest request, String key) {
@@ -55,13 +56,11 @@ public class TYParameterParser {
     }
 
     public static List<String> getStringList(HttpServletRequest request, String key) {
-        List<String> strList = new ArrayList<String>();
+        List<String> strList = new ArrayList<>();
         String str = request.getParameter(key);
         if (str != null) {
             String[] strArray = str.split(",");
-            for (int i = 0; i < strArray.length; i++) {
-                strList.add(strArray[i]);
-            }
+            strList.addAll(Arrays.asList(strArray));
         }
         return strList;
     }
@@ -93,7 +92,7 @@ public class TYParameterParser {
     }
 
     public static List<TYLocalPoint> getLocalPointList(HttpServletRequest request, String key) {
-        List<TYLocalPoint> points = new ArrayList<TYLocalPoint>();
+        List<TYLocalPoint> points = new ArrayList<>();
 
         String str = request.getParameter(key);
         if (str != null) {

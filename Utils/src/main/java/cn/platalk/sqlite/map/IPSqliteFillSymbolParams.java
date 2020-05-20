@@ -24,7 +24,7 @@ class IPSqliteFillSymbolParams {
 
 	public static List<IPSqlField> GetFillSymbolFieldList() {
 		if (fillSymbolFieldList == null) {
-			fillSymbolFieldList = new ArrayList<IPSqlField>();
+			fillSymbolFieldList = new ArrayList<>();
 
 			fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID,
 					IPSqlFieldType.FieldTypeFromClass(Integer.class.getName()), false));
@@ -47,7 +47,7 @@ class IPSqliteFillSymbolParams {
 	}
 
 	public static List<TYFillSymbolRecord> FillSymbolListFromRecords(List<IPSqlRecord> records) {
-		List<TYFillSymbolRecord> fillSymbolList = new ArrayList<TYFillSymbolRecord>();
+		List<TYFillSymbolRecord> fillSymbolList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYFillSymbolRecord fillSymbol = new TYFillSymbolRecord();
 			fillSymbol.setSymbolID(record.getInteger(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID));

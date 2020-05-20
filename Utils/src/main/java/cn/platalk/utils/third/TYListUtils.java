@@ -120,7 +120,7 @@ public class TYListUtils {
 			return sourceList;
 		}
 
-		List<V> invertList = new ArrayList<V>(sourceList.size());
+		List<V> invertList = new ArrayList<>(sourceList.size());
 		for (int i = sourceList.size() - 1; i >= 0; i--) {
 			invertList.add(sourceList.get(i));
 		}

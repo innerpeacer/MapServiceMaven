@@ -18,11 +18,7 @@ public class TYCityDBAdapter {
 		cityTable = IPMysqlCityParams.CreateTable();
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 	}
@@ -79,7 +75,7 @@ public class TYCityDBAdapter {
 	}
 
 	public int insertCitiesInBatch(List<TYCity> cityList) {
-		List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> dataList = new ArrayList<>();
 
 		for (TYCity city : cityList) {
 			dataList.add(IPMysqlCityParams.DataMapFromCity(city));
@@ -111,7 +107,7 @@ public class TYCityDBAdapter {
 	public TYCity getCity(String cityID) {
 		List<TYCity> cities = IPMysqlCityParams.CityListFromRecords(
 				db.readData(cityTable, cityTable.getField(IPMysqlCityParams.FIELD_CITY_1_ID), cityID));
-		if (cities != null && cities.size() > 0) {
+		if (cities.size() > 0) {
 			return cities.get(0);
 		}
 		return null;

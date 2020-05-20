@@ -18,7 +18,7 @@ class IPSqliteIconSymbolParams {
 
 	public static List<IPSqlField> GetIconSymbolFieldList() {
 		if (iconSymbolFieldList == null) {
-			iconSymbolFieldList = new ArrayList<IPSqlField>();
+			iconSymbolFieldList = new ArrayList<>();
 
 			iconSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID,
 					IPSqlFieldType.FieldTypeFromClass(Integer.class.getName()), false));
@@ -29,7 +29,7 @@ class IPSqliteIconSymbolParams {
 	}
 
 	public static List<TYIconSymbolRecord> IconSymbolListFromRecords(List<IPSqlRecord> records) {
-		List<TYIconSymbolRecord> iconSymbolList = new ArrayList<TYIconSymbolRecord>();
+		List<TYIconSymbolRecord> iconSymbolList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYIconSymbolRecord iconSymbol = new TYIconSymbolRecord();
 			iconSymbol.setSymbolID(record.getInteger(FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID));

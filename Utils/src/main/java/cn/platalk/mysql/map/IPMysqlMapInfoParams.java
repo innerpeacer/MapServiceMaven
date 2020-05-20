@@ -27,7 +27,7 @@ public class IPMysqlMapInfoParams {
 	static final String FIELD_MAPINFO_10_XMAX = "XMAX";
 	static final String FIELD_MAPINFO_11_YMAX = "YMAX";
 
-	private static final List<IPSqlField> mapInfoFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> mapInfoFieldList = new ArrayList<>();
 	static {
 		mapInfoFieldList.add(new IPSqlField(FIELD_MAPINFO_1_CITY_ID,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
@@ -62,7 +62,7 @@ public class IPMysqlMapInfoParams {
 	}
 
 	public static List<TYMapInfo> MapInfoListFromRecord(List<IPSqlRecord> records) {
-		List<TYMapInfo> mapInfoList = new ArrayList<TYMapInfo>();
+		List<TYMapInfo> mapInfoList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYMapInfo mapInfo = new TYMapInfo();
 			mapInfo.setCityID(record.getString(FIELD_MAPINFO_1_CITY_ID));
@@ -82,7 +82,7 @@ public class IPMysqlMapInfoParams {
 	}
 
 	public static Map<String, Object> DataMapFromMapInfo(TYMapInfo mapInfo) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_MAPINFO_1_CITY_ID, mapInfo.getCityID());
 		data.put(FIELD_MAPINFO_2_BUILDING_ID, mapInfo.getBuildingID());
 		data.put(FIELD_MAPINFO_3_MAP_ID, mapInfo.getMapID());

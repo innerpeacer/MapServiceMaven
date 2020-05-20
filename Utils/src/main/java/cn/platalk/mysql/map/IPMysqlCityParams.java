@@ -21,7 +21,7 @@ public class IPMysqlCityParams {
 	static final String FIELD_CITY_5_LATITUDE = "LATITUDE";
 	static final String FIELD_CITY_6_STATUS = "STATUS";
 
-	private static final List<IPSqlField> cityFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> cityFieldList = new ArrayList<>();
 	static {
 		cityFieldList
 				.add(new IPSqlField(FIELD_CITY_1_ID, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
@@ -46,7 +46,7 @@ public class IPMysqlCityParams {
 	}
 
 	public static List<TYCity> CityListFromRecords(List<IPSqlRecord> records) {
-		List<TYCity> cityList = new ArrayList<TYCity>();
+		List<TYCity> cityList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYCity city = new TYCity();
 			city.setCityID(record.getString(FIELD_CITY_1_ID));
@@ -61,7 +61,7 @@ public class IPMysqlCityParams {
 	}
 
 	public static Map<String, Object> DataMapFromCity(TYCity city) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_CITY_1_ID, city.getCityID());
 		data.put(FIELD_CITY_2_NAME, city.getName());
 		data.put(FIELD_CITY_3_SNAME, city.getSname());

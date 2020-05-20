@@ -24,7 +24,7 @@ public class IPMysqlFillSymbolParams {
 	static final String FIELD_MAP_SYMBOL_FILL_8_UID = "UID";
 	static final String FIELD_MAP_SYMBOL_FILL_9_VISIBLE = "VISIBLE";
 
-	private static final List<IPSqlField> fillSymbolFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> fillSymbolFieldList = new ArrayList<>();
 	static {
 		fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID,
 				new IPSqlFieldType(Integer.class.getName(), "INT"), false));
@@ -55,7 +55,7 @@ public class IPMysqlFillSymbolParams {
 	}
 
 	public static List<TYFillSymbolRecord> FillSymbolListFromRecords(List<IPSqlRecord> records) {
-		List<TYFillSymbolRecord> fillList = new ArrayList<TYFillSymbolRecord>();
+		List<TYFillSymbolRecord> fillList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYFillSymbolRecord fill = new TYFillSymbolRecord();
 			fill.setSymbolID(record.getInteger(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID));
@@ -72,7 +72,7 @@ public class IPMysqlFillSymbolParams {
 	}
 
 	public static Map<String, Object> DataMapFromFillSymbol(TYFillSymbolRecord fill, String buildingID) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID, fill.getSymbolID());
 		data.put(FIELD_MAP_SYMBOL_FILL_2_FILL_COLOR, fill.getFillColor());
 		data.put(FIELD_MAP_SYMBOL_FILL_3_OUTLINE_COLOR, fill.getOutlineColor());

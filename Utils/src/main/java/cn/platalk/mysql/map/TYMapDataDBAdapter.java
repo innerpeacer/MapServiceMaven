@@ -22,11 +22,7 @@ public class TYMapDataDBAdapter {
 		mapdataTable = IPMysqlMapDataParams.CreateTable(buildingID);
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 	}
@@ -81,7 +77,7 @@ public class TYMapDataDBAdapter {
 	}
 
 	public int insertMapDataRecordsInBatch(List<TYMapDataFeatureRecord> recordList) {
-		List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> dataList = new ArrayList<>();
 		for (TYMapDataFeatureRecord record : recordList) {
 			dataList.add(IPMysqlMapDataParams.DataMapFromMapDataFeatureRecord(record));
 		}
@@ -136,7 +132,7 @@ public class TYMapDataDBAdapter {
 	}
 
 	public List<TYMapDataFeatureRecord> getAllMapDataRecords(int floor, int layer) {
-		Map<IPSqlField, Object> clause = new HashMap<IPSqlField, Object>();
+		Map<IPSqlField, Object> clause = new HashMap<>();
 		clause.put(mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_10_FLOOR_NUMBER), floor);
 		clause.put(mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_16_LAYER), layer);
 		return IPMysqlMapDataParams.MapDataListFromRecords(db.readData(mapdataTable, clause));
@@ -145,7 +141,7 @@ public class TYMapDataDBAdapter {
 	public TYMapDataFeatureRecord getMapDataRecord(String geoID) {
 		List<TYMapDataFeatureRecord> records = IPMysqlMapDataParams.MapDataListFromRecords(
 				db.readData(mapdataTable, mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_3_GEO_ID), geoID));
-		if (records != null && records.size() > 0) {
+		if (records.size() > 0) {
 			return records.get(0);
 		}
 		return null;
@@ -163,7 +159,7 @@ public class TYMapDataDBAdapter {
 	// }
 
 	public boolean existMapData(String geoID, int layer) {
-		Map<IPSqlField, Object> clause = new HashMap<IPSqlField, Object>();
+		Map<IPSqlField, Object> clause = new HashMap<>();
 		clause.put(mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_3_GEO_ID), geoID);
 		clause.put(mapdataTable.getField(IPMysqlMapDataParams.FIELD_MAP_DATA_16_LAYER), layer);
 		return db.existRecord(mapdataTable, clause);

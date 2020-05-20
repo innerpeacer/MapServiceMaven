@@ -16,14 +16,10 @@ public class TYBuildingDBAdapter {
 		buildingTable = IPMysqlBuildingParams.CreateTable();
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-	}
+    }
 
 	public void connectDB() {
 		db.connectDB();
@@ -99,7 +95,7 @@ public class TYBuildingDBAdapter {
 	public TYBuilding getBuilding(String buildingID) {
 		List<TYBuilding> buildings = IPMysqlBuildingParams.BuildingListFromRecords(db.readData(buildingTable,
 				buildingTable.getField(IPMysqlBuildingParams.FIELD_BUILDING_2_ID), buildingID));
-		if (buildings != null && buildings.size() > 0) {
+		if (buildings.size() > 0) {
 			return buildings.get(0);
 		}
 		return null;

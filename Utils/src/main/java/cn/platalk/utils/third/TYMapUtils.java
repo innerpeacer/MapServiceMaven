@@ -14,8 +14,9 @@ public class TYMapUtils {
 		return (sourceMap == null || sourceMap.size() == 0);
 	}
 
+	@SuppressWarnings("UnusedReturnValue")
 	public static boolean putMapNotEmptyKey(Map<String, String> map,
-			String key, String value) {
+											String key, String value) {
 		if (map == null || TYStringUtils.isEmpty(key)) {
 			return false;
 		}
@@ -92,7 +93,7 @@ public class TYMapUtils {
 			keyAndValuePairSeparator = DEFAULT_KEY_AND_VALUE_PAIR_SEPARATOR;
 		}
 
-		Map<String, String> keyAndValueMap = new HashMap<String, String>();
+		Map<String, String> keyAndValueMap = new HashMap<>();
 		String[] keyAndValueArray = source.split(keyAndValuePairSeparator);
 		if (keyAndValueArray == null) {
 			return null;
@@ -138,7 +139,7 @@ public class TYMapUtils {
 		paras.append("{");
 		Iterator<Map.Entry<String, String>> ite = map.entrySet().iterator();
 		while (ite.hasNext()) {
-			Map.Entry<String, String> entry = (Map.Entry<String, String>) ite
+			Map.Entry<String, String> entry = ite
 					.next();
 			paras.append("\"").append(entry.getKey()).append("\":\"")
 					.append(entry.getValue()).append("\"");

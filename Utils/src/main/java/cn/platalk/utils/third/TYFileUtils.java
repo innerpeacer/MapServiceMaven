@@ -13,13 +13,14 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 public class TYFileUtils {
 
 	public final static String FILE_EXTENSION_SEPARATOR = ".";
 
 	public static StringBuilder readFile(String filePath, String charsetName) {
 		File file = new File(filePath);
-		StringBuilder fileContent = new StringBuilder("");
+		StringBuilder fileContent = new StringBuilder();
 		if (file == null || !file.isFile()) {
 			return null;
 		}
@@ -131,8 +132,9 @@ public class TYFileUtils {
 		return writeFile(file, stream, false);
 	}
 
+	@SuppressWarnings("SameReturnValue")
 	public static boolean writeFile(File file, InputStream stream,
-			boolean append) {
+									boolean append) {
 		OutputStream o = null;
 		try {
 			makeDirs(file.getAbsolutePath());
@@ -173,7 +175,7 @@ public class TYFileUtils {
 	public static List<String> readFileToList(String filePath,
 			String charsetName) {
 		File file = new File(filePath);
-		List<String> fileContent = new ArrayList<String>();
+		List<String> fileContent = new ArrayList<>();
 		if (file == null || !file.isFile()) {
 			return null;
 		}
@@ -284,6 +286,7 @@ public class TYFileUtils {
 		return (dire.exists() && dire.isDirectory());
 	}
 
+	@SuppressWarnings("UnusedReturnValue")
 	public static boolean deleteFile(String path) {
 		if (TYStringUtils.isBlank(path)) {
 			return true;

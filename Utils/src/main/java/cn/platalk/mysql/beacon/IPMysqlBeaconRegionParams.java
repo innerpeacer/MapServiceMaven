@@ -29,7 +29,7 @@ public class IPMysqlBeaconRegionParams {
 
 	public static List<IPSqlField> GetBeaconRegionFieldList() {
 		if (beaconRegionFieldList == null) {
-			beaconRegionFieldList = new ArrayList<IPSqlField>();
+			beaconRegionFieldList = new ArrayList<>();
 			beaconRegionFieldList.add(new IPSqlField(FIELD_BEACON_REGION_1_CITY_ID,
 					new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
 			beaconRegionFieldList.add(new IPSqlField(FIELD_BEACON_REGION_2_BUILDING_ID,
@@ -45,7 +45,7 @@ public class IPMysqlBeaconRegionParams {
 	}
 
 	public static List<TYBeaconRegion> BeaconRegionListFromRecords(List<IPSqlRecord> records) {
-		List<TYBeaconRegion> regionList = new ArrayList<TYBeaconRegion>();
+		List<TYBeaconRegion> regionList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYBeaconRegion region = new TYBeaconRegion();
 			region.setCityID(record.getString(FIELD_BEACON_REGION_1_CITY_ID));
@@ -58,7 +58,7 @@ public class IPMysqlBeaconRegionParams {
 	}
 
 	public static Map<String, Object> DataMapFromBeaconRegion(TYIBeaconRegion region) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_BEACON_REGION_1_CITY_ID, region.getCityID());
 		data.put(FIELD_BEACON_REGION_2_BUILDING_ID, region.getBuildingID());
 		data.put(FIELD_BEACON_REGION_3_BUILDING_NAME, region.getBuildingName());

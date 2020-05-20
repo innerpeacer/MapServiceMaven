@@ -18,7 +18,7 @@ public class IPMysqlIconSymbolParams {
 	static final String FIELD_MAP_SYMBOL_ICON_2_ICON = "ICON";
 	static final String FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID = "BUILDING_ID";
 
-	private static final List<IPSqlField> iconSymbolFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> iconSymbolFieldList = new ArrayList<>();
 	static {
 		iconSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID,
 				new IPSqlFieldType(Integer.class.getName(), "INT"), false));
@@ -37,7 +37,7 @@ public class IPMysqlIconSymbolParams {
 	}
 
 	public static List<TYIconSymbolRecord> IconSymbolListFromRecords(List<IPSqlRecord> records) {
-		List<TYIconSymbolRecord> iconList = new ArrayList<TYIconSymbolRecord>();
+		List<TYIconSymbolRecord> iconList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYIconSymbolRecord icon = new TYIconSymbolRecord();
 			icon.setSymbolID(record.getInteger(FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID));
@@ -48,7 +48,7 @@ public class IPMysqlIconSymbolParams {
 	}
 
 	public static Map<String, Object> DataMapFromIconSymbol(TYIconSymbolRecord icon, String buildingID) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID, icon.getSymbolID());
 		data.put(FIELD_MAP_SYMBOL_ICON_2_ICON, icon.getIcon());
 		data.put(FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID, buildingID);

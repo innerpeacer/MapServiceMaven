@@ -39,7 +39,7 @@ public class IPSqliteIconTextSymbolParams {
 
 	public static List<IPSqlField> GetIconTextSymbolFieldList() {
 		if (iconTextSymbolFieldList == null) {
-			iconTextSymbolFieldList = new ArrayList<IPSqlField>();
+			iconTextSymbolFieldList = new ArrayList<>();
 			iconTextSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_TEXT_1_SYMBOL_ID,
 					IPSqlFieldType.FieldTypeFromClass(Integer.class.getName()), false));
 			iconTextSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_TEXT_2_ICON_VISIBLE,
@@ -85,7 +85,7 @@ public class IPSqliteIconTextSymbolParams {
 	}
 
 	public static List<TYIconTextSymbolRecord> IconTextSymbolListFromRecords(List<IPSqlRecord> records) {
-		List<TYIconTextSymbolRecord> iconTextList = new ArrayList<TYIconTextSymbolRecord>();
+		List<TYIconTextSymbolRecord> iconTextList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYIconTextSymbolRecord iconText = new TYIconTextSymbolRecord();
 			iconText.setSymbolID(record.getInteger(FIELD_MAP_SYMBOL_ICON_TEXT_1_SYMBOL_ID));

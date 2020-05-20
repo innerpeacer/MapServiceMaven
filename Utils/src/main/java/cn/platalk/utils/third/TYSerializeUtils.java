@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+@SuppressWarnings("ThrowFromFinallyBlock")
 public class TYSerializeUtils {
 
 	public static Object deserialization(String filePath) {

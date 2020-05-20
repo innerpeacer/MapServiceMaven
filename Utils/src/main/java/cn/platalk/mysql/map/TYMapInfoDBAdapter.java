@@ -16,14 +16,10 @@ public class TYMapInfoDBAdapter {
 		mapInfoTable = IPMysqlMapInfoParams.CreateTable();
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-	}
+    }
 
 	public void connectDB() {
 		db.connectDB();
@@ -104,7 +100,7 @@ public class TYMapInfoDBAdapter {
 	public TYMapInfo getMapInfo(String mapID) {
 		List<TYMapInfo> mapInfos = IPMysqlMapInfoParams.MapInfoListFromRecord(
 				db.readData(mapInfoTable, mapInfoTable.getField(IPMysqlMapInfoParams.FIELD_MAPINFO_3_MAP_ID), mapID));
-		if (mapInfos != null && mapInfos.size() > 0) {
+		if (mapInfos.size() > 0) {
 			return mapInfos.get(0);
 		}
 		return null;

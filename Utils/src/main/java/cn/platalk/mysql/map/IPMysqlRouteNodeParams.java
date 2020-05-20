@@ -18,7 +18,7 @@ public class IPMysqlRouteNodeParams {
 	static final String FIELD_ROUTE_NODE_2_GEOMETRY = "GEOMETRY";
 	static final String FIELD_ROUTE_NODE_3_VIRTUAL = "IS_VIRTUAL";
 
-	private static final List<IPSqlField> routeNodeFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> routeNodeFieldList = new ArrayList<>();
 	static {
 		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_1_NODE_ID,
 				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
@@ -37,7 +37,7 @@ public class IPMysqlRouteNodeParams {
 	}
 
 	public static List<TYRouteNodeRecord> RouteNodeListFromRecords(List<IPSqlRecord> records) {
-		List<TYRouteNodeRecord> nodeList = new ArrayList<TYRouteNodeRecord>();
+		List<TYRouteNodeRecord> nodeList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYRouteNodeRecord node = new TYRouteNodeRecord();
 			node.setNodeID(record.getInteger(FIELD_ROUTE_NODE_1_NODE_ID));
@@ -49,7 +49,7 @@ public class IPMysqlRouteNodeParams {
 	}
 
 	public static Map<String, Object> DataMapFromRouteNodeRecord(TYRouteNodeRecord record) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_ROUTE_NODE_1_NODE_ID, record.getNodeID());
 		data.put(FIELD_ROUTE_NODE_2_GEOMETRY, record.getGeometryData());
 		data.put(FIELD_ROUTE_NODE_3_VIRTUAL, record.isVirtual());

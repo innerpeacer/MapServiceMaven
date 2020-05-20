@@ -40,8 +40,7 @@ public class TYBaseHttpServlet extends HttpServlet {
 			out.print(String.format("%s(%s)", callback, jsonObject.toString()));
 		}
 		out.close();
-		return;
-	}
+    }
 
 	protected void respondError(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObject)
 			throws IOException {
@@ -57,8 +56,7 @@ public class TYBaseHttpServlet extends HttpServlet {
 			out.print(String.format("%s(%s)", callback, jsonObject.toString()));
 		}
 		out.close();
-		return;
-	}
+    }
 
 	protected void respondResult(HttpServletRequest request, HttpServletResponse response, Map<String, Object> data)
 			throws IOException {
@@ -78,8 +76,7 @@ public class TYBaseHttpServlet extends HttpServlet {
 			out.print(String.format("%s(%s)", callback, jsonObject.toString()));
 		}
 		out.close();
-		return;
-	}
+    }
 
 	protected void respondResult(HttpServletRequest request, HttpServletResponse response, JSONObject jsonObject)
 			throws IOException {
@@ -95,6 +92,5 @@ public class TYBaseHttpServlet extends HttpServlet {
 			out.print(String.format("%s(%s)", callback, jsonObject.toString()));
 		}
 		out.close();
-		return;
-	}
+    }
 }

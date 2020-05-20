@@ -38,7 +38,7 @@ public class TYMD5Utils {
 		InputStream fis;
 		fis = new FileInputStream(file);
 		byte[] buffer = new byte[1024];
-		int numRead = 0;
+		int numRead;
 		while ((numRead = fis.read(buffer)) > 0) {
 			messagedigest.update(buffer, 0, numRead);
 		}
