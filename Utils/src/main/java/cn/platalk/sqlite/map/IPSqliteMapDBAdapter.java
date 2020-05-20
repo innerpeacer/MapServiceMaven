@@ -8,9 +8,9 @@ import cn.platalk.sqlhelper.sql.IPSqlTable;
 import cn.platalk.sqlhelper.sqlite.IPSqliteDB;
 
 public class IPSqliteMapDBAdapter {
-	IPSqliteDB db;
-	IPSqlTable cityTable;
-	IPSqlTable buildingTable;
+	final IPSqliteDB db;
+	final IPSqlTable cityTable;
+	final IPSqlTable buildingTable;
 
 	public IPSqliteMapDBAdapter(String path) {
 		db = new IPSqliteDB(path);

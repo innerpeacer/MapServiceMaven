@@ -22,7 +22,7 @@ public class IPMysqlRouteLinkParams {
 	static final String FIELD_ROUTE_LINK_6_VIRTUAL = "IS_VIRTUAL";
 	static final String FIELD_ROUTE_LINK_7_ONE_WAY = "ONE_WAY";
 
-	private static List<IPSqlField> routeLinkFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> routeLinkFieldList = new ArrayList<IPSqlField>();
 	static {
 		routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_1_LINK_ID,
 				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));

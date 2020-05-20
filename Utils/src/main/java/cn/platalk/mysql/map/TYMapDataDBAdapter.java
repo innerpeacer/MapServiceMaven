@@ -1,6 +1,5 @@
 package cn.platalk.mysql.map;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,9 +11,9 @@ import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYMapDataDBAdapter {
-	String buildingID;
-	IPMysqlDB db;
-	IPSqlTable mapdataTable;
+	final String buildingID;
+	final IPMysqlDB db;
+	final IPSqlTable mapdataTable;
 
 	public TYMapDataDBAdapter(String buildingID) {
 		this.buildingID = buildingID;
@@ -61,8 +60,8 @@ public class TYMapDataDBAdapter {
 		db.createTable(mapdataTable);
 	}
 
-	public Connection connectDB() {
-		return db.connectDB();
+	public void connectDB() {
+		db.connectDB();
 	}
 
 	public void disconnectDB() {

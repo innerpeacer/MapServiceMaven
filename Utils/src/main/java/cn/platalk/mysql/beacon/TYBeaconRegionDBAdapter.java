@@ -10,8 +10,8 @@ import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYBeaconRegionDBAdapter {
-	IPMysqlDB db;
-	IPSqlTable beaconRegionTable;
+	final IPMysqlDB db;
+	final IPSqlTable beaconRegionTable;
 
 	public TYBeaconRegionDBAdapter() {
 		db = new IPMysqlDB(TYDatabaseManager.GetBeaconDBUrl(), TYDatabaseManager.GetUserName(),

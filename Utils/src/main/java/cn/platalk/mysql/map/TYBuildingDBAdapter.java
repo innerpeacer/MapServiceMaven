@@ -1,6 +1,5 @@
 package cn.platalk.mysql.map;
 
-import java.sql.Connection;
 import java.util.List;
 
 import cn.platalk.map.entity.base.impl.TYBuilding;
@@ -8,8 +7,8 @@ import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYBuildingDBAdapter {
-	IPMysqlDB db;
-	IPSqlTable buildingTable;
+	final IPMysqlDB db;
+	final IPSqlTable buildingTable;
 
 	public TYBuildingDBAdapter() {
 		db = new IPMysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),
@@ -26,8 +25,8 @@ public class TYBuildingDBAdapter {
 		}
 	}
 
-	public Connection connectDB() {
-		return db.connectDB();
+	public void connectDB() {
+		db.connectDB();
 	}
 
 	public void disconnectDB() {

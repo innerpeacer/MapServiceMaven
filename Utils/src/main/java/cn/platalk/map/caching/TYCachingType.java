@@ -7,10 +7,10 @@ public enum TYCachingType {
 	RouteManager(10, "RouteManager"), MultiRouteManager(11, "MultiRouteManager"), RouteManagerV3(12,
 			"RouteManagerV3"), MultiRouteManagerV3(13, "MultiRouteManagerV3");
 
-	private int value;
-	private String name;
+	private final int value;
+	private final String name;
 
-	private TYCachingType(int value, String name) {
+	TYCachingType(int value, String name) {
 		this.value = value;
 		this.name = name;
 	}

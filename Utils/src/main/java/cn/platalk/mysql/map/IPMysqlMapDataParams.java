@@ -43,7 +43,7 @@ public class IPMysqlMapDataParams {
 	static final String FIELD_MAP_DATA_25_ICON = "ICON";
 	static final String FIELD_MAP_DATA_26_PRIORITY = "PRIORITY";
 
-	private static List<IPSqlField> mapDataFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> mapDataFieldList = new ArrayList<IPSqlField>();
 	static {
 		mapDataFieldList.add(new IPSqlField(FIELD_MAP_DATA_1_OBJECT_ID,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));

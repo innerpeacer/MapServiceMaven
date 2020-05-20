@@ -31,7 +31,7 @@ public class TYZipUtil {
 
 		if (file.isFile()) {
 			int count, bufferLen = 1024;
-			byte data[] = new byte[bufferLen];
+			byte[] data = new byte[bufferLen];
 
 			String subPath = file.getAbsolutePath();
 			int index = subPath.indexOf(srcRootDir);

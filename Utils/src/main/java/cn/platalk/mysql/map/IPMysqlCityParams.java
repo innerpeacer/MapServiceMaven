@@ -21,7 +21,7 @@ public class IPMysqlCityParams {
 	static final String FIELD_CITY_5_LATITUDE = "LATITUDE";
 	static final String FIELD_CITY_6_STATUS = "STATUS";
 
-	private static List<IPSqlField> cityFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> cityFieldList = new ArrayList<IPSqlField>();
 	static {
 		cityFieldList
 				.add(new IPSqlField(FIELD_CITY_1_ID, new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));

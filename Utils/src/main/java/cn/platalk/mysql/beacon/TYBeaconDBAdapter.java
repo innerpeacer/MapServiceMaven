@@ -1,6 +1,5 @@
 package cn.platalk.mysql.beacon;
 
-import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,9 +13,9 @@ import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYBeaconDBAdapter {
-	String buildingID;
-	IPMysqlDB db;
-	IPSqlTable beaconTable;
+	final String buildingID;
+	final IPMysqlDB db;
+	final IPSqlTable beaconTable;
 
 	public TYBeaconDBAdapter(String buildingID) {
 		this.buildingID = buildingID;
@@ -34,8 +33,8 @@ public class TYBeaconDBAdapter {
 		}
 	}
 
-	public Connection connectDB() {
-		return db.connectDB();
+	public void connectDB() {
+		db.connectDB();
 	}
 
 	public void disconnectDB() {

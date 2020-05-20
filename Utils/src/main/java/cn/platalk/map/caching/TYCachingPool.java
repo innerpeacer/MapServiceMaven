@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class TYCachingPool {
-	private static Map<String, Object> _sharedCachingPool = new HashMap<String, Object>();
+	private static final Map<String, Object> _sharedCachingPool = new HashMap<String, Object>();
 
 	private static String getKey(String dataID, TYCachingType type) {
 		return String.format("%s-%s", type.getName(), dataID);

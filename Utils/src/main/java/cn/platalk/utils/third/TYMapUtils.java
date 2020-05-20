@@ -98,19 +98,19 @@ public class TYMapUtils {
 			return null;
 		}
 
-		int seperator;
+		int separator;
 		for (String valueEntity : keyAndValueArray) {
 			if (!TYStringUtils.isEmpty(valueEntity)) {
-				seperator = valueEntity.indexOf(keyAndValueSeparator);
-				if (seperator != -1) {
+				separator = valueEntity.indexOf(keyAndValueSeparator);
+				if (separator != -1) {
 					if (ignoreSpace) {
 						TYMapUtils.putMapNotEmptyKey(keyAndValueMap,
-								valueEntity.substring(0, seperator).trim(),
-								valueEntity.substring(seperator + 1).trim());
+								valueEntity.substring(0, separator).trim(),
+								valueEntity.substring(separator + 1).trim());
 					} else {
 						TYMapUtils.putMapNotEmptyKey(keyAndValueMap,
-								valueEntity.substring(0, seperator),
-								valueEntity.substring(seperator + 1));
+								valueEntity.substring(0, separator),
+								valueEntity.substring(separator + 1));
 					}
 				}
 			}

@@ -27,7 +27,7 @@ public class IPMysqlMapInfoParams {
 	static final String FIELD_MAPINFO_10_XMAX = "XMAX";
 	static final String FIELD_MAPINFO_11_YMAX = "YMAX";
 
-	private static List<IPSqlField> mapInfoFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> mapInfoFieldList = new ArrayList<IPSqlField>();
 	static {
 		mapInfoFieldList.add(new IPSqlField(FIELD_MAPINFO_1_CITY_ID,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));

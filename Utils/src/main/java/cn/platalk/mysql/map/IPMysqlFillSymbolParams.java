@@ -24,7 +24,7 @@ public class IPMysqlFillSymbolParams {
 	static final String FIELD_MAP_SYMBOL_FILL_8_UID = "UID";
 	static final String FIELD_MAP_SYMBOL_FILL_9_VISIBLE = "VISIBLE";
 
-	private static List<IPSqlField> fillSymbolFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> fillSymbolFieldList = new ArrayList<IPSqlField>();
 	static {
 		fillSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID,
 				new IPSqlFieldType(Integer.class.getName(), "INT"), false));

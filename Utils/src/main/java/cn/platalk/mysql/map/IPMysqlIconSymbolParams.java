@@ -18,7 +18,7 @@ public class IPMysqlIconSymbolParams {
 	static final String FIELD_MAP_SYMBOL_ICON_2_ICON = "ICON";
 	static final String FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID = "BUILDING_ID";
 
-	private static List<IPSqlField> iconSymbolFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> iconSymbolFieldList = new ArrayList<IPSqlField>();
 	static {
 		iconSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_1_SYMBOL_ID,
 				new IPSqlFieldType(Integer.class.getName(), "INT"), false));

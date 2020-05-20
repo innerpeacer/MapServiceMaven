@@ -3,22 +3,22 @@ package cn.platalk.utils;
 public class TYEncryption {
 	public static final String TAG = "Encryption";
 
-	public static String KEY = "6^)(9-p35@%3#4S!4S0)$Y%%^&5(j.&^&o(*0)$Y%!#O@*GpG@=+@j.&6^)(0-=+";
-	public static String PASSWORD_FOR_CONTENT = "innerpeacer-content";
+	public static final String KEY = "6^)(9-p35@%3#4S!4S0)$Y%%^&5(j.&^&o(*0)$Y%!#O@*GpG@=+@j.&6^)(0-=+";
+	public static final String PASSWORD_FOR_CONTENT = "innerpeacer-content";
 
-	static final int BUFFERLEN = 1024;
+	static final int BUFFER_LEN = 1024;
 
 	public static String encryptString(String originalName, String key) {
-		byte[] PASSVALUE = PASSWORD_FOR_CONTENT.getBytes();
-		byte[] KEYVALUE = key.getBytes();
+		byte[] PASS_VALUE = PASSWORD_FOR_CONTENT.getBytes();
+		byte[] KEY_VALUE = key.getBytes();
 
-		int keyLength = KEYVALUE.length;
+		int keyLength = KEY_VALUE.length;
 		int pa_pos = 0;
 
-		for (int i = 0; i < KEYVALUE.length; i++) {
-			KEYVALUE[i] ^= PASSVALUE[pa_pos];
+		for (int i = 0; i < KEY_VALUE.length; i++) {
+			KEY_VALUE[i] ^= PASS_VALUE[pa_pos];
 			pa_pos++;
-			if (pa_pos == PASSVALUE.length) {
+			if (pa_pos == PASS_VALUE.length) {
 				pa_pos = 0;
 			}
 		}
@@ -31,7 +31,7 @@ public class TYEncryption {
 
 		int key_pos = 0;
 		for (int i = 0; i < oLength; i++) {
-			buffer[i] ^= KEYVALUE[key_pos];
+			buffer[i] ^= KEY_VALUE[key_pos];
 			key_pos++;
 			if (key_pos == keyLength) {
 				key_pos = 0;
@@ -46,16 +46,16 @@ public class TYEncryption {
 	}
 
 	public static byte[] encryptBytes(byte[] originalBytes, String key) {
-		byte[] PASSVALUE = PASSWORD_FOR_CONTENT.getBytes();
-		byte[] KEYVALUE = key.getBytes();
+		byte[] PASS_VALUE = PASSWORD_FOR_CONTENT.getBytes();
+		byte[] KEY_VALUE = key.getBytes();
 
-		int keyLength = KEYVALUE.length;
+		int keyLength = KEY_VALUE.length;
 		int pa_pos = 0;
 
-		for (int i = 0; i < KEYVALUE.length; i++) {
-			KEYVALUE[i] ^= PASSVALUE[pa_pos];
+		for (int i = 0; i < KEY_VALUE.length; i++) {
+			KEY_VALUE[i] ^= PASS_VALUE[pa_pos];
 			pa_pos++;
-			if (pa_pos == PASSVALUE.length) {
+			if (pa_pos == PASS_VALUE.length) {
 				pa_pos = 0;
 			}
 		}
@@ -65,7 +65,7 @@ public class TYEncryption {
 		System.arraycopy(originalBytes, 0, encryptedBytes, 0, oLength);
 		int key_pos = 0;
 		for (int i = 0; i < oLength; i++) {
-			encryptedBytes[i] ^= KEYVALUE[key_pos];
+			encryptedBytes[i] ^= KEY_VALUE[key_pos];
 			key_pos++;
 			if (key_pos == keyLength) {
 				key_pos = 0;

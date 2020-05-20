@@ -9,10 +9,10 @@ import cn.platalk.sqlhelper.sql.IPSqlTable;
 import cn.platalk.sqlhelper.sqlite.IPSqliteDB;
 
 public class IPSqliteSymbolDBAdapter {
-	IPSqliteDB db;
-	IPSqlTable fillTable;
-	IPSqlTable iconTable;
-	IPSqlTable iconTextTable;
+	final IPSqliteDB db;
+	final IPSqlTable fillTable;
+	final IPSqlTable iconTable;
+	final IPSqlTable iconTextTable;
 
 	public IPSqliteSymbolDBAdapter(String path) {
 		db = new IPSqliteDB(path);

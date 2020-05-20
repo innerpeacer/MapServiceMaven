@@ -45,7 +45,7 @@ public class IPMysqlBuildingParams {
 
 	static final String FIELD_BUILDING_20_CENTER = "CENTER";
 
-	private static List<IPSqlField> buildingFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> buildingFieldList = new ArrayList<IPSqlField>();
 	static {
 		buildingFieldList.add(new IPSqlField(FIELD_BUILDING_1_CITY_ID,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));
@@ -136,7 +136,7 @@ public class IPMysqlBuildingParams {
 
 			if (record.getString(FIELD_BUILDING_20_CENTER) != null) {
 				String center = record.getString(FIELD_BUILDING_20_CENTER);
-				String xy[] = center.split(",");
+				String[] xy = center.split(",");
 				building.setCenterX(Double.parseDouble(xy[0]));
 				building.setCenterY(Double.parseDouble(xy[1]));
 			}

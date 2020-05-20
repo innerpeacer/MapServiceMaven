@@ -32,7 +32,7 @@ public class IPMysqlRouteLinkV3Params {
 	static final String FIELD_ROUTE_LINK_15_ALLOW_SNAP = "ALLOW_SNAP";
 	static final String FIELD_ROUTE_LINK_16_LINK_TYPE = "LINK_TYPE";
 
-	private static List<IPSqlField> routeLinkFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> routeLinkFieldList = new ArrayList<IPSqlField>();
 	static {
 		routeLinkFieldList.add(new IPSqlField(FIELD_ROUTE_LINK_1_LINK_ID,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));

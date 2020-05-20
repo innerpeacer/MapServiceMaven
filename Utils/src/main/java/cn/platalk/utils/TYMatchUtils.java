@@ -16,18 +16,12 @@ public class TYMatchUtils {
 	public static boolean isNumeric(String str) {
 		Pattern pattern = Pattern.compile("[0-9]*");
 		Matcher matcher = pattern.matcher(str);
-		if (!matcher.matches()) {
-			return false;
-		}
-		return true;
+		return matcher.matches();
 	}
 
 	public static boolean isAlphabeticNumeric(String str) {
 		Pattern pattern = Pattern.compile("[0-9a-zA-Z]*");
 		Matcher matcher = pattern.matcher(str);
-		if (!matcher.matches()) {
-			return false;
-		}
-		return true;
+		return matcher.matches();
 	}
 }

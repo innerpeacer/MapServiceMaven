@@ -1,6 +1,5 @@
 package cn.platalk.mysql.map;
 
-import java.sql.Connection;
 import java.util.List;
 
 import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
@@ -10,10 +9,10 @@ import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYSymbolDBAdapter {
-	IPMysqlDB db;
-	IPSqlTable fillTable;
-	IPSqlTable iconTable;
-	IPSqlTable iconTextTable;
+	final IPMysqlDB db;
+	final IPSqlTable fillTable;
+	final IPSqlTable iconTable;
+	final IPSqlTable iconTextTable;
 
 	public TYSymbolDBAdapter() {
 		db = new IPMysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),
@@ -32,8 +31,8 @@ public class TYSymbolDBAdapter {
 		}
 	}
 
-	public Connection connectDB() {
-		return db.connectDB();
+	public void connectDB() {
+		db.connectDB();
 	}
 
 	public void disconnectDB() {

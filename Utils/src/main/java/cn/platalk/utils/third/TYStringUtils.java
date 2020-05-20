@@ -47,12 +47,12 @@ public class TYStringUtils {
 		return str;
 	}
 
-	public static String utf8Encode(String str, String defultReturn) {
+	public static String utf8Encode(String str, String defaultReturn) {
 		if (!isEmpty(str) && str.getBytes().length != str.length()) {
 			try {
 				return URLEncoder.encode(str, "UTF-8");
 			} catch (UnsupportedEncodingException e) {
-				return defultReturn;
+				return defaultReturn;
 			}
 		}
 		return str;

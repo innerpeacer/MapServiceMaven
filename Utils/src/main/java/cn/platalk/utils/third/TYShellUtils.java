@@ -58,7 +58,7 @@ public class TYShellUtils {
 					continue;
 				}
 
-				// donnot use os.writeBytes(commmand), avoid chinese charset
+				// do not use os.writeBytes(command), avoid chinese charset
 				// error
 				os.write(command.getBytes());
 				os.writeBytes(COMMAND_LINE_END);
@@ -110,7 +110,7 @@ public class TYShellUtils {
 	}
 
 	public static class CommandResult {
-		public int result;
+		public final int result;
 		public String successMsg;
 		public String errorMsg;
 

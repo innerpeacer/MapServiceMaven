@@ -62,8 +62,8 @@ public class TYListUtils {
 	}
 
 	public static <V> boolean addDistinctEntry(List<V> sourceList, V entry) {
-		return (sourceList != null && !sourceList.contains(entry)) ? sourceList
-				.add(entry) : false;
+		return (sourceList != null && !sourceList.contains(entry)) && sourceList
+				.add(entry);
 	}
 
 	public static <V> int addDistinctList(List<V> sourceList, List<V> entryList) {
@@ -100,8 +100,7 @@ public class TYListUtils {
 	}
 
 	public static <V> boolean addListNotNullValue(List<V> sourceList, V value) {
-		return (sourceList != null && value != null) ? sourceList.add(value)
-				: false;
+		return (sourceList != null && value != null) && sourceList.add(value);
 	}
 
 	@SuppressWarnings("unchecked")

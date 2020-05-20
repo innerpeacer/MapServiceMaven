@@ -1,6 +1,5 @@
 package cn.platalk.mysql.map;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -11,10 +10,10 @@ import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class TYRouteDBAdapterV3 {
-	String buildingID;
-	IPMysqlDB db;
-	IPSqlTable routeLinkTable;
-	IPSqlTable routeNodeTable;
+	final String buildingID;
+	final IPMysqlDB db;
+	final IPSqlTable routeLinkTable;
+	final IPSqlTable routeNodeTable;
 
 	public TYRouteDBAdapterV3(String buildingID) {
 		this.buildingID = buildingID;
@@ -33,8 +32,8 @@ public class TYRouteDBAdapterV3 {
 		}
 	}
 
-	public Connection connectDB() {
-		return db.connectDB();
+	public void connectDB() {
+		db.connectDB();
 	}
 
 	public void disconnectDB() {

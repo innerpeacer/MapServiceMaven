@@ -31,7 +31,7 @@ public class IPMysqlRouteNodeV3Params {
 	static final String FIELD_ROUTE_NODE_13_OPEN_TIME = "OPEN_TIME";
 	static final String FIELD_ROUTE_NODE_14_ROOM_ID = "ROOM_ID";
 
-	private static List<IPSqlField> routeNodeFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> routeNodeFieldList = new ArrayList<IPSqlField>();
 	static {
 		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_1_NODE_ID,
 				new IPSqlFieldType(String.class.getName(), "VARCHAR(45)"), false));

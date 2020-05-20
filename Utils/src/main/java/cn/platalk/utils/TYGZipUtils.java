@@ -15,14 +15,14 @@ public class TYGZipUtils {
 	public static final String EXT = ".gz";
 
 	public static byte[] compress(byte[] data) throws Exception {
-		ByteArrayInputStream bais = new ByteArrayInputStream(data);
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ByteArrayInputStream bIn = new ByteArrayInputStream(data);
+		ByteArrayOutputStream bOut = new ByteArrayOutputStream();
 		// ??????
-		compress(bais, baos);
-		byte[] output = baos.toByteArray();
-		baos.flush();
-		baos.close();
-		bais.close();
+		compress(bIn, bOut);
+		byte[] output = bOut.toByteArray();
+		bOut.flush();
+		bOut.close();
+		bIn.close();
 		return output;
 	}
 
@@ -48,7 +48,7 @@ public class TYGZipUtils {
 
 		GZIPOutputStream gos = new GZIPOutputStream(os);
 		int count;
-		byte data[] = new byte[BUFFER];
+		byte[] data = new byte[BUFFER];
 		while ((count = is.read(data, 0, BUFFER)) != -1) {
 			gos.write(data, 0, count);
 		}
@@ -68,16 +68,16 @@ public class TYGZipUtils {
 	}
 
 	public static byte[] decompress(byte[] data) throws Exception {
-		ByteArrayInputStream bais = new ByteArrayInputStream(data);
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ByteArrayInputStream bIn = new ByteArrayInputStream(data);
+		ByteArrayOutputStream bOut = new ByteArrayOutputStream();
 
 		// ?????????
 
-		decompress(bais, baos);
-		data = baos.toByteArray();
-		baos.flush();
-		baos.close();
-		bais.close();
+		decompress(bIn, bOut);
+		data = bOut.toByteArray();
+		bOut.flush();
+		bOut.close();
+		bIn.close();
 
 		return data;
 	}
@@ -104,7 +104,7 @@ public class TYGZipUtils {
 		GZIPInputStream gis = new GZIPInputStream(is);
 
 		int count;
-		byte data[] = new byte[BUFFER];
+		byte[] data = new byte[BUFFER];
 		while ((count = gis.read(data, 0, BUFFER)) != -1) {
 			os.write(data, 0, count);
 		}

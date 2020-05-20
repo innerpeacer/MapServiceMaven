@@ -8,35 +8,35 @@ public class TYObjectUtils {
 	}
 
 	public static Long[] transformLongArray(long[] source) {
-		Long[] destin = new Long[source.length];
+		Long[] dest = new Long[source.length];
 		for (int i = 0; i < source.length; i++) {
-			destin[i] = source[i];
+			dest[i] = source[i];
 		}
-		return destin;
+		return dest;
 	}
 
 	public static long[] transformLongArray(Long[] source) {
-		long[] destin = new long[source.length];
+		long[] dest = new long[source.length];
 		for (int i = 0; i < source.length; i++) {
-			destin[i] = source[i];
+			dest[i] = source[i];
 		}
-		return destin;
+		return dest;
 	}
 
 	public static Integer[] transformIntArray(int[] source) {
-		Integer[] destin = new Integer[source.length];
+		Integer[] dest = new Integer[source.length];
 		for (int i = 0; i < source.length; i++) {
-			destin[i] = source[i];
+			dest[i] = source[i];
 		}
-		return destin;
+		return dest;
 	}
 
 	public static int[] transformIntArray(Integer[] source) {
-		int[] destin = new int[source.length];
+		int[] dest = new int[source.length];
 		for (int i = 0; i < source.length; i++) {
-			destin[i] = source[i];
+			dest[i] = source[i];
 		}
-		return destin;
+		return dest;
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })

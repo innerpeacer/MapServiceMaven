@@ -39,7 +39,7 @@ public class IPMysqlIconTextSymbolParams {
 	static final String FIELD_MAP_SYMBOL_ICON_TEXT_19_UID = "UID";
 	static final String FIELD_MAP_SYMBOL_ICON_TEXT_20_PRIORITY = "PRIORITY";
 
-	private static List<IPSqlField> iconTextSymbolFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> iconTextSymbolFieldList = new ArrayList<IPSqlField>();
 
 	static {
 		iconTextSymbolFieldList.add(new IPSqlField(FIELD_MAP_SYMBOL_ICON_TEXT_100_BUILDING_ID,

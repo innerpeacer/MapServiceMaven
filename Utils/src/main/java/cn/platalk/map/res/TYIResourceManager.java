@@ -1,25 +1,25 @@
 package cn.platalk.map.res;
 
 public interface TYIResourceManager {
-	public String getRawDataRootDir();
+	String getRawDataRootDir();
 
-	public String getVectorTileRoot();
+	String getVectorTileRoot();
 
-	public String getNodePath();
+	String getNodePath();
 
-	public String getFontDir();
+	String getFontDir();
 
-	public String getFontminDir();
+	String getFontminDir();
 
-	public String getFontScriptPath();
+	String getFontScriptPath();
 
-	public String getGlyphsDir();
+	String getGlyphsDir();
 
-	public String getGlyphsScriptPath();
+	String getGlyphsScriptPath();
 
-	public String getDBHost();
+	String getDBHost();
 
-	public String getDBUserName();
+	String getDBUserName();
 
-	public String getDBPassword();
+	String getDBPassword();
 }

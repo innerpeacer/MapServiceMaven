@@ -137,7 +137,7 @@ public class TYFileUtils {
 		try {
 			makeDirs(file.getAbsolutePath());
 			o = new FileOutputStream(file, append);
-			byte data[] = new byte[1024];
+			byte[] data = new byte[1024];
 			int length = -1;
 			while ((length = stream.read(data)) != -1) {
 				o.write(data, 0, length);
@@ -207,17 +207,17 @@ public class TYFileUtils {
 			return filePath;
 		}
 
-		int extenPosi = filePath.lastIndexOf(FILE_EXTENSION_SEPARATOR);
-		int filePosi = filePath.lastIndexOf(File.separator);
-		if (filePosi == -1) {
-			return (extenPosi == -1 ? filePath : filePath.substring(0,
-					extenPosi));
+		int extPos = filePath.lastIndexOf(FILE_EXTENSION_SEPARATOR);
+		int filePos = filePath.lastIndexOf(File.separator);
+		if (filePos == -1) {
+			return (extPos == -1 ? filePath : filePath.substring(0,
+					extPos));
 		}
-		if (extenPosi == -1) {
-			return filePath.substring(filePosi + 1);
+		if (extPos == -1) {
+			return filePath.substring(filePos + 1);
 		}
-		return (filePosi < extenPosi ? filePath.substring(filePosi + 1,
-				extenPosi) : filePath.substring(filePosi + 1));
+		return (filePos < extPos ? filePath.substring(filePos + 1,
+				extPos) : filePath.substring(filePos + 1));
 	}
 
 	public static String getFileName(String filePath) {
@@ -225,8 +225,8 @@ public class TYFileUtils {
 			return filePath;
 		}
 
-		int filePosi = filePath.lastIndexOf(File.separator);
-		return (filePosi == -1) ? filePath : filePath.substring(filePosi + 1);
+		int filePos = filePath.lastIndexOf(File.separator);
+		return (filePos == -1) ? filePath : filePath.substring(filePos + 1);
 	}
 
 	public static String getFolderName(String filePath) {
@@ -234,8 +234,8 @@ public class TYFileUtils {
 			return filePath;
 		}
 
-		int filePosi = filePath.lastIndexOf(File.separator);
-		return (filePosi == -1) ? "" : filePath.substring(0, filePosi);
+		int filePos = filePath.lastIndexOf(File.separator);
+		return (filePos == -1) ? "" : filePath.substring(0, filePos);
 	}
 
 	public static String getFileExtension(String filePath) {
@@ -243,12 +243,12 @@ public class TYFileUtils {
 			return filePath;
 		}
 
-		int extenPosi = filePath.lastIndexOf(FILE_EXTENSION_SEPARATOR);
-		int filePosi = filePath.lastIndexOf(File.separator);
-		if (extenPosi == -1) {
+		int extPos = filePath.lastIndexOf(FILE_EXTENSION_SEPARATOR);
+		int filePos = filePath.lastIndexOf(File.separator);
+		if (extPos == -1) {
 			return "";
 		}
-		return (filePosi >= extenPosi) ? "" : filePath.substring(extenPosi + 1);
+		return (filePos >= extPos) ? "" : filePath.substring(extPos + 1);
 	}
 
 	public static boolean makeDirs(String filePath) {
@@ -258,7 +258,7 @@ public class TYFileUtils {
 		}
 
 		File folder = new File(folderName);
-		return (folder.exists() && folder.isDirectory()) ? true : folder
+		return (folder.exists() && folder.isDirectory()) || folder
 				.mkdirs();
 	}
 

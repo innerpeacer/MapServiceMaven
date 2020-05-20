@@ -13,9 +13,9 @@ public class TYMD5Utils {
 		System.out.println(getMD5String("Hello"));
 	}
 
-	protected static char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e',
+	protected static final char[] hexDigits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e',
 			'f' };
-	protected static MessageDigest messagedigest = null;
+	protected static MessageDigest messagedigest;
 
 	static {
 		try {
@@ -51,11 +51,11 @@ public class TYMD5Utils {
 		return bufferToHex(messagedigest.digest());
 	}
 
-	private static String bufferToHex(byte bytes[]) {
+	public static String bufferToHex(byte[] bytes) {
 		return bufferToHex(bytes, 0, bytes.length);
 	}
 
-	private static String bufferToHex(byte bytes[], int m, int n) {
+	public static String bufferToHex(byte[] bytes, int m, int n) {
 		StringBuffer stringbuffer = new StringBuffer(2 * n);
 		int k = m + n;
 		for (int l = m; l < k; l++) {

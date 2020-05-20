@@ -18,7 +18,7 @@ public class IPMysqlRouteNodeParams {
 	static final String FIELD_ROUTE_NODE_2_GEOMETRY = "GEOMETRY";
 	static final String FIELD_ROUTE_NODE_3_VIRTUAL = "IS_VIRTUAL";
 
-	private static List<IPSqlField> routeNodeFieldList = new ArrayList<IPSqlField>();
+	private static final List<IPSqlField> routeNodeFieldList = new ArrayList<IPSqlField>();
 	static {
 		routeNodeFieldList.add(new IPSqlField(FIELD_ROUTE_NODE_1_NODE_ID,
 				new IPSqlFieldType(Integer.class.getName(), "INTEGER"), false));
