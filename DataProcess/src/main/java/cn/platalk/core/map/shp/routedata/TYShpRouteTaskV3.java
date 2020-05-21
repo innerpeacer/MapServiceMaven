@@ -18,15 +18,15 @@ import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.map.entity.base.impl.TYMapInfo;
 
 public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrtRouteNDBuildingListenerV3 {
-	static WKBReader wkb = new WKBReader();
-	TYIShpDataManager shpDataManager;
+	static final WKBReader wkb = new WKBReader();
+	final TYIShpDataManager shpDataManager;
 
 	List<TYIRouteLinkRecordV3> linkRecords;
 	List<TYIRouteNodeRecordV3> nodeRecords;
 
-	List<TYMapDataFeatureRecord> mapDataList = new ArrayList<TYMapDataFeatureRecord>();
+	final List<TYMapDataFeatureRecord> mapDataList = new ArrayList<>();
 
-	TYShpRouteDataGroupV3 shpDataGroup;
+	final TYShpRouteDataGroupV3 shpDataGroup;
 	TYShpRouteNDBuildingToolV3 buildingTool;
 
 	public TYShpRouteTaskV3(TYIShpDataManager manager) {
@@ -72,21 +72,19 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 			try {
 				geometry = wkb.read(linkGeometryData);
 			} catch (ParseException e) {
-				geometry = null;
 				e.printStackTrace();
 			}
 		}
 		return geometry;
 	}
 
-	private Geometry getNodeRecordGeomtry(TYIRouteNodeRecordV3 record) {
+	private Geometry getNodeRecordGeometry(TYIRouteNodeRecordV3 record) {
 		Geometry geometry = null;
 		byte[] nodeGeometryData = record.getGeometryData();
 		if (nodeGeometryData != null) {
 			try {
 				geometry = wkb.read(nodeGeometryData);
 			} catch (ParseException e) {
-				geometry = null;
 				e.printStackTrace();
 			}
 		}
@@ -99,19 +97,19 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 			return "";
 		}
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < list.size(); ++i) {
 			if (i != 0) {
-				buffer.append(",");
+				builder.append(",");
 			}
-			buffer.append(list.get(i));
+			builder.append(list.get(i));
 		}
-		return buffer.toString();
+		return builder.toString();
 	}
 
 	private void applyMapData(List<TYIRouteLinkRecordV3> linkList, List<TYIRouteNodeRecordV3> nodeList,
 			List<TYMapDataFeatureRecord> recordList) {
-		Map<String, Geometry> geometryMap = new HashMap<String, Geometry>();
+		Map<String, Geometry> geometryMap = new HashMap<>();
 
 		for (TYMapDataFeatureRecord record : recordList) {
 			// if (record.layer == 2 && !record.categoryID.equals("000800")) {
@@ -139,12 +137,12 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 		}
 
 		for (TYIRouteNodeRecordV3 node : nodeList) {
-			List<String> roomIDList = new ArrayList<String>();
+			List<String> roomIDList = new ArrayList<>();
 			for (TYMapDataFeatureRecord record : recordList) {
 				if (node.getFloor() != record.floorNumber || record.layer != 2)
 					continue;
 
-				Geometry nodeGeometry = getNodeRecordGeomtry(node);
+				Geometry nodeGeometry = getNodeRecordGeometry(node);
 				Geometry roomGeometry = geometryMap.get(record.poiID);
 				if (nodeGeometry != null && roomGeometry != null && roomGeometry.contains(nodeGeometry)) {
 					roomIDList.add(record.poiID);
@@ -166,10 +164,10 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 	public void didFinishBuildingRouteND(List<TYIRouteLinkRecordV3> linkList, List<TYIRouteNodeRecordV3> nodeList) {
 		// System.out.println("didFinishBuildingRouteND");
 
-		linkRecords = new ArrayList<TYIRouteLinkRecordV3>();
+		linkRecords = new ArrayList<>();
 		linkRecords.addAll(linkList);
 
-		nodeRecords = new ArrayList<TYIRouteNodeRecordV3>();
+		nodeRecords = new ArrayList<>();
 		nodeRecords.addAll(nodeList);
 
 		applyMapData(linkList, nodeList, mapDataList);
@@ -182,7 +180,7 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 		notifyFailedRouteTask(error);
 	}
 
-	private List<TYBrtRouteShpTaskListenerV3> listeners = new ArrayList<TYShpRouteTaskV3.TYBrtRouteShpTaskListenerV3>();
+	private final List<TYBrtRouteShpTaskListenerV3> listeners = new ArrayList<>();
 
 	public void addTaskListener(TYBrtRouteShpTaskListenerV3 listener) {
 		if (!listeners.contains(listener)) {
@@ -191,9 +189,7 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 	}
 
 	public void removeTaskListener(TYBrtRouteShpTaskListenerV3 listener) {
-		if (listeners.contains(listener)) {
-			listeners.remove(listener);
-		}
+		listeners.remove(listener);
 	}
 
 	private void notifyFinishRouteTask(List<TYIRouteLinkRecordV3> links, List<TYIRouteNodeRecordV3> nodes) {
@@ -209,8 +205,8 @@ public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrt
 	}
 
 	public interface TYBrtRouteShpTaskListenerV3 {
-		public void didFinishRouteTask(List<TYIRouteLinkRecordV3> links, List<TYIRouteNodeRecordV3> nodes);
+		void didFinishRouteTask(List<TYIRouteLinkRecordV3> links, List<TYIRouteNodeRecordV3> nodes);
 
-		public void didFailedRouteTask(Throwable error);
+		void didFailedRouteTask(Throwable error);
 	}
 }

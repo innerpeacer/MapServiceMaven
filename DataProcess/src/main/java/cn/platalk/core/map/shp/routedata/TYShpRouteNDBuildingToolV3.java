@@ -15,13 +15,13 @@ import cn.platalk.map.entity.base.impl.TYRouteLinkRecordV3;
 import cn.platalk.map.entity.base.impl.TYRouteNodeRecordV3;
 
 public class TYShpRouteNDBuildingToolV3 {
-	TYShpRouteDataGroupV3 shpDataGroup;
+	final TYShpRouteDataGroupV3 shpDataGroup;
 
-	List<TYShpBuildingLinkV3> allLinkArray = new ArrayList<TYShpBuildingLinkV3>();
-	List<TYShpBuildingNodeV3> allNodeArray = new ArrayList<TYShpBuildingNodeV3>();
+	final List<TYShpBuildingLinkV3> allLinkArray = new ArrayList<>();
+	final List<TYShpBuildingNodeV3> allNodeArray = new ArrayList<>();
 
-	List<TYIRouteLinkRecordV3> resultLinkList = new ArrayList<TYIRouteLinkRecordV3>();
-	List<TYIRouteNodeRecordV3> resultNodeList = new ArrayList<TYIRouteNodeRecordV3>();
+	List<TYIRouteLinkRecordV3> resultLinkList = new ArrayList<>();
+	List<TYIRouteNodeRecordV3> resultNodeList = new ArrayList<>();
 
 	private int errorLinkCount = 0;
 	private int errorNodeCount = 0;
@@ -32,18 +32,18 @@ public class TYShpRouteNDBuildingToolV3 {
 
 	private void checkNodeDuplicate() {
 		System.out.println("checkNodeDuplicate");
-		Set<String> nodeCoordSet = new HashSet<String>();
+		Set<String> nodeCoordSet = new HashSet<>();
 		for (TYShpBuildingNodeV3 node : shpDataGroup.nodeArray) {
 			String cs = String.format("%d-%f%f", node.floor, node.pos.getX(), node.pos.getY());
 			nodeCoordSet.add(cs);
 		}
 
-		Map<String, List<TYShpBuildingNodeV3>> nodeMap = new HashMap<String, List<TYShpBuildingNodeV3>>();
+		Map<String, List<TYShpBuildingNodeV3>> nodeMap = new HashMap<>();
 		for (TYShpBuildingNodeV3 node : shpDataGroup.nodeArray) {
 			String cs = String.format("%d-%f%f", node.floor, node.pos.getX(), node.pos.getY());
 			List<TYShpBuildingNodeV3> nodeList = nodeMap.get(cs);
 			if (nodeList == null) {
-				nodeList = new ArrayList<TYShpBuildingNodeV3>();
+				nodeList = new ArrayList<>();
 				nodeMap.put(cs, nodeList);
 			}
 			nodeList.add(node);
@@ -54,8 +54,8 @@ public class TYShpRouteNDBuildingToolV3 {
 				if (nodeList.size() > 1) {
 					errorNodeCount++;
 					System.out.println("-------- Duplicate Node---------------");
-					for (int i = 0; i < nodeList.size(); ++i) {
-						System.out.println(nodeList.get(i).nodeID);
+					for (TYShpBuildingNodeV3 node : nodeList) {
+						System.out.println(node.nodeID);
 					}
 				}
 				// break;
@@ -67,9 +67,9 @@ public class TYShpRouteNDBuildingToolV3 {
 	}
 
 	private List<TYShpBuildingNodeV3> noneDuplicatedNodes(List<TYShpBuildingNodeV3> list) {
-		List<TYShpBuildingNodeV3> resultList = new ArrayList<TYShpBuildingNodeV3>();
+		List<TYShpBuildingNodeV3> resultList = new ArrayList<>();
 
-		Set<String> nodeCoordSet = new HashSet<String>();
+		Set<String> nodeCoordSet = new HashSet<>();
 		for (TYShpBuildingNodeV3 node : list) {
 			String cs = String.format("%d-%f%f", node.floor, node.pos.getX(), node.pos.getY());
 			if (!nodeCoordSet.contains(cs)) {
@@ -148,15 +148,16 @@ public class TYShpRouteNDBuildingToolV3 {
 				System.out.println("Error In Link: " + link.linkID + ", Floor: " + link.floor);
 				Throwable e = new Throwable("Error In Link: " + link.linkID);
 				notifyFailedBuilding(e);
-			} else {
+			}
+//			else {
 				// System.out.println("Found Link: " + link.linkID + ", Floor: "
 				// + link.floor);
-			}
+//			}
 		}
 
 		System.out.println(errorLinkCount + " Error Links!");
-		resultLinkList = new ArrayList<TYIRouteLinkRecordV3>();
-		resultNodeList = new ArrayList<TYIRouteNodeRecordV3>();
+		resultLinkList = new ArrayList<>();
+		resultNodeList = new ArrayList<>();
 
 		for (TYShpBuildingLinkV3 link : allLinkArray) {
 			resultLinkList.add(link.toLink(new TYRouteLinkRecordV3()));
@@ -166,7 +167,7 @@ public class TYShpRouteNDBuildingToolV3 {
 			resultNodeList.add(node.toNode(new TYRouteNodeRecordV3()));
 		}
 
-		List<TYIRouteLinkRecordV3> toRemove = new ArrayList<TYIRouteLinkRecordV3>();
+		List<TYIRouteLinkRecordV3> toRemove = new ArrayList<>();
 		for (TYIRouteLinkRecordV3 link : resultLinkList) {
 			// System.out.println(link);
 			if (link.getHeadNode() == null || link.getEndNode() == null) {
@@ -189,7 +190,7 @@ public class TYShpRouteNDBuildingToolV3 {
 		notifyFinishBuilding(resultLinkList, resultNodeList);
 	}
 
-	private List<TYBrtRouteNDBuildingListenerV3> listeners = new ArrayList<TYShpRouteNDBuildingToolV3.TYBrtRouteNDBuildingListenerV3>();
+	private final List<TYBrtRouteNDBuildingListenerV3> listeners = new ArrayList<>();
 
 	public void addRouteNDBuildingListener(TYBrtRouteNDBuildingListenerV3 listener) {
 		if (!listeners.contains(listener)) {
@@ -198,9 +199,7 @@ public class TYShpRouteNDBuildingToolV3 {
 	}
 
 	public void removeRouteNDBuildingListener(TYBrtRouteNDBuildingListenerV3 listener) {
-		if (listeners.contains(listener)) {
-			listeners.remove(listener);
-		}
+        listeners.remove(listener);
 	}
 
 	private void notifyFinishBuilding(List<TYIRouteLinkRecordV3> linkList, List<TYIRouteNodeRecordV3> nodeList) {
@@ -216,8 +215,8 @@ public class TYShpRouteNDBuildingToolV3 {
 	}
 
 	public interface TYBrtRouteNDBuildingListenerV3 {
-		public void didFinishBuildingRouteND(List<TYIRouteLinkRecordV3> linkList, List<TYIRouteNodeRecordV3> nodeList);
+		void didFinishBuildingRouteND(List<TYIRouteLinkRecordV3> linkList, List<TYIRouteNodeRecordV3> nodeList);
 
-		public void didFailedBuildingRouteND(Throwable error);
+		void didFailedBuildingRouteND(Throwable error);
 	}
 }

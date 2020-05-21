@@ -2,21 +2,21 @@ package cn.platalk.core.map.base;
 
 public interface TYIShpDataManager {
 
-	public String getMapDBPath();
+	String getMapDBPath();
 
-	public String getMapInfoJsonPath();
+	String getMapInfoJsonPath();
 
-	public String getSymbolDBPath();
+	String getSymbolDBPath();
 
-	public String getFloorDir(String floor);
+	String getFloorDir(String floor);
 
-	public String getMapShpDir();
+	String getMapShpDir();
 
-	public String getRouteShpDir();
+	String getRouteShpDir();
 
-	public String getMapShpPath(String layer, String floor);
+	String getMapShpPath(String layer, String floor);
 
-	public String getRouteShpPath(String layer);
+	String getRouteShpPath(String layer);
 
-	public String getRouteShpPathV3(String layer, String floor);
+	String getRouteShpPathV3(String layer, String floor);
 }

@@ -11,8 +11,8 @@ import cn.platalk.map.entity.base.impl.TYMapInfo;
 public class TYShpRouteDataGroupV3 implements TYBrtRouteShpParserListenerV3 {
 	private static final String[] ROUTE_LAYERS = { "LINK", "NODE" };
 
-	List<TYShpBuildingNodeV3> nodeArray = new ArrayList<TYShpBuildingNodeV3>();
-	List<TYShpBuildingLinkV3> linkArray = new ArrayList<TYShpBuildingLinkV3>();
+	final List<TYShpBuildingNodeV3> nodeArray = new ArrayList<>();
+	final List<TYShpBuildingLinkV3> linkArray = new ArrayList<>();
 
 	private int currentFloorIndex = 0;
 	private int currentLayerIndex = 0;
@@ -60,13 +60,12 @@ public class TYShpRouteDataGroupV3 implements TYBrtRouteShpParserListenerV3 {
 			break;
 
 		default:
-			return;
 		}
 	}
 
 	private List<TYShpBuildingLinkV3> processPolylineShp(List<TYShpRouteRecordV3> records, int layer) {
 		// System.out.println("processPolylineShp: " + layer);
-		List<TYShpBuildingLinkV3> resultList = new ArrayList<TYShpBuildingLinkV3>();
+		List<TYShpBuildingLinkV3> resultList = new ArrayList<>();
 		for (TYShpRouteRecordV3 record : records) {
 			resultList.add(record.toLink());
 		}
@@ -75,7 +74,7 @@ public class TYShpRouteDataGroupV3 implements TYBrtRouteShpParserListenerV3 {
 
 	private List<TYShpBuildingNodeV3> processPointShp(List<TYShpRouteRecordV3> records, int layer) {
 		// System.out.println("processPointShp: " + layer);
-		List<TYShpBuildingNodeV3> resultList = new ArrayList<TYShpBuildingNodeV3>();
+		List<TYShpBuildingNodeV3> resultList = new ArrayList<>();
 		for (TYShpRouteRecordV3 record : records) {
 			resultList.add(record.toNode());
 		}
@@ -127,7 +126,7 @@ public class TYShpRouteDataGroupV3 implements TYBrtRouteShpParserListenerV3 {
 		return currentFloorIndex != mapInfos.size();
 	}
 
-	private List<TYBrtShpRouteDataGroupListenerV3> listeners = new ArrayList<TYShpRouteDataGroupV3.TYBrtShpRouteDataGroupListenerV3>();
+	private final List<TYBrtShpRouteDataGroupListenerV3> listeners = new ArrayList<>();
 
 	public void addDataGroupListener(TYBrtShpRouteDataGroupListenerV3 listener) {
 		if (!listeners.contains(listener)) {
@@ -136,9 +135,7 @@ public class TYShpRouteDataGroupV3 implements TYBrtRouteShpParserListenerV3 {
 	}
 
 	public void removeDataGroupListener(TYBrtShpRouteDataGroupListenerV3 listener) {
-		if (listeners.contains(listener)) {
-			listeners.remove(listener);
-		}
+		listeners.remove(listener);
 	}
 
 	private void notifyFetchDataGroup() {
@@ -148,7 +145,7 @@ public class TYShpRouteDataGroupV3 implements TYBrtRouteShpParserListenerV3 {
 	}
 
 	public interface TYBrtShpRouteDataGroupListenerV3 {
-		public void didFinishFetchDataGroup();
+		void didFinishFetchDataGroup();
 	}
 
 }

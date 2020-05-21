@@ -68,6 +68,7 @@ public class TYShpHelper {
 		record.floorNumber = feature.GetFieldAsInteger("FLOOR_INDE");
 		record.floorName = feature.GetFieldAsString("FLOOR_NAME");
 
+		assert g != null;
 		if ("Polygon".equals(g.getGeometryType()) || "MultiPolygon".equals(g.getGeometryType())) {
 			record.shapeLength = feature.GetFieldAsDouble("SHAPE_Leng");
 			record.shapeArea = feature.GetFieldAsDouble("SHAPE_Area");

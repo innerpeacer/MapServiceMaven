@@ -23,7 +23,7 @@ import cn.platalk.sqlite.map.IPSqliteSymbolDBAdapter;
 
 public class TYShpGeneratingTaskV3
 		implements TYBrtMapInfoJsonParserListener, TYBrtMapShpTaskListenerV3, TYBrtRouteShpTaskListenerV3 {
-	private TYShpPathManagerV3 shpDataManager;
+	private final TYShpPathManagerV3 shpDataManager;
 
 	TYCity city;
 	TYBuilding building;
@@ -64,7 +64,7 @@ public class TYShpGeneratingTaskV3
 
 	private void startMapShpTask() {
 		mapShpTask = new TYShpMapDataTaskV3();
-		mapShpTask.addTaskListner(this);
+		mapShpTask.addTaskListener(this);
 
 		mapShpTask.setMapInfos(mapInfos);
 		mapShpTask.setShpDataManager(shpDataManager);
@@ -82,10 +82,10 @@ public class TYShpGeneratingTaskV3
 
 	@Override
 	public void didFinishRouteTask(List<TYIRouteLinkRecordV3> links, List<TYIRouteNodeRecordV3> nodes) {
-		linkRecords = new ArrayList<TYIRouteLinkRecordV3>();
+		linkRecords = new ArrayList<>();
 		linkRecords.addAll(links);
 
-		nodeRecords = new ArrayList<TYIRouteNodeRecordV3>();
+		nodeRecords = new ArrayList<>();
 		nodeRecords.addAll(nodes);
 
 		notifyFinishGeneratingShpTask();
@@ -98,8 +98,8 @@ public class TYShpGeneratingTaskV3
 
 	@Override
 	public void didFinishParsingMapInfo(List<TYMapInfo> infos) {
-		// System.out.prisntln("didFinishParsingMapInfo");
-		mapInfos = new ArrayList<TYMapInfo>();
+		// System.out.println("didFinishParsingMapInfo");
+		mapInfos = new ArrayList<>();
 		mapInfos.addAll(infos);
 
 		TYMapExtent buildingExtent = new TYMapExtent(Double.MAX_VALUE, Double.MAX_VALUE, Double.MIN_VALUE,
@@ -121,7 +121,7 @@ public class TYShpGeneratingTaskV3
 	@Override
 	public void didFinishMapShpTask(List<TYMapDataFeatureRecord> records) {
 		// System.out.println("didFinishMapShpTask");
-		mapDataRecords = new ArrayList<TYMapDataFeatureRecord>();
+		mapDataRecords = new ArrayList<>();
 		mapDataRecords.addAll(records);
 		// System.out.println(mapDataRecords.size() + " records!");
 		startRouteShpTask();
@@ -168,7 +168,7 @@ public class TYShpGeneratingTaskV3
 		return nodeRecords;
 	}
 
-	private List<TYShpGeneratingTaskListenerV3> listeners = new ArrayList<TYShpGeneratingTaskListenerV3>();
+	private final List<TYShpGeneratingTaskListenerV3> listeners = new ArrayList<>();
 
 	public void addTaskListener(TYShpGeneratingTaskListenerV3 listener) {
 		if (!listeners.contains(listener)) {
@@ -177,9 +177,7 @@ public class TYShpGeneratingTaskV3
 	}
 
 	public void removeTaskListener(TYShpGeneratingTaskListenerV3 listener) {
-		if (listeners.contains(listener)) {
-			listeners.remove(listener);
-		}
+		listeners.remove(listener);
 	}
 
 	private void notifyFinishGeneratingShpTask() {
@@ -195,9 +193,9 @@ public class TYShpGeneratingTaskV3
 	}
 
 	public interface TYShpGeneratingTaskListenerV3 {
-		public void didFinishGeneratingTask(TYShpGeneratingTaskV3 task);
+		void didFinishGeneratingTask(TYShpGeneratingTaskV3 task);
 
-		public void didFailedGeneratingTask(Throwable error);
+		void didFailedGeneratingTask(Throwable error);
 	}
 
 }

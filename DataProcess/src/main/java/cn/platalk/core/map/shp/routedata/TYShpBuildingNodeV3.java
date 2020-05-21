@@ -10,8 +10,8 @@ import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 public class TYShpBuildingNodeV3 {
 	String nodeID;
 	byte[] geometryData;
-	List<TYShpBuildingLinkV3> adjacencies;
-	// boolean isVirutal;
+	final List<TYShpBuildingLinkV3> adjacencies;
+	// boolean isVirtual;
 	Point pos;
 
 	public String nodeName;
@@ -29,7 +29,7 @@ public class TYShpBuildingNodeV3 {
 
 	public TYShpBuildingNodeV3(String nodeID) {
 		this.nodeID = nodeID;
-		adjacencies = new ArrayList<TYShpBuildingLinkV3>();
+		adjacencies = new ArrayList<>();
 	}
 
 	public void addLink(TYShpBuildingLinkV3 link) {

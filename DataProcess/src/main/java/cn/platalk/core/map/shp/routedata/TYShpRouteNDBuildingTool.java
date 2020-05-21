@@ -10,10 +10,10 @@ import cn.platalk.map.entity.base.impl.TYRouteNodeRecord;
 
 public class TYShpRouteNDBuildingTool {
 
-	TYShpRouteDataGroup shpDataGroup;
+	final TYShpRouteDataGroup shpDataGroup;
 
-	List<TYShpBuildingLink> allLinkArray = new ArrayList<TYShpBuildingLink>();
-	List<TYShpBuildingNode> allNodeArray = new ArrayList<TYShpBuildingNode>();
+	final List<TYShpBuildingLink> allLinkArray = new ArrayList<>();
+	final List<TYShpBuildingNode> allNodeArray = new ArrayList<>();
 
 	List<TYRouteLinkRecord> resultLinkList;
 	List<TYRouteNodeRecord> resultNodeList;
@@ -87,8 +87,8 @@ public class TYShpRouteNDBuildingTool {
 			}
 		}
 
-		resultLinkList = new ArrayList<TYRouteLinkRecord>();
-		resultNodeList = new ArrayList<TYRouteNodeRecord>();
+		resultLinkList = new ArrayList<>();
+		resultNodeList = new ArrayList<>();
 
 		for (TYShpBuildingLink link : allLinkArray) {
 			TYRouteLinkRecord linkRecord = new TYRouteLinkRecord();
@@ -106,14 +106,14 @@ public class TYShpRouteNDBuildingTool {
 			TYRouteNodeRecord nodeRecord = new TYRouteNodeRecord();
 			nodeRecord.nodeID = node.nodeID;
 			nodeRecord.nodeGeometryData = node.geometryData;
-			nodeRecord.isVirtual = node.isVirutal;
+			nodeRecord.isVirtual = node.isVirtual;
 			resultNodeList.add(nodeRecord);
 		}
 
 		notifyFinishBuilding(resultLinkList, resultNodeList);
 	}
 
-	private List<TYBrtRouteNDBuildingListener> listeners = new ArrayList<TYShpRouteNDBuildingTool.TYBrtRouteNDBuildingListener>();
+	private final List<TYBrtRouteNDBuildingListener> listeners = new ArrayList<>();
 
 	public void addRouteNDBuildingListener(TYBrtRouteNDBuildingListener listener) {
 		if (!listeners.contains(listener)) {
@@ -123,9 +123,7 @@ public class TYShpRouteNDBuildingTool {
 
 	public void removeRouteNDBuildingListener(
 			TYBrtRouteNDBuildingListener listener) {
-		if (listeners.contains(listener)) {
-			listeners.remove(listener);
-		}
+		listeners.remove(listener);
 	}
 
 	private void notifyFinishBuilding(List<TYRouteLinkRecord> linkList,
@@ -142,10 +140,10 @@ public class TYShpRouteNDBuildingTool {
 	}
 
 	public interface TYBrtRouteNDBuildingListener {
-		public void didFinishBuildingRouteND(List<TYRouteLinkRecord> linkList,
-				List<TYRouteNodeRecord> nodeList);
+		void didFinishBuildingRouteND(List<TYRouteLinkRecord> linkList,
+									  List<TYRouteNodeRecord> nodeList);
 
-		public void didFailedBuildingRouteND(Throwable error);
+		void didFailedBuildingRouteND(Throwable error);
 	}
 
 }

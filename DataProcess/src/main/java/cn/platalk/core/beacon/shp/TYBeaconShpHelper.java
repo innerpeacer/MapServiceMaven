@@ -27,6 +27,7 @@ public class TYBeaconShpHelper {
 		beacon.setMinor(feature.GetFieldAsInteger("minor"));
 
 		int floor = feature.GetFieldAsInteger("floor");
+		assert p != null;
 		TYLocalPoint lp = new TYLocalPoint(p.getX(), p.getY(), floor);
 		beacon.setLocation(lp);
 		return beacon;

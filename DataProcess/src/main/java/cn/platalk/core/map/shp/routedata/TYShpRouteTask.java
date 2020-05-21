@@ -11,7 +11,7 @@ import cn.platalk.map.entity.base.impl.TYRouteNodeRecord;
 
 public class TYShpRouteTask implements TYBrtShpRouteDataGroupListener, TYBrtRouteNDBuildingListener {
 
-	TYIShpDataManager shpDataManager;
+	final TYIShpDataManager shpDataManager;
 	List<TYRouteLinkRecord> linkRecords;
 	List<TYRouteNodeRecord> nodeRecords;
 
@@ -27,7 +27,7 @@ public class TYShpRouteTask implements TYBrtShpRouteDataGroupListener, TYBrtRout
 		shpDataGroup = new TYShpRouteDataGroup();
 		shpDataGroup.setShpDataManager(this.shpDataManager);
 		shpDataGroup.addDataGroupListener(this);
-		shpDataGroup.startParseingRouteShp();
+		shpDataGroup.startParsingRouteShp();
 	}
 
 	@Override
@@ -41,10 +41,10 @@ public class TYShpRouteTask implements TYBrtShpRouteDataGroupListener, TYBrtRout
 	public void didFinishBuildingRouteND(List<TYRouteLinkRecord> linkList, List<TYRouteNodeRecord> nodeList) {
 		// System.out.println("didFinishBuildingRouteND");
 
-		linkRecords = new ArrayList<TYRouteLinkRecord>();
+		linkRecords = new ArrayList<>();
 		linkRecords.addAll(linkList);
 
-		nodeRecords = new ArrayList<TYRouteNodeRecord>();
+		nodeRecords = new ArrayList<>();
 		nodeRecords.addAll(nodeList);
 
 		notifyFinishRouteTask(linkRecords, nodeRecords);
@@ -55,7 +55,7 @@ public class TYShpRouteTask implements TYBrtShpRouteDataGroupListener, TYBrtRout
 		notifyFailedRouteTask(error);
 	}
 
-	private List<TYBrtRouteShpTaskListener> listeners = new ArrayList<TYShpRouteTask.TYBrtRouteShpTaskListener>();
+	private final List<TYBrtRouteShpTaskListener> listeners = new ArrayList<>();
 
 	public void addTaskListener(TYBrtRouteShpTaskListener listener) {
 		if (!listeners.contains(listener)) {
@@ -64,9 +64,7 @@ public class TYShpRouteTask implements TYBrtShpRouteDataGroupListener, TYBrtRout
 	}
 
 	public void removeTaskListener(TYBrtRouteShpTaskListener listener) {
-		if (listeners.contains(listener)) {
-			listeners.remove(listener);
-		}
+		listeners.remove(listener);
 	}
 
 	private void notifyFinishRouteTask(List<TYRouteLinkRecord> links, List<TYRouteNodeRecord> nodes) {
@@ -82,8 +80,8 @@ public class TYShpRouteTask implements TYBrtShpRouteDataGroupListener, TYBrtRout
 	}
 
 	public interface TYBrtRouteShpTaskListener {
-		public void didFinishRouteTask(List<TYRouteLinkRecord> links, List<TYRouteNodeRecord> nodes);
+		void didFinishRouteTask(List<TYRouteLinkRecord> links, List<TYRouteNodeRecord> nodes);
 
-		public void didFailedRouteTask(Throwable error);
+		void didFailedRouteTask(Throwable error);
 	}
 }

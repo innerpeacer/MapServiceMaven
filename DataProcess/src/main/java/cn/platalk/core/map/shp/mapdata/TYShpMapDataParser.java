@@ -12,8 +12,8 @@ import cn.platalk.core.map.shp.TYShpHelper;
 import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYShpMapDataParser {
-	String shpPath;
-	private int layer;
+	final String shpPath;
+	private final int layer;
 
 	public TYShpMapDataParser(String path, int index) {
 		this.shpPath = path;
@@ -36,9 +36,9 @@ public class TYShpMapDataParser {
 
 		List<TYMapDataFeatureRecord> records = new ArrayList<>();
 
-		Layer featurelayer = ds.GetLayer(0);
-		for (int i = 0; i < featurelayer.GetFeatureCount(); ++i) {
-			TYMapDataFeatureRecord record = TYShpHelper.mapRecordFromFeature(featurelayer.GetFeature(i), i);
+		Layer featureLayer = ds.GetLayer(0);
+		for (int i = 0; i < featureLayer.GetFeatureCount(); ++i) {
+			TYMapDataFeatureRecord record = TYShpHelper.mapRecordFromFeature(featureLayer.GetFeature(i), i);
 			record.layer = layer;
 			records.add(record);
 		}
@@ -87,7 +87,7 @@ public class TYShpMapDataParser {
 		}
 	}
 
-	private List<TYBrtMapShpParserListener> listeners = new ArrayList<>();
+	private final List<TYBrtMapShpParserListener> listeners = new ArrayList<>();
 
 	public void addParserListener(TYBrtMapShpParserListener listener) {
 		if (!listeners.contains(listener)) {
@@ -100,9 +100,9 @@ public class TYShpMapDataParser {
 	}
 
 	public interface TYBrtMapShpParserListener {
-		public void didFinishParsingMapDataList(List<TYMapDataFeatureRecord> recordList);
+		void didFinishParsingMapDataList(List<TYMapDataFeatureRecord> recordList);
 
-		public void didFailedParsingMapDataList(Throwable error);
+		void didFailedParsingMapDataList(Throwable error);
 	}
 
 }

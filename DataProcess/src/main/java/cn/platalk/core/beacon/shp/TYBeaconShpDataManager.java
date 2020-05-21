@@ -8,7 +8,7 @@ public class TYBeaconShpDataManager implements TYIBeaconShpDataManager {
 	private static final String BEACON_SHP_DIR = "beacon";
 	private static final String BEACON_SHP_PATH = "beacon.shp";
 
-	private String root;
+	private final String root;
 
 	public TYBeaconShpDataManager(String root) {
 		this.root = root;

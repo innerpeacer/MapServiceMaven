@@ -76,7 +76,7 @@ public class TYShpMapDataTaskV3 implements TYBrtMapShpParserListener {
 
 	@Override
 	public void didFinishParsingMapDataList(List<TYMapDataFeatureRecord> recordList) {
-		// System.out.printlns("didFinishParsingMapDataList: " +
+		// System.out.println("didFinishParsingMapDataList: " +
 		// recordList.size());
 		mapDataRecords.addAll(recordList);
 		getNextShp();
@@ -96,18 +96,16 @@ public class TYShpMapDataTaskV3 implements TYBrtMapShpParserListener {
 		return !(currentFloorIndex == mapInfos.size() - 1 && currentLayerIndex == MAP_LAYERS.length - 1);
 	}
 
-	private List<TYBrtMapShpTaskListenerV3> listeners = new ArrayList<TYShpMapDataTaskV3.TYBrtMapShpTaskListenerV3>();
+	private final List<TYBrtMapShpTaskListenerV3> listeners = new ArrayList<>();
 
-	public void addTaskListner(TYBrtMapShpTaskListenerV3 listener) {
+	public void addTaskListener(TYBrtMapShpTaskListenerV3 listener) {
 		if (!listeners.contains(listener)) {
 			listeners.add(listener);
 		}
 	}
 
 	public void removeTaskListener(TYBrtMapShpTaskListenerV3 listener) {
-		if (listeners.contains(listener)) {
-			listeners.remove(listener);
-		}
+		listeners.remove(listener);
 	}
 
 	private void notifyFinishMapShpTask(List<TYMapDataFeatureRecord> records) {
@@ -117,6 +115,6 @@ public class TYShpMapDataTaskV3 implements TYBrtMapShpParserListener {
 	}
 
 	public interface TYBrtMapShpTaskListenerV3 {
-		public void didFinishMapShpTask(List<TYMapDataFeatureRecord> mapDataRecords);
+		void didFinishMapShpTask(List<TYMapDataFeatureRecord> mapDataRecords);
 	}
 }

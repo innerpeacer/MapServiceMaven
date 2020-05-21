@@ -6,16 +6,16 @@ import java.util.List;
 import com.vividsolutions.jts.geom.Point;
 
 public class TYShpBuildingNode {
-	int nodeID;
+	final int nodeID;
 	byte[] geometryData;
-	List<TYShpBuildingLink> adjacencies;
-	boolean isVirutal;
+	final List<TYShpBuildingLink> adjacencies;
+	final boolean isVirtual;
 	Point pos;
 
 	public TYShpBuildingNode(int nodeID, boolean isVir) {
 		this.nodeID = nodeID;
-		this.isVirutal = isVir;
-		adjacencies = new ArrayList<TYShpBuildingLink>();
+		this.isVirtual = isVir;
+		adjacencies = new ArrayList<>();
 	}
 
 	public void addLink(TYShpBuildingLink link) {
@@ -24,7 +24,7 @@ public class TYShpBuildingNode {
 
 	@Override
 	public String toString() {
-		return String.format("ID: %d, Virtual: %d", nodeID, isVirutal);
+		return String.format("ID: %d, Virtual: %b", nodeID, isVirtual);
 	}
 
 }

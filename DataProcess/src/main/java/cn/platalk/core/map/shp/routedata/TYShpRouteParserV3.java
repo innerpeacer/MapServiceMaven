@@ -11,8 +11,8 @@ import org.gdal.ogr.ogr;
 import cn.platalk.core.map.shp.TYShpHelperV3;
 
 public class TYShpRouteParserV3 {
-	String shpPath;
-	int shpType; // 0 for Link, 1 for Node
+	final String shpPath;
+	final int shpType; // 0 for Link, 1 for Node
 	private int layerIndex;
 
 	public TYShpRouteParserV3(String path, int type) {
@@ -37,11 +37,11 @@ public class TYShpRouteParserV3 {
 			return;
 		}
 
-		List<TYShpRouteRecordV3> recordList = new ArrayList<TYShpRouteRecordV3>();
+		List<TYShpRouteRecordV3> recordList = new ArrayList<>();
 
-		Layer featurelayer = ds.GetLayer(0);
-		for (int i = 0; i < featurelayer.GetFeatureCount(); ++i) {
-			TYShpRouteRecordV3 record = TYShpHelperV3.routeRecordFromFeature(featurelayer.GetFeature(i), shpType);
+		Layer featureLayer = ds.GetLayer(0);
+		for (int i = 0; i < featureLayer.GetFeatureCount(); ++i) {
+			TYShpRouteRecordV3 record = TYShpHelperV3.routeRecordFromFeature(featureLayer.GetFeature(i), shpType);
 			recordList.add(record);
 		}
 
@@ -61,7 +61,7 @@ public class TYShpRouteParserV3 {
 		}
 	}
 
-	private List<TYBrtRouteShpParserListenerV3> listeners = new ArrayList<>();
+	private final List<TYBrtRouteShpParserListenerV3> listeners = new ArrayList<>();
 
 	public void addParserListener(TYBrtRouteShpParserListenerV3 listener) {
 		if (!listeners.contains(listener)) {
@@ -74,8 +74,8 @@ public class TYShpRouteParserV3 {
 	}
 
 	public interface TYBrtRouteShpParserListenerV3 {
-		public void didFinishParsingRouteShpDataList(List<TYShpRouteRecordV3> records, int layer);
+		void didFinishParsingRouteShpDataList(List<TYShpRouteRecordV3> records, int layer);
 
-		public void didFailedParsingRouteDataList(Throwable error);
+		void didFailedParsingRouteDataList(Throwable error);
 	}
 }

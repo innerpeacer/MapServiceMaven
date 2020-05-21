@@ -3,7 +3,6 @@ package cn.platalk.core.map.shp.mapdata;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -38,13 +37,13 @@ public class TYJsonMapInfoParser {
 			InputStreamReader inputReader = new InputStreamReader(inStream);
 			BufferedReader bufReader = new BufferedReader(inputReader);
 
-			String line = "";
-			StringBuffer jsonStr = new StringBuffer();
+			String line;
+			StringBuilder jsonStr = new StringBuilder();
 			while ((line = bufReader.readLine()) != null)
 				jsonStr.append(line);
 
 			JSONObject jsonObject = new JSONObject(jsonStr.toString());
-			if (jsonObject != null && !jsonObject.isNull("MapInfo")) {
+			if (!jsonObject.isNull("MapInfo")) {
 				JSONArray array = jsonObject.getJSONArray("MapInfo");
 				for (int i = 0; i < array.length(); i++) {
 					TYMapInfo mapInfo = new TYMapInfo();
@@ -65,19 +64,13 @@ public class TYJsonMapInfoParser {
 			}
 			inputReader.close();
 			notifyFinishParsingMapInfo(mapInfos);
-		} catch (FileNotFoundException e) {
-			notifyFailedParsingMapInfo(e);
-			e.printStackTrace();
-		} catch (IOException e) {
-			notifyFailedParsingMapInfo(e);
-			e.printStackTrace();
-		} catch (JSONException e) {
+		} catch (IOException | JSONException e) {
 			notifyFailedParsingMapInfo(e);
 			e.printStackTrace();
 		}
 	}
 
-	private List<TYBrtMapInfoJsonParserListener> listeners = new ArrayList<TYJsonMapInfoParser.TYBrtMapInfoJsonParserListener>();
+	private final List<TYBrtMapInfoJsonParserListener> listeners = new ArrayList<>();
 
 	public void addParserListener(TYBrtMapInfoJsonParserListener listener) {
 		if (!listeners.contains(listener)) {
@@ -86,9 +79,7 @@ public class TYJsonMapInfoParser {
 	}
 
 	public void removeParserListener(TYBrtMapInfoJsonParserListener listener) {
-		if (listeners.contains(listener)) {
-			listeners.remove(listener);
-		}
+		listeners.remove(listener);
 	}
 
 	private void notifyFinishParsingMapInfo(List<TYMapInfo> infos) {
@@ -104,9 +95,9 @@ public class TYJsonMapInfoParser {
 	}
 
 	public interface TYBrtMapInfoJsonParserListener {
-		public void didFinishParsingMapInfo(List<TYMapInfo> mapInfos);
+		void didFinishParsingMapInfo(List<TYMapInfo> mapInfos);
 
-		public void didFailedParsingMapInfo(Throwable error);
+		void didFailedParsingMapInfo(Throwable error);
 
 	}
 

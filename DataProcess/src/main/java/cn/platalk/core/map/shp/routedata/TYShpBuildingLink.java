@@ -3,13 +3,13 @@ package cn.platalk.core.map.shp.routedata;
 import com.vividsolutions.jts.geom.LineString;
 
 public class TYShpBuildingLink {
-	int linkID;
+	final int linkID;
 	byte[] geometryData;
 	double length;
 	int headNodeID;
 	int endNodeID;
-	boolean isVirtual;
-	boolean isOneWay;
+	final boolean isVirtual;
+	final boolean isOneWay;
 
 	LineString line;
 
@@ -21,7 +21,7 @@ public class TYShpBuildingLink {
 
 	@Override
 	public String toString() {
-		return String.format("Head: %d, End: %d, Length: %d", headNodeID,
+		return String.format("Head: %d, End: %d, Length: %f", headNodeID,
 				endNodeID, length);
 	}
 

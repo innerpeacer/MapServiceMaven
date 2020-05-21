@@ -13,7 +13,7 @@ import cn.platalk.map.entity.base.TYILocatingBeacon;
 import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 
 public class TYShpBeaconDataParser {
-	String shpPath;
+	final String shpPath;
 
 	public TYShpBeaconDataParser(String path) {
 		this.shpPath = path;
@@ -34,9 +34,9 @@ public class TYShpBeaconDataParser {
 		}
 
 		List<TYILocatingBeacon> beacons = new ArrayList<>();
-		Layer featurelayer = ds.GetLayer(0);
-		for (int i = 0; i < featurelayer.GetFeatureCount(); ++i) {
-			TYLocatingBeacon beacon = TYBeaconShpHelper.locationBeaconFromRecord(featurelayer.GetFeature(i));
+		Layer featureLayer = ds.GetLayer(0);
+		for (int i = 0; i < featureLayer.GetFeatureCount(); ++i) {
+			TYLocatingBeacon beacon = TYBeaconShpHelper.locationBeaconFromRecord(featureLayer.GetFeature(i));
 			beacons.add(beacon);
 		}
 		notifyFinishParsingBeaconDataList(beacons);
@@ -54,7 +54,7 @@ public class TYShpBeaconDataParser {
 		}
 	}
 
-	private List<TYBrtShpBeaconParserListener> listeners = new ArrayList<>();
+	private final List<TYBrtShpBeaconParserListener> listeners = new ArrayList<>();
 
 	public void addParserListener(TYBrtShpBeaconParserListener listener) {
 		if (!listeners.contains(listener)) {
@@ -67,8 +67,8 @@ public class TYShpBeaconDataParser {
 	}
 
 	public interface TYBrtShpBeaconParserListener {
-		public void didFinishParsingBeaconDataList(List<TYILocatingBeacon> beaconList);
+		void didFinishParsingBeaconDataList(List<TYILocatingBeacon> beaconList);
 
-		public void didFailedParsingBeaconDataList(Throwable error);
+		void didFailedParsingBeaconDataList(Throwable error);
 	}
 }

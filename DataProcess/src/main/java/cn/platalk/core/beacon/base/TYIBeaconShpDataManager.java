@@ -2,8 +2,8 @@ package cn.platalk.core.beacon.base;
 
 public interface TYIBeaconShpDataManager {
 
-	public String getBeaconShpPath();
+	String getBeaconShpPath();
 
-	public String getBeaconShpDir();
+	String getBeaconShpDir();
 
 }

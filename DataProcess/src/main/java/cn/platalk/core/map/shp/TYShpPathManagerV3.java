@@ -16,8 +16,8 @@ public class TYShpPathManagerV3 implements TYIShpDataManager {
 
 	private static final String SYMBOL_DB_PATH = "SYMBOL.db";
 
-	private String buildingID;
-	private String root;
+	private final String buildingID;
+	private final String root;
 
 	public TYShpPathManagerV3(String root, String buildingID) {
 		this.root = root;

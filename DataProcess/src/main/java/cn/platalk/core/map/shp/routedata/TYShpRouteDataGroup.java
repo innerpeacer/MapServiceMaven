@@ -14,12 +14,12 @@ public class TYShpRouteDataGroup implements TYBrtRouteShpParserListener {
 	private static final String[] ROUTE_LAYERS = { "NODE", "VIRTUAL_NODE", "JUNCTION", "LINK", "VIRTUAL_LINK" };
 	TYIShpDataManager shpDataManager;
 
-	List<TYShpBuildingNode> nodeArray = new ArrayList<TYShpBuildingNode>();
-	List<TYShpBuildingNode> virtualNodeArray = new ArrayList<TYShpBuildingNode>();
-	List<TYShpBuildingNode> junctionArray = new ArrayList<TYShpBuildingNode>();
+	final List<TYShpBuildingNode> nodeArray = new ArrayList<>();
+	final List<TYShpBuildingNode> virtualNodeArray = new ArrayList<>();
+	final List<TYShpBuildingNode> junctionArray = new ArrayList<>();
 
-	List<TYShpBuildingLink> linkArray = new ArrayList<TYShpBuildingLink>();
-	List<TYShpBuildingLink> virtualLinkArray = new ArrayList<TYShpBuildingLink>();
+	final List<TYShpBuildingLink> linkArray = new ArrayList<>();
+	final List<TYShpBuildingLink> virtualLinkArray = new ArrayList<>();
 
 	private int currentLayerIndex = 0;
 
@@ -31,7 +31,7 @@ public class TYShpRouteDataGroup implements TYBrtRouteShpParserListener {
 		this.shpDataManager = manager;
 	}
 
-	public void startParseingRouteShp() {
+	public void startParsingRouteShp() {
 		// System.out.println("startProcessRouteShp");
 
 		nodeArray.clear();
@@ -74,7 +74,6 @@ public class TYShpRouteDataGroup implements TYBrtRouteShpParserListener {
 			break;
 
 		default:
-			return;
 		}
 	}
 
@@ -87,7 +86,7 @@ public class TYShpRouteDataGroup implements TYBrtRouteShpParserListener {
 		// System.out.println("processPolylineShp: " + layer);
 
 		int offsetForID = getOffset(layer);
-		List<TYShpBuildingLink> resultList = new ArrayList<TYShpBuildingLink>();
+		List<TYShpBuildingLink> resultList = new ArrayList<>();
 		for (TYShpRouteRecord record : records) {
 			int gid = record.geometryID + offsetForID;
 			LineString line = (LineString) record.geometry;
@@ -110,7 +109,7 @@ public class TYShpRouteDataGroup implements TYBrtRouteShpParserListener {
 		// System.out.println("processPointShp: " + layer);
 
 		int offsetForID = getOffset(layer);
-		List<TYShpBuildingNode> resultList = new ArrayList<TYShpBuildingNode>();
+		List<TYShpBuildingNode> resultList = new ArrayList<>();
 		for (TYShpRouteRecord record : records) {
 			Point point = (Point) record.geometry;
 			int gid = record.geometryID + offsetForID;
@@ -160,7 +159,7 @@ public class TYShpRouteDataGroup implements TYBrtRouteShpParserListener {
 		return currentLayerIndex != ROUTE_LAYERS.length;
 	}
 
-	private List<TYBrtShpRouteDataGroupListener> listeners = new ArrayList<TYShpRouteDataGroup.TYBrtShpRouteDataGroupListener>();
+	private final List<TYBrtShpRouteDataGroupListener> listeners = new ArrayList<>();
 
 	public void addDataGroupListener(TYBrtShpRouteDataGroupListener listener) {
 		if (!listeners.contains(listener)) {
@@ -169,9 +168,7 @@ public class TYShpRouteDataGroup implements TYBrtRouteShpParserListener {
 	}
 
 	public void removeDataGroupListener(TYBrtShpRouteDataGroupListener listener) {
-		if (listeners.contains(listener)) {
-			listeners.remove(listener);
-		}
+		listeners.remove(listener);
 	}
 
 	private void notifyFetchDataGroup() {
@@ -181,7 +178,7 @@ public class TYShpRouteDataGroup implements TYBrtRouteShpParserListener {
 	}
 
 	public interface TYBrtShpRouteDataGroupListener {
-		public void didFinishFetchDataGroup();
+		void didFinishFetchDataGroup();
 	}
 
 }

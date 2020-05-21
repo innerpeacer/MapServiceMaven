@@ -25,7 +25,7 @@ import cn.platalk.sqlite.map.IPSqliteSymbolDBAdapter;
 
 public class TYShpGeneratingTaskV4
 		implements TYBrtMapInfoJsonParserListener, TYBrtMapShpTaskListenerV3, TYBrtRouteShpTaskListenerV3 {
-	private TYShpPathManagerV3 shpDataManager;
+	private final TYShpPathManagerV3 shpDataManager;
 
 	TYCity city;
 	TYBuilding building;
@@ -66,7 +66,7 @@ public class TYShpGeneratingTaskV4
 
 	private void startMapShpTask() {
 		mapShpTask = new TYShpMapDataTaskV3();
-		mapShpTask.addTaskListner(this);
+		mapShpTask.addTaskListener(this);
 
 		mapShpTask.setMapInfos(mapInfos);
 		mapShpTask.setShpDataManager(shpDataManager);
@@ -84,10 +84,10 @@ public class TYShpGeneratingTaskV4
 
 	@Override
 	public void didFinishRouteTask(List<TYIRouteLinkRecordV3> links, List<TYIRouteNodeRecordV3> nodes) {
-		linkRecords = new ArrayList<TYIRouteLinkRecordV3>();
+		linkRecords = new ArrayList<>();
 		linkRecords.addAll(links);
 
-		nodeRecords = new ArrayList<TYIRouteNodeRecordV3>();
+		nodeRecords = new ArrayList<>();
 		nodeRecords.addAll(nodes);
 
 		notifyFinishGeneratingShpTask();
@@ -100,8 +100,8 @@ public class TYShpGeneratingTaskV4
 
 	@Override
 	public void didFinishParsingMapInfo(List<TYMapInfo> infos) {
-		// System.out.prisntln("didFinishParsingMapInfo");
-		mapInfos = new ArrayList<TYMapInfo>();
+		// System.out.println("didFinishParsingMapInfo");
+		mapInfos = new ArrayList<>();
 		mapInfos.addAll(infos);
 
 		TYMapExtent buildingExtent = new TYMapExtent(Double.MAX_VALUE, Double.MAX_VALUE, Double.MIN_VALUE,
@@ -121,8 +121,8 @@ public class TYShpGeneratingTaskV4
 	}
 
 	private List<TYMapDataFeatureRecord> updateLabelXY(List<TYMapDataFeatureRecord> records) {
-		Map<String, TYMapDataFeatureRecord> fillMap = new HashMap<String, TYMapDataFeatureRecord>();
-		Map<String, TYMapDataFeatureRecord> symbolMap = new HashMap<String, TYMapDataFeatureRecord>();
+		Map<String, TYMapDataFeatureRecord> fillMap = new HashMap<>();
+		Map<String, TYMapDataFeatureRecord> symbolMap = new HashMap<>();
 		for (TYMapDataFeatureRecord record : records) {
 			if (record.layer == 1 || record.layer == 2 || record.layer == 3) {
 				fillMap.put(record.poiID, record);
@@ -140,7 +140,7 @@ public class TYShpGeneratingTaskV4
 			}
 		}
 
-		List<TYMapDataFeatureRecord> resultList = new ArrayList<TYMapDataFeatureRecord>();
+		List<TYMapDataFeatureRecord> resultList = new ArrayList<>();
 		resultList.addAll(fillMap.values());
 		resultList.addAll(symbolMap.values());
 		return resultList;
@@ -150,7 +150,7 @@ public class TYShpGeneratingTaskV4
 	public void didFinishMapShpTask(List<TYMapDataFeatureRecord> records) {
 		// System.out.println("didFinishMapShpTask");
 		List<TYMapDataFeatureRecord> updatedRecords = updateLabelXY(records);
-		mapDataRecords = new ArrayList<TYMapDataFeatureRecord>();
+		mapDataRecords = new ArrayList<>();
 		mapDataRecords.addAll(updatedRecords);
 		// System.out.println(mapDataRecords.size() + " records!");
 		startRouteShpTask();
@@ -197,7 +197,7 @@ public class TYShpGeneratingTaskV4
 		return nodeRecords;
 	}
 
-	private List<TYShpGeneratingTaskListenerV4> listeners = new ArrayList<TYShpGeneratingTaskListenerV4>();
+	private final List<TYShpGeneratingTaskListenerV4> listeners = new ArrayList<>();
 
 	public void addTaskListener(TYShpGeneratingTaskListenerV4 listener) {
 		if (!listeners.contains(listener)) {
@@ -206,9 +206,7 @@ public class TYShpGeneratingTaskV4
 	}
 
 	public void removeTaskListener(TYShpGeneratingTaskListenerV4 listener) {
-		if (listeners.contains(listener)) {
-			listeners.remove(listener);
-		}
+		listeners.remove(listener);
 	}
 
 	private void notifyFinishGeneratingShpTask() {
@@ -224,9 +222,9 @@ public class TYShpGeneratingTaskV4
 	}
 
 	public interface TYShpGeneratingTaskListenerV4 {
-		public void didFinishGeneratingTask(TYShpGeneratingTaskV4 task);
+		void didFinishGeneratingTask(TYShpGeneratingTaskV4 task);
 
-		public void didFailedGeneratingTask(Throwable error);
+		void didFailedGeneratingTask(Throwable error);
 	}
 
 }
