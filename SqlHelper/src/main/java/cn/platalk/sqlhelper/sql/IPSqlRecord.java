@@ -1,7 +1,5 @@
 package cn.platalk.sqlhelper.sql;
 
-import com.sun.org.apache.bcel.internal.generic.LOR;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
