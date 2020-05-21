@@ -38,7 +38,7 @@ public class WTMysqlBleSampleParams {
 
 	public static List<IPSqlField> GetBleSampleFieldList() {
 		if (bleSampleFieldList == null) {
-			bleSampleFieldList = new ArrayList<IPSqlField>();
+			bleSampleFieldList = new ArrayList<>();
 			bleSampleFieldList.add(new IPSqlField(FIELD_BLE_SAMPLE_1_ID,
 					new IPSqlFieldType(String.class.getName(), "VARCHAR(200)"), false));
 			bleSampleFieldList.add(new IPSqlField(FIELD_BLE_SAMPLE_2_BUILDING_ID,
@@ -62,7 +62,7 @@ public class WTMysqlBleSampleParams {
 	}
 
 	public static List<WTBleSample> BleSampleListFromRecords(List<IPSqlRecord> records) {
-		List<WTBleSample> sampleList = new ArrayList<WTBleSample>();
+		List<WTBleSample> sampleList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			byte[] data = record.getBlob(FIELD_BLE_SAMPLE_7_CONTENT);
 			try {
@@ -77,7 +77,7 @@ public class WTMysqlBleSampleParams {
 	}
 
 	public static Map<String, Object> DataMapFromBleSample(WTBleSample sample) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_BLE_SAMPLE_1_ID, sample.getSampleID());
 		data.put(FIELD_BLE_SAMPLE_2_BUILDING_ID, sample.getBuildingID());
 		data.put(FIELD_BLE_SAMPLE_3_LOCATION_X, sample.getLocation().getX());

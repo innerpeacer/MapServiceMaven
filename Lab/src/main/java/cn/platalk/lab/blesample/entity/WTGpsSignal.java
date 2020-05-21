@@ -4,9 +4,9 @@ import cn.platalk.map.entity.base.impl.TYLngLat;
 import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public class WTGpsSignal {
-	private TYLngLat lngLat;
-	private double accuracy;
-	private double timestamp;
+	private final TYLngLat lngLat;
+	private final double accuracy;
+	private final double timestamp;
 
 	public WTGpsSignal(double lng, double lat, double accuracy, double timestamp) {
 		this.lngLat = new TYLngLat(lng, lat);

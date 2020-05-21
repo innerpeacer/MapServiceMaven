@@ -22,12 +22,12 @@ public class IPMysqlUniversalDataParams {
 	private static List<IPSqlField> universalDataFieldList = null;
 
 	public static IPSqlTable CreateTable(String tableName) {
-		return new IPSqlTable(String.format(tableName), GetUniversalDataFieldList(), null);
+		return new IPSqlTable(tableName, GetUniversalDataFieldList(), null);
 	}
 
 	public static List<IPSqlField> GetUniversalDataFieldList() {
 		if (universalDataFieldList == null) {
-			universalDataFieldList = new ArrayList<IPSqlField>();
+			universalDataFieldList = new ArrayList<>();
 			universalDataFieldList.add(new IPSqlField(FIELD_UNIVERSAL_DATA_1_ID,
 					new IPSqlFieldType(String.class.getName(), "VARCHAR(200)"), false));
 			universalDataFieldList.add(new IPSqlField(FIELD_UNIVERSAL_DATA_2_NAME,
@@ -43,7 +43,7 @@ public class IPMysqlUniversalDataParams {
 	}
 
 	public static List<IPUniversalData> UniversalDataListFromRecords(List<IPSqlRecord> records) {
-		List<IPUniversalData> udList = new ArrayList<IPUniversalData>();
+		List<IPUniversalData> udList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			IPUniversalData ud = new IPUniversalData();
 			ud.setDataID(record.getString(FIELD_UNIVERSAL_DATA_1_ID));
@@ -57,7 +57,7 @@ public class IPMysqlUniversalDataParams {
 	}
 
 	public static Map<String, Object> DataMapFromUniversalData(IPUniversalData ud) {
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_UNIVERSAL_DATA_1_ID, ud.getDataID());
 		data.put(FIELD_UNIVERSAL_DATA_2_NAME, ud.getDataName());
 		data.put(FIELD_UNIVERSAL_DATA_3_CONTENT, ud.getDataContent());

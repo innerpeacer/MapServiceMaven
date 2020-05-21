@@ -3,7 +3,7 @@
 
 package cn.platalk.lab.blesample.pbf.proto;
 
-@SuppressWarnings(value = { "unused", "unchecked" })
+@SuppressWarnings(value = { "unused"})
 
 public final class WTBleSamplePbf {
 	private WTBleSamplePbf() {

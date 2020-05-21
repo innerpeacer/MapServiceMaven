@@ -3,9 +3,9 @@ package cn.platalk.lab.universaldata.entity;
 public enum IPUniversalDataType {
 	Motion(1), BleSample(2);
 
-	private int value;
+	private final int value;
 
-	private IPUniversalDataType(int value) {
+	IPUniversalDataType(int value) {
 		this.value = value;
 	}
 

@@ -9,8 +9,8 @@ import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class IPMysqlUniversalDataDBAdapter {
-	IPMysqlDB db;
-	IPSqlTable udTable;
+	final IPMysqlDB db;
+	final IPSqlTable udTable;
 
 	public IPMysqlUniversalDataDBAdapter(String tableName) {
 		db = new IPMysqlDB(TYDatabaseManager.GetLabDBUrl(), TYDatabaseManager.GetUserName(),
@@ -18,11 +18,7 @@ public class IPMysqlUniversalDataDBAdapter {
 		udTable = IPMysqlUniversalDataParams.CreateTable(tableName);
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 	}
@@ -75,7 +71,7 @@ public class IPMysqlUniversalDataDBAdapter {
 	public IPUniversalData getUniversalData(String dataID) {
 		List<IPUniversalData> udList = IPMysqlUniversalDataParams.UniversalDataListFromRecords(
 				db.readData(udTable, udTable.getField(IPMysqlUniversalDataParams.FIELD_UNIVERSAL_DATA_1_ID), dataID));
-		if (udList != null && udList.size() > 0) {
+		if (udList.size() > 0) {
 			return udList.get(0);
 		}
 		return null;

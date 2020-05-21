@@ -9,8 +9,8 @@ import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class WTMysqlBleSampleDBAdapter {
-	IPMysqlDB db;
-	IPSqlTable sampleTable;
+	final IPMysqlDB db;
+	final IPSqlTable sampleTable;
 
 	public WTMysqlBleSampleDBAdapter() {
 		db = new IPMysqlDB(TYDatabaseManager.GetLabDBUrl(), TYDatabaseManager.GetUserName(),
@@ -18,11 +18,7 @@ public class WTMysqlBleSampleDBAdapter {
 		sampleTable = WTMysqlBleSampleParams.CreateTable();
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 	}
@@ -89,7 +85,7 @@ public class WTMysqlBleSampleDBAdapter {
 	public WTBleSample getSample(String sampleID) {
 		List<WTBleSample> sampleList = WTMysqlBleSampleParams.BleSampleListFromRecords(
 				db.readData(sampleTable, sampleTable.getField(WTMysqlBleSampleParams.FIELD_BLE_SAMPLE_1_ID), sampleID));
-		if (sampleList != null && sampleList.size() > 0) {
+		if (sampleList.size() > 0) {
 			return sampleList.get(0);
 		}
 		return null;

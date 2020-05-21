@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WTBleSignal {
-	private List<WTBeacon> beacons;
-	private double timestamp;
+	private final List<WTBeacon> beacons;
+	private final double timestamp;
 
 	public WTBleSignal(List<WTBeacon> beacons, double timestamp) {
-		this.beacons = new ArrayList<WTBeacon>(beacons);
+		this.beacons = new ArrayList<>(beacons);
 		this.timestamp = timestamp;
 	}
 

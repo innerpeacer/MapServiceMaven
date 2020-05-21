@@ -4,7 +4,7 @@ public class TYAnalysisEntity {
 	public enum EntityType {
 		GPS("GPS"), BLE("BLE");
 
-		String name;
+		final String name;
 
 		EntityType(String name) {
 			this.name = name;
@@ -15,9 +15,9 @@ public class TYAnalysisEntity {
 		}
 	}
 
-	private EntityType type;
-	private double error;
-	private double accuracy;
+	private final EntityType type;
+	private final double error;
+	private final double accuracy;
 
 	public TYAnalysisEntity(EntityType type) {
 		this(type, 0, 0);

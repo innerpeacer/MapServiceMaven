@@ -8,8 +8,8 @@ import cn.platalk.sqlhelper.sql.IPSqlTable;
 import cn.platalk.sqlhelper.sqlite.IPSqliteDB;
 
 public class IPSqliteUniversalDataDBAdapter {
-	IPSqliteDB db;
-	IPSqlTable udTable;
+	final IPSqliteDB db;
+	final IPSqlTable udTable;
 
 	public IPSqliteUniversalDataDBAdapter(String path, String tableName) {
 		db = new IPSqliteDB(path);
@@ -72,7 +72,7 @@ public class IPSqliteUniversalDataDBAdapter {
 	public IPUniversalData getUniversalData(String dataID) {
 		List<IPUniversalData> udList = IPSqliteUniversalDataParams.UniversalDataListFromRecords(
 				db.readData(udTable, udTable.getField(IPSqliteUniversalDataParams.FIELD_UNIVERSAL_DATA_1_ID), dataID));
-		if (udList != null && udList.size() > 0) {
+		if (udList.size() > 0) {
 			return udList.get(0);
 		}
 		return null;

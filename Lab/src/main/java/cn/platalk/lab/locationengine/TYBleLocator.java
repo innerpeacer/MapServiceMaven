@@ -15,8 +15,8 @@ import cn.platalk.mysql.beacon.TYBeaconDBAdapter;
 public class TYBleLocator {
 	private static final int NUMBER_OF_BEACONS = 15;
 
-	List<TYLocatingBeacon> locatingBeaconArray = new ArrayList<TYLocatingBeacon>();
-	Map<Long, TYLocatingBeacon> locatingBeaconMap = new HashMap<Long, TYLocatingBeacon>();
+	final List<TYLocatingBeacon> locatingBeaconArray = new ArrayList<>();
+	final Map<Long, TYLocatingBeacon> locatingBeaconMap = new HashMap<>();
 
 	public TYBleLocator(String buildingID) {
 		TYBeaconDBAdapter beaconDB = new TYBeaconDBAdapter(buildingID);
@@ -46,7 +46,7 @@ public class TYBleLocator {
 		int index = Math.min(NUMBER_OF_BEACONS, scannedBeacons.size());
 		double minAccuracy = Double.MAX_VALUE;
 		int maxRssi = -100;
-		int minAccuracyfloor = 0;
+		int minAccuracyFloor = 0;
 
 		for (int i = 0; i < index; ++i) {
 			WTBeacon b = scannedBeacons.get(i);
@@ -58,7 +58,7 @@ public class TYBleLocator {
 
 			if (accuracy > 0 && accuracy < minAccuracy) {
 				minAccuracy = accuracy;
-				minAccuracyfloor = location.getFloor();
+				minAccuracyFloor = location.getFloor();
 			}
 
 			double weighting = 1.0 / (accuracy * accuracy);
@@ -72,9 +72,9 @@ public class TYBleLocator {
 			return null;
 		}
 		TYLocalPoint location = new TYLocalPoint(totalWeightingX / totalWeighting, totalWeightingY / totalWeighting,
-				minAccuracyfloor);
+				minAccuracyFloor);
 
-		Map<String, Object> result = new HashMap<String, Object>();
+		Map<String, Object> result = new HashMap<>();
 		result.put("location", location);
 		result.put("minAccuracy", minAccuracy);
 		result.put("maxRssi", maxRssi);
@@ -84,9 +84,8 @@ public class TYBleLocator {
 	}
 
 	private List<WTBeacon> preprocessBeacons(List<WTBeacon> beacons) {
-		List<WTBeacon> scannedBeacons = new ArrayList<WTBeacon>();
-		for (int i = 0; i < beacons.size(); ++i) {
-			WTBeacon b = beacons.get(i);
+		List<WTBeacon> scannedBeacons = new ArrayList<>();
+		for (WTBeacon b : beacons) {
 			if (b.getRssi() <= -20 && locatingBeaconMap.containsKey(b.getBeaconKey())) {
 				scannedBeacons.add(b);
 			}

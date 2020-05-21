@@ -20,9 +20,9 @@ public class TYBleSampleAnalysis {
 
 	public static Map<String, Object> process(TYBuilding building, TYBleLocator locator, WTBleSample sample) {
 		// System.out.println("process");
-		Map<String, Object> result = new HashMap<String, Object>();
-		List<TYAnalysisEntity> gpsErrorList = new ArrayList<TYAnalysisEntity>();
-		List<TYAnalysisEntity> bleErrorList = new ArrayList<TYAnalysisEntity>();
+		Map<String, Object> result = new HashMap<>();
+		List<TYAnalysisEntity> gpsErrorList = new ArrayList<>();
+		List<TYAnalysisEntity> bleErrorList = new ArrayList<>();
 
 		TYWtWgs84Converter converter = new TYWtWgs84Converter(building.getWtCalibrationPoint(),
 				building.getWgs84CalibrationPoint());
@@ -32,8 +32,7 @@ public class TYBleSampleAnalysis {
 		// System.out.println("************ gps ************");
 		// System.out.println("accuracy -> gpsError");
 		List<WTGpsSignal> gpsList = sample.getGpsList();
-		for (int i = 0; i < gpsList.size(); ++i) {
-			WTGpsSignal gps = gpsList.get(i);
+		for (WTGpsSignal gps : gpsList) {
 			TYLocalPoint gpsPoint = converter.converterToMercator(gps.getLngLat());
 			double gpsError = samplePoint.distanceWithPoint(gpsPoint);
 			gpsErrorList.add(new TYAnalysisEntity(EntityType.GPS, gpsError, gps.getAccuracy()));
@@ -44,8 +43,7 @@ public class TYBleSampleAnalysis {
 		// System.out.println("************ ble ************");
 		// System.out.println("minAccuracy -> bleError");
 		List<WTBleSignal> bleList = sample.getBleList();
-		for (int i = 0; i < bleList.size(); ++i) {
-			WTBleSignal ble = bleList.get(i);
+		for (WTBleSignal ble : bleList) {
 			Map<String, Object> bleResult = locator.calculateLocations(ble.getBeacons());
 			if (bleResult == null) {
 				continue;

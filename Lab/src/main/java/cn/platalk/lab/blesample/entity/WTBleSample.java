@@ -31,12 +31,12 @@ public class WTBleSample implements TYIJsonFeature {
 
 	private String sampleID;
 	private String buildingID;
-	private double timestamp;
+	private final double timestamp;
 
 	private TYLocalPoint location;
 
-	private List<WTBleSignal> bleList = new ArrayList<WTBleSignal>();
-	private List<WTGpsSignal> gpsList = new ArrayList<WTGpsSignal>();
+	private final List<WTBleSignal> bleList = new ArrayList<>();
+	private final List<WTGpsSignal> gpsList = new ArrayList<>();
 
 	private WTSamplePlatform platform;
 	private String user;

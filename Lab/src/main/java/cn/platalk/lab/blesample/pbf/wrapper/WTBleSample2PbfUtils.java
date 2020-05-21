@@ -46,7 +46,7 @@ public class WTBleSample2PbfUtils {
 	static BleSignalPbf toBleSignalPbf(WTBleSignal ble) {
 		BleSignalPbf.Builder builder = BleSignalPbf.newBuilder();
 
-		List<BleBeaconPbf> beaconList = new ArrayList<BleBeaconPbf>();
+		List<BleBeaconPbf> beaconList = new ArrayList<>();
 		for (int i = 0; i < ble.getBeacons().size(); ++i) {
 			WTBeacon beacon = ble.getBeacons().get(i);
 			beaconList.add(toBeaconPbf(beacon));
@@ -64,14 +64,14 @@ public class WTBleSample2PbfUtils {
 		builder.setTimestamp(sample.getTimestamp());
 		builder.setLocation(toLocationPbf(sample.getLocation()));
 
-		List<BleSignalPbf> bleList = new ArrayList<BleSignalPbf>();
+		List<BleSignalPbf> bleList = new ArrayList<>();
 		for (int i = 0; i < sample.getBleList().size(); ++i) {
 			WTBleSignal ble = sample.getBleList().get(i);
 			bleList.add(toBleSignalPbf(ble));
 		}
 		builder.addAllBleList(bleList);
 
-		List<GpsSignalPbf> gpsList = new ArrayList<GpsSignalPbf>();
+		List<GpsSignalPbf> gpsList = new ArrayList<>();
 		for (int i = 0; i < sample.getGpsList().size(); ++i) {
 			WTGpsSignal gps = sample.getGpsList().get(i);
 			gpsList.add(toGpsSignalPbf(gps));

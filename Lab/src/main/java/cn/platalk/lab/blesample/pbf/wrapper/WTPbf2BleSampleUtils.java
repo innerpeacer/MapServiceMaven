@@ -29,12 +29,11 @@ public class WTPbf2BleSampleUtils {
 	}
 
 	static WTGpsSignal fromGpsSignalPbf(GpsSignalPbf pbf) {
-		WTGpsSignal gps = new WTGpsSignal(pbf.getLng(), pbf.getLat(), pbf.getAccuracy(), pbf.getTimestamp());
-		return gps;
+		return new WTGpsSignal(pbf.getLng(), pbf.getLat(), pbf.getAccuracy(), pbf.getTimestamp());
 	}
 
 	static WTBleSignal fromBleSignalPbf(BleSignalPbf pbf) {
-		List<WTBeacon> beacons = new ArrayList<WTBeacon>();
+		List<WTBeacon> beacons = new ArrayList<>();
 		for (int i = 0; i < pbf.getBeaconsCount(); i++) {
 			beacons.add(fromBeaconPbf(pbf.getBeacons(i)));
 		}
