@@ -12,9 +12,9 @@ import com.vividsolutions.jts.geom.LineString;
 class IPMrCalculator {
 	static final double LARGE_DISTANCE = 1000000000;
 
-	private IPMrParams routeParams;
-	private IPServerRouteNetworkDataset routeNetwork;
-	private int stopCount;
+	private final IPMrParams routeParams;
+	private final IPServerRouteNetworkDataset routeNetwork;
+	private final int stopCount;
 
 	private Map<String, LineString> routeDict;
 
@@ -28,14 +28,13 @@ class IPMrCalculator {
 	}
 
 	void prepare() {
-		routeDict = new HashMap<String, LineString>();
+		routeDict = new HashMap<>();
 		List<IPMrStop> stopNodeArray = routeParams.getMiddleStops();
 
 		// System.out.println("============= BuildKey =============");
-		for (int i = 0; i < stopNodeArray.size(); ++i) {
+		for (IPMrStop middleStop : stopNodeArray) {
 			IPMrStop startStop = routeParams.getStartStop();
-			IPMrStop middleStop = stopNodeArray.get(i);
-			LineString line = routeNetwork.getShorestPath(startStop.getPos(), middleStop.getPos());
+			LineString line = routeNetwork.getShortestPath(startStop.getPos(), middleStop.getPos());
 			// String key = String.format("%d-%d", startStop.getStopID(),
 			// middleStop.getStopID());
 			String key = getKey(startStop, middleStop);
@@ -44,15 +43,15 @@ class IPMrCalculator {
 			// .getCoordinates())) {
 			if (line != null) {
 				routeDict.put(key, line);
-			} else {
-				// System.out.println("No route between stops: " + key);
 			}
+//			else {
+			// System.out.println("No route between stops: " + key);
+//			}
 		}
 
-		for (int i = 0; i < stopNodeArray.size(); ++i) {
+		for (IPMrStop middleStop : stopNodeArray) {
 			IPMrStop endStop = routeParams.getEndStop();
-			IPMrStop middleStop = stopNodeArray.get(i);
-			LineString line = routeNetwork.getShorestPath(middleStop.getPos(), endStop.getPos());
+			LineString line = routeNetwork.getShortestPath(middleStop.getPos(), endStop.getPos());
 			// String key = String.format("%d-%d", middleStop.getStopID(),
 			// endStop.getStopID());
 			String key = getKey(middleStop, endStop);
@@ -61,9 +60,10 @@ class IPMrCalculator {
 			// {
 			if (line != null) {
 				routeDict.put(key, line);
-			} else {
-				// System.out.println("No route between stops: " + key);
 			}
+//			else {
+				// System.out.println("No route between stops: " + key);
+//			}
 		}
 
 		for (int i = 0; i < stopNodeArray.size(); ++i) {
@@ -73,7 +73,7 @@ class IPMrCalculator {
 
 				IPMrStop stop1 = stopNodeArray.get(i);
 				IPMrStop stop2 = stopNodeArray.get(j);
-				LineString line = routeNetwork.getShorestPath(stop1.getPos(), stop2.getPos());
+				LineString line = routeNetwork.getShortestPath(stop1.getPos(), stop2.getPos());
 				// String key = String.format("%d-%d", stop1.getStopID(),
 				// stop2.getStopID());
 				String key = getKey(stop1, stop2);
@@ -82,28 +82,29 @@ class IPMrCalculator {
 				// {
 				if (line != null) {
 					routeDict.put(key, line);
-				} else {
-					// System.out.println("No route between stops: " + key);
 				}
+//				else {
+					// System.out.println("No route between stops: " + key);
+//				}
 			}
 		}
 	}
 
-	LineString calculate(boolean rearranageStops) {
+	LineString calculate(boolean rearrangeStops) {
 		// System.out.println("calculate");
 		List<IPMrStop> stopArray = routeParams.getMiddleStops();
-		int indices[] = new int[stopArray.size()];
+		int[] indices = new int[stopArray.size()];
 		for (int i = 0; i < stopArray.size(); ++i) {
 			indices[i] = i;
 		}
 
 		minDistance = LARGE_DISTANCE;
-		shortestRoute = new ArrayList<Integer>();
+		shortestRoute = new ArrayList<>();
 
-		if (rearranageStops) {
+		if (rearrangeStops) {
 			fullArray(indices, 0, stopArray.size() - 1);
 		} else {
-			shortestRoute = new ArrayList<Integer>();
+			shortestRoute = new ArrayList<>();
 			for (int i = 0; i < stopArray.size(); ++i) {
 				shortestRoute.add(i);
 			}
@@ -114,13 +115,13 @@ class IPMrCalculator {
 	}
 
 	Map<String, List<Object>> getDetailedRoute() {
-		Map<String, List<Object>> resultMap = new HashMap<String, List<Object>>();
+		Map<String, List<Object>> resultMap = new HashMap<>();
 
 		List<Object> indices = new ArrayList<Object>(shortestRoute);
-		List<Object> lineArray = new ArrayList<Object>();
+		List<Object> lineArray = new ArrayList<>();
 
-		LineString line = null;
-		String key = null;
+		LineString line;
+		String key;
 
 		List<IPMrStop> middleStopArray = routeParams.getMiddleStops();
 
@@ -157,18 +158,18 @@ class IPMrCalculator {
 
 	LineString getShortestRouteLine() {
 		GeometryFactory factory = new GeometryFactory();
-		List<Coordinate> coordList = new ArrayList<Coordinate>();
-		LineString result = null;
+		List<Coordinate> coordList = new ArrayList<>();
+		LineString result;
 
-		LineString line = null;
-		String key = null;
+		LineString line;
+		String key;
 
 		IPMrStop startStop = routeParams.getStartStop();
 		IPMrStop endStop = routeParams.getEndStop();
 		List<IPMrStop> middleStopArray = routeParams.getMiddleStops();
 
 		if (minDistance == LARGE_DISTANCE) {
-			return result;
+			return null;
 		}
 
 		// System.out.println("nodes: " + shortestRoute);
@@ -216,8 +217,8 @@ class IPMrCalculator {
 
 	private double getDistance(int[] array) {
 		double distance = 0;
-		LineString line = null;
-		String key = null;
+		LineString line;
+		String key;
 
 		IPMrStop startStop = routeParams.getStartStop();
 		IPMrStop endStop = routeParams.getEndStop();
@@ -271,7 +272,7 @@ class IPMrCalculator {
 			double distance = getDistance(array);
 			if (distance < minDistance) {
 				minDistance = distance;
-				shortestRoute = new ArrayList<Integer>();
+				shortestRoute = new ArrayList<>();
 				for (int i = 0; i < stopCount; ++i) {
 					shortestRoute.add(array[i]);
 				}

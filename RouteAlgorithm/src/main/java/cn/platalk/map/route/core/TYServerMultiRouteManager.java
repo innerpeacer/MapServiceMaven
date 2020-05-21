@@ -22,10 +22,10 @@ public class TYServerMultiRouteManager {
 	Point endPoint;
 	IPMrParams params;
 
-	IPServerRouteNetworkDataset networkDataset;
-	GeometryFactory factory = new GeometryFactory();
-	private IPServerRoutePointConverter routePointConverter;
-	List<TYIMapInfo> allMapInfoArray = new ArrayList<TYIMapInfo>();
+	final IPServerRouteNetworkDataset networkDataset;
+	final GeometryFactory factory = new GeometryFactory();
+	private final IPServerRoutePointConverter routePointConverter;
+	final List<TYIMapInfo> allMapInfoArray = new ArrayList<>();
 
 	// private TYIBuilding currentBuilding;
 
@@ -41,32 +41,32 @@ public class TYServerMultiRouteManager {
 
 	// public synchronized TYServerRouteResult requestRoute(TYLocalPoint start,
 	// TYLocalPoint end, List<TYLocalPoint> stopPoints) {
-	// System.out.println("Request Mutli Route: " + stopPoints.size()
+	// System.out.println("Request Multi Route: " + stopPoints.size()
 	// + " stops");
 	// startPoint = routePointConverter.getRoutePointFromLocalPoint(start);
 	// endPoint = routePointConverter.getRoutePointFromLocalPoint(end);
 	//
-	// LineString resultRoute = networkDataset.getShorestPath(startPoint,
+	// LineString resultRoute = networkDataset.getShortestPath(startPoint,
 	// endPoint);
 	// return processPolyline(resultRoute);
 	// }
 
 	public synchronized TYServerMultiRouteResult requestRoute(TYLocalPoint start, TYLocalPoint end,
 			List<TYLocalPoint> stops, boolean rearrangeStops) {
-		// System.out.println("Request Mutli Route: " + stops.size() +
+		// System.out.println("Request Multi Route: " + stops.size() +
 		// " stops");
 		startPoint = routePointConverter.getRoutePointFromLocalPoint(start);
 		endPoint = routePointConverter.getRoutePointFromLocalPoint(end);
 
-		LineString line = null;
+		LineString line;
 		TYServerMultiRouteResult multiResult = null;
 
 		if (stops == null || stops.size() == 0) {
 			// System.out.println("Compute Single");
-			line = networkDataset.getShorestPath(startPoint, endPoint);
+			line = networkDataset.getShortestPath(startPoint, endPoint);
 			if (line != null && line.getNumPoints() != 0) {
 				TYServerRouteResult result = processPolyline(line);
-				List<TYServerRouteResult> details = new ArrayList<TYServerRouteResult>();
+				List<TYServerRouteResult> details = new ArrayList<>();
 				details.add(result);
 				multiResult = new TYServerMultiRouteResult(result, details);
 				multiResult.setStartPoint(start);
@@ -75,9 +75,9 @@ public class TYServerMultiRouteManager {
 			}
 		} else {
 			// System.out.println("Compute Multiple");
-			List<Point> stopPoints = new ArrayList<Point>();
-			for (int i = 0; i < stops.size(); ++i) {
-				Point sp = routePointConverter.getRoutePointFromLocalPoint(stops.get(i));
+			List<Point> stopPoints = new ArrayList<>();
+			for (TYLocalPoint stop : stops) {
+				Point sp = routePointConverter.getRoutePointFromLocalPoint(stop);
 				stopPoints.add(sp);
 			}
 
@@ -88,32 +88,32 @@ public class TYServerMultiRouteManager {
 			Map<String, List<Object>> detailedRoute = calculator.getDetailedRoute();
 			List<Object> lines = detailedRoute.get("lines");
 			List<Object> indices = detailedRoute.get("indices");
-			List<Integer> indiceArray = new ArrayList<Integer>();
+			List<Integer> indexArray = new ArrayList<>();
 
-			List<TYLocalPoint> rearrangedPoints = new ArrayList<TYLocalPoint>();
-			for (int i = 0; i < indices.size(); ++i) {
-				int index = (Integer) indices.get(i);
+			List<TYLocalPoint> rearrangedPoints = new ArrayList<>();
+			for (Object value : indices) {
+				int index = (Integer) value;
 				rearrangedPoints.add(stops.get(index));
-				indiceArray.add(index);
+				indexArray.add(index);
 			}
 
 			if (line != null && line.getNumPoints() > 0) {
 				TYServerRouteResult result = processPolyline(line);
-				List<TYServerRouteResult> details = new ArrayList<TYServerRouteResult>();
-				for (int i = 0; i < lines.size(); ++i) {
-					details.add(processPolyline((LineString) lines.get(i)));
+				List<TYServerRouteResult> details = new ArrayList<>();
+				for (Object lineString : lines) {
+					details.add(processPolyline((LineString) lineString));
 				}
 				multiResult = new TYServerMultiRouteResult(result, details);
 				multiResult.setStartPoint(start);
 				multiResult.setEndPoint(end);
 				multiResult.setStopPoints(stops);
-				multiResult.setIndices(indiceArray);
+				multiResult.setIndices(indexArray);
 				multiResult.setRearrangedPoints(rearrangedPoints);
 			}
 		}
 		return multiResult;
 
-		// LineString resultRoute = networkDataset.getShorestPath(startPoint,
+		// LineString resultRoute = networkDataset.getShortestPath(startPoint,
 		// endPoint);
 		// return processPolyline(resultRoute);
 	}
@@ -123,8 +123,8 @@ public class TYServerMultiRouteManager {
 			return null;
 		}
 
-		List<List<TYLocalPoint>> pointArray = new ArrayList<List<TYLocalPoint>>();
-		List<Integer> floorArray = new ArrayList<Integer>();
+		List<List<TYLocalPoint>> pointArray = new ArrayList<>();
+		List<Integer> floorArray = new ArrayList<>();
 
 		int currentFloor = 0;
 		List<TYLocalPoint> currentArray = null;
@@ -137,7 +137,7 @@ public class TYServerMultiRouteManager {
 			if (isValid) {
 				if (lp.getFloor() != currentFloor) {
 					currentFloor = lp.getFloor();
-					currentArray = new ArrayList<TYLocalPoint>();
+					currentArray = new ArrayList<>();
 					pointArray.add(currentArray);
 					floorArray.add(currentFloor);
 				}
@@ -149,7 +149,7 @@ public class TYServerMultiRouteManager {
 			return null;
 		}
 
-		List<TYServerRoutePart> routePartArray = new ArrayList<TYServerRoutePart>();
+		List<TYServerRoutePart> routePartArray = new ArrayList<>();
 		for (int i = 0; i < floorArray.size(); i++) {
 			int floor = floorArray.get(i);
 			List<TYLocalPoint> pArray = pointArray.get(i);
@@ -169,7 +169,7 @@ public class TYServerMultiRouteManager {
 			routePartArray.add(rp);
 		}
 
-		int routePartNum = (int) routePartArray.size();
+		int routePartNum = routePartArray.size();
 		for (int i = 0; i < routePartNum; i++) {
 			TYServerRoutePart rp = routePartArray.get(i);
 			if (i > 0) {

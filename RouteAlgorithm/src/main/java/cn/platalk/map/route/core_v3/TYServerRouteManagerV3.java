@@ -18,9 +18,9 @@ public class TYServerRouteManagerV3 {
 	TYLocalPoint startPoint;
 	TYLocalPoint endPoint;
 
-	IPServerRouteNetworkDatasetV3 networkDataset;
+	final IPServerRouteNetworkDatasetV3 networkDataset;
 	GeometryFactory factory = new GeometryFactory();
-	List<TYIMapInfo> allMapInfoArray = new ArrayList<TYIMapInfo>();
+	final List<TYIMapInfo> allMapInfoArray = new ArrayList<>();
 
 	public TYServerRouteManagerV3(TYIBuilding building, List<TYIMapInfo> mapInfoArray, List<TYIRouteNodeRecordV3> nodes,
 			List<TYIRouteLinkRecordV3> links, List<TYIMapDataFeatureRecord> mapdata) {
@@ -32,6 +32,6 @@ public class TYServerRouteManagerV3 {
 			TYServerRouteOptions options) {
 		// options.setUseSameFloor(true);
 		// System.out.println(options.isUseSameFloor());
-		return networkDataset.getShorestPathV3(start, end, options);
+		return networkDataset.getShortestPathV3(start, end, options);
 	}
 }

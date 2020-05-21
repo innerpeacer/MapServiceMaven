@@ -12,13 +12,13 @@ public class IPServerRouteResultObjectV3 {
 
 	static GeometryFactory factory = new GeometryFactory();
 
-	public TYLocalPoint startPoint;
-	public TYLocalPoint endPoint;
+	public final TYLocalPoint startPoint;
+	public final TYLocalPoint endPoint;
 
-	List<IPServerRouteElement> allElementList = new ArrayList<IPServerRouteElement>();
-	List<TYIMapInfo> allMapInfoArray = new ArrayList<TYIMapInfo>();
+	final List<IPServerRouteElement> allElementList = new ArrayList<>();
+	final List<TYIMapInfo> allMapInfoArray = new ArrayList<>();
 
-	public TYServerRouteResultV3 routeResult;
+	public final TYServerRouteResultV3 routeResult;
 	public double length;
 
 	public IPServerRouteResultObjectV3(TYLocalPoint start, TYLocalPoint end, List<TYIMapInfo> mapInfos,
@@ -36,28 +36,27 @@ public class IPServerRouteResultObjectV3 {
 
 	private TYServerRouteResultV3 processV3() {
 		// System.out.println("----- processV3 --------");
-		if (allElementList == null || allElementList.size() == 0) {
+		if (allElementList.size() == 0) {
 			return null;
 		}
 
 		// System.out.println("Elements: " + allElementList.size());
 		length = 0;
 
-		List<List<IPServerRouteElement>> sortedElementList = new ArrayList<List<IPServerRouteElement>>();
-		List<Integer> floorArray = new ArrayList<Integer>();
+		List<List<IPServerRouteElement>> sortedElementList = new ArrayList<>();
+		List<Integer> floorArray = new ArrayList<>();
 
 		int currentFloor = 0;
-		List<IPServerRouteElement> currentElementArray = new ArrayList<IPServerRouteElement>();
+		List<IPServerRouteElement> currentElementArray = new ArrayList<>();
 
-		for (int i = 0; i < allElementList.size(); ++i) {
-			IPServerRouteElement element = allElementList.get(i);
+		for (IPServerRouteElement element : allElementList) {
 			if (element.getFloor() == 0) {
 				System.out.println(element);
 			}
 
 			if (element.getFloor() != currentFloor) {
 				currentFloor = element.getFloor();
-				currentElementArray = new ArrayList<IPServerRouteElement>();
+				currentElementArray = new ArrayList<>();
 				sortedElementList.add(currentElementArray);
 				floorArray.add(currentFloor);
 			}
@@ -68,7 +67,7 @@ public class IPServerRouteResultObjectV3 {
 			return null;
 		}
 
-		List<TYServerRoutePartV3> routePartArray = new ArrayList<TYServerRoutePartV3>();
+		List<TYServerRoutePartV3> routePartArray = new ArrayList<>();
 		for (int i = 0; i < floorArray.size(); i++) {
 			int floor = floorArray.get(i);
 			List<IPServerRouteElement> elementArray = sortedElementList.get(i);
@@ -78,7 +77,7 @@ public class IPServerRouteResultObjectV3 {
 			routePartArray.add(rp);
 		}
 
-		int routePartNum = (int) routePartArray.size();
+		int routePartNum = routePartArray.size();
 		for (int i = 0; i < routePartNum; i++) {
 			TYServerRoutePartV3 rp = routePartArray.get(i);
 			if (i > 0) {

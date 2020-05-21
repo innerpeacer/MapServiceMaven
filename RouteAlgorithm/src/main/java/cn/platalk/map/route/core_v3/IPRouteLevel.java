@@ -5,7 +5,7 @@ public enum IPRouteLevel {
 
 	private final int level;
 
-	private IPRouteLevel(int level) {
+	IPRouteLevel(int level) {
 		this.level = level;
 	}
 

@@ -3,7 +3,7 @@ package cn.platalk.map.route.core;
 import com.vividsolutions.jts.geom.Point;
 
 class IPMrStop {
-	private int stopID;
+	private final int stopID;
 	private Point pos;
 
 	IPMrStop(int sID) {

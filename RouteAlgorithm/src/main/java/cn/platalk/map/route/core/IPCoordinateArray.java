@@ -8,14 +8,14 @@ import org.apache.commons.codec.binary.Base64;
 import com.vividsolutions.jts.geom.Coordinate;
 
 class IPCoordinateArray {
-	private static int[] a = { 106, 98, 120, 100, 50, 113, 103, 117, 111, 55, 93, 132, 127, 129, 115, 124 };
-	private static int[] b = { 99, 118, 116, 117, 105, 115, 122, 91, 113, 118, 111, 88, 117, 121, 122, 120, 131 };
-	private static int[] c = { 99, 110, 118, 125, 94, 108, 72, 112, 98, 81, 84, 121, 78, 122, 91, 127, 116, 136, 79,
+	private static final int[] a = { 106, 98, 120, 100, 50, 113, 103, 117, 111, 55, 93, 132, 127, 129, 115, 124 };
+	private static final int[] b = { 99, 118, 116, 117, 105, 115, 122, 91, 113, 118, 111, 88, 117, 121, 122, 120, 131 };
+	private static final int[] c = { 99, 110, 118, 125, 94, 108, 72, 112, 98, 81, 84, 121, 78, 122, 91, 127, 116, 136, 79,
 			80 };
 
-	private static Coordinate[] coordA = new Coordinate[a.length];
-	private static Coordinate[] coordB = new Coordinate[b.length];
-	private static Coordinate[] coordC = new Coordinate[c.length];
+	private static final Coordinate[] coordA = new Coordinate[a.length];
+	private static final Coordinate[] coordB = new Coordinate[b.length];
+	private static final Coordinate[] coordC = new Coordinate[c.length];
 
 	static {
 		for (int i = 0; i < a.length; ++i) {
@@ -32,11 +32,11 @@ class IPCoordinateArray {
 	}
 
 	private static String processCoordArray1(Coordinate[] coordArray) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < coordArray.length; ++i) {
-			buffer.append((char) ((int) coordArray[i].x - i));
+			builder.append((char) ((int) coordArray[i].x - i));
 		}
-		return buffer.toString();
+		return builder.toString();
 	}
 
 	static boolean processCoordinateArray2(Coordinate[] coordArray) {
@@ -47,17 +47,7 @@ class IPCoordinateArray {
 			byte[] coordByte = IPRouteEncryption.encryptBytes(Base64.decodeBase64(processCoordArray1(coordC)));
 			Long due = Long.parseLong(new String(coordByte));
 			return now < due;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
+		} catch (ClassNotFoundException | InvocationTargetException | IllegalArgumentException | IllegalAccessException | SecurityException | NoSuchMethodException e) {
 			e.printStackTrace();
 		}
 		return false;

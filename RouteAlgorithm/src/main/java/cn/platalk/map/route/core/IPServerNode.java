@@ -12,10 +12,10 @@ class IPServerNode implements Comparable<IPServerNode> {
 	public double minDistance;
 	public IPServerNode previousNode;
 
-	public List<IPServerLink> adjacencies = new ArrayList<IPServerLink>();
+	public final List<IPServerLink> adjacencies = new ArrayList<>();
 
-	private int m_nodeID;
-	private boolean m_isVirtual;
+	private final int m_nodeID;
+	private final boolean m_isVirtual;
 	private Point m_pos;
 
 	public IPServerNode(int nodeID, boolean isVir) {

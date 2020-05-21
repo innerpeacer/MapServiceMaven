@@ -8,7 +8,7 @@ public class TYServerRouteOptions {
 	public static final boolean DEFAULT_REARRANGE_STOPS = true;
 
 	private int linkType = 0;
-	private List<String> ignoredNodeCategoryList = new ArrayList<String>();
+	private List<String> ignoredNodeCategoryList = new ArrayList<>();
 	private boolean rearrangeStops = DEFAULT_REARRANGE_STOPS;
 	private boolean useSameFloor = false;
 	private boolean sameFloorFirst = DEFAULT_SAME_FLOOR_FIRST;

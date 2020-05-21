@@ -10,8 +10,8 @@ import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class IPServerRoutePointConverter {
 
-	private TYIMapExtent baseExtent;
-	private TYIMapSize baseOffset;
+	private final TYIMapExtent baseExtent;
+	private final TYIMapSize baseOffset;
 
 	public IPServerRoutePointConverter(TYIMapExtent extent, TYIMapSize offset) {
 		this.baseExtent = extent;
@@ -51,11 +51,7 @@ class IPServerRoutePointConverter {
 	}
 
 	public boolean checkPointValidity(TYLocalPoint point) {
-		if (point.getX() >= baseExtent.getXmin() && point.getX() <= baseExtent.getXmax()
-				&& point.getY() >= baseExtent.getYmin() && point.getY() <= baseExtent.getYmax()) {
-			return true;
-		} else {
-			return false;
-		}
+		return point.getX() >= baseExtent.getXmin() && point.getX() <= baseExtent.getXmax()
+				&& point.getY() >= baseExtent.getYmin() && point.getY() <= baseExtent.getYmax();
 	}
 }

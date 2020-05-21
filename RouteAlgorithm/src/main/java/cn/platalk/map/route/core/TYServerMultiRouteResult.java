@@ -13,8 +13,8 @@ public class TYServerMultiRouteResult {
 	private TYLocalPoint endPoint;
 	private List<TYLocalPoint> stopPoints;
 
-	private TYServerRouteResult completeResult;
-	private List<TYServerRouteResult> detailedResult;
+	private final TYServerRouteResult completeResult;
+	private final List<TYServerRouteResult> detailedResult;
 	private List<Integer> indices;
 	private List<TYLocalPoint> rearrangedPoints;
 
@@ -86,8 +86,8 @@ public class TYServerMultiRouteResult {
 
 			JSONArray stopPointArray = new JSONArray();
 			if (stopPoints != null && stopPoints.size() != 0) {
-				for (int i = 0; i < stopPoints.size(); ++i) {
-					stopPointArray.put(stopPoints.get(i).buildJson());
+				for (TYLocalPoint stopPoint : stopPoints) {
+					stopPointArray.put(stopPoint.buildJson());
 				}
 			}
 
@@ -95,16 +95,16 @@ public class TYServerMultiRouteResult {
 
 			JSONArray indicesArray = new JSONArray();
 			if (indices != null && indices.size() != 0) {
-				for (int i = 0; i < indices.size(); ++i) {
-					indicesArray.put(indices.get(i));
+				for (Integer index : indices) {
+					indicesArray.put(index);
 				}
 			}
 			result.put("indices", indicesArray);
 
 			JSONArray rearrangedPointArray = new JSONArray();
 			if (rearrangedPoints != null && rearrangedPoints.size() != 0) {
-				for (int i = 0; i < rearrangedPoints.size(); ++i) {
-					rearrangedPointArray.put(rearrangedPoints.get(i).buildJson());
+				for (TYLocalPoint rearrangedPoint : rearrangedPoints) {
+					rearrangedPointArray.put(rearrangedPoint.buildJson());
 				}
 			}
 			result.put("rearrangedStop", rearrangedPointArray);

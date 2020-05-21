@@ -13,7 +13,6 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.Point;
-import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
 import com.vividsolutions.jts.linearref.LinearLocation;
 import com.vividsolutions.jts.linearref.LocationIndexedLine;
@@ -25,26 +24,26 @@ import cn.platalk.map.entity.base.TYIRouteNodeRecord;
 
 class IPServerRouteNetworkDataset {
 
-	private List<IPServerLink> m_linkArray = new ArrayList<IPServerLink>();
-	private List<IPServerLink> m_virtualLinkArray = new ArrayList<IPServerLink>();
-	public List<IPServerNode> m_nodeArray = new ArrayList<IPServerNode>();
-	private List<IPServerNode> m_virtualNodeArray = new ArrayList<IPServerNode>();
+	private final List<IPServerLink> m_linkArray = new ArrayList<>();
+	private final List<IPServerLink> m_virtualLinkArray = new ArrayList<>();
+	public final List<IPServerNode> m_nodeArray = new ArrayList<>();
+	private final List<IPServerNode> m_virtualNodeArray = new ArrayList<>();
 
-	private Map<String, IPServerLink> m_allLinkDict = new HashMap<String, IPServerLink>();
-	private Map<Integer, IPServerNode> m_allNodeDict = new HashMap<Integer, IPServerNode>();
+	private final Map<String, IPServerLink> m_allLinkDict = new HashMap<>();
+	private final Map<Integer, IPServerNode> m_allNodeDict = new HashMap<>();
 
-	private Geometry m_unionLine = null;
+	private final Geometry m_unionLine;
 
-	GeometryFactory factory = new GeometryFactory();
+	final GeometryFactory factory = new GeometryFactory();
 
 	// Temporary Links and Nodes
-	private List<IPServerNode> m_tempStartNodeArray = new ArrayList<IPServerNode>();
-	private List<IPServerLink> m_tempStartLinkArray = new ArrayList<IPServerLink>();
-	private List<IPServerLink> m_replacedStartLinkArray = new ArrayList<IPServerLink>();
+	private final List<IPServerNode> m_tempStartNodeArray = new ArrayList<>();
+	private final List<IPServerLink> m_tempStartLinkArray = new ArrayList<>();
+	private final List<IPServerLink> m_replacedStartLinkArray = new ArrayList<>();
 
-	private List<IPServerNode> m_tempEndNodeArray = new ArrayList<IPServerNode>();
-	private List<IPServerLink> m_tempEndLinkArray = new ArrayList<IPServerLink>();
-	private List<IPServerLink> m_replacedEndLinkArray = new ArrayList<IPServerLink>();
+	private final List<IPServerNode> m_tempEndNodeArray = new ArrayList<>();
+	private final List<IPServerLink> m_tempEndLinkArray = new ArrayList<>();
+	private final List<IPServerLink> m_replacedEndLinkArray = new ArrayList<>();
 
 	int m_tempNodeID;
 	int m_tempLinkID;
@@ -57,9 +56,9 @@ class IPServerRouteNetworkDataset {
 		extractLinks(links);
 		processNodesAndLinks();
 
-		List<LineString> linkLineVector = new ArrayList<LineString>();
-		for (int i = 0; i < m_linkArray.size(); i++) {
-			linkLineVector.add(m_linkArray.get(i).getLine());
+		List<LineString> linkLineVector = new ArrayList<>();
+		for (IPServerLink link : m_linkArray) {
+			linkLineVector.add(link.getLine());
 		}
 		LineMerger lineMerger = new LineMerger();
 		lineMerger.add(linkLineVector);
@@ -67,7 +66,7 @@ class IPServerRouteNetworkDataset {
 		// System.out.println("UnionLine: " + m_unionLine);
 	}
 
-	public synchronized LineString getShorestPath(Point start, Point end) {
+	public synchronized LineString getShortestPath(Point start, Point end) {
 		reset();
 
 		if (m_linkArray.size() + m_virtualLinkArray.size() == 0
@@ -79,7 +78,7 @@ class IPServerRouteNetworkDataset {
 		IPServerNode endNode = processTempNodeForEnd(end);
 
 		computePaths(startNode);
-		LineString nodePath = getShorestPathToNode(endNode);
+		LineString nodePath = getShortestPathToNode(endNode);
 
 		resetTempNodeForEnd();
 		resetTempNodeForStart();
@@ -89,7 +88,7 @@ class IPServerRouteNetworkDataset {
 			return null;
 		}
 
-		List<Coordinate> coordinateList = new ArrayList<Coordinate>();
+		List<Coordinate> coordinateList = new ArrayList<>();
 		if (DistanceOp.distance(start, startNode.getPos()) > 0) {
 			coordinateList.add(start.getCoordinate());
 		}
@@ -98,7 +97,7 @@ class IPServerRouteNetworkDataset {
 			coordinateList.add(end.getCoordinate());
 		}
 
-		Coordinate[] coordinates = (Coordinate[]) coordinateList.toArray(new Coordinate[coordinateList.size()]);
+		Coordinate[] coordinates = coordinateList.toArray(new Coordinate[0]);
 		coordinates = CoordinateArrays.removeRepeatedPoints(coordinates);
 
 		return factory.createLineString(coordinates);
@@ -113,8 +112,7 @@ class IPServerRouteNetworkDataset {
 	protected void extractNodes(List<TYIRouteNodeRecord> nodes) {
 		WKBReader reader = new WKBReader();
 		try {
-			for (int i = 0; i < nodes.size(); i++) {
-				TYIRouteNodeRecord nodeRecord = nodes.get(i);
+			for (TYIRouteNodeRecord nodeRecord : nodes) {
 				// IPServerNode node = new IPServerNode(nodeRecord.nodeID,
 				// nodeRecord.isVirtual);
 				//
@@ -132,8 +130,6 @@ class IPServerRouteNetworkDataset {
 					m_nodeArray.add(node);
 				}
 			}
-		} catch (ParseException e) {
-			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -143,7 +139,7 @@ class IPServerRouteNetworkDataset {
 	protected void extractLinks(List<TYIRouteLinkRecord> links) {
 		WKBReader reader = new WKBReader();
 		try {
-			for (int i = 0; i < links.size(); ++i) {
+			for (TYIRouteLinkRecord linkRecord : links) {
 				// TYRouteLinkRecord linkRecord = links.get(i);
 				// LineString line = (LineString) reader
 				// .read(linkRecord.linkGeometryData);
@@ -155,7 +151,6 @@ class IPServerRouteNetworkDataset {
 				// forwardLink.nextNodeID = linkRecord.endNode;
 				// forwardLink.length = linkRecord.length;
 
-				TYIRouteLinkRecord linkRecord = links.get(i);
 				LineString line = (LineString) reader.read(linkRecord.getGeometryData());
 
 				IPServerLink forwardLink = new IPServerLink(linkRecord.getLinkID(), linkRecord.isVirtual());
@@ -198,8 +193,6 @@ class IPServerRouteNetworkDataset {
 
 				}
 			}
-		} catch (ParseException e) {
-			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -217,7 +210,7 @@ class IPServerRouteNetworkDataset {
 
 	public void computePaths(IPServerNode source) {
 		source.minDistance = 0;
-		PriorityQueue<IPServerNode> nodeQueue = new PriorityQueue<IPServerNode>();
+		PriorityQueue<IPServerNode> nodeQueue = new PriorityQueue<>();
 		nodeQueue.add(source);
 
 		while (!nodeQueue.isEmpty()) {
@@ -238,16 +231,15 @@ class IPServerRouteNetworkDataset {
 		}
 	}
 
-	public LineString getShorestPathToNode(IPServerNode target) {
-		List<IPServerNode> path = new ArrayList<IPServerNode>();
+	public LineString getShortestPathToNode(IPServerNode target) {
+		List<IPServerNode> path = new ArrayList<>();
 		for (IPServerNode node = target; node != null; node = node.previousNode) {
 			path.add(node);
 		}
 		Collections.reverse(path);
 
-		List<Coordinate> coordinateList = new ArrayList<Coordinate>();
-		for (int i = 0; i < path.size(); ++i) {
-			IPServerNode node = path.get(i);
+		List<Coordinate> coordinateList = new ArrayList<>();
+		for (IPServerNode node : path) {
 			if (node != null && node.previousNode != null) {
 				String linkKey = node.previousNode.getNodeID() + "" + node.getNodeID();
 				IPServerLink link = m_allLinkDict.get(linkKey);
@@ -255,7 +247,7 @@ class IPServerRouteNetworkDataset {
 				Collections.addAll(coordinateList, linkLine.getCoordinates());
 			}
 		}
-		Coordinate[] coordinates = (Coordinate[]) coordinateList.toArray(new Coordinate[coordinateList.size()]);
+		Coordinate[] coordinates = coordinateList.toArray(new Coordinate[0]);
 		coordinates = CoordinateArrays.removeRepeatedPoints(coordinates);
 		return factory.createLineString(coordinates);
 	}
@@ -280,8 +272,7 @@ class IPServerRouteNetworkDataset {
 		Coordinate[] closestCoordinates = distanceOp.nearestPoints();
 		Point npOnUnionLine = factory.createPoint(closestCoordinates[0]);
 
-		for (int i = 0; i < m_nodeArray.size(); i++) {
-			IPServerNode node = m_nodeArray.get(i);
+		for (IPServerNode node : m_nodeArray) {
 			Coordinate c = node.getPos().getCoordinate();
 			if (npOnUnionLine.getCoordinate().equals(c)) {
 				// System.out.println("Equal");
@@ -294,8 +285,7 @@ class IPServerRouteNetworkDataset {
 		newTempNode.setPos(npOnUnionLine);
 		m_tempStartNodeArray.add(newTempNode);
 
-		for (int i = 0; i < m_linkArray.size(); ++i) {
-			IPServerLink link = m_linkArray.get(i);
+		for (IPServerLink link : m_linkArray) {
 			if (link.getLine().contains(npOnUnionLine)) {
 
 			} else {
@@ -321,8 +311,8 @@ class IPServerRouteNetworkDataset {
 			LinearLocation linearLocation = indexedLine.indexOf(coord);
 			int index = linearLocation.getSegmentIndex();
 
-			List<Coordinate> firstPartCoordinateList = new ArrayList<Coordinate>();
-			List<Coordinate> secondPartCoordinateList = new ArrayList<Coordinate>();
+			List<Coordinate> firstPartCoordinateList = new ArrayList<>();
+			List<Coordinate> secondPartCoordinateList = new ArrayList<>();
 
 			secondPartCoordinateList.add(coord);
 			for (int j = 0; j < link.getLine().getNumPoints(); ++j) {
@@ -334,10 +324,10 @@ class IPServerRouteNetworkDataset {
 			}
 			firstPartCoordinateList.add(coord);
 
-			Coordinate[] firstPartSequence = (Coordinate[]) firstPartCoordinateList
-					.toArray(new Coordinate[firstPartCoordinateList.size()]);
-			Coordinate[] secondPartSequence = (Coordinate[]) secondPartCoordinateList
-					.toArray(new Coordinate[secondPartCoordinateList.size()]);
+			Coordinate[] firstPartSequence = firstPartCoordinateList
+					.toArray(new Coordinate[0]);
+			Coordinate[] secondPartSequence = secondPartCoordinateList
+					.toArray(new Coordinate[0]);
 
 			firstPartSequence = CoordinateArrays.removeRepeatedPoints(firstPartSequence);
 			secondPartSequence = CoordinateArrays.removeRepeatedPoints(secondPartSequence);
@@ -410,8 +400,7 @@ class IPServerRouteNetworkDataset {
 
 		Point npOnUnionLine = factory.createPoint(closestCoordinates[0]);
 
-		for (int i = 0; i < m_nodeArray.size(); i++) {
-			IPServerNode node = m_nodeArray.get(i);
+		for (IPServerNode node : m_nodeArray) {
 			Coordinate c = node.getPos().getCoordinate();
 			if (npOnUnionLine.getCoordinate().equals(c)) {
 				// System.out.println("Equal");
@@ -424,8 +413,7 @@ class IPServerRouteNetworkDataset {
 		newTempNode.setPos(npOnUnionLine);
 		m_tempEndNodeArray.add(newTempNode);
 
-		for (int i = 0; i < m_linkArray.size(); ++i) {
-			IPServerLink link = m_linkArray.get(i);
+		for (IPServerLink link : m_linkArray) {
 			if (link.getLine().contains(npOnUnionLine)) {
 
 			} else {
@@ -451,8 +439,8 @@ class IPServerRouteNetworkDataset {
 			LinearLocation linearLocation = indexedLine.indexOf(coord);
 			int index = linearLocation.getSegmentIndex();
 
-			List<Coordinate> firstPartCoordinateList = new ArrayList<Coordinate>();
-			List<Coordinate> secondPartCoordinateList = new ArrayList<Coordinate>();
+			List<Coordinate> firstPartCoordinateList = new ArrayList<>();
+			List<Coordinate> secondPartCoordinateList = new ArrayList<>();
 
 			secondPartCoordinateList.add(coord);
 			for (int j = 0; j < link.getLine().getNumPoints(); ++j) {
@@ -464,10 +452,10 @@ class IPServerRouteNetworkDataset {
 			}
 			firstPartCoordinateList.add(coord);
 
-			Coordinate[] firstPartSequence = (Coordinate[]) firstPartCoordinateList
-					.toArray(new Coordinate[firstPartCoordinateList.size()]);
-			Coordinate[] secondPartSequence = (Coordinate[]) secondPartCoordinateList
-					.toArray(new Coordinate[secondPartCoordinateList.size()]);
+			Coordinate[] firstPartSequence = firstPartCoordinateList
+					.toArray(new Coordinate[0]);
+			Coordinate[] secondPartSequence = secondPartCoordinateList
+					.toArray(new Coordinate[0]);
 
 			firstPartSequence = CoordinateArrays.removeRepeatedPoints(firstPartSequence);
 			secondPartSequence = CoordinateArrays.removeRepeatedPoints(secondPartSequence);

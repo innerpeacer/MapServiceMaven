@@ -9,7 +9,7 @@ import org.json.JSONException;
 
 public class IPTimeWindows {
 
-	private List<TimeWindow> winList = new ArrayList<IPTimeWindows.TimeWindow>();
+	private final List<TimeWindow> winList = new ArrayList<>();
 
 	public IPTimeWindows(String windows) {
 		if (windows == null) {
@@ -38,8 +38,7 @@ public class IPTimeWindows {
 		}
 
 		boolean result = false;
-		for (int i = 0; i < winList.size(); ++i) {
-			TimeWindow win = winList.get(i);
+		for (TimeWindow win : winList) {
 			if (win.contains(hour, minute)) {
 				result = true;
 				break;
@@ -54,12 +53,12 @@ public class IPTimeWindows {
 
 	@Override
 	public String toString() {
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("TimeWindows:\n");
-		for (int i = 0; i < winList.size(); ++i) {
-			buffer.append("\t").append(winList.get(i)).append("\n");
+		StringBuilder builder = new StringBuilder();
+		builder.append("TimeWindows:\n");
+		for (TimeWindow timeWindow : winList) {
+			builder.append("\t").append(timeWindow).append("\n");
 		}
-		return buffer.toString();
+		return builder.toString();
 	}
 
 	public static class TimeWindow {

@@ -9,7 +9,7 @@ import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
 public class IPServerLinkV3 {
 	static final String TAG = IPServerLinkV3.class.getSimpleName();
 
-	public String m_linkID;
+	public final String m_linkID;
 	public LineString m_line;
 
 	public double m_length;
@@ -30,7 +30,7 @@ public class IPServerLinkV3 {
 
 	public IPTimeWindows m_timeWindows = null;
 
-	static WKBReader reader = new WKBReader();
+	static final WKBReader reader = new WKBReader();
 
 	public void copyAttribute(IPServerLinkV3 link) {
 		m_linkName = link.m_linkName;

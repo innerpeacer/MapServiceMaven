@@ -10,18 +10,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TYServerRouteResult {
-	private List<TYServerRoutePart> allRoutePartArray = new ArrayList<TYServerRoutePart>();
-	private Map<Integer, List<TYServerRoutePart>> allFloorRoutePartDict = new HashMap<Integer, List<TYServerRoutePart>>();
+	private final List<TYServerRoutePart> allRoutePartArray = new ArrayList<>();
+	private final Map<Integer, List<TYServerRoutePart>> allFloorRoutePartDict = new HashMap<>();
 
 	public TYServerRouteResult(List<TYServerRoutePart> routePartArray) {
 		allRoutePartArray.addAll(routePartArray);
 
-		for (int i = 0; i < routePartArray.size(); ++i) {
-			TYServerRoutePart rp = routePartArray.get(i);
+		for (TYServerRoutePart rp : routePartArray) {
 			int floor = rp.getMapInfo().getFloorNumber();
 
 			if (!allFloorRoutePartDict.containsKey(floor)) {
-				List<TYServerRoutePart> array = new ArrayList<TYServerRoutePart>();
+				List<TYServerRoutePart> array = new ArrayList<>();
 				allFloorRoutePartDict.put(floor, array);
 			}
 			List<TYServerRoutePart> array = allFloorRoutePartDict.get(floor);
@@ -33,8 +32,7 @@ public class TYServerRouteResult {
 		JSONObject jsonObject = new JSONObject();
 
 		JSONArray routeArray = new JSONArray();
-		for (int i = 0; i < allRoutePartArray.size(); i++) {
-			TYServerRoutePart routePart = allRoutePartArray.get(i);
+		for (TYServerRoutePart routePart : allRoutePartArray) {
 			JSONObject routeObject = routePart.buildJson();
 			routeArray.put(routeObject);
 		}

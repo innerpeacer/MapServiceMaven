@@ -20,10 +20,10 @@ public class TYServerRouteManager {
 	Point startPoint;
 	Point endPoint;
 
-	IPServerRouteNetworkDataset networkDataset;
-	GeometryFactory factory = new GeometryFactory();
-	private IPServerRoutePointConverter routePointConverter;
-	List<TYIMapInfo> allMapInfoArray = new ArrayList<TYIMapInfo>();
+	final IPServerRouteNetworkDataset networkDataset;
+	final GeometryFactory factory = new GeometryFactory();
+	private final IPServerRoutePointConverter routePointConverter;
+	final List<TYIMapInfo> allMapInfoArray = new ArrayList<>();
 
 	// private TYIBuilding currentBuilding;
 
@@ -41,7 +41,7 @@ public class TYServerRouteManager {
 		startPoint = routePointConverter.getRoutePointFromLocalPoint(start);
 		endPoint = routePointConverter.getRoutePointFromLocalPoint(end);
 
-		LineString resultRoute = networkDataset.getShorestPath(startPoint, endPoint);
+		LineString resultRoute = networkDataset.getShortestPath(startPoint, endPoint);
 		return processPolyline(resultRoute);
 	}
 
@@ -50,8 +50,8 @@ public class TYServerRouteManager {
 			return null;
 		}
 
-		List<List<TYLocalPoint>> pointArray = new ArrayList<List<TYLocalPoint>>();
-		List<Integer> floorArray = new ArrayList<Integer>();
+		List<List<TYLocalPoint>> pointArray = new ArrayList<>();
+		List<Integer> floorArray = new ArrayList<>();
 
 		int currentFloor = 0;
 		List<TYLocalPoint> currentArray = null;
@@ -64,7 +64,7 @@ public class TYServerRouteManager {
 			if (isValid) {
 				if (lp.getFloor() != currentFloor) {
 					currentFloor = lp.getFloor();
-					currentArray = new ArrayList<TYLocalPoint>();
+					currentArray = new ArrayList<>();
 					pointArray.add(currentArray);
 					floorArray.add(currentFloor);
 				}
@@ -76,7 +76,7 @@ public class TYServerRouteManager {
 			return null;
 		}
 
-		List<TYServerRoutePart> routePartArray = new ArrayList<TYServerRoutePart>();
+		List<TYServerRoutePart> routePartArray = new ArrayList<>();
 		for (int i = 0; i < floorArray.size(); i++) {
 			int floor = floorArray.get(i);
 			List<TYLocalPoint> pArray = pointArray.get(i);
@@ -96,7 +96,7 @@ public class TYServerRouteManager {
 			routePartArray.add(rp);
 		}
 
-		int routePartNum = (int) routePartArray.size();
+		int routePartNum = routePartArray.size();
 		for (int i = 0; i < routePartNum; i++) {
 			TYServerRoutePart rp = routePartArray.get(i);
 			if (i > 0) {

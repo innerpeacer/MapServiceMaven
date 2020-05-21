@@ -6,9 +6,9 @@ import java.util.List;
 import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class IPMrParamsV3 {
-	private TYLocalPoint startPoint;
-	private TYLocalPoint endPoint;
-	private List<TYLocalPoint> stopPoints;
+	private final TYLocalPoint startPoint;
+	private final TYLocalPoint endPoint;
+	private final List<TYLocalPoint> stopPoints;
 
 	List<IPMrStopV3> stopArray;
 	IPMrStopV3 startStop;
@@ -18,14 +18,14 @@ class IPMrParamsV3 {
 	IPMrParamsV3(TYLocalPoint start, TYLocalPoint end, List<TYLocalPoint> stops) {
 		this.startPoint = start;
 		this.endPoint = end;
-		this.stopPoints = new ArrayList<TYLocalPoint>(stops);
+		this.stopPoints = new ArrayList<>(stops);
 
 		buildStops();
 	}
 
 	private void buildStops() {
-		stopArray = new ArrayList<IPMrStopV3>();
-		middleStopArray = new ArrayList<IPMrStopV3>();
+		stopArray = new ArrayList<>();
+		middleStopArray = new ArrayList<>();
 
 		int nodeIndex = 0;
 
@@ -33,14 +33,14 @@ class IPMrParamsV3 {
 		startStop.setPos(startPoint);
 		stopArray.add(startStop);
 
-		for (int i = 0; i < stopPoints.size(); ++i) {
+		for (TYLocalPoint stopPoint : stopPoints) {
 			IPMrStopV3 middleStop = new IPMrStopV3(nodeIndex++);
-			middleStop.setPos(stopPoints.get(i));
+			middleStop.setPos(stopPoint);
 			stopArray.add(middleStop);
 			middleStopArray.add(middleStop);
 		}
 
-		endStop = new IPMrStopV3(nodeIndex++);
+		endStop = new IPMrStopV3(nodeIndex);
 		endStop.setPos(endPoint);
 		stopArray.add(endStop);
 	}

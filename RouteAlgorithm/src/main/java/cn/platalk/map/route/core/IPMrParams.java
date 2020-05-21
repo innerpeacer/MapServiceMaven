@@ -7,9 +7,9 @@ import com.vividsolutions.jts.geom.Point;
 
 class IPMrParams {
 
-	private Point startPoint;
-	private Point endPoint;
-	private List<Point> stopPoints;
+	private final Point startPoint;
+	private final Point endPoint;
+	private final List<Point> stopPoints;
 
 	List<IPMrStop> stopArray;
 	IPMrStop startStop;
@@ -19,14 +19,14 @@ class IPMrParams {
 	IPMrParams(Point start, Point end, List<Point> stops) {
 		this.startPoint = start;
 		this.endPoint = end;
-		this.stopPoints = new ArrayList<Point>(stops);
+		this.stopPoints = new ArrayList<>(stops);
 
 		buildStops();
 	}
 
 	private void buildStops() {
-		stopArray = new ArrayList<IPMrStop>();
-		middleStopArray = new ArrayList<IPMrStop>();
+		stopArray = new ArrayList<>();
+		middleStopArray = new ArrayList<>();
 
 		int nodeIndex = 0;
 
@@ -34,14 +34,14 @@ class IPMrParams {
 		startStop.setPos(startPoint);
 		stopArray.add(startStop);
 
-		for (int i = 0; i < stopPoints.size(); ++i) {
+		for (Point stopPoint : stopPoints) {
 			IPMrStop middleStop = new IPMrStop(nodeIndex++);
-			middleStop.setPos(stopPoints.get(i));
+			middleStop.setPos(stopPoint);
 			stopArray.add(middleStop);
 			middleStopArray.add(middleStop);
 		}
 
-		endStop = new IPMrStop(nodeIndex++);
+		endStop = new IPMrStop(nodeIndex);
 		endStop.setPos(endPoint);
 		stopArray.add(endStop);
 	}

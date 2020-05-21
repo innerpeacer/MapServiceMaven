@@ -12,14 +12,14 @@ import com.vividsolutions.jts.geom.Point;
 import cn.platalk.map.entity.base.TYIMapInfo;
 
 class TYServerRoutePart {
-	LineString route = null;
-	TYIMapInfo info = null;
+	final LineString route;
+	final TYIMapInfo info;
 
 	TYServerRoutePart previousPart = null;
 	TYServerRoutePart nextPart = null;
 	int partIndex;
 
-	static GeometryFactory factory = new GeometryFactory();
+	static final GeometryFactory factory = new GeometryFactory();
 
 	public TYServerRoutePart(LineString polyline, TYIMapInfo info) {
 		this.route = polyline;
@@ -34,8 +34,7 @@ class TYServerRoutePart {
 			jsonObject.put("floor", info.getFloorNumber());
 			JSONArray coordinateArray = new JSONArray();
 			Coordinate[] coordinates = route.getCoordinates();
-			for (int i = 0; i < coordinates.length; i++) {
-				Coordinate c = coordinates[i];
+			for (Coordinate c : coordinates) {
 				JSONArray array = new JSONArray();
 				array.put(c.x);
 				array.put(c.y);

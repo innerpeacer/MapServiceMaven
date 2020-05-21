@@ -16,8 +16,8 @@ public class TYServerMultiRouteResultV3 {
 
 	private List<TYLocalPoint> stopPoints;
 
-	private TYServerRouteResultV3 completeResult;
-	private List<TYServerRouteResultV3> detailedResult;
+	private final TYServerRouteResultV3 completeResult;
+	private final List<TYServerRouteResultV3> detailedResult;
 	private List<Integer> indices;
 	private List<TYLocalPoint> rearrangedPoints;
 
@@ -90,8 +90,8 @@ public class TYServerMultiRouteResultV3 {
 			result.put("endRoomID", endRoomID);
 			JSONArray stopPointArray = new JSONArray();
 			if (stopPoints != null && stopPoints.size() != 0) {
-				for (int i = 0; i < stopPoints.size(); ++i) {
-					stopPointArray.put(stopPoints.get(i).buildJson());
+				for (TYLocalPoint stopPoint : stopPoints) {
+					stopPointArray.put(stopPoint.buildJson());
 				}
 			}
 
@@ -99,16 +99,16 @@ public class TYServerMultiRouteResultV3 {
 
 			JSONArray indicesArray = new JSONArray();
 			if (indices != null && indices.size() != 0) {
-				for (int i = 0; i < indices.size(); ++i) {
-					indicesArray.put(indices.get(i));
+				for (Integer index : indices) {
+					indicesArray.put(index);
 				}
 			}
 			result.put("indices", indicesArray);
 
 			JSONArray rearrangedPointArray = new JSONArray();
 			if (rearrangedPoints != null && rearrangedPoints.size() != 0) {
-				for (int i = 0; i < rearrangedPoints.size(); ++i) {
-					rearrangedPointArray.put(rearrangedPoints.get(i).buildJson());
+				for (TYLocalPoint rearrangedPoint : rearrangedPoints) {
+					rearrangedPointArray.put(rearrangedPoint.buildJson());
 				}
 			}
 			result.put("rearrangedStop", rearrangedPointArray);
@@ -144,14 +144,14 @@ public class TYServerMultiRouteResultV3 {
 	}
 
 	public String detailedDescription() {
-		StringBuffer buffer = new StringBuffer();
-		buffer.append("Multi Route:\n");
-		buffer.append(stopPoints.size() + " stops\n");
-		buffer.append(detailedResult.size() + " sub routes\n");
+		StringBuilder builder = new StringBuilder();
+		builder.append("Multi Route:\n");
+		builder.append(stopPoints.size()).append(" stops\n");
+		builder.append(detailedResult.size()).append(" sub routes\n");
 		for (int i = 0; i < detailedResult.size(); ++i) {
-			buffer.append("\t Sub " + (i + 1) + " : " + detailedResult.get(i) + "\n");
+			builder.append("\t Sub ").append(i + 1).append(" : ").append(detailedResult.get(i)).append("\n");
 		}
-		return buffer.toString();
+		return builder.toString();
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class IPServerRouteElementNode extends IPServerRouteElement {
 	public boolean m_open;
 	public String m_openTime;
 	// public String m_roomID;
-	public List<String> m_roomIDList = new ArrayList<String>();
+	public List<String> m_roomIDList = new ArrayList<>();
 
 	public static IPServerRouteElementNode fromNode(IPServerNodeV3 serverNode) {
 		IPServerRouteElementNode node = new IPServerRouteElementNode();
@@ -45,7 +45,7 @@ public class IPServerRouteElementNode extends IPServerRouteElement {
 
 	public int getFloor() {
 		return m_floor;
-	};
+	}
 
 	@Override
 	public String toString() {

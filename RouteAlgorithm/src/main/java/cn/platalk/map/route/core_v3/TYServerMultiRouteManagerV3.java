@@ -21,10 +21,10 @@ public class TYServerMultiRouteManagerV3 {
 	Point endPoint;
 	IPMrParamsV3 params;
 
-	IPServerRouteNetworkDatasetV3 networkDataset;
+	final IPServerRouteNetworkDatasetV3 networkDataset;
 
 	GeometryFactory factory = new GeometryFactory();
-	List<TYIMapInfo> allMapInfoArray = new ArrayList<TYIMapInfo>();
+	final List<TYIMapInfo> allMapInfoArray = new ArrayList<>();
 
 	public TYServerMultiRouteManagerV3(TYIBuilding building, List<TYIMapInfo> mapInfoArray,
 			List<TYIRouteNodeRecordV3> nodes, List<TYIRouteLinkRecordV3> links, List<TYIMapDataFeatureRecord> mapdata) {
@@ -34,7 +34,7 @@ public class TYServerMultiRouteManagerV3 {
 
 	public synchronized TYServerMultiRouteResultV3 requestRoute(TYLocalPoint startPoint, TYLocalPoint endPoint,
 			List<TYLocalPoint> stopPoints, TYServerRouteOptions options) {
-		TYServerMultiRouteResultV3 result = null;
+		TYServerMultiRouteResultV3 result;
 		System.out.println("requestRoute: " + options.isSameFloorFirst());
 
 		{
@@ -118,10 +118,10 @@ public class TYServerMultiRouteManagerV3 {
 		TYServerMultiRouteResultV3 multiResult = null;
 
 		if (stopPoints == null || stopPoints.size() == 0) {
-			IPServerRouteResultObjectV3 res = networkDataset.getShorestPathV3(startPoint, endPoint, options);
+			IPServerRouteResultObjectV3 res = networkDataset.getShortestPathV3(startPoint, endPoint, options);
 			if (res != null) {
 				TYServerRouteResultV3 result = res.routeResult;
-				List<TYServerRouteResultV3> details = new ArrayList<TYServerRouteResultV3>();
+				List<TYServerRouteResultV3> details = new ArrayList<>();
 				details.add(result);
 				multiResult = new TYServerMultiRouteResultV3(result, details);
 				multiResult.setStartPoint(startPoint);
@@ -140,17 +140,17 @@ public class TYServerMultiRouteManagerV3 {
 			// List<Object> lines = detailedRoute.get("lines");
 			List<Object> routeArray = detailedRoute.get("routes");
 			List<Object> indices = detailedRoute.get("indices");
-			List<Integer> indiceArray = new ArrayList<Integer>();
+			List<Integer> indexArray = new ArrayList<>();
 
-			List<TYLocalPoint> rearrangedPoints = new ArrayList<TYLocalPoint>();
-			for (int i = 0; i < indices.size(); ++i) {
-				int index = (Integer) indices.get(i);
+			List<TYLocalPoint> rearrangedPoints = new ArrayList<>();
+			for (Object value : indices) {
+				int index = (Integer) value;
 				rearrangedPoints.add(stopPoints.get(index));
-				indiceArray.add(index);
+				indexArray.add(index);
 			}
 
 			if (result != null) {
-				List<TYServerRouteResultV3> details = new ArrayList<TYServerRouteResultV3>();
+				List<TYServerRouteResultV3> details = new ArrayList<>();
 				for (Object obj : routeArray) {
 					details.add((TYServerRouteResultV3) obj);
 				}
@@ -158,7 +158,7 @@ public class TYServerMultiRouteManagerV3 {
 				multiResult.setStartPoint(startPoint);
 				multiResult.setEndPoint(endPoint);
 				multiResult.setStopPoints(stopPoints);
-				multiResult.setIndices(indiceArray);
+				multiResult.setIndices(indexArray);
 				multiResult.setRearrangedPoints(rearrangedPoints);
 				multiResult.startRoomID = networkDataset.targetStartRoomID;
 				multiResult.endRoomID = networkDataset.targetEndRoomID;

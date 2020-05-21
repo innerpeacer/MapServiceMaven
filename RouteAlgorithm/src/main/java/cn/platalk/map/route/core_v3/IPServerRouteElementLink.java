@@ -45,7 +45,7 @@ public class IPServerRouteElementLink extends IPServerRouteElement {
 	public String toString() {
 		return String.format("Element Link: %s [ %s -> %s ]", m_linkID,
 				m_currentNodeID, m_nextNodeID);
-	};
+	}
 
 	public boolean isVirtual() {
 		return m_line == null;

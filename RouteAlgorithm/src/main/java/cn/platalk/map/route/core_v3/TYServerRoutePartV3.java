@@ -18,21 +18,21 @@ import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class TYServerRoutePartV3 {
-	List<IPServerRouteElement> elementList = new ArrayList<IPServerRouteElement>();
+	final List<IPServerRouteElement> elementList = new ArrayList<>();
 
-	public TYLocalPoint startPoint;
-	public TYLocalPoint endPoint;
+	public final TYLocalPoint startPoint;
+	public final TYLocalPoint endPoint;
 
 	LineString route = null;
 	double length = 0;
-	TYIMapInfo info = null;
-	List<IPServerRouteElementNode> elementNodeList = new ArrayList<IPServerRouteElementNode>();
+	final TYIMapInfo info;
+	final List<IPServerRouteElementNode> elementNodeList = new ArrayList<>();
 
 	TYServerRoutePartV3 previousPart = null;
 	TYServerRoutePartV3 nextPart = null;
 	int partIndex;
 
-	static GeometryFactory factory = new GeometryFactory();
+	static final GeometryFactory factory = new GeometryFactory();
 
 	public TYServerRoutePartV3(TYLocalPoint start, TYLocalPoint end, List<IPServerRouteElement> elements,
 			TYIMapInfo info) {
@@ -46,12 +46,11 @@ class TYServerRoutePartV3 {
 	private void processElements() {
 		// System.out.println("------- processElements -----------");
 
-		List<Coordinate> coordList = new ArrayList<Coordinate>();
+		List<Coordinate> coordList = new ArrayList<>();
 		// System.out.println("elementList.size()");
 		// System.out.println(elementList.size());
 
-		for (int i = 0; i < elementList.size(); i++) {
-			IPServerRouteElement element = elementList.get(i);
+		for (IPServerRouteElement element : elementList) {
 			if (element.isStop()) {
 				IPServerRouteElementStop stop = (IPServerRouteElementStop) element;
 				coordList.add(new Coordinate(stop.m_pos.getX(), stop.m_pos.getY()));
@@ -69,7 +68,7 @@ class TYServerRoutePartV3 {
 			}
 		}
 
-		Coordinate[] coordArray = coordList.toArray(new Coordinate[coordList.size()]);
+		Coordinate[] coordArray = coordList.toArray(new Coordinate[0]);
 		// System.out.println(coordArray.length);
 		coordArray = CoordinateArrays.removeRepeatedPoints(coordArray);
 		// System.out.println(coordArray.length);
@@ -129,8 +128,7 @@ class TYServerRoutePartV3 {
 			jsonObject.put("floor", info.getFloorNumber());
 			JSONArray coordinateArray = new JSONArray();
 			Coordinate[] coordinates = route.getCoordinates();
-			for (int i = 0; i < coordinates.length; i++) {
-				Coordinate c = coordinates[i];
+			for (Coordinate c : coordinates) {
 				JSONArray array = new JSONArray();
 				array.put(c.x);
 				array.put(c.y);
@@ -139,8 +137,8 @@ class TYServerRoutePartV3 {
 			jsonObject.put("coordinates", coordinateArray);
 
 			JSONArray elementNodeArray = new JSONArray();
-			for (int i = 0; i < elementNodeList.size(); ++i) {
-				JSONObject nodeObj = buildElementNode(elementNodeList.get(i));
+			for (IPServerRouteElementNode node : elementNodeList) {
+				JSONObject nodeObj = buildElementNode(node);
 				elementNodeArray.put(nodeObj);
 			}
 			jsonObject.put("nodes", elementNodeArray);

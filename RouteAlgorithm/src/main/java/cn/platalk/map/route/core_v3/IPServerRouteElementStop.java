@@ -4,7 +4,7 @@ import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public class IPServerRouteElementStop extends IPServerRouteElement {
 
-	public TYLocalPoint m_pos;
+	public final TYLocalPoint m_pos;
 
 	public IPServerRouteElementStop(TYLocalPoint lp) {
 		m_pos = lp;

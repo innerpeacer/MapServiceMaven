@@ -12,8 +12,8 @@ class IPServerLink {
 	public IPServerNode nextNode;
 	public double length;
 
-	private int m_linkID;
-	private boolean m_isVirtual;
+	private final int m_linkID;
+	private final boolean m_isVirtual;
 	private LineString m_line;
 
 	public IPServerLink(int linkID, boolean isVir) {

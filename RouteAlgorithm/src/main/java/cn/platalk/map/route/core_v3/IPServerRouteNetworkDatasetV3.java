@@ -26,30 +26,30 @@ import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class IPServerRouteNetworkDatasetV3 {
-	static GeometryFactory factory = new GeometryFactory();
+	static final GeometryFactory factory = new GeometryFactory();
 
-	private List<TYIMapInfo> allMapInfoArray = new ArrayList<TYIMapInfo>();
-	private List<TYIMapDataFeatureRecord> allMapDataArray = new ArrayList<TYIMapDataFeatureRecord>();
+	private final List<TYIMapInfo> allMapInfoArray = new ArrayList<>();
+	private final List<TYIMapDataFeatureRecord> allMapDataArray = new ArrayList<>();
 
-	private List<IPServerLinkV3> m_linkArray = new ArrayList<IPServerLinkV3>();
-	public List<IPServerNodeV3> m_nodeArray = new ArrayList<IPServerNodeV3>();
+	private final List<IPServerLinkV3> m_linkArray = new ArrayList<>();
+	public final List<IPServerNodeV3> m_nodeArray = new ArrayList<>();
 
-	private Map<Integer, List<IPServerLinkV3>> m_allLinkCollectionDict = new HashMap<Integer, List<IPServerLinkV3>>();
+	private final Map<Integer, List<IPServerLinkV3>> m_allLinkCollectionDict = new HashMap<>();
 
-	private Map<String, IPServerNodeV3> m_allNodeDict = new HashMap<String, IPServerNodeV3>();
-	private Map<Integer, List<IPServerNodeV3>> m_allSwitchingNodeDict = new HashMap<Integer, List<IPServerNodeV3>>();
+	private final Map<String, IPServerNodeV3> m_allNodeDict = new HashMap<>();
+	private final Map<Integer, List<IPServerNodeV3>> m_allSwitchingNodeDict = new HashMap<>();
 
-	private Map<Integer, Geometry> m_allUnionLineDict = new HashMap<Integer, Geometry>();
-	private Map<String, Geometry> m_allRoomIDLineDict = new HashMap<String, Geometry>();
+	private final Map<Integer, Geometry> m_allUnionLineDict = new HashMap<>();
+	private final Map<String, Geometry> m_allRoomIDLineDict = new HashMap<>();
 
 	// Temporary Links and Nodes
-	private List<IPServerNodeV3> m_tempStartNodeArray = new ArrayList<IPServerNodeV3>();
-	private List<IPServerLinkV3> m_tempStartLinkArray = new ArrayList<IPServerLinkV3>();
-	private List<IPServerLinkV3> m_replacedStartLinkArray = new ArrayList<IPServerLinkV3>();
+	private final List<IPServerNodeV3> m_tempStartNodeArray = new ArrayList<>();
+	private final List<IPServerLinkV3> m_tempStartLinkArray = new ArrayList<>();
+	private final List<IPServerLinkV3> m_replacedStartLinkArray = new ArrayList<>();
 
-	private List<IPServerNodeV3> m_tempEndNodeArray = new ArrayList<IPServerNodeV3>();
-	private List<IPServerLinkV3> m_tempEndLinkArray = new ArrayList<IPServerLinkV3>();
-	private List<IPServerLinkV3> m_replacedEndLinkArray = new ArrayList<IPServerLinkV3>();
+	private final List<IPServerNodeV3> m_tempEndNodeArray = new ArrayList<>();
+	private final List<IPServerLinkV3> m_tempEndLinkArray = new ArrayList<>();
+	private final List<IPServerLinkV3> m_replacedEndLinkArray = new ArrayList<>();
 
 	int m_tempNodeIndex;
 	int m_tempLinkIndex;
@@ -62,7 +62,7 @@ class IPServerRouteNetworkDatasetV3 {
 	String targetEndRoomID = null;
 
 	private int m_usedLinkType = 1;
-	private List<String> ignoredNodeList = new ArrayList<String>();
+	private final List<String> ignoredNodeList = new ArrayList<>();
 	private boolean useSameFloor = false;
 	private Calendar requestTime;
 	// private boolean enableRouteLevel = false;
@@ -93,9 +93,8 @@ class IPServerRouteNetworkDatasetV3 {
 
 		for (int floor : m_allLinkCollectionDict.keySet()) {
 			List<IPServerLinkV3> list = m_allLinkCollectionDict.get(floor);
-			List<LineString> linkLineVector = new ArrayList<LineString>();
-			for (int i = 0; i < list.size(); i++) {
-				IPServerLinkV3 link = list.get(i);
+			List<LineString> linkLineVector = new ArrayList<>();
+			for (IPServerLinkV3 link : list) {
 				if (link.m_allowSnap) {
 					linkLineVector.add(link.getLine());
 				}
@@ -106,12 +105,12 @@ class IPServerRouteNetworkDatasetV3 {
 			m_allUnionLineDict.put(floor, unionLine);
 		}
 
-		Map<String, List<IPServerLinkV3>> roomIDLinkMap = new HashMap<String, List<IPServerLinkV3>>();
+		Map<String, List<IPServerLinkV3>> roomIDLinkMap = new HashMap<>();
 		for (IPServerLinkV3 link : m_linkArray) {
 			if (link.m_roomID != null) {
 				List<IPServerLinkV3> list = roomIDLinkMap.get(link.m_roomID);
 				if (list == null) {
-					list = new ArrayList<IPServerLinkV3>();
+					list = new ArrayList<>();
 					roomIDLinkMap.put(link.m_roomID, list);
 				}
 				list.add(link);
@@ -120,9 +119,8 @@ class IPServerRouteNetworkDatasetV3 {
 
 		for (String roomID : roomIDLinkMap.keySet()) {
 			List<IPServerLinkV3> list = roomIDLinkMap.get(roomID);
-			List<LineString> linkLineVector = new ArrayList<LineString>();
-			for (int i = 0; i < list.size(); i++) {
-				IPServerLinkV3 link = list.get(i);
+			List<LineString> linkLineVector = new ArrayList<>();
+			for (IPServerLinkV3 link : list) {
 				if (link.m_allowSnap) {
 					linkLineVector.add(link.getLine());
 				}
@@ -137,9 +135,9 @@ class IPServerRouteNetworkDatasetV3 {
 		}
 	}
 
-	public synchronized IPServerRouteResultObjectV3 getShorestPathV3(TYLocalPoint startPoint, TYLocalPoint endPoint,
-			TYServerRouteOptions options) {
-		// System.out.println("getShorestPath");
+	public synchronized IPServerRouteResultObjectV3 getShortestPathV3(TYLocalPoint startPoint, TYLocalPoint endPoint,
+																	  TYServerRouteOptions options) {
+		// System.out.println("getShortestPath");
 		targetStartFloor = startPoint.getFloor();
 		targetEndFloor = endPoint.getFloor();
 		requestTime = Calendar.getInstance();
@@ -180,12 +178,12 @@ class IPServerRouteNetworkDatasetV3 {
 		System.out.println("targetStartRoomID: " + targetStartRoomID);
 		System.out.println("targetEndRoomID: " + targetEndRoomID);
 		computePaths(startNode);
-		List<IPServerRouteElement> elements = getShorestPathToNodeV3(startNode, endNode);
+		List<IPServerRouteElement> elements = getShortestPathToNodeV3(startNode, endNode);
 
 		resetTempNodeForEnd();
 		resetTempNodeForStart();
 
-		// 只有终点elememt，endNode.previousNode=null
+		// 只有终点element，endNode.previousNode=null
 		if (elements == null || elements.size() <= 1) {
 			return null;
 		}
@@ -198,7 +196,7 @@ class IPServerRouteNetworkDatasetV3 {
 		// System.out.println("End Room: " + targetEndRoomID);
 
 		source.minDistance = 0;
-		PriorityQueue<IPServerNodeV3> nodeQueue = new PriorityQueue<IPServerNodeV3>();
+		PriorityQueue<IPServerNodeV3> nodeQueue = new PriorityQueue<>();
 		nodeQueue.add(source);
 
 		while (!nodeQueue.isEmpty()) {
@@ -307,17 +305,17 @@ class IPServerRouteNetworkDatasetV3 {
 		}
 	}
 
-	public List<IPServerRouteElement> getShorestPathToNodeV3(IPServerNodeV3 start, IPServerNodeV3 target) {
-		// System.out.println("================ getShorestPathToNodeV3
+	public List<IPServerRouteElement> getShortestPathToNodeV3(IPServerNodeV3 start, IPServerNodeV3 target) {
+		// System.out.println("================ getShortestPathToNodeV3
 		// ================");
 		// System.out.println("Start node: " + start.getNodeID() + ", Floor: " +
 		// start.m_floor);
 		// System.out.println("End node: " + target.getNodeID() + ", Floor: " +
 		// target.m_floor);
 
-		List<IPServerRouteElement> resultList = new ArrayList<IPServerRouteElement>();
+		List<IPServerRouteElement> resultList = new ArrayList<>();
 
-		List<IPServerNodeV3> path = new ArrayList<IPServerNodeV3>();
+		List<IPServerNodeV3> path = new ArrayList<>();
 		for (IPServerNodeV3 node = target; node != null; node = node.previousNode) {
 			path.add(node);
 			// System.out.println("Mid node: " + node.getNodeID());
@@ -330,17 +328,17 @@ class IPServerRouteNetworkDatasetV3 {
 		// System.out.print("--> " + path.get(i).getNodeID() + " ");
 		// }
 
-		if (path.get(0).getNodeID() != start.getNodeID()) {
+		if (!path.get(0).getNodeID().equals(start.getNodeID())) {
 			// System.out.println("No Route");
 			return null;
-		} else {
+		} 
+//		else {
 			// System.out.println("Equal");
-		}
+//		}
 
 		double cost = 0;
 		IPRouteDebugger.debugLog("============ Route Part ================");
-		for (int i = 0; i < path.size(); ++i) {
-			IPServerNodeV3 node = path.get(i);
+		for (IPServerNodeV3 node : path) {
 			IPRouteDebugger.debugLog("Node: " + node.getNodeID());
 			if (node != null && node.previousNode != null) {
 				for (IPServerLinkV3 link : node.previousNode.adjacencies) {
@@ -396,7 +394,7 @@ class IPServerRouteNetworkDatasetV3 {
 	}
 
 	protected List<Object> findNodeOnRouteNetwork(TYLocalPoint lp) {
-		List<Object> resultList = new ArrayList<Object>();
+		List<Object> resultList = new ArrayList<>();
 
 		Point point = factory.createPoint(new Coordinate(lp.getX(), lp.getY()));
 		boolean isInRoom = false;
@@ -428,8 +426,7 @@ class IPServerRouteNetworkDatasetV3 {
 		Coordinate[] closestCoordinates = distanceOp.nearestPoints();
 		Point npOnUnionLine = factory.createPoint(closestCoordinates[0]);
 
-		for (int i = 0; i < m_nodeArray.size(); i++) {
-			IPServerNodeV3 node = m_nodeArray.get(i);
+		for (IPServerNodeV3 node : m_nodeArray) {
 			if (node.m_floor != lp.getFloor()) {
 				continue;
 			}
@@ -447,7 +444,7 @@ class IPServerRouteNetworkDatasetV3 {
 		newTempNode.m_floor = lp.getFloor();
 		newTempNode.m_open = true;
 		if (isInRoom && !"000800".equals(roomCategoryID)) {
-			List<String> roomIDList = new ArrayList<String>();
+			List<String> roomIDList = new ArrayList<>();
 			roomIDList.add(roomID);
 			newTempNode.m_roomIDList = roomIDList;
 		}
@@ -458,17 +455,16 @@ class IPServerRouteNetworkDatasetV3 {
 	}
 
 	protected List<List<IPServerLinkV3>> findTempLinksOnRouteNetwork(IPServerNodeV3 tempNode) {
-		List<List<IPServerLinkV3>> resultList = new ArrayList<List<IPServerLinkV3>>();
-		List<IPServerLinkV3> tempLinkArray = new ArrayList<IPServerLinkV3>();
+		List<List<IPServerLinkV3>> resultList = new ArrayList<>();
+		List<IPServerLinkV3> tempLinkArray = new ArrayList<>();
 		resultList.add(tempLinkArray);
-		List<IPServerLinkV3> replacedLinkArray = new ArrayList<IPServerLinkV3>();
+		List<IPServerLinkV3> replacedLinkArray = new ArrayList<>();
 		resultList.add(replacedLinkArray);
 
 		int floor = tempNode.m_floor;
 		Point pos = tempNode.m_pos;
 
-		for (int i = 0; i < m_linkArray.size(); ++i) {
-			IPServerLinkV3 link = m_linkArray.get(i);
+		for (IPServerLinkV3 link : m_linkArray) {
 			if (link.m_floor != floor) {
 				continue;
 			}
@@ -493,8 +489,8 @@ class IPServerRouteNetworkDatasetV3 {
 			LinearLocation linearLocation = indexedLine.indexOf(coord);
 			int index = linearLocation.getSegmentIndex();
 
-			List<Coordinate> firstPartCoordinateList = new ArrayList<Coordinate>();
-			List<Coordinate> secondPartCoordinateList = new ArrayList<Coordinate>();
+			List<Coordinate> firstPartCoordinateList = new ArrayList<>();
+			List<Coordinate> secondPartCoordinateList = new ArrayList<>();
 
 			secondPartCoordinateList.add(coord);
 			for (int j = 0; j < link.getLine().getNumPoints(); ++j) {
@@ -506,10 +502,10 @@ class IPServerRouteNetworkDatasetV3 {
 			}
 			firstPartCoordinateList.add(coord);
 
-			Coordinate[] firstPartSequence = (Coordinate[]) firstPartCoordinateList
-					.toArray(new Coordinate[firstPartCoordinateList.size()]);
-			Coordinate[] secondPartSequence = (Coordinate[]) secondPartCoordinateList
-					.toArray(new Coordinate[secondPartCoordinateList.size()]);
+			Coordinate[] firstPartSequence = firstPartCoordinateList
+					.toArray(new Coordinate[0]);
+			Coordinate[] secondPartSequence = secondPartCoordinateList
+					.toArray(new Coordinate[0]);
 
 			firstPartSequence = CoordinateArrays.removeRepeatedPoints(firstPartSequence);
 			secondPartSequence = CoordinateArrays.removeRepeatedPoints(secondPartSequence);
@@ -682,8 +678,7 @@ class IPServerRouteNetworkDatasetV3 {
 
 	protected void extractNodes(List<TYIRouteNodeRecordV3> nodes) {
 		// System.out.println("extractNodes");
-		for (int i = 0; i < nodes.size(); i++) {
-			TYIRouteNodeRecordV3 nodeRecord = nodes.get(i);
+		for (TYIRouteNodeRecordV3 nodeRecord : nodes) {
 			IPServerNodeV3 node = IPServerNodeV3.fromNodeRecord(nodeRecord);
 			m_allNodeDict.put(node.getNodeID(), node);
 			m_nodeArray.add(node);
@@ -693,13 +688,12 @@ class IPServerRouteNetworkDatasetV3 {
 
 	protected void extractLinks(List<TYIRouteLinkRecordV3> links) {
 		// System.out.println("extractLinks");
-		for (int i = 0; i < links.size(); ++i) {
-			TYIRouteLinkRecordV3 linkRecord = links.get(i);
+		for (TYIRouteLinkRecordV3 linkRecord : links) {
 			int floor = linkRecord.getFloor();
 
 			List<IPServerLinkV3> list = m_allLinkCollectionDict.get(floor);
 			if (list == null) {
-				list = new ArrayList<IPServerLinkV3>();
+				list = new ArrayList<>();
 				m_allLinkCollectionDict.put(floor, list);
 			}
 
@@ -730,7 +724,7 @@ class IPServerRouteNetworkDatasetV3 {
 				int switchingID = node.m_switchingID;
 				List<IPServerNodeV3> list = m_allSwitchingNodeDict.get(switchingID);
 				if (list == null) {
-					list = new ArrayList<IPServerNodeV3>();
+					list = new ArrayList<>();
 					m_allSwitchingNodeDict.put(switchingID, list);
 				}
 				list.add(node);
@@ -739,18 +733,17 @@ class IPServerRouteNetworkDatasetV3 {
 
 		for (int switchingID : m_allSwitchingNodeDict.keySet()) {
 			List<IPServerNodeV3> list = m_allSwitchingNodeDict.get(switchingID);
-			List<Integer> floorList = new ArrayList<Integer>();
-			List<IPServerNodeV3> sortedList = new ArrayList<IPServerNodeV3>();
-			Map<Integer, IPServerNodeV3> floorMap = new HashMap<Integer, IPServerNodeV3>();
-			for (int i = 0; i < list.size(); ++i) {
-				IPServerNodeV3 node = list.get(i);
+			List<Integer> floorList = new ArrayList<>();
+			List<IPServerNodeV3> sortedList = new ArrayList<>();
+			Map<Integer, IPServerNodeV3> floorMap = new HashMap<>();
+			for (IPServerNodeV3 node : list) {
 				floorList.add(node.m_floor);
 				floorMap.put(node.m_floor, node);
 			}
 			Collections.sort(floorList);
 
-			for (int i = 0; i < floorList.size(); ++i) {
-				sortedList.add(floorMap.get(floorList.get(i)));
+			for (Integer integer : floorList) {
+				sortedList.add(floorMap.get(integer));
 			}
 			m_allSwitchingNodeDict.put(switchingID, sortedList);
 		}

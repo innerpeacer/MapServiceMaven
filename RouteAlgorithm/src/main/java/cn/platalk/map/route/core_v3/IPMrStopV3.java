@@ -3,7 +3,7 @@ package cn.platalk.map.route.core_v3;
 import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class IPMrStopV3 {
-	private int stopID;
+	private final int stopID;
 	private TYLocalPoint pos;
 
 	IPMrStopV3(int sID) {

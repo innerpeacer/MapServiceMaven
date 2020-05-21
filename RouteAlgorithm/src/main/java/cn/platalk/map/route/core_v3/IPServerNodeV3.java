@@ -17,9 +17,9 @@ public class IPServerNodeV3 implements Comparable<IPServerNodeV3> {
 	public IPServerNodeV3 previousNode;
 	public double cumulativeAngle = 0;
 
-	public List<IPServerLinkV3> adjacencies = new ArrayList<IPServerLinkV3>();
+	public final List<IPServerLinkV3> adjacencies = new ArrayList<>();
 
-	public String m_nodeID;
+	public final String m_nodeID;
 	public Point m_pos;
 
 	public String m_nodeName;
@@ -33,11 +33,11 @@ public class IPServerNodeV3 implements Comparable<IPServerNodeV3> {
 	public boolean m_open;
 	public String m_openTime;
 	// public String m_roomID;
-	public List<String> m_roomIDList = new ArrayList<String>();
+	public List<String> m_roomIDList = new ArrayList<>();
 
 	public IPTimeWindows m_timeWindows = null;
 
-	static WKBReader reader = new WKBReader();
+	static final WKBReader reader = new WKBReader();
 
 	public static IPServerNodeV3 fromNodeRecord(TYIRouteNodeRecordV3 nodeRecord) {
 		IPServerNodeV3 node = new IPServerNodeV3(nodeRecord.getNodeID());
@@ -61,9 +61,8 @@ public class IPServerNodeV3 implements Comparable<IPServerNodeV3> {
 		}
 		// node.m_roomID = nodeRecord.getRoomID();
 		if (nodeRecord.getRoomID() != null) {
-			String[] splited = nodeRecord.getRoomID().split(",");
-			List<String> sList = Arrays.asList(splited);
-			node.m_roomIDList = sList;
+			String[] splitted = nodeRecord.getRoomID().split(",");
+			node.m_roomIDList = Arrays.asList(splitted);
 		}
 		return node;
 	}
