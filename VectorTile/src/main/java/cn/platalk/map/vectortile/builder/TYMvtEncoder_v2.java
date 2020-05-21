@@ -37,7 +37,7 @@ class TYMvtEncoder_v2 implements TYIMvtEncoder {
 		final VectorTile.Tile.Builder tileBuilder = VectorTile.Tile.newBuilder();
 		final TYUserDataConverter brtUserData = new TYUserDataConverter();
 
-		boolean isEmtpy = true;
+		boolean isEmpty = true;
 		for (int i = 0; i < TYVectorTileParams.LAYER_LIST_v2.length; ++i) {
 			String layerName = TYVectorTileParams.LAYER_LIST_v2[i];
 
@@ -46,7 +46,7 @@ class TYMvtEncoder_v2 implements TYIMvtEncoder {
 
 			List<Geometry> geomList = geomSet.getGeomList(layerName);
 			// Do Filtering, Ignore Geometry Not Intersect With the Tile
-			List<Geometry> filteredGeomList = new ArrayList<Geometry>();
+			List<Geometry> filteredGeomList = new ArrayList<>();
 			{
 				Polygon enveloperPolygon = envelopeToPolygon(tileEnvelope);
 				for (Geometry g : geomList) {
@@ -58,7 +58,7 @@ class TYMvtEncoder_v2 implements TYIMvtEncoder {
 			}
 
 			if (filteredGeomList.size() != 0) {
-				isEmtpy = false;
+				isEmpty = false;
 			}
 
 			final MvtTileGeomResult bufferedTileGeom = TYJtsAdapter.createTileGeom(filteredGeomList, tileEnvelope,
@@ -73,7 +73,7 @@ class TYMvtEncoder_v2 implements TYIMvtEncoder {
 			tileBuilder.addLayers(layer);
 		}
 
-		if (isEmtpy && isForNative) {
+		if (isEmpty && isForNative) {
 			return null;
 		}
 

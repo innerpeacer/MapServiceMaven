@@ -14,7 +14,7 @@ class TYGeometryUtils {
 	public static Geometry geometryFromMapDataRecord(TYIMapDataFeatureRecord record) {
 		Geometry result = TYGeomProjection.mercatorToLngLatGeometry(record.getGeometryData());
 
-		Map<String, Object> userData = new HashMap<String, Object>();
+		Map<String, Object> userData = new HashMap<>();
 
 		userData.put("GEO_ID", record.getGeoID());
 		userData.put("POI_ID", record.getPoiID());

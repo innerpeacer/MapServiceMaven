@@ -48,7 +48,7 @@ class TYTileCoord {
 		int x = this.x * 2;
 		int y = this.y * 2;
 
-		List<TYTileCoord> result = new ArrayList<TYTileCoord>();
+		List<TYTileCoord> result = new ArrayList<>();
 		result.add(new TYTileCoord(zoom, x, y));
 		result.add(new TYTileCoord(zoom, x + 1, y));
 		result.add(new TYTileCoord(zoom, x, y + 1));

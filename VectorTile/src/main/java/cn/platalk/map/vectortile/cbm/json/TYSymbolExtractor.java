@@ -28,14 +28,14 @@ public class TYSymbolExtractor {
 
 	public static Map<String, List<Integer>> extractSymbolList(List<TYIMapDataFeatureRecord> mapDataRecords,
 			List<TYIFillSymbolRecord> fillSymbols, List<TYIIconTextSymbolRecord> iconTextSymbols) {
-		Map<String, List<Integer>> resultMap = new HashMap<String, List<Integer>>();
+		Map<String, List<Integer>> resultMap = new HashMap<>();
 
-		Set<Integer> floorSet = new HashSet<Integer>();
-		Set<Integer> roomSet = new HashSet<Integer>();
-		Set<Integer> assetSet = new HashSet<Integer>();
-		Set<Integer> facilitySet = new HashSet<Integer>();
-		Set<Integer> labelSet = new HashSet<Integer>();
-		Set<Integer> extrusionSet = new HashSet<Integer>();
+		Set<Integer> floorSet = new HashSet<>();
+		Set<Integer> roomSet = new HashSet<>();
+		Set<Integer> assetSet = new HashSet<>();
+		Set<Integer> facilitySet = new HashSet<>();
+		Set<Integer> labelSet = new HashSet<>();
+		Set<Integer> extrusionSet = new HashSet<>();
 
 		for (TYIMapDataFeatureRecord record : mapDataRecords) {
 			switch (record.getLayer()) {
@@ -95,7 +95,7 @@ public class TYSymbolExtractor {
 	}
 
 	private static List<Integer> findUIDForFillSymbolIDSet(List<TYIFillSymbolRecord> fillSymbols, Set<Integer> set) {
-		List<Integer> resultList = new ArrayList<Integer>();
+		List<Integer> resultList = new ArrayList<>();
 		for (Integer symbolID : set) {
 			resultList.addAll(uIDForFillSymbol(fillSymbols, symbolID));
 		}
@@ -103,7 +103,7 @@ public class TYSymbolExtractor {
 	}
 
 	private static List<Integer> uIDForFillSymbol(List<TYIFillSymbolRecord> fillSymbols, int symbolID) {
-		List<Integer> resultList = new ArrayList<Integer>();
+		List<Integer> resultList = new ArrayList<>();
 		for (TYIFillSymbolRecord symbol : fillSymbols) {
 			if (symbol.getSymbolID() == symbolID) {
 				resultList.add(symbol.getUID());
@@ -114,7 +114,7 @@ public class TYSymbolExtractor {
 
 	private static List<Integer> findUIDForIconTextSymbolIDSet(List<TYIIconTextSymbolRecord> iconTextSymbols,
 			Set<Integer> set) {
-		List<Integer> resultList = new ArrayList<Integer>();
+		List<Integer> resultList = new ArrayList<>();
 		for (Integer symbolID : set) {
 			resultList.addAll(uIDForIconTextSymbol(iconTextSymbols, symbolID));
 		}
@@ -122,7 +122,7 @@ public class TYSymbolExtractor {
 	}
 
 	private static List<Integer> uIDForIconTextSymbol(List<TYIIconTextSymbolRecord> iconTextSymbols, int symbolID) {
-		List<Integer> resultList = new ArrayList<Integer>();
+		List<Integer> resultList = new ArrayList<>();
 		for (TYIIconTextSymbolRecord symbol : iconTextSymbols) {
 			if (symbol.getSymbolID() == symbolID) {
 				resultList.add(symbol.getUID());

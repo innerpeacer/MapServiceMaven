@@ -9,7 +9,7 @@ import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 public class TYExtractLabelString {
 
 	public static String GetLabelString(List<TYIMapDataFeatureRecord> records) {
-		Set<Character> charSet = new HashSet<Character>();
+		Set<Character> charSet = new HashSet<>();
 
 		for (int i = '!'; i < '~'; ++i) {
 			charSet.add((char) i);
@@ -34,7 +34,7 @@ public class TYExtractLabelString {
 			}
 		}
 
-		StringBuffer charBuffer = new StringBuffer();
+		StringBuilder charBuffer = new StringBuilder();
 		for (Character c : charSet) {
 			charBuffer.append(c);
 		}

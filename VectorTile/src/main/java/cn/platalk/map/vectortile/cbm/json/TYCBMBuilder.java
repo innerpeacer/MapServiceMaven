@@ -44,8 +44,8 @@ public class TYCBMBuilder {
 		buildingJsonArray.put(building.toJson());
 
 		JSONArray mapInfoJsonArray = new JSONArray();
-		for (int i = 0; i < mapInfoList.size(); ++i) {
-			mapInfoJsonArray.put(mapInfoList.get(i).toJson());
+		for (TYIMapInfo mapInfo : mapInfoList) {
+			mapInfoJsonArray.put(mapInfo.toJson());
 		}
 
 		JSONObject jsonObject = new JSONObject();
@@ -56,14 +56,14 @@ public class TYCBMBuilder {
 
 			if ("V4".equals(building.getRouteURL())) {
 				JSONArray fillJsonArray = new JSONArray();
-				for (int i = 0; i < fillSymbols.size(); ++i) {
-					fillJsonArray.put(fillSymbols.get(i).toJson());
+				for (TYIFillSymbolRecord fillSymbol : fillSymbols) {
+					fillJsonArray.put(fillSymbol.toJson());
 				}
 				jsonObject.put(KEY_WEB_FILL_SYMBOLS, fillJsonArray);
 
 				JSONArray iconTextJsonArray = new JSONArray();
-				for (int i = 0; i < iconTextSymbols.size(); ++i) {
-					iconTextJsonArray.put(iconTextSymbols.get(i).toJson());
+				for (TYIIconTextSymbolRecord iconTextSymbol : iconTextSymbols) {
+					iconTextJsonArray.put(iconTextSymbol.toJson());
 				}
 				jsonObject.put(KEY_WEB_ICON_TEXT_SYMBOLS, iconTextJsonArray);
 

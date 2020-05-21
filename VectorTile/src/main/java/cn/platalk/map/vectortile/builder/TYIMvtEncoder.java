@@ -6,12 +6,12 @@ import cn.platalk.map.vectortile.pbf.VectorTile;
 
 interface TYIMvtEncoder {
 
-	public int getVersion();
+	int getVersion();
 
-	public boolean isForNative();
+	boolean isForNative();
 
-	public void setForNative(boolean forNative);
+	void setForNative(boolean forNative);
 
-	public VectorTile.Tile encodeBrtTile(TYGeometrySet geomSet, MvtLayerParams mvtParams, Envelope tileEnvelope,
-			Envelope clipEnvelope, TYTileCoord tile);
+	VectorTile.Tile encodeBrtTile(TYGeometrySet geomSet, MvtLayerParams mvtParams, Envelope tileEnvelope,
+                                  Envelope clipEnvelope, TYTileCoord tile);
 }

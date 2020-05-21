@@ -55,7 +55,7 @@ final class TYUserDataConverter implements MvtIUserDataConverter {
 					featureBuilder.setId((long) idValue);
 				} else if (idValue instanceof String) {
 					try {
-						featureBuilder.setId(Long.valueOf((String) idValue));
+						featureBuilder.setId(Long.parseLong((String) idValue));
 					} catch (NumberFormatException ignored) {
 					}
 				}

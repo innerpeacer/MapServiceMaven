@@ -15,21 +15,21 @@ import cn.platalk.map.entity.base.TYIMapInfo;
 
 class TYGeometrySet {
 	String buildingID;
-	private List<TYIMapInfo> mapInfoList = new ArrayList<TYIMapInfo>();
-	private List<TYIMapDataFeatureRecord> allRecords = new ArrayList<TYIMapDataFeatureRecord>();
-	private List<TYIFillSymbolRecord> fillSymbolList = new ArrayList<TYIFillSymbolRecord>();
-	private List<TYIIconSymbolRecord> iconSymbolList = new ArrayList<TYIIconSymbolRecord>();
-	private Map<Integer, TYIFillSymbolRecord> fillSymbolMap = new HashMap<Integer, TYIFillSymbolRecord>();
-	private Map<Integer, TYIIconSymbolRecord> iconSymbolMap = new HashMap<Integer, TYIIconSymbolRecord>();
+	private final List<TYIMapInfo> mapInfoList = new ArrayList<>();
+	private final List<TYIMapDataFeatureRecord> allRecords = new ArrayList<>();
+	private final List<TYIFillSymbolRecord> fillSymbolList = new ArrayList<>();
+	private final List<TYIIconSymbolRecord> iconSymbolList = new ArrayList<>();
+	private final Map<Integer, TYIFillSymbolRecord> fillSymbolMap = new HashMap<>();
+	private final Map<Integer, TYIIconSymbolRecord> iconSymbolMap = new HashMap<>();
 
-	private List<Geometry> floorList = new ArrayList<Geometry>();
-	private List<Geometry> roomList = new ArrayList<Geometry>();
-	private List<Geometry> assetList = new ArrayList<Geometry>();
-	private List<Geometry> facilityList = new ArrayList<Geometry>();
-	private List<Geometry> labelList = new ArrayList<Geometry>();
+	private final List<Geometry> floorList = new ArrayList<>();
+	private final List<Geometry> roomList = new ArrayList<>();
+	private final List<Geometry> assetList = new ArrayList<>();
+	private final List<Geometry> facilityList = new ArrayList<>();
+	private final List<Geometry> labelList = new ArrayList<>();
 
-	private List<Geometry> fillList = new ArrayList<Geometry>();
-	private Map<String, List<Geometry>> layerMap = new HashMap<String, List<Geometry>>();
+	private final List<Geometry> fillList = new ArrayList<>();
+	private final Map<String, List<Geometry>> layerMap = new HashMap<>();
 
 	public TYGeometrySet(String buildingID) {
 		this.buildingID = buildingID;
@@ -60,10 +60,10 @@ class TYGeometrySet {
 	}
 
 	private List<TYIMapDataFeatureRecord> sortFeatures(List<TYIMapDataFeatureRecord> records) {
-		List<TYIMapDataFeatureRecord> resultList = new ArrayList<TYIMapDataFeatureRecord>();
+		List<TYIMapDataFeatureRecord> resultList = new ArrayList<>();
 
-		List<TYIMapDataFeatureRecord> prioritizedList = new ArrayList<TYIMapDataFeatureRecord>();
-		List<TYIMapDataFeatureRecord> unPrioritizedList = new ArrayList<TYIMapDataFeatureRecord>();
+		List<TYIMapDataFeatureRecord> prioritizedList = new ArrayList<>();
+		List<TYIMapDataFeatureRecord> unPrioritizedList = new ArrayList<>();
 		for (TYIMapDataFeatureRecord record : records) {
 			if (record.getPriority() == 0) {
 				unPrioritizedList.add(record);
@@ -78,12 +78,12 @@ class TYGeometrySet {
 	}
 
 	public void processData() {
-		List<TYIMapDataFeatureRecord> floorRecords = new ArrayList<TYIMapDataFeatureRecord>();
-		List<TYIMapDataFeatureRecord> roomRecords = new ArrayList<TYIMapDataFeatureRecord>();
-		List<TYIMapDataFeatureRecord> assetRecords = new ArrayList<TYIMapDataFeatureRecord>();
-		List<TYIMapDataFeatureRecord> facilityRecords = new ArrayList<TYIMapDataFeatureRecord>();
-		List<TYIMapDataFeatureRecord> labelRecords = new ArrayList<TYIMapDataFeatureRecord>();
-		List<TYIMapDataFeatureRecord> fillRecords = new ArrayList<TYIMapDataFeatureRecord>();
+		List<TYIMapDataFeatureRecord> floorRecords = new ArrayList<>();
+		List<TYIMapDataFeatureRecord> roomRecords = new ArrayList<>();
+		List<TYIMapDataFeatureRecord> assetRecords = new ArrayList<>();
+		List<TYIMapDataFeatureRecord> facilityRecords = new ArrayList<>();
+		List<TYIMapDataFeatureRecord> labelRecords = new ArrayList<>();
+		List<TYIMapDataFeatureRecord> fillRecords = new ArrayList<>();
 
 		for (TYIMapDataFeatureRecord record : allRecords) {
 			if (record.getLayer() == TYIMapDataFeatureRecord.LAYER_FLOOR) {

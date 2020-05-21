@@ -331,14 +331,11 @@ final class TYJtsAdapter {
 			Collections.emptyList();
 		}
 
-		/** Tile commands and parameters */
 		final List<Integer> geomCmds = new ArrayList<>(
 				geomCmdBuffLenPts(geomCoords.length));
 
-		/** Holds next MVT coordinate */
 		final MvtVec2d mvtPos = new MvtVec2d();
 
-		/** Length of 'MoveTo' draw command */
 		int moveCmdLen = 0;
 
 		// Insert placeholder for 'MoveTo' command header
@@ -386,11 +383,9 @@ final class TYJtsAdapter {
 			Collections.emptyList();
 		}
 
-		/** Tile commands and parameters */
 		final List<Integer> geomCmds = new ArrayList<>(geomCmdBuffLenLines(
 				minExpGeomCoords, closeEnabled));
 
-		/** Holds next MVT coordinate */
 		final MvtVec2d mvtPos = new MvtVec2d();
 
 		// Initial coordinate
@@ -402,13 +397,11 @@ final class TYJtsAdapter {
 
 		moveCursor(cursor, geomCmds, mvtPos);
 
-		/** Index of 'LineTo' 'command header' */
 		final int lineToCmdHdrIndex = geomCmds.size();
 
 		// Insert placeholder for 'LineTo' command header
 		geomCmds.add(0);
 
-		/** Length of 'LineTo' draw command */
 		int lineToLength = 0;
 
 		for (int i = 1; i < minExpGeomCoords; ++i) {

@@ -2,7 +2,7 @@ package cn.platalk.map.vectortile.builder;
 
 final class MvtGeomCmdHdr {
 
-	private static int CLOSE_PATH_HDR = cmdHdr(MvtGeomCmd.ClosePath, 1);
+	private static final int CLOSE_PATH_HDR = cmdHdr(MvtGeomCmd.ClosePath, 1);
 
 	public static int cmdHdr(MvtGeomCmd cmd, int length) {
 		return (cmd.getCmdId() & 0x7) | (length << 3);

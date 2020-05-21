@@ -72,17 +72,17 @@ public class TYVectorTileBuilder {
 		TYLngLat ne = TYCoordProjection.mercatorToLngLat(new TYLocalPoint(xmax, ymax));
 		buildingEnvelope = new Envelope(sw.getLng(), ne.getLng(), sw.getLat(), ne.getLat());
 
-		this.mapInfos = new ArrayList<TYIMapInfo>();
+		this.mapInfos = new ArrayList<>();
 		this.mapInfos.addAll(mapInfoList);
 
-		this.mapDataRecords = new ArrayList<TYIMapDataFeatureRecord>();
+		this.mapDataRecords = new ArrayList<>();
 		this.mapDataRecords.addAll(mapDataRecords);
 
-		this.fillSymbols = new ArrayList<TYIFillSymbolRecord>();
+		this.fillSymbols = new ArrayList<>();
 		this.fillSymbols.addAll(fillSymbolList);
-		this.iconSymbols = new ArrayList<TYIIconSymbolRecord>();
+		this.iconSymbols = new ArrayList<>();
 		this.iconSymbols.addAll(iconSymbolList);
-		this.iconTextSymbols = new ArrayList<TYIIconTextSymbolRecord>();
+		this.iconTextSymbols = new ArrayList<>();
 		this.iconTextSymbols.addAll(iconTextSymbolList);
 
 		geometrySet.addData(mapInfoList, mapDataRecords, fillSymbolList, iconSymbolList);

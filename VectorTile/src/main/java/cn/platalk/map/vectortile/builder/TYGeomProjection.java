@@ -50,7 +50,7 @@ class TYGeomProjection {
 			break;
 		}
 
-		Map<String, Object> test = new HashMap<String, Object>();
+		Map<String, Object> test = new HashMap<>();
 		test.put("floor", 1);
 		result.setUserData(test);
 		return result;

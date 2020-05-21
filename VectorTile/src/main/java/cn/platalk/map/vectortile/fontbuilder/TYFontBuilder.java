@@ -208,7 +208,7 @@ public class TYFontBuilder {
 		notifyProcess("========== Finish Glyphs ==========\n");
 	}
 
-	private List<TYBrtFontBuilderInterface> listeners = new ArrayList<TYFontBuilder.TYBrtFontBuilderInterface>();
+	private final List<TYBrtFontBuilderInterface> listeners = new ArrayList<>();
 
 	public void addListener(TYBrtFontBuilderInterface listener) {
 		if (!listeners.contains(listener)) {
@@ -217,9 +217,7 @@ public class TYFontBuilder {
 	}
 
 	public void removeListener(TYBrtFontBuilderInterface listener) {
-		if (listeners.contains(listener)) {
-			listeners.remove(listener);
-		}
+		listeners.remove(listener);
 	}
 
 	private void notifyFinish() {

@@ -6,16 +6,16 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 final class MvtLayerProps {
-	private ConcurrentHashMap<String, Integer> keys;
-	private List<String> keyList;
-	private ConcurrentHashMap<Object, Integer> vals;
-	private List<Object> valList;
+	private final ConcurrentHashMap<String, Integer> keys;
+	private final List<String> keyList;
+	private final ConcurrentHashMap<Object, Integer> vals;
+	private final List<Object> valList;
 
 	public MvtLayerProps() {
 		keys = new ConcurrentHashMap<>();
-		keyList = new ArrayList<String>();
+		keyList = new ArrayList<>();
 		vals = new ConcurrentHashMap<>();
-		valList = new ArrayList<Object>();
+		valList = new ArrayList<>();
 	}
 
 	public Integer keyIndex(String k) {

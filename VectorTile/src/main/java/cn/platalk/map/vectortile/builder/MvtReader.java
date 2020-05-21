@@ -119,7 +119,6 @@ final class MvtReader {
 			return null;
 		}
 
-		/** Geometry command index */
 		int i = 0;
 
 		// Read command header
@@ -169,7 +168,6 @@ final class MvtReader {
 			return null;
 		}
 
-		/** Geometry command index */
 		int i = 0;
 
 		int cmdHdr;
@@ -257,7 +255,6 @@ final class MvtReader {
 			return null;
 		}
 
-		/** Geometry command index */
 		int i = 0;
 
 		int cmdHdr;

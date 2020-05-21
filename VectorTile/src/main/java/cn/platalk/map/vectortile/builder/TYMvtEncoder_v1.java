@@ -44,7 +44,7 @@ class TYMvtEncoder_v1 implements TYIMvtEncoder {
 			List<Geometry> geomList = geomSet.getGeomList(layerName);
 
 			// Do Filtering, Ignore Geometry Not Intersect With the Tile
-			List<Geometry> filteredGeomList = new ArrayList<Geometry>();
+			List<Geometry> filteredGeomList = new ArrayList<>();
 			{
 				Polygon enveloperPolygon = envelopeToPolygon(tileEnvelope);
 				for (Geometry g : geomList) {

@@ -59,7 +59,7 @@ final class MvtUserDataKeyValueMapConverter implements MvtIUserDataConverter {
 						} else if (idValue instanceof String) {
 							try {
 								featureBuilder.setId(Long
-										.valueOf((String) idValue));
+										.parseLong((String) idValue));
 							} catch (NumberFormatException ignored) {
 							}
 						}

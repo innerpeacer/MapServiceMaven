@@ -4,11 +4,11 @@ import java.io.File;
 
 class TYFontParams {
 
-	private String fontName;
-	private String fontminName;
-	private String fontType;
-	private String fontFileName;
-	private String fontminFileName;
+	private final String fontName;
+	private final String fontminName;
+	private final String fontType;
+	private final String fontFileName;
+	private final String fontminFileName;
 	private final String buildingID;
 
 	public TYFontParams(String fontName, String type, String buildingID) {
