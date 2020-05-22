@@ -10,7 +10,6 @@ import java.util.Set;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.Point;
-import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
 
 import cn.platalk.map.entity.base.TYIRouteLinkRecord;
@@ -18,18 +17,18 @@ import cn.platalk.map.entity.base.TYIRouteNodeRecord;
 
 public class IPCheckRouteNetworkDataset {
 
-	private List<IPCheckerLink> m_linkArray = new ArrayList<IPCheckerLink>();
-	private List<IPCheckerLink> m_virtualLinkArray = new ArrayList<IPCheckerLink>();
-	public List<IPCheckerNode> m_nodeArray = new ArrayList<IPCheckerNode>();
-	private List<IPCheckerNode> m_virtualNodeArray = new ArrayList<IPCheckerNode>();
+	private final List<IPCheckerLink> m_linkArray = new ArrayList<>();
+	private final List<IPCheckerLink> m_virtualLinkArray = new ArrayList<>();
+	public final List<IPCheckerNode> m_nodeArray = new ArrayList<>();
+	private final List<IPCheckerNode> m_virtualNodeArray = new ArrayList<>();
 
-	private Map<String, IPCheckerLink> m_allLinkDict = new HashMap<String, IPCheckerLink>();
-	private Map<Integer, IPCheckerNode> m_allNodeDict = new HashMap<Integer, IPCheckerNode>();
+	private final Map<String, IPCheckerLink> m_allLinkDict = new HashMap<>();
+	private final Map<Integer, IPCheckerNode> m_allNodeDict = new HashMap<>();
 
 	GeometryFactory factory = new GeometryFactory();
 
-	private List<IPCheckerNode> nodeFinished = new ArrayList<IPCheckerNode>();
-	private List<IPCheckerNode> nodeToCheck = new ArrayList<IPCheckerNode>();
+	private final List<IPCheckerNode> nodeFinished = new ArrayList<>();
+	private final List<IPCheckerNode> nodeToCheck = new ArrayList<>();
 
 	public IPCheckRouteNetworkDataset(List<TYIRouteNodeRecord> nodes, List<TYIRouteLinkRecord> links) {
 		extractNodes(nodes);
@@ -46,7 +45,7 @@ public class IPCheckRouteNetworkDataset {
 		print(m_allLinkDict.size() + " Links");
 		print(m_allNodeDict.size() + " Nodes");
 
-		duplicatCheck();
+		duplicateCheck();
 		missingCheck();
 
 		// checkDataset();
@@ -89,7 +88,7 @@ public class IPCheckRouteNetworkDataset {
 		print("Node Finished: " + nodeFinished.size());
 		print(partCount + " parts Found");
 
-		int colorCount[] = { 0, 0, 0 };
+		int[] colorCount = { 0, 0, 0 };
 		for (IPCheckerNode node : m_allNodeDict.values()) {
 			switch (node.color) {
 			case None:
@@ -138,8 +137,8 @@ public class IPCheckRouteNetworkDataset {
 
 	}
 
-	private void duplicatCheck() {
-		Set<String> nodeCoordSet = new HashSet<String>();
+	private void duplicateCheck() {
+		Set<String> nodeCoordSet = new HashSet<>();
 		for (IPCheckerNode node : m_allNodeDict.values()) {
 			String cs = String.format("%f%f", node.getPos().getX(), node.getPos().getY());
 			nodeCoordSet.add(cs);
@@ -151,12 +150,12 @@ public class IPCheckRouteNetworkDataset {
 			print("No Duplicate Node");
 		}
 
-		Set<String> linkSet = new HashSet<String>();
+		Set<String> linkSet = new HashSet<>();
 		for (IPCheckerLink link : m_allLinkDict.values()) {
 			String cs = String.format("%d%d", link.currentNodeID, link.nextNodeID);
 
 			if (linkSet.contains(cs)) {
-				// print("Duplicat Link Error: " + link.toString());
+				// print("Duplicate Link Error: " + link.toString());
 			}
 			linkSet.add(cs);
 		}
@@ -167,20 +166,20 @@ public class IPCheckRouteNetworkDataset {
 			print("No Duplicate Link");
 		}
 
-		Map<String, List<IPCheckerLink>> duplicatMap = new HashMap<String, List<IPCheckerLink>>();
+		Map<String, List<IPCheckerLink>> duplicateMap = new HashMap<>();
 		for (IPCheckerLink link : m_allLinkDict.values()) {
 			String cs = String.format("%d%d", link.currentNodeID, link.nextNodeID);
 
-			List<IPCheckerLink> list = duplicatMap.get(cs);
+			List<IPCheckerLink> list = duplicateMap.get(cs);
 			if (list == null) {
-				list = new ArrayList<IPCheckerLink>();
-				duplicatMap.put(cs, list);
+				list = new ArrayList<>();
+				duplicateMap.put(cs, list);
 			}
 			list.add(link);
 		}
 
 		int count = 0;
-		for (List<IPCheckerLink> list : duplicatMap.values()) {
+		for (List<IPCheckerLink> list : duplicateMap.values()) {
 			if (list.size() > 1) {
 				count++;
 				print("============================");
@@ -210,8 +209,7 @@ public class IPCheckRouteNetworkDataset {
 	protected void extractNodes(List<TYIRouteNodeRecord> nodes) {
 		WKBReader reader = new WKBReader();
 		try {
-			for (int i = 0; i < nodes.size(); i++) {
-				TYIRouteNodeRecord nodeRecord = nodes.get(i);
+			for (TYIRouteNodeRecord nodeRecord : nodes) {
 				IPCheckerNode node = new IPCheckerNode(nodeRecord.getNodeID(), nodeRecord.isVirtual());
 
 				Point pos = (Point) reader.read(nodeRecord.getGeometryData());
@@ -225,8 +223,6 @@ public class IPCheckRouteNetworkDataset {
 					m_nodeArray.add(node);
 				}
 			}
-		} catch (ParseException e) {
-			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -236,19 +232,18 @@ public class IPCheckRouteNetworkDataset {
 	protected void extractLinks(List<TYIRouteLinkRecord> links) {
 		WKBReader reader = new WKBReader();
 		try {
-			Map<String, List<IPCheckerLink>> duplicatMap = new HashMap<String, List<IPCheckerLink>>();
+			Map<String, List<IPCheckerLink>> duplicateMap = new HashMap<>();
 			for (IPCheckerLink link : m_allLinkDict.values()) {
 				String cs = String.format("%d%d", link.currentNodeID, link.nextNodeID);
-				List<IPCheckerLink> list = duplicatMap.get(cs);
+				List<IPCheckerLink> list = duplicateMap.get(cs);
 				if (list == null) {
-					list = new ArrayList<IPCheckerLink>();
-					duplicatMap.put(cs, list);
+					list = new ArrayList<>();
+					duplicateMap.put(cs, list);
 				}
 				list.add(link);
 			}
 
-			for (int i = 0; i < links.size(); ++i) {
-				TYIRouteLinkRecord linkRecord = links.get(i);
+			for (TYIRouteLinkRecord linkRecord : links) {
 				LineString line = (LineString) reader.read(linkRecord.getGeometryData());
 
 				IPCheckerLink forwardLink = new IPCheckerLink(linkRecord.getLinkID(), linkRecord.isVirtual());
@@ -268,10 +263,10 @@ public class IPCheckRouteNetworkDataset {
 				}
 
 				// =============================
-				List<IPCheckerLink> list = duplicatMap.get(forwardLinkKey);
+				List<IPCheckerLink> list = duplicateMap.get(forwardLinkKey);
 				if (list == null) {
-					list = new ArrayList<IPCheckerLink>();
-					duplicatMap.put(forwardLinkKey, list);
+					list = new ArrayList<>();
+					duplicateMap.put(forwardLinkKey, list);
 				}
 				list.add(forwardLink);
 				// =============================
@@ -292,17 +287,17 @@ public class IPCheckRouteNetworkDataset {
 						m_linkArray.add(reverseLink);
 					}
 
-					list = duplicatMap.get(reverseLinkKey);
+					list = duplicateMap.get(reverseLinkKey);
 					if (list == null) {
-						list = new ArrayList<IPCheckerLink>();
-						duplicatMap.put(reverseLinkKey, list);
+						list = new ArrayList<>();
+						duplicateMap.put(reverseLinkKey, list);
 					}
 					list.add(reverseLink);
 				}
 			}
 
 			int count = 0;
-			for (List<IPCheckerLink> list : duplicatMap.values()) {
+			for (List<IPCheckerLink> list : duplicateMap.values()) {
 				if (list.size() > 1) {
 					count++;
 					print("============================");
@@ -313,8 +308,6 @@ public class IPCheckRouteNetworkDataset {
 			}
 			print(count + "");
 
-		} catch (ParseException e) {
-			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

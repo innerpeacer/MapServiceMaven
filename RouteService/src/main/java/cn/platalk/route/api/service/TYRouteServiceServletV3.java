@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -52,7 +51,7 @@ public class TYRouteServiceServletV3 extends TYBaseHttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		response.setContentType("text/json;charset=UTF-8");
 		String buildingID = request.getParameter("buildingID");
 		TYLocalPoint startPoint = TYParameterParser.getLocalPoint(request, "start");
@@ -95,7 +94,7 @@ public class TYRouteServiceServletV3 extends TYBaseHttpServlet {
 			routeResult = routeManager.requestRoute(startPoint, endPoint, stopPoints, options);
 		}
 
-		JSONObject jsonObject = null;
+		JSONObject jsonObject;
 		if (routeResult != null) {
 			jsonObject = routeResult.buildJson();
 			respondResult(request, response, jsonObject);
@@ -106,7 +105,7 @@ public class TYRouteServiceServletV3 extends TYBaseHttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 		doGet(request, response);
 	}
 

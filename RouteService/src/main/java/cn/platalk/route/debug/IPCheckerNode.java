@@ -14,10 +14,10 @@ class IPCheckerNode implements Comparable<IPCheckerNode> {
 
 	public TYCheckColor color = TYCheckColor.None;
 
-	public List<IPCheckerLink> adjacencies = new ArrayList<IPCheckerLink>();
+	public final List<IPCheckerLink> adjacencies = new ArrayList<>();
 
-	private int m_nodeID;
-	private boolean m_isVirtual;
+	private final int m_nodeID;
+	private final boolean m_isVirtual;
 	private Point m_pos;
 
 	public IPCheckerNode(int nodeID, boolean isVir) {

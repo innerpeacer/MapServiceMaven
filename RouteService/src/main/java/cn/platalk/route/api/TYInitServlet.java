@@ -15,24 +15,24 @@ import cn.platalk.route.core.config.TYServerEnvironment;
 public class TYInitServlet extends HttpServlet {
 	private static final long serialVersionUID = -3535588845108542020L;
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html");
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder builder = new StringBuilder();
 		if (TYServerEnvironment.resourceManager == null) {
-			buffer.append("init failed!");
+			builder.append("init failed!");
 		} else {
-			buffer.append("init success!").append("\n");
-			buffer.append("DB Host: ").append(TYServerEnvironment.resourceManager.getDBHost()).append("\n");
+			builder.append("init success!").append("\n");
+			builder.append("DB Host: ").append(TYServerEnvironment.resourceManager.getDBHost()).append("\n");
 		}
 
 		PrintWriter out = response.getWriter();
-		out.print(buffer.toString());
+		out.print(builder.toString());
 		out.flush();
 		out.close();
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		doGet(request, response);
 	}
 

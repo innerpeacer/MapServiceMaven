@@ -13,7 +13,7 @@ public class RouteTopologicalCheck {
 	// static String buildingID = "07550023";
 
 	// static String buildingID = "00220001";
-	static String buildingID = "05800001";
+	static final String buildingID = "05800001";
 
 	// static String buildingID = "00210100";
 
@@ -27,7 +27,7 @@ public class RouteTopologicalCheck {
 		// TYLocalPoint end = new TYLocalPoint(12686399.051673, 2561075.729366,
 		// -4);
 
-		List<TYLocalPoint> stopPoints = new ArrayList<TYLocalPoint>();
+		List<TYLocalPoint> stopPoints = new ArrayList<>();
 		stopPoints.add(new TYLocalPoint(12686231.591840, 2561060.474221, -4));
 		stopPoints.add(new TYLocalPoint(12686273.543486, 2560994.946460, -4));
 

@@ -14,8 +14,8 @@ class IPCheckerLink {
 	public IPCheckerNode nextNode;
 	public double length;
 
-	private int m_linkID;
-	private boolean m_isVirtual;
+	private final int m_linkID;
+	private final boolean m_isVirtual;
 	private LineString m_line;
 
 	public IPCheckerLink(int linkID, boolean isVir) {
