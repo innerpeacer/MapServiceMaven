@@ -45,5 +45,6 @@
 		<module>SqlHelper</module>
 		<module>Lab</module>
 		<module>Pbf</module>
-	</modules>
+        <module>LocationService</module>
+    </modules>
 </project>
