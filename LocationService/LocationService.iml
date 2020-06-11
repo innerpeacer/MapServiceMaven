@@ -39,5 +39,9 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax:javaee-api:7.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sun.mail:javax.mail:1.5.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.websocket:javax.websocket-api:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.java-websocket:Java-WebSocket:1.5.1" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-nop:1.7.25" level="project" />
   </component>
 </module>
