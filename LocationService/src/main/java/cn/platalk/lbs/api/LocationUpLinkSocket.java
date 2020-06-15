@@ -86,6 +86,11 @@ public class LocationUpLinkSocket {
                     data.setSerial(serial);
                     downLink.sendEventMessage(data);
                 }
+            } else if (eventType == SocketEventType.CustomEvent.getType()) {
+                if (LocationDownSocketCaches.ExistLink(this.key)) {
+                    LocationDownLinkSocket downLink = LocationDownSocketCaches.GetLink(this.key);
+                    downLink.sendEventMessage(msg);
+                }
             }
         } catch (JSONException e) {
 //            Respond Error Message to Uploader
@@ -93,6 +98,14 @@ public class LocationUpLinkSocket {
 //            e.printStackTrace();
         }
 
+    }
+
+    public void sendEventMessage(String msg) {
+        try {
+            this.session.getBasicRemote().sendText(msg);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sendEventMessage(SocketEventBase event) {

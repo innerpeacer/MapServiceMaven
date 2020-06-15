@@ -7,7 +7,8 @@ public enum SocketEventType {
     UpLinkDisconnected(2002),
     DownLinkConnected(2003),
     DownLinkDisconnected(2004),
-    Data(3001);
+    Data(3001),
+    CustomEvent(4001);
 
     final int type;
 

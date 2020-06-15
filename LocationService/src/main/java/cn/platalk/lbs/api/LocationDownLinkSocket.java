@@ -1,7 +1,10 @@
 package cn.platalk.lbs.api;
 
 import cn.platalk.lbs.api.event.SocketEventBase;
+import cn.platalk.lbs.api.event.SocketEventType;
 import cn.platalk.lbs.api.event.SocketStatusEvent;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -44,7 +47,28 @@ public class LocationDownLinkSocket {
 
     @OnMessage
     public void onMessage(String msg, Session session) {
+        JSONObject json = new JSONObject(msg);
+        try {
+            int eventType = json.getInt("type");
+            if (eventType == SocketEventType.CustomEvent.getType()) {
+                if (LocationUpSocketCaches.ExistLink(this.key)) {
+                    LocationUpLinkSocket upLink = LocationUpSocketCaches.GetLink(this.key);
+                    upLink.sendEventMessage(msg);
+                }
+            }
+        } catch (JSONException e) {
+//            Respond Error Message to Uploader
+//            sendEventMessage(SocketStatusEvent.ResponseErrorEvent(msg));
+//            e.printStackTrace();
+        }
+    }
 
+    public void sendEventMessage(String msg) {
+        try {
+            this.session.getBasicRemote().sendText(msg);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sendEventMessage(SocketEventBase event) {
