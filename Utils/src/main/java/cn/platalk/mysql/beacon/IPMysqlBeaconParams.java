@@ -73,7 +73,7 @@ public class IPMysqlBeaconParams {
 			TYLocatingBeacon lb = new TYLocatingBeacon(record.getString(FIELD_BEACON_2_UUID),
 					record.getInteger(FIELD_BEACON_3_MAJOR), record.getInteger(FIELD_BEACON_4_MINOR),
 					record.getString(FIELD_BEACON_9_TAG), record.getString(FIELD_BEACON_8_ROOM_ID));
-			TYLocalPoint lp = new TYLocalPoint(record.getDouble(FIELD_BEACON_6_X), record.getDouble(FIELD_BEACON_7_Y));
+			TYLocalPoint lp = new TYLocalPoint(record.getDouble(FIELD_BEACON_6_X), record.getDouble(FIELD_BEACON_7_Y), record.getInteger(FIELD_BEACON_5_FLOOR));
 			lb.setLocation(lp);
 			lb.setMapID(record.getString(FIELD_BEACON_10_MAP_ID));
 			lb.setBuildingID(record.getString(FIELD_BEACON_11_BUILDING_ID));
