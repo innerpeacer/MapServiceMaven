@@ -24,7 +24,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<SqlHelper-version>1.1.0.2</SqlHelper-version>
 		<wtmap-entity-base-version>1.3.1</wtmap-entity-base-version>
-		<wtmap-utils-version>1.3.0</wtmap-utils-version>
+		<wtmap-utils-version>1.3.1</wtmap-utils-version>
 		<wtmap-data-process-version>1.2.0</wtmap-data-process-version>
 		<wtmap-vector-tile-version>2.1.0</wtmap-vector-tile-version>
 		<wtmap-route-version>3.1.0</wtmap-route-version>
