@@ -11,7 +11,8 @@ public class TYThreeMergeSet {
 	public final int floor;
 	public final int layer;
 	public final int symbolID;
-	public final double extrusionHeight;
+    public final double extrusionBase;
+    public final double extrusionHeight;
 
 	public TYMapDataFeatureRecord templateRecord;
 
@@ -19,12 +20,13 @@ public class TYThreeMergeSet {
 
 	public final List<Geometry> geometryList = new ArrayList<>();
 
-	public TYThreeMergeSet(int floor, int layer, int symbolID, double height) {
+	public TYThreeMergeSet(int floor, int layer, int symbolID, double base, double height) {
 		this.floor = floor;
 		this.layer = layer;
 		this.symbolID = symbolID;
-		this.extrusionHeight = height;
-		this.key = buildKey(layer, floor, symbolID, height);
+        this.extrusionBase = base;
+        this.extrusionHeight = height;
+		this.key = buildKey(layer, floor, symbolID, base, height);
 	}
 
 	public void addGeometry(Geometry g) {
@@ -56,7 +58,7 @@ public class TYThreeMergeSet {
 		record.setLevelMax(0);
 		record.setVisible(true);
 		record.setExtrusion(true);
-		record.setExtrusionBase(0);
+		record.setExtrusionBase(templateRecord.getExtrusionBase());
 		record.setExtrusionHeight(templateRecord.getExtrusionHeight());
 		record.setPriority(0);
 		return record;
@@ -83,11 +85,11 @@ public class TYThreeMergeSet {
 		return String.format("%s: %d geometries", key, geometryList.size());
 	}
 
-	private static String buildKey(int layer, int floor, int symbolID, double height) {
-		return String.format("%d-%d-%d-%.2f", layer, floor, symbolID, height);
+	private static String buildKey(int layer, int floor, int symbolID, double base, double height) {
+		return String.format("%d-%d-%d-%.2f-%.2f", layer, floor, symbolID, base, height);
 	}
 
 	public static String getKey(TYMapDataFeatureRecord record) {
-		return buildKey(record.layer, record.floorNumber, record.symbolID, record.extrusionHeight);
+		return buildKey(record.layer, record.floorNumber, record.symbolID, record.extrusionBase, record.extrusionHeight);
 	}
 }

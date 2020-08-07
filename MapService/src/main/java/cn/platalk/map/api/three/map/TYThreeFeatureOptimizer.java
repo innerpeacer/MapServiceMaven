@@ -21,7 +21,7 @@ public class TYThreeFeatureOptimizer {
 					String key = TYThreeMergeSet.getKey(record);
 					TYThreeMergeSet merge = mergeMap.get(key);
 					if (merge == null) {
-						merge = new TYThreeMergeSet(record.floorNumber, record.layer, record.symbolID,
+						merge = new TYThreeMergeSet(record.floorNumber, record.layer, record.symbolID, record.extrusionBase,
 								record.extrusionHeight);
 						merge.templateRecord = record;
 						mergeMap.put(key, merge);
