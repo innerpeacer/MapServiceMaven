@@ -6,17 +6,19 @@ import "t_y_three_property_pbf.proto";
 package cn.platalk.core.pbf.threedata;
 
 message ThreeDataPbf {
-required string buildingID = 1;
-required ThreeLayerPbf floor = 2;
-required ThreeLayerPbf room = 3;
-required ThreeLayerPbf asset = 4;
+  required string buildingID = 1;
+  required ThreeLayerPbf floor = 2;
+  required ThreeLayerPbf room = 3;
+  required ThreeLayerPbf asset = 4;
+  required ThreeLayerPbf facility = 5;
+  required ThreeLayerPbf label = 6;
 }
 
 message ThreeLayerPbf {
-repeated ThreeFeaturePbf features = 2;
+  repeated ThreeFeaturePbf features = 2;
 }
 
 message ThreeFeaturePbf {
-required ThreeFeatureGeometryPbf geometry = 1;
-required ThreeFeaturePropertiesPbf properties = 2;
+  required ThreeFeatureGeometryPbf geometry = 1;
+  required ThreeFeaturePropertiesPbf properties = 2;
 }

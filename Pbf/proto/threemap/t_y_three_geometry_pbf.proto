@@ -3,28 +3,33 @@ syntax = "proto2";
 package cn.platalk.core.pbf.threedata;
 
 message ThreeFeatureGeometryPbf {
-required string type = 1;
-oneof coordinates {
-ThreePolygonPbf polygon = 9;
-ThreeMultiPolygonPbf multiPolygon = 10;
-}
+  required string type = 1;
+  oneof coordinates {
+    ThreePointPbf point = 8;
+    ThreePolygonPbf polygon = 9;
+    ThreeMultiPolygonPbf multiPolygon = 10;
+  }
 }
 
 message ThreeCoordPbf {
-required double x = 1;
-required double y = 2;
+  required double x = 1;
+  required double y = 2;
+}
+
+message ThreePointPbf {
+  required ThreeCoordPbf coord = 1;
 }
 
 message ThreeLineStringPbf {
-repeated ThreeCoordPbf coords = 1;
+  repeated ThreeCoordPbf coords = 1;
 }
 
 message ThreePolygonPbf {
-required ThreeLineStringPbf ring = 1;
-repeated ThreeLineStringPbf holes = 2;
+  required ThreeLineStringPbf ring = 1;
+  repeated ThreeLineStringPbf holes = 2;
 }
 
 message ThreeMultiPolygonPbf {
-repeated ThreePolygonPbf polygons = 1;
+  repeated ThreePolygonPbf polygons = 1;
 }
 

@@ -3,1153 +3,1856 @@
 
 package cn.platalk.core.pbf.threedata;
 
-@SuppressWarnings(value = { "unused", "unchecked" })
 public final class TYThreePropertyPbf {
-	private TYThreePropertyPbf() {
-	}
-
-	public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {
-	}
-
-	public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
-		registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
-	}
-
-	public interface ThreeFeaturePropertiesPbfOrBuilder extends
-			// @@protoc_insertion_point(interface_extends:cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf)
-			com.google.protobuf.MessageOrBuilder {
-
-		/**
-		 * <code>required int32 floor = 1;</code>
-		 */
-		boolean hasFloor();
-
-		/**
-		 * <code>required int32 floor = 1;</code>
-		 */
-		int getFloor();
-
-		/**
-		 * <code>required uint32 layer = 2;</code>
-		 */
-		boolean hasLayer();
-
-		/**
-		 * <code>required uint32 layer = 2;</code>
-		 */
-		int getLayer();
-
-		/**
-		 * <code>required uint32 symbolID = 3;</code>
-		 */
-		boolean hasSymbolID();
-
-		/**
-		 * <code>required uint32 symbolID = 3;</code>
-		 */
-		int getSymbolID();
-
-		/**
-		 * <code>required string poiID = 4;</code>
-		 */
-		boolean hasPoiID();
-
-		/**
-		 * <code>required string poiID = 4;</code>
-		 */
-		java.lang.String getPoiID();
-
-		/**
-		 * <code>required string poiID = 4;</code>
-		 */
-		com.google.protobuf.ByteString getPoiIDBytes();
-
-		/**
-		 * <code>required double base = 5;</code>
-		 */
-		boolean hasBase();
-
-		/**
-		 * <code>required double base = 5;</code>
-		 */
-		double getBase();
-
-		/**
-		 * <code>required double height = 6;</code>
-		 */
-		boolean hasHeight();
-
-		/**
-		 * <code>required double height = 6;</code>
-		 */
-		double getHeight();
-	}
-
-	/**
-	 * Protobuf type
-	 * {@code cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf}
-	 */
-	public static final class ThreeFeaturePropertiesPbf extends com.google.protobuf.GeneratedMessageV3 implements
-			// @@protoc_insertion_point(message_implements:cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf)
-			ThreeFeaturePropertiesPbfOrBuilder {
-		// Use ThreeFeaturePropertiesPbf.newBuilder() to construct.
-		private ThreeFeaturePropertiesPbf(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-			super(builder);
-		}
-
-		private ThreeFeaturePropertiesPbf() {
-			floor_ = 0;
-			layer_ = 0;
-			symbolID_ = 0;
-			poiID_ = "";
-			base_ = 0D;
-			height_ = 0D;
-		}
-
-		@java.lang.Override
-		public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-			return this.unknownFields;
-		}
-
-		private ThreeFeaturePropertiesPbf(com.google.protobuf.CodedInputStream input,
-				com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			this();
-			int mutable_bitField0_ = 0;
-			com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
-					.newBuilder();
-			try {
-				boolean done = false;
-				while (!done) {
-					int tag = input.readTag();
-					switch (tag) {
-					case 0:
-						done = true;
-						break;
-					default: {
-						if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-							done = true;
-						}
-						break;
-					}
-					case 8: {
-						bitField0_ |= 0x00000001;
-						floor_ = input.readInt32();
-						break;
-					}
-					case 16: {
-						bitField0_ |= 0x00000002;
-						layer_ = input.readUInt32();
-						break;
-					}
-					case 24: {
-						bitField0_ |= 0x00000004;
-						symbolID_ = input.readUInt32();
-						break;
-					}
-					case 34: {
-						com.google.protobuf.ByteString bs = input.readBytes();
-						bitField0_ |= 0x00000008;
-						poiID_ = bs;
-						break;
-					}
-					case 41: {
-						bitField0_ |= 0x00000010;
-						base_ = input.readDouble();
-						break;
-					}
-					case 49: {
-						bitField0_ |= 0x00000020;
-						height_ = input.readDouble();
-						break;
-					}
-					}
-				}
-			} catch (com.google.protobuf.InvalidProtocolBufferException e) {
-				throw e.setUnfinishedMessage(this);
-			} catch (java.io.IOException e) {
-				throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-			} finally {
-				this.unknownFields = unknownFields.build();
-				makeExtensionsImmutable();
-			}
-		}
-
-		public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-			return cn.platalk.core.pbf.threedata.TYThreePropertyPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_descriptor;
-		}
-
-		@Override
-		protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-			return cn.platalk.core.pbf.threedata.TYThreePropertyPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_fieldAccessorTable
-					.ensureFieldAccessorsInitialized(
-							cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.class,
-							cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder.class);
-		}
-
-		private int bitField0_;
-		public static final int FLOOR_FIELD_NUMBER = 1;
-		private int floor_;
-
-		/**
-		 * <code>required int32 floor = 1;</code>
-		 */
-		@Override
-		public boolean hasFloor() {
-			return ((bitField0_ & 0x00000001) == 0x00000001);
-		}
-
-		/**
-		 * <code>required int32 floor = 1;</code>
-		 */
-		@Override
-		public int getFloor() {
-			return floor_;
-		}
-
-		public static final int LAYER_FIELD_NUMBER = 2;
-		private int layer_;
-
-		/**
-		 * <code>required uint32 layer = 2;</code>
-		 */
-		@Override
-		public boolean hasLayer() {
-			return ((bitField0_ & 0x00000002) == 0x00000002);
-		}
-
-		/**
-		 * <code>required uint32 layer = 2;</code>
-		 */
-		@Override
-		public int getLayer() {
-			return layer_;
-		}
-
-		public static final int SYMBOLID_FIELD_NUMBER = 3;
-		private int symbolID_;
-
-		/**
-		 * <code>required uint32 symbolID = 3;</code>
-		 */
-		@Override
-		public boolean hasSymbolID() {
-			return ((bitField0_ & 0x00000004) == 0x00000004);
-		}
-
-		/**
-		 * <code>required uint32 symbolID = 3;</code>
-		 */
-		@Override
-		public int getSymbolID() {
-			return symbolID_;
-		}
-
-		public static final int POIID_FIELD_NUMBER = 4;
-		private volatile java.lang.Object poiID_;
-
-		/**
-		 * <code>required string poiID = 4;</code>
-		 */
-		@Override
-		public boolean hasPoiID() {
-			return ((bitField0_ & 0x00000008) == 0x00000008);
-		}
-
-		/**
-		 * <code>required string poiID = 4;</code>
-		 */
-		@Override
-		public java.lang.String getPoiID() {
-			java.lang.Object ref = poiID_;
-			if (ref instanceof java.lang.String) {
-				return (java.lang.String) ref;
-			} else {
-				com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-				java.lang.String s = bs.toStringUtf8();
-				if (bs.isValidUtf8()) {
-					poiID_ = s;
-				}
-				return s;
-			}
-		}
-
-		/**
-		 * <code>required string poiID = 4;</code>
-		 */
-		@Override
-		public com.google.protobuf.ByteString getPoiIDBytes() {
-			java.lang.Object ref = poiID_;
-			if (ref instanceof java.lang.String) {
-				com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-				poiID_ = b;
-				return b;
-			} else {
-				return (com.google.protobuf.ByteString) ref;
-			}
-		}
-
-		public static final int BASE_FIELD_NUMBER = 5;
-		private double base_;
-
-		/**
-		 * <code>required double base = 5;</code>
-		 */
-		@Override
-		public boolean hasBase() {
-			return ((bitField0_ & 0x00000010) == 0x00000010);
-		}
-
-		/**
-		 * <code>required double base = 5;</code>
-		 */
-		@Override
-		public double getBase() {
-			return base_;
-		}
-
-		public static final int HEIGHT_FIELD_NUMBER = 6;
-		private double height_;
-
-		/**
-		 * <code>required double height = 6;</code>
-		 */
-		@Override
-		public boolean hasHeight() {
-			return ((bitField0_ & 0x00000020) == 0x00000020);
-		}
-
-		/**
-		 * <code>required double height = 6;</code>
-		 */
-		@Override
-		public double getHeight() {
-			return height_;
-		}
-
-		private byte memoizedIsInitialized = -1;
-
-		@Override
-		public final boolean isInitialized() {
-			byte isInitialized = memoizedIsInitialized;
-			if (isInitialized == 1)
-				return true;
-			if (isInitialized == 0)
-				return false;
-
-			if (!hasFloor()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!hasLayer()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!hasSymbolID()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!hasPoiID()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!hasBase()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!hasHeight()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			memoizedIsInitialized = 1;
-			return true;
-		}
-
-		@Override
-		public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-			if (((bitField0_ & 0x00000001) == 0x00000001)) {
-				output.writeInt32(1, floor_);
-			}
-			if (((bitField0_ & 0x00000002) == 0x00000002)) {
-				output.writeUInt32(2, layer_);
-			}
-			if (((bitField0_ & 0x00000004) == 0x00000004)) {
-				output.writeUInt32(3, symbolID_);
-			}
-			if (((bitField0_ & 0x00000008) == 0x00000008)) {
-				com.google.protobuf.GeneratedMessageV3.writeString(output, 4, poiID_);
-			}
-			if (((bitField0_ & 0x00000010) == 0x00000010)) {
-				output.writeDouble(5, base_);
-			}
-			if (((bitField0_ & 0x00000020) == 0x00000020)) {
-				output.writeDouble(6, height_);
-			}
-			unknownFields.writeTo(output);
-		}
-
-		@Override
-		public int getSerializedSize() {
-			int size = memoizedSize;
-			if (size != -1)
-				return size;
-
-			size = 0;
-			if (((bitField0_ & 0x00000001) == 0x00000001)) {
-				size += com.google.protobuf.CodedOutputStream.computeInt32Size(1, floor_);
-			}
-			if (((bitField0_ & 0x00000002) == 0x00000002)) {
-				size += com.google.protobuf.CodedOutputStream.computeUInt32Size(2, layer_);
-			}
-			if (((bitField0_ & 0x00000004) == 0x00000004)) {
-				size += com.google.protobuf.CodedOutputStream.computeUInt32Size(3, symbolID_);
-			}
-			if (((bitField0_ & 0x00000008) == 0x00000008)) {
-				size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, poiID_);
-			}
-			if (((bitField0_ & 0x00000010) == 0x00000010)) {
-				size += com.google.protobuf.CodedOutputStream.computeDoubleSize(5, base_);
-			}
-			if (((bitField0_ & 0x00000020) == 0x00000020)) {
-				size += com.google.protobuf.CodedOutputStream.computeDoubleSize(6, height_);
-			}
-			size += unknownFields.getSerializedSize();
-			memoizedSize = size;
-			return size;
-		}
-
-		private static final long serialVersionUID = 0L;
-
-		@java.lang.Override
-		public boolean equals(final java.lang.Object obj) {
-			if (obj == this) {
-				return true;
-			}
-			if (!(obj instanceof cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf)) {
-				return super.equals(obj);
-			}
-			cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf other = (cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf) obj;
-
-			boolean result = true;
-			result = result && (hasFloor() == other.hasFloor());
-			if (hasFloor()) {
-				result = result && (getFloor() == other.getFloor());
-			}
-			result = result && (hasLayer() == other.hasLayer());
-			if (hasLayer()) {
-				result = result && (getLayer() == other.getLayer());
-			}
-			result = result && (hasSymbolID() == other.hasSymbolID());
-			if (hasSymbolID()) {
-				result = result && (getSymbolID() == other.getSymbolID());
-			}
-			result = result && (hasPoiID() == other.hasPoiID());
-			if (hasPoiID()) {
-				result = result && getPoiID().equals(other.getPoiID());
-			}
-			result = result && (hasBase() == other.hasBase());
-			if (hasBase()) {
-				result = result && (java.lang.Double.doubleToLongBits(getBase()) == java.lang.Double
-						.doubleToLongBits(other.getBase()));
-			}
-			result = result && (hasHeight() == other.hasHeight());
-			if (hasHeight()) {
-				result = result && (java.lang.Double.doubleToLongBits(getHeight()) == java.lang.Double
-						.doubleToLongBits(other.getHeight()));
-			}
-			result = result && unknownFields.equals(other.unknownFields);
-			return result;
-		}
-
-		@java.lang.Override
-		public int hashCode() {
-			if (memoizedHashCode != 0) {
-				return memoizedHashCode;
-			}
-			int hash = 41;
-			hash = (19 * hash) + getDescriptor().hashCode();
-			if (hasFloor()) {
-				hash = (37 * hash) + FLOOR_FIELD_NUMBER;
-				hash = (53 * hash) + getFloor();
-			}
-			if (hasLayer()) {
-				hash = (37 * hash) + LAYER_FIELD_NUMBER;
-				hash = (53 * hash) + getLayer();
-			}
-			if (hasSymbolID()) {
-				hash = (37 * hash) + SYMBOLID_FIELD_NUMBER;
-				hash = (53 * hash) + getSymbolID();
-			}
-			if (hasPoiID()) {
-				hash = (37 * hash) + POIID_FIELD_NUMBER;
-				hash = (53 * hash) + getPoiID().hashCode();
-			}
-			if (hasBase()) {
-				hash = (37 * hash) + BASE_FIELD_NUMBER;
-				hash = (53 * hash)
-						+ com.google.protobuf.Internal.hashLong(java.lang.Double.doubleToLongBits(getBase()));
-			}
-			if (hasHeight()) {
-				hash = (37 * hash) + HEIGHT_FIELD_NUMBER;
-				hash = (53 * hash)
-						+ com.google.protobuf.Internal.hashLong(java.lang.Double.doubleToLongBits(getHeight()));
-			}
-			hash = (29 * hash) + unknownFields.hashCode();
-			memoizedHashCode = hash;
-			return hash;
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(
-				com.google.protobuf.ByteString data) throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(
-				com.google.protobuf.ByteString data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data, extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(byte[] data)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(byte[] data,
-				com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data, extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(
-				java.io.InputStream input) throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(
-				java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseDelimitedFrom(
-				java.io.InputStream input) throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseDelimitedFrom(
-				java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input,
-					extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(
-				com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(
-				com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
-		}
-
-		@Override
-		public Builder newBuilderForType() {
-			return newBuilder();
-		}
-
-		public static Builder newBuilder() {
-			return DEFAULT_INSTANCE.toBuilder();
-		}
-
-		public static Builder newBuilder(
-				cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf prototype) {
-			return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-		}
-
-		@Override
-		public Builder toBuilder() {
-			return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
-		}
-
-		@java.lang.Override
-		protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-			Builder builder = new Builder(parent);
-			return builder;
-		}
-
-		/**
-		 * Protobuf type
-		 * {@code cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf}
-		 */
-		public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-				// @@protoc_insertion_point(builder_implements:cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf)
-				cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder {
-			public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-				return cn.platalk.core.pbf.threedata.TYThreePropertyPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_descriptor;
-			}
-
-			@Override
-			protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-				return cn.platalk.core.pbf.threedata.TYThreePropertyPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_fieldAccessorTable
-						.ensureFieldAccessorsInitialized(
-								cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.class,
-								cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder.class);
-			}
-
-			// Construct using
-			// cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.newBuilder()
-			private Builder() {
-				maybeForceBuilderInitialization();
-			}
-
-			private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-				super(parent);
-				maybeForceBuilderInitialization();
-			}
-
-			private void maybeForceBuilderInitialization() {
-				if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-				}
-			}
-
-			@Override
-			public Builder clear() {
-				super.clear();
-				floor_ = 0;
-				bitField0_ = (bitField0_ & ~0x00000001);
-				layer_ = 0;
-				bitField0_ = (bitField0_ & ~0x00000002);
-				symbolID_ = 0;
-				bitField0_ = (bitField0_ & ~0x00000004);
-				poiID_ = "";
-				bitField0_ = (bitField0_ & ~0x00000008);
-				base_ = 0D;
-				bitField0_ = (bitField0_ & ~0x00000010);
-				height_ = 0D;
-				bitField0_ = (bitField0_ & ~0x00000020);
-				return this;
-			}
-
-			@Override
-			public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-				return cn.platalk.core.pbf.threedata.TYThreePropertyPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_descriptor;
-			}
-
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf getDefaultInstanceForType() {
-				return cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.getDefaultInstance();
-			}
-
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf build() {
-				cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf result = buildPartial();
-				if (!result.isInitialized()) {
-					throw newUninitializedMessageException(result);
-				}
-				return result;
-			}
-
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf buildPartial() {
-				cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf result = new cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf(
-						this);
-				int from_bitField0_ = bitField0_;
-				int to_bitField0_ = 0;
-				if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-					to_bitField0_ |= 0x00000001;
-				}
-				result.floor_ = floor_;
-				if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-					to_bitField0_ |= 0x00000002;
-				}
-				result.layer_ = layer_;
-				if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-					to_bitField0_ |= 0x00000004;
-				}
-				result.symbolID_ = symbolID_;
-				if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-					to_bitField0_ |= 0x00000008;
-				}
-				result.poiID_ = poiID_;
-				if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-					to_bitField0_ |= 0x00000010;
-				}
-				result.base_ = base_;
-				if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-					to_bitField0_ |= 0x00000020;
-				}
-				result.height_ = height_;
-				result.bitField0_ = to_bitField0_;
-				onBuilt();
-				return result;
-			}
-
-			@Override
-			public Builder clone() {
-				return super.clone();
-			}
-
-			@Override
-			public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return super.setField(field, value);
-			}
-
-			@Override
-			public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-				return super.clearField(field);
-			}
-
-			@Override
-			public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-				return super.clearOneof(oneof);
-			}
-
-			@Override
-			public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-					Object value) {
-				return super.setRepeatedField(field, index, value);
-			}
-
-			@Override
-			public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return super.addRepeatedField(field, value);
-			}
-
-			@Override
-			public Builder mergeFrom(com.google.protobuf.Message other) {
-				if (other instanceof cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf) {
-					return mergeFrom(
-							(cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf) other);
-				} else {
-					super.mergeFrom(other);
-					return this;
-				}
-			}
-
-			public Builder mergeFrom(cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf other) {
-				if (other == cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf
-						.getDefaultInstance())
-					return this;
-				if (other.hasFloor()) {
-					setFloor(other.getFloor());
-				}
-				if (other.hasLayer()) {
-					setLayer(other.getLayer());
-				}
-				if (other.hasSymbolID()) {
-					setSymbolID(other.getSymbolID());
-				}
-				if (other.hasPoiID()) {
-					bitField0_ |= 0x00000008;
-					poiID_ = other.poiID_;
-					onChanged();
-				}
-				if (other.hasBase()) {
-					setBase(other.getBase());
-				}
-				if (other.hasHeight()) {
-					setHeight(other.getHeight());
-				}
-				this.mergeUnknownFields(other.unknownFields);
-				onChanged();
-				return this;
-			}
-
-			@Override
-			public final boolean isInitialized() {
-				if (!hasFloor()) {
-					return false;
-				}
-				if (!hasLayer()) {
-					return false;
-				}
-				if (!hasSymbolID()) {
-					return false;
-				}
-				if (!hasPoiID()) {
-					return false;
-				}
-				if (!hasBase()) {
-					return false;
-				}
-				if (!hasHeight()) {
-					return false;
-				}
-				return true;
-			}
-
-			@Override
-			public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
-					com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-				cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parsedMessage = null;
-				try {
-					parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-				} catch (com.google.protobuf.InvalidProtocolBufferException e) {
-					parsedMessage = (cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf) e
-							.getUnfinishedMessage();
-					throw e.unwrapIOException();
-				} finally {
-					if (parsedMessage != null) {
-						mergeFrom(parsedMessage);
-					}
-				}
-				return this;
-			}
-
-			private int bitField0_;
-
-			private int floor_;
-
-			/**
-			 * <code>required int32 floor = 1;</code>
-			 */
-			@Override
-			public boolean hasFloor() {
-				return ((bitField0_ & 0x00000001) == 0x00000001);
-			}
-
-			/**
-			 * <code>required int32 floor = 1;</code>
-			 */
-			@Override
-			public int getFloor() {
-				return floor_;
-			}
-
-			/**
-			 * <code>required int32 floor = 1;</code>
-			 */
-			public Builder setFloor(int value) {
-				bitField0_ |= 0x00000001;
-				floor_ = value;
-				onChanged();
-				return this;
-			}
-
-			/**
-			 * <code>required int32 floor = 1;</code>
-			 */
-			public Builder clearFloor() {
-				bitField0_ = (bitField0_ & ~0x00000001);
-				floor_ = 0;
-				onChanged();
-				return this;
-			}
-
-			private int layer_;
-
-			/**
-			 * <code>required uint32 layer = 2;</code>
-			 */
-			@Override
-			public boolean hasLayer() {
-				return ((bitField0_ & 0x00000002) == 0x00000002);
-			}
-
-			/**
-			 * <code>required uint32 layer = 2;</code>
-			 */
-			@Override
-			public int getLayer() {
-				return layer_;
-			}
-
-			/**
-			 * <code>required uint32 layer = 2;</code>
-			 */
-			public Builder setLayer(int value) {
-				bitField0_ |= 0x00000002;
-				layer_ = value;
-				onChanged();
-				return this;
-			}
-
-			/**
-			 * <code>required uint32 layer = 2;</code>
-			 */
-			public Builder clearLayer() {
-				bitField0_ = (bitField0_ & ~0x00000002);
-				layer_ = 0;
-				onChanged();
-				return this;
-			}
-
-			private int symbolID_;
-
-			/**
-			 * <code>required uint32 symbolID = 3;</code>
-			 */
-			@Override
-			public boolean hasSymbolID() {
-				return ((bitField0_ & 0x00000004) == 0x00000004);
-			}
-
-			/**
-			 * <code>required uint32 symbolID = 3;</code>
-			 */
-			@Override
-			public int getSymbolID() {
-				return symbolID_;
-			}
-
-			/**
-			 * <code>required uint32 symbolID = 3;</code>
-			 */
-			public Builder setSymbolID(int value) {
-				bitField0_ |= 0x00000004;
-				symbolID_ = value;
-				onChanged();
-				return this;
-			}
-
-			/**
-			 * <code>required uint32 symbolID = 3;</code>
-			 */
-			public Builder clearSymbolID() {
-				bitField0_ = (bitField0_ & ~0x00000004);
-				symbolID_ = 0;
-				onChanged();
-				return this;
-			}
-
-			private java.lang.Object poiID_ = "";
-
-			/**
-			 * <code>required string poiID = 4;</code>
-			 */
-			@Override
-			public boolean hasPoiID() {
-				return ((bitField0_ & 0x00000008) == 0x00000008);
-			}
-
-			/**
-			 * <code>required string poiID = 4;</code>
-			 */
-			@Override
-			public java.lang.String getPoiID() {
-				java.lang.Object ref = poiID_;
-				if (!(ref instanceof java.lang.String)) {
-					com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-					java.lang.String s = bs.toStringUtf8();
-					if (bs.isValidUtf8()) {
-						poiID_ = s;
-					}
-					return s;
-				} else {
-					return (java.lang.String) ref;
-				}
-			}
-
-			/**
-			 * <code>required string poiID = 4;</code>
-			 */
-			@Override
-			public com.google.protobuf.ByteString getPoiIDBytes() {
-				java.lang.Object ref = poiID_;
-				if (ref instanceof String) {
-					com.google.protobuf.ByteString b = com.google.protobuf.ByteString
-							.copyFromUtf8((java.lang.String) ref);
-					poiID_ = b;
-					return b;
-				} else {
-					return (com.google.protobuf.ByteString) ref;
-				}
-			}
-
-			/**
-			 * <code>required string poiID = 4;</code>
-			 */
-			public Builder setPoiID(java.lang.String value) {
-				if (value == null) {
-					throw new NullPointerException();
-				}
-				bitField0_ |= 0x00000008;
-				poiID_ = value;
-				onChanged();
-				return this;
-			}
-
-			/**
-			 * <code>required string poiID = 4;</code>
-			 */
-			public Builder clearPoiID() {
-				bitField0_ = (bitField0_ & ~0x00000008);
-				poiID_ = getDefaultInstance().getPoiID();
-				onChanged();
-				return this;
-			}
-
-			/**
-			 * <code>required string poiID = 4;</code>
-			 */
-			public Builder setPoiIDBytes(com.google.protobuf.ByteString value) {
-				if (value == null) {
-					throw new NullPointerException();
-				}
-				bitField0_ |= 0x00000008;
-				poiID_ = value;
-				onChanged();
-				return this;
-			}
-
-			private double base_;
-
-			/**
-			 * <code>required double base = 5;</code>
-			 */
-			@Override
-			public boolean hasBase() {
-				return ((bitField0_ & 0x00000010) == 0x00000010);
-			}
-
-			/**
-			 * <code>required double base = 5;</code>
-			 */
-			@Override
-			public double getBase() {
-				return base_;
-			}
-
-			/**
-			 * <code>required double base = 5;</code>
-			 */
-			public Builder setBase(double value) {
-				bitField0_ |= 0x00000010;
-				base_ = value;
-				onChanged();
-				return this;
-			}
-
-			/**
-			 * <code>required double base = 5;</code>
-			 */
-			public Builder clearBase() {
-				bitField0_ = (bitField0_ & ~0x00000010);
-				base_ = 0D;
-				onChanged();
-				return this;
-			}
-
-			private double height_;
-
-			/**
-			 * <code>required double height = 6;</code>
-			 */
-			@Override
-			public boolean hasHeight() {
-				return ((bitField0_ & 0x00000020) == 0x00000020);
-			}
-
-			/**
-			 * <code>required double height = 6;</code>
-			 */
-			@Override
-			public double getHeight() {
-				return height_;
-			}
-
-			/**
-			 * <code>required double height = 6;</code>
-			 */
-			public Builder setHeight(double value) {
-				bitField0_ |= 0x00000020;
-				height_ = value;
-				onChanged();
-				return this;
-			}
-
-			/**
-			 * <code>required double height = 6;</code>
-			 */
-			public Builder clearHeight() {
-				bitField0_ = (bitField0_ & ~0x00000020);
-				height_ = 0D;
-				onChanged();
-				return this;
-			}
-
-			@Override
-			public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
-				return super.setUnknownFields(unknownFields);
-			}
-
-			@Override
-			public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
-				return super.mergeUnknownFields(unknownFields);
-			}
-
-			// @@protoc_insertion_point(builder_scope:cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf)
-		}
-
-		// @@protoc_insertion_point(class_scope:cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf)
-		private static final cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf DEFAULT_INSTANCE;
-		static {
-			DEFAULT_INSTANCE = new cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf();
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf getDefaultInstance() {
-			return DEFAULT_INSTANCE;
-		}
-
-		@java.lang.Deprecated
-		public static final com.google.protobuf.Parser<ThreeFeaturePropertiesPbf> PARSER = new com.google.protobuf.AbstractParser<ThreeFeaturePropertiesPbf>() {
-			@Override
-			public ThreeFeaturePropertiesPbf parsePartialFrom(com.google.protobuf.CodedInputStream input,
-					com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-					throws com.google.protobuf.InvalidProtocolBufferException {
-				return new ThreeFeaturePropertiesPbf(input, extensionRegistry);
-			}
-		};
-
-		public static com.google.protobuf.Parser<ThreeFeaturePropertiesPbf> parser() {
-			return PARSER;
-		}
-
-		@java.lang.Override
-		public com.google.protobuf.Parser<ThreeFeaturePropertiesPbf> getParserForType() {
-			return PARSER;
-		}
-
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf getDefaultInstanceForType() {
-			return DEFAULT_INSTANCE;
-		}
-
-	}
-
-	private static final com.google.protobuf.Descriptors.Descriptor internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_descriptor;
-	private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_fieldAccessorTable;
-
-	public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
-		return descriptor;
-	}
-
-	private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
-	static {
-		java.lang.String[] descriptorData = {
-				"\n\034t_y_three_property_pbf.proto\022\035cn.plata" + "lk.core.pbf.threedata\"x\n\031ThreeFeaturePro"
-						+ "pertiesPbf\022\r\n\005floor\030\001 \002(\005\022\r\n\005layer\030\002 \002(\r"
-						+ "\022\020\n\010symbolID\030\003 \002(\r\022\r\n\005poiID\030\004 \002(\t\022\014\n\004bas"
-						+ "e\030\005 \002(\001\022\016\n\006height\030\006 \002(\001" };
-		com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-			@Override
-			public com.google.protobuf.ExtensionRegistry assignDescriptors(
-					com.google.protobuf.Descriptors.FileDescriptor root) {
-				descriptor = root;
-				return null;
-			}
-		};
-		com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData,
-				new com.google.protobuf.Descriptors.FileDescriptor[] {}, assigner);
-		internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_descriptor = getDescriptor()
-				.getMessageTypes().get(0);
-		internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-				internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_descriptor,
-				new java.lang.String[] { "Floor", "Layer", "SymbolID", "PoiID", "Base", "Height", });
-	}
-
-	// @@protoc_insertion_point(outer_class_scope)
+  private TYThreePropertyPbf() {}
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
+  }
+  public interface ThreeFeaturePropertiesPbfOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 floor = 1;</code>
+     */
+    boolean hasFloor();
+    /**
+     * <code>required int32 floor = 1;</code>
+     */
+    int getFloor();
+
+    /**
+     * <code>required uint32 layer = 2;</code>
+     */
+    boolean hasLayer();
+    /**
+     * <code>required uint32 layer = 2;</code>
+     */
+    int getLayer();
+
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    boolean hasName();
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>optional string categoryID = 4;</code>
+     */
+    boolean hasCategoryID();
+    /**
+     * <code>optional string categoryID = 4;</code>
+     */
+    java.lang.String getCategoryID();
+    /**
+     * <code>optional string categoryID = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getCategoryIDBytes();
+
+    /**
+     * <code>required uint32 symbolID = 5;</code>
+     */
+    boolean hasSymbolID();
+    /**
+     * <code>required uint32 symbolID = 5;</code>
+     */
+    int getSymbolID();
+
+    /**
+     * <code>required string poiID = 6;</code>
+     */
+    boolean hasPoiID();
+    /**
+     * <code>required string poiID = 6;</code>
+     */
+    java.lang.String getPoiID();
+    /**
+     * <code>required string poiID = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getPoiIDBytes();
+
+    /**
+     * <code>required bool extrusion = 7;</code>
+     */
+    boolean hasExtrusion();
+    /**
+     * <code>required bool extrusion = 7;</code>
+     */
+    boolean getExtrusion();
+
+    /**
+     * <code>required double base = 8;</code>
+     */
+    boolean hasBase();
+    /**
+     * <code>required double base = 8;</code>
+     */
+    double getBase();
+
+    /**
+     * <code>required double height = 9;</code>
+     */
+    boolean hasHeight();
+    /**
+     * <code>required double height = 9;</code>
+     */
+    double getHeight();
+
+    /**
+     * <code>optional double labelX = 10;</code>
+     */
+    boolean hasLabelX();
+    /**
+     * <code>optional double labelX = 10;</code>
+     */
+    double getLabelX();
+
+    /**
+     * <code>optional double labelY = 11;</code>
+     */
+    boolean hasLabelY();
+    /**
+     * <code>optional double labelY = 11;</code>
+     */
+    double getLabelY();
+
+    /**
+     * <code>optional string icon = 12;</code>
+     */
+    boolean hasIcon();
+    /**
+     * <code>optional string icon = 12;</code>
+     */
+    java.lang.String getIcon();
+    /**
+     * <code>optional string icon = 12;</code>
+     */
+    com.google.protobuf.ByteString
+        getIconBytes();
+  }
+  /**
+   * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf}
+   */
+  public  static final class ThreeFeaturePropertiesPbf extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf)
+      ThreeFeaturePropertiesPbfOrBuilder {
+    // Use ThreeFeaturePropertiesPbf.newBuilder() to construct.
+    private ThreeFeaturePropertiesPbf(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ThreeFeaturePropertiesPbf() {
+      floor_ = 0;
+      layer_ = 0;
+      name_ = "";
+      categoryID_ = "";
+      symbolID_ = 0;
+      poiID_ = "";
+      extrusion_ = false;
+      base_ = 0D;
+      height_ = 0D;
+      labelX_ = 0D;
+      labelY_ = 0D;
+      icon_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ThreeFeaturePropertiesPbf(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              floor_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              layer_ = input.readUInt32();
+              break;
+            }
+            case 26: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              name_ = bs;
+              break;
+            }
+            case 34: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000008;
+              categoryID_ = bs;
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              symbolID_ = input.readUInt32();
+              break;
+            }
+            case 50: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              poiID_ = bs;
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              extrusion_ = input.readBool();
+              break;
+            }
+            case 65: {
+              bitField0_ |= 0x00000080;
+              base_ = input.readDouble();
+              break;
+            }
+            case 73: {
+              bitField0_ |= 0x00000100;
+              height_ = input.readDouble();
+              break;
+            }
+            case 81: {
+              bitField0_ |= 0x00000200;
+              labelX_ = input.readDouble();
+              break;
+            }
+            case 89: {
+              bitField0_ |= 0x00000400;
+              labelY_ = input.readDouble();
+              break;
+            }
+            case 98: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000800;
+              icon_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cn.platalk.core.pbf.threedata.TYThreePropertyPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cn.platalk.core.pbf.threedata.TYThreePropertyPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.class, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int FLOOR_FIELD_NUMBER = 1;
+    private int floor_;
+    /**
+     * <code>required int32 floor = 1;</code>
+     */
+    public boolean hasFloor() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 floor = 1;</code>
+     */
+    public int getFloor() {
+      return floor_;
+    }
+
+    public static final int LAYER_FIELD_NUMBER = 2;
+    private int layer_;
+    /**
+     * <code>required uint32 layer = 2;</code>
+     */
+    public boolean hasLayer() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required uint32 layer = 2;</code>
+     */
+    public int getLayer() {
+      return layer_;
+    }
+
+    public static final int NAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CATEGORYID_FIELD_NUMBER = 4;
+    private volatile java.lang.Object categoryID_;
+    /**
+     * <code>optional string categoryID = 4;</code>
+     */
+    public boolean hasCategoryID() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional string categoryID = 4;</code>
+     */
+    public java.lang.String getCategoryID() {
+      java.lang.Object ref = categoryID_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          categoryID_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string categoryID = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCategoryIDBytes() {
+      java.lang.Object ref = categoryID_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        categoryID_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SYMBOLID_FIELD_NUMBER = 5;
+    private int symbolID_;
+    /**
+     * <code>required uint32 symbolID = 5;</code>
+     */
+    public boolean hasSymbolID() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required uint32 symbolID = 5;</code>
+     */
+    public int getSymbolID() {
+      return symbolID_;
+    }
+
+    public static final int POIID_FIELD_NUMBER = 6;
+    private volatile java.lang.Object poiID_;
+    /**
+     * <code>required string poiID = 6;</code>
+     */
+    public boolean hasPoiID() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required string poiID = 6;</code>
+     */
+    public java.lang.String getPoiID() {
+      java.lang.Object ref = poiID_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          poiID_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string poiID = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPoiIDBytes() {
+      java.lang.Object ref = poiID_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        poiID_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int EXTRUSION_FIELD_NUMBER = 7;
+    private boolean extrusion_;
+    /**
+     * <code>required bool extrusion = 7;</code>
+     */
+    public boolean hasExtrusion() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required bool extrusion = 7;</code>
+     */
+    public boolean getExtrusion() {
+      return extrusion_;
+    }
+
+    public static final int BASE_FIELD_NUMBER = 8;
+    private double base_;
+    /**
+     * <code>required double base = 8;</code>
+     */
+    public boolean hasBase() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>required double base = 8;</code>
+     */
+    public double getBase() {
+      return base_;
+    }
+
+    public static final int HEIGHT_FIELD_NUMBER = 9;
+    private double height_;
+    /**
+     * <code>required double height = 9;</code>
+     */
+    public boolean hasHeight() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>required double height = 9;</code>
+     */
+    public double getHeight() {
+      return height_;
+    }
+
+    public static final int LABELX_FIELD_NUMBER = 10;
+    private double labelX_;
+    /**
+     * <code>optional double labelX = 10;</code>
+     */
+    public boolean hasLabelX() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional double labelX = 10;</code>
+     */
+    public double getLabelX() {
+      return labelX_;
+    }
+
+    public static final int LABELY_FIELD_NUMBER = 11;
+    private double labelY_;
+    /**
+     * <code>optional double labelY = 11;</code>
+     */
+    public boolean hasLabelY() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional double labelY = 11;</code>
+     */
+    public double getLabelY() {
+      return labelY_;
+    }
+
+    public static final int ICON_FIELD_NUMBER = 12;
+    private volatile java.lang.Object icon_;
+    /**
+     * <code>optional string icon = 12;</code>
+     */
+    public boolean hasIcon() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional string icon = 12;</code>
+     */
+    public java.lang.String getIcon() {
+      java.lang.Object ref = icon_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          icon_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string icon = 12;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIconBytes() {
+      java.lang.Object ref = icon_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        icon_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasFloor()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLayer()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSymbolID()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPoiID()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasExtrusion()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasBase()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasHeight()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, floor_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, layer_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, categoryID_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeUInt32(5, symbolID_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, poiID_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBool(7, extrusion_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeDouble(8, base_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeDouble(9, height_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeDouble(10, labelX_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeDouble(11, labelY_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, icon_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, floor_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, layer_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, categoryID_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(5, symbolID_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, poiID_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, extrusion_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(8, base_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(9, height_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(10, labelX_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(11, labelY_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, icon_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf)) {
+        return super.equals(obj);
+      }
+      cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf other = (cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf) obj;
+
+      boolean result = true;
+      result = result && (hasFloor() == other.hasFloor());
+      if (hasFloor()) {
+        result = result && (getFloor()
+            == other.getFloor());
+      }
+      result = result && (hasLayer() == other.hasLayer());
+      if (hasLayer()) {
+        result = result && (getLayer()
+            == other.getLayer());
+      }
+      result = result && (hasName() == other.hasName());
+      if (hasName()) {
+        result = result && getName()
+            .equals(other.getName());
+      }
+      result = result && (hasCategoryID() == other.hasCategoryID());
+      if (hasCategoryID()) {
+        result = result && getCategoryID()
+            .equals(other.getCategoryID());
+      }
+      result = result && (hasSymbolID() == other.hasSymbolID());
+      if (hasSymbolID()) {
+        result = result && (getSymbolID()
+            == other.getSymbolID());
+      }
+      result = result && (hasPoiID() == other.hasPoiID());
+      if (hasPoiID()) {
+        result = result && getPoiID()
+            .equals(other.getPoiID());
+      }
+      result = result && (hasExtrusion() == other.hasExtrusion());
+      if (hasExtrusion()) {
+        result = result && (getExtrusion()
+            == other.getExtrusion());
+      }
+      result = result && (hasBase() == other.hasBase());
+      if (hasBase()) {
+        result = result && (
+            java.lang.Double.doubleToLongBits(getBase())
+            == java.lang.Double.doubleToLongBits(
+                other.getBase()));
+      }
+      result = result && (hasHeight() == other.hasHeight());
+      if (hasHeight()) {
+        result = result && (
+            java.lang.Double.doubleToLongBits(getHeight())
+            == java.lang.Double.doubleToLongBits(
+                other.getHeight()));
+      }
+      result = result && (hasLabelX() == other.hasLabelX());
+      if (hasLabelX()) {
+        result = result && (
+            java.lang.Double.doubleToLongBits(getLabelX())
+            == java.lang.Double.doubleToLongBits(
+                other.getLabelX()));
+      }
+      result = result && (hasLabelY() == other.hasLabelY());
+      if (hasLabelY()) {
+        result = result && (
+            java.lang.Double.doubleToLongBits(getLabelY())
+            == java.lang.Double.doubleToLongBits(
+                other.getLabelY()));
+      }
+      result = result && (hasIcon() == other.hasIcon());
+      if (hasIcon()) {
+        result = result && getIcon()
+            .equals(other.getIcon());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasFloor()) {
+        hash = (37 * hash) + FLOOR_FIELD_NUMBER;
+        hash = (53 * hash) + getFloor();
+      }
+      if (hasLayer()) {
+        hash = (37 * hash) + LAYER_FIELD_NUMBER;
+        hash = (53 * hash) + getLayer();
+      }
+      if (hasName()) {
+        hash = (37 * hash) + NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getName().hashCode();
+      }
+      if (hasCategoryID()) {
+        hash = (37 * hash) + CATEGORYID_FIELD_NUMBER;
+        hash = (53 * hash) + getCategoryID().hashCode();
+      }
+      if (hasSymbolID()) {
+        hash = (37 * hash) + SYMBOLID_FIELD_NUMBER;
+        hash = (53 * hash) + getSymbolID();
+      }
+      if (hasPoiID()) {
+        hash = (37 * hash) + POIID_FIELD_NUMBER;
+        hash = (53 * hash) + getPoiID().hashCode();
+      }
+      if (hasExtrusion()) {
+        hash = (37 * hash) + EXTRUSION_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getExtrusion());
+      }
+      if (hasBase()) {
+        hash = (37 * hash) + BASE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            java.lang.Double.doubleToLongBits(getBase()));
+      }
+      if (hasHeight()) {
+        hash = (37 * hash) + HEIGHT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            java.lang.Double.doubleToLongBits(getHeight()));
+      }
+      if (hasLabelX()) {
+        hash = (37 * hash) + LABELX_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            java.lang.Double.doubleToLongBits(getLabelX()));
+      }
+      if (hasLabelY()) {
+        hash = (37 * hash) + LABELY_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            java.lang.Double.doubleToLongBits(getLabelY()));
+      }
+      if (hasIcon()) {
+        hash = (37 * hash) + ICON_FIELD_NUMBER;
+        hash = (53 * hash) + getIcon().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf)
+        cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cn.platalk.core.pbf.threedata.TYThreePropertyPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cn.platalk.core.pbf.threedata.TYThreePropertyPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.class, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder.class);
+      }
+
+      // Construct using cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        floor_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        layer_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        categoryID_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        symbolID_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        poiID_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
+        extrusion_ = false;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        base_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        height_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        labelX_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        labelY_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000400);
+        icon_ = "";
+        bitField0_ = (bitField0_ & ~0x00000800);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cn.platalk.core.pbf.threedata.TYThreePropertyPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_descriptor;
+      }
+
+      public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf getDefaultInstanceForType() {
+        return cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.getDefaultInstance();
+      }
+
+      public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf build() {
+        cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf buildPartial() {
+        cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf result = new cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.floor_ = floor_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.layer_ = layer_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.name_ = name_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.categoryID_ = categoryID_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.symbolID_ = symbolID_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.poiID_ = poiID_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.extrusion_ = extrusion_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.base_ = base_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.height_ = height_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.labelX_ = labelX_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.labelY_ = labelY_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.icon_ = icon_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf) {
+          return mergeFrom((cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf other) {
+        if (other == cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.getDefaultInstance()) return this;
+        if (other.hasFloor()) {
+          setFloor(other.getFloor());
+        }
+        if (other.hasLayer()) {
+          setLayer(other.getLayer());
+        }
+        if (other.hasName()) {
+          bitField0_ |= 0x00000004;
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.hasCategoryID()) {
+          bitField0_ |= 0x00000008;
+          categoryID_ = other.categoryID_;
+          onChanged();
+        }
+        if (other.hasSymbolID()) {
+          setSymbolID(other.getSymbolID());
+        }
+        if (other.hasPoiID()) {
+          bitField0_ |= 0x00000020;
+          poiID_ = other.poiID_;
+          onChanged();
+        }
+        if (other.hasExtrusion()) {
+          setExtrusion(other.getExtrusion());
+        }
+        if (other.hasBase()) {
+          setBase(other.getBase());
+        }
+        if (other.hasHeight()) {
+          setHeight(other.getHeight());
+        }
+        if (other.hasLabelX()) {
+          setLabelX(other.getLabelX());
+        }
+        if (other.hasLabelY()) {
+          setLabelY(other.getLabelY());
+        }
+        if (other.hasIcon()) {
+          bitField0_ |= 0x00000800;
+          icon_ = other.icon_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasFloor()) {
+          return false;
+        }
+        if (!hasLayer()) {
+          return false;
+        }
+        if (!hasSymbolID()) {
+          return false;
+        }
+        if (!hasPoiID()) {
+          return false;
+        }
+        if (!hasExtrusion()) {
+          return false;
+        }
+        if (!hasBase()) {
+          return false;
+        }
+        if (!hasHeight()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int floor_ ;
+      /**
+       * <code>required int32 floor = 1;</code>
+       */
+      public boolean hasFloor() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 floor = 1;</code>
+       */
+      public int getFloor() {
+        return floor_;
+      }
+      /**
+       * <code>required int32 floor = 1;</code>
+       */
+      public Builder setFloor(int value) {
+        bitField0_ |= 0x00000001;
+        floor_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 floor = 1;</code>
+       */
+      public Builder clearFloor() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        floor_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int layer_ ;
+      /**
+       * <code>required uint32 layer = 2;</code>
+       */
+      public boolean hasLayer() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required uint32 layer = 2;</code>
+       */
+      public int getLayer() {
+        return layer_;
+      }
+      /**
+       * <code>required uint32 layer = 2;</code>
+       */
+      public Builder setLayer(int value) {
+        bitField0_ |= 0x00000002;
+        layer_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 layer = 2;</code>
+       */
+      public Builder clearLayer() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        layer_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 3;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object categoryID_ = "";
+      /**
+       * <code>optional string categoryID = 4;</code>
+       */
+      public boolean hasCategoryID() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string categoryID = 4;</code>
+       */
+      public java.lang.String getCategoryID() {
+        java.lang.Object ref = categoryID_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            categoryID_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string categoryID = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCategoryIDBytes() {
+        java.lang.Object ref = categoryID_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          categoryID_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string categoryID = 4;</code>
+       */
+      public Builder setCategoryID(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        categoryID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string categoryID = 4;</code>
+       */
+      public Builder clearCategoryID() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        categoryID_ = getDefaultInstance().getCategoryID();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string categoryID = 4;</code>
+       */
+      public Builder setCategoryIDBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        categoryID_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int symbolID_ ;
+      /**
+       * <code>required uint32 symbolID = 5;</code>
+       */
+      public boolean hasSymbolID() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required uint32 symbolID = 5;</code>
+       */
+      public int getSymbolID() {
+        return symbolID_;
+      }
+      /**
+       * <code>required uint32 symbolID = 5;</code>
+       */
+      public Builder setSymbolID(int value) {
+        bitField0_ |= 0x00000010;
+        symbolID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 symbolID = 5;</code>
+       */
+      public Builder clearSymbolID() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        symbolID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object poiID_ = "";
+      /**
+       * <code>required string poiID = 6;</code>
+       */
+      public boolean hasPoiID() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required string poiID = 6;</code>
+       */
+      public java.lang.String getPoiID() {
+        java.lang.Object ref = poiID_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            poiID_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string poiID = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPoiIDBytes() {
+        java.lang.Object ref = poiID_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          poiID_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string poiID = 6;</code>
+       */
+      public Builder setPoiID(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        poiID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string poiID = 6;</code>
+       */
+      public Builder clearPoiID() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        poiID_ = getDefaultInstance().getPoiID();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string poiID = 6;</code>
+       */
+      public Builder setPoiIDBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        poiID_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean extrusion_ ;
+      /**
+       * <code>required bool extrusion = 7;</code>
+       */
+      public boolean hasExtrusion() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required bool extrusion = 7;</code>
+       */
+      public boolean getExtrusion() {
+        return extrusion_;
+      }
+      /**
+       * <code>required bool extrusion = 7;</code>
+       */
+      public Builder setExtrusion(boolean value) {
+        bitField0_ |= 0x00000040;
+        extrusion_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool extrusion = 7;</code>
+       */
+      public Builder clearExtrusion() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        extrusion_ = false;
+        onChanged();
+        return this;
+      }
+
+      private double base_ ;
+      /**
+       * <code>required double base = 8;</code>
+       */
+      public boolean hasBase() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required double base = 8;</code>
+       */
+      public double getBase() {
+        return base_;
+      }
+      /**
+       * <code>required double base = 8;</code>
+       */
+      public Builder setBase(double value) {
+        bitField0_ |= 0x00000080;
+        base_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double base = 8;</code>
+       */
+      public Builder clearBase() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        base_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double height_ ;
+      /**
+       * <code>required double height = 9;</code>
+       */
+      public boolean hasHeight() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>required double height = 9;</code>
+       */
+      public double getHeight() {
+        return height_;
+      }
+      /**
+       * <code>required double height = 9;</code>
+       */
+      public Builder setHeight(double value) {
+        bitField0_ |= 0x00000100;
+        height_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double height = 9;</code>
+       */
+      public Builder clearHeight() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        height_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double labelX_ ;
+      /**
+       * <code>optional double labelX = 10;</code>
+       */
+      public boolean hasLabelX() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional double labelX = 10;</code>
+       */
+      public double getLabelX() {
+        return labelX_;
+      }
+      /**
+       * <code>optional double labelX = 10;</code>
+       */
+      public Builder setLabelX(double value) {
+        bitField0_ |= 0x00000200;
+        labelX_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional double labelX = 10;</code>
+       */
+      public Builder clearLabelX() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        labelX_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double labelY_ ;
+      /**
+       * <code>optional double labelY = 11;</code>
+       */
+      public boolean hasLabelY() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional double labelY = 11;</code>
+       */
+      public double getLabelY() {
+        return labelY_;
+      }
+      /**
+       * <code>optional double labelY = 11;</code>
+       */
+      public Builder setLabelY(double value) {
+        bitField0_ |= 0x00000400;
+        labelY_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional double labelY = 11;</code>
+       */
+      public Builder clearLabelY() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        labelY_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object icon_ = "";
+      /**
+       * <code>optional string icon = 12;</code>
+       */
+      public boolean hasIcon() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional string icon = 12;</code>
+       */
+      public java.lang.String getIcon() {
+        java.lang.Object ref = icon_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            icon_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string icon = 12;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIconBytes() {
+        java.lang.Object ref = icon_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          icon_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string icon = 12;</code>
+       */
+      public Builder setIcon(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000800;
+        icon_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string icon = 12;</code>
+       */
+      public Builder clearIcon() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        icon_ = getDefaultInstance().getIcon();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string icon = 12;</code>
+       */
+      public Builder setIconBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000800;
+        icon_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf)
+    }
+
+    // @@protoc_insertion_point(class_scope:cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf)
+    private static final cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf();
+    }
+
+    public static cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<ThreeFeaturePropertiesPbf>
+        PARSER = new com.google.protobuf.AbstractParser<ThreeFeaturePropertiesPbf>() {
+      public ThreeFeaturePropertiesPbf parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ThreeFeaturePropertiesPbf(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThreeFeaturePropertiesPbf> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThreeFeaturePropertiesPbf> getParserForType() {
+      return PARSER;
+    }
+
+    public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_fieldAccessorTable;
+
+  public static com.google.protobuf.Descriptors.FileDescriptor
+      getDescriptor() {
+    return descriptor;
+  }
+  private static  com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
+  static {
+    java.lang.String[] descriptorData = {
+      "\n\034t_y_three_property_pbf.proto\022\035cn.plata" +
+      "lk.core.pbf.threedata\"\333\001\n\031ThreeFeaturePr" +
+      "opertiesPbf\022\r\n\005floor\030\001 \002(\005\022\r\n\005layer\030\002 \002(" +
+      "\r\022\014\n\004name\030\003 \001(\t\022\022\n\ncategoryID\030\004 \001(\t\022\020\n\010s" +
+      "ymbolID\030\005 \002(\r\022\r\n\005poiID\030\006 \002(\t\022\021\n\textrusio" +
+      "n\030\007 \002(\010\022\014\n\004base\030\010 \002(\001\022\016\n\006height\030\t \002(\001\022\016\n" +
+      "\006labelX\030\n \001(\001\022\016\n\006labelY\030\013 \001(\001\022\014\n\004icon\030\014 " +
+      "\001(\t"
+    };
+    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
+    com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+        }, assigner);
+    internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePropertiesPbf_descriptor,
+        new java.lang.String[] { "Floor", "Layer", "Name", "CategoryID", "SymbolID", "PoiID", "Extrusion", "Base", "Height", "LabelX", "LabelY", "Icon", });
+  }
+
+  // @@protoc_insertion_point(outer_class_scope)
 }

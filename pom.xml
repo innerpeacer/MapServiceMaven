@@ -31,7 +31,7 @@
 		<MapService-version>2.2.0</MapService-version>
 		<RouteService-version>3.1.0</RouteService-version>
 		<Lab-version>1.0.0</Lab-version>
-		<Pbf-version>1.3.0</Pbf-version>
+		<Pbf-version>1.3.1</Pbf-version>
 	</properties>
 	<modules>
 		<module>BaseInterface</module>

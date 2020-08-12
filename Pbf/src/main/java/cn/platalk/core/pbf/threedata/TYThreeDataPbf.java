@@ -3,3008 +3,3270 @@
 
 package cn.platalk.core.pbf.threedata;
 
-@SuppressWarnings(value = { "unused", "unchecked", "deprecation" })
 public final class TYThreeDataPbf {
-	private TYThreeDataPbf() {
-	}
-
-	public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {
-	}
-
-	public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
-		registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
-	}
-
-	public interface ThreeDataPbfOrBuilder extends
-			// @@protoc_insertion_point(interface_extends:cn.platalk.core.pbf.threedata.ThreeDataPbf)
-			com.google.protobuf.MessageOrBuilder {
-
-		/**
-		 * <code>required string buildingID = 1;</code>
-		 */
-		boolean hasBuildingID();
-
-		/**
-		 * <code>required string buildingID = 1;</code>
-		 */
-		java.lang.String getBuildingID();
-
-		/**
-		 * <code>required string buildingID = 1;</code>
-		 */
-		com.google.protobuf.ByteString getBuildingIDBytes();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-		 */
-		boolean hasFloor();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-		 */
-		cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getFloor();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-		 */
-		cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getFloorOrBuilder();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-		 */
-		boolean hasRoom();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-		 */
-		cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getRoom();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-		 */
-		cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getRoomOrBuilder();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-		 */
-		boolean hasAsset();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-		 */
-		cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getAsset();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-		 */
-		cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getAssetOrBuilder();
-	}
-
-	/**
-	 * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeDataPbf}
-	 */
-	public static final class ThreeDataPbf extends com.google.protobuf.GeneratedMessageV3 implements
-			// @@protoc_insertion_point(message_implements:cn.platalk.core.pbf.threedata.ThreeDataPbf)
-			ThreeDataPbfOrBuilder {
-		// Use ThreeDataPbf.newBuilder() to construct.
-		private ThreeDataPbf(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-			super(builder);
-		}
-
-		private ThreeDataPbf() {
-			buildingID_ = "";
-		}
-
-		@java.lang.Override
-		public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-			return this.unknownFields;
-		}
-
-		private ThreeDataPbf(com.google.protobuf.CodedInputStream input,
-				com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			this();
-			int mutable_bitField0_ = 0;
-			com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
-					.newBuilder();
-			try {
-				boolean done = false;
-				while (!done) {
-					int tag = input.readTag();
-					switch (tag) {
-					case 0:
-						done = true;
-						break;
-					default: {
-						if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-							done = true;
-						}
-						break;
-					}
-					case 10: {
-						com.google.protobuf.ByteString bs = input.readBytes();
-						bitField0_ |= 0x00000001;
-						buildingID_ = bs;
-						break;
-					}
-					case 18: {
-						cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder subBuilder = null;
-						if (((bitField0_ & 0x00000002) == 0x00000002)) {
-							subBuilder = floor_.toBuilder();
-						}
-						floor_ = input.readMessage(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.PARSER,
-								extensionRegistry);
-						if (subBuilder != null) {
-							subBuilder.mergeFrom(floor_);
-							floor_ = subBuilder.buildPartial();
-						}
-						bitField0_ |= 0x00000002;
-						break;
-					}
-					case 26: {
-						cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder subBuilder = null;
-						if (((bitField0_ & 0x00000004) == 0x00000004)) {
-							subBuilder = room_.toBuilder();
-						}
-						room_ = input.readMessage(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.PARSER,
-								extensionRegistry);
-						if (subBuilder != null) {
-							subBuilder.mergeFrom(room_);
-							room_ = subBuilder.buildPartial();
-						}
-						bitField0_ |= 0x00000004;
-						break;
-					}
-					case 34: {
-						cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder subBuilder = null;
-						if (((bitField0_ & 0x00000008) == 0x00000008)) {
-							subBuilder = asset_.toBuilder();
-						}
-						asset_ = input.readMessage(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.PARSER,
-								extensionRegistry);
-						if (subBuilder != null) {
-							subBuilder.mergeFrom(asset_);
-							asset_ = subBuilder.buildPartial();
-						}
-						bitField0_ |= 0x00000008;
-						break;
-					}
-					}
-				}
-			} catch (com.google.protobuf.InvalidProtocolBufferException e) {
-				throw e.setUnfinishedMessage(this);
-			} catch (java.io.IOException e) {
-				throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-			} finally {
-				this.unknownFields = unknownFields.build();
-				makeExtensionsImmutable();
-			}
-		}
-
-		public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-			return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_descriptor;
-		}
-
-		@Override
-		protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-			return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_fieldAccessorTable
-					.ensureFieldAccessorsInitialized(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.class,
-							cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.Builder.class);
-		}
-
-		private int bitField0_;
-		public static final int BUILDINGID_FIELD_NUMBER = 1;
-		private volatile java.lang.Object buildingID_;
-
-		/**
-		 * <code>required string buildingID = 1;</code>
-		 */
-		@Override
-		public boolean hasBuildingID() {
-			return ((bitField0_ & 0x00000001) == 0x00000001);
-		}
-
-		/**
-		 * <code>required string buildingID = 1;</code>
-		 */
-		@Override
-		public java.lang.String getBuildingID() {
-			java.lang.Object ref = buildingID_;
-			if (ref instanceof java.lang.String) {
-				return (java.lang.String) ref;
-			} else {
-				com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-				java.lang.String s = bs.toStringUtf8();
-				if (bs.isValidUtf8()) {
-					buildingID_ = s;
-				}
-				return s;
-			}
-		}
-
-		/**
-		 * <code>required string buildingID = 1;</code>
-		 */
-		@Override
-		public com.google.protobuf.ByteString getBuildingIDBytes() {
-			java.lang.Object ref = buildingID_;
-			if (ref instanceof java.lang.String) {
-				com.google.protobuf.ByteString b = com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-				buildingID_ = b;
-				return b;
-			} else {
-				return (com.google.protobuf.ByteString) ref;
-			}
-		}
-
-		public static final int FLOOR_FIELD_NUMBER = 2;
-		private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf floor_;
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-		 */
-		@Override
-		public boolean hasFloor() {
-			return ((bitField0_ & 0x00000002) == 0x00000002);
-		}
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-		 */
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getFloor() {
-			return floor_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance()
-					: floor_;
-		}
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-		 */
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getFloorOrBuilder() {
-			return floor_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance()
-					: floor_;
-		}
-
-		public static final int ROOM_FIELD_NUMBER = 3;
-		private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf room_;
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-		 */
-		@Override
-		public boolean hasRoom() {
-			return ((bitField0_ & 0x00000004) == 0x00000004);
-		}
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-		 */
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getRoom() {
-			return room_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance()
-					: room_;
-		}
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-		 */
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getRoomOrBuilder() {
-			return room_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance()
-					: room_;
-		}
-
-		public static final int ASSET_FIELD_NUMBER = 4;
-		private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf asset_;
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-		 */
-		@Override
-		public boolean hasAsset() {
-			return ((bitField0_ & 0x00000008) == 0x00000008);
-		}
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-		 */
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getAsset() {
-			return asset_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance()
-					: asset_;
-		}
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-		 */
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getAssetOrBuilder() {
-			return asset_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance()
-					: asset_;
-		}
-
-		private byte memoizedIsInitialized = -1;
-
-		@Override
-		public final boolean isInitialized() {
-			byte isInitialized = memoizedIsInitialized;
-			if (isInitialized == 1)
-				return true;
-			if (isInitialized == 0)
-				return false;
-
-			if (!hasBuildingID()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!hasFloor()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!hasRoom()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!hasAsset()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!getFloor().isInitialized()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!getRoom().isInitialized()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!getAsset().isInitialized()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			memoizedIsInitialized = 1;
-			return true;
-		}
-
-		@Override
-		public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-			if (((bitField0_ & 0x00000001) == 0x00000001)) {
-				com.google.protobuf.GeneratedMessageV3.writeString(output, 1, buildingID_);
-			}
-			if (((bitField0_ & 0x00000002) == 0x00000002)) {
-				output.writeMessage(2, getFloor());
-			}
-			if (((bitField0_ & 0x00000004) == 0x00000004)) {
-				output.writeMessage(3, getRoom());
-			}
-			if (((bitField0_ & 0x00000008) == 0x00000008)) {
-				output.writeMessage(4, getAsset());
-			}
-			unknownFields.writeTo(output);
-		}
-
-		@Override
-		public int getSerializedSize() {
-			int size = memoizedSize;
-			if (size != -1)
-				return size;
-
-			size = 0;
-			if (((bitField0_ & 0x00000001) == 0x00000001)) {
-				size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, buildingID_);
-			}
-			if (((bitField0_ & 0x00000002) == 0x00000002)) {
-				size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getFloor());
-			}
-			if (((bitField0_ & 0x00000004) == 0x00000004)) {
-				size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getRoom());
-			}
-			if (((bitField0_ & 0x00000008) == 0x00000008)) {
-				size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getAsset());
-			}
-			size += unknownFields.getSerializedSize();
-			memoizedSize = size;
-			return size;
-		}
-
-		private static final long serialVersionUID = 0L;
-
-		@java.lang.Override
-		public boolean equals(final java.lang.Object obj) {
-			if (obj == this) {
-				return true;
-			}
-			if (!(obj instanceof cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf)) {
-				return super.equals(obj);
-			}
-			cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf other = (cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf) obj;
-
-			boolean result = true;
-			result = result && (hasBuildingID() == other.hasBuildingID());
-			if (hasBuildingID()) {
-				result = result && getBuildingID().equals(other.getBuildingID());
-			}
-			result = result && (hasFloor() == other.hasFloor());
-			if (hasFloor()) {
-				result = result && getFloor().equals(other.getFloor());
-			}
-			result = result && (hasRoom() == other.hasRoom());
-			if (hasRoom()) {
-				result = result && getRoom().equals(other.getRoom());
-			}
-			result = result && (hasAsset() == other.hasAsset());
-			if (hasAsset()) {
-				result = result && getAsset().equals(other.getAsset());
-			}
-			result = result && unknownFields.equals(other.unknownFields);
-			return result;
-		}
-
-		@java.lang.Override
-		public int hashCode() {
-			if (memoizedHashCode != 0) {
-				return memoizedHashCode;
-			}
-			int hash = 41;
-			hash = (19 * hash) + getDescriptor().hashCode();
-			if (hasBuildingID()) {
-				hash = (37 * hash) + BUILDINGID_FIELD_NUMBER;
-				hash = (53 * hash) + getBuildingID().hashCode();
-			}
-			if (hasFloor()) {
-				hash = (37 * hash) + FLOOR_FIELD_NUMBER;
-				hash = (53 * hash) + getFloor().hashCode();
-			}
-			if (hasRoom()) {
-				hash = (37 * hash) + ROOM_FIELD_NUMBER;
-				hash = (53 * hash) + getRoom().hashCode();
-			}
-			if (hasAsset()) {
-				hash = (37 * hash) + ASSET_FIELD_NUMBER;
-				hash = (53 * hash) + getAsset().hashCode();
-			}
-			hash = (29 * hash) + unknownFields.hashCode();
-			memoizedHashCode = hash;
-			return hash;
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(
-				com.google.protobuf.ByteString data) throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(
-				com.google.protobuf.ByteString data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data, extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(byte[] data)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(byte[] data,
-				com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data, extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(java.io.InputStream input)
-				throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(java.io.InputStream input,
-				com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseDelimitedFrom(
-				java.io.InputStream input) throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseDelimitedFrom(
-				java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input,
-					extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(
-				com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(
-				com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
-		}
-
-		@Override
-		public Builder newBuilderForType() {
-			return newBuilder();
-		}
-
-		public static Builder newBuilder() {
-			return DEFAULT_INSTANCE.toBuilder();
-		}
-
-		public static Builder newBuilder(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf prototype) {
-			return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-		}
-
-		@Override
-		public Builder toBuilder() {
-			return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
-		}
-
-		@java.lang.Override
-		protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-			Builder builder = new Builder(parent);
-			return builder;
-		}
-
-		/**
-		 * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeDataPbf}
-		 */
-		public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-				// @@protoc_insertion_point(builder_implements:cn.platalk.core.pbf.threedata.ThreeDataPbf)
-				cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbfOrBuilder {
-			public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-				return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_descriptor;
-			}
-
-			@Override
-			protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-				return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_fieldAccessorTable
-						.ensureFieldAccessorsInitialized(
-								cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.class,
-								cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.Builder.class);
-			}
-
-			// Construct using
-			// cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.newBuilder()
-			private Builder() {
-				maybeForceBuilderInitialization();
-			}
-
-			private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-				super(parent);
-				maybeForceBuilderInitialization();
-			}
-
-			private void maybeForceBuilderInitialization() {
-				if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-					getFloorFieldBuilder();
-					getRoomFieldBuilder();
-					getAssetFieldBuilder();
-				}
-			}
-
-			@Override
-			public Builder clear() {
-				super.clear();
-				buildingID_ = "";
-				bitField0_ = (bitField0_ & ~0x00000001);
-				if (floorBuilder_ == null) {
-					floor_ = null;
-				} else {
-					floorBuilder_.clear();
-				}
-				bitField0_ = (bitField0_ & ~0x00000002);
-				if (roomBuilder_ == null) {
-					room_ = null;
-				} else {
-					roomBuilder_.clear();
-				}
-				bitField0_ = (bitField0_ & ~0x00000004);
-				if (assetBuilder_ == null) {
-					asset_ = null;
-				} else {
-					assetBuilder_.clear();
-				}
-				bitField0_ = (bitField0_ & ~0x00000008);
-				return this;
-			}
-
-			@Override
-			public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-				return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_descriptor;
-			}
-
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf getDefaultInstanceForType() {
-				return cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.getDefaultInstance();
-			}
-
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf build() {
-				cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf result = buildPartial();
-				if (!result.isInitialized()) {
-					throw newUninitializedMessageException(result);
-				}
-				return result;
-			}
-
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf buildPartial() {
-				cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf result = new cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf(
-						this);
-				int from_bitField0_ = bitField0_;
-				int to_bitField0_ = 0;
-				if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-					to_bitField0_ |= 0x00000001;
-				}
-				result.buildingID_ = buildingID_;
-				if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-					to_bitField0_ |= 0x00000002;
-				}
-				if (floorBuilder_ == null) {
-					result.floor_ = floor_;
-				} else {
-					result.floor_ = floorBuilder_.build();
-				}
-				if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-					to_bitField0_ |= 0x00000004;
-				}
-				if (roomBuilder_ == null) {
-					result.room_ = room_;
-				} else {
-					result.room_ = roomBuilder_.build();
-				}
-				if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-					to_bitField0_ |= 0x00000008;
-				}
-				if (assetBuilder_ == null) {
-					result.asset_ = asset_;
-				} else {
-					result.asset_ = assetBuilder_.build();
-				}
-				result.bitField0_ = to_bitField0_;
-				onBuilt();
-				return result;
-			}
-
-			@Override
-			public Builder clone() {
-				return super.clone();
-			}
-
-			@Override
-			public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return super.setField(field, value);
-			}
-
-			@Override
-			public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-				return super.clearField(field);
-			}
-
-			@Override
-			public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-				return super.clearOneof(oneof);
-			}
-
-			@Override
-			public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-					Object value) {
-				return super.setRepeatedField(field, index, value);
-			}
-
-			@Override
-			public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return super.addRepeatedField(field, value);
-			}
-
-			@Override
-			public Builder mergeFrom(com.google.protobuf.Message other) {
-				if (other instanceof cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf) {
-					return mergeFrom((cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf) other);
-				} else {
-					super.mergeFrom(other);
-					return this;
-				}
-			}
-
-			public Builder mergeFrom(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf other) {
-				if (other == cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.getDefaultInstance())
-					return this;
-				if (other.hasBuildingID()) {
-					bitField0_ |= 0x00000001;
-					buildingID_ = other.buildingID_;
-					onChanged();
-				}
-				if (other.hasFloor()) {
-					mergeFloor(other.getFloor());
-				}
-				if (other.hasRoom()) {
-					mergeRoom(other.getRoom());
-				}
-				if (other.hasAsset()) {
-					mergeAsset(other.getAsset());
-				}
-				this.mergeUnknownFields(other.unknownFields);
-				onChanged();
-				return this;
-			}
-
-			@Override
-			public final boolean isInitialized() {
-				if (!hasBuildingID()) {
-					return false;
-				}
-				if (!hasFloor()) {
-					return false;
-				}
-				if (!hasRoom()) {
-					return false;
-				}
-				if (!hasAsset()) {
-					return false;
-				}
-				if (!getFloor().isInitialized()) {
-					return false;
-				}
-				if (!getRoom().isInitialized()) {
-					return false;
-				}
-				if (!getAsset().isInitialized()) {
-					return false;
-				}
-				return true;
-			}
-
-			@Override
-			public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
-					com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-				cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parsedMessage = null;
-				try {
-					parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-				} catch (com.google.protobuf.InvalidProtocolBufferException e) {
-					parsedMessage = (cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf) e
-							.getUnfinishedMessage();
-					throw e.unwrapIOException();
-				} finally {
-					if (parsedMessage != null) {
-						mergeFrom(parsedMessage);
-					}
-				}
-				return this;
-			}
-
-			private int bitField0_;
-
-			private java.lang.Object buildingID_ = "";
-
-			/**
-			 * <code>required string buildingID = 1;</code>
-			 */
-			@Override
-			public boolean hasBuildingID() {
-				return ((bitField0_ & 0x00000001) == 0x00000001);
-			}
-
-			/**
-			 * <code>required string buildingID = 1;</code>
-			 */
-			@Override
-			public java.lang.String getBuildingID() {
-				java.lang.Object ref = buildingID_;
-				if (!(ref instanceof java.lang.String)) {
-					com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-					java.lang.String s = bs.toStringUtf8();
-					if (bs.isValidUtf8()) {
-						buildingID_ = s;
-					}
-					return s;
-				} else {
-					return (java.lang.String) ref;
-				}
-			}
-
-			/**
-			 * <code>required string buildingID = 1;</code>
-			 */
-			@Override
-			public com.google.protobuf.ByteString getBuildingIDBytes() {
-				java.lang.Object ref = buildingID_;
-				if (ref instanceof String) {
-					com.google.protobuf.ByteString b = com.google.protobuf.ByteString
-							.copyFromUtf8((java.lang.String) ref);
-					buildingID_ = b;
-					return b;
-				} else {
-					return (com.google.protobuf.ByteString) ref;
-				}
-			}
-
-			/**
-			 * <code>required string buildingID = 1;</code>
-			 */
-			public Builder setBuildingID(java.lang.String value) {
-				if (value == null) {
-					throw new NullPointerException();
-				}
-				bitField0_ |= 0x00000001;
-				buildingID_ = value;
-				onChanged();
-				return this;
-			}
-
-			/**
-			 * <code>required string buildingID = 1;</code>
-			 */
-			public Builder clearBuildingID() {
-				bitField0_ = (bitField0_ & ~0x00000001);
-				buildingID_ = getDefaultInstance().getBuildingID();
-				onChanged();
-				return this;
-			}
-
-			/**
-			 * <code>required string buildingID = 1;</code>
-			 */
-			public Builder setBuildingIDBytes(com.google.protobuf.ByteString value) {
-				if (value == null) {
-					throw new NullPointerException();
-				}
-				bitField0_ |= 0x00000001;
-				buildingID_ = value;
-				onChanged();
-				return this;
-			}
-
-			private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf floor_ = null;
-			private com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> floorBuilder_;
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-			 */
-			@Override
-			public boolean hasFloor() {
-				return ((bitField0_ & 0x00000002) == 0x00000002);
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-			 */
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getFloor() {
-				if (floorBuilder_ == null) {
-					return floor_ == null
-							? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : floor_;
-				} else {
-					return floorBuilder_.getMessage();
-				}
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-			 */
-			public Builder setFloor(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
-				if (floorBuilder_ == null) {
-					if (value == null) {
-						throw new NullPointerException();
-					}
-					floor_ = value;
-					onChanged();
-				} else {
-					floorBuilder_.setMessage(value);
-				}
-				bitField0_ |= 0x00000002;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-			 */
-			public Builder setFloor(
-					cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder builderForValue) {
-				if (floorBuilder_ == null) {
-					floor_ = builderForValue.build();
-					onChanged();
-				} else {
-					floorBuilder_.setMessage(builderForValue.build());
-				}
-				bitField0_ |= 0x00000002;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-			 */
-			public Builder mergeFloor(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
-				if (floorBuilder_ == null) {
-					if (((bitField0_ & 0x00000002) == 0x00000002) && floor_ != null
-							&& floor_ != cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf
-									.getDefaultInstance()) {
-						floor_ = cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.newBuilder(floor_)
-								.mergeFrom(value).buildPartial();
-					} else {
-						floor_ = value;
-					}
-					onChanged();
-				} else {
-					floorBuilder_.mergeFrom(value);
-				}
-				bitField0_ |= 0x00000002;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-			 */
-			public Builder clearFloor() {
-				if (floorBuilder_ == null) {
-					floor_ = null;
-					onChanged();
-				} else {
-					floorBuilder_.clear();
-				}
-				bitField0_ = (bitField0_ & ~0x00000002);
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-			 */
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder getFloorBuilder() {
-				bitField0_ |= 0x00000002;
-				onChanged();
-				return getFloorFieldBuilder().getBuilder();
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-			 */
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getFloorOrBuilder() {
-				if (floorBuilder_ != null) {
-					return floorBuilder_.getMessageOrBuilder();
-				} else {
-					return floor_ == null
-							? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : floor_;
-				}
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
-			 */
-			private com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> getFloorFieldBuilder() {
-				if (floorBuilder_ == null) {
-					floorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder>(
-							getFloor(), getParentForChildren(), isClean());
-					floor_ = null;
-				}
-				return floorBuilder_;
-			}
-
-			private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf room_ = null;
-			private com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> roomBuilder_;
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-			 */
-			@Override
-			public boolean hasRoom() {
-				return ((bitField0_ & 0x00000004) == 0x00000004);
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-			 */
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getRoom() {
-				if (roomBuilder_ == null) {
-					return room_ == null
-							? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : room_;
-				} else {
-					return roomBuilder_.getMessage();
-				}
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-			 */
-			public Builder setRoom(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
-				if (roomBuilder_ == null) {
-					if (value == null) {
-						throw new NullPointerException();
-					}
-					room_ = value;
-					onChanged();
-				} else {
-					roomBuilder_.setMessage(value);
-				}
-				bitField0_ |= 0x00000004;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-			 */
-			public Builder setRoom(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder builderForValue) {
-				if (roomBuilder_ == null) {
-					room_ = builderForValue.build();
-					onChanged();
-				} else {
-					roomBuilder_.setMessage(builderForValue.build());
-				}
-				bitField0_ |= 0x00000004;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-			 */
-			public Builder mergeRoom(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
-				if (roomBuilder_ == null) {
-					if (((bitField0_ & 0x00000004) == 0x00000004) && room_ != null
-							&& room_ != cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf
-									.getDefaultInstance()) {
-						room_ = cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.newBuilder(room_)
-								.mergeFrom(value).buildPartial();
-					} else {
-						room_ = value;
-					}
-					onChanged();
-				} else {
-					roomBuilder_.mergeFrom(value);
-				}
-				bitField0_ |= 0x00000004;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-			 */
-			public Builder clearRoom() {
-				if (roomBuilder_ == null) {
-					room_ = null;
-					onChanged();
-				} else {
-					roomBuilder_.clear();
-				}
-				bitField0_ = (bitField0_ & ~0x00000004);
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-			 */
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder getRoomBuilder() {
-				bitField0_ |= 0x00000004;
-				onChanged();
-				return getRoomFieldBuilder().getBuilder();
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-			 */
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getRoomOrBuilder() {
-				if (roomBuilder_ != null) {
-					return roomBuilder_.getMessageOrBuilder();
-				} else {
-					return room_ == null
-							? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : room_;
-				}
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
-			 */
-			private com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> getRoomFieldBuilder() {
-				if (roomBuilder_ == null) {
-					roomBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder>(
-							getRoom(), getParentForChildren(), isClean());
-					room_ = null;
-				}
-				return roomBuilder_;
-			}
-
-			private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf asset_ = null;
-			private com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> assetBuilder_;
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-			 */
-			@Override
-			public boolean hasAsset() {
-				return ((bitField0_ & 0x00000008) == 0x00000008);
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-			 */
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getAsset() {
-				if (assetBuilder_ == null) {
-					return asset_ == null
-							? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : asset_;
-				} else {
-					return assetBuilder_.getMessage();
-				}
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-			 */
-			public Builder setAsset(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
-				if (assetBuilder_ == null) {
-					if (value == null) {
-						throw new NullPointerException();
-					}
-					asset_ = value;
-					onChanged();
-				} else {
-					assetBuilder_.setMessage(value);
-				}
-				bitField0_ |= 0x00000008;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-			 */
-			public Builder setAsset(
-					cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder builderForValue) {
-				if (assetBuilder_ == null) {
-					asset_ = builderForValue.build();
-					onChanged();
-				} else {
-					assetBuilder_.setMessage(builderForValue.build());
-				}
-				bitField0_ |= 0x00000008;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-			 */
-			public Builder mergeAsset(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
-				if (assetBuilder_ == null) {
-					if (((bitField0_ & 0x00000008) == 0x00000008) && asset_ != null
-							&& asset_ != cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf
-									.getDefaultInstance()) {
-						asset_ = cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.newBuilder(asset_)
-								.mergeFrom(value).buildPartial();
-					} else {
-						asset_ = value;
-					}
-					onChanged();
-				} else {
-					assetBuilder_.mergeFrom(value);
-				}
-				bitField0_ |= 0x00000008;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-			 */
-			public Builder clearAsset() {
-				if (assetBuilder_ == null) {
-					asset_ = null;
-					onChanged();
-				} else {
-					assetBuilder_.clear();
-				}
-				bitField0_ = (bitField0_ & ~0x00000008);
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-			 */
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder getAssetBuilder() {
-				bitField0_ |= 0x00000008;
-				onChanged();
-				return getAssetFieldBuilder().getBuilder();
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-			 */
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getAssetOrBuilder() {
-				if (assetBuilder_ != null) {
-					return assetBuilder_.getMessageOrBuilder();
-				} else {
-					return asset_ == null
-							? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : asset_;
-				}
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
-			 */
-			private com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> getAssetFieldBuilder() {
-				if (assetBuilder_ == null) {
-					assetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder>(
-							getAsset(), getParentForChildren(), isClean());
-					asset_ = null;
-				}
-				return assetBuilder_;
-			}
-
-			@Override
-			public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
-				return super.setUnknownFields(unknownFields);
-			}
-
-			@Override
-			public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
-				return super.mergeUnknownFields(unknownFields);
-			}
-
-			// @@protoc_insertion_point(builder_scope:cn.platalk.core.pbf.threedata.ThreeDataPbf)
-		}
-
-		// @@protoc_insertion_point(class_scope:cn.platalk.core.pbf.threedata.ThreeDataPbf)
-		private static final cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf DEFAULT_INSTANCE;
-		static {
-			DEFAULT_INSTANCE = new cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf();
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf getDefaultInstance() {
-			return DEFAULT_INSTANCE;
-		}
-
-		@java.lang.Deprecated
-		public static final com.google.protobuf.Parser<ThreeDataPbf> PARSER = new com.google.protobuf.AbstractParser<ThreeDataPbf>() {
-			@Override
-			public ThreeDataPbf parsePartialFrom(com.google.protobuf.CodedInputStream input,
-					com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-					throws com.google.protobuf.InvalidProtocolBufferException {
-				return new ThreeDataPbf(input, extensionRegistry);
-			}
-		};
-
-		public static com.google.protobuf.Parser<ThreeDataPbf> parser() {
-			return PARSER;
-		}
-
-		@java.lang.Override
-		public com.google.protobuf.Parser<ThreeDataPbf> getParserForType() {
-			return PARSER;
-		}
-
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf getDefaultInstanceForType() {
-			return DEFAULT_INSTANCE;
-		}
-
-	}
-
-	public interface ThreeLayerPbfOrBuilder extends
-			// @@protoc_insertion_point(interface_extends:cn.platalk.core.pbf.threedata.ThreeLayerPbf)
-			com.google.protobuf.MessageOrBuilder {
-
-		/**
-		 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-		 */
-		java.util.List<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf> getFeaturesList();
-
-		/**
-		 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-		 */
-		cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf getFeatures(int index);
-
-		/**
-		 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-		 */
-		int getFeaturesCount();
-
-		/**
-		 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-		 */
-		java.util.List<? extends cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder> getFeaturesOrBuilderList();
-
-		/**
-		 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-		 */
-		cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder getFeaturesOrBuilder(int index);
-	}
-
-	/**
-	 * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeLayerPbf}
-	 */
-	public static final class ThreeLayerPbf extends com.google.protobuf.GeneratedMessageV3 implements
-			// @@protoc_insertion_point(message_implements:cn.platalk.core.pbf.threedata.ThreeLayerPbf)
-			ThreeLayerPbfOrBuilder {
-		// Use ThreeLayerPbf.newBuilder() to construct.
-		private ThreeLayerPbf(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-			super(builder);
-		}
-
-		private ThreeLayerPbf() {
-			features_ = java.util.Collections.emptyList();
-		}
-
-		@java.lang.Override
-		public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-			return this.unknownFields;
-		}
-
-		private ThreeLayerPbf(com.google.protobuf.CodedInputStream input,
-				com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			this();
-			int mutable_bitField0_ = 0;
-			com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
-					.newBuilder();
-			try {
-				boolean done = false;
-				while (!done) {
-					int tag = input.readTag();
-					switch (tag) {
-					case 0:
-						done = true;
-						break;
-					default: {
-						if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-							done = true;
-						}
-						break;
-					}
-					case 18: {
-						if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-							features_ = new java.util.ArrayList<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf>();
-							mutable_bitField0_ |= 0x00000001;
-						}
-						features_.add(
-								input.readMessage(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.PARSER,
-										extensionRegistry));
-						break;
-					}
-					}
-				}
-			} catch (com.google.protobuf.InvalidProtocolBufferException e) {
-				throw e.setUnfinishedMessage(this);
-			} catch (java.io.IOException e) {
-				throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-			} finally {
-				if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-					features_ = java.util.Collections.unmodifiableList(features_);
-				}
-				this.unknownFields = unknownFields.build();
-				makeExtensionsImmutable();
-			}
-		}
-
-		public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-			return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_descriptor;
-		}
-
-		@Override
-		protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-			return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_fieldAccessorTable
-					.ensureFieldAccessorsInitialized(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.class,
-							cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder.class);
-		}
-
-		public static final int FEATURES_FIELD_NUMBER = 2;
-		private java.util.List<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf> features_;
-
-		/**
-		 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-		 */
-		@Override
-		public java.util.List<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf> getFeaturesList() {
-			return features_;
-		}
-
-		/**
-		 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-		 */
-		@Override
-		public java.util.List<? extends cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder> getFeaturesOrBuilderList() {
-			return features_;
-		}
-
-		/**
-		 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-		 */
-		@Override
-		public int getFeaturesCount() {
-			return features_.size();
-		}
-
-		/**
-		 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-		 */
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf getFeatures(int index) {
-			return features_.get(index);
-		}
-
-		/**
-		 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-		 */
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder getFeaturesOrBuilder(int index) {
-			return features_.get(index);
-		}
-
-		private byte memoizedIsInitialized = -1;
-
-		@Override
-		public final boolean isInitialized() {
-			byte isInitialized = memoizedIsInitialized;
-			if (isInitialized == 1)
-				return true;
-			if (isInitialized == 0)
-				return false;
-
-			for (int i = 0; i < getFeaturesCount(); i++) {
-				if (!getFeatures(i).isInitialized()) {
-					memoizedIsInitialized = 0;
-					return false;
-				}
-			}
-			memoizedIsInitialized = 1;
-			return true;
-		}
-
-		@Override
-		public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-			for (int i = 0; i < features_.size(); i++) {
-				output.writeMessage(2, features_.get(i));
-			}
-			unknownFields.writeTo(output);
-		}
-
-		@Override
-		public int getSerializedSize() {
-			int size = memoizedSize;
-			if (size != -1)
-				return size;
-
-			size = 0;
-			for (int i = 0; i < features_.size(); i++) {
-				size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, features_.get(i));
-			}
-			size += unknownFields.getSerializedSize();
-			memoizedSize = size;
-			return size;
-		}
-
-		private static final long serialVersionUID = 0L;
-
-		@java.lang.Override
-		public boolean equals(final java.lang.Object obj) {
-			if (obj == this) {
-				return true;
-			}
-			if (!(obj instanceof cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf)) {
-				return super.equals(obj);
-			}
-			cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf other = (cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf) obj;
-
-			boolean result = true;
-			result = result && getFeaturesList().equals(other.getFeaturesList());
-			result = result && unknownFields.equals(other.unknownFields);
-			return result;
-		}
-
-		@java.lang.Override
-		public int hashCode() {
-			if (memoizedHashCode != 0) {
-				return memoizedHashCode;
-			}
-			int hash = 41;
-			hash = (19 * hash) + getDescriptor().hashCode();
-			if (getFeaturesCount() > 0) {
-				hash = (37 * hash) + FEATURES_FIELD_NUMBER;
-				hash = (53 * hash) + getFeaturesList().hashCode();
-			}
-			hash = (29 * hash) + unknownFields.hashCode();
-			memoizedHashCode = hash;
-			return hash;
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(
-				com.google.protobuf.ByteString data) throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(
-				com.google.protobuf.ByteString data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data, extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(byte[] data)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(byte[] data,
-				com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data, extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(java.io.InputStream input)
-				throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(java.io.InputStream input,
-				com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseDelimitedFrom(
-				java.io.InputStream input) throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseDelimitedFrom(
-				java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input,
-					extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(
-				com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(
-				com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
-		}
-
-		@Override
-		public Builder newBuilderForType() {
-			return newBuilder();
-		}
-
-		public static Builder newBuilder() {
-			return DEFAULT_INSTANCE.toBuilder();
-		}
-
-		public static Builder newBuilder(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf prototype) {
-			return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-		}
-
-		@Override
-		public Builder toBuilder() {
-			return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
-		}
-
-		@java.lang.Override
-		protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-			Builder builder = new Builder(parent);
-			return builder;
-		}
-
-		/**
-		 * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeLayerPbf}
-		 */
-		public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-				// @@protoc_insertion_point(builder_implements:cn.platalk.core.pbf.threedata.ThreeLayerPbf)
-				cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder {
-			public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-				return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_descriptor;
-			}
-
-			@Override
-			protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-				return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_fieldAccessorTable
-						.ensureFieldAccessorsInitialized(
-								cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.class,
-								cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder.class);
-			}
-
-			// Construct using
-			// cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.newBuilder()
-			private Builder() {
-				maybeForceBuilderInitialization();
-			}
-
-			private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-				super(parent);
-				maybeForceBuilderInitialization();
-			}
-
-			private void maybeForceBuilderInitialization() {
-				if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-					getFeaturesFieldBuilder();
-				}
-			}
-
-			@Override
-			public Builder clear() {
-				super.clear();
-				if (featuresBuilder_ == null) {
-					features_ = java.util.Collections.emptyList();
-					bitField0_ = (bitField0_ & ~0x00000001);
-				} else {
-					featuresBuilder_.clear();
-				}
-				return this;
-			}
-
-			@Override
-			public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-				return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_descriptor;
-			}
-
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getDefaultInstanceForType() {
-				return cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance();
-			}
-
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf build() {
-				cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf result = buildPartial();
-				if (!result.isInitialized()) {
-					throw newUninitializedMessageException(result);
-				}
-				return result;
-			}
-
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf buildPartial() {
-				cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf result = new cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf(
-						this);
-				int from_bitField0_ = bitField0_;
-				if (featuresBuilder_ == null) {
-					if (((bitField0_ & 0x00000001) == 0x00000001)) {
-						features_ = java.util.Collections.unmodifiableList(features_);
-						bitField0_ = (bitField0_ & ~0x00000001);
-					}
-					result.features_ = features_;
-				} else {
-					result.features_ = featuresBuilder_.build();
-				}
-				onBuilt();
-				return result;
-			}
-
-			@Override
-			public Builder clone() {
-				return super.clone();
-			}
-
-			@Override
-			public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return super.setField(field, value);
-			}
-
-			@Override
-			public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-				return super.clearField(field);
-			}
-
-			@Override
-			public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-				return super.clearOneof(oneof);
-			}
-
-			@Override
-			public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-					Object value) {
-				return super.setRepeatedField(field, index, value);
-			}
-
-			@Override
-			public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return super.addRepeatedField(field, value);
-			}
-
-			@Override
-			public Builder mergeFrom(com.google.protobuf.Message other) {
-				if (other instanceof cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf) {
-					return mergeFrom((cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf) other);
-				} else {
-					super.mergeFrom(other);
-					return this;
-				}
-			}
-
-			public Builder mergeFrom(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf other) {
-				if (other == cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance())
-					return this;
-				if (featuresBuilder_ == null) {
-					if (!other.features_.isEmpty()) {
-						if (features_.isEmpty()) {
-							features_ = other.features_;
-							bitField0_ = (bitField0_ & ~0x00000001);
-						} else {
-							ensureFeaturesIsMutable();
-							features_.addAll(other.features_);
-						}
-						onChanged();
-					}
-				} else {
-					if (!other.features_.isEmpty()) {
-						if (featuresBuilder_.isEmpty()) {
-							featuresBuilder_.dispose();
-							featuresBuilder_ = null;
-							features_ = other.features_;
-							bitField0_ = (bitField0_ & ~0x00000001);
-							featuresBuilder_ = com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-									? getFeaturesFieldBuilder() : null;
-						} else {
-							featuresBuilder_.addAllMessages(other.features_);
-						}
-					}
-				}
-				this.mergeUnknownFields(other.unknownFields);
-				onChanged();
-				return this;
-			}
-
-			@Override
-			public final boolean isInitialized() {
-				for (int i = 0; i < getFeaturesCount(); i++) {
-					if (!getFeatures(i).isInitialized()) {
-						return false;
-					}
-				}
-				return true;
-			}
-
-			@Override
-			public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
-					com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-				cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parsedMessage = null;
-				try {
-					parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-				} catch (com.google.protobuf.InvalidProtocolBufferException e) {
-					parsedMessage = (cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf) e
-							.getUnfinishedMessage();
-					throw e.unwrapIOException();
-				} finally {
-					if (parsedMessage != null) {
-						mergeFrom(parsedMessage);
-					}
-				}
-				return this;
-			}
-
-			private int bitField0_;
-
-			private java.util.List<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf> features_ = java.util.Collections
-					.emptyList();
-
-			private void ensureFeaturesIsMutable() {
-				if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-					features_ = new java.util.ArrayList<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf>(
-							features_);
-					bitField0_ |= 0x00000001;
-				}
-			}
-
-			private com.google.protobuf.RepeatedFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder> featuresBuilder_;
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			@Override
-			public java.util.List<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf> getFeaturesList() {
-				if (featuresBuilder_ == null) {
-					return java.util.Collections.unmodifiableList(features_);
-				} else {
-					return featuresBuilder_.getMessageList();
-				}
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			@Override
-			public int getFeaturesCount() {
-				if (featuresBuilder_ == null) {
-					return features_.size();
-				} else {
-					return featuresBuilder_.getCount();
-				}
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf getFeatures(int index) {
-				if (featuresBuilder_ == null) {
-					return features_.get(index);
-				} else {
-					return featuresBuilder_.getMessage(index);
-				}
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public Builder setFeatures(int index, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf value) {
-				if (featuresBuilder_ == null) {
-					if (value == null) {
-						throw new NullPointerException();
-					}
-					ensureFeaturesIsMutable();
-					features_.set(index, value);
-					onChanged();
-				} else {
-					featuresBuilder_.setMessage(index, value);
-				}
-				return this;
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public Builder setFeatures(int index,
-					cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder builderForValue) {
-				if (featuresBuilder_ == null) {
-					ensureFeaturesIsMutable();
-					features_.set(index, builderForValue.build());
-					onChanged();
-				} else {
-					featuresBuilder_.setMessage(index, builderForValue.build());
-				}
-				return this;
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public Builder addFeatures(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf value) {
-				if (featuresBuilder_ == null) {
-					if (value == null) {
-						throw new NullPointerException();
-					}
-					ensureFeaturesIsMutable();
-					features_.add(value);
-					onChanged();
-				} else {
-					featuresBuilder_.addMessage(value);
-				}
-				return this;
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public Builder addFeatures(int index, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf value) {
-				if (featuresBuilder_ == null) {
-					if (value == null) {
-						throw new NullPointerException();
-					}
-					ensureFeaturesIsMutable();
-					features_.add(index, value);
-					onChanged();
-				} else {
-					featuresBuilder_.addMessage(index, value);
-				}
-				return this;
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public Builder addFeatures(
-					cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder builderForValue) {
-				if (featuresBuilder_ == null) {
-					ensureFeaturesIsMutable();
-					features_.add(builderForValue.build());
-					onChanged();
-				} else {
-					featuresBuilder_.addMessage(builderForValue.build());
-				}
-				return this;
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public Builder addFeatures(int index,
-					cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder builderForValue) {
-				if (featuresBuilder_ == null) {
-					ensureFeaturesIsMutable();
-					features_.add(index, builderForValue.build());
-					onChanged();
-				} else {
-					featuresBuilder_.addMessage(index, builderForValue.build());
-				}
-				return this;
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public Builder addAllFeatures(
-					java.lang.Iterable<? extends cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf> values) {
-				if (featuresBuilder_ == null) {
-					ensureFeaturesIsMutable();
-					com.google.protobuf.AbstractMessageLite.Builder.addAll(values, features_);
-					onChanged();
-				} else {
-					featuresBuilder_.addAllMessages(values);
-				}
-				return this;
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public Builder clearFeatures() {
-				if (featuresBuilder_ == null) {
-					features_ = java.util.Collections.emptyList();
-					bitField0_ = (bitField0_ & ~0x00000001);
-					onChanged();
-				} else {
-					featuresBuilder_.clear();
-				}
-				return this;
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public Builder removeFeatures(int index) {
-				if (featuresBuilder_ == null) {
-					ensureFeaturesIsMutable();
-					features_.remove(index);
-					onChanged();
-				} else {
-					featuresBuilder_.remove(index);
-				}
-				return this;
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder getFeaturesBuilder(int index) {
-				return getFeaturesFieldBuilder().getBuilder(index);
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder getFeaturesOrBuilder(
-					int index) {
-				if (featuresBuilder_ == null) {
-					return features_.get(index);
-				} else {
-					return featuresBuilder_.getMessageOrBuilder(index);
-				}
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			@Override
-			public java.util.List<? extends cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder> getFeaturesOrBuilderList() {
-				if (featuresBuilder_ != null) {
-					return featuresBuilder_.getMessageOrBuilderList();
-				} else {
-					return java.util.Collections.unmodifiableList(features_);
-				}
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder addFeaturesBuilder() {
-				return getFeaturesFieldBuilder()
-						.addBuilder(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.getDefaultInstance());
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder addFeaturesBuilder(int index) {
-				return getFeaturesFieldBuilder().addBuilder(index,
-						cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.getDefaultInstance());
-			}
-
-			/**
-			 * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
-			 */
-			public java.util.List<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder> getFeaturesBuilderList() {
-				return getFeaturesFieldBuilder().getBuilderList();
-			}
-
-			private com.google.protobuf.RepeatedFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder> getFeaturesFieldBuilder() {
-				if (featuresBuilder_ == null) {
-					featuresBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder>(
-							features_, ((bitField0_ & 0x00000001) == 0x00000001), getParentForChildren(), isClean());
-					features_ = null;
-				}
-				return featuresBuilder_;
-			}
-
-			@Override
-			public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
-				return super.setUnknownFields(unknownFields);
-			}
-
-			@Override
-			public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
-				return super.mergeUnknownFields(unknownFields);
-			}
-
-			// @@protoc_insertion_point(builder_scope:cn.platalk.core.pbf.threedata.ThreeLayerPbf)
-		}
-
-		// @@protoc_insertion_point(class_scope:cn.platalk.core.pbf.threedata.ThreeLayerPbf)
-		private static final cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf DEFAULT_INSTANCE;
-		static {
-			DEFAULT_INSTANCE = new cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf();
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getDefaultInstance() {
-			return DEFAULT_INSTANCE;
-		}
-
-		@java.lang.Deprecated
-		public static final com.google.protobuf.Parser<ThreeLayerPbf> PARSER = new com.google.protobuf.AbstractParser<ThreeLayerPbf>() {
-			@Override
-			public ThreeLayerPbf parsePartialFrom(com.google.protobuf.CodedInputStream input,
-					com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-					throws com.google.protobuf.InvalidProtocolBufferException {
-				return new ThreeLayerPbf(input, extensionRegistry);
-			}
-		};
-
-		public static com.google.protobuf.Parser<ThreeLayerPbf> parser() {
-			return PARSER;
-		}
-
-		@java.lang.Override
-		public com.google.protobuf.Parser<ThreeLayerPbf> getParserForType() {
-			return PARSER;
-		}
-
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getDefaultInstanceForType() {
-			return DEFAULT_INSTANCE;
-		}
-
-	}
-
-	public interface ThreeFeaturePbfOrBuilder extends
-			// @@protoc_insertion_point(interface_extends:cn.platalk.core.pbf.threedata.ThreeFeaturePbf)
-			com.google.protobuf.MessageOrBuilder {
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-		 */
-		boolean hasGeometry();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-		 */
-		cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf getGeometry();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-		 */
-		cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbfOrBuilder getGeometryOrBuilder();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-		 */
-		boolean hasProperties();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-		 */
-		cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf getProperties();
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-		 */
-		cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder getPropertiesOrBuilder();
-	}
-
-	/**
-	 * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeFeaturePbf}
-	 */
-	public static final class ThreeFeaturePbf extends com.google.protobuf.GeneratedMessageV3 implements
-			// @@protoc_insertion_point(message_implements:cn.platalk.core.pbf.threedata.ThreeFeaturePbf)
-			ThreeFeaturePbfOrBuilder {
-		// Use ThreeFeaturePbf.newBuilder() to construct.
-		private ThreeFeaturePbf(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-			super(builder);
-		}
-
-		private ThreeFeaturePbf() {
-		}
-
-		@java.lang.Override
-		public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
-			return this.unknownFields;
-		}
-
-		private ThreeFeaturePbf(com.google.protobuf.CodedInputStream input,
-				com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			this();
-			int mutable_bitField0_ = 0;
-			com.google.protobuf.UnknownFieldSet.Builder unknownFields = com.google.protobuf.UnknownFieldSet
-					.newBuilder();
-			try {
-				boolean done = false;
-				while (!done) {
-					int tag = input.readTag();
-					switch (tag) {
-					case 0:
-						done = true;
-						break;
-					default: {
-						if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-							done = true;
-						}
-						break;
-					}
-					case 10: {
-						cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.Builder subBuilder = null;
-						if (((bitField0_ & 0x00000001) == 0x00000001)) {
-							subBuilder = geometry_.toBuilder();
-						}
-						geometry_ = input.readMessage(
-								cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.PARSER,
-								extensionRegistry);
-						if (subBuilder != null) {
-							subBuilder.mergeFrom(geometry_);
-							geometry_ = subBuilder.buildPartial();
-						}
-						bitField0_ |= 0x00000001;
-						break;
-					}
-					case 18: {
-						cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder subBuilder = null;
-						if (((bitField0_ & 0x00000002) == 0x00000002)) {
-							subBuilder = properties_.toBuilder();
-						}
-						properties_ = input.readMessage(
-								cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.PARSER,
-								extensionRegistry);
-						if (subBuilder != null) {
-							subBuilder.mergeFrom(properties_);
-							properties_ = subBuilder.buildPartial();
-						}
-						bitField0_ |= 0x00000002;
-						break;
-					}
-					}
-				}
-			} catch (com.google.protobuf.InvalidProtocolBufferException e) {
-				throw e.setUnfinishedMessage(this);
-			} catch (java.io.IOException e) {
-				throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-			} finally {
-				this.unknownFields = unknownFields.build();
-				makeExtensionsImmutable();
-			}
-		}
-
-		public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-			return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_descriptor;
-		}
-
-		@Override
-		protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-			return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_fieldAccessorTable
-					.ensureFieldAccessorsInitialized(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.class,
-							cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder.class);
-		}
-
-		private int bitField0_;
-		public static final int GEOMETRY_FIELD_NUMBER = 1;
-		private cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf geometry_;
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-		 */
-		@Override
-		public boolean hasGeometry() {
-			return ((bitField0_ & 0x00000001) == 0x00000001);
-		}
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-		 */
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf getGeometry() {
-			return geometry_ == null
-					? cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.getDefaultInstance()
-					: geometry_;
-		}
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-		 */
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbfOrBuilder getGeometryOrBuilder() {
-			return geometry_ == null
-					? cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.getDefaultInstance()
-					: geometry_;
-		}
-
-		public static final int PROPERTIES_FIELD_NUMBER = 2;
-		private cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf properties_;
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-		 */
-		@Override
-		public boolean hasProperties() {
-			return ((bitField0_ & 0x00000002) == 0x00000002);
-		}
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-		 */
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf getProperties() {
-			return properties_ == null
-					? cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.getDefaultInstance()
-					: properties_;
-		}
-
-		/**
-		 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-		 */
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder getPropertiesOrBuilder() {
-			return properties_ == null
-					? cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.getDefaultInstance()
-					: properties_;
-		}
-
-		private byte memoizedIsInitialized = -1;
-
-		@Override
-		public final boolean isInitialized() {
-			byte isInitialized = memoizedIsInitialized;
-			if (isInitialized == 1)
-				return true;
-			if (isInitialized == 0)
-				return false;
-
-			if (!hasGeometry()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!hasProperties()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!getGeometry().isInitialized()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			if (!getProperties().isInitialized()) {
-				memoizedIsInitialized = 0;
-				return false;
-			}
-			memoizedIsInitialized = 1;
-			return true;
-		}
-
-		@Override
-		public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-			if (((bitField0_ & 0x00000001) == 0x00000001)) {
-				output.writeMessage(1, getGeometry());
-			}
-			if (((bitField0_ & 0x00000002) == 0x00000002)) {
-				output.writeMessage(2, getProperties());
-			}
-			unknownFields.writeTo(output);
-		}
-
-		@Override
-		public int getSerializedSize() {
-			int size = memoizedSize;
-			if (size != -1)
-				return size;
-
-			size = 0;
-			if (((bitField0_ & 0x00000001) == 0x00000001)) {
-				size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getGeometry());
-			}
-			if (((bitField0_ & 0x00000002) == 0x00000002)) {
-				size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getProperties());
-			}
-			size += unknownFields.getSerializedSize();
-			memoizedSize = size;
-			return size;
-		}
-
-		private static final long serialVersionUID = 0L;
-
-		@java.lang.Override
-		public boolean equals(final java.lang.Object obj) {
-			if (obj == this) {
-				return true;
-			}
-			if (!(obj instanceof cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf)) {
-				return super.equals(obj);
-			}
-			cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf other = (cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf) obj;
-
-			boolean result = true;
-			result = result && (hasGeometry() == other.hasGeometry());
-			if (hasGeometry()) {
-				result = result && getGeometry().equals(other.getGeometry());
-			}
-			result = result && (hasProperties() == other.hasProperties());
-			if (hasProperties()) {
-				result = result && getProperties().equals(other.getProperties());
-			}
-			result = result && unknownFields.equals(other.unknownFields);
-			return result;
-		}
-
-		@java.lang.Override
-		public int hashCode() {
-			if (memoizedHashCode != 0) {
-				return memoizedHashCode;
-			}
-			int hash = 41;
-			hash = (19 * hash) + getDescriptor().hashCode();
-			if (hasGeometry()) {
-				hash = (37 * hash) + GEOMETRY_FIELD_NUMBER;
-				hash = (53 * hash) + getGeometry().hashCode();
-			}
-			if (hasProperties()) {
-				hash = (37 * hash) + PROPERTIES_FIELD_NUMBER;
-				hash = (53 * hash) + getProperties().hashCode();
-			}
-			hash = (29 * hash) + unknownFields.hashCode();
-			memoizedHashCode = hash;
-			return hash;
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(
-				com.google.protobuf.ByteString data) throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(
-				com.google.protobuf.ByteString data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data, extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(byte[] data)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(byte[] data,
-				com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws com.google.protobuf.InvalidProtocolBufferException {
-			return PARSER.parseFrom(data, extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(java.io.InputStream input)
-				throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(java.io.InputStream input,
-				com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseDelimitedFrom(
-				java.io.InputStream input) throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseDelimitedFrom(
-				java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input,
-					extensionRegistry);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(
-				com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(
-				com.google.protobuf.CodedInputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-				throws java.io.IOException {
-			return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input, extensionRegistry);
-		}
-
-		@Override
-		public Builder newBuilderForType() {
-			return newBuilder();
-		}
-
-		public static Builder newBuilder() {
-			return DEFAULT_INSTANCE.toBuilder();
-		}
-
-		public static Builder newBuilder(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf prototype) {
-			return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-		}
-
-		@Override
-		public Builder toBuilder() {
-			return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
-		}
-
-		@java.lang.Override
-		protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-			Builder builder = new Builder(parent);
-			return builder;
-		}
-
-		/**
-		 * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeFeaturePbf}
-		 */
-		public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-				// @@protoc_insertion_point(builder_implements:cn.platalk.core.pbf.threedata.ThreeFeaturePbf)
-				cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder {
-			public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-				return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_descriptor;
-			}
-
-			@Override
-			protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internalGetFieldAccessorTable() {
-				return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_fieldAccessorTable
-						.ensureFieldAccessorsInitialized(
-								cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.class,
-								cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder.class);
-			}
-
-			// Construct using
-			// cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.newBuilder()
-			private Builder() {
-				maybeForceBuilderInitialization();
-			}
-
-			private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-				super(parent);
-				maybeForceBuilderInitialization();
-			}
-
-			private void maybeForceBuilderInitialization() {
-				if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-					getGeometryFieldBuilder();
-					getPropertiesFieldBuilder();
-				}
-			}
-
-			@Override
-			public Builder clear() {
-				super.clear();
-				if (geometryBuilder_ == null) {
-					geometry_ = null;
-				} else {
-					geometryBuilder_.clear();
-				}
-				bitField0_ = (bitField0_ & ~0x00000001);
-				if (propertiesBuilder_ == null) {
-					properties_ = null;
-				} else {
-					propertiesBuilder_.clear();
-				}
-				bitField0_ = (bitField0_ & ~0x00000002);
-				return this;
-			}
-
-			@Override
-			public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-				return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_descriptor;
-			}
-
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf getDefaultInstanceForType() {
-				return cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.getDefaultInstance();
-			}
-
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf build() {
-				cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf result = buildPartial();
-				if (!result.isInitialized()) {
-					throw newUninitializedMessageException(result);
-				}
-				return result;
-			}
-
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf buildPartial() {
-				cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf result = new cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf(
-						this);
-				int from_bitField0_ = bitField0_;
-				int to_bitField0_ = 0;
-				if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-					to_bitField0_ |= 0x00000001;
-				}
-				if (geometryBuilder_ == null) {
-					result.geometry_ = geometry_;
-				} else {
-					result.geometry_ = geometryBuilder_.build();
-				}
-				if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-					to_bitField0_ |= 0x00000002;
-				}
-				if (propertiesBuilder_ == null) {
-					result.properties_ = properties_;
-				} else {
-					result.properties_ = propertiesBuilder_.build();
-				}
-				result.bitField0_ = to_bitField0_;
-				onBuilt();
-				return result;
-			}
-
-			@Override
-			public Builder clone() {
-				return super.clone();
-			}
-
-			@Override
-			public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return super.setField(field, value);
-			}
-
-			@Override
-			public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
-				return super.clearField(field);
-			}
-
-			@Override
-			public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-				return super.clearOneof(oneof);
-			}
-
-			@Override
-			public Builder setRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, int index,
-					Object value) {
-				return super.setRepeatedField(field, index, value);
-			}
-
-			@Override
-			public Builder addRepeatedField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
-				return super.addRepeatedField(field, value);
-			}
-
-			@Override
-			public Builder mergeFrom(com.google.protobuf.Message other) {
-				if (other instanceof cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf) {
-					return mergeFrom((cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf) other);
-				} else {
-					super.mergeFrom(other);
-					return this;
-				}
-			}
-
-			public Builder mergeFrom(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf other) {
-				if (other == cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.getDefaultInstance())
-					return this;
-				if (other.hasGeometry()) {
-					mergeGeometry(other.getGeometry());
-				}
-				if (other.hasProperties()) {
-					mergeProperties(other.getProperties());
-				}
-				this.mergeUnknownFields(other.unknownFields);
-				onChanged();
-				return this;
-			}
-
-			@Override
-			public final boolean isInitialized() {
-				if (!hasGeometry()) {
-					return false;
-				}
-				if (!hasProperties()) {
-					return false;
-				}
-				if (!getGeometry().isInitialized()) {
-					return false;
-				}
-				if (!getProperties().isInitialized()) {
-					return false;
-				}
-				return true;
-			}
-
-			@Override
-			public Builder mergeFrom(com.google.protobuf.CodedInputStream input,
-					com.google.protobuf.ExtensionRegistryLite extensionRegistry) throws java.io.IOException {
-				cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parsedMessage = null;
-				try {
-					parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-				} catch (com.google.protobuf.InvalidProtocolBufferException e) {
-					parsedMessage = (cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf) e
-							.getUnfinishedMessage();
-					throw e.unwrapIOException();
-				} finally {
-					if (parsedMessage != null) {
-						mergeFrom(parsedMessage);
-					}
-				}
-				return this;
-			}
-
-			private int bitField0_;
-
-			private cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf geometry_ = null;
-			private com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf, cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbfOrBuilder> geometryBuilder_;
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-			 */
-			@Override
-			public boolean hasGeometry() {
-				return ((bitField0_ & 0x00000001) == 0x00000001);
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-			 */
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf getGeometry() {
-				if (geometryBuilder_ == null) {
-					return geometry_ == null ? cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf
-							.getDefaultInstance() : geometry_;
-				} else {
-					return geometryBuilder_.getMessage();
-				}
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-			 */
-			public Builder setGeometry(cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf value) {
-				if (geometryBuilder_ == null) {
-					if (value == null) {
-						throw new NullPointerException();
-					}
-					geometry_ = value;
-					onChanged();
-				} else {
-					geometryBuilder_.setMessage(value);
-				}
-				bitField0_ |= 0x00000001;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-			 */
-			public Builder setGeometry(
-					cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.Builder builderForValue) {
-				if (geometryBuilder_ == null) {
-					geometry_ = builderForValue.build();
-					onChanged();
-				} else {
-					geometryBuilder_.setMessage(builderForValue.build());
-				}
-				bitField0_ |= 0x00000001;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-			 */
-			public Builder mergeGeometry(
-					cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf value) {
-				if (geometryBuilder_ == null) {
-					if (((bitField0_ & 0x00000001) == 0x00000001) && geometry_ != null
-							&& geometry_ != cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf
-									.getDefaultInstance()) {
-						geometry_ = cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf
-								.newBuilder(geometry_).mergeFrom(value).buildPartial();
-					} else {
-						geometry_ = value;
-					}
-					onChanged();
-				} else {
-					geometryBuilder_.mergeFrom(value);
-				}
-				bitField0_ |= 0x00000001;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-			 */
-			public Builder clearGeometry() {
-				if (geometryBuilder_ == null) {
-					geometry_ = null;
-					onChanged();
-				} else {
-					geometryBuilder_.clear();
-				}
-				bitField0_ = (bitField0_ & ~0x00000001);
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-			 */
-			public cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.Builder getGeometryBuilder() {
-				bitField0_ |= 0x00000001;
-				onChanged();
-				return getGeometryFieldBuilder().getBuilder();
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-			 */
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbfOrBuilder getGeometryOrBuilder() {
-				if (geometryBuilder_ != null) {
-					return geometryBuilder_.getMessageOrBuilder();
-				} else {
-					return geometry_ == null ? cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf
-							.getDefaultInstance() : geometry_;
-				}
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
-			 */
-			private com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf, cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbfOrBuilder> getGeometryFieldBuilder() {
-				if (geometryBuilder_ == null) {
-					geometryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf, cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbfOrBuilder>(
-							getGeometry(), getParentForChildren(), isClean());
-					geometry_ = null;
-				}
-				return geometryBuilder_;
-			}
-
-			private cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf properties_ = null;
-			private com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder> propertiesBuilder_;
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-			 */
-			@Override
-			public boolean hasProperties() {
-				return ((bitField0_ & 0x00000002) == 0x00000002);
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-			 */
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf getProperties() {
-				if (propertiesBuilder_ == null) {
-					return properties_ == null
-							? cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf
-									.getDefaultInstance()
-							: properties_;
-				} else {
-					return propertiesBuilder_.getMessage();
-				}
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-			 */
-			public Builder setProperties(
-					cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf value) {
-				if (propertiesBuilder_ == null) {
-					if (value == null) {
-						throw new NullPointerException();
-					}
-					properties_ = value;
-					onChanged();
-				} else {
-					propertiesBuilder_.setMessage(value);
-				}
-				bitField0_ |= 0x00000002;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-			 */
-			public Builder setProperties(
-					cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder builderForValue) {
-				if (propertiesBuilder_ == null) {
-					properties_ = builderForValue.build();
-					onChanged();
-				} else {
-					propertiesBuilder_.setMessage(builderForValue.build());
-				}
-				bitField0_ |= 0x00000002;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-			 */
-			public Builder mergeProperties(
-					cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf value) {
-				if (propertiesBuilder_ == null) {
-					if (((bitField0_ & 0x00000002) == 0x00000002) && properties_ != null
-							&& properties_ != cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf
-									.getDefaultInstance()) {
-						properties_ = cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf
-								.newBuilder(properties_).mergeFrom(value).buildPartial();
-					} else {
-						properties_ = value;
-					}
-					onChanged();
-				} else {
-					propertiesBuilder_.mergeFrom(value);
-				}
-				bitField0_ |= 0x00000002;
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-			 */
-			public Builder clearProperties() {
-				if (propertiesBuilder_ == null) {
-					properties_ = null;
-					onChanged();
-				} else {
-					propertiesBuilder_.clear();
-				}
-				bitField0_ = (bitField0_ & ~0x00000002);
-				return this;
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-			 */
-			public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder getPropertiesBuilder() {
-				bitField0_ |= 0x00000002;
-				onChanged();
-				return getPropertiesFieldBuilder().getBuilder();
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-			 */
-			@Override
-			public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder getPropertiesOrBuilder() {
-				if (propertiesBuilder_ != null) {
-					return propertiesBuilder_.getMessageOrBuilder();
-				} else {
-					return properties_ == null
-							? cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf
-									.getDefaultInstance()
-							: properties_;
-				}
-			}
-
-			/**
-			 * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
-			 */
-			private com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder> getPropertiesFieldBuilder() {
-				if (propertiesBuilder_ == null) {
-					propertiesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder>(
-							getProperties(), getParentForChildren(), isClean());
-					properties_ = null;
-				}
-				return propertiesBuilder_;
-			}
-
-			@Override
-			public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
-				return super.setUnknownFields(unknownFields);
-			}
-
-			@Override
-			public final Builder mergeUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
-				return super.mergeUnknownFields(unknownFields);
-			}
-
-			// @@protoc_insertion_point(builder_scope:cn.platalk.core.pbf.threedata.ThreeFeaturePbf)
-		}
-
-		// @@protoc_insertion_point(class_scope:cn.platalk.core.pbf.threedata.ThreeFeaturePbf)
-		private static final cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf DEFAULT_INSTANCE;
-		static {
-			DEFAULT_INSTANCE = new cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf();
-		}
-
-		public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf getDefaultInstance() {
-			return DEFAULT_INSTANCE;
-		}
-
-		@java.lang.Deprecated
-		public static final com.google.protobuf.Parser<ThreeFeaturePbf> PARSER = new com.google.protobuf.AbstractParser<ThreeFeaturePbf>() {
-			@Override
-			public ThreeFeaturePbf parsePartialFrom(com.google.protobuf.CodedInputStream input,
-					com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-					throws com.google.protobuf.InvalidProtocolBufferException {
-				return new ThreeFeaturePbf(input, extensionRegistry);
-			}
-		};
-
-		public static com.google.protobuf.Parser<ThreeFeaturePbf> parser() {
-			return PARSER;
-		}
-
-		@java.lang.Override
-		public com.google.protobuf.Parser<ThreeFeaturePbf> getParserForType() {
-			return PARSER;
-		}
-
-		@Override
-		public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf getDefaultInstanceForType() {
-			return DEFAULT_INSTANCE;
-		}
-
-	}
-
-	private static final com.google.protobuf.Descriptors.Descriptor internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_descriptor;
-	private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_fieldAccessorTable;
-	private static final com.google.protobuf.Descriptors.Descriptor internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_descriptor;
-	private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_fieldAccessorTable;
-	private static final com.google.protobuf.Descriptors.Descriptor internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_descriptor;
-	private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_fieldAccessorTable;
-
-	public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
-		return descriptor;
-	}
-
-	private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
-	static {
-		java.lang.String[] descriptorData = {
-				"\n\030t_y_three_data_pbf.proto\022\035cn.platalk.c" + "ore.pbf.threedata\032\034t_y_three_geometry_pb"
-						+ "f.proto\032\034t_y_three_property_pbf.proto\"\330\001"
-						+ "\n\014ThreeDataPbf\022\022\n\nbuildingID\030\001 \002(\t\022;\n\005fl"
-						+ "oor\030\002 \002(\0132,.cn.platalk.core.pbf.threedat"
-						+ "a.ThreeLayerPbf\022:\n\004room\030\003 \002(\0132,.cn.plata"
-						+ "lk.core.pbf.threedata.ThreeLayerPbf\022;\n\005a"
-						+ "sset\030\004 \002(\0132,.cn.platalk.core.pbf.threeda"
-						+ "ta.ThreeLayerPbf\"Q\n\rThreeLayerPbf\022@\n\010fea"
-						+ "tures\030\002 \003(\0132..cn.platalk.core.pbf.threed",
-				"ata.ThreeFeaturePbf\"\251\001\n\017ThreeFeaturePbf\022"
-						+ "H\n\010geometry\030\001 \002(\01326.cn.platalk.core.pbf."
-						+ "threedata.ThreeFeatureGeometryPbf\022L\n\npro"
-						+ "perties\030\002 \002(\01328.cn.platalk.core.pbf.thre" + "edata.ThreeFeaturePropertiesPbf" };
-		com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner = new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-			@Override
-			public com.google.protobuf.ExtensionRegistry assignDescriptors(
-					com.google.protobuf.Descriptors.FileDescriptor root) {
-				descriptor = root;
-				return null;
-			}
-		};
-		com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(descriptorData,
-				new com.google.protobuf.Descriptors.FileDescriptor[] {
-						cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.getDescriptor(),
-						cn.platalk.core.pbf.threedata.TYThreePropertyPbf.getDescriptor(), },
-				assigner);
-		internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_descriptor = getDescriptor().getMessageTypes()
-				.get(0);
-		internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-				internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_descriptor,
-				new java.lang.String[] { "BuildingID", "Floor", "Room", "Asset", });
-		internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_descriptor = getDescriptor().getMessageTypes()
-				.get(1);
-		internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-				internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_descriptor,
-				new java.lang.String[] { "Features", });
-		internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_descriptor = getDescriptor().getMessageTypes()
-				.get(2);
-		internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_fieldAccessorTable = new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-				internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_descriptor,
-				new java.lang.String[] { "Geometry", "Properties", });
-		cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.getDescriptor();
-		cn.platalk.core.pbf.threedata.TYThreePropertyPbf.getDescriptor();
-	}
-
-	// @@protoc_insertion_point(outer_class_scope)
+  private TYThreeDataPbf() {}
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
+  }
+  public interface ThreeDataPbfOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cn.platalk.core.pbf.threedata.ThreeDataPbf)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string buildingID = 1;</code>
+     */
+    boolean hasBuildingID();
+    /**
+     * <code>required string buildingID = 1;</code>
+     */
+    java.lang.String getBuildingID();
+    /**
+     * <code>required string buildingID = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getBuildingIDBytes();
+
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+     */
+    boolean hasFloor();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getFloor();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getFloorOrBuilder();
+
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+     */
+    boolean hasRoom();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getRoom();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getRoomOrBuilder();
+
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+     */
+    boolean hasAsset();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getAsset();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getAssetOrBuilder();
+
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+     */
+    boolean hasFacility();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getFacility();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getFacilityOrBuilder();
+
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+     */
+    boolean hasLabel();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getLabel();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getLabelOrBuilder();
+  }
+  /**
+   * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeDataPbf}
+   */
+  public  static final class ThreeDataPbf extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cn.platalk.core.pbf.threedata.ThreeDataPbf)
+      ThreeDataPbfOrBuilder {
+    // Use ThreeDataPbf.newBuilder() to construct.
+    private ThreeDataPbf(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ThreeDataPbf() {
+      buildingID_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ThreeDataPbf(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              buildingID_ = bs;
+              break;
+            }
+            case 18: {
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = floor_.toBuilder();
+              }
+              floor_ = input.readMessage(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(floor_);
+                floor_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = room_.toBuilder();
+              }
+              room_ = input.readMessage(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(room_);
+                room_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = asset_.toBuilder();
+              }
+              asset_ = input.readMessage(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(asset_);
+                asset_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
+            case 42: {
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                subBuilder = facility_.toBuilder();
+              }
+              facility_ = input.readMessage(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(facility_);
+                facility_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
+              break;
+            }
+            case 50: {
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = label_.toBuilder();
+              }
+              label_ = input.readMessage(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(label_);
+                label_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.class, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int BUILDINGID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object buildingID_;
+    /**
+     * <code>required string buildingID = 1;</code>
+     */
+    public boolean hasBuildingID() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string buildingID = 1;</code>
+     */
+    public java.lang.String getBuildingID() {
+      java.lang.Object ref = buildingID_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          buildingID_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string buildingID = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getBuildingIDBytes() {
+      java.lang.Object ref = buildingID_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        buildingID_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int FLOOR_FIELD_NUMBER = 2;
+    private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf floor_;
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+     */
+    public boolean hasFloor() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getFloor() {
+      return floor_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : floor_;
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getFloorOrBuilder() {
+      return floor_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : floor_;
+    }
+
+    public static final int ROOM_FIELD_NUMBER = 3;
+    private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf room_;
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+     */
+    public boolean hasRoom() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getRoom() {
+      return room_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : room_;
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getRoomOrBuilder() {
+      return room_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : room_;
+    }
+
+    public static final int ASSET_FIELD_NUMBER = 4;
+    private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf asset_;
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+     */
+    public boolean hasAsset() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getAsset() {
+      return asset_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : asset_;
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getAssetOrBuilder() {
+      return asset_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : asset_;
+    }
+
+    public static final int FACILITY_FIELD_NUMBER = 5;
+    private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf facility_;
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+     */
+    public boolean hasFacility() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getFacility() {
+      return facility_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : facility_;
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getFacilityOrBuilder() {
+      return facility_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : facility_;
+    }
+
+    public static final int LABEL_FIELD_NUMBER = 6;
+    private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf label_;
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+     */
+    public boolean hasLabel() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getLabel() {
+      return label_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : label_;
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getLabelOrBuilder() {
+      return label_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : label_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasBuildingID()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFloor()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRoom()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAsset()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFacility()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLabel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getFloor().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getRoom().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getAsset().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getFacility().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getLabel().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, buildingID_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, getFloor());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, getRoom());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, getAsset());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeMessage(5, getFacility());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(6, getLabel());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, buildingID_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getFloor());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getRoom());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getAsset());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getFacility());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getLabel());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf)) {
+        return super.equals(obj);
+      }
+      cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf other = (cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf) obj;
+
+      boolean result = true;
+      result = result && (hasBuildingID() == other.hasBuildingID());
+      if (hasBuildingID()) {
+        result = result && getBuildingID()
+            .equals(other.getBuildingID());
+      }
+      result = result && (hasFloor() == other.hasFloor());
+      if (hasFloor()) {
+        result = result && getFloor()
+            .equals(other.getFloor());
+      }
+      result = result && (hasRoom() == other.hasRoom());
+      if (hasRoom()) {
+        result = result && getRoom()
+            .equals(other.getRoom());
+      }
+      result = result && (hasAsset() == other.hasAsset());
+      if (hasAsset()) {
+        result = result && getAsset()
+            .equals(other.getAsset());
+      }
+      result = result && (hasFacility() == other.hasFacility());
+      if (hasFacility()) {
+        result = result && getFacility()
+            .equals(other.getFacility());
+      }
+      result = result && (hasLabel() == other.hasLabel());
+      if (hasLabel()) {
+        result = result && getLabel()
+            .equals(other.getLabel());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasBuildingID()) {
+        hash = (37 * hash) + BUILDINGID_FIELD_NUMBER;
+        hash = (53 * hash) + getBuildingID().hashCode();
+      }
+      if (hasFloor()) {
+        hash = (37 * hash) + FLOOR_FIELD_NUMBER;
+        hash = (53 * hash) + getFloor().hashCode();
+      }
+      if (hasRoom()) {
+        hash = (37 * hash) + ROOM_FIELD_NUMBER;
+        hash = (53 * hash) + getRoom().hashCode();
+      }
+      if (hasAsset()) {
+        hash = (37 * hash) + ASSET_FIELD_NUMBER;
+        hash = (53 * hash) + getAsset().hashCode();
+      }
+      if (hasFacility()) {
+        hash = (37 * hash) + FACILITY_FIELD_NUMBER;
+        hash = (53 * hash) + getFacility().hashCode();
+      }
+      if (hasLabel()) {
+        hash = (37 * hash) + LABEL_FIELD_NUMBER;
+        hash = (53 * hash) + getLabel().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeDataPbf}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cn.platalk.core.pbf.threedata.ThreeDataPbf)
+        cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbfOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.class, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.Builder.class);
+      }
+
+      // Construct using cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getFloorFieldBuilder();
+          getRoomFieldBuilder();
+          getAssetFieldBuilder();
+          getFacilityFieldBuilder();
+          getLabelFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        buildingID_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (floorBuilder_ == null) {
+          floor_ = null;
+        } else {
+          floorBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (roomBuilder_ == null) {
+          room_ = null;
+        } else {
+          roomBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        if (assetBuilder_ == null) {
+          asset_ = null;
+        } else {
+          assetBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        if (facilityBuilder_ == null) {
+          facility_ = null;
+        } else {
+          facilityBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        if (labelBuilder_ == null) {
+          label_ = null;
+        } else {
+          labelBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_descriptor;
+      }
+
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf getDefaultInstanceForType() {
+        return cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.getDefaultInstance();
+      }
+
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf build() {
+        cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf buildPartial() {
+        cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf result = new cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.buildingID_ = buildingID_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (floorBuilder_ == null) {
+          result.floor_ = floor_;
+        } else {
+          result.floor_ = floorBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (roomBuilder_ == null) {
+          result.room_ = room_;
+        } else {
+          result.room_ = roomBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (assetBuilder_ == null) {
+          result.asset_ = asset_;
+        } else {
+          result.asset_ = assetBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        if (facilityBuilder_ == null) {
+          result.facility_ = facility_;
+        } else {
+          result.facility_ = facilityBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        if (labelBuilder_ == null) {
+          result.label_ = label_;
+        } else {
+          result.label_ = labelBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf) {
+          return mergeFrom((cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf other) {
+        if (other == cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf.getDefaultInstance()) return this;
+        if (other.hasBuildingID()) {
+          bitField0_ |= 0x00000001;
+          buildingID_ = other.buildingID_;
+          onChanged();
+        }
+        if (other.hasFloor()) {
+          mergeFloor(other.getFloor());
+        }
+        if (other.hasRoom()) {
+          mergeRoom(other.getRoom());
+        }
+        if (other.hasAsset()) {
+          mergeAsset(other.getAsset());
+        }
+        if (other.hasFacility()) {
+          mergeFacility(other.getFacility());
+        }
+        if (other.hasLabel()) {
+          mergeLabel(other.getLabel());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasBuildingID()) {
+          return false;
+        }
+        if (!hasFloor()) {
+          return false;
+        }
+        if (!hasRoom()) {
+          return false;
+        }
+        if (!hasAsset()) {
+          return false;
+        }
+        if (!hasFacility()) {
+          return false;
+        }
+        if (!hasLabel()) {
+          return false;
+        }
+        if (!getFloor().isInitialized()) {
+          return false;
+        }
+        if (!getRoom().isInitialized()) {
+          return false;
+        }
+        if (!getAsset().isInitialized()) {
+          return false;
+        }
+        if (!getFacility().isInitialized()) {
+          return false;
+        }
+        if (!getLabel().isInitialized()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object buildingID_ = "";
+      /**
+       * <code>required string buildingID = 1;</code>
+       */
+      public boolean hasBuildingID() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string buildingID = 1;</code>
+       */
+      public java.lang.String getBuildingID() {
+        java.lang.Object ref = buildingID_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            buildingID_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string buildingID = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getBuildingIDBytes() {
+        java.lang.Object ref = buildingID_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          buildingID_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string buildingID = 1;</code>
+       */
+      public Builder setBuildingID(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        buildingID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string buildingID = 1;</code>
+       */
+      public Builder clearBuildingID() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        buildingID_ = getDefaultInstance().getBuildingID();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string buildingID = 1;</code>
+       */
+      public Builder setBuildingIDBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        buildingID_ = value;
+        onChanged();
+        return this;
+      }
+
+      private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf floor_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> floorBuilder_;
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+       */
+      public boolean hasFloor() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getFloor() {
+        if (floorBuilder_ == null) {
+          return floor_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : floor_;
+        } else {
+          return floorBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+       */
+      public Builder setFloor(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
+        if (floorBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          floor_ = value;
+          onChanged();
+        } else {
+          floorBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+       */
+      public Builder setFloor(
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder builderForValue) {
+        if (floorBuilder_ == null) {
+          floor_ = builderForValue.build();
+          onChanged();
+        } else {
+          floorBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+       */
+      public Builder mergeFloor(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
+        if (floorBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              floor_ != null &&
+              floor_ != cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance()) {
+            floor_ =
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.newBuilder(floor_).mergeFrom(value).buildPartial();
+          } else {
+            floor_ = value;
+          }
+          onChanged();
+        } else {
+          floorBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+       */
+      public Builder clearFloor() {
+        if (floorBuilder_ == null) {
+          floor_ = null;
+          onChanged();
+        } else {
+          floorBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder getFloorBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getFloorFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getFloorOrBuilder() {
+        if (floorBuilder_ != null) {
+          return floorBuilder_.getMessageOrBuilder();
+        } else {
+          return floor_ == null ?
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : floor_;
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf floor = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> 
+          getFloorFieldBuilder() {
+        if (floorBuilder_ == null) {
+          floorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder>(
+                  getFloor(),
+                  getParentForChildren(),
+                  isClean());
+          floor_ = null;
+        }
+        return floorBuilder_;
+      }
+
+      private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf room_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> roomBuilder_;
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+       */
+      public boolean hasRoom() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getRoom() {
+        if (roomBuilder_ == null) {
+          return room_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : room_;
+        } else {
+          return roomBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+       */
+      public Builder setRoom(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
+        if (roomBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          room_ = value;
+          onChanged();
+        } else {
+          roomBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+       */
+      public Builder setRoom(
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder builderForValue) {
+        if (roomBuilder_ == null) {
+          room_ = builderForValue.build();
+          onChanged();
+        } else {
+          roomBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+       */
+      public Builder mergeRoom(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
+        if (roomBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              room_ != null &&
+              room_ != cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance()) {
+            room_ =
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.newBuilder(room_).mergeFrom(value).buildPartial();
+          } else {
+            room_ = value;
+          }
+          onChanged();
+        } else {
+          roomBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+       */
+      public Builder clearRoom() {
+        if (roomBuilder_ == null) {
+          room_ = null;
+          onChanged();
+        } else {
+          roomBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder getRoomBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getRoomFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getRoomOrBuilder() {
+        if (roomBuilder_ != null) {
+          return roomBuilder_.getMessageOrBuilder();
+        } else {
+          return room_ == null ?
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : room_;
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf room = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> 
+          getRoomFieldBuilder() {
+        if (roomBuilder_ == null) {
+          roomBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder>(
+                  getRoom(),
+                  getParentForChildren(),
+                  isClean());
+          room_ = null;
+        }
+        return roomBuilder_;
+      }
+
+      private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf asset_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> assetBuilder_;
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+       */
+      public boolean hasAsset() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getAsset() {
+        if (assetBuilder_ == null) {
+          return asset_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : asset_;
+        } else {
+          return assetBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+       */
+      public Builder setAsset(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
+        if (assetBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          asset_ = value;
+          onChanged();
+        } else {
+          assetBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+       */
+      public Builder setAsset(
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder builderForValue) {
+        if (assetBuilder_ == null) {
+          asset_ = builderForValue.build();
+          onChanged();
+        } else {
+          assetBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+       */
+      public Builder mergeAsset(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
+        if (assetBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              asset_ != null &&
+              asset_ != cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance()) {
+            asset_ =
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.newBuilder(asset_).mergeFrom(value).buildPartial();
+          } else {
+            asset_ = value;
+          }
+          onChanged();
+        } else {
+          assetBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+       */
+      public Builder clearAsset() {
+        if (assetBuilder_ == null) {
+          asset_ = null;
+          onChanged();
+        } else {
+          assetBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder getAssetBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getAssetFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getAssetOrBuilder() {
+        if (assetBuilder_ != null) {
+          return assetBuilder_.getMessageOrBuilder();
+        } else {
+          return asset_ == null ?
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : asset_;
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf asset = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> 
+          getAssetFieldBuilder() {
+        if (assetBuilder_ == null) {
+          assetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder>(
+                  getAsset(),
+                  getParentForChildren(),
+                  isClean());
+          asset_ = null;
+        }
+        return assetBuilder_;
+      }
+
+      private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf facility_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> facilityBuilder_;
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+       */
+      public boolean hasFacility() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getFacility() {
+        if (facilityBuilder_ == null) {
+          return facility_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : facility_;
+        } else {
+          return facilityBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+       */
+      public Builder setFacility(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
+        if (facilityBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          facility_ = value;
+          onChanged();
+        } else {
+          facilityBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+       */
+      public Builder setFacility(
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder builderForValue) {
+        if (facilityBuilder_ == null) {
+          facility_ = builderForValue.build();
+          onChanged();
+        } else {
+          facilityBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+       */
+      public Builder mergeFacility(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
+        if (facilityBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              facility_ != null &&
+              facility_ != cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance()) {
+            facility_ =
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.newBuilder(facility_).mergeFrom(value).buildPartial();
+          } else {
+            facility_ = value;
+          }
+          onChanged();
+        } else {
+          facilityBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+       */
+      public Builder clearFacility() {
+        if (facilityBuilder_ == null) {
+          facility_ = null;
+          onChanged();
+        } else {
+          facilityBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder getFacilityBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getFacilityFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getFacilityOrBuilder() {
+        if (facilityBuilder_ != null) {
+          return facilityBuilder_.getMessageOrBuilder();
+        } else {
+          return facility_ == null ?
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : facility_;
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf facility = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> 
+          getFacilityFieldBuilder() {
+        if (facilityBuilder_ == null) {
+          facilityBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder>(
+                  getFacility(),
+                  getParentForChildren(),
+                  isClean());
+          facility_ = null;
+        }
+        return facilityBuilder_;
+      }
+
+      private cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf label_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> labelBuilder_;
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+       */
+      public boolean hasLabel() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getLabel() {
+        if (labelBuilder_ == null) {
+          return label_ == null ? cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : label_;
+        } else {
+          return labelBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+       */
+      public Builder setLabel(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
+        if (labelBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          label_ = value;
+          onChanged();
+        } else {
+          labelBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+       */
+      public Builder setLabel(
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder builderForValue) {
+        if (labelBuilder_ == null) {
+          label_ = builderForValue.build();
+          onChanged();
+        } else {
+          labelBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+       */
+      public Builder mergeLabel(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf value) {
+        if (labelBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              label_ != null &&
+              label_ != cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance()) {
+            label_ =
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.newBuilder(label_).mergeFrom(value).buildPartial();
+          } else {
+            label_ = value;
+          }
+          onChanged();
+        } else {
+          labelBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+       */
+      public Builder clearLabel() {
+        if (labelBuilder_ == null) {
+          label_ = null;
+          onChanged();
+        } else {
+          labelBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder getLabelBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getLabelFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder getLabelOrBuilder() {
+        if (labelBuilder_ != null) {
+          return labelBuilder_.getMessageOrBuilder();
+        } else {
+          return label_ == null ?
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance() : label_;
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeLayerPbf label = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder> 
+          getLabelFieldBuilder() {
+        if (labelBuilder_ == null) {
+          labelBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder>(
+                  getLabel(),
+                  getParentForChildren(),
+                  isClean());
+          label_ = null;
+        }
+        return labelBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cn.platalk.core.pbf.threedata.ThreeDataPbf)
+    }
+
+    // @@protoc_insertion_point(class_scope:cn.platalk.core.pbf.threedata.ThreeDataPbf)
+    private static final cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf();
+    }
+
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<ThreeDataPbf>
+        PARSER = new com.google.protobuf.AbstractParser<ThreeDataPbf>() {
+      public ThreeDataPbf parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ThreeDataPbf(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThreeDataPbf> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThreeDataPbf> getParserForType() {
+      return PARSER;
+    }
+
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThreeLayerPbfOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cn.platalk.core.pbf.threedata.ThreeLayerPbf)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+     */
+    java.util.List<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf> 
+        getFeaturesList();
+    /**
+     * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf getFeatures(int index);
+    /**
+     * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+     */
+    int getFeaturesCount();
+    /**
+     * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+     */
+    java.util.List<? extends cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder> 
+        getFeaturesOrBuilderList();
+    /**
+     * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder getFeaturesOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeLayerPbf}
+   */
+  public  static final class ThreeLayerPbf extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cn.platalk.core.pbf.threedata.ThreeLayerPbf)
+      ThreeLayerPbfOrBuilder {
+    // Use ThreeLayerPbf.newBuilder() to construct.
+    private ThreeLayerPbf(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ThreeLayerPbf() {
+      features_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ThreeLayerPbf(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                features_ = new java.util.ArrayList<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              features_.add(
+                  input.readMessage(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          features_ = java.util.Collections.unmodifiableList(features_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.class, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder.class);
+    }
+
+    public static final int FEATURES_FIELD_NUMBER = 2;
+    private java.util.List<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf> features_;
+    /**
+     * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+     */
+    public java.util.List<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf> getFeaturesList() {
+      return features_;
+    }
+    /**
+     * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+     */
+    public java.util.List<? extends cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder> 
+        getFeaturesOrBuilderList() {
+      return features_;
+    }
+    /**
+     * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+     */
+    public int getFeaturesCount() {
+      return features_.size();
+    }
+    /**
+     * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf getFeatures(int index) {
+      return features_.get(index);
+    }
+    /**
+     * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder getFeaturesOrBuilder(
+        int index) {
+      return features_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getFeaturesCount(); i++) {
+        if (!getFeatures(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < features_.size(); i++) {
+        output.writeMessage(2, features_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < features_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, features_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf)) {
+        return super.equals(obj);
+      }
+      cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf other = (cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf) obj;
+
+      boolean result = true;
+      result = result && getFeaturesList()
+          .equals(other.getFeaturesList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getFeaturesCount() > 0) {
+        hash = (37 * hash) + FEATURES_FIELD_NUMBER;
+        hash = (53 * hash) + getFeaturesList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeLayerPbf}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cn.platalk.core.pbf.threedata.ThreeLayerPbf)
+        cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbfOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.class, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.Builder.class);
+      }
+
+      // Construct using cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getFeaturesFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        if (featuresBuilder_ == null) {
+          features_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          featuresBuilder_.clear();
+        }
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_descriptor;
+      }
+
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getDefaultInstanceForType() {
+        return cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance();
+      }
+
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf build() {
+        cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf buildPartial() {
+        cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf result = new cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf(this);
+        int from_bitField0_ = bitField0_;
+        if (featuresBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            features_ = java.util.Collections.unmodifiableList(features_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.features_ = features_;
+        } else {
+          result.features_ = featuresBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf) {
+          return mergeFrom((cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf other) {
+        if (other == cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf.getDefaultInstance()) return this;
+        if (featuresBuilder_ == null) {
+          if (!other.features_.isEmpty()) {
+            if (features_.isEmpty()) {
+              features_ = other.features_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureFeaturesIsMutable();
+              features_.addAll(other.features_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.features_.isEmpty()) {
+            if (featuresBuilder_.isEmpty()) {
+              featuresBuilder_.dispose();
+              featuresBuilder_ = null;
+              features_ = other.features_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              featuresBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getFeaturesFieldBuilder() : null;
+            } else {
+              featuresBuilder_.addAllMessages(other.features_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getFeaturesCount(); i++) {
+          if (!getFeatures(i).isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf> features_ =
+        java.util.Collections.emptyList();
+      private void ensureFeaturesIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          features_ = new java.util.ArrayList<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf>(features_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder> featuresBuilder_;
+
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public java.util.List<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf> getFeaturesList() {
+        if (featuresBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(features_);
+        } else {
+          return featuresBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public int getFeaturesCount() {
+        if (featuresBuilder_ == null) {
+          return features_.size();
+        } else {
+          return featuresBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf getFeatures(int index) {
+        if (featuresBuilder_ == null) {
+          return features_.get(index);
+        } else {
+          return featuresBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public Builder setFeatures(
+          int index, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf value) {
+        if (featuresBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFeaturesIsMutable();
+          features_.set(index, value);
+          onChanged();
+        } else {
+          featuresBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public Builder setFeatures(
+          int index, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder builderForValue) {
+        if (featuresBuilder_ == null) {
+          ensureFeaturesIsMutable();
+          features_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          featuresBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public Builder addFeatures(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf value) {
+        if (featuresBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFeaturesIsMutable();
+          features_.add(value);
+          onChanged();
+        } else {
+          featuresBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public Builder addFeatures(
+          int index, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf value) {
+        if (featuresBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFeaturesIsMutable();
+          features_.add(index, value);
+          onChanged();
+        } else {
+          featuresBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public Builder addFeatures(
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder builderForValue) {
+        if (featuresBuilder_ == null) {
+          ensureFeaturesIsMutable();
+          features_.add(builderForValue.build());
+          onChanged();
+        } else {
+          featuresBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public Builder addFeatures(
+          int index, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder builderForValue) {
+        if (featuresBuilder_ == null) {
+          ensureFeaturesIsMutable();
+          features_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          featuresBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public Builder addAllFeatures(
+          java.lang.Iterable<? extends cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf> values) {
+        if (featuresBuilder_ == null) {
+          ensureFeaturesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, features_);
+          onChanged();
+        } else {
+          featuresBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public Builder clearFeatures() {
+        if (featuresBuilder_ == null) {
+          features_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          featuresBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public Builder removeFeatures(int index) {
+        if (featuresBuilder_ == null) {
+          ensureFeaturesIsMutable();
+          features_.remove(index);
+          onChanged();
+        } else {
+          featuresBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder getFeaturesBuilder(
+          int index) {
+        return getFeaturesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder getFeaturesOrBuilder(
+          int index) {
+        if (featuresBuilder_ == null) {
+          return features_.get(index);  } else {
+          return featuresBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public java.util.List<? extends cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder> 
+           getFeaturesOrBuilderList() {
+        if (featuresBuilder_ != null) {
+          return featuresBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(features_);
+        }
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder addFeaturesBuilder() {
+        return getFeaturesFieldBuilder().addBuilder(
+            cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder addFeaturesBuilder(
+          int index) {
+        return getFeaturesFieldBuilder().addBuilder(
+            index, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .cn.platalk.core.pbf.threedata.ThreeFeaturePbf features = 2;</code>
+       */
+      public java.util.List<cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder> 
+           getFeaturesBuilderList() {
+        return getFeaturesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder> 
+          getFeaturesFieldBuilder() {
+        if (featuresBuilder_ == null) {
+          featuresBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder>(
+                  features_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          features_ = null;
+        }
+        return featuresBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cn.platalk.core.pbf.threedata.ThreeLayerPbf)
+    }
+
+    // @@protoc_insertion_point(class_scope:cn.platalk.core.pbf.threedata.ThreeLayerPbf)
+    private static final cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf();
+    }
+
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<ThreeLayerPbf>
+        PARSER = new com.google.protobuf.AbstractParser<ThreeLayerPbf>() {
+      public ThreeLayerPbf parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ThreeLayerPbf(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThreeLayerPbf> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThreeLayerPbf> getParserForType() {
+      return PARSER;
+    }
+
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ThreeFeaturePbfOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cn.platalk.core.pbf.threedata.ThreeFeaturePbf)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+     */
+    boolean hasGeometry();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf getGeometry();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbfOrBuilder getGeometryOrBuilder();
+
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+     */
+    boolean hasProperties();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf getProperties();
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+     */
+    cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder getPropertiesOrBuilder();
+  }
+  /**
+   * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeFeaturePbf}
+   */
+  public  static final class ThreeFeaturePbf extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cn.platalk.core.pbf.threedata.ThreeFeaturePbf)
+      ThreeFeaturePbfOrBuilder {
+    // Use ThreeFeaturePbf.newBuilder() to construct.
+    private ThreeFeaturePbf(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ThreeFeaturePbf() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ThreeFeaturePbf(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = geometry_.toBuilder();
+              }
+              geometry_ = input.readMessage(cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(geometry_);
+                geometry_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = properties_.toBuilder();
+              }
+              properties_ = input.readMessage(cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(properties_);
+                properties_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.class, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int GEOMETRY_FIELD_NUMBER = 1;
+    private cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf geometry_;
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+     */
+    public boolean hasGeometry() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf getGeometry() {
+      return geometry_ == null ? cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.getDefaultInstance() : geometry_;
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbfOrBuilder getGeometryOrBuilder() {
+      return geometry_ == null ? cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.getDefaultInstance() : geometry_;
+    }
+
+    public static final int PROPERTIES_FIELD_NUMBER = 2;
+    private cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf properties_;
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+     */
+    public boolean hasProperties() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf getProperties() {
+      return properties_ == null ? cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.getDefaultInstance() : properties_;
+    }
+    /**
+     * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+     */
+    public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder getPropertiesOrBuilder() {
+      return properties_ == null ? cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.getDefaultInstance() : properties_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasGeometry()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasProperties()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getGeometry().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getProperties().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, getGeometry());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, getProperties());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getGeometry());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getProperties());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf)) {
+        return super.equals(obj);
+      }
+      cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf other = (cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf) obj;
+
+      boolean result = true;
+      result = result && (hasGeometry() == other.hasGeometry());
+      if (hasGeometry()) {
+        result = result && getGeometry()
+            .equals(other.getGeometry());
+      }
+      result = result && (hasProperties() == other.hasProperties());
+      if (hasProperties()) {
+        result = result && getProperties()
+            .equals(other.getProperties());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasGeometry()) {
+        hash = (37 * hash) + GEOMETRY_FIELD_NUMBER;
+        hash = (53 * hash) + getGeometry().hashCode();
+      }
+      if (hasProperties()) {
+        hash = (37 * hash) + PROPERTIES_FIELD_NUMBER;
+        hash = (53 * hash) + getProperties().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cn.platalk.core.pbf.threedata.ThreeFeaturePbf}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cn.platalk.core.pbf.threedata.ThreeFeaturePbf)
+        cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbfOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.class, cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.Builder.class);
+      }
+
+      // Construct using cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getGeometryFieldBuilder();
+          getPropertiesFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        if (geometryBuilder_ == null) {
+          geometry_ = null;
+        } else {
+          geometryBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (propertiesBuilder_ == null) {
+          properties_ = null;
+        } else {
+          propertiesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cn.platalk.core.pbf.threedata.TYThreeDataPbf.internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_descriptor;
+      }
+
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf getDefaultInstanceForType() {
+        return cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.getDefaultInstance();
+      }
+
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf build() {
+        cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf buildPartial() {
+        cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf result = new cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (geometryBuilder_ == null) {
+          result.geometry_ = geometry_;
+        } else {
+          result.geometry_ = geometryBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (propertiesBuilder_ == null) {
+          result.properties_ = properties_;
+        } else {
+          result.properties_ = propertiesBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf) {
+          return mergeFrom((cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf other) {
+        if (other == cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf.getDefaultInstance()) return this;
+        if (other.hasGeometry()) {
+          mergeGeometry(other.getGeometry());
+        }
+        if (other.hasProperties()) {
+          mergeProperties(other.getProperties());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasGeometry()) {
+          return false;
+        }
+        if (!hasProperties()) {
+          return false;
+        }
+        if (!getGeometry().isInitialized()) {
+          return false;
+        }
+        if (!getProperties().isInitialized()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf geometry_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf, cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbfOrBuilder> geometryBuilder_;
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+       */
+      public boolean hasGeometry() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf getGeometry() {
+        if (geometryBuilder_ == null) {
+          return geometry_ == null ? cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.getDefaultInstance() : geometry_;
+        } else {
+          return geometryBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+       */
+      public Builder setGeometry(cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf value) {
+        if (geometryBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          geometry_ = value;
+          onChanged();
+        } else {
+          geometryBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+       */
+      public Builder setGeometry(
+          cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.Builder builderForValue) {
+        if (geometryBuilder_ == null) {
+          geometry_ = builderForValue.build();
+          onChanged();
+        } else {
+          geometryBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+       */
+      public Builder mergeGeometry(cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf value) {
+        if (geometryBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              geometry_ != null &&
+              geometry_ != cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.getDefaultInstance()) {
+            geometry_ =
+              cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.newBuilder(geometry_).mergeFrom(value).buildPartial();
+          } else {
+            geometry_ = value;
+          }
+          onChanged();
+        } else {
+          geometryBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+       */
+      public Builder clearGeometry() {
+        if (geometryBuilder_ == null) {
+          geometry_ = null;
+          onChanged();
+        } else {
+          geometryBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.Builder getGeometryBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getGeometryFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbfOrBuilder getGeometryOrBuilder() {
+        if (geometryBuilder_ != null) {
+          return geometryBuilder_.getMessageOrBuilder();
+        } else {
+          return geometry_ == null ?
+              cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.getDefaultInstance() : geometry_;
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeatureGeometryPbf geometry = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf, cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbfOrBuilder> 
+          getGeometryFieldBuilder() {
+        if (geometryBuilder_ == null) {
+          geometryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf, cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf.Builder, cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbfOrBuilder>(
+                  getGeometry(),
+                  getParentForChildren(),
+                  isClean());
+          geometry_ = null;
+        }
+        return geometryBuilder_;
+      }
+
+      private cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf properties_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder> propertiesBuilder_;
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+       */
+      public boolean hasProperties() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf getProperties() {
+        if (propertiesBuilder_ == null) {
+          return properties_ == null ? cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.getDefaultInstance() : properties_;
+        } else {
+          return propertiesBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+       */
+      public Builder setProperties(cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf value) {
+        if (propertiesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          properties_ = value;
+          onChanged();
+        } else {
+          propertiesBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+       */
+      public Builder setProperties(
+          cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder builderForValue) {
+        if (propertiesBuilder_ == null) {
+          properties_ = builderForValue.build();
+          onChanged();
+        } else {
+          propertiesBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+       */
+      public Builder mergeProperties(cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf value) {
+        if (propertiesBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              properties_ != null &&
+              properties_ != cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.getDefaultInstance()) {
+            properties_ =
+              cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.newBuilder(properties_).mergeFrom(value).buildPartial();
+          } else {
+            properties_ = value;
+          }
+          onChanged();
+        } else {
+          propertiesBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+       */
+      public Builder clearProperties() {
+        if (propertiesBuilder_ == null) {
+          properties_ = null;
+          onChanged();
+        } else {
+          propertiesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder getPropertiesBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getPropertiesFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+       */
+      public cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder getPropertiesOrBuilder() {
+        if (propertiesBuilder_ != null) {
+          return propertiesBuilder_.getMessageOrBuilder();
+        } else {
+          return properties_ == null ?
+              cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.getDefaultInstance() : properties_;
+        }
+      }
+      /**
+       * <code>required .cn.platalk.core.pbf.threedata.ThreeFeaturePropertiesPbf properties = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder> 
+          getPropertiesFieldBuilder() {
+        if (propertiesBuilder_ == null) {
+          propertiesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf.Builder, cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbfOrBuilder>(
+                  getProperties(),
+                  getParentForChildren(),
+                  isClean());
+          properties_ = null;
+        }
+        return propertiesBuilder_;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cn.platalk.core.pbf.threedata.ThreeFeaturePbf)
+    }
+
+    // @@protoc_insertion_point(class_scope:cn.platalk.core.pbf.threedata.ThreeFeaturePbf)
+    private static final cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf();
+    }
+
+    public static cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<ThreeFeaturePbf>
+        PARSER = new com.google.protobuf.AbstractParser<ThreeFeaturePbf>() {
+      public ThreeFeaturePbf parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ThreeFeaturePbf(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ThreeFeaturePbf> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ThreeFeaturePbf> getParserForType() {
+      return PARSER;
+    }
+
+    public cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_fieldAccessorTable;
+
+  public static com.google.protobuf.Descriptors.FileDescriptor
+      getDescriptor() {
+    return descriptor;
+  }
+  private static  com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
+  static {
+    java.lang.String[] descriptorData = {
+      "\n\030t_y_three_data_pbf.proto\022\035cn.platalk.c" +
+      "ore.pbf.threedata\032\034t_y_three_geometry_pb" +
+      "f.proto\032\034t_y_three_property_pbf.proto\"\325\002" +
+      "\n\014ThreeDataPbf\022\022\n\nbuildingID\030\001 \002(\t\022;\n\005fl" +
+      "oor\030\002 \002(\0132,.cn.platalk.core.pbf.threedat" +
+      "a.ThreeLayerPbf\022:\n\004room\030\003 \002(\0132,.cn.plata" +
+      "lk.core.pbf.threedata.ThreeLayerPbf\022;\n\005a" +
+      "sset\030\004 \002(\0132,.cn.platalk.core.pbf.threeda" +
+      "ta.ThreeLayerPbf\022>\n\010facility\030\005 \002(\0132,.cn." +
+      "platalk.core.pbf.threedata.ThreeLayerPbf",
+      "\022;\n\005label\030\006 \002(\0132,.cn.platalk.core.pbf.th" +
+      "reedata.ThreeLayerPbf\"Q\n\rThreeLayerPbf\022@" +
+      "\n\010features\030\002 \003(\0132..cn.platalk.core.pbf.t" +
+      "hreedata.ThreeFeaturePbf\"\251\001\n\017ThreeFeatur" +
+      "ePbf\022H\n\010geometry\030\001 \002(\01326.cn.platalk.core" +
+      ".pbf.threedata.ThreeFeatureGeometryPbf\022L" +
+      "\n\nproperties\030\002 \002(\01328.cn.platalk.core.pbf" +
+      ".threedata.ThreeFeaturePropertiesPbf"
+    };
+    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
+    com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+          cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.getDescriptor(),
+          cn.platalk.core.pbf.threedata.TYThreePropertyPbf.getDescriptor(),
+        }, assigner);
+    internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_platalk_core_pbf_threedata_ThreeDataPbf_descriptor,
+        new java.lang.String[] { "BuildingID", "Floor", "Room", "Asset", "Facility", "Label", });
+    internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_platalk_core_pbf_threedata_ThreeLayerPbf_descriptor,
+        new java.lang.String[] { "Features", });
+    internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_platalk_core_pbf_threedata_ThreeFeaturePbf_descriptor,
+        new java.lang.String[] { "Geometry", "Properties", });
+    cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.getDescriptor();
+    cn.platalk.core.pbf.threedata.TYThreePropertyPbf.getDescriptor();
+  }
+
+  // @@protoc_insertion_point(outer_class_scope)
 }
