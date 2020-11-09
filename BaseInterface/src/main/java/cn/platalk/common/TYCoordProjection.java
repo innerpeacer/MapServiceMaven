@@ -1,7 +1,7 @@
 package cn.platalk.common;
 
-import cn.platalk.map.entity.base.impl.TYLngLat;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.map.TYLngLat;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 
 public class TYCoordProjection {
 	private static final double CIRCUMFERENCE_OF_EARTH = 20037508.342789;

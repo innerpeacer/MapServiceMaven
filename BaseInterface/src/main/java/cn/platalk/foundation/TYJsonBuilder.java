@@ -5,7 +5,7 @@ import java.util.List;
 import org.json.JSONArray;
 
 import cn.platalk.common.TYIJsonFeature;
-import cn.platalk.map.entity.base.impl.TYMapInfo;
+import cn.platalk.map.entity.base.impl.map.TYMapInfo;
 
 public class TYJsonBuilder {
 

@@ -18,7 +18,7 @@ import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
 import cn.platalk.common.TYIGeojsonFeature;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 
 public class TYGeojsonBuilder {
 	public static final JSONObject emptyGeojson;
