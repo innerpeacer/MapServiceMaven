@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+import cn.platalk.map.entity.base.map.TYIRouteLinkRecord;
+import cn.platalk.map.entity.base.map.TYIRouteNodeRecord;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.CoordinateArrays;
 import com.vividsolutions.jts.geom.Geometry;
@@ -18,9 +20,6 @@ import com.vividsolutions.jts.linearref.LinearLocation;
 import com.vividsolutions.jts.linearref.LocationIndexedLine;
 import com.vividsolutions.jts.operation.distance.DistanceOp;
 import com.vividsolutions.jts.operation.linemerge.LineMerger;
-
-import cn.platalk.map.entity.base.TYIRouteLinkRecord;
-import cn.platalk.map.entity.base.TYIRouteNodeRecord;
 
 class IPServerRouteNetworkDataset {
 

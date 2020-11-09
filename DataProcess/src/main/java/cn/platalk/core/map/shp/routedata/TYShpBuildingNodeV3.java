@@ -3,9 +3,8 @@ package cn.platalk.core.map.shp.routedata;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.map.entity.base.map.TYIRouteNodeRecordV3;
 import com.vividsolutions.jts.geom.Point;
-
-import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 
 public class TYShpBuildingNodeV3 {
 	String nodeID;

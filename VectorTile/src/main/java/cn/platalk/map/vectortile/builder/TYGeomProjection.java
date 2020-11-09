@@ -3,6 +3,7 @@ package cn.platalk.map.vectortile.builder;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryFactory;
@@ -14,7 +15,6 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class TYGeomProjection {
 

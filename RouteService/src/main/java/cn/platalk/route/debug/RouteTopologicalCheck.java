@@ -3,10 +3,10 @@ package cn.platalk.route.debug;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.platalk.map.entity.base.TYIRouteLinkRecord;
-import cn.platalk.map.entity.base.TYIRouteNodeRecord;
-import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
+import cn.platalk.map.entity.base.map.TYIRouteLinkRecord;
+import cn.platalk.map.entity.base.map.TYIRouteNodeRecord;
 import cn.platalk.mysql.TYMysqlDBHelper;
 
 public class RouteTopologicalCheck {

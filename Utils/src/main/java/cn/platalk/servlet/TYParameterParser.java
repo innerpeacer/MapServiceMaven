@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 
 public class TYParameterParser {
 

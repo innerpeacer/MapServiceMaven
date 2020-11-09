@@ -5,7 +5,7 @@ import java.util.List;
 import cn.platalk.core.pbf.poi.TYPoiPbf;
 import cn.platalk.core.pbf.poi.TYPoiPbf.PoiCollectionPbf;
 import cn.platalk.core.pbf.poi.TYPoiPbf.PoiPbf;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 
 public class TYPoiPbfBuilder {
 

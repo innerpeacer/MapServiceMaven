@@ -4,15 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
+import cn.platalk.map.entity.base.map.*;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
-
-import cn.platalk.map.entity.base.TYIBuilding;
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.map.entity.base.TYIMapInfo;
-import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
-import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public class TYServerMultiRouteManagerV3 {
 	static final String TAG = TYServerMultiRouteManagerV3.class.getSimpleName();
@@ -27,13 +22,13 @@ public class TYServerMultiRouteManagerV3 {
 	final List<TYIMapInfo> allMapInfoArray = new ArrayList<>();
 
 	public TYServerMultiRouteManagerV3(TYIBuilding building, List<TYIMapInfo> mapInfoArray,
-			List<TYIRouteNodeRecordV3> nodes, List<TYIRouteLinkRecordV3> links, List<TYIMapDataFeatureRecord> mapdata) {
+									   List<TYIRouteNodeRecordV3> nodes, List<TYIRouteLinkRecordV3> links, List<TYIMapDataFeatureRecord> mapdata) {
 		allMapInfoArray.addAll(mapInfoArray);
 		networkDataset = new IPServerRouteNetworkDatasetV3(allMapInfoArray, nodes, links, mapdata);
 	}
 
 	public synchronized TYServerMultiRouteResultV3 requestRoute(TYLocalPoint startPoint, TYLocalPoint endPoint,
-			List<TYLocalPoint> stopPoints, TYServerRouteOptions options) {
+																List<TYLocalPoint> stopPoints, TYServerRouteOptions options) {
 		TYServerMultiRouteResultV3 result;
 		System.out.println("requestRoute: " + options.isSameFloorFirst());
 

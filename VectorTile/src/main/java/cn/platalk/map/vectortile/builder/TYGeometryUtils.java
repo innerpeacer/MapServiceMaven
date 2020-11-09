@@ -3,11 +3,11 @@ package cn.platalk.map.vectortile.builder;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.platalk.map.entity.base.map.TYIFillSymbolRecord;
+import cn.platalk.map.entity.base.map.TYIIconSymbolRecord;
+import cn.platalk.map.entity.base.map.TYIMapDataFeatureRecord;
 import com.vividsolutions.jts.geom.Geometry;
 
-import cn.platalk.map.entity.base.TYIFillSymbolRecord;
-import cn.platalk.map.entity.base.TYIIconSymbolRecord;
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 
 class TYGeometryUtils {
 

@@ -7,13 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import cn.platalk.map.entity.base.map.TYIRouteLinkRecord;
+import cn.platalk.map.entity.base.map.TYIRouteNodeRecord;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.io.WKBReader;
-
-import cn.platalk.map.entity.base.TYIRouteLinkRecord;
-import cn.platalk.map.entity.base.TYIRouteNodeRecord;
 
 public class IPCheckRouteNetworkDataset {
 

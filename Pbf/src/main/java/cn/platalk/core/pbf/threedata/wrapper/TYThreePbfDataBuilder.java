@@ -3,13 +3,13 @@ package cn.platalk.core.pbf.threedata.wrapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 import com.vividsolutions.jts.geom.Geometry;
 
 import cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf;
 import cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeFeaturePbf;
 import cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeLayerPbf;
-import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYThreePbfDataBuilder {
     TYBuilding building;

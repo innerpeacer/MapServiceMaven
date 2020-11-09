@@ -1,7 +1,7 @@
 package cn.platalk.core.pbf.threedata.wrapper;
 
 import cn.platalk.core.pbf.threedata.TYThreePropertyPbf.ThreeFeaturePropertiesPbf;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 
 public class IPThreePropertyPbfUtils {
 

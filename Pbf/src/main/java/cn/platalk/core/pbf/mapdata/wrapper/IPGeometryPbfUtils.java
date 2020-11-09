@@ -1,5 +1,7 @@
 package cn.platalk.core.pbf.mapdata.wrapper;
 
+import cn.platalk.map.entity.base.impl.map.TYLngLat;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.LinearRing;
@@ -17,8 +19,6 @@ import cn.platalk.core.pbf.mapdata.TYGeometryPbf.TYIndoorFeatureGeometryPbf;
 import cn.platalk.core.pbf.mapdata.TYGeometryPbf.TYOneDimensionCoord;
 import cn.platalk.core.pbf.mapdata.TYGeometryPbf.TYThreeDimensionCoord;
 import cn.platalk.core.pbf.mapdata.TYGeometryPbf.TYTwoDimensionCoord;
-import cn.platalk.map.entity.base.impl.TYLngLat;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class IPGeometryPbfUtils {
 

@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.map.TYMapInfo;
+import cn.platalk.map.entity.base.map.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.map.TYIRouteNodeRecordV3;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
@@ -12,10 +16,6 @@ import com.vividsolutions.jts.io.WKBReader;
 import cn.platalk.core.map.base.TYIShpDataManager;
 import cn.platalk.core.map.shp.routedata.TYShpRouteDataGroupV3.TYBrtShpRouteDataGroupListenerV3;
 import cn.platalk.core.map.shp.routedata.TYShpRouteNDBuildingToolV3.TYBrtRouteNDBuildingListenerV3;
-import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
-import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.map.entity.base.impl.TYMapInfo;
 
 public class TYShpRouteTaskV3 implements TYBrtShpRouteDataGroupListenerV3, TYBrtRouteNDBuildingListenerV3 {
 	static final WKBReader wkb = new WKBReader();

@@ -1,5 +1,6 @@
 package cn.platalk.map.route.core;
 
+import cn.platalk.map.entity.base.map.TYIMapInfo;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,8 +9,6 @@ import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.Point;
-
-import cn.platalk.map.entity.base.TYIMapInfo;
 
 class TYServerRoutePart {
 	final LineString route;

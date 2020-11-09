@@ -1,8 +1,7 @@
 package cn.platalk.map.vectortile.builder;
 
-import cn.platalk.map.entity.base.TYILngLat;
-import cn.platalk.map.entity.base.TYIMapExtent;
-import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.map.TYIMapExtent;
+import cn.platalk.map.entity.base.map.TYIMapInfo;
 
 public class TYBoundingBox {
     public double north;

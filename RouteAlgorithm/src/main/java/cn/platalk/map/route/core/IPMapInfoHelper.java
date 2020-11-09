@@ -1,8 +1,8 @@
 package cn.platalk.map.route.core;
 
-import java.util.List;
+import cn.platalk.map.entity.base.map.TYIMapInfo;
 
-import cn.platalk.map.entity.base.TYIMapInfo;
+import java.util.List;
 
 class IPMapInfoHelper {
 	public static TYIMapInfo searchMapInfoFromArray(List<TYIMapInfo> array, int floor) {

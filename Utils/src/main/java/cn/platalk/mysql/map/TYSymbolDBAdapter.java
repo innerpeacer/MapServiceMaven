@@ -2,9 +2,9 @@ package cn.platalk.mysql.map;
 
 import java.util.List;
 
-import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
-import cn.platalk.map.entity.base.impl.TYIconTextSymbolRecord;
+import cn.platalk.map.entity.base.impl.map.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.impl.map.TYIconSymbolRecord;
+import cn.platalk.map.entity.base.impl.map.TYIconTextSymbolRecord;
 import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 

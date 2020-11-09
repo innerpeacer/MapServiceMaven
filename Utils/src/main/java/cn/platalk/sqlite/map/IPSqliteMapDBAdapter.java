@@ -2,8 +2,8 @@ package cn.platalk.sqlite.map;
 
 import java.util.List;
 
-import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.map.entity.base.impl.TYCity;
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYCity;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 import cn.platalk.sqlhelper.sqlite.IPSqliteDB;
 

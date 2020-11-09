@@ -3,11 +3,10 @@ package cn.platalk.map.api.three.map;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYThreeMapDataBuilder {
 	private final TYThreeShapeBuilder shapeBuilder;

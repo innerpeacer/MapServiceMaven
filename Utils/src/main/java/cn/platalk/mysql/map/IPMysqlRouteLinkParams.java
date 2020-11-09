@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.map.entity.base.impl.TYRouteLinkRecord;
+import cn.platalk.map.entity.base.impl.map.TYRouteLinkRecord;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlFieldType;
 import cn.platalk.sqlhelper.sql.IPSqlRecord;

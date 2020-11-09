@@ -2,7 +2,7 @@ package cn.platalk.core.pbf.mapdata.wrapper;
 
 import cn.platalk.core.pbf.mapdata.TYMapDataPbf;
 import cn.platalk.core.pbf.mapdata.TYMapDataPbf.TYIndoorFeaturePbf;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 
 class IPIndoorFeaturePbfUtils {
 

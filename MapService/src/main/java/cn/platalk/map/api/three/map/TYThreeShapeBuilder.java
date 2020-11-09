@@ -3,6 +3,8 @@ package cn.platalk.map.api.three.map;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -13,8 +15,6 @@ import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Polygon;
 
 import cn.platalk.foundation.TYGdalFields;
-import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYThreeShapeBuilder {
 	public static final JSONObject emptyShape;

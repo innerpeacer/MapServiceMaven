@@ -8,10 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.map.TYIMapDataFeatureRecord;
 import org.json.JSONObject;
 
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.map.entity.base.impl.TYBuilding;
 import cn.platalk.map.vectortile.fontbuilder.TYExtractLabelString;
 import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.servlet.TYBaseHttpServlet;

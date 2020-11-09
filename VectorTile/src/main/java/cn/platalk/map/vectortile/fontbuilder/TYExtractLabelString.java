@@ -1,10 +1,11 @@
 package cn.platalk.map.vectortile.fontbuilder;
 
+import cn.platalk.map.entity.base.map.TYIMapDataFeatureRecord;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 
 public class TYExtractLabelString {
 

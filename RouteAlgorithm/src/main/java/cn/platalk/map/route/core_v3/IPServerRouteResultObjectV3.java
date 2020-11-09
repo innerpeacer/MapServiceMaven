@@ -3,10 +3,9 @@ package cn.platalk.map.route.core_v3;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
+import cn.platalk.map.entity.base.map.TYIMapInfo;
 import com.vividsolutions.jts.geom.GeometryFactory;
-
-import cn.platalk.map.entity.base.TYIMapInfo;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public class IPServerRouteResultObjectV3 {
 

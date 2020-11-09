@@ -3,8 +3,8 @@ package cn.platalk.mysql.beacon;
 import java.sql.Connection;
 import java.util.List;
 
-import cn.platalk.map.entity.base.TYIBeaconRegion;
-import cn.platalk.map.entity.base.impl.TYBeaconRegion;
+import cn.platalk.map.entity.base.beacon.TYIBeaconRegion;
+import cn.platalk.map.entity.base.impl.beacon.TYBeaconRegion;
 import cn.platalk.mysql.map.TYDatabaseManager;
 import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;

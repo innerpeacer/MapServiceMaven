@@ -13,7 +13,7 @@ import cn.platalk.core.pbf.beacon.wrapper.TYBeaconPbfBuilder;
 import cn.platalk.map.caching.TYCachingPool;
 import cn.platalk.map.caching.TYCachingType;
 import cn.platalk.map.core.config.TYServerEnvironment;
-import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
+import cn.platalk.map.entity.base.impl.beacon.TYLocatingBeacon;
 import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.servlet.TYBaseHttpServlet;
 import cn.platalk.servlet.TYParameterChecker;

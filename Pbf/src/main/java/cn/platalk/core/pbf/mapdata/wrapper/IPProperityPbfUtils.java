@@ -2,9 +2,9 @@ package cn.platalk.core.pbf.mapdata.wrapper;
 
 import cn.platalk.core.pbf.mapdata.TYPropertyPbf;
 import cn.platalk.core.pbf.mapdata.TYPropertyPbf.TYIndoorFeaturePropertisPbf;
-import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.map.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.impl.map.TYIconSymbolRecord;
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 
 class IPProperityPbfUtils {
 

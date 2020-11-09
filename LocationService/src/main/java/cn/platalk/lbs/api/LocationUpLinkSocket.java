@@ -4,7 +4,7 @@ import cn.platalk.lbs.api.event.SocketDataEvent;
 import cn.platalk.lbs.api.event.SocketEventBase;
 import cn.platalk.lbs.api.event.SocketEventType;
 import cn.platalk.lbs.api.event.SocketStatusEvent;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 import org.json.JSONException;
 import org.json.JSONObject;
 

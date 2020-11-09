@@ -150,7 +150,7 @@ public class TYGeomTransform {
 
 	private static Coordinate createTransformedCoordinate(Coordinate c,
 			TYTileCoord tile, MvtLayerParams layerParams) {
-		double xTile = TYTileCoord.lon2Tile(c.x, tile.zoom);
+		double xTile = TYTileCoord.lng2Tile(c.x, tile.zoom);
 		double yTile = TYTileCoord.lat2Tile(c.y, tile.zoom);
 
 		double x = (xTile - tile.x) * layerParams.extent;

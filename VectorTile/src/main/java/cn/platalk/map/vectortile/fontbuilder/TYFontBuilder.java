@@ -1,12 +1,13 @@
 package cn.platalk.map.vectortile.fontbuilder;
 
+import cn.platalk.map.entity.base.map.TYIMapDataFeatureRecord;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 
 public class TYFontBuilder {
 

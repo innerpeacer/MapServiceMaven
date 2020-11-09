@@ -6,20 +6,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.map.entity.base.impl.map.TYLngLat;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.map.TYMapExtent;
+import cn.platalk.map.entity.base.impl.map.TYMapInfo;
+import cn.platalk.map.entity.base.map.*;
 import com.vividsolutions.jts.geom.Envelope;
 
 import cn.platalk.common.TYCoordProjection;
-import cn.platalk.map.entity.base.TYIBuilding;
-import cn.platalk.map.entity.base.TYICity;
-import cn.platalk.map.entity.base.TYIFillSymbolRecord;
-import cn.platalk.map.entity.base.TYIIconSymbolRecord;
-import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.map.entity.base.TYIMapInfo;
-import cn.platalk.map.entity.base.impl.TYLngLat;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
-import cn.platalk.map.entity.base.impl.TYMapExtent;
-import cn.platalk.map.entity.base.impl.TYMapInfo;
 import cn.platalk.map.vectortile.cbm.json.TYCBMBuilder;
 import cn.platalk.map.vectortile.cbm.pbf.TYCBMPbfBuilder;
 import cn.platalk.map.vectortile.pbf.VectorTile;

@@ -7,9 +7,9 @@ import cn.platalk.core.pbf.cbm.TYCbmPbf;
 import cn.platalk.core.pbf.cbm.TYCbmPbf.BuildingPbf;
 import cn.platalk.core.pbf.cbm.TYCbmPbf.CityPbf;
 import cn.platalk.core.pbf.cbm.TYCbmPbf.MapInfoPbf;
-import cn.platalk.map.entity.base.TYIBuilding;
-import cn.platalk.map.entity.base.TYICity;
-import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.map.TYIBuilding;
+import cn.platalk.map.entity.base.map.TYICity;
+import cn.platalk.map.entity.base.map.TYIMapInfo;
 
 public class TYCity2PbfUtils {
 

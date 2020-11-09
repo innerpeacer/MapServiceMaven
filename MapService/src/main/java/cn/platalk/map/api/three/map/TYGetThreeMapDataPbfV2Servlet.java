@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.map.caching.TYCachingPool;
 import cn.platalk.map.caching.TYCachingType;
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.simplify.TopologyPreservingSimplifier;
 
 import cn.platalk.core.pbf.threedata.TYThreeDataPbf.ThreeDataPbf;
 import cn.platalk.core.pbf.threedata.wrapper.TYThreePbfDataBuilder;
-import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.servlet.TYBaseHttpServlet;
 import cn.platalk.servlet.TYParameterChecker;

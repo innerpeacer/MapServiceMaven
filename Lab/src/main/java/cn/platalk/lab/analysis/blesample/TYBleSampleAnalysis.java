@@ -10,9 +10,9 @@ import cn.platalk.lab.blesample.entity.WTBleSample;
 import cn.platalk.lab.blesample.entity.WTBleSignal;
 import cn.platalk.lab.blesample.entity.WTGpsSignal;
 import cn.platalk.lab.locationengine.TYBleLocator;
-import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
-import cn.platalk.map.entity.base.impl.TYWtWgs84Converter;
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.map.TYWtWgs84Converter;
 
 public class TYBleSampleAnalysis {
 	public static final String KEY_GPS_ERROR = "gpsError";

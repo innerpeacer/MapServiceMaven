@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.platalk.map.entity.base.impl.map.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.impl.map.TYIconSymbolRecord;
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 import com.vividsolutions.jts.geom.Geometry;
 
 import cn.platalk.core.pbf.mapdata.TYMapDataPbf;
@@ -12,14 +15,11 @@ import cn.platalk.core.pbf.mapdata.TYMapDataPbf.TYIndoorDataPbf;
 import cn.platalk.core.pbf.mapdata.TYMapDataPbf.TYIndoorFeaturePbf;
 import cn.platalk.core.pbf.mapdata.TYMapDataPbf.TYIndoorLayerPbf;
 import cn.platalk.core.pbf.mapdata.TYSymbolPbf.TYRenderingSymbolsPbf;
-import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYIndoorDataPbfBuilder {
 
 	public static TYIndoorDataPbf generateMapDataObject(String mapID, List<TYMapDataFeatureRecord> dataList,
-			List<TYFillSymbolRecord> fillSymbolList, List<TYIconSymbolRecord> iconSymbolList) {
+														List<TYFillSymbolRecord> fillSymbolList, List<TYIconSymbolRecord> iconSymbolList) {
 		Map<Integer, TYFillSymbolRecord> fillSymbolMap = new HashMap<Integer, TYFillSymbolRecord>();
 		for (TYFillSymbolRecord symbol : fillSymbolList) {
 			fillSymbolMap.put(symbol.symbolID, symbol);

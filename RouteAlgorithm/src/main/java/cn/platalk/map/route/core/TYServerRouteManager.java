@@ -3,16 +3,15 @@ package cn.platalk.map.route.core;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
+import cn.platalk.map.entity.base.map.TYIBuilding;
+import cn.platalk.map.entity.base.map.TYIMapInfo;
+import cn.platalk.map.entity.base.map.TYIRouteLinkRecord;
+import cn.platalk.map.entity.base.map.TYIRouteNodeRecord;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.Point;
-
-import cn.platalk.map.entity.base.TYIBuilding;
-import cn.platalk.map.entity.base.TYIMapInfo;
-import cn.platalk.map.entity.base.TYIRouteLinkRecord;
-import cn.platalk.map.entity.base.TYIRouteNodeRecord;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public class TYServerRouteManager {
 	static final String TAG = TYServerRouteManager.class.getSimpleName();
@@ -28,7 +27,7 @@ public class TYServerRouteManager {
 	// private TYIBuilding currentBuilding;
 
 	public TYServerRouteManager(TYIBuilding building, List<TYIMapInfo> mapInfoArray, List<TYIRouteNodeRecord> nodes,
-			List<TYIRouteLinkRecord> links) {
+								List<TYIRouteLinkRecord> links) {
 		// currentBuilding = building;
 		allMapInfoArray.addAll(mapInfoArray);
 		TYIMapInfo info = allMapInfoArray.get(0);

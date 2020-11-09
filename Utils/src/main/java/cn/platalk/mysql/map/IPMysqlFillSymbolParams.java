@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.impl.map.TYFillSymbolRecord;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlFieldType;
 import cn.platalk.sqlhelper.sql.IPSqlRecord;

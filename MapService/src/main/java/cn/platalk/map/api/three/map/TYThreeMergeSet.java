@@ -3,9 +3,8 @@ package cn.platalk.map.api.three.map;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 import com.vividsolutions.jts.geom.Geometry;
-
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYThreeMergeSet {
 	public final int floor;

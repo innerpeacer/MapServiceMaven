@@ -3,14 +3,14 @@ package cn.platalk.core.beacon.shp.beacondata;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.map.entity.base.beacon.TYILocatingBeacon;
+import cn.platalk.map.entity.base.impl.beacon.TYLocatingBeacon;
 import org.gdal.gdal.gdal;
 import org.gdal.ogr.DataSource;
 import org.gdal.ogr.Layer;
 import org.gdal.ogr.ogr;
 
 import cn.platalk.core.beacon.shp.TYBeaconShpHelper;
-import cn.platalk.map.entity.base.TYILocatingBeacon;
-import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 
 public class TYShpBeaconDataParser {
 	final String shpPath;

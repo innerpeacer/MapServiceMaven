@@ -8,13 +8,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.map.entity.base.impl.map.TYMapExtent;
+import cn.platalk.map.entity.base.impl.map.TYMapInfo;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.core.map.base.TYIShpDataManager;
-import cn.platalk.map.entity.base.impl.TYMapExtent;
-import cn.platalk.map.entity.base.impl.TYMapInfo;
 
 public class TYJsonMapInfoParser {
 	List<TYMapInfo> mapInfos;

@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.map.entity.base.impl.TYMapExtent;
-import cn.platalk.map.entity.base.impl.TYMapSize;
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYMapExtent;
+import cn.platalk.map.entity.base.impl.map.TYMapSize;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlFieldType;
 import cn.platalk.sqlhelper.sql.IPSqlRecord;

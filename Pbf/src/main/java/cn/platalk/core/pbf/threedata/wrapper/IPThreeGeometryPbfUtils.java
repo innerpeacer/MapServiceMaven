@@ -1,5 +1,6 @@
 package cn.platalk.core.pbf.threedata.wrapper;
 
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.MultiPolygon;
@@ -12,7 +13,6 @@ import cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeFeatureGeometryPbf;
 import cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeLineStringPbf;
 import cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreeMultiPolygonPbf;
 import cn.platalk.core.pbf.threedata.TYThreeGeometryPbf.ThreePolygonPbf;
-import cn.platalk.map.entity.base.impl.TYBuilding;
 
 public class IPThreeGeometryPbfUtils {
 

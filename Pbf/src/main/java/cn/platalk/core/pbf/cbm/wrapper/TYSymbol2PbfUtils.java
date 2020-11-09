@@ -7,8 +7,8 @@ import java.util.Map;
 import cn.platalk.core.pbf.cbm.TYSymbolPbf.FillSymbolPbf;
 import cn.platalk.core.pbf.cbm.TYSymbolPbf.IconTextSymbolPbf;
 import cn.platalk.core.pbf.cbm.TYSymbolPbf.SymbolCollectionPbf;
-import cn.platalk.map.entity.base.TYIFillSymbolRecord;
-import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
+import cn.platalk.map.entity.base.map.TYIFillSymbolRecord;
+import cn.platalk.map.entity.base.map.TYIIconTextSymbolRecord;
 
 public class TYSymbol2PbfUtils {
 

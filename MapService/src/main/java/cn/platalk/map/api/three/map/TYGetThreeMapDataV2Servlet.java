@@ -8,13 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 import org.json.JSONObject;
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.simplify.TopologyPreservingSimplifier;
 
-import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.servlet.TYBaseHttpServlet;
 import cn.platalk.servlet.TYParameterChecker;

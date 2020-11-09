@@ -8,16 +8,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import cn.platalk.map.entity.base.map.TYIFillSymbolRecord;
+import cn.platalk.map.entity.base.map.TYIIconTextSymbolRecord;
+import cn.platalk.map.entity.base.map.TYIMapDataFeatureRecord;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import cn.platalk.map.entity.base.TYIFillSymbolRecord;
-import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
 
 public class TYSymbolExtractor {
 	public static JSONObject extractSymbolJson(List<TYIMapDataFeatureRecord> mapDataRecords,
-			List<TYIFillSymbolRecord> fillSymbols, List<TYIIconTextSymbolRecord> iconTextSymbols) {
+											   List<TYIFillSymbolRecord> fillSymbols, List<TYIIconTextSymbolRecord> iconTextSymbols) {
 		JSONObject json = new JSONObject();
 		Map<String, List<Integer>> map = extractSymbolList(mapDataRecords, fillSymbols, iconTextSymbols);
 		for (String layer : map.keySet()) {

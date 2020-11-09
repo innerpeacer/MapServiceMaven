@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.map.entity.base.TYIBeacon;
-import cn.platalk.map.entity.base.TYILocatingBeacon;
-import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
+import cn.platalk.map.entity.base.beacon.TYIBeacon;
+import cn.platalk.map.entity.base.beacon.TYILocatingBeacon;
+import cn.platalk.map.entity.base.impl.beacon.TYLocatingBeacon;
 import cn.platalk.mysql.map.TYDatabaseManager;
 import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlField;

@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.map.entity.base.TYILocatingBeacon;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
-import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
+import cn.platalk.map.entity.base.beacon.TYILocatingBeacon;
+import cn.platalk.map.entity.base.impl.beacon.TYLocatingBeacon;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlFieldType;
 import cn.platalk.sqlhelper.sql.IPSqlRecord;

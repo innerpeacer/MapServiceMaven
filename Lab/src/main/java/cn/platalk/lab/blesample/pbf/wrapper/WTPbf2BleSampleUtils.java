@@ -13,7 +13,7 @@ import cn.platalk.lab.blesample.pbf.proto.WTBleSamplePbf.BleSamplePbf;
 import cn.platalk.lab.blesample.pbf.proto.WTBleSamplePbf.BleSignalPbf;
 import cn.platalk.lab.blesample.pbf.proto.WTBleSamplePbf.GpsSignalPbf;
 import cn.platalk.lab.blesample.pbf.proto.WTBleSamplePbf.LocationPbf;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 
 public class WTPbf2BleSampleUtils {
 

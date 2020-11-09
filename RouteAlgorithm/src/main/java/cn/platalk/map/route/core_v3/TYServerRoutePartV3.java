@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
+import cn.platalk.map.entity.base.map.TYIMapInfo;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,9 +15,6 @@ import com.vividsolutions.jts.geom.CoordinateArrays;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.Point;
-
-import cn.platalk.map.entity.base.TYIMapInfo;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class TYServerRoutePartV3 {
 	final List<IPServerRouteElement> elementList = new ArrayList<>();

@@ -1,6 +1,6 @@
 package cn.platalk.lab.blesample.entity;
 
-import cn.platalk.map.entity.base.impl.TYBeacon;
+import cn.platalk.map.entity.base.impl.beacon.TYBeacon;
 
 public class WTBeacon extends TYBeacon {
 	private int rssi;

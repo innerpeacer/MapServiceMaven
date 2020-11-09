@@ -1,6 +1,6 @@
 package cn.platalk.lbs.api.event;
 
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 import org.json.JSONObject;
 
 public class SocketDataEvent extends SocketEventBase {

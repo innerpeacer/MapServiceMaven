@@ -2,11 +2,10 @@ package cn.platalk.map.route.core_v3;
 
 import java.util.List;
 
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public class TYServerMultiRouteResultV3 {
 	private TYLocalPoint startPoint;

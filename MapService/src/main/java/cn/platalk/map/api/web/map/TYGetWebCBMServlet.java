@@ -8,12 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYCity;
 import org.json.JSONArray;
 
 import cn.platalk.foundation.TYJsonBuilder;
 import cn.platalk.map.core.web.TYWebMapFields;
-import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.map.entity.base.impl.TYCity;
 import cn.platalk.mysql.TYMysqlDBHelper;
 import cn.platalk.servlet.TYBaseHttpServlet;
 import cn.platalk.servlet.TYParameterChecker;

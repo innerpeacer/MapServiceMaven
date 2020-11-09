@@ -1,8 +1,8 @@
 package cn.platalk.map.vectortile.builder;
 
-import java.util.Comparator;
+import cn.platalk.map.entity.base.map.TYIMapDataFeatureRecord;
 
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
+import java.util.Comparator;
 
 public class TYMapDataFeatureComparator implements Comparator<TYIMapDataFeatureRecord> {
 	@Override

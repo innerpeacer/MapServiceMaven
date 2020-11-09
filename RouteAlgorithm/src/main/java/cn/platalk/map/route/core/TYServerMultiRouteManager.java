@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
+import cn.platalk.map.entity.base.map.TYIBuilding;
+import cn.platalk.map.entity.base.map.TYIMapInfo;
+import cn.platalk.map.entity.base.map.TYIRouteLinkRecord;
+import cn.platalk.map.entity.base.map.TYIRouteNodeRecord;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.Point;
-
-import cn.platalk.map.entity.base.TYIBuilding;
-import cn.platalk.map.entity.base.TYIMapInfo;
-import cn.platalk.map.entity.base.TYIRouteLinkRecord;
-import cn.platalk.map.entity.base.TYIRouteNodeRecord;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public class TYServerMultiRouteManager {
 	static final String TAG = TYServerRouteManager.class.getSimpleName();
@@ -30,7 +29,7 @@ public class TYServerMultiRouteManager {
 	// private TYIBuilding currentBuilding;
 
 	public TYServerMultiRouteManager(TYIBuilding building, List<TYIMapInfo> mapInfoArray,
-			List<TYIRouteNodeRecord> nodes, List<TYIRouteLinkRecord> links) {
+									 List<TYIRouteNodeRecord> nodes, List<TYIRouteLinkRecord> links) {
 		// currentBuilding = building;
 		allMapInfoArray.addAll(mapInfoArray);
 		TYIMapInfo info = allMapInfoArray.get(0);
@@ -52,7 +51,7 @@ public class TYServerMultiRouteManager {
 	// }
 
 	public synchronized TYServerMultiRouteResult requestRoute(TYLocalPoint start, TYLocalPoint end,
-			List<TYLocalPoint> stops, boolean rearrangeStops) {
+															  List<TYLocalPoint> stops, boolean rearrangeStops) {
 		// System.out.println("Request Multi Route: " + stops.size() +
 		// " stops");
 		startPoint = routePointConverter.getRoutePointFromLocalPoint(start);

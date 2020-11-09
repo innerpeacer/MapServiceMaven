@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import cn.platalk.map.entity.base.map.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.map.TYIRouteNodeRecordV3;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.common.TYIGeojsonFeature;
 import cn.platalk.foundation.TYGeojsonBuilder;
-import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
-import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
 
 public class TYWebRouteGeojsonDataBuilderV3 {
 	public static final String KEY_BOX_WEB_ROUTE_DATA_LINK = "link";

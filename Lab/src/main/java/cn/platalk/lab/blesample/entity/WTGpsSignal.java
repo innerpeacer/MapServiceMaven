@@ -1,7 +1,6 @@
 package cn.platalk.lab.blesample.entity;
-
-import cn.platalk.map.entity.base.impl.TYLngLat;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.map.TYLngLat;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 
 public class WTGpsSignal {
 	private final TYLngLat lngLat;

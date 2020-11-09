@@ -7,7 +7,7 @@
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>RouteService</artifactId>
-	<version>3.1.0</version>
+	<version>3.2.0</version>
 	<packaging>war</packaging>
 	<name>RouteService</name>
 	<properties>
@@ -18,7 +18,7 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>wtmap-route</artifactId>
-			<version>${wtmap-route-version}</version>
+			<version>3.2.0</version>
 		</dependency>
 
 		<dependency>
@@ -40,5 +40,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>WT${project.artifactId}</finalName>
 	</build>
 </project>

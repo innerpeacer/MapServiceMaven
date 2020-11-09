@@ -9,12 +9,7 @@ import java.util.Map;
 import cn.platalk.core.pbf.cbm.TYCbmPbf.CBMPbf;
 import cn.platalk.core.pbf.cbm.wrapper.TYCity2PbfUtils;
 import cn.platalk.core.pbf.cbm.wrapper.TYSymbol2PbfUtils;
-import cn.platalk.map.entity.base.TYIBuilding;
-import cn.platalk.map.entity.base.TYICity;
-import cn.platalk.map.entity.base.TYIFillSymbolRecord;
-import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.map.entity.base.TYIMapInfo;
+import cn.platalk.map.entity.base.map.*;
 import cn.platalk.map.vectortile.builder.TYVectorTileSettings;
 import cn.platalk.map.vectortile.cbm.json.TYSymbolExtractor;
 
@@ -28,8 +23,8 @@ public class TYCBMPbfBuilder {
 	}
 
 	public static void generateCBMPbf(TYICity city, TYIBuilding building, List<TYIMapInfo> mapInfoList,
-			List<TYIMapDataFeatureRecord> mapDataRecords, List<TYIFillSymbolRecord> fillSymbols,
-			List<TYIIconTextSymbolRecord> iconTextSymbols) throws IOException {
+									  List<TYIMapDataFeatureRecord> mapDataRecords, List<TYIFillSymbolRecord> fillSymbols,
+									  List<TYIIconTextSymbolRecord> iconTextSymbols) throws IOException {
 		if (!"V4".equals(building.getRouteURL())) {
 			return;
 		}

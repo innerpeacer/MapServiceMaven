@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.map.core.config.TYMapEnvironment;
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.map.entity.base.impl.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.map.TYIMapDataFeatureRecord;
 import cn.platalk.map.vectortile.fontbuilder.TYFontBuilder;
 import cn.platalk.map.vectortile.fontbuilder.TYFontBuilder.TYBrtFontBuilderInterface;
 import cn.platalk.map.vectortile.fontbuilder.TYFontSettings;

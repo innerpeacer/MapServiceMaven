@@ -1,11 +1,11 @@
 package cn.platalk.map.api.three.map;
 
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYThreeFeatureOptimizer {
 

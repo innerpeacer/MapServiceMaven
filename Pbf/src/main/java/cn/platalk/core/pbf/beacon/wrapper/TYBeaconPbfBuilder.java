@@ -4,7 +4,7 @@ import java.util.List;
 
 import cn.platalk.core.pbf.beacon.TYBeaconPbf.TYLocatingBeaconListPbf;
 import cn.platalk.core.pbf.beacon.TYBeaconPbf.TYLocatingBeaconPbf;
-import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
+import cn.platalk.map.entity.base.impl.beacon.TYLocatingBeacon;
 
 public class TYBeaconPbfBuilder {
 

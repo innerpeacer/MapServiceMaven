@@ -12,14 +12,7 @@ import cn.platalk.core.map.shp.mapdata.TYJsonMapInfoParser;
 import cn.platalk.core.map.shp.mapdata.TYJsonMapInfoParser.TYBrtMapInfoJsonParserListener;
 import cn.platalk.core.map.shp.routedata.TYShpRouteTask;
 import cn.platalk.core.map.shp.routedata.TYShpRouteTask.TYBrtRouteShpTaskListener;
-import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.map.entity.base.impl.TYCity;
-import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.map.entity.base.impl.TYMapInfo;
-import cn.platalk.map.entity.base.impl.TYRouteLinkRecord;
-import cn.platalk.map.entity.base.impl.TYRouteNodeRecord;
+import cn.platalk.map.entity.base.impl.map.*;
 import cn.platalk.sqlite.map.IPSqliteMapDBAdapter;
 import cn.platalk.sqlite.map.IPSqliteSymbolDBAdapter;
 

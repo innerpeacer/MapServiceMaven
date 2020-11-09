@@ -8,6 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
+import cn.platalk.map.entity.base.map.TYIMapDataFeatureRecord;
+import cn.platalk.map.entity.base.map.TYIMapInfo;
+import cn.platalk.map.entity.base.map.TYIRouteLinkRecordV3;
+import cn.platalk.map.entity.base.map.TYIRouteNodeRecordV3;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.CoordinateArrays;
 import com.vividsolutions.jts.geom.Geometry;
@@ -18,12 +23,6 @@ import com.vividsolutions.jts.linearref.LinearLocation;
 import com.vividsolutions.jts.linearref.LocationIndexedLine;
 import com.vividsolutions.jts.operation.distance.DistanceOp;
 import com.vividsolutions.jts.operation.linemerge.LineMerger;
-
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.map.entity.base.TYIMapInfo;
-import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
-import cn.platalk.map.entity.base.TYIRouteNodeRecordV3;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class IPServerRouteNetworkDatasetV3 {
 	static final GeometryFactory factory = new GeometryFactory();
@@ -69,7 +68,7 @@ class IPServerRouteNetworkDatasetV3 {
 	private IPRouteLevel targetRouteLevel;
 
 	public IPServerRouteNetworkDatasetV3(List<TYIMapInfo> mapInfos, List<TYIRouteNodeRecordV3> nodes,
-			List<TYIRouteLinkRecordV3> links, List<TYIMapDataFeatureRecord> mapdata) {
+										 List<TYIRouteLinkRecordV3> links, List<TYIMapDataFeatureRecord> mapdata) {
 		allMapInfoArray.addAll(mapInfos);
 		// allMapDataArray.addAll(mapdata);
 		for (TYIMapDataFeatureRecord record : mapdata) {

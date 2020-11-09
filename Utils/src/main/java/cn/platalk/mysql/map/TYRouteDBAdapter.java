@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import cn.platalk.map.entity.base.impl.TYRouteLinkRecord;
-import cn.platalk.map.entity.base.impl.TYRouteNodeRecord;
+import cn.platalk.map.entity.base.impl.map.TYRouteLinkRecord;
+import cn.platalk.map.entity.base.impl.map.TYRouteNodeRecord;
 import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 

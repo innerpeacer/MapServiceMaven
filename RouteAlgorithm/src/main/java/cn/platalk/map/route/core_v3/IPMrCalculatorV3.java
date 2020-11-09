@@ -1,11 +1,11 @@
 package cn.platalk.map.route.core_v3;
 
+import cn.platalk.map.entity.base.map.TYIMapInfo;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import cn.platalk.map.entity.base.TYIMapInfo;
 
 class IPMrCalculatorV3 {
 	static final double LARGE_DISTANCE = 1000000000;

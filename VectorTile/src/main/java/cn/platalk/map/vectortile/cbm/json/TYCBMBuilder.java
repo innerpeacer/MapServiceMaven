@@ -3,17 +3,11 @@ package cn.platalk.map.vectortile.cbm.json;
 import java.io.File;
 import java.util.List;
 
+import cn.platalk.map.entity.base.map.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cn.platalk.map.entity.base.TYIBuilding;
-import cn.platalk.map.entity.base.TYICity;
-import cn.platalk.map.entity.base.TYIFillSymbolRecord;
-import cn.platalk.map.entity.base.TYIIconSymbolRecord;
-import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.map.entity.base.TYIMapInfo;
 import cn.platalk.map.vectortile.builder.TYVectorTileSettings;
 import cn.platalk.utils.third.TYFileUtils;
 
@@ -34,8 +28,8 @@ public class TYCBMBuilder {
 	}
 
 	public static void generateCBMJson(TYICity city, TYIBuilding building, List<TYIMapInfo> mapInfoList,
-			List<TYIMapDataFeatureRecord> mapDataRecords, List<TYIFillSymbolRecord> fillSymbols,
-			List<TYIIconSymbolRecord> iconSymbols, List<TYIIconTextSymbolRecord> iconTextSymbols) {
+									   List<TYIMapDataFeatureRecord> mapDataRecords, List<TYIFillSymbolRecord> fillSymbols,
+									   List<TYIIconSymbolRecord> iconSymbols, List<TYIIconTextSymbolRecord> iconTextSymbols) {
 
 		JSONArray cityJsonArray = new JSONArray();
 		cityJsonArray.put(city.toJson());

@@ -3,10 +3,9 @@ package cn.platalk.core.map.shp.routedata;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.map.entity.base.impl.map.TYRouteLinkRecord;
+import cn.platalk.map.entity.base.impl.map.TYRouteNodeRecord;
 import com.vividsolutions.jts.geom.Point;
-
-import cn.platalk.map.entity.base.impl.TYRouteLinkRecord;
-import cn.platalk.map.entity.base.impl.TYRouteNodeRecord;
 
 public class TYShpRouteNDBuildingTool {
 

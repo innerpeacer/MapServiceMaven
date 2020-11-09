@@ -3,7 +3,7 @@ package cn.platalk.sqlite.map;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
+import cn.platalk.map.entity.base.impl.map.TYIconSymbolRecord;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlFieldType;
 import cn.platalk.sqlhelper.sql.IPSqlRecord;

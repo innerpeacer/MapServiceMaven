@@ -6,12 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.platalk.map.entity.base.map.TYIFillSymbolRecord;
+import cn.platalk.map.entity.base.map.TYIIconSymbolRecord;
+import cn.platalk.map.entity.base.map.TYIMapDataFeatureRecord;
+import cn.platalk.map.entity.base.map.TYIMapInfo;
 import com.vividsolutions.jts.geom.Geometry;
-
-import cn.platalk.map.entity.base.TYIFillSymbolRecord;
-import cn.platalk.map.entity.base.TYIIconSymbolRecord;
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.map.entity.base.TYIMapInfo;
 
 class TYGeometrySet {
 	String buildingID;

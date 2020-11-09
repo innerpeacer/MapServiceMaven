@@ -1,8 +1,7 @@
 package cn.platalk.core.map.shp.routedata;
 
+import cn.platalk.map.entity.base.map.TYIRouteLinkRecordV3;
 import com.vividsolutions.jts.geom.LineString;
-
-import cn.platalk.map.entity.base.TYIRouteLinkRecordV3;
 
 public class TYShpBuildingLinkV3 {
 	String linkID;

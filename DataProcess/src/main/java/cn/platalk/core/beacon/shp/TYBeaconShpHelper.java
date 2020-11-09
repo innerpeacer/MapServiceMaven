@@ -1,13 +1,12 @@
 package cn.platalk.core.beacon.shp;
 
+import cn.platalk.map.entity.base.impl.beacon.TYLocatingBeacon;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 import org.gdal.ogr.Feature;
 
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
-
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
-import cn.platalk.map.entity.base.impl.TYLocatingBeacon;
 
 public class TYBeaconShpHelper {
 	public static TYLocatingBeacon locationBeaconFromRecord(Feature feature) {

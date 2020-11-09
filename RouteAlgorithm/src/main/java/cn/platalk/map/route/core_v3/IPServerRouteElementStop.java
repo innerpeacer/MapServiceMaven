@@ -1,6 +1,6 @@
 package cn.platalk.map.route.core_v3;
 
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 
 public class IPServerRouteElementStop extends IPServerRouteElement {
 

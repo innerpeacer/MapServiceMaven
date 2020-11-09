@@ -3,13 +3,13 @@ package cn.platalk.core.map.shp.mapdata;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 import org.gdal.gdal.gdal;
 import org.gdal.ogr.DataSource;
 import org.gdal.ogr.Layer;
 import org.gdal.ogr.ogr;
 
 import cn.platalk.core.map.shp.TYShpHelper;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYShpMapDataParser {
 	final String shpPath;

@@ -3,6 +3,7 @@ package cn.platalk.lab.blesample.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
 import org.json.JSONObject;
 
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -12,7 +13,6 @@ import cn.platalk.lab.blesample.pbf.proto.WTBleSamplePbf;
 import cn.platalk.lab.blesample.pbf.proto.WTBleSamplePbf.BleSamplePbf;
 import cn.platalk.lab.blesample.pbf.wrapper.WTPbf2BleSampleUtils;
 import cn.platalk.lab.universaldata.entity.IPUniversalData;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 public class WTBleSample implements TYIJsonFeature {
 	public static final String KEY_LAB_SAMPLE_POINTS = "SamplePoints";

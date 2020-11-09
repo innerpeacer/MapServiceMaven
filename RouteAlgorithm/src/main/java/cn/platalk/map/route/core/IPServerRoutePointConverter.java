@@ -1,12 +1,11 @@
 package cn.platalk.map.route.core;
 
+import cn.platalk.map.entity.base.impl.map.TYLocalPoint;
+import cn.platalk.map.entity.base.map.TYIMapExtent;
+import cn.platalk.map.entity.base.map.TYIMapSize;
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
-
-import cn.platalk.map.entity.base.TYIMapExtent;
-import cn.platalk.map.entity.base.TYIMapSize;
-import cn.platalk.map.entity.base.impl.TYLocalPoint;
 
 class IPServerRoutePointConverter {
 

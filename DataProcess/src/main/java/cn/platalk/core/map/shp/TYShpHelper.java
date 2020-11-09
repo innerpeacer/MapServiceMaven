@@ -1,5 +1,6 @@
 package cn.platalk.core.map.shp;
 
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 import org.gdal.ogr.Feature;
 
 import com.vividsolutions.jts.geom.Geometry;
@@ -8,7 +9,6 @@ import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKBReader;
 
 import cn.platalk.core.map.shp.routedata.TYShpRouteRecord;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 import cn.platalk.utils.TYEncryption;
 
 public class TYShpHelper {

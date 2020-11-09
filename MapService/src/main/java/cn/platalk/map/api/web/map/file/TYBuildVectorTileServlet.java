@@ -13,13 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.platalk.map.core.config.TYMapEnvironment;
-import cn.platalk.map.entity.base.TYIFillSymbolRecord;
-import cn.platalk.map.entity.base.TYIIconSymbolRecord;
-import cn.platalk.map.entity.base.TYIIconTextSymbolRecord;
-import cn.platalk.map.entity.base.TYIMapDataFeatureRecord;
-import cn.platalk.map.entity.base.TYIMapInfo;
-import cn.platalk.map.entity.base.impl.TYBuilding;
-import cn.platalk.map.entity.base.impl.TYCity;
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYCity;
+import cn.platalk.map.entity.base.map.*;
 import cn.platalk.map.vectortile.builder.TYVectorTileBuilder;
 import cn.platalk.map.vectortile.builder.TYVectorTileSettings;
 import cn.platalk.mysql.TYMysqlDBHelper;

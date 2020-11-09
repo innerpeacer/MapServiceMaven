@@ -7,8 +7,8 @@ import java.util.List;
 import cn.platalk.core.map.base.TYIShpDataManager;
 import cn.platalk.core.map.shp.mapdata.TYShpMapDataParser;
 import cn.platalk.core.map.shp.mapdata.TYShpMapDataParser.TYBrtMapShpParserListener;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
-import cn.platalk.map.entity.base.impl.TYMapInfo;
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
+import cn.platalk.map.entity.base.impl.map.TYMapInfo;
 
 public class TYShpMapDataTaskV3 implements TYBrtMapShpParserListener {
 	private static final String[] MAP_LAYERS = { "FLOOR", "ROOM", "ASSET", "FACILITY", "LABEL", "SHADE" };

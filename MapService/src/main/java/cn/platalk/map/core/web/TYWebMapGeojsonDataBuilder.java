@@ -5,15 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.platalk.map.entity.base.impl.map.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.impl.map.TYIconSymbolRecord;
+import cn.platalk.map.entity.base.impl.map.TYMapDataFeatureRecord;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.platalk.foundation.TYGeojsonBuilder;
 import cn.platalk.foundation.TYGeojsonFields;
-import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
-import cn.platalk.map.entity.base.impl.TYMapDataFeatureRecord;
 
 public class TYWebMapGeojsonDataBuilder {
 	public static final String KEY_BOX_WEB_MAP_DATA_FLOOR = "floor";
@@ -24,7 +24,7 @@ public class TYWebMapGeojsonDataBuilder {
 	public static final String KEY_BOX_WEB_MAP_DATA_EXTRUSION = "extrusion";
 
 	public static JSONObject generateMapDataObject(List<TYMapDataFeatureRecord> dataList,
-			List<TYFillSymbolRecord> fillSymbolList, List<TYIconSymbolRecord> iconSymbolList) throws JSONException {
+												   List<TYFillSymbolRecord> fillSymbolList, List<TYIconSymbolRecord> iconSymbolList) throws JSONException {
 		Map<Integer, TYFillSymbolRecord> fillSymbolMap = new HashMap<>();
 		for (TYFillSymbolRecord symbol : fillSymbolList) {
 			fillSymbolMap.put(symbol.symbolID, symbol);
