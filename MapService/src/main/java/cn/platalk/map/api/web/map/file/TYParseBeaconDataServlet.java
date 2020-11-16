@@ -51,27 +51,32 @@ public class TYParseBeaconDataServlet extends TYBaseHttpServlet {
 
 		// 解压数据
 		{
-			File zipFile = new File(TYMapEnvironment.GetRawDataRootDir(), String.format("%s.zip", buildingID));
+//			File zipFile = new File(TYMapEnvironment.GetRawDataRootDir(), String.format("%s.zip", buildingID));
+			File zipFile = new File(TYMapEnvironment.GetRawBeaconDir(), String.format("%s_beacon.zip", buildingID));
 			if (zipFile.exists()) {
-				resBuffer.append("exist\n");
-				System.out.println("exist");
+				resBuffer.append(zipFile.toString() + " exist\n");
+				System.out.println(zipFile.toString() + " exist");
 
 				try {
 					// TYZipUtil.unzip(zipFile.getAbsolutePath(),
 					// TYBrtMapEnvironment.GetRawDataRootDir(), false);
 					TYZipUtil.unzip(zipFile.getAbsolutePath(),
-							new File(TYMapEnvironment.GetRawDataRootDir(), buildingID).toString(), false);
+							new File(TYMapEnvironment.GetRawBeaconDir(), String.format("%s_beacon", buildingID)).toString(), false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			} else {
-				resBuffer.append("not exist\n");
-				System.out.println("not exist");
+				resBuffer.append(zipFile.toString() + " not exist\n");
+				System.out.println(zipFile.toString() + " not exist");
+				PrintWriter out = response.getWriter();
+				out.println(resBuffer.toString());
+				out.close();
+				return;
 			}
 		}
 
-		TYBeaconShpDataManager shpManager = new TYBeaconShpDataManager(TYMapEnvironment.GetShpRootDir(buildingID));
-		TYShpBeaconDataParser parser = new TYShpBeaconDataParser(shpManager.getBeaconShpPath());
+		TYBeaconShpDataManager shpManager = new TYBeaconShpDataManager(TYMapEnvironment.GetRawBeaconDir());
+		TYShpBeaconDataParser parser = new TYShpBeaconDataParser(shpManager.getBeaconShpPath(buildingID));
 		parser.addParserListener(new TYBrtShpBeaconParserListener() {
 			@Override
 			public void didFailedParsingBeaconDataList(Throwable error) {
@@ -141,7 +146,7 @@ public class TYParseBeaconDataServlet extends TYBaseHttpServlet {
 					out.println(resBuffer.toString());
 					out.close();
 				} catch (IOException e) {
-					e.printStackTrace();
+//					e.printStackTrace();
 				}
 			}
 		});

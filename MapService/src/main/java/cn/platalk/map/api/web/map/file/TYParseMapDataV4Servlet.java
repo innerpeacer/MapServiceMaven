@@ -47,20 +47,25 @@ public class TYParseMapDataV4Servlet extends TYBaseHttpServlet {
 
 		// 解压数据
 		{
-			File zipFile = new File(TYMapEnvironment.GetRawDataRootDir(), String.format("%s.zip", buildingID));
+			File zipFile = new File(TYMapEnvironment.GetRawMapDir(), String.format("%s.zip", buildingID));
 			if (zipFile.exists()) {
 				resBuffer.append("exist\n");
 				System.out.println("exist");
 
 				try {
 					TYZipUtil.unzip(zipFile.getAbsolutePath(),
-							new File(TYMapEnvironment.GetRawDataRootDir(), buildingID).toString(), false);
+							new File(TYMapEnvironment.GetRawMapDir(), buildingID).toString(), false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			} else {
 				resBuffer.append("not exist\n");
-				System.out.println("not exist");
+				System.out.println(zipFile + " not exist");
+
+				PrintWriter out = response.getWriter();
+				out.println(resBuffer.toString());
+				out.close();
+				return;
 			}
 		}
 

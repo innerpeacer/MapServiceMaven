@@ -29,11 +29,7 @@ public class TYUploadHandleServlet extends HttpServlet {
 		response.setContentType("text/json;charset=UTF-8");
 		PrintWriter outWriter = response.getWriter();
 
-		String savePath = TYMapEnvironment.GetRawDataRootDir();
-		File saveDir = new File(savePath);
-		if (!saveDir.exists()) {
-			saveDir.mkdirs();
-		}
+		// Default to map zip
 		String tempPath = this.getServletContext().getRealPath("/WEB-INF/temp");
 		File tmpFile = new File(tempPath);
 		if (!tmpFile.exists()) {
@@ -47,10 +43,8 @@ public class TYUploadHandleServlet extends HttpServlet {
 			factory.setRepository(tmpFile);
 			ServletFileUpload upload = new ServletFileUpload(factory);
 			upload.setProgressListener(new ProgressListener() {
-				public void update(long pBytesRead, long pContentLength,
-						int arg2) {
-					System.out.println("文件大小为：" + pContentLength + ",当前已处理："
-							+ pBytesRead);
+				public void update(long pBytesRead, long pContentLength, int arg2) {
+//					System.out.println("文件大小为：" + pContentLength + ",当前已处理：" + pBytesRead);
 				}
 			});
 			upload.setHeaderEncoding("UTF-8");
@@ -73,20 +67,27 @@ public class TYUploadHandleServlet extends HttpServlet {
 						continue;
 					}
 
-					filename = filename
-							.substring(filename.lastIndexOf("\\") + 1);
-					filename = filename
-							.substring(filename.lastIndexOf("/") + 1);
-					String fileExtName = filename.substring(filename
-							.lastIndexOf(".") + 1);
+					filename = filename.substring(filename.lastIndexOf("\\") + 1);
+					filename = filename.substring(filename.lastIndexOf("/") + 1);
+					String fileExtName = filename.substring(filename.lastIndexOf(".") + 1);
 					System.out.println("上传的文件的扩展名是：" + fileExtName);
 
 					InputStream in = item.getInputStream();
 					String saveFilename = filename;
 
-					FileOutputStream out = new FileOutputStream(String.format(
-							"%s%s%s", savePath, File.separator,
-							saveFilename));
+					String saveDir = TYMapEnvironment.GetRawMapDir();
+					if (filename.toLowerCase().indexOf("beacon") != -1) {
+						System.out.println("上传Beacon文件");
+						saveDir = TYMapEnvironment.GetRawBeaconDir();
+					}
+
+					if (filename.toLowerCase().indexOf("uwb") != -1) {
+						System.out.println("上传UWB文件");
+						saveDir = TYMapEnvironment.GetRawUwbDir();
+					}
+					String savePath = String.format("%s%s%s", saveDir, File.separator, saveFilename);
+					FileOutputStream out = new FileOutputStream(savePath);
+
 					byte[] buffer = new byte[1024];
 					int len;
 					while ((len = in.read(buffer)) > 0) {
@@ -96,22 +97,19 @@ public class TYUploadHandleServlet extends HttpServlet {
 					out.close();
 					// 删除处理文件上传时生成的临时文件
 					// item.delete();
-					message = "文件上传成功！";
+					message = "文件上传成功！\n";
+					message += savePath;
 				}
 			}
 		} catch (FileUploadBase.FileSizeLimitExceededException e) {
 			e.printStackTrace();
-			outWriter.println("单个文件超出最大值！！！");
-			outWriter.close();
-			return;
+			message = "单个文件超出最大值！！！";
 		} catch (FileUploadBase.SizeLimitExceededException e) {
 			e.printStackTrace();
-			outWriter.println("上传文件的总的大小超出限制的最大值！！！");
-			outWriter.close();
-			return;
+			message = "上传文件的总的大小超出限制的最大值！！！";
 		} catch (Exception e) {
-			message = "文件上传失败！";
 			e.printStackTrace();
+			message = "文件上传失败！";
 		}
 
 		outWriter.println(message);

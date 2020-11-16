@@ -65,7 +65,25 @@ public class TYMapEnvironment {
 		return resourceManager.getRawDataRootDir();
 	}
 
+	public static String GetRawMapDir() {
+		File rawMapDir = new File(GetRawDataRootDir(), "map");
+		if (!rawMapDir.exists()) rawMapDir.mkdirs();
+		return rawMapDir.toString();
+	}
+
+	public static String GetRawBeaconDir() {
+		File rawBeaconDir = new File(GetRawDataRootDir(), "beacon");
+		if (!rawBeaconDir.exists()) rawBeaconDir.mkdirs();
+		return rawBeaconDir.toString();
+	}
+
+	public static String GetRawUwbDir() {
+		File rawUwbDir = new File(GetRawDataRootDir(), "uwb");
+		if (!rawUwbDir.exists()) rawUwbDir.mkdirs();
+		return rawUwbDir.toString();
+	}
+
 	public static String GetShpRootDir(String buildingID) {
-		return new File(GetRawDataRootDir(), buildingID).toString();
+		return new File(GetRawMapDir(), buildingID).toString();
 	}
 }
