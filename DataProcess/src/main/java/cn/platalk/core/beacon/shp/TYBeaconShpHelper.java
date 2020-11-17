@@ -12,7 +12,8 @@ public class TYBeaconShpHelper {
 	public static TYLocatingBeacon locationBeaconFromRecord(Feature feature) {
 		TYLocatingBeacon beacon = new TYLocatingBeacon();
 
-		byte[] geom = feature.GetGeometryRef().ExportToIsoWkb();
+//		byte[] geom = feature.GetGeometryRef().ExportToIsoWkb();
+		byte[] geom = feature.GetGeometryRef().ExportToWkb();
 		Point p = null;
 		try {
 			WKBReader reader = new WKBReader();

@@ -34,7 +34,8 @@ public class TYShpHelper {
 		TYMapDataFeatureRecord record = new TYMapDataFeatureRecord();
 		record.objectID = fid + "";
 
-		byte[] geometryBytes = feature.GetGeometryRef().ExportToIsoWkb();
+//		byte[] geometryBytes = feature.GetGeometryRef().ExportToIsoWkb();
+		byte[] geometryBytes = feature.GetGeometryRef().ExportToWkb();
 		Geometry g = null;
 		try {
 			WKBReader reader = new WKBReader();
