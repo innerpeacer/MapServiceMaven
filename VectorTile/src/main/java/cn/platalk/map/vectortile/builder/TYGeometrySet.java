@@ -35,7 +35,7 @@ class TYGeometrySet {
 	}
 
 	public void addData(List<TYIMapInfo> mapInfos, List<TYIMapDataFeatureRecord> mapDataRecords,
-			List<TYIFillSymbolRecord> fillSymbols, List<TYIIconSymbolRecord> iconSymbols) {
+						List<TYIFillSymbolRecord> fillSymbols, List<TYIIconSymbolRecord> iconSymbols) {
 		mapInfoList.addAll(mapInfos);
 		allRecords.addAll(mapDataRecords);
 		fillSymbolList.addAll(fillSymbols);
@@ -85,6 +85,8 @@ class TYGeometrySet {
 		List<TYIMapDataFeatureRecord> fillRecords = new ArrayList<>();
 
 		for (TYIMapDataFeatureRecord record : allRecords) {
+			if (!record.isVisible()) continue;
+
 			if (record.getLayer() == TYIMapDataFeatureRecord.LAYER_FLOOR) {
 				floorRecords.add(record);
 				fillRecords.add(record);
