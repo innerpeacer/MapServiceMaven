@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+import "t_y_route_property_pbf.proto";
+import "t_y_route_geometry_pbf.proto";
+
+package cn.platalk.core.pbf.route;
+
+message TYRouteLinkV3Pbf {
+    required TYRouteLineStringPbf geometry = 1;
+    required TYRouteLinkV3PropertiesPbf properties = 2;
+}
+
+message TYRouteNodeV3Pbf {
+    required TYRouteCoordPbf geometry = 1;
+    required TYRouteNodeV3PropertiesPbf properties = 2;
+}
+
+message TYRouteNetworkV3Pbf {
+    required string buildingID = 1;
+    repeated TYRouteLinkV3Pbf links = 2;
+    repeated TYRouteNodeV3Pbf nodes = 3;
+}

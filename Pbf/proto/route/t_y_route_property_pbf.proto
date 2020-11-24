@@ -1,0 +1,38 @@
+syntax = "proto2";
+
+package cn.platalk.core.pbf.route;
+
+message TYRouteLinkV3PropertiesPbf {
+    required string linkID = 1;
+    required double length = 2;
+    required string headNode = 3;
+    required string endNode = 4;
+
+    required bool virtual = 5;
+    required bool oneWay = 6;
+    optional string linkName = 7;
+    required int32 floor = 8;
+    required int32 level = 9;
+    required bool reverse = 10;
+    optional string roomID = 11;
+    required bool open = 12;
+    optional string openTime = 13;
+    required bool allowSnap = 14;
+    required string linkType = 15;
+}
+
+message TYRouteNodeV3PropertiesPbf {
+    required string nodeID = 1;
+    required bool virtual = 2;
+    optional string nodeName = 3;
+    optional string categoryID = 4;
+    required int32 floor = 5;
+    required int32 level = 6;
+    required bool switching = 7;
+    optional int32 switchID = 8;
+    required int32 direction = 9;
+    required int32 nodeType = 10;
+    required bool open = 11;
+    optional string openTime = 12;
+    optional string roomID = 13;
+}

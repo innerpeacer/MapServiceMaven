@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package cn.platalk.core.pbf.route;
+
+message TYRouteCoordPbf {
+    required double x = 1;
+    required double y = 2;
+}
+
+message TYRouteLineStringPbf {
+    repeated TYRouteCoordPbf coords = 1;
+}
