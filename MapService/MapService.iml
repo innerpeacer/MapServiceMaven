@@ -38,7 +38,7 @@
     <orderEntry type="module" module-name="wtmap-data-process" />
     <orderEntry type="module" module-name="Lab" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.5.1" level="project" />
-    <orderEntry type="library" name="Maven: cn.platalk:Pbf:1.4.0" level="project" />
+    <orderEntry type="module" module-name="Pbf" />
     <orderEntry type="module" module-name="wtmap-entity-base" />
     <orderEntry type="library" name="Maven: com.vividsolutions:jts:1.13" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20180130" level="project" />

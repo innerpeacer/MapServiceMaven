@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.platalk.map.entity.base.impl.map.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.impl.map.TYIconSymbolRecord;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cn.platalk.map.entity.base.impl.TYFillSymbolRecord;
-import cn.platalk.map.entity.base.impl.TYIconSymbolRecord;
 
 public class TYWebMapObjectBuilder {
 

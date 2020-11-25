@@ -2,7 +2,7 @@ package cn.platalk.map.core.web.file;
 
 import java.io.File;
 
-import cn.platalk.map.entity.base.impl.TYBuilding;
+import cn.platalk.map.entity.base.impl.map.TYBuilding;
 import cn.platalk.utils.third.TYFileUtils;
 
 public class TYWebGeojsonPathManager {
