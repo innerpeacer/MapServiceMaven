@@ -98,8 +98,7 @@ public class TYMysqlDBHelper {
     public static List<TYIRouteNodeRecordV3> getAllRouteNodeRecordV3(String buildingID) {
         TYRouteDBAdapterV3 routeDB = new TYRouteDBAdapterV3(buildingID);
         routeDB.connectDB();
-        List<TYIRouteNodeRecordV3> nodeList = new ArrayList<>();
-        nodeList.addAll(routeDB.getAllNodeRecords());
+        List<TYIRouteNodeRecordV3> nodeList = new ArrayList<>(routeDB.getAllNodeRecords());
         routeDB.disconnectDB();
         return nodeList;
     }

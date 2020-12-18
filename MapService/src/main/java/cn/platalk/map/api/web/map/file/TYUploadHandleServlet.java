@@ -85,6 +85,11 @@ public class TYUploadHandleServlet extends HttpServlet {
 						System.out.println("上传UWB文件");
 						saveDir = TYMapEnvironment.GetRawUwbDir();
 					}
+
+					if (filename.toLowerCase().indexOf("theme") != -1) {
+						System.out.println("上传Theme文件");
+						saveDir = TYMapEnvironment.GetRawThemeDir();
+					}
 					String savePath = String.format("%s%s%s", saveDir, File.separator, saveFilename);
 					FileOutputStream out = new FileOutputStream(savePath);
 

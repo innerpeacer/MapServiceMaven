@@ -83,6 +83,12 @@ public class TYMapEnvironment {
 		return rawUwbDir.toString();
 	}
 
+	public static String GetRawThemeDir() {
+		File rawThemeDir = new File(GetRawDataRootDir(), "theme");
+		if (!rawThemeDir.exists()) rawThemeDir.mkdirs();
+		return rawThemeDir.toString();
+	}
+
 	public static String GetShpRootDir(String buildingID) {
 		return new File(GetRawMapDir(), buildingID).toString();
 	}
