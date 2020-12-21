@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+import "t_y_symbol_pbf.proto";
+
+package cn.platalk.core.pbf.cbm;
+
+message ThemePbf {
+  required string themeID = 1;
+  required string themeName = 2;
+  required string spriteName = 3;
+  repeated FillSymbolPbf FillSymbols = 4;
+  repeated IconTextSymbolPbf IconTextSymbols = 5;
+}

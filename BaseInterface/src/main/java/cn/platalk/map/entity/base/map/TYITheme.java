@@ -1,6 +1,8 @@
 package cn.platalk.map.entity.base.map;
 
-public interface TYITheme {
+import cn.platalk.common.TYIJsonFeature;
+
+public interface TYITheme extends TYIJsonFeature {
 	String getThemeID();
 
 	String getThemeName();

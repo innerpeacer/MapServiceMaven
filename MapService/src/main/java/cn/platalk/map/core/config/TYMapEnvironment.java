@@ -7,6 +7,11 @@ import cn.platalk.map.res.TYIResourceManager;
 public class TYMapEnvironment {
 	static final TYIResourceManager resourceManager = TYServerEnvironment.resourceManager;
 
+
+	public static String GetThemeDir() {
+		return resourceManager.getThemeRootDir();
+	}
+
 	public static String GetFontDir() {
 		return resourceManager.getFontDir();
 	}

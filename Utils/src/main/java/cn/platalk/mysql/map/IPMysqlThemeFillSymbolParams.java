@@ -1,6 +1,7 @@
 package cn.platalk.mysql.map;
 
 import cn.platalk.map.entity.base.impl.map.TYFillSymbolRecord;
+import cn.platalk.map.entity.base.map.TYIFillSymbolRecord;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlFieldType;
 import cn.platalk.sqlhelper.sql.IPSqlRecord;
@@ -56,8 +57,8 @@ public class IPMysqlThemeFillSymbolParams {
 		return fillSymbolFieldList;
 	}
 
-	public static List<TYFillSymbolRecord> FillSymbolListFromRecords(List<IPSqlRecord> records) {
-		List<TYFillSymbolRecord> fillList = new ArrayList<>();
+	public static List<TYIFillSymbolRecord> FillSymbolListFromRecords(List<IPSqlRecord> records) {
+		List<TYIFillSymbolRecord> fillList = new ArrayList<>();
 		for (IPSqlRecord record : records) {
 			TYFillSymbolRecord fill = new TYFillSymbolRecord();
 			fill.setSymbolID(record.getInteger(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID));
@@ -73,7 +74,7 @@ public class IPMysqlThemeFillSymbolParams {
 		return fillList;
 	}
 
-	public static Map<String, Object> DataMapFromFillSymbol(TYFillSymbolRecord fill, String themeID) {
+	public static Map<String, Object> DataMapFromFillSymbol(TYIFillSymbolRecord fill, String themeID) {
 		Map<String, Object> data = new HashMap<>();
 		data.put(FIELD_MAP_SYMBOL_FILL_101_THEME_ID, themeID);
 		data.put(FIELD_MAP_SYMBOL_FILL_1_SYMBOL_ID, fill.getSymbolID());

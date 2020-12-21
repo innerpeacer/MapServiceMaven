@@ -3,10 +3,11 @@ package cn.platalk.mysql.map;
 import cn.platalk.map.entity.base.impl.map.TYFillSymbolRecord;
 import cn.platalk.map.entity.base.impl.map.TYIconTextSymbolRecord;
 import cn.platalk.map.entity.base.impl.map.TYTheme;
+import cn.platalk.map.entity.base.map.TYIFillSymbolRecord;
+import cn.platalk.map.entity.base.map.TYIIconTextSymbolRecord;
 import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
-import cn.platalk.sqlite.map.IPSqliteThemeParams;
 
 import java.util.HashMap;
 import java.util.List;
@@ -98,12 +99,12 @@ public class TYThemeDBAdapter {
 		return db.insertData(iconTextTable, IPMysqlThemeIconTextSymbolParams.DataMapFromIconTextSymbol(record, themeID));
 	}
 
-	public List<TYFillSymbolRecord> getFillSymbolRecords(String themeID) {
+	public List<TYIFillSymbolRecord> getFillSymbolRecords(String themeID) {
 		return IPMysqlThemeFillSymbolParams.FillSymbolListFromRecords(db.readData(fillTable,
 				fillTable.getField(IPMysqlThemeFillSymbolParams.FIELD_MAP_SYMBOL_FILL_101_THEME_ID), themeID));
 	}
 
-	public List<TYIconTextSymbolRecord> getIconTextSymbolRecords(String themeID) {
+	public List<TYIIconTextSymbolRecord> getIconTextSymbolRecords(String themeID) {
 		return IPMysqlThemeIconTextSymbolParams.IconTextSymbolListFromRecords(db.readData(iconTextTable,
 				iconTextTable.getField(IPMysqlThemeIconTextSymbolParams.FIELD_MAP_SYMBOL_ICON_TEXT_101_THEME_ID),
 				themeID));
@@ -115,6 +116,19 @@ public class TYThemeDBAdapter {
 
 	public void deleteIconTextSymbolRecords(String themeID) {
 		db.deleteRecord(iconTextTable, iconTextTable.getField(IPMysqlThemeIconTextSymbolParams.FIELD_MAP_SYMBOL_ICON_TEXT_101_THEME_ID), themeID);
+	}
+
+	public TYTheme getTheme(String themeID) {
+		List<TYTheme> themes = IPMysqlThemeParams.ThemeListFromRecords(
+				db.readData(themeTable, themeTable.getField(IPMysqlThemeParams.FIELD_THEME_1_ID), themeID));
+		if (themes.size() > 0) {
+			return themes.get(0);
+		}
+		return null;
+	}
+
+	public List<TYTheme> getThemes() {
+		return IPMysqlThemeParams.ThemeListFromRecords(db.readData(themeTable));
 	}
 
 	public boolean existTheme(String themeID) {

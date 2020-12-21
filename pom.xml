@@ -31,7 +31,7 @@
 		<module>RouteService</module>
 		<module>MapService</module>
 		<module>Utils</module>
-		<module>Test</module>
+<!--		<module>Test</module>-->
 		<module>SqlHelper</module>
 		<module>Lab</module>
 		<module>Pbf</module>
