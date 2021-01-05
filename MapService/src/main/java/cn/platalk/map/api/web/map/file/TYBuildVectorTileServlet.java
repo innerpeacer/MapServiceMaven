@@ -33,6 +33,11 @@ public class TYBuildVectorTileServlet extends TYBaseHttpServlet {
 			throws IOException {
 		String buildingID = request.getParameter("buildingID");
 		String cbmOnly = request.getParameter("cbmOnly");
+		String maxZoomStr = request.getParameter("maxZoom");
+		int maxZoom = 21;
+		if (maxZoomStr != null) {
+			maxZoom = Integer.parseInt(maxZoomStr);
+		}
 		response.setContentType("text/json;charset=UTF-8");
 
 		if (!TYParameterChecker.isValidBuildingID(buildingID)) {
@@ -47,7 +52,7 @@ public class TYBuildVectorTileServlet extends TYBaseHttpServlet {
 		}
 
 		TYVectorTileSettings.SetTileRoot(TYMapEnvironment.GetVectorTileRoot());
-		TYVectorTileSettings.SetDefaultMaxZoom(21);
+		TYVectorTileSettings.SetDefaultMaxZoom(maxZoom);
 		// TYVectorTileSettings.setDefaultMinZoom(15);
 
 		File tileDir = new File(TYMapEnvironment.GetVectorTileRoot(), buildingID);
@@ -90,7 +95,7 @@ public class TYBuildVectorTileServlet extends TYBaseHttpServlet {
 	}
 
 	private List<TYIFillSymbolRecord> filterFillRecords(List<TYIMapDataFeatureRecord> mapRecords,
-			List<TYIFillSymbolRecord> fillRecords) {
+														List<TYIFillSymbolRecord> fillRecords) {
 		List<TYIFillSymbolRecord> resultList = new ArrayList<>();
 
 		Set<Integer> tempSet = new HashSet<>();
@@ -111,7 +116,7 @@ public class TYBuildVectorTileServlet extends TYBaseHttpServlet {
 	}
 
 	private List<TYIIconTextSymbolRecord> filterIconTextRecords(List<TYIMapDataFeatureRecord> mapRecords,
-			List<TYIIconTextSymbolRecord> iconTextRecords) {
+																List<TYIIconTextSymbolRecord> iconTextRecords) {
 		List<TYIIconTextSymbolRecord> resultList = new ArrayList<>();
 
 		Set<Integer> tempSet = new HashSet<>();
