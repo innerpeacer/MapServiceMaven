@@ -16,6 +16,12 @@ class TYGeometryUtils {
 
 		Map<String, Object> userData = new HashMap<>();
 
+		String poiID = record.getPoiID();
+		int id = 0;
+		if (poiID.length() > 11) {
+			id = Integer.parseInt(poiID.substring(11));
+		}
+		userData.put("id", id);
 		userData.put("GEO_ID", record.getGeoID());
 		userData.put("POI_ID", record.getPoiID());
 		userData.put("NAME", record.getName());

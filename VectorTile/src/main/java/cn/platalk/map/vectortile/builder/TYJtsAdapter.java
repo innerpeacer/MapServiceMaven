@@ -1,10 +1,6 @@
 package cn.platalk.map.vectortile.builder;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 import com.vividsolutions.jts.algorithm.CGAlgorithms;
 import com.vividsolutions.jts.geom.Coordinate;
@@ -318,6 +314,10 @@ final class TYJtsAdapter {
 		// Feature Properties
 		userDataConverter.addTags(geom.getUserData(), layerProps,
 				featureBuilder);
+
+		Map<String, Object> userData = (Map<String, Object>) geom.getUserData();
+		int id = (Integer) userData.get("id");
+		featureBuilder.setId(id);
 
 		return featureBuilder.build();
 	}
