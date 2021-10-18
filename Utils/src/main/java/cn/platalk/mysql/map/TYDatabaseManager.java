@@ -1,6 +1,7 @@
 package cn.platalk.mysql.map;
 
 public class TYDatabaseManager {
+	private static final String DATABASE_URL = "jdbc:mysql://%s/%s?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
 	private static final String MAP_DATABASE_URL = "jdbc:mysql://%s/WT_MAP_DB?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
 	private static final String ROUTE_DATABASE_URL = "jdbc:mysql://%s/WT_ROUTE_DB?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
 	private static final String BEACON_DATABASE_URL = "jdbc:mysql://%s/WT_BEACON_DB?characterEncoding=utf8";
@@ -23,6 +24,10 @@ public class TYDatabaseManager {
 
 	public static String GetPassword() {
 		return PASSWORD;
+	}
+
+	public static String GetDBUrlWithName(String dbName) {
+		return String.format(DATABASE_URL, HOST_NAME, dbName);
 	}
 
 	public static String GetMapDBUrl() {
