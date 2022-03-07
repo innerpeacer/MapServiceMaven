@@ -34,7 +34,7 @@ public abstract class IPSqlDB {
 	}
 
 	public void createSqliteTable(IPSqlTable table) {
-	    existSql(IPSqlBuilder.sqliteTableCreateSql(table));
+		existSql(IPSqlBuilder.sqliteTableCreateSql(table));
 	}
 
 	public void dropTable(IPSqlTable table) {
@@ -42,7 +42,7 @@ public abstract class IPSqlDB {
 	}
 
 	public void eraseTable(IPSqlTable table) {
-        executeSql(String.format("delete from %s", table.getTableName()));
+		executeSql(String.format("delete from %s", table.getTableName()));
 	}
 
 	public void deleteRecord(IPSqlTable table, Map<IPSqlField, Object> clause) {
@@ -122,7 +122,7 @@ public abstract class IPSqlDB {
 		return updateSql(updateFields, data, sql);
 	}
 
-	public List<IPSqlRecord> readData(IPSqlTable table, Map<IPSqlField, Object> clause, List<IPSqlOrder> orderList ,IPSqlLimit limit) {
+	public List<IPSqlRecord> readData(IPSqlTable table, Map<IPSqlField, Object> clause, List<IPSqlOrder> orderList, IPSqlLimit limit) {
 		String sql = IPSqlBuilder.selectSql(table, clause) +
 				IPSqlBuilder.orderByClause(orderList) +
 				IPSqlBuilder.limitClause(limit);
@@ -144,28 +144,28 @@ public abstract class IPSqlDB {
 		return readSql(table, sql);
 	}
 
-    private List<IPSqlRecord> readSql(IPSqlTable table, String sql) {
+	public List<IPSqlRecord> readSql(IPSqlTable table, String sql) {
 		List<IPSqlRecord> records = new ArrayList<>();
-        ResultSet rs;
-        try {
-            Statement stmt = connection.createStatement();
-            rs = stmt.executeQuery(sql);
+		ResultSet rs;
+		try {
+			Statement stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
 
-            while (rs.next()) {
-                List<IPSqlEntity> entities = new ArrayList<>();
-                List<IPSqlField> fields = table.getFields();
-                for (IPSqlField f : fields) {
-                    IPSqlEntity entity = IPSqlHelper.getObject(rs, f);
-                    entities.add(entity);
-                }
-                IPSqlRecord record = new IPSqlRecord(entities);
-                records.add(record);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return records;
-    }
+			while (rs.next()) {
+				List<IPSqlEntity> entities = new ArrayList<>();
+				List<IPSqlField> fields = table.getFields();
+				for (IPSqlField f : fields) {
+					IPSqlEntity entity = IPSqlHelper.getObject(rs, f);
+					entities.add(entity);
+				}
+				IPSqlRecord record = new IPSqlRecord(entities);
+				records.add(record);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return records;
+	}
 
 	private int updateSql(List<IPSqlField> updateFields, Map<String, Object> data, String sql) {
 		int result = 0;
@@ -185,29 +185,29 @@ public abstract class IPSqlDB {
 		return result;
 	}
 
-    private boolean existSql(String sql) {
-        int result = 0;
-        ResultSet rs;
-        try {
-            Statement stmt = connection.createStatement();
-            rs = stmt.executeQuery(sql);
+	private boolean existSql(String sql) {
+		int result = 0;
+		ResultSet rs;
+		try {
+			Statement stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
 
-            while (rs.next()) {
-                result = rs.getInt(1);
-            }
+			while (rs.next()) {
+				result = rs.getInt(1);
+			}
 
-        } catch (Exception e) {
-        	e.printStackTrace();
-        }
-        return (result != 0);
-    }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return (result != 0);
+	}
 
-    private void executeSql(String sql) {
-        try {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+	public void executeSql(String sql) {
+		try {
+			Statement stmt = connection.createStatement();
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
