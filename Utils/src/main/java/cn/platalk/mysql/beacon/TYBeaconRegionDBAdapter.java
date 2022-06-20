@@ -1,28 +1,22 @@
 package cn.platalk.mysql.beacon;
 
-import java.sql.Connection;
-import java.util.List;
-
 import cn.platalk.map.entity.base.beacon.TYIBeaconRegion;
 import cn.platalk.map.entity.base.impl.beacon.TYBeaconRegion;
 import cn.platalk.mysql.map.TYDatabaseManager;
 import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
+import java.sql.Connection;
+import java.util.List;
+
 public class TYBeaconRegionDBAdapter {
 	final IPMysqlDB db;
 	final IPSqlTable beaconRegionTable;
 
 	public TYBeaconRegionDBAdapter() {
-		db = new IPMysqlDB(TYDatabaseManager.GetBeaconDBUrl(), TYDatabaseManager.GetUserName(),
-				TYDatabaseManager.GetPassword());
+		db = new IPMysqlDB(TYDatabaseManager.GetBeaconDBUrl(), TYDatabaseManager.GetUserName(), TYDatabaseManager.GetPassword());
 		beaconRegionTable = IPMysqlBeaconRegionParams.CreateTable();
-		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
-    }
+	}
 
 	public Connection connectDB() {
 		return db.connectDB();
@@ -33,25 +27,11 @@ public class TYBeaconRegionDBAdapter {
 	}
 
 	public void createTableIfNotExist() {
-		// String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_BEACON_REGION + "
-		// (_id INT NOT NULL AUTO_INCREMENT, "
-		// + "CITY_ID VARCHAR(45) NOT NULL, " + "BUILDING_ID VARCHAR(45) NOT
-		// NULL, "
-		// + "BUILDING_NAME VARCHAR(45) NOT NULL, " + "UUID VARCHAR(45) NOT
-		// NULL, " + "MAJOR INT, "
-		// + " PRIMARY KEY (_id)," + " UNIQUE INDEX _id_UNIQUE (_id ASC));";
-		// try {
-		// Statement stmt = connection.createStatement();
-		// stmt.executeUpdate(sql);
-		// } catch (SQLException e) {
-		// e.printStackTrace();
-		// }
 		db.createTable(beaconRegionTable);
 	}
 
 	public void deleteBeaconRegion(String buildingID) {
-		db.deleteRecord(beaconRegionTable,
-				beaconRegionTable.getField(IPMysqlBeaconRegionParams.FIELD_BEACON_REGION_2_BUILDING_ID), buildingID);
+		db.deleteRecord(beaconRegionTable, beaconRegionTable.getField(IPMysqlBeaconRegionParams.FIELD_BEACON_REGION_2_BUILDING_ID), buildingID);
 	}
 
 	// public void eraseBeaconRegionTable() {
@@ -85,9 +65,7 @@ public class TYBeaconRegionDBAdapter {
 	}
 
 	int updateBeaconRegion(TYIBeaconRegion region) {
-		return db.updateData(beaconRegionTable, IPMysqlBeaconRegionParams.DataMapFromBeaconRegion(region),
-				beaconRegionTable.getField(IPMysqlBeaconRegionParams.FIELD_BEACON_REGION_2_BUILDING_ID),
-				region.getBuildingID());
+		return db.updateData(beaconRegionTable, IPMysqlBeaconRegionParams.DataMapFromBeaconRegion(region), beaconRegionTable.getField(IPMysqlBeaconRegionParams.FIELD_BEACON_REGION_2_BUILDING_ID), region.getBuildingID());
 	}
 
 	public List<TYBeaconRegion> getAllBeaconRegions() {
@@ -95,9 +73,7 @@ public class TYBeaconRegionDBAdapter {
 	}
 
 	public TYBeaconRegion getBeaconRegion(String buildingID) {
-		List<TYBeaconRegion> regionList = IPMysqlBeaconRegionParams.BeaconRegionListFromRecords(db.readData(
-				beaconRegionTable,
-				beaconRegionTable.getField(IPMysqlBeaconRegionParams.FIELD_BEACON_REGION_2_BUILDING_ID), buildingID));
+		List<TYBeaconRegion> regionList = IPMysqlBeaconRegionParams.BeaconRegionListFromRecords(db.readData(beaconRegionTable, beaconRegionTable.getField(IPMysqlBeaconRegionParams.FIELD_BEACON_REGION_2_BUILDING_ID), buildingID));
 		if (regionList.size() > 0) {
 			return regionList.get(0);
 		}
@@ -105,8 +81,7 @@ public class TYBeaconRegionDBAdapter {
 	}
 
 	public boolean existBeaconRegion(String buildingID) {
-		return db.existRecord(beaconRegionTable,
-				beaconRegionTable.getField(IPMysqlBeaconRegionParams.FIELD_BEACON_REGION_2_BUILDING_ID), buildingID);
+		return db.existRecord(beaconRegionTable, beaconRegionTable.getField(IPMysqlBeaconRegionParams.FIELD_BEACON_REGION_2_BUILDING_ID), buildingID);
 	}
 
 	boolean existTable() {

@@ -1,9 +1,5 @@
 package cn.platalk.mysql.beacon;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import cn.platalk.map.entity.base.beacon.TYIBeacon;
 import cn.platalk.map.entity.base.beacon.TYILocatingBeacon;
 import cn.platalk.map.entity.base.impl.beacon.TYLocatingBeacon;
@@ -12,6 +8,10 @@ import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlField;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class TYBeaconDBAdapter {
 	final String buildingID;
 	final IPMysqlDB db;
@@ -19,14 +19,8 @@ public class TYBeaconDBAdapter {
 
 	public TYBeaconDBAdapter(String buildingID) {
 		this.buildingID = buildingID;
-		db = new IPMysqlDB(TYDatabaseManager.GetBeaconDBUrl(), TYDatabaseManager.GetUserName(),
-				TYDatabaseManager.GetPassword());
+		db = new IPMysqlDB(TYDatabaseManager.GetBeaconDBUrl(), TYDatabaseManager.GetUserName(), TYDatabaseManager.GetPassword());
 		beaconTable = IPMysqlBeaconParams.CreateTable(buildingID);
-		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void connectDB() {
@@ -38,23 +32,6 @@ public class TYBeaconDBAdapter {
 	}
 
 	public void createTableIfNotExist() {
-		// String sql = "CREATE TABLE IF NOT EXISTS " + TABLE + "(_id INT NOT
-		// NULL AUTO_INCREMENT,"
-		// + "GEOM BLOB NOT NULL," + "UUID VARCHAR(45) NOT NULL," + "MAJOR
-		// INTEGER NOT NULL, "
-		// + "MINOR INTEGER NOT NULL," + "FLOOR INTEGER NOT NULL," + "X DOUBLE
-		// NOT NULL," + "Y DOUBLE NOT NULL,"
-		// + "ROOM_ID VARCHAR(45)," + "TAG VARCHAR(45), " + "MAP_ID
-		// VARCHAR(45)," + "BUILDING_ID VARCHAR(45),"
-		// + "CITY_ID VARCHAR(45)," + " PRIMARY KEY (_id)," + " UNIQUE INDEX
-		// _id_UNIQUE (_id ASC));";
-		//
-		// try {
-		// Statement stmt = connection.createStatement();
-		// stmt.executeUpdate(sql);
-		// } catch (SQLException e) {
-		// e.printStackTrace();
-		// }
 		db.createTable(beaconTable);
 	}
 
@@ -109,8 +86,7 @@ public class TYBeaconDBAdapter {
 	}
 
 	public List<TYLocatingBeacon> getAllBeaconsOnFloor(int floor) {
-		return IPMysqlBeaconParams.BeaconListFromRecords(
-				db.readData(beaconTable, beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_5_FLOOR), floor));
+		return IPMysqlBeaconParams.BeaconListFromRecords(db.readData(beaconTable, beaconTable.getField(IPMysqlBeaconParams.FIELD_BEACON_5_FLOOR), floor));
 	}
 
 	public TYLocatingBeacon getBeacon(String uuid, int major, int minor) {

@@ -1,17 +1,13 @@
 package cn.platalk.sqlhelper.mysql;
 
+import cn.platalk.sqlhelper.sql.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-
-import cn.platalk.sqlhelper.sql.IPSqlBuilder;
-import cn.platalk.sqlhelper.sql.IPSqlDB;
-import cn.platalk.sqlhelper.sql.IPSqlField;
-import cn.platalk.sqlhelper.sql.IPSqlHelper;
-import cn.platalk.sqlhelper.sql.IPSqlTable;
 
 public class IPMysqlDB extends IPSqlDB {
 	private final String url;
@@ -22,9 +18,9 @@ public class IPMysqlDB extends IPSqlDB {
 		this.url = url;
 		this.name = name;
 		this.password = pwd;
-		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}

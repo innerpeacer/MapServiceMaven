@@ -1,13 +1,13 @@
 package cn.platalk.mysql.map;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import cn.platalk.map.entity.base.impl.map.TYRouteLinkRecord;
 import cn.platalk.map.entity.base.impl.map.TYRouteNodeRecord;
 import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class TYRouteDBAdapter {
 	final String buildingID;
@@ -17,15 +17,9 @@ public class TYRouteDBAdapter {
 
 	public TYRouteDBAdapter(String buildingID) {
 		this.buildingID = buildingID;
-		db = new IPMysqlDB(TYDatabaseManager.GetRouteDBUrl(), TYDatabaseManager.GetUserName(),
-				TYDatabaseManager.GetPassword());
+		db = new IPMysqlDB(TYDatabaseManager.GetRouteDBUrl(), TYDatabaseManager.GetUserName(), TYDatabaseManager.GetPassword());
 		routeLinkTable = IPMysqlRouteLinkParams.CreateTable(buildingID);
 		routeNodeTable = IPMysqlRouteNodeParams.CreateTable(buildingID);
-		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void connectDB() {
@@ -40,41 +34,6 @@ public class TYRouteDBAdapter {
 		db.createTable(routeLinkTable);
 		db.createTable(routeNodeTable);
 	}
-
-	// private void createRouteLinkTableIfNotExist() {
-	// String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_LINK + "(_id INT NOT
-	// NULL AUTO_INCREMENT,"
-	// + "LINK_ID INTEGER NOT NULL,"
-	// // + "GEOMETRY BLOB NOT NULL,"
-	// + "GEOMETRY MediumBlob NOT NULL," + "LENGTH DOUBLE NOT NULL," +
-	// "HEAD_NODE INTEGER NOT NULL, "
-	// + "END_NODE INTEGER NOT NULL, " + "IS_VIRTUAL INTEGER NOT NULL, " +
-	// "ONE_WAY INTEGER NOT NULL, "
-	// + " PRIMARY KEY (_id)," + " UNIQUE INDEX _id_UNIQUE (_id ASC));";
-	//
-	// try {
-	// Statement stmt = connection.createStatement();
-	// stmt.executeUpdate(sql);
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	// }
-
-	// private void createRouteNodeTableIfNotExist() {
-	// String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NODE + "(_id INT NOT
-	// NULL AUTO_INCREMENT,"
-	// + "NODE_ID INTEGER NOT NULL,"
-	// // + "GEOMETRY BLOB NOT NULL,"
-	// + "GEOMETRY MediumBlob NOT NULL," + "IS_VIRTUAL INTEGER NOT NULL, " + "
-	// PRIMARY KEY (_id),"
-	// + " UNIQUE INDEX _id_UNIQUE (_id ASC));";
-	// try {
-	// Statement stmt = connection.createStatement();
-	// stmt.executeUpdate(sql);
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	// }
 
 	public void eraseRouteTable() {
 		db.eraseTable(routeLinkTable);

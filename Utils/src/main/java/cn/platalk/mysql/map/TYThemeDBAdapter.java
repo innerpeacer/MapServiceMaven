@@ -20,16 +20,10 @@ public class TYThemeDBAdapter {
 	final IPSqlTable iconTextTable;
 
 	public TYThemeDBAdapter() {
-		db = new IPMysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),
-				TYDatabaseManager.GetPassword());
+		db = new IPMysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(), TYDatabaseManager.GetPassword());
 		themeTable = IPMysqlThemeParams.CreateTable();
 		fillTable = IPMysqlThemeFillSymbolParams.CreateTable();
 		iconTextTable = IPMysqlThemeIconTextSymbolParams.CreateTable();
-		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void connectDB() {
@@ -63,8 +57,7 @@ public class TYThemeDBAdapter {
 	public void deleteTheme(String themeID) {
 		db.deleteRecord(themeTable, themeTable.getField(IPMysqlThemeParams.FIELD_THEME_1_ID), themeID);
 		db.deleteRecord(fillTable, fillTable.getField(IPMysqlThemeFillSymbolParams.FIELD_MAP_SYMBOL_FILL_101_THEME_ID), themeID);
-		db.deleteRecord(iconTextTable,
-				iconTextTable.getField(IPMysqlThemeIconTextSymbolParams.FIELD_MAP_SYMBOL_ICON_TEXT_101_THEME_ID), themeID);
+		db.deleteRecord(iconTextTable, iconTextTable.getField(IPMysqlThemeIconTextSymbolParams.FIELD_MAP_SYMBOL_ICON_TEXT_101_THEME_ID), themeID);
 	}
 
 	public int insertFillSymbolRecords(List<TYFillSymbolRecord> recordList, String themeID) {
@@ -100,14 +93,11 @@ public class TYThemeDBAdapter {
 	}
 
 	public List<TYIFillSymbolRecord> getFillSymbolRecords(String themeID) {
-		return IPMysqlThemeFillSymbolParams.FillSymbolListFromRecords(db.readData(fillTable,
-				fillTable.getField(IPMysqlThemeFillSymbolParams.FIELD_MAP_SYMBOL_FILL_101_THEME_ID), themeID));
+		return IPMysqlThemeFillSymbolParams.FillSymbolListFromRecords(db.readData(fillTable, fillTable.getField(IPMysqlThemeFillSymbolParams.FIELD_MAP_SYMBOL_FILL_101_THEME_ID), themeID));
 	}
 
 	public List<TYIIconTextSymbolRecord> getIconTextSymbolRecords(String themeID) {
-		return IPMysqlThemeIconTextSymbolParams.IconTextSymbolListFromRecords(db.readData(iconTextTable,
-				iconTextTable.getField(IPMysqlThemeIconTextSymbolParams.FIELD_MAP_SYMBOL_ICON_TEXT_101_THEME_ID),
-				themeID));
+		return IPMysqlThemeIconTextSymbolParams.IconTextSymbolListFromRecords(db.readData(iconTextTable, iconTextTable.getField(IPMysqlThemeIconTextSymbolParams.FIELD_MAP_SYMBOL_ICON_TEXT_101_THEME_ID), themeID));
 	}
 
 	public void deleteFillSymbolRecords(String themeID) {
@@ -119,8 +109,7 @@ public class TYThemeDBAdapter {
 	}
 
 	public TYTheme getTheme(String themeID) {
-		List<TYTheme> themes = IPMysqlThemeParams.ThemeListFromRecords(
-				db.readData(themeTable, themeTable.getField(IPMysqlThemeParams.FIELD_THEME_1_ID), themeID));
+		List<TYTheme> themes = IPMysqlThemeParams.ThemeListFromRecords(db.readData(themeTable, themeTable.getField(IPMysqlThemeParams.FIELD_THEME_1_ID), themeID));
 		if (themes.size() > 0) {
 			return themes.get(0);
 		}

@@ -1,12 +1,12 @@
 package cn.platalk.mysql.map;
 
-import java.util.List;
-
 import cn.platalk.map.entity.base.impl.map.TYFillSymbolRecord;
 import cn.platalk.map.entity.base.impl.map.TYIconSymbolRecord;
 import cn.platalk.map.entity.base.impl.map.TYIconTextSymbolRecord;
 import cn.platalk.sqlhelper.mysql.IPMysqlDB;
 import cn.platalk.sqlhelper.sql.IPSqlTable;
+
+import java.util.List;
 
 public class TYSymbolDBAdapter {
 	final IPMysqlDB db;
@@ -15,17 +15,11 @@ public class TYSymbolDBAdapter {
 	final IPSqlTable iconTextTable;
 
 	public TYSymbolDBAdapter() {
-		db = new IPMysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(),
-				TYDatabaseManager.GetPassword());
+		db = new IPMysqlDB(TYDatabaseManager.GetMapDBUrl(), TYDatabaseManager.GetUserName(), TYDatabaseManager.GetPassword());
 		fillTable = IPMysqlFillSymbolParams.CreateTable();
 		iconTable = IPMysqlIconSymbolParams.CreateTable();
 		iconTextTable = IPMysqlIconTextSymbolParams.CreateTable();
-		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		} catch (InstantiationException | ClassNotFoundException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
-    }
+	}
 
 	public void connectDB() {
 		db.connectDB();
@@ -48,13 +42,9 @@ public class TYSymbolDBAdapter {
 	}
 
 	public void deleteSymbols(String buildingID) {
-		db.deleteRecord(fillTable, fillTable.getField(IPMysqlFillSymbolParams.FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID),
-				buildingID);
-		db.deleteRecord(iconTable, iconTable.getField(IPMysqlIconSymbolParams.FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID),
-				buildingID);
-		db.deleteRecord(iconTextTable,
-				iconTextTable.getField(IPMysqlIconTextSymbolParams.FIELD_MAP_SYMBOL_ICON_TEXT_100_BUILDING_ID),
-				buildingID);
+		db.deleteRecord(fillTable, fillTable.getField(IPMysqlFillSymbolParams.FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID), buildingID);
+		db.deleteRecord(iconTable, iconTable.getField(IPMysqlIconSymbolParams.FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID), buildingID);
+		db.deleteRecord(iconTextTable, iconTextTable.getField(IPMysqlIconTextSymbolParams.FIELD_MAP_SYMBOL_ICON_TEXT_100_BUILDING_ID), buildingID);
 	}
 
 	public int insertFillSymbolRecords(List<TYFillSymbolRecord> recordList, String buildingID) {
@@ -94,18 +84,14 @@ public class TYSymbolDBAdapter {
 	}
 
 	public List<TYFillSymbolRecord> getFillSymbolRecords(String buildingID) {
-		return IPMysqlFillSymbolParams.FillSymbolListFromRecords(db.readData(fillTable,
-				fillTable.getField(IPMysqlFillSymbolParams.FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID), buildingID));
+		return IPMysqlFillSymbolParams.FillSymbolListFromRecords(db.readData(fillTable, fillTable.getField(IPMysqlFillSymbolParams.FIELD_MAP_SYMBOL_FILL_5_BUILDING_ID), buildingID));
 	}
 
 	public List<TYIconSymbolRecord> getIconSymbolRecords(String buildingID) {
-		return IPMysqlIconSymbolParams.IconSymbolListFromRecords(db.readData(iconTable,
-				iconTable.getField(IPMysqlIconSymbolParams.FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID), buildingID));
+		return IPMysqlIconSymbolParams.IconSymbolListFromRecords(db.readData(iconTable, iconTable.getField(IPMysqlIconSymbolParams.FIELD_MAP_SYMBOL_ICON_3_BUILDING_ID), buildingID));
 	}
 
 	public List<TYIconTextSymbolRecord> getIconTextSymbolRecords(String buildingID) {
-		return IPMysqlIconTextSymbolParams.IconTextSymbolListFromRecords(db.readData(iconTextTable,
-				iconTextTable.getField(IPMysqlIconTextSymbolParams.FIELD_MAP_SYMBOL_ICON_TEXT_100_BUILDING_ID),
-				buildingID));
+		return IPMysqlIconTextSymbolParams.IconTextSymbolListFromRecords(db.readData(iconTextTable, iconTextTable.getField(IPMysqlIconTextSymbolParams.FIELD_MAP_SYMBOL_ICON_TEXT_100_BUILDING_ID), buildingID));
 	}
 }

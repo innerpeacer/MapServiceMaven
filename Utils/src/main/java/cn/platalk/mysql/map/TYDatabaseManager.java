@@ -1,12 +1,12 @@
 package cn.platalk.mysql.map;
 
 public class TYDatabaseManager {
-	private static final String DATABASE_URL = "jdbc:mysql://%s/%s?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
-	private static final String MAP_DATABASE_URL = "jdbc:mysql://%s/WT_MAP_DB?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
-	private static final String ROUTE_DATABASE_URL = "jdbc:mysql://%s/WT_ROUTE_DB?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
-	private static final String BEACON_DATABASE_URL = "jdbc:mysql://%s/WT_BEACON_DB?characterEncoding=utf8";
-	private static final String POI_DATABASE_URL = "jdbc:mysql://%s/WT_MAP_DB?characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
-	private static final String LAB_DATABASE_URL = "jdbc:mysql://%s/WT_LAB_DB?characterEncoding=utf8";
+	private static final String DATABASE_URL = "jdbc:mysql://%s/%s?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
+	private static final String MAP_DATABASE_URL = "jdbc:mysql://%s/WT_MAP_DB?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
+	private static final String ROUTE_DATABASE_URL = "jdbc:mysql://%s/WT_ROUTE_DB?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
+	private static final String BEACON_DATABASE_URL = "jdbc:mysql://%s/WT_BEACON_DB?useSSL=false&serverTimezone=UTC&characterEncoding=utf8";
+	private static final String POI_DATABASE_URL = "jdbc:mysql://%s/WT_MAP_DB?useSSL=false&serverTimezone=UTC&characterEncoding=utf8&rewriteBatchedStatements=true&useServerPrepStmts=true";
+	private static final String LAB_DATABASE_URL = "jdbc:mysql://%s/WT_LAB_DB?useSSL=false&serverTimezone=UTC&characterEncoding=utf8";
 
 	private static String HOST_NAME = null;
 	private static String USER_NAME = null;
